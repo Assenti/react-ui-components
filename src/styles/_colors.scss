@@ -1,3 +1,22 @@
-$light: #e7e7e7;
-$dark: #4d4d4d;
 $night: #303846;
+$light: #fafafa;
+$dark: #4d4d4d;
+$gray: #e0e0e0;
+$info: #42a5f5;
+$primary: #1976d2;
+$error: #f44336;
+$success: #43a047;
+$yellow: #feda24;
+$warning: #ff3d00; 
+
+.white {
+    background-color: #fff;
+}
+
+.text-primary {
+    color: $primary;
+}
+
+.text-info {
+    color: $info;
+}

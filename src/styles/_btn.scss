@@ -1,0 +1,94 @@
+.btn {
+    padding: 15px 20px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    border: none;
+    outline: none;
+    font-size: .8rem;
+    min-width: 100px;
+    height: 50px;
+    border-radius: 2px;
+
+    &.wide {
+        width: 60%;
+    }
+
+    &.small {
+        max-width: 80px !important;
+        min-width: 80px !important;
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        box-shadow: none;
+        background-color: $gray !important;
+        border-color: $gray !important;
+        color: $dark !important;
+        box-shadow: none !important;
+    }
+
+    &:active {
+        box-shadow: 0 2px 5px rgba(black, .3);
+    }
+
+    &.primary {
+        background-color: $primary;
+        border: 1px solid $primary;
+        color: #fff;
+
+        &:hover {
+            background-color: darken($primary, 10%);
+        }
+    }
+
+    &.secondary {
+        background-color: $gray;
+        border: 1px solid $gray;
+
+        &:hover {
+            background-color: darken($gray, 10%);
+        }
+    }
+
+    &.info {
+        background-color: $info;
+        border: 1px solid $info;
+        color: #fff;
+
+        &:hover {
+            background-color: darken($info, 10%);
+        }
+    }
+
+    &.success {
+        background-color: $success;
+        border: 1px solid $success;
+        color: #fff;
+
+        &:hover {
+            background-color: darken($success, 10%);
+        }
+    }
+
+    &.error {
+        background-color: $error;
+        border: 1px solid $error;
+        color: #fff;
+
+        &:hover {
+            background-color: darken($error, 10%);
+        }
+    }
+
+    &.block {
+        width: 100%;
+    }
+
+    &.icon {
+        width: 0;
+        padding: 15px 0;
+    }
+}

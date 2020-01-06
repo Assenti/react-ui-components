@@ -20,24 +20,7 @@ body {
   h1 {
     color: cornflowerblue;
   }
-  
-  .btn {
-    outline: none;
-    padding: 15px;
-    font-size: .9rem;
-    text-transform: uppercase;
-    border-radius: 4px;
-    min-width: 100px;
-    cursor: pointer;
-    background-color: cornflowerblue;
-    color: white;
-  }
-  
-  .btn.icon {
-    padding: 15px 5px;
-    min-width: 0;
-  }
-  
+    
   .mx-5 {
     margin: 0 5px;
   }
@@ -87,71 +70,6 @@ body {
     opacity: 0;
     transform: scale(0.9);
     transition: opacity 300ms, transform 300ms;
-  }
-  
-  .drawer {
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 280px;
-    background-color: #e6e6e6;
-    display: flex;
-    flex-direction: column-reverse;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
-    z-index: 99;
-  }
-  
-  .drawer.min {
-    width: 50px !important;
-  }
-  
-  .drawer.absolute {
-    position: fixed !important;
-  }
-  
-  .drawer-enter {
-    transform: translateX(-100%);
-  }
-  
-  .drawer-enter-active {
-    transform: translateX(0%);
-    transition: transform 300ms;
-  }
-  
-  .drawer-exit {
-    transform: translateX(0%);
-  }
-  
-  .drawer-exit-active {
-    transform: translateX(-100%);
-    transition: transform 300ms;
-  }
-  
-  .expand-enter {
-    width: 0;
-  }
-  
-  .expand-enter-active {
-    animation: collapsing 300ms ease-out;
-  }
-  
-  .expand-exit {
-    width: 0;
-  }
-  
-  .expand-exit-active {
-    animation: expanding 300ms ease-out;
-  }
-  
-  @keyframes expanding {
-    0% { width: 50px;}
-    100% { width: 280px;}
-  }
-  
-  @keyframes collapsing {
-    0% { width: 280px;}
-    100% { width: 50px;}
   }
   
   .menu {
@@ -245,3 +163,6 @@ body {
 @import 'app';
 @import 'header';
 @import 'content';
+@import 'btn';
+@import 'page';
+@import 'drawer';
