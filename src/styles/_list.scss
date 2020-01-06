@@ -1,0 +1,66 @@
+.list {
+    &.dense > .list-item {
+        padding: 10px !important;
+    }
+
+    &.dark > .list-item {
+        color: #fff;
+        border-bottom-color: gray !important;
+
+        &:hover:not(.active)  {
+            background-color: rgba($light, .3) !important;
+        }
+    }
+
+    & .btn {
+        padding: 0 !important;
+    }
+}
+
+.list-title {
+    font-size: 1.1rem;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.list-subtitle {
+
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    color: $dark;
+    border-bottom: 1px solid $gray;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &:hover:not(.active) {
+        background-color: rgba($gray, .3);
+        transition: all .3s ease-in-out;
+    }
+
+    &.active {
+        background-color: $primary;
+    }
+
+    &.clickable {
+        cursor: pointer;
+    }
+}
+
+.list-item__left-side,
+.list-item__right-side {
+    display: flex;
+    align-items: center;
+}
+
+.list-item__left-side {
+    & > .checkbox {
+        margin-right: 15px;
+    }
+}

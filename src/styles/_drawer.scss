@@ -6,9 +6,33 @@
     min-width: 280px;
     background-color: $night;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    justify-content: space-between;
     overflow: hidden;
     z-index: 99;
+    position: sticky;
+}
+
+
+.drawer-content {
+
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.drawer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
   
 .drawer.min {

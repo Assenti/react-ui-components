@@ -2,6 +2,13 @@
     width: 100%;
 }
 
+.page-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: $info;
+    padding: 10px 0;
+}
+
 .page-enter {
     opacity: 0;
     transform: scale(1.1);
