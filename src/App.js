@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './App.css';
 import { CSSTransition } from 'react-transition-group';
 import { Button } from './components/Button';
 import { Alert } from './components/Alert';
