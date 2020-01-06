@@ -4,11 +4,12 @@ import { Button } from './components/Button';
 import { Alert } from './components/Alert';
 import { Drawer } from './components/Drawer';
 import { Menu } from './components/Menu';
+import { Content } from './layouts/Content';
 
 const App = () => {
   const [showButton, setShowButton] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
-  const [drawer, setDrawer] = useState(false);
+  const [drawer, setDrawer] = useState(true);
   const [drawerMin, setDrawerMin] = useState(false);
   const [menu, setMenu] = useState(false);
   const [stack, setStack] = useState('');
@@ -22,8 +23,8 @@ const App = () => {
           min={drawerMin}
           onResize={() => setDrawerMin(!drawerMin)}/>
 
-      <div className="content">
-        <h1>Working with React-Transition Group</h1>
+      <Content>
+        <h1>My React UI Components</h1>
         <div style={{ display: 'flex' }}>
           {showButton && 
             <Button
@@ -36,7 +37,7 @@ const App = () => {
               onAction={() => setDrawer(!drawer)}/> 
           <span className="mx-5"></span>
           <div className="input-group">
-            <label for="stack-id">Input your variant or choose on of option</label>
+            <label htmlFor="stack-id">Input your variant or choose on of option</label>
             <input
               id="stack-id" 
               value={stack}
@@ -68,7 +69,7 @@ const App = () => {
               onAction={() => setShowMessage(false)}/>
           </Alert>
         </CSSTransition>
-      </div>
+      </Content>
     </div>
   );
 }

@@ -1,0 +1,26 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    width: 100%;
+    background-color: $night;
+    padding: 0 15px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    width: 35px;
+    height: 35px;
+    margin: 0 5px;
+}
+
+.header-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+}
