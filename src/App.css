@@ -1,38 +1,237 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.content {
+  text-align: center;
+  padding: 1% 2%;
+  transition: all .3s ease-in-out;
+}
+
+h1 {
+  color: cornflowerblue;
+}
+
+.btn {
+  outline: none;
+  padding: 15px;
+  font-size: .9rem;
+  text-transform: uppercase;
+  border-radius: 4px;
+  min-width: 100px;
+  cursor: pointer;
+  background-color: cornflowerblue;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.btn.icon {
+  padding: 15px 5px;
+  min-width: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mx-5 {
+  margin: 0 5px;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  padding: 15px;
+  border-radius: 4px;
+  width: 400px;
+  min-height: 200px;
+  box-shadow: 0 2px 40px rgba(0, 0, 0, .3);
+  background-color: #eee;
+  z-index: 99;
+}
+
+.modal-header {
+  padding: 10px;
+  font-size: 1.1rem;
+}
+
+.alert-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.alert-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.alert-exit {
+  opacity: 1;
+}
+
+.alert-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.drawer {
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 280px;
+  background-color: #e6e6e6;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+  z-index: 99;
+}
+
+.drawer.min {
+  width: 50px !important;
+}
+
+.drawer.absolute {
+  position: fixed !important;
+}
+
+.drawer-enter {
+  transform: translateX(-100%);
+}
+
+.drawer-enter-active {
+  transform: translateX(0%);
+  transition: transform 300ms;
+}
+
+.drawer-exit {
+  transform: translateX(0%);
+}
+
+.drawer-exit-active {
+  transform: translateX(-100%);
+  transition: transform 300ms;
+}
+
+.expand-enter {
+  width: 0;
+}
+
+.expand-enter-active {
+  animation: collapsing 300ms ease-out;
+}
+
+.expand-exit {
+  width: 0;
+}
+
+.expand-exit-active {
+  animation: expanding 300ms ease-out;
+}
+
+@keyframes expanding {
+  0% { width: 50px;}
+  100% { width: 280px;}
+}
+
+@keyframes collapsing {
+  0% { width: 280px;}
+  100% { width: 50px;}
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
+  border-radius: 4px;
+  overflow-y: auto;
+  max-height: 50vh;
+}
+
+.menu-title {
+  font-size: .9rem;
+  font-weight: bold;
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+  background-color: lightgray;
+  text-align: left;
+  color: gray;
+}
+
+.menu-item {
+  font-size: .9rem;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  text-align: left;
+}
+
+.menu-item:hover {
+  cursor: pointer;
+  background-color: #eee;
+  transition: hover .2s ease-in-out;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-enter {
+  opacity: 0;
+  transform: translateY(-5%);
+}
+
+.menu-enter-active {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.menu-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.menu-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group > label {
+  position: absolute;
+  top: -16px;
+  left: 5px;
+  font-size: .7rem;
+  color: #4d4d4d;
+  white-space: nowrap;
+}
+
+.input {
+  padding: 14px;
+  font-size: 1rem;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid gray;
+}
+
+.input:focus {
+  border-color: cornflowerblue;
+  transition: all .2s ease-in-out;
 }
