@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import { HomePage } from './pages/HomePage';
 import { ButtonPage } from './pages/ButtonPage';
 import { MenuPage } from './pages/MenuPage';
 import { ListPage } from './pages/ListPage';
-import { Drawer } from './components/Drawer';
 import { Content } from './layouts/Content';
-import { List } from './components/List';
+import { DrawerContent } from './layouts/DrawerContent';
 
 const routes = [
     { path: '/', name: 'Home', Component: HomePage },
@@ -18,27 +16,12 @@ const routes = [
 ]
 
 const App = () => {
-    // const history = useHistory();
     const [drawer, setDrawer] = useState(true);
-    const [drawerMin, setDrawerMin] = useState(false);
-
-    const handleItemClick = (item) => {
-        // history.push(item.path)
-    }
-
+    
     return (
         <div className="app">
-            <Drawer
-                drawer={drawer}
-                min={drawerMin}
-                onResize={() => setDrawerMin(!drawerMin)}>
-                <List dark
-                    onItemClick={handleItemClick} 
-                    items={routes} 
-                    itemTitle="name" 
-                    isActiveItem={current => current.path === window.location.pathname}/>
-            </Drawer>
             <Router>
+                <DrawerContent drawer={drawer} items={routes}/>
                 <Switch>
                     {routes.map(({path, Component}, index) => 
                         <Route key={index} exact path={path}>

@@ -6,7 +6,8 @@ import reactLogo from '../img/logo.svg';
 
 export const Drawer = (props) => {
     const drawerClass = () => { 
-        return `drawer ${props.min ? 'min' : ''} ${props.absolute ? 'absolute' : ''}`
+        let result = `drawer ${props.min ? 'min' : ''} ${props.absolute ? 'absolute' : ''}`
+        return result.trim()
     }
 
     return (

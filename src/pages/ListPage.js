@@ -1,5 +1,5 @@
 import React from 'react';
-import { List } from '../components/List';
+import { List, ListItem } from '../components/List';
 import { Button } from '../components/Button';
 import { Delete, Edit } from '../icons';
 
@@ -18,8 +18,12 @@ export const ListPage = () => {
             <List items={items}
                 checkbox 
                 listTitle="List with checkboxes, toolbar and controls">
-                <Button small icon onAction={() => {}}><Edit color="#42a5f5" size={18}/></Button>
-                <Button small icon onAction={() => {}}><Delete color="#f44336" size={18}/></Button>
+                {items.map((item, index) => 
+                    <ListItem key={index} item={item}>
+                        <Button small icon onAction={() => {}}><Edit color="#42a5f5" size={18}/></Button>
+                        <Button small icon onAction={() => {}}><Delete color="#f44336" size={18}/></Button>
+                    </ListItem>
+                )}
             </List>
         </div>
     )

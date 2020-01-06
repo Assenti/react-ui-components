@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "My custom React UI Components",
+  "name": "My custom React UI Components",
   "icons": [
     {
       "src": "favicon.ico",
