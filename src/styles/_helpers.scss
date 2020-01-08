@@ -1,0 +1,137 @@
+.flex {
+    display: flex;
+
+    .wrap {
+        flex-wrap: wrap;
+    }
+}
+
+.col {
+    flex-grow: 1;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.text-hint {
+    font-size: .8rem;
+}
+
+@each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
+    .mx-#{$size} {
+        margin-left: #{$size}px !important;
+        margin-right: #{$size}px !important;
+    }
+}
+
+@each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
+    .my-#{$size} {
+        margin-top: #{$size}px !important;
+        margin-bottom: #{$size}px !important;
+    }
+}
+
+@each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
+    .mr-#{$size} {
+        margin-right: #{$size}px !important;
+    }
+}
+
+@each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
+    .ml-#{$size} {
+        margin-left: #{$size}px !important;
+    }
+}
+
+@each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
+    .mb-#{$size} {
+        margin-bottom: #{$size}px !important;
+    }
+}
+
+@each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
+    .mt-#{$size} {
+        margin-top: #{$size}px !important;
+    }
+}
+
+@each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
+    .pa-#{$size} {
+        padding: #{$size}px !important;
+    }
+}
+
+@each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
+    .px-#{$size} {
+        padding: 0 #{$size}px !important;
+    }
+}
+
+@each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
+    .py-#{$size} {
+        padding: #{$size}px 0 !important;
+    }
+}
+
+@each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
+    .pb-#{$size} {
+        padding-bottom: #{$size}px !important;
+    }
+}
+
+@each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
+    .pt-#{$size} {
+        padding-top: #{$size}px !important;
+    }
+}
+
+@each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
+    .pr-#{$size} {
+        padding-right: #{$size}px !important;
+    }
+}

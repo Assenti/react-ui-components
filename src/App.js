@@ -1,19 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { HomePage } from './pages/HomePage';
-import { ButtonPage } from './pages/ButtonPage';
-import { MenuPage } from './pages/MenuPage';
-import { ListPage } from './pages/ListPage';
+import { routes } from './routes';
 import { Content } from './layouts/Content';
 import { DrawerContent } from './layouts/DrawerContent';
-
-const routes = [
-    { path: '/', name: 'Home', Component: HomePage },
-    { path: '/btns', name: 'Button', Component: ButtonPage },
-    { path: '/menus', name: 'Menu', Component: MenuPage },
-    { path: '/lists', name: 'List', Component: ListPage }
-]
 
 const App = () => {
     const [drawer, setDrawer] = useState(true);
