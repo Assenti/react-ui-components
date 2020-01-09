@@ -57,3 +57,35 @@ export const Github = (props) => {
         </svg>
     )
 }
+
+export const Account = (props) => {
+    return (
+        <svg style={{ width: (props.size ? props.size : 24)+'px', height: (props.size ? props.size : 24)+'px' }} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : '#4d4d4d'} d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+        </svg>
+    )
+}
+
+export const Search = (props) => {
+    return (
+        <svg style={{ width: (props.size ? props.size : 24)+'px', height: (props.size ? props.size : 24)+'px' }} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : '#4d4d4d'} d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+        </svg>
+    )
+}
+
+export const Home = (props) => {
+    return (
+        <svg style={{ width: (props.size ? props.size : 24)+'px', height: (props.size ? props.size : 24)+'px' }} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : '#4d4d4d'} d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
+        </svg>
+    )
+}
+
+export const Chip = (props) => {
+    return (
+        <svg style={{ width: (props.size ? props.size : 24)+'px', height: (props.size ? props.size : 24)+'px' }} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : '#4d4d4d'} d="M6,4H18V5H21V7H18V9H21V11H18V13H21V15H18V17H21V19H18V20H6V19H3V17H6V15H3V13H6V11H3V9H6V7H3V5H6V4M11,15V18H12V15H11M13,15V18H14V15H13M15,15V18H16V15H15Z" />
+        </svg>
+    )
+}

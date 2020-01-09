@@ -5,12 +5,17 @@ import { Button } from '../components/Button';
 import { Github } from '../icons/index';
 
 export const Content = (props) => {
+    const github = 'https://github.com/Assenti/react-ui-components';
+
     return (
         <div className="content">
             <Header title="My React UI Components"
                 rightSide={
-                <Tooltip tooltip="Visit Github repo" poistion="bottom">
-                    <Button icon onAction={() => {}}><Github color="#fff"/></Button>
+                <Tooltip tooltip="Visit Github repo" position="bottom-right">
+                    <Button icon onAction={e => { 
+                        e.preventDefault()
+                        window.open(github, '_blank')}}>
+                        <Github color="#fff"/></Button>
                 </Tooltip>
             }/>
             <div className="content-inner">

@@ -4,6 +4,7 @@ import { MenuPage } from './pages/MenuPage';
 import { ListPage } from './pages/ListPage';
 import { InputsPage } from './pages/InputsPage';
 import { DrawerPage } from './pages/DrawerPage';
+import { TooltipPage } from './pages/TooltipPage';
 
 export const routes = [
     { path: '/', name: 'Home', Component: HomePage },
@@ -11,5 +12,6 @@ export const routes = [
     { path: '/menus', name: 'Menu', Component: MenuPage },
     { path: '/lists', name: 'List', Component: ListPage },
     { path: '/inputs', name: 'Input', Component: InputsPage },
-    { path: '/drawer', name: 'Drawer', Component: DrawerPage }
+    { path: '/drawer', name: 'Drawer', Component: DrawerPage },
+    { path: '/tooltip', name: 'Tooltip', Component: TooltipPage } 
 ];

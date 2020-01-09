@@ -1,5 +1,5 @@
 .btn {
-    padding: 15px 10px;
+    padding: 8px;
     text-transform: uppercase;
     text-align: center;
     cursor: pointer;
@@ -7,21 +7,25 @@
     -moz-user-select: none;
     border: none;
     outline: none;
-    font-size: .8rem;
+    font-size: .75rem;
     min-width: 100px;
-    height: 50px;
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    &.wide {
-        width: 60%;
+    &.medium {
+        padding: 15px 10px;
+        font-size: .85rem;
     }
 
-    &.small {
-        max-width: 80px !important;
-        min-width: 80px !important;
+    &.large {
+        padding: 20px 15px;
+        font-size: .9rem;
+    }
+
+    &.wide {
+        width: 60%;
     }
 
     &.small.icon {
@@ -42,17 +46,17 @@
         box-shadow: none !important;
     }
 
-    &:active:not(.icon) {
+    &:active {
         box-shadow: 0 2px 5px rgba(black, .3);
     }
 
     &.primary {
-        background-color: $primary;
+        background-color: $primary !important;
         border: 1px solid $primary;
         color: #fff;
 
         &:hover {
-            background-color: darken($primary, 10%);
+            background-color: darken($primary, 10%) !important;
         }
     }
 
@@ -66,12 +70,12 @@
     }
 
     &.info {
-        background-color: $info;
+        background-color: $info !important;
         border: 1px solid $info;
         color: #fff;
 
         &:hover {
-            background-color: darken($info, 10%);
+            background-color: darken($info, 10%) !important;
         }
     }
 
@@ -86,12 +90,12 @@
     }
 
     &.error {
-        background-color: $error;
+        background-color: $error !important;
         border: 1px solid $error;
         color: #fff;
 
         &:hover {
-            background-color: darken($error, 10%);
+            background-color: darken($error, 10%) !important;
         }
     }
 
@@ -107,11 +111,7 @@
         background-color: transparent;
         border-radius: 50% !important;
 
-        &:active {
-            transform: scale(.95);
-        }
-
-        &:hover {
+        &:hover:not(.primary):not(.info):not(.error) {
             background-color: rgba($light, .3);
             transition: all .3s ease-in-out;
         }
