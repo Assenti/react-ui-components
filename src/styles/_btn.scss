@@ -101,10 +101,15 @@
 
     &.icon {
         padding: 0;
-        min-width: 50px !important;
+        min-width: 40px !important;
+        height: 40px !important;
         width: 0 !important;
         background-color: transparent;
         border-radius: 50% !important;
+
+        &:active {
+            transform: scale(.95);
+        }
 
         &:hover {
             background-color: rgba($light, .3);

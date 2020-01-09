@@ -15,6 +15,8 @@ export const DrawerContent = (props) => {
         <div>
             <Drawer
                 drawer={props.drawer}
+                fullHeight
+                dark
                 min={drawerMin}
                 onResize={() => setDrawerMin(!drawerMin)}>
                 <List dark

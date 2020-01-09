@@ -1,16 +1,34 @@
 .drawer {
     top: 0;
     left: 0;
-    height: 100vh;
+    height: auto;
     width: 280px;
     min-width: 280px;
-    background-color: $night;
+    background-color: $gray;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
     z-index: 99;
     position: sticky;
+
+    &.dark {
+      background-color: $night;
+    }
+
+    &.full-height {
+      height: 100vh;
+    }
+
+    &.min {
+        width: 50px !important;
+        min-width: 50px !important; 
+        
+        .drawer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
 }
 
 
@@ -34,12 +52,7 @@
   align-items: center;
   justify-content: center;
 }
-  
-.drawer.min {
-    width: 50px !important;
-    min-width: 50px !important; 
-}
-  
+    
 .drawer.absolute {
     position: fixed !important;
 }

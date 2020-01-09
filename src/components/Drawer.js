@@ -1,12 +1,16 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Button } from './Button';
+import { Tooltip } from './Tooltip';
 import { ChevronDoubleLeft, ChevronDoubleRight } from '../icons';
 import reactLogo from '../img/logo.svg';
 
 export const Drawer = (props) => {
     const drawerClass = () => { 
-        let result = `drawer ${props.min ? 'min' : ''} ${props.absolute ? 'absolute' : ''}`
+        let result = `drawer ${props.min ? 'min' : ''} 
+                    ${props.absolute ? 'absolute' : ''} 
+                    ${props.fullHeight ? 'full-height' : ''}
+                    ${props.dark ? 'dark' : ''}`
         return result.trim()
     }
 
@@ -28,11 +32,15 @@ export const Drawer = (props) => {
                         {props.children}
                     </div>
                     <div className="drawer-footer">
-                        <Button
-                            icon
-                            onAction={() => props.onResize()}>
-                            {props.min ? <ChevronDoubleRight color="#fff"/> : <ChevronDoubleLeft color="#fff"/>}
-                        </Button>
+                        <Tooltip tooltip={props.min ? 'Expand' : 'Collapse'}>
+                            <Button
+                                icon
+                                onAction={() => props.onResize()}>
+                                {props.min ? 
+                                    <ChevronDoubleRight color={props.dark ? '#fff' : ''}/> : 
+                                    <ChevronDoubleLeft color={props.dark ? '#fff' : ''}/>}
+                            </Button>
+                        </Tooltip>
                     </div>
                 </div>
             </CSSTransition>

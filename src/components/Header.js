@@ -8,7 +8,9 @@ export const Header = (props) => {
                 <img className="header-logo" src={props.imgPath} alt="React logo"/> : ''}
                 <div className="header-title">{props.title}</div>
             </div>
-            <div className="header-right"></div>
+            <div className="header-right">
+                {props.rightSide}
+            </div>
         </div>
     )
 }

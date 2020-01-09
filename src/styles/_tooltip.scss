@@ -1,0 +1,43 @@
+.tooltip {
+    position: relative;
+
+    & > div {
+        background-color: rgba($dark, .9);
+        color: white;
+        white-space: nowrap;
+        padding: 5px;
+        font-size: .8rem;
+        border-radius: 2px;
+        position: absolute;
+        top: calc(-50% - 5px);
+        // left: 25%;
+    }
+
+    &.right > div {
+        top: 25%;
+        left: calc(100% + 5px);
+    }
+
+    &.bottom > div {
+        bottom: -25%;
+        left: calc(100% + 5px);
+    }
+}
+
+.tooltip-enter {
+    opacity: 0;
+}
+
+.tooltip-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+}
+
+.tooltip-exit {
+    opacity: 1;
+}
+
+.tooltip-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+}
