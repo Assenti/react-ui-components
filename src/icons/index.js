@@ -17,6 +17,37 @@ export const ChevronDoubleRight = (props) => {
     )
 }
 
+export const ChevronBack = (props) => {
+    return (
+        <svg viewBox="0 0 477.175 477.175" 
+            width={props.size ? props.size : 32} height={props.size ? props.size : 32}><g><g>
+            <path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225   c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z" 
+                fill={props.color ? props.color : '#4D4D4D'}/>
+            </g></g>
+        </svg>
+    )
+}
+
+export const ChevronNext = (props) => {
+    return (
+        <svg viewBox="0 0 477.175 477.175" 
+            width={props.size ? props.size : 32} height={props.size ? props.size : 32}><g><g>
+            <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5   c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z   " 
+            fill={props.color ? props.color : '#4D4D4D'}/>
+        </g></g> </svg>
+    )
+}
+
+export const ChevronDown = (props) => {
+    return (
+        <svg width={props.size ? props.size : 32} height={props.size ? props.size : 32} 
+            viewBox="0 0 407.437 407.437">
+            <polygon points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 " fill={props.color ? props.color : '#4D4D4D'}/>
+            <g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+        </svg>
+    )
+}
+
 export const Delete = (props) => {
     return (
         <svg style={{ width: (props.size ? props.size : 24)+'px', height: (props.size ? props.size : 24)+'px' }} viewBox="0 0 24 24">

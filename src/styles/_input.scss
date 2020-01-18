@@ -13,6 +13,11 @@
         background-color: transparent;
     }
 
+    &:hover {
+        border-color: $info;
+        transition: all .2s ease;
+    }
+
     .small {
         font-size: .8rem !important;
     }
@@ -69,6 +74,14 @@ textarea.input {
             transition: all .2s ease;
             background-color: transparent;
         }
+
+        &:hover {
+            input,
+            textarea {
+                border-color: $info;
+                transition: all .2s ease;
+            }
+        }
     }
 
     &.error {
@@ -77,6 +90,14 @@ textarea.input {
             border-color: $error;
             transition: all .2s ease;
             background-color: transparent;
+        }
+
+        &:hover {
+            input,
+            textarea {
+                border-color: $error;
+                transition: all .2s ease;
+            }
         }
     }
 
@@ -90,6 +111,12 @@ textarea.input {
         border-radius: 2px;
         width: 100%;
         z-index: 2;
+    }
+
+    &:hover > input,
+    &:hover > textarea {
+        border-color: $primary;
+        transition: all .2s ease;
     }
 
     & > input:focus,
