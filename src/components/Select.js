@@ -1,55 +1,44 @@
-import React, { useState } from 'react';
-
+import React, { useState, useRef } from 'react';
 import { ChevronNext, ChevronDown } from '../icons/index';
+import { CSSTransition } from 'react-transition-group';
 
 export const Select = ({ 
     items, 
-    filterItems, 
-    filterProp, 
-    itemName, 
+    itemName,
+    subItemsField, 
     subItemName, 
     labelName, 
     placeholder, 
-    children, 
     addClass,
     selectedItem,
     normalTitle,
     onSelect,
     width,
     subTitle,
-    addSubItem
+    addSubItem,
+    showSubItemOnly,
+    hint
 }) => {
-
-    const [open, setOpen] = useState(false)
-
-    const getItems = () => {
-        return items ? items : []
-    }
-
-    const getFilterItems = () => {
-        return filterItems ? filterItems : []
-    }
+    const selectMenu = useRef(null);
+    const [open, setOpen] = useState(false);
+    const getItems = () => items ? items : [];
 
     const subItems = (parent) => {
-        return getFilterItems().filter(item => filterProp ? item[filterProp] === parent : item === parent)
+        if (subItemsField) return parent[subItemsField]
+        else return []
     }
 
     const openMenu = e => {
-        if (e.target === e.currentTarget) {
-            setOpen(true)
-        }
+        if (e.target === e.currentTarget) setOpen(true)
     }
 
-    const handleSelect = (e, value) => {
+    const handleSelect = (e, value, subValue) => {
+        console.log(value, subValue)
         if (e.target === e.currentTarget) {
-            if (onSelect) onSelect(value)
+            let result = subValue ? (showSubItemOnly ? subValue : `${value} / ${subValue}`) : value
+            onSelect(result)
             setOpen(false)
-        }
-    }
-
-    const closeMenu = () => {
-        if (children) {
-            setOpen(false)
+            selectMenu.current.blur()
         }
     }
 
@@ -58,39 +47,28 @@ export const Select = ({
         else return text
     }
 
-    const isOriginContent = () => {
-        if (children) {
-            return children
-        } else {
-            return (
-                <div>
-                    {getItems().map((item, index) => 
-                        <div key={index} className="select-menu__item">
-                            {itemName ? item[itemName] : item}
-                            <ChevronNext 
-                                size={14}
-                                onClick={openMenu} 
-                                color={subItems(item).length > 0 ? '' : '#eee'}/>
-                            {subItems(item).length > 0 ? 
-                            <div className="select-menu__subitems">
-                                {subTitle ? <div className="select-menu__subitem-title">{item}</div> : ''}
-                                {subItems(item).map((subItem, subIndex) => 
-                                    <div key={subIndex} 
-                                        className="select-menu__subitem"
-                                        onClick={e => handleSelect(e, subItemName ? subItem[subItemName] : subItem)}>
-                                        {subItemName ? subItem[subItemName] : subItem} {addSubItem ? ' (' + subItem[addSubItem] + ')' : ''}
-                                    </div>
-                                )}
-                            </div> : ''}
-                        </div>
-                    )}
-                </div>
-            )
+    const selectItemClass = (item) => {
+        let isSelected = itemName ? item[itemName] === selectedItem : item === selectedItem
+        let classes = {
+            normalTitle: normalTitle ? 'normal' : '',
+            active: isSelected ? 'active' : ''
         }
+        return `select-menu__item ${classes.normalTitle} ${classes.active}`
+    }
+
+    const selectSubItemClass = (item) => {
+        let selected = showSubItemOnly ? selectedItem : (selectedItem ? selectedItem.split('/')[1].trim() : '')
+        let isSelected = subItemName ? item[subItemName] === selected : item === selected
+        let classes = {
+            normalTitle: normalTitle ? 'normal' : '',
+            active: isSelected ? 'active' : ''
+        }
+        return `select-menu__subitem ${classes.normalTitle} ${classes.active}`
     }
 
     return (
         <div className="select-menu"
+            ref={selectMenu}
             style={{ width: width ? width+'px' : '' }} 
             tabIndex={-1} 
             onClick={openMenu} 
@@ -103,10 +81,36 @@ export const Select = ({
             {cutLongText(selectedItem ? selectedItem : '') ? 
                 <div className={normalTitle ? 'select-menu__value normal' : 'select-menu__value'} 
                     onClick={openMenu} title={selectedItem}>{selectedItem ? cutLongText(selectedItem) : ''}</div> : ''}
-            {open ? 
-                <div className={"select-menu__items " + addClass} onClick={closeMenu}>
-                {isOriginContent()}
-            </div> : ''}
+
+            <CSSTransition
+                in={open}
+                timeout={300}
+                classNames="select-menu"
+                unmountOnExit>
+                <div className={"select-menu__items " + addClass}>
+                    {getItems().map((item, index) => 
+                        <div key={index} 
+                            className={selectItemClass(item)}
+                            onClick={e => subItems(item).length > 0 ? {} : handleSelect(e, itemName ? item[itemName] : item)}>
+                            {itemName ? item[itemName] : item}
+                            {subItems(item).length > 0 ? <ChevronNext size={14}/> : ''}
+                            {subItems(item).length > 0 ? 
+                                <div className="select-menu__subitems">
+                                    {subTitle ? <div className="select-menu__subitem-title">{itemName ? item[itemName] : item}</div> : ''}
+                                    {subItems(item).map((subItem, subIndex) => 
+                                        <div key={subIndex} 
+                                            className={selectSubItemClass(subItem)}
+                                            onClick={e => handleSelect(e, itemName ? item[itemName] : item, subItemName ? subItem[subItemName] : subItem)}>
+                                            {subItemName ? subItem[subItemName] : subItem} {addSubItem ? ' (' + subItem[addSubItem] + ')' : ''}
+                                        </div>
+                                    )}
+                                </div> : ''
+                            }
+                        </div>
+                    )}
+                </div>
+            </CSSTransition>
+            {hint ? <div className="select-menu__hint">{hint}</div> : ''}
         </div>
     )
 }

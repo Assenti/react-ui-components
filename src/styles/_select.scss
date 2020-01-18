@@ -27,7 +27,7 @@
 }
 
 .select-menu {
-    width: 350px;
+    width: 200px;
     height: 50px;
     background-color: $gray;
     position: relative;
@@ -36,6 +36,7 @@
     -moz-outline: none;
     cursor: pointer;
     border-radius: 2px;
+    margin-top: 17px;
 
     & > svg {
         position: absolute;
@@ -74,9 +75,9 @@
 
     label {
         position: absolute;
-        top: -15px;
+        top: -17px;
         left: 0;
-        font-size: 11px;
+        font-size: .8rem;
     }
 
     & > span {
@@ -119,6 +120,7 @@
     border: 1px solid $gray;
     border-radius: 2px;
     box-shadow: 0 1px 2px rgba(black, .2);
+    transition: all .5s ease-in-out;
 
     &:not(.top) {
         top: 100%;
@@ -155,9 +157,15 @@
     border-bottom: 1px solid $gray;
     user-select: none;
     -moz-user-select: none;
+    color: $dark;
 
     &.small {
         font-size: .65rem;
+    }
+
+    &.normal {
+        font-size: .9rem;
+        padding: 10px;
     }
 
     &:last-child {
@@ -234,4 +242,43 @@
         transition: all .2s ease-in-out;
         cursor: pointer;
     }
+
+    &.active {
+        color: $info;
+        font-weight: bold;
+    }
+
+    &.normal {
+        font-size: .9rem;
+        padding: 10px;
+    }
+}
+
+.select-menu-enter {
+    opacity: 0;
+    transform: translateY(-5%);
+}
+
+.select-menu-enter-active {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.select-menu-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.select-menu-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.select-menu__hint {
+    font-size: .8rem;
+    color: gray;
+    padding: 3px 0;
+    cursor: default !important;
 }
