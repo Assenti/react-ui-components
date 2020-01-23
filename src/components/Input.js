@@ -1,10 +1,12 @@
-import React from 'react';
-import { Close } from '../icons';
+import React, { useRef } from 'react';
+import { Icon } from './Icon';
 
 export const InputField = (props) => {
+    const input = useRef(null);
+
     const inputFieldClass = () => {
         let result = `input-field ${props.medium ? 'medium' : ''} ${props.large ? 'large' : ''}`
-        return result.trim()
+        return `${result.trim()} ${props.className ? props.className : ''}`
     }
 
     const inputContainerClass = () => {
@@ -13,10 +15,11 @@ export const InputField = (props) => {
     }
 
     return (
-        <div className={inputFieldClass()}>
-            {props.label ? <label>{props.label}</label> : ''}
+        <div className={inputFieldClass()} style={{ width: props.width ? props.width : ''}}>
+            {props.label ? <label onClick={() => input.current.focus()}>{props.label}</label> : ''}
             <div className={inputContainerClass()}>
                 <input
+                    ref={input}
                     required={props.required}
                     autoComplete={props.autoComplete}
                     value={props.value}
@@ -25,10 +28,10 @@ export const InputField = (props) => {
                     onChange={props.onChange}
                     type={props.type}/>
                 <i onClick={() => {
-                    console.log('clicked')
                     props.onClear()
-                }}><Close/></i>
+                }}><Icon name="close"/></i>
             </div>
+            {props.hint ? <div className="input-field__hint">{props.hint}</div> : ''}
         </div>
     )
 }
@@ -45,7 +48,7 @@ export const TextareaField = (props) => {
     }
 
     return (
-        <div className={inputFieldClass()}>
+        <div className={inputFieldClass()} style={{ width: props.width ? props.width : ''}}>
             {props.label ? <label>{props.label}</label> : ''}
             <div className={inputContainerClass()}>
                 <textarea
@@ -60,7 +63,7 @@ export const TextareaField = (props) => {
                 <i onClick={() => {
                     console.log('clicked')
                     props.onClear()
-                }}><Close/></i>
+                }}><Icon name="close"/></i>
             </div>
         </div>
     )

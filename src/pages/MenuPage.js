@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu } from '../components/Menu';
+import { Button } from '../components/Button';
 
 export const MenuPage = () => {
     const [menu, setMenu] = useState(false);
@@ -8,17 +9,21 @@ export const MenuPage = () => {
 
     return (
         <div className="page">
-            <div className="input-group">
-                <label htmlFor="stack-id">Input your variant or choose on of option</label>
-                <input
-                id="stack-id" 
-                value={stack}
-                onChange={e => setStack(e.target.value)}
-                className="input"
-                placeholder="Choose Stack"
-                onFocus={() => setMenu(true)}
-                onBlur={() => setMenu(false)}/>
-                <Menu menu={menu} title="Choose Stack" items={items} onSelect={v => setStack(v)}/>
+            <div className="page-title">Menu</div>
+
+            <div className="row">
+                <Menu
+                    items={items}
+                    visible={menu}
+                    onClose={() => setMenu(false)}
+                    title="Choose Stack"
+                    onSelect={v => setStack(v)}
+                    trigger={<Button
+                        color="info"
+                        size="medium"
+                        name="Menu button"
+                        onAction={() => setMenu(true)}/>}/>
+                <p className="mx-20">{stack}</p>
             </div>
         </div>
     )

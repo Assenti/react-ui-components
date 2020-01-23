@@ -1,0 +1,65 @@
+.menu-container {
+    position: relative;
+    display: inline-flex;
+    outline: none;
+}
+
+.menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
+    border-radius: $radius;
+    overflow-y: auto;
+    max-height: 50vh;
+}
+  
+.menu-title {
+    font-size: .8rem;
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+    background-color: $lightgray;
+    text-align: left;
+    color: gray;
+}
+
+.menu-item {
+    font-size: .9rem;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    text-align: left;
+}
+
+.menu-item:hover {
+    cursor: pointer;
+    background-color: #eee;
+    transition: hover .2s ease-in-out;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-enter {
+    opacity: 0;
+    transform: translateY(-5%);
+}
+
+.menu-enter-active {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.menu-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.menu-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+}

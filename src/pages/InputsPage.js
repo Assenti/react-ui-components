@@ -2,62 +2,56 @@ import React, { useState } from 'react';
 import { InputField, TextareaField } from '../components/Input';
 
 export const InputsPage = () => {
-    const [first, setFirst] = useState('Input')
+    const [first, setFirst] = useState('')
 
     return (
         <div className="page">
             <div className="page-title">Inputs</div>
-            <div className="flex wrap">
-                <div className="col mr-10">
-                    <InputField
-                        label="Input field"
-                        placeholder="Input field" 
-                        value={first}
-                        onClear={() => setFirst('')} 
-                        onChange={e => setFirst(e.target.value)}/>
-                </div>
-                <div className="col mr-10">
-                    <InputField
-                        medium
-                        color="info"
-                        label="Input field medium"
-                        placeholder="Input field medium" 
-                        value={first} 
-                        onClear={() => setFirst('')} 
-                        onChange={e => setFirst(e.target.value)}/>
-                </div>
-                <div className="col">
-                    <InputField
-                        large
-                        color="error"
-                        label="Input field large"
-                        placeholder="Input field large" 
-                        value={first} 
-                        onClear={() => setFirst('')} 
-                        onChange={e => setFirst(e.target.value)}/>
-                </div>
-            </div>
-            <br/>
-            <div className="flex">
-                <div className="col mr-10">
-                    <TextareaField
-                        label="Textarea field"
-                        placeholder="Textarea field" 
-                        value={first}
-                        onClear={() => setFirst('')} 
-                        onChange={e => setFirst(e.target.value)}/>
-                </div>
-                <div className="col">
-                    <TextareaField
-                        rows={4}
-                        color="error"
-                        label="Textarea field"
-                        placeholder="Textarea field" 
-                        value={first}
-                        onClear={() => setFirst('')} 
-                        onChange={e => setFirst(e.target.value)}/>
-                </div>
-            </div>
+            <InputField
+                label="Label"
+                placeholder="Defaul size input field" 
+                value={first}
+                width="300px"
+                hint="Some hint"
+                onClear={() => setFirst('')} 
+                onChange={e => setFirst(e.target.value)}/>
+
+            <InputField
+                medium
+                color="info"
+                placeholder="Input field medium" 
+                value={first} 
+                width="300px"
+                onClear={() => setFirst('')} 
+                onChange={e => setFirst(e.target.value)}/>
+
+            <InputField
+                large
+                color="error"
+                label="Input field large"
+                placeholder="Input field large" 
+                value={first} 
+                width="300px"
+                onClear={() => setFirst('')} 
+                onChange={e => setFirst(e.target.value)}/>
+            
+            <TextareaField
+                label="Textarea field"
+                placeholder="Textarea field" 
+                value={first}
+                width="300px"
+                onClear={() => setFirst('')} 
+                onChange={e => setFirst(e.target.value)}/>
+
+            <TextareaField
+                rows={4}
+                color="error"
+                width="300px"
+                label="Textarea field"
+                placeholder="Textarea field" 
+                value={first}
+                onClear={() => setFirst('')} 
+                onChange={e => setFirst(e.target.value)}/>
         </div>
     )
 }

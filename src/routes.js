@@ -7,6 +7,8 @@ import { DrawerPage } from './pages/DrawerPage';
 import { TooltipPage } from './pages/TooltipPage';
 import { PaginationPage } from './pages/PaginationPage';
 import { SelectPage } from './pages/SelectPage';
+import { TablePage } from './pages/TablePage';
+import { ModalPage } from './pages/ModalPage';
 
 export const routes = [
     { path: '/', name: 'Home', Component: HomePage },
@@ -17,5 +19,7 @@ export const routes = [
     { path: '/drawer', name: 'Drawer', Component: DrawerPage },
     { path: '/tooltip', name: 'Tooltip', Component: TooltipPage },
     { path: '/pagination', name: 'Pagination', Component: PaginationPage },
-    { path: '/select', name: 'Select', Component: SelectPage }
+    { path: '/select', name: 'Select', Component: SelectPage },
+    { path: '/table', name: 'Table', Component: TablePage },
+    { path: '/modal', name: 'Modal', Component: ModalPage }
 ];

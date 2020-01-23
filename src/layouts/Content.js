@@ -12,10 +12,10 @@ export const Content = (props) => {
             <Header title="My React UI Components"
                 rightSide={
                 <Tooltip tooltip="Visit Github repo" position="bottom-right">
-                    <Button icon onAction={e => { 
+                    <Button icon="github" 
+                        onAction={e => { 
                         e.preventDefault()
-                        window.open(github, '_blank')}}>
-                        <Github color="#fff"/></Button>
+                        window.open(github, '_blank')}}/>
                 </Tooltip>
             }/>
             <div className="content-inner">

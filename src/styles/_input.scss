@@ -2,9 +2,9 @@
     height: 50px;
     outline: none;
     padding: 5px 10px;
-    border: 1px solid gray;
+    border: 1px solid lightgray;
     font-size: 1rem;
-    background-color: $gray;
+    background-color: $lightgray;
     border-radius: 2px;
 
     &:focus {
@@ -23,17 +23,13 @@
     }
 }
 
-textarea.input {
-    height: auto !important;
-}
-
 .input-field {
     margin: 10px 0 !important;
-    width: 100%;
+    min-width: 200px;
 
     & > label {
         display: block;
-        font-size: .75rem;
+        font-size: .8rem;
         user-select: none;
         -moz-user-select: none;
         margin-bottom: 3px;
@@ -61,11 +57,17 @@ textarea.input {
     }
 }
 
+.input-field__hint {
+    font-size: .8rem;
+    color: $dark;
+    padding: 3px;
+}
+
 .input-container {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    width: 100%;
     position: relative;
+    width: 100%;
 
     &.info {
         input:focus,
@@ -104,13 +106,12 @@ textarea.input {
     & > input,
     & > textarea {
         outline: none;
-        padding: 5px 10px;
-        border: 1px solid gray;
+        padding: 6px 10px;
+        border: 1px solid lightgray;
         font-size: 1rem;
-        background-color: $gray;
-        border-radius: 2px;
+        background-color: $lightgray;
+        border-radius: $radius;
         width: 100%;
-        z-index: 2;
     }
 
     &:hover > input,

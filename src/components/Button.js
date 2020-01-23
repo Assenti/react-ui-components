@@ -1,7 +1,7 @@
 import React from 'react';
+import { Icon } from './Icon';
 
 export const Button = (props) => {
-
     const btnClass = () => {
         let result = `btn 
             ${props.color ? props.color : ''} 
@@ -10,7 +10,7 @@ export const Button = (props) => {
             ${props.disabled ? 'disabled' : ''}
             ${props.size ? props.size : ''}
             ${props.block ? 'block' : ''}`
-        return result.trim()
+        return `${result.trim()} ${props.className}`
     }
 
     return (
@@ -19,7 +19,7 @@ export const Button = (props) => {
             className={btnClass()} 
             onClick={props.onAction}>
             {props.name}
-            {props.children}
+            {props.icon ? <Icon size={20} color="#fff" name={props.icon}/> : ''}
         </button>
     )
 }

@@ -7,7 +7,7 @@ export const ButtonPage = () => {
     return (
         <div className="page">
             <div className="page-title">Buttons</div>
-            <div className="flex align-top">
+            <div className="row align-top">
                 <Button
                     color="primary"
                     name="Primary"
@@ -37,7 +37,7 @@ export const ButtonPage = () => {
                     onAction={() => {}}/>   
             </div>
             <br/>
-            <div className="flex">
+            <div className="row">
                 <div className="col">
                     <Button
                         block
@@ -48,32 +48,26 @@ export const ButtonPage = () => {
                 <div className="col"></div>
             </div>
             <div className="page-title">Icon buttons</div>
-            <div className="flex">
+            <div className="row">
                 <Tooltip tooltip="Search">
                     <Button
                         color="primary"
-                        icon
-                        onAction={() => {}}>
-                        <Search color="#fff"/>
-                    </Button> 
+                        icon="search"
+                        onAction={() => {}}/>
                 </Tooltip>
                 <div className="mx-5"></div>
                 <Tooltip tooltip="Home">
                     <Button
                         color="info"
-                        icon
-                        onAction={() => {}}>
-                        <Home color="#fff"/>
-                    </Button> 
+                        icon="home"
+                        onAction={() => {}}/>
                 </Tooltip>
                 <div className="mx-5"></div>
                 <Tooltip tooltip="Delete">
                     <Button
                         color="error"
-                        icon
-                        onAction={() => {}}>
-                        <Delete color="#fff"/>
-                    </Button> 
+                        icon="delete"
+                        onAction={() => {}}/>
                 </Tooltip>
             </div>
         </div>

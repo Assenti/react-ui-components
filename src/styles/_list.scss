@@ -40,12 +40,12 @@
     }
 
     &:hover:not(.active) {
-        background-color: rgba($gray, .3);
+        background-color: rgba($lightgray, .3);
         transition: all .3s ease-in-out;
     }
 
     &.active {
-        background-color: $primary;
+        background-color: $info;
     }
 
     &.clickable {
