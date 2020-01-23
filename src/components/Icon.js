@@ -5,7 +5,9 @@ import {
     Home,
     Edit,
     Close,
-    Github
+    Github,
+    ChevronDoubleRight,
+    ChevronDoubleLeft
 } from '../icons/index';
 
 export const Icon = (props) => {
@@ -24,6 +26,10 @@ export const Icon = (props) => {
                 return <Github size={props.size} color={props.color}/>;
             case 'close':
                 return <Close size={props.size} color={props.color}/>;
+            case 'chevron-double-right':
+                return <ChevronDoubleRight size={props.size} color={props.color}/>;
+            case 'chevron-double-left':
+                return <ChevronDoubleLeft size={props.size} color={props.color}/>;    
             default:
                 return '';
         }

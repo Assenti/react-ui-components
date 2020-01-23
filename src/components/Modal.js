@@ -3,16 +3,17 @@ import { CSSTransition } from 'react-transition-group';
 
 export const Modal = (props) => {
     return (
-        <div className="modal-container">
+        <div className={props.visible ? 'modal-container' : 'modal-container hidden'}
+            onClick={() => props.closable ? props.onClose() : {}}>
             <CSSTransition
-                in={props.modal}
+                in={props.visible}
                 timeout={300}
-                classNames="alert"
+                classNames="modal"
                 unmountOnExit
-                onEnter={() => props.onEnter()}
-                onExited={() => props.onExited()}>
+                onEnter={() => props.onEnter ? props.onEnter() : {}}
+                onExited={() => props.onExited ? props.onExited() : {}}>
                 <div className="modal">
-                    <div className="modal-header">{props.heading}</div>
+                    <div className="modal-header">{props.header}</div>
                     {props.children}
                 </div>
             </CSSTransition>

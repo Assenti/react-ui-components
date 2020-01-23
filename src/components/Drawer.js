@@ -2,7 +2,7 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Button } from './Button';
 import { Tooltip } from './Tooltip';
-import { ChevronDoubleLeft, ChevronDoubleRight } from '../icons';
+import { Icon } from './Icon';
 import reactLogo from '../img/logo.svg';
 
 export const Drawer = (props) => {
@@ -34,12 +34,8 @@ export const Drawer = (props) => {
                     <div className="drawer-footer">
                         <Tooltip tooltip={props.min ? 'Expand' : 'Collapse'}>
                             <Button
-                                icon
-                                onAction={() => props.onResize()}>
-                                {props.min ? 
-                                    <ChevronDoubleRight color={props.dark ? '#fff' : ''}/> : 
-                                    <ChevronDoubleLeft color={props.dark ? '#fff' : ''}/>}
-                            </Button>
+                                icon={props.min ? 'chevron-double-right' : 'chevron-double-left'}
+                                onAction={() => props.onResize()}/>
                         </Tooltip>
                     </div>
                 </div>
