@@ -4,16 +4,27 @@ import { Checkbox } from './Checkbox';
 
 
 export const Table = (props) => {
+
+    const headers = () => {
+        if (props.controls && !props.checkbox) {
+            return [...props.headers, '']
+        } else if (props.checkbox && !props.controls) {
+            return [<Checkbox/>, ...props.headers]
+        } else if (props.checkbox && props.controls) {
+            return [<Checkbox/>, ...props.headers, '']
+        } else if (props.index && !props.checkbox && !props.controls) {
+            return ['#', ...props.headers]
+        } else {
+            return props.headers
+        }
+    }
+
     return (
         <div className={props.bordered ? 'table-container bordered' : 'table-container'}>
             <table className="table">
                 <thead>
                     <tr>
-                        {props.checkbox ? <th>
-                            <Checkbox/>
-                        </th> : ''}
-                        {props.headers.map((item, index) => <th key={index}>{item}</th>)}
-                        {props.controls ? <th></th> : ''}
+                        {headers().map((item, index) => <th key={index}>{item}</th>)}
                     </tr>
                 </thead>
                 <tbody>
@@ -21,14 +32,14 @@ export const Table = (props) => {
                         <tr key={index} className={props.noHover ? 'no-hover' : ''}>
                             {props.checkbox ? <td>
                                 <Checkbox/>
-                            </td> : ''}
-                            {props.index ? <td>{index + 1}</td> : ''}
+                            </td> : <React.Fragment/>}
+                            {props.index ? <td>{index + 1}</td> : <React.Fragment/>}
                             {props.itemTitles.map((title, iter) => 
                                 <td key={iter}>{item[title]}</td>
                             )}
                             {props.controls ? <td>
                                 {props.controls}
-                            </td> : ''}
+                            </td> : <React.Fragment/>}
                         </tr>
                     )}
                 </tbody>

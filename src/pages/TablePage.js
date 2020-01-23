@@ -12,7 +12,7 @@ export const TablePage = () => {
         { country: 'China', capital: 'Beijing', population: 21542000 }
     ];
 
-    const headers = ['#', 'Country', 'Capital', 'Population'];
+    const headers = ['Country', 'Capital', 'Population'];
     const headers2 = ['Country', 'Capital', 'Population'];
 
     return (
@@ -35,7 +35,7 @@ export const TablePage = () => {
                 items={items}
                 itemTitles={['country', 'capital', 'population']}
                 controls={
-                    <div className="row align-center">
+                    <div className="row justify-center align-center">
                         <Tooltip tooltip="Edit">
                             <Button
                                 className="mr-10"

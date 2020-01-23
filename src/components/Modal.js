@@ -2,9 +2,14 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 export const Modal = (props) => {
+
+    const close = (e) => {
+        if (e.target === e.currentTarget) props.onClose()
+    }
+
     return (
         <div className={props.visible ? 'modal-container' : 'modal-container hidden'}
-            onClick={() => props.closable ? props.onClose() : {}}>
+            onClick={(e) => props.closable ? close(e) : {}}>
             <CSSTransition
                 in={props.visible}
                 timeout={300}
@@ -14,7 +19,8 @@ export const Modal = (props) => {
                 onExited={() => props.onExited ? props.onExited() : {}}>
                 <div className="modal">
                     <div className="modal-header">{props.header}</div>
-                    {props.children}
+                    <div className="modal-content">{props.children}</div>
+                    {props.footer ? <div className="modal-footer">{props.footer}</div> : ''}
                 </div>
             </CSSTransition>
         </div>

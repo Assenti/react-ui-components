@@ -7,6 +7,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(black, .4);
+    z-index: 100;
 
     &.hidden {
         display: none;
@@ -20,12 +22,14 @@
     min-width: 400px;
     min-height: 200px;
     box-shadow: 0 10px 40px rgba(black, .3);
-    background-color: $lightgray;
-    z-index: 99;
+    background-color: $light;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;    
 }
 
 .modal-header {
-    padding: 10px;
+    padding: 10px 0;
     font-size: 1.1rem;
 }
 
@@ -48,4 +52,16 @@
     opacity: 0;
     transform: scale(0.9);
     transition: opacity 300ms, transform 300ms;
+}
+
+.modal-content {
+
+}
+
+.modal-footer {
+    border-top: 1px solid lightgray;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }

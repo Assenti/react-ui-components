@@ -12,14 +12,14 @@ $warning: #ff3d00;
 $react: #61dafb;
 $radius: 3px;
 
-.white {
-    background-color: #fff;
-}
-
-.text-primary {
-    color: $primary;
+.text-white {
+    color: #fff;
 }
 
 .text-info {
     color: $info;
+}
+
+.text-lightgray {
+    color: $lightgray;
 }
