@@ -10,7 +10,7 @@ export const Button = (props) => {
             ${props.disabled ? 'disabled' : ''}
             ${props.size ? props.size : ''}
             ${props.block ? 'block' : ''}`
-        return `${result.trim()} ${props.className}`
+        return `${result.trim()} ${props.className ? props.className : ''}`
     }
 
     return (
@@ -19,7 +19,7 @@ export const Button = (props) => {
             className={btnClass()} 
             onClick={props.onAction}>
             {props.name}
-            {props.icon ? <Icon size={20} color="#fff" name={props.icon}/> : ''}
+            {props.icon ? <Icon size={20} color={props.dark ? '#fff' : ''} name={props.icon}/> : ''}
         </button>
     )
 }

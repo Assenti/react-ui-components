@@ -8,11 +8,19 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    z-index: 99;
     position: sticky;
+
+    &.absolute {
+        position: fixed !important;
+        z-index: 99;
+    }
 
     &.dark {
       background-color: $night;
+
+      & .drawer-header {
+        color: #000;
+      }
     }
 
     &.full-height {
@@ -38,8 +46,14 @@
 
 .drawer-header {
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding: 15px;
+    color: $dark;
+    font-weight: bold;
+
+    &.centered {
+      justify-content: center;
+    }
 
     & > img {
         width: 50px;
@@ -48,48 +62,45 @@
 }
 
 .drawer-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
     
-.drawer.absolute {
-    position: fixed !important;
+  
+.drawer-enter {
+    transform: translateX(-100%);
 }
-  
-  .drawer-enter {
-    transform: translateX(-100%);
-  }
-  
-  .drawer-enter-active {
+
+.drawer-enter-active {
     transform: translateX(0%);
     transition: transform 300ms;
-  }
-  
-  .drawer-exit {
+}
+
+.drawer-exit {
     transform: translateX(0%);
-  }
-  
-  .drawer-exit-active {
+}
+
+.drawer-exit-active {
     transform: translateX(-100%);
     transition: transform 300ms;
-  }
-  
-  .expand-enter {
+}
+
+.expand-enter {
     width: 0;
-  }
-  
-  .expand-enter-active {
+}
+
+.expand-enter-active {
     animation: collapsing 300ms ease-out;
-  }
-  
-  .expand-exit {
+}
+
+.expand-exit {
     width: 0;
-  }
-  
-  .expand-exit-active {
+}
+
+.expand-exit-active {
     animation: expanding 300ms ease-out;
-  }
+}
   
 @keyframes expanding {
     0% { width: 50px; min-width: 50px;}

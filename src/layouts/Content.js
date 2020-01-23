@@ -14,7 +14,9 @@ export const Content = (props) => {
                 <div className="row align-center">
                     <div className="text-lightgray mr-20"><small>Version: {version}</small></div>
                     <Tooltip tooltip="Visit Github repo" position="bottom-right">
-                        <Button icon="github" 
+                        <Button 
+                            dark
+                            icon="github" 
                             onAction={e => { 
                             e.preventDefault()
                             window.open(github, '_blank')}}/>

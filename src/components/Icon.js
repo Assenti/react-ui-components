@@ -7,7 +7,9 @@ import {
     Close,
     Github,
     ChevronDoubleRight,
-    ChevronDoubleLeft
+    ChevronDoubleLeft,
+    Code,
+    Chip
 } from '../icons/index';
 
 export const Icon = (props) => {
@@ -29,7 +31,11 @@ export const Icon = (props) => {
             case 'chevron-double-right':
                 return <ChevronDoubleRight size={props.size} color={props.color}/>;
             case 'chevron-double-left':
-                return <ChevronDoubleLeft size={props.size} color={props.color}/>;    
+                return <ChevronDoubleLeft size={props.size} color={props.color}/>; 
+            case 'code':
+                return <Code size={props.size} color={props.color}/>; 
+            case 'chip':
+                return <Chip size={props.size} color={props.color}/>;    
             default:
                 return '';
         }

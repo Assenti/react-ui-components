@@ -2,8 +2,6 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Button } from './Button';
 import { Tooltip } from './Tooltip';
-import { Icon } from './Icon';
-import reactLogo from '../img/logo.svg';
 
 export const Drawer = (props) => {
     const drawerClass = () => { 
@@ -12,6 +10,13 @@ export const Drawer = (props) => {
                     ${props.fullHeight ? 'full-height' : ''}
                     ${props.dark ? 'dark' : ''}`
         return result.trim()
+    }
+
+    const headerTitle = () => {
+        if (props.header) {
+            if (props.header.length > 5) return `${props.header.slice(0,5)}...`
+            else return props.header
+        }
     }
 
     return (
@@ -26,14 +31,15 @@ export const Drawer = (props) => {
                 classNames="expand">
                 <div className={drawerClass()}>
                     <div className="drawer-content">
-                        <div className="drawer-header">
-                            <img src={reactLogo} alt="React logo"/>
-                        </div>
+                        {props.header ? <div className={props.headerCentered ? 
+                                'drawer-header centered' : 'drawer-header'}>
+                                    {props.header}</div> : ''}
                         {props.children}
                     </div>
                     <div className="drawer-footer">
                         <Tooltip tooltip={props.min ? 'Expand' : 'Collapse'}>
                             <Button
+                                dark={props.dark}
                                 icon={props.min ? 'chevron-double-right' : 'chevron-double-left'}
                                 onAction={() => props.onResize()}/>
                         </Tooltip>

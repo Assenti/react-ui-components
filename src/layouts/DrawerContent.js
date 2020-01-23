@@ -4,7 +4,7 @@ import { Drawer } from '../components/Drawer';
 import { Button } from '../components/Button';
 import { List } from '../components/List';
 import { Tooltip } from '../components/Tooltip';
-import { Chip  } from '../icons/index';
+import reactLogo from '../img/logo.svg';
 
 export const DrawerContent = (props) => {
     const history = useHistory();
@@ -20,6 +20,8 @@ export const DrawerContent = (props) => {
                 drawer={props.drawer}
                 fullHeight
                 dark
+                headerCentered
+                header={<img src={reactLogo} alt="React logo"/>}
                 min={drawerMin}
                 onResize={() => setDrawerMin(!drawerMin)}>
                 {drawerMin ? 
@@ -31,8 +33,9 @@ export const DrawerContent = (props) => {
                                 tooltip={item.name}
                                 position="right">
                                 <Button 
-                                onAction={() => handleItemClick(item)} 
-                                icon><Chip color="#fff"/></Button>
+                                    dark
+                                    onAction={() => handleItemClick(item)} 
+                                    icon="chip"/>
                             </Tooltip>
                         )}
                     </List> : 
