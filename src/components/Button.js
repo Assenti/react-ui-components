@@ -16,7 +16,7 @@ export const Button = (props) => {
             small: props.small ? 'small' : '',
             disabled: props.disabled ? 'disabled' : '',
             size: props.size ? props.size : '',
-            block: props.block ? props.block : '',
+            block: props.block ? 'block' : '',
             outlined: props.outlined ? 'outlined' : '',
             className: props.className ? props.className : ''
         }

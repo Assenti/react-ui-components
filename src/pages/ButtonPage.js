@@ -124,12 +124,23 @@ export const ButtonPage = () => {
                     onClick={() => {}}/> 
             </div>
             <h3>Block button</h3>
-            <div style={{ width: 300 }}>
+            <div className="row">
+                <div style={{ width: 300 }} className="mr-10">
+                    <Button
+                        block
+                        color="primary"
+                        name="Block button"
+                        onClick={() => {}}/> 
+                </div>
+                <div style={{ width: 300 }}>
                 <Button
                     block
-                    color="primary"
+                    rounded
+                    outlined
+                    color="error"
                     name="Block button"
                     onClick={() => {}}/> 
+            </div>
             </div>
             <h3>Icon buttons</h3>
             <div className="row align-center">
