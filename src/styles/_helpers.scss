@@ -71,6 +71,10 @@
     border-radius: $radius;
 }
 
+.smooth-border {
+    border-radius: $radius * 2;
+}
+
 @each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
     .mx-#{$size} {
         margin-left: #{$size}px !important;
@@ -111,36 +115,38 @@
 
 @each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
     .pa-#{$size} {
-        padding: #{$size}px !important;
+        padding: #{$size}px;
     }
 }
 
 @each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
     .px-#{$size} {
-        padding: 0 #{$size}px !important;
+        padding-right: #{$size}px;
+        padding-left: #{$size}px;
     }
 }
 
 @each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
     .py-#{$size} {
-        padding: #{$size}px 0 !important;
+        padding-top: #{$size}px;
+        padding-bottom: #{$size}px;
     }
 }
 
 @each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
     .pb-#{$size} {
-        padding-bottom: #{$size}px !important;
+        padding-bottom: #{$size}px;
     }
 }
 
 @each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
     .pt-#{$size} {
-        padding-top: #{$size}px !important;
+        padding-top: #{$size}px;
     }
 }
 
 @each $size in 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 {
     .pr-#{$size} {
-        padding-right: #{$size}px !important;
+        padding-right: #{$size}px;
     }
 }

@@ -22,7 +22,7 @@ export const MenuPage = () => {
                         color="info"
                         size="medium"
                         name="Menu button"
-                        onAction={() => setMenu(true)}/>}/>
+                        onClick={() => setMenu(true)}/>}/>
                 <p className="mx-20">{stack}</p>
             </div>
         </div>

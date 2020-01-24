@@ -40,8 +40,9 @@ export const Drawer = (props) => {
                         <Tooltip tooltip={props.min ? 'Expand' : 'Collapse'}>
                             <Button
                                 dark={props.dark}
+                                light={props.dark ? false : true}
                                 icon={props.min ? 'chevron-double-right' : 'chevron-double-left'}
-                                onAction={() => props.onResize()}/>
+                                onClick={() => props.onResize()}/>
                         </Tooltip>
                     </div>
                 </div>

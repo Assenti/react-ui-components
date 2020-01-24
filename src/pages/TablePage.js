@@ -38,17 +38,19 @@ export const TablePage = () => {
                     <div className="row justify-center align-center">
                         <Tooltip tooltip="Edit">
                             <Button
+                                outlined
                                 className="mr-10"
                                 color="info"
                                 icon="edit"
-                                onAction={() => {}}>
+                                onClick={() => {}}>
                             </Button>
                         </Tooltip>
                         <Tooltip tooltip="Delete">
                             <Button
+                                outlined
                                 color="error"
                                 icon="delete"
-                                onAction={() => {}}>
+                                onClick={() => {}}>
                             </Button> 
                         </Tooltip>
                     </div>

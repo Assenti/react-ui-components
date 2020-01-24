@@ -1,31 +1,48 @@
 .btn {
     padding: 8px;
-    text-transform: uppercase;
     text-align: center;
     cursor: pointer;
     user-select: none;
     -moz-user-select: none;
     border: none;
     outline: none;
-    font-size: .75rem;
     min-width: 100px;
     border-radius: $radius;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid transparent;
+    font-size: .9rem;
+
+    &.uppercase {
+        text-transform: uppercase;
+        font-size: .75rem;
+    }
+
+    & > span {
+        height: 100%;
+    }
+
+    &.smooth {
+        border-radius: 6px;
+    }
 
     &.medium {
         padding: 15px 10px;
-        font-size: .85rem;
+        font-size: 1rem;
+
+        &.uppercase {
+            font-size: .8rem;
+        }
     }
 
     &.large {
         padding: 20px 15px;
-        font-size: .9rem;
-    }
+        font-size: 1.1rem;
 
-    &.wide {
-        width: 60%;
+        &.uppercase {
+            font-size: .9rem;
+        }
     }
 
     &.small.icon {
@@ -40,23 +57,53 @@
     &.disabled {
         cursor: not-allowed;
         box-shadow: none;
-        background-color: $gray !important;
-        border-color: $gray !important;
-        color: $dark !important;
-        box-shadow: none !important;
+        background-color: $gray;
+        border-color: $gray;
+        color: $dark;
+        box-shadow: none;
     }
 
-    &:active {
+    &:active:not(:disabled) {
         box-shadow: 0 2px 5px rgba(black, .3);
     }
 
     &.primary {
-        background-color: $primary !important;
+        background-color: $primary;
         border: 1px solid $primary;
         color: #fff;
 
         &:hover {
-            background-color: darken($primary, 10%) !important;
+            background-color: darken($primary, 10%);
+        }
+
+        svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        path {
+            fill: #fff;
+        }
+    }
+
+    &.primary.outlined {
+        background-color: #fff;
+        border-color: $primary;
+        color: $primary;
+
+        &:hover {
+            transition: all .2s ease-in-out;
+            background-color: $primary;
+            color: #fff;
+
+            path {
+                fill: #fff;
+                transition: all .2s ease-in-out;
+            }
+        }
+
+        path {
+            fill: $primary;
         }
     }
 
@@ -70,12 +117,36 @@
     }
 
     &.info {
-        background-color: $info !important;
+        background-color: $info;
         border: 1px solid $info;
         color: #fff;
 
         &:hover {
-            background-color: darken($info, 10%) !important;
+            background-color: darken($info, 10%);
+        }
+
+        path {
+            fill: #fff;
+        }
+    }
+
+    &.info.outlined {
+        background-color: #fff;
+        border-color: $info;
+        color: $info;
+
+        &:hover {
+            background-color: $info;
+            color: #fff;
+            transition: all .2s ease-in-out;
+
+            path {
+                fill: #fff;
+            }
+        }
+
+        path {
+            fill: $info;
         }
     }
 
@@ -90,12 +161,81 @@
     }
 
     &.error {
-        background-color: $error !important;
+        background-color: $error;
         border: 1px solid $error;
         color: #fff;
 
         &:hover {
-            background-color: darken($error, 10%) !important;
+            background-color: darken($error, 10%);
+            transition: all .2s ease-in-out;
+        }
+
+        path {
+            fill: #fff;
+        }
+    }
+
+    &.error.outlined {
+        border-color: $error;
+        background-color: #fff;
+        color: $error;
+
+        &:hover {
+            color: #fff;
+            background-color: $error;
+            transition: all .2s ease-in-out;
+
+            path {
+                fill: #fff;
+            }
+        }
+
+        path {
+            fill: $error;
+        }
+    }
+
+    &.black {
+        background-color: $dark;
+        border-color: $dark;
+        color: #fff;
+
+        &:hover {
+            background-color: darken($dark, 10%);
+        }
+
+        path {
+            fill: #fff;
+        }
+    }
+
+    &.light {
+        border-color: transparent;
+        background-color: transparent;
+        color: $dark;
+
+        &:hover {
+            transition: all .2s ease-in-out;
+            background-color: $lightgray;
+        }
+
+        path {
+            fill: $dark;
+        }
+    }
+
+    &.dark {
+        border-color: transparent;
+        background-color: transparent;
+        color: $dark;
+
+        &:hover {
+            transition: all .2s ease-in-out;
+            background-color: $lightgray;
+        }
+
+        path {
+            fill: #fff;
         }
     }
 
@@ -103,13 +243,16 @@
         width: 100%;
     }
 
+    &.rounded {
+        border-radius: 60px;
+    }
+
     &.icon {
         padding: 0;
         min-width: 36px !important;
         height: 36px !important;
         width: 0 !important;
-        background-color: transparent;
-        border-radius: 50% !important;
+        border-radius: 50%;
 
         &:hover:not(.primary):not(.info):not(.error) {
             background-color: rgba($light, .3);

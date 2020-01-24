@@ -34,8 +34,9 @@ export const DrawerPage = () => {
                                 <Tooltip key={index}    
                                     tooltip={name}
                                     position="right">
-                                    <Button 
-                                        onAction={() => setContent(name)} 
+                                    <Button
+                                        light 
+                                        onClick={() => setContent(name)} 
                                         icon={icon}/>
                                 </Tooltip>
                             )}
@@ -51,7 +52,7 @@ export const DrawerPage = () => {
                     <Button 
                         name="Toggle" 
                         color="info"
-                        onAction={() => setDrawer(!drawer)}/>
+                        onClick={() => setDrawer(!drawer)}/>
                     <p>{content}</p>
                 </div>
             </div>

@@ -7,68 +7,174 @@ export const ButtonPage = () => {
     return (
         <div className="page">
             <div className="page-title">Buttons</div>
-            <div className="row align-top">
+            <h3>Button types</h3>
+            <div className="row align-center">
                 <Button
+                    className="mr-5"
                     color="primary"
                     name="Primary"
-                    onAction={() => {}}/>
-                <div className="mx-5"></div>
+                    onClick={() => {}}/>
                 <Button
+                    smooth
+                    className="mr-5"
+                    color="primary"
+                    name="Smooth"
+                    onClick={() => {}}/>
+                <Button
+                    className="mr-5"
+                    outlined
+                    color="primary"
+                    name="Outlined"
+                    onClick={() => {}}/>
+                <Button
+                    className="mr-5"
+                    outlined
+                    uppercase
+                    color="primary"
+                    name="Outlined uppercase"
+                    onClick={() => {}}/>
+                <Button
+                    className="mr-5"
+                    outlined
+                    rounded
+                    color="primary"
+                    name="Rounded"
+                    onClick={() => {}}/>
+                <Button
+                    className="mr-5"
+                    rounded
+                    color="primary"
+                    name="Rounded"
+                    onClick={() => {}}/>
+            </div>
+
+            <h3>Button sizes</h3>
+            <div className="row align-center">
+                <Button
+                    className="mr-5"
+                    color="info"
+                    name="Default"
+                    onClick={() => {}}/>
+                <Button
+                    className="mr-5"
                     color="info"
                     size="medium"
-                    name="Info medium"
-                    onAction={() => {}}/>
-                <div className="mx-5"></div>
+                    name="Medium"
+                    onClick={() => {}}/>
                 <Button
+                    className="mr-5"
                     size="large"
-                    color="error"
-                    name="Error large"
-                    onAction={() => {}}/> 
-                <div className="mx-5"></div>
+                    color="info"
+                    name="Large"
+                    onClick={() => {}}/> 
                 <Button
+                    rounded
+                    className="mr-5"
+                    color="info"
+                    name="Default"
+                    onClick={() => {}}/>
+                <Button
+                    rounded
+                    outlined
+                    uppercase
+                    className="mr-5"
+                    color="info"
+                    size="medium"
+                    name="Medium"
+                    onClick={() => {}}/>
+                <Button
+                    rounded
+                    uppercase
+                    size="large"
+                    color="info"
+                    name="Large"
+                    onClick={() => {}}/>  
+            </div>
+            <h3>Button colors</h3>
+            <div className="row">
+                <Button
+                    className="mr-5"
+                    color="primary"
+                    name="Primary"
+                    onClick={() => {}}/>
+                <Button
+                    className="mr-5"
+                    color="info"
+                    name="Info"
+                    onClick={() => {}}/>  
+                <Button
+                    className="mr-5"
+                    color="error"
+                    name="Error"
+                    onClick={() => {}}/> 
+                <Button
+                    className="mr-5"
                     color="success"
                     name="Success"
-                    onAction={() => {}}/> 
-                <div className="mx-5"></div>
+                    onClick={() => {}}/> 
+                <Button
+                    className="mr-5"
+                    color="black"
+                    name="Black"
+                    onClick={() => {}}/> 
                 <Button
                     disabled
                     color="success"
                     name="Disabled"
-                    onAction={() => {}}/>   
+                    onClick={() => {}}/> 
             </div>
-            <br/>
-            <div className="row">
-                <div className="col">
-                    <Button
-                        block
-                        color="primary"
-                        name="Block button"
-                        onAction={() => {}}/> 
-                </div>
-                <div className="col"></div>
+            <h3>Block button</h3>
+            <div style={{ width: 300 }}>
+                <Button
+                    block
+                    color="primary"
+                    name="Block button"
+                    onClick={() => {}}/> 
             </div>
-            <div className="page-title">Icon buttons</div>
-            <div className="row">
-                <Tooltip tooltip="Search">
+            <h3>Icon buttons</h3>
+            <div className="row align-center">
+                <Button
+                    className="mr-10"
+                    color="primary"
+                    icon="search"
+                    onClick={() => {}}/>
+                <Button
+                    outlined
+                    className="mr-10"
+                    color="primary"
+                    icon="search"
+                    onClick={() => {}}/>
+                <Button
+                    light
+                    className="mr-10"
+                    icon="search"
+                    onClick={() => {}}/>
+                <div className="row justify-center bg-night py-5 px-15 mr-10 smooth-border">
                     <Button
-                        color="primary"
+                        dark
                         icon="search"
-                        onAction={() => {}}/>
-                </Tooltip>
-                <div className="mx-5"></div>
-                <Tooltip tooltip="Home">
-                    <Button
-                        color="info"
-                        icon="home"
-                        onAction={() => {}}/>
-                </Tooltip>
-                <div className="mx-5"></div>
-                <Tooltip tooltip="Delete">
-                    <Button
-                        color="error"
-                        icon="delete"
-                        onAction={() => {}}/>
-                </Tooltip>
+                        onClick={() => {}}/>
+                </div>
+                <Button
+                    className="mr-10"
+                    color="primary"
+                    name="Search"
+                    icon="search"
+                    onClick={() => {}}/>
+                <Button
+                    outlined
+                    className="mr-10"
+                    color="primary"
+                    name="Search"
+                    icon="search"
+                    onClick={() => {}}/>
+                <Button
+                    className="mr-10"
+                    color="info"
+                    name="Home"
+                    icon="home"
+                    iconLeft
+                    onClick={() => {}}/>
             </div>
         </div>
     )
