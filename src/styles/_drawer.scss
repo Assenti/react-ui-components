@@ -40,9 +40,9 @@
 }
 
 
-.drawer-content {
+// .drawer-content {
 
-}
+// }
 
 .drawer-header {
     display: flex;
@@ -70,20 +70,26 @@
   
 .drawer-enter {
     transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
 }
 
 .drawer-enter-active {
     transform: translateX(0%);
     transition: transform 300ms;
+    -moz-transform: translateX(0%);
+    -moz-transition: transform 300ms;
 }
 
 .drawer-exit {
     transform: translateX(0%);
+    -moz-transform: translateX(0%);
 }
 
 .drawer-exit-active {
     transform: translateX(-100%);
     transition: transform 300ms;
+    -moz-transform: translateX(-100%);
+    -moz-transition: transform 300ms;
 }
 
 .expand-enter {
@@ -92,6 +98,7 @@
 
 .expand-enter-active {
     animation: collapsing 300ms ease-out;
+    -moz-animation: collapsing 300ms ease-out;
 }
 
 .expand-exit {
@@ -100,14 +107,25 @@
 
 .expand-exit-active {
     animation: expanding 300ms ease-out;
+    -moz-animation: expanding 300ms ease-out;
 }
   
 @keyframes expanding {
     0% { width: 50px; min-width: 50px;}
     100% { width: 280px; min-width: 280px;}
 }
+
+@-moz-keyframes expanding {
+    0% { width: 50px; min-width: 50px;}
+    100% { width: 280px; min-width: 280px;}
+}
   
 @keyframes collapsing {
+    0% { width: 280px; min-width: 280px; }
+    100% { width: 50px; min-width: 50px; }
+}
+
+@-moz-keyframes collapsing {
     0% { width: 280px; min-width: 280px; }
     100% { width: 50px; min-width: 50px; }
 }

@@ -9,7 +9,7 @@ export const Content = (props) => {
 
     return (
         <div className="content">
-            <Header title="My React UI Components"
+            <Header title="React UI Components"
                 rightSide={
                 <div className="row align-center">
                     <div className="text-lightgray mr-20"><small>Version: {version}</small></div>

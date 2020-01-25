@@ -1,6 +1,6 @@
 {
-  "short_name": "My custom React UI Components",
-  "name": "My custom React UI Components",
+  "short_name": "React UI Components",
+  "name": "React UI Components",
   "icons": [
     {
       "src": "favicon.ico",

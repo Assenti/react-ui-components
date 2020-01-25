@@ -23,6 +23,8 @@
 - [ ] Timeline
 - [ ] Declare types for TS using
 - [ ] Make a-la-carte using 
+- [ ] Add API descriptions
+- [ ] Add i18n
 
 ###### Author: Asset Sultanov
-###### Started date: Jan 6th 2020
+###### Start date: Jan 6th 2020
