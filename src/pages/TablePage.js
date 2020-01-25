@@ -18,7 +18,7 @@ export const TablePage = () => {
     return (
         <div className="page">
             <div className="page-title">Tables</div>
-            <h3>Table with serial index, no hover and footer</h3>
+            <h3>Table with order index, no hover and footer</h3>
             <Table
                 bordered
                 noHover={true} 
@@ -38,17 +38,17 @@ export const TablePage = () => {
                     <div className="row justify-center align-center">
                         <Tooltip tooltip="Edit">
                             <Button
-                                outlined
+                                small
                                 className="mr-10"
-                                color="info"
+                                color="light"
                                 icon="edit"
                                 onClick={() => {}}>
                             </Button>
                         </Tooltip>
                         <Tooltip tooltip="Delete">
                             <Button
-                                outlined
-                                color="error"
+                                small
+                                color="light"
                                 icon="delete"
                                 onClick={() => {}}>
                             </Button> 

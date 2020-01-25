@@ -21,6 +21,7 @@
 - [ ] Switch
 - [ ] Carousel
 - [ ] Timeline
+- [ ] Preloader
 - [ ] Define theme colors and make them customizable
 - [ ] Declare types for TS using
 - [ ] Make a-la-carte using 

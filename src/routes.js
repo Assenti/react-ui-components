@@ -25,9 +25,5 @@ export const routes = [
     { path: '/table', name: 'Table', Component: TablePage },
     { path: '/modal', name: 'Modal', Component: ModalPage },
     { path: '/checkbox', name: 'Checkbox', Component: CheckboxPage },
-    { path: '/card', name: 'Card', Component: CardPage },
-    { path: '/card', name: 'Card', Component: CardPage },
-    { path: '/card', name: 'Card', Component: CardPage },
-    { path: '/card', name: 'Card', Component: CardPage },
-
-];
+    { path: '/card', name: 'Card', Component: CardPage }
+]
