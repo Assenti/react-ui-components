@@ -4,7 +4,7 @@
     height: auto;
     width: 280px;
     min-width: 280px;
-    background-color: $gray;
+    background-color: $lightgray;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -16,15 +16,17 @@
     }
 
     &.dark {
-      background-color: $night;
+        background-color: $night;
 
-      & .drawer-header {
-        color: #000;
-      }
+        & .drawer-header {
+            color: #000;
+            background-color: $night;
+        }
     }
 
     &.full-height {
-      height: 100vh;
+        height: 100vh;
+        overflow-y: auto;
     }
 
     &.min {
@@ -50,6 +52,8 @@
     padding: 15px;
     color: $dark;
     font-weight: bold;
+    position: sticky;
+    top: 0;
 
     &.centered {
       justify-content: center;

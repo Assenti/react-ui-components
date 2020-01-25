@@ -10,6 +10,7 @@ import { SelectPage } from './pages/SelectPage';
 import { TablePage } from './pages/TablePage';
 import { ModalPage } from './pages/ModalPage';
 import { CheckboxPage } from './pages/CheckboxPage';
+import { CardPage } from './pages/CardPage';
 
 export const routes = [
     { path: '/', name: 'Home', Component: HomePage },
@@ -23,5 +24,10 @@ export const routes = [
     { path: '/select', name: 'Select', Component: SelectPage },
     { path: '/table', name: 'Table', Component: TablePage },
     { path: '/modal', name: 'Modal', Component: ModalPage },
-    { path: '/checkbox', name: 'Checkbox', Component: CheckboxPage }
+    { path: '/checkbox', name: 'Checkbox', Component: CheckboxPage },
+    { path: '/card', name: 'Card', Component: CardPage },
+    { path: '/card', name: 'Card', Component: CardPage },
+    { path: '/card', name: 'Card', Component: CardPage },
+    { path: '/card', name: 'Card', Component: CardPage },
+
 ];

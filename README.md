@@ -25,6 +25,7 @@
 - [ ] Make a-la-carte using 
 - [ ] Add API descriptions
 - [ ] Add i18n
+- [ ] Dark & Light Mode
 
 ###### Author: Asset Sultanov
 ###### Start date: Jan 6th 2020

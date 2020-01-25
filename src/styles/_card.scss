@@ -1,0 +1,30 @@
+.card {
+    padding: 15px;
+    border: 1px solid $lightgray;
+    border-radius: $radius * 2;
+
+    &:not(.flat) {
+        box-shadow: 0 1px 5px rgba(black, .3);
+    }
+
+    &.dense {
+        padding: 10px;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        padding-bottom: 5px;
+        border-bottom: 1px solid lightgray;
+    }
+}
+
+.card-header {
+    padding: 10px;
+}
+
+.card-footer {
+    padding: 5px 0;
+    font-size: .8rem;
+    color: $dark;
+}
