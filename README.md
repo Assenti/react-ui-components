@@ -8,7 +8,7 @@
 - [ ] Radio button
 - [ ] Date picker / Calendar
 - [ ] Badge
-- [ ] Card
+- [X] Card
 - [ ] Chip
 - [ ] Expansion List
 - [ ] Stepper
@@ -21,6 +21,7 @@
 - [ ] Switch
 - [ ] Carousel
 - [ ] Timeline
+- [ ] Define theme colors and make them customizable
 - [ ] Declare types for TS using
 - [ ] Make a-la-carte using 
 - [ ] Add API descriptions
