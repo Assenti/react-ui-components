@@ -1,3 +1,8 @@
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+}
+
 .checkbox {
     display: flex;
     align-items: center;
@@ -9,7 +14,8 @@
     -ms-user-select: none;
     user-select: none;
     height: 18px;
-    width: 12px;
+    width: 18px;
+    margin: 3px;
 
     &:hover input ~ span {
         background-color: $light;
@@ -43,7 +49,7 @@
         left: 0;
         height: 18px;
         width: 18px;
-        background-color: #eee;
+        background-color: $lightgray;
         border: 1px solid gray;
         border-radius: 2px;
     }
@@ -70,11 +76,85 @@
         transform: rotate(45deg);
     }
 
-    &.info > span:after {
-        border-color: $info;
+    &.disabled {
+        & > span:after {
+            border-color: lightgray;
+        }
+        
+        & > span {
+            border-color: lightgray;
+        }
     }
 
-    &.primary > span:after {
-        border-color: $primary;
+    &.info {
+        & > span:after {
+            border-color: $info;
+        }
+        
+        & > span {
+            border-color: $info;
+        }
+
+        .checkbox-label {
+            color: $info;
+        }
+    }
+
+    &.primary {
+        & > span:after {
+            border-color: $primary;
+        }
+
+        & > span {
+            border-color: $primary;
+        }
+    }
+
+    &.success {
+        & > span:after {
+            border-color: $success;
+        }
+
+        & > span {
+            border-color: $success;
+        }
+    }
+
+    &.error {
+        & > span:after {
+            border-color: $error;
+        }
+
+        & > span {
+            border-color: $error;
+        }
+    }
+}
+
+.checkbox-label {
+    margin-left: 2px;
+    cursor: pointer;
+    font-size: .9rem;
+    user-select: none;
+    -moz-user-select: none;
+
+    &.disabled {
+        color: lightgray;
+    }
+
+    &.info {
+        color: $info;
+    }
+
+    &.primary {
+        color: $primary;
+    }
+
+    &.success {
+        color: $success;
+    }
+
+    &.error {
+        color: $error;
     }
 }

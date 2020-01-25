@@ -14,6 +14,10 @@
     border: 1px solid transparent;
     font-size: .9rem;
 
+    &:not(.icon):not(.medium):not(.large) {
+        height: 35px;
+    }
+
     &.uppercase {
         text-transform: uppercase;
         font-size: .75rem;
@@ -46,12 +50,12 @@
     }
 
     &.small.icon {
-        min-width: 35px !important;
-        min-height: 35px !important;
-        max-width: 35px !important;
-        max-height: 35px !important;
-        width: 35px !important;
-        height: 35px !important;
+        min-width: 30px;
+        min-height: 30px;
+        max-width: 30px;
+        max-height: 30px;
+        width: 30px;
+        height: 30px;
     }
 
     &.disabled {
@@ -116,6 +120,27 @@
         }
     }
 
+    &.secondary.outlined {
+        background-color: #fff;
+        border-color: $gray;
+        color: $gray;
+
+        &:hover {
+            transition: all .2s ease-in-out;
+            background-color: $gray;
+            color: $dark;
+
+            path {
+                fill: #fff;
+                transition: all .2s ease-in-out;
+            }
+        }
+
+        path {
+            fill: $dark;
+        }
+    }
+
     &.info {
         background-color: $info;
         border: 1px solid $info;
@@ -125,7 +150,7 @@
             background-color: darken($info, 10%);
         }
 
-        path {
+        path, polygon {
             fill: #fff;
         }
     }
@@ -140,7 +165,7 @@
             color: #fff;
             transition: all .2s ease-in-out;
 
-            path {
+            path, polygon {
                 fill: #fff;
             }
         }
@@ -157,6 +182,30 @@
 
         &:hover {
             background-color: darken($success, 10%);
+        }
+
+        path {
+            fill: #fff;
+        }
+    }
+
+    &.success.outlined {
+        border-color: $success;
+        background-color: #fff;
+        color: $success;
+
+        &:hover {
+            color: #fff;
+            background-color: $success;
+            transition: all .2s ease-in-out;
+
+            path {
+                fill: #fff;
+            }
+        }
+
+        path {
+            fill: $success;
         }
     }
 
@@ -231,7 +280,7 @@
 
         &:hover {
             transition: all .2s ease-in-out;
-            background-color: $lightgray;
+            background-color: rgba($lightgray, .3);
         }
 
         path {
@@ -249,14 +298,9 @@
 
     &.icon {
         padding: 0;
-        min-width: 36px !important;
-        height: 36px !important;
-        width: 0 !important;
+        min-width: 36px;
+        height: 36px;
+        width: 0;
         border-radius: 50%;
-
-        &:hover:not(.primary):not(.info):not(.error) {
-            background-color: rgba($light, .3);
-            transition: all .3s ease-in-out;
-        }
     }
 }

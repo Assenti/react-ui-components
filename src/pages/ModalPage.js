@@ -12,7 +12,7 @@ export const ModalPage = () => {
                 color="info"
                 size="medium"
                 name="Open modal"
-                onAction={() => setModal(true)}/>
+                onClick={() => setModal(true)}/>
             <Modal
                 closable
                 onClose={() => setModal(false)} 
@@ -24,11 +24,11 @@ export const ModalPage = () => {
                             className="mr-10"
                             color="secondary"
                             name="Cancel"
-                            onAction={() => setModal(false)}/>
+                            onClick={() => setModal(false)}/>
                         <Button
                             color="info"
                             name="Confirm"
-                            onAction={() => setModal(false)}/>
+                            onClick={() => setModal(false)}/>
                     </React.Fragment>
                 }>
                     <p>Modal content...</p>

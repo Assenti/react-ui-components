@@ -8,8 +8,10 @@ import {
     Github,
     ChevronDoubleRight,
     ChevronDoubleLeft,
+    ChevronDown,
     Code,
-    Chip
+    Chip,
+    Account
 } from '../icons/index';
 
 export const Icon = (props) => {
@@ -35,7 +37,11 @@ export const Icon = (props) => {
             case 'code':
                 return <Code size={props.size} color={props.color}/>; 
             case 'chip':
-                return <Chip size={props.size} color={props.color}/>;    
+                return <Chip size={props.size} color={props.color}/>; 
+            case 'account':
+                return <Account size={props.size} color={props.color}/>; 
+            case 'chevron-down':
+                return <ChevronDown size={props.size} color={props.color}/>;    
             default:
                 return '';
         }

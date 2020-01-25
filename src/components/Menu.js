@@ -21,7 +21,8 @@ export const Menu = (props) => {
                     {props.items.map((item, index) => 
                         <div key={index} 
                             className="menu-item" 
-                            onClick={() => handleSelect(item)}>{item}</div>
+                            onClick={() => handleSelect(props.itemTitle ? item[props.itemTitle] : item)}>
+                                {props.itemTitle ? item[props.itemTitle] : item}</div>
                     )}
                 </div>
             </CSSTransition>

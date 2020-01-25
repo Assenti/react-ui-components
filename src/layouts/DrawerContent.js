@@ -40,6 +40,7 @@ export const DrawerContent = (props) => {
                         )}
                     </List> : 
                 <List dark
+                    hover
                     onItemClick={handleItemClick} 
                     items={props.items} 
                     itemTitle="name" 

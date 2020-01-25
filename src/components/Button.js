@@ -37,7 +37,7 @@ export const Button = (props) => {
         <button 
             disabled={props.disabled}
             className={btnClass()} 
-            onClick={() => props.onClick()}>
+            onClick={(e) => props.onClick(e)}>
             {props.icon && props.iconLeft ? <Icon size={props.name ? 18 : 20} name={props.icon}/> : ''}
             {props.name ? <span className={setMargin()}>{props.name}</span> : ''}
             {props.icon && !props.iconLeft ? <Icon size={props.name ? 18 : 20} name={props.icon}/> : ''}

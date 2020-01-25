@@ -1,54 +1,71 @@
 .list {
     &.dense > .list-item {
-        padding: 10px !important;
+        padding: 10px;
     }
 
     &.dark > .list-item {
         color: #fff;
-        border-bottom-color: gray !important;
+        border-bottom-color: gray;
 
-        &:hover:not(.active)  {
-            background-color: rgba($light, .3) !important;
+        path {
+            fill: #fff;
+        }
+
+        &.hover:hover:not(.active)  {
+            background-color: rgba($light, .3);
+            transition: all .2s ease-in-out;
+            cursor: pointer;
         }
     }
 
     & .btn {
-        padding: 0 !important;
+        padding: 0;
     }
 }
 
-.list-title {
-    font-size: 1.1rem;
+.list-header {
+    font-size: .9rem;
     padding: 10px;
-    font-weight: bold;
+    color: $dark;
 }
 
 .list-subtitle {
-
+    display: block;
+    font-size: .75rem;
+    color: gray;
+    margin-left: 30px;
 }
 
 .list-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px;
     color: $dark;
-    border-bottom: 1px solid lightgray;
+    padding: 15px;
+
+    &.divider {
+        border-bottom: 1px solid lightgray;
+    }
+
+    &.dense {
+        padding: 10px;
+        font-size: .9rem;
+    }
+
+    & > div:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
     &:last-child {
         border-bottom: none;
-    }
-
-    &:hover:not(.active) {
-        background-color: rgba($lightgray, .3);
-        transition: all .3s ease-in-out;
     }
 
     &.active {
         background-color: $info;
     }
 
-    &.clickable {
+    &.hover:hover:not(.active) {
+        background-color: $lightgray;
+        transition: all .2s ease-in-out;
         cursor: pointer;
     }
 }
@@ -60,7 +77,11 @@
 }
 
 .list-item__left-side {
-    & > .checkbox {
+    .checkbox {
         margin-right: 15px;
+    }
+
+    svg {
+        margin-right: 10px;
     }
 }

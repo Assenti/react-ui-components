@@ -19,6 +19,7 @@ export const InputField = (props) => {
             {props.label ? <label onClick={() => input.current.focus()}>{props.label}</label> : ''}
             <div className={inputContainerClass()}>
                 <input
+                    onFocus={e => props.onFocus ? props.onFocus(e) : {}}
                     ref={input}
                     required={props.required}
                     autoComplete={props.autoComplete}

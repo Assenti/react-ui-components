@@ -17,7 +17,7 @@ export const Content = (props) => {
                         <Button 
                             dark
                             icon="github" 
-                            onAction={e => { 
+                            onClick={e => { 
                             e.preventDefault()
                             window.open(github, '_blank')}}/>
                     </Tooltip>

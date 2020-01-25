@@ -9,6 +9,7 @@ import { PaginationPage } from './pages/PaginationPage';
 import { SelectPage } from './pages/SelectPage';
 import { TablePage } from './pages/TablePage';
 import { ModalPage } from './pages/ModalPage';
+import { CheckboxPage } from './pages/CheckboxPage';
 
 export const routes = [
     { path: '/', name: 'Home', Component: HomePage },
@@ -21,5 +22,6 @@ export const routes = [
     { path: '/pagination', name: 'Pagination', Component: PaginationPage },
     { path: '/select', name: 'Select', Component: SelectPage },
     { path: '/table', name: 'Table', Component: TablePage },
-    { path: '/modal', name: 'Modal', Component: ModalPage }
+    { path: '/modal', name: 'Modal', Component: ModalPage },
+    { path: '/checkbox', name: 'Checkbox', Component: CheckboxPage }
 ];
