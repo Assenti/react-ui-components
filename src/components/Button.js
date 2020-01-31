@@ -6,6 +6,7 @@ export const Button = (props) => {
         let result = '';
         let className = {
             btn: 'btn',
+            lifted: props.lifted ? 'lifted' : '',
             uppercase: props.uppercase ? 'uppercase' : '',
             smooth: props.smooth && !props.rounded ? 'smooth' : '',
             rounded: props.rounded && !props.smooth ? 'rounded' : '',

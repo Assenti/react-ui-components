@@ -14,6 +14,14 @@
     border: 1px solid transparent;
     font-size: .9rem;
 
+    &.lifted {
+        box-shadow: 0 2px 5px rgba(black, .3);
+
+        &:active:not(:disabled) {
+            box-shadow: 0 1px 10px rgba(black, .3);
+        }
+    }
+
     &:not(.icon):not(.medium):not(.large) {
         height: 35px;
     }
@@ -68,7 +76,7 @@
     }
 
     &:active:not(:disabled) {
-        box-shadow: 0 2px 5px rgba(black, .3);
+        box-shadow: 0 1px 5px rgba(black, .3);
     }
 
     &.primary {

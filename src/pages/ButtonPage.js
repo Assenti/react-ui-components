@@ -6,11 +6,25 @@ export const ButtonPage = () => {
     const keys = ['property', 'description', 'default', 'type', 'value'];
     const items = [
         { 
+            property: 'onClick', 
+            description: 'Handle button click', 
+            default: '', 
+            type: 'function',
+            value: 'return a button click event object'
+        },
+        { 
             property: 'name', 
             description: 'Set button name (can be set with icon)', 
             default: '', 
             type: 'string',
-            value: 'Submit | Cancel | Send | etc.'
+            value: ''
+        },
+        { 
+            property: 'lifted', 
+            description: 'Lift up the button', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
         },
         { 
             property: 'color', 
@@ -21,7 +35,7 @@ export const ButtonPage = () => {
         },
         { 
             property: 'disabled',
-            description: 'Make a button disabled', 
+            description: 'Make button disabled', 
             default: 'false',
             type: 'boolean', 
             value: 'true | false'},
@@ -100,7 +114,7 @@ export const ButtonPage = () => {
             default: '', 
             type: 'string',
             value: ''
-        },
+        }
     ]
 
     return (
@@ -111,6 +125,7 @@ export const ButtonPage = () => {
                 <Button
                     className="mr-5"
                     color="primary"
+                    lifted
                     name="Primary"
                     onClick={() => {}}/>
                 <Button
