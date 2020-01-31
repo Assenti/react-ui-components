@@ -18,7 +18,7 @@
 - [ ] Notification
 - [ ] Header / Toolbar
 - [ ] Breadcrumbs
-- [ ] Switch
+- [X] Switch
 - [ ] Carousel
 - [ ] Timeline
 - [ ] Preloader

@@ -11,7 +11,9 @@ import {
     ChevronDown,
     Code,
     Chip,
-    Account
+    Account,
+    Sun,
+    Moon
 } from '../icons/index';
 
 export const Icon = (props) => {
@@ -42,6 +44,10 @@ export const Icon = (props) => {
                 return <Account size={props.size} color={props.color}/>; 
             case 'chevron-down':
                 return <ChevronDown size={props.size} color={props.color}/>;    
+            case 'sun':
+                return <Sun size={props.size} color={props.color}/>;    
+            case 'moon':
+                return <Moon size={props.size} color={props.color}/>;    
             default:
                 return '';
         }

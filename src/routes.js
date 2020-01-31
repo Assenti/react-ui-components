@@ -11,6 +11,7 @@ import { TablePage } from './pages/TablePage';
 import { ModalPage } from './pages/ModalPage';
 import { CheckboxPage } from './pages/CheckboxPage';
 import { CardPage } from './pages/CardPage';
+import { SwitchPage } from './pages/SwitchPage';
 
 export const routes = [
     { path: '/', name: 'Home', Component: HomePage },
@@ -25,5 +26,6 @@ export const routes = [
     { path: '/table', name: 'Table', Component: TablePage },
     { path: '/modal', name: 'Modal', Component: ModalPage },
     { path: '/checkbox', name: 'Checkbox', Component: CheckboxPage },
+    { path: '/switch', name: 'Switch', Component: SwitchPage },
     { path: '/card', name: 'Card', Component: CardPage }
 ]

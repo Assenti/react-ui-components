@@ -1,0 +1,130 @@
+.switch-container {
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    svg:first-child {
+        margin-right: 5px;
+    }
+
+    svg:last-child {
+        margin-left: 5px;
+    }
+}
+
+.switch-left-label {
+    font-size: .9rem;
+    margin-right: 5px;
+}
+
+.switch-right-label {
+    font-size: .9rem;
+    margin-left: 5px;
+}
+
+.switch {
+    border-radius: 60px;
+    border: 1px solid gray;
+    width: 34px;
+    height: 18px;
+    display: flex;
+    position: relative;
+
+    &:not(.disabled) {
+        cursor: pointer;
+    }
+
+    &:active:not(.disabled) {
+        box-shadow: 0 2px 5px rgba(black, .3);
+    }
+
+    & > span {
+        width: 21px;
+        height: 21px;
+        border-radius: 50%;
+        position: absolute;
+        top: -2px;
+        transition: all .3s ease-in-out;
+    }
+
+    &.disactive {
+        & > span {
+            left: -1px;
+            background-color: lightgray;
+        }
+    }
+
+    &.active {
+        & > span {
+            right: -1px;
+            background-color: $dark;
+        }
+    }
+
+    &.primary {
+        border-color: $primary;
+
+        &.active > span {
+            background-color: $primary;
+        }
+
+        &.disactive > span {
+            background-color: lightgray;
+        }
+    }
+
+    &.info {
+        border-color: $info;
+
+        &.active > span {
+            background-color: $info;
+        }
+
+        &.disactive > span {
+            background-color: lightgray;
+        }
+    }
+
+    &.success {
+        border-color: $success;
+
+        &.active > span {
+            background-color: $success;
+        }
+
+        &.disactive > span {
+            background-color: lightgray;
+        }
+    }
+
+    &.error {
+        border-color: $error;
+
+        &.active > span {
+            background-color: $error;
+        }
+
+        &.disactive > span {
+            background-color: lightgray;
+        }
+    }
+
+    &.disabled {
+        border-color: lightgray;
+        cursor: not-allowed;
+
+        &.active > span {
+            background-color: $lightgray;
+        }
+
+        &.disactive > span {
+            background-color: $lightgray;
+        }
+    }
+    
+}
