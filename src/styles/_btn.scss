@@ -28,7 +28,7 @@
     }
 
     &.smooth {
-        border-radius: 6px;
+        border-radius: $radius * 2;
     }
 
     &.medium {

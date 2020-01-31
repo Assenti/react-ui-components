@@ -1,9 +1,108 @@
 import React from 'react';
 import { Button } from '../components/Button';
-import { Tooltip } from '../components/Tooltip';
-import { Search, Home, Delete } from '../icons';
+import { Table } from '../components/Table';
 
 export const ButtonPage = () => {
+    const keys = ['property', 'description', 'default', 'type', 'value'];
+    const items = [
+        { 
+            property: 'name', 
+            description: 'Set button name (can be set with icon)', 
+            default: '', 
+            type: 'string',
+            value: 'Submit | Cancel | Send | etc.'
+        },
+        { 
+            property: 'color', 
+            description: 'Set background and border color of button from list', 
+            default: '', 
+            type: 'string',
+            value: 'primary | info | success | error | black'
+        },
+        { 
+            property: 'disabled',
+            description: 'Make a button disabled', 
+            default: 'false',
+            type: 'boolean', 
+            value: 'true | false'},
+        { 
+            property: 'rounded', 
+            description: 'Make border radius rounded',
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'smooth',
+            description: 'Set button borders more smooth', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'outlined', 
+            description: 'Make button background transparent and outline borders', 
+            default: 'false',
+            type: 'boolean', 
+            value: 'true | false'
+        },
+        { 
+            property: 'uppercase',
+            description: 'Transform text to upper case', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'block', 
+            description: 'Fills the parent component width',
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'size', 
+            description: 'Set button size',
+            default: '', 
+            type: 'string',
+            value: 'medium | large'},
+        { 
+            property: 'icon',
+            description: 'Set icon in button and give circle shape to it (can be set with name)', 
+            default: '', 
+            type: 'string',
+            value: 'home | search | etc. (see icon names list in docs)'
+        },
+        { 
+            property: 'iconLeft',
+            description: 'Change icon position to the left from name', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'dark',
+            description: 'Set dark mode (can not be used with light prop)', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'light',
+            description: 'Set light mode (can not be used with dark prop)', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'className',
+            description: 'Set a custom class to component', 
+            default: '', 
+            type: 'string',
+            value: ''
+        },
+    ]
+
     return (
         <div className="page">
             <div className="page-title">Buttons</div>
@@ -187,6 +286,13 @@ export const ButtonPage = () => {
                     iconLeft
                     onClick={() => {}}/>
             </div>
+            <h2>API</h2>
+            <Table
+                bordered
+                headers={keys}
+                items={items}
+                index={true}
+                itemTitles={keys}/>
         </div>
     )
 }

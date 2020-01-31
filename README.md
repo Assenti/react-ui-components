@@ -8,8 +8,8 @@
 - [ ] Radio button
 - [ ] Date picker / Calendar
 - [ ] Badge
+- [ ] Tag
 - [X] Card
-- [ ] Chip
 - [ ] Expansion List
 - [ ] Stepper
 - [ ] Rating

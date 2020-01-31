@@ -42,14 +42,16 @@
 }
 
 
-// .drawer-content {
-
-// }
+.drawer-content {
+    height: 100%;
+    max-height: calc(100% - 40px);
+    overflow-y: auto;
+}
 
 .drawer-header {
     display: flex;
     align-items: center;
-    padding: 15px;
+    height: 50px;
     color: $dark;
     font-weight: bold;
     position: sticky;
@@ -69,6 +71,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 40px;
 }
     
   

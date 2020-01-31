@@ -4,19 +4,20 @@ import { Button } from './Button';
 import { Tooltip } from './Tooltip';
 
 export const Drawer = (props) => {
-    const drawerClass = () => { 
-        let result = `drawer ${props.min ? 'min' : ''} 
-                    ${props.absolute ? 'absolute' : ''} 
-                    ${props.fullHeight ? 'full-height' : ''}
-                    ${props.dark ? 'dark' : ''}`
-        return result.trim()
-    }
-
-    const headerTitle = () => {
-        if (props.header) {
-            if (props.header.length > 5) return `${props.header.slice(0,5)}...`
-            else return props.header
+    const drawerClass = () => {
+        let result = '';
+        let className = {
+            btn: 'drawer',
+            min: props.min ? 'min' : '',
+            absolute: props.absolute ? 'absolute' : '',
+            fullHeight: props.fullHeight ? 'full-height' : '',
+            dark: props.dark && !props.light ? 'dark' : ''
         }
+        
+        for (const key in className) {
+            if (className[key]) result += className[key] + ' '
+        }
+        return result.trim();
     }
 
     return (
