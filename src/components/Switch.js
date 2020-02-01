@@ -18,7 +18,7 @@ export const Switch = (props) => {
     }
 
     return (
-        <div className="switch-container">
+        <div className={props.position === 'vertical' ? 'switch-container vertical' : 'switch-container'}>
             {props.leftLabel && !props.leftIcon ? <div className="switch-left-label">{props.leftLabel}</div> : ''}
             {props.leftIcon && !props.leftLabel ? <Icon name={props.leftIcon} color={props.leftIconColor}/> : ''}
             <div className={switchClass()} 

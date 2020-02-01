@@ -4,8 +4,10 @@ import { Table } from '../components/Table';
 
 export const SwitchPage = () => {
     const [check, setCheck] = useState(true);
-    const [check2, setCheck2] = useState(true);
     const [check1, setCheck1] = useState(true);
+    const [check2, setCheck2] = useState(true);
+    const [check3, setCheck3] = useState(true);
+    const [check4, setCheck4] = useState(false);
 
     const keys = ['property', 'description', 'default', 'type', 'value'];
     const items = [
@@ -29,6 +31,13 @@ export const SwitchPage = () => {
             default: 'false', 
             type: 'boolean',
             value: 'true | false'
+        },
+        { 
+            property: 'position', 
+            description: 'Change switch position', 
+            default: 'horizontal', 
+            type: 'string',
+            value: 'vertical'
         },
         { 
             property: 'color', 
@@ -108,6 +117,25 @@ export const SwitchPage = () => {
                 rightIcon="sun" 
                 rightIconColor="#feda24"
                 onChange={() => setCheck1(!check1)}/>
+            <h3>Switches positions</h3>
+            <div className="row align-center">
+                <Switch color="primary" 
+                    check={check3}
+                    position="vertical"
+                    onChange={() => setCheck3(!check3)}/>
+                <Switch color="error" 
+                    check={check4}
+                    position="vertical"
+                    leftLabel="Off"
+                    rightLabel="On" 
+                    onChange={() => setCheck4(!check4)}/>
+                <Switch color="info" 
+                    check={check3}
+                    position="vertical"
+                    leftIcon="moon"
+                    rightIcon="sun" 
+                    onChange={() => setCheck3(!check3)}/>
+            </div>
             <h2>API</h2>
             <Table
                 bordered
