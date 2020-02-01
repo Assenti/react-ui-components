@@ -1,9 +1,56 @@
 import React, { useState } from 'react';
 import { Checkbox } from '../components/Checkbox';
+import { Table } from '../components/Table';
 
 export const CheckboxPage = () => {
     const [check, setCheck] = useState(true);
     const [checkLabel, setCheckLabel] = useState(true);
+
+    const keys = ['property', 'description', 'default', 'type', 'value'];
+    const items = [
+        { 
+            property: 'checked', 
+            description: 'define the checkbox state', 
+            default: '', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'onChange', 
+            description: 'handle checkbox change', 
+            default: '', 
+            type: 'function',
+            value: ''
+        },
+        { 
+            property: 'disable', 
+            description: 'Make checkbox disabled', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'color', 
+            description: 'Set color of checkbox from list', 
+            default: '', 
+            type: 'string',
+            value: 'primary | info | success | error'
+        },
+        { 
+            property: 'label', 
+            description: 'Set checkbox label', 
+            default: '', 
+            type: 'string',
+            value: ''
+        },
+        { 
+            property: 'className', 
+            description: 'Set a custom css class to component', 
+            default: '', 
+            type: 'string',
+            value: ''
+        }
+    ]
 
     return (
         <div className="page">
@@ -49,6 +96,13 @@ export const CheckboxPage = () => {
                     checked={checkLabel} 
                     onChange={() => setCheckLabel(!checkLabel)}/>
             </div>
+            <h2>API</h2>
+            <Table
+                bordered
+                headers={keys}
+                items={items}
+                index={true}
+                itemTitles={keys}/>
         </div>
     )
 }

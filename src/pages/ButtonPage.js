@@ -110,7 +110,7 @@ export const ButtonPage = () => {
         },
         { 
             property: 'className',
-            description: 'Set a custom class to component', 
+            description: 'Set a custom css class to component', 
             default: '', 
             type: 'string',
             value: ''

@@ -4,7 +4,7 @@
     border-radius: $radius * 2;
 
     &:not(.flat) {
-        box-shadow: 0 1px 5px rgba(black, .3);
+        box-shadow: 0 0 3px rgba(black, .3);
     }
 
     &.dense {

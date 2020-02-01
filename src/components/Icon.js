@@ -13,7 +13,10 @@ import {
     Chip,
     Account,
     Sun,
-    Moon
+    Moon,
+    Star,
+    StarOutline,
+    Smartphone
 } from '../icons/index';
 
 export const Icon = (props) => {
@@ -47,7 +50,13 @@ export const Icon = (props) => {
             case 'sun':
                 return <Sun size={props.size} color={props.color}/>;    
             case 'moon':
-                return <Moon size={props.size} color={props.color}/>;    
+                return <Moon size={props.size} color={props.color}/>; 
+            case 'star':
+                return <Star size={props.size} color={props.color}/>;    
+            case 'star-outline':
+                return <StarOutline size={props.size} color={props.color}/>;   
+            case 'smartphone':
+                return <Smartphone size={props.size} color={props.color}/>;    
             default:
                 return '';
         }

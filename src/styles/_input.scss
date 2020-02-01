@@ -9,13 +9,13 @@
 
     &:focus {
         border-color: $info;
-        transition: all .2s ease;
+        transition: all .2s ease-in-out;
         background-color: transparent;
     }
 
     &:hover {
         border-color: $info;
-        transition: all .2s ease;
+        transition: all .2s ease-in-out;
     }
 
     .small {
@@ -24,124 +24,256 @@
 }
 
 .input-field {
+    margin: 5px;
+
+    &.lifted:not(.disabled) {
+        .input-container {
+            box-shadow: 0 0 4px rgba(black, .2);
+        }
+    }
+
+    &.disabled {
+        .input-container,
+        input,
+        textarea {
+            cursor: not-allowed;
+        }
+    }
+
+    &.rounded {
+        .input-container {
+            border-radius: 60px;
+        }
+    }
+
+    &.smooth {
+        .input-container {
+            border-radius: $radius * 2;
+        }
+    }
+
+    &:not(.rounded):not(.smooth) {
+        .input-container {
+            border-radius: $radius;
+        }
+    }
+
+    &.uppercase {
+        input,
+        textarea {
+            text-transform: uppercase;
+            font-size: .8rem;
+        }
+    }
 
     & > label {
         display: block;
         font-size: .8rem;
         user-select: none;
         -moz-user-select: none;
-        margin-bottom: 3px;
+        transition: all .2s ease-in-out;
+    }
+
+    &:not(.medium):not(.large) {
+        .input-container {
+            input,
+            textarea {
+                height: 30px;
+                padding: 0 5px;
+                font-size: 1rem;
+            }
+
+            svg {
+                min-width: 18px;
+                min-height: 18px;
+                width: 18px;
+                height: 18px;
+            }
+        }
     }
 
     &.medium {
+        .input-container {
+            input {
+                height: 40px;
+                padding: 0 8px;
+                font-size: 1.1rem;
+            }
 
-        input {
-            padding: 10px;
-            font-size: 1.1rem;
+            svg {
+                min-width: 20px;
+                min-height: 20px;
+                width: 20px;
+                height: 20px;
+            }
         }
     }
 
     &.large {
+        .input-container {
+            input {
+                height: 50px;
+                padding: 0 10px;
+                font-size: 1.3rem;
+            }
 
-        input,
-        textarea {
-            padding: 12px 15px;
-            font-size: 1.2rem;
-        }
-
-        i {
-            right: 8px;
+            svg {
+                min-width: 24px;
+                min-height: 24px;
+                width: 24px;
+                height: 24px;
+            }
         }
     }
-}
 
-.input-field__hint {
-    font-size: .8rem;
-    color: $dark;
-    padding: 3px;
-}
+    .input-field__hint {
+        font-size: .8rem;
+        color: $dark;
+    }
 
-.input-container {
-    display: inline-flex;
-    align-items: center;
-    position: relative;
-    width: 100%;
-
-    &.info {
-        input:focus,
-        textarea:focus {
-            border-color: $info;
-            transition: all .2s ease;
-            background-color: transparent;
+    &.primary {
+        label.active {
+            color: $primary;
         }
 
-        &:hover {
-            input,
-            textarea {
-                border-color: $info;
-                transition: all .2s ease;
+        .input-container:hover {
+            border-color: $primary;
+            background-color: #fff;
+            transition: all .2s ease-in-out;
+        }
+
+        .input-container.focus {
+            border-color: $primary;
+            background-color: #fff;
+            transition: all .2s ease-in-out;
+
+            svg:first-child {
+                path {
+                    fill: $primary;
+                    transition: all .2s ease-in-out;
+                }
+            }
+        }
+    }
+    
+    &.info {
+        label.active {
+            color: $info;
+        }
+
+        .input-container:hover {
+            border-color: $info;
+            background-color: #fff;
+            transition: all .2s ease-in-out;
+        }
+
+        .input-container.focus {
+            border-color: $info;
+            background-color: #fff;
+            transition: all .2s ease-in-out;
+
+            svg:first-child,
+            svg:last-child {
+                path {
+                    fill: $info;
+                    transition: all .2s ease-in-out;
+                }
             }
         }
     }
 
     &.error {
-        input:focus,
-        textarea:focus {
-            border-color: $error;
-            transition: all .2s ease;
-            background-color: transparent;
+        label.active {
+            color: $error;
         }
 
-        &:hover {
-            input,
-            textarea {
-                border-color: $error;
-                transition: all .2s ease;
+        .input-container:hover {
+            border-color: $error;
+            background-color: #fff;
+            transition: all .2s ease-in-out;
+        }
+
+        .input-container.focus {
+            border-color: $error;
+            background-color: #fff;
+            transition: all .2s ease-in-out;
+
+            svg:first-child,
+            svg:last-child {
+                path {
+                    fill: $error;
+                    transition: all .2s ease-in-out;
+                }
             }
         }
     }
 
-    & > input,
-    & > textarea {
-        outline: none;
-        padding: 6px 10px;
-        border: 1px solid lightgray;
-        font-size: 1rem;
-        background-color: $lightgray;
-        border-radius: $radius;
+    &.success {
+        label.active {
+            color: $success;
+        }
+
+        .input-container:hover {
+            border-color: $success;
+            background-color: #fff;
+            transition: all .2s ease-in-out;
+        }
+
+        .input-container.focus {
+            border-color: $success;
+            background-color: #fff;
+            transition: all .2s ease-in-out;
+
+            svg:first-child,
+            svg:last-child {
+                path {
+                    fill: $success;
+                    transition: all .2s ease-in-out;
+                }
+            }
+        }
+    }
+    
+    .input-container {
+        display: inline-flex;
+        align-items: center;
         width: 100%;
-    }
+        border: 1px solid lightgray;
+        background-color: $lightgray;
+        outline: none;
+        overflow: hidden;
 
-    &:hover > input,
-    &:hover > textarea {
-        border-color: $primary;
-        transition: all .2s ease;
-    }
+        .btn {
+            border-radius: 0;
+        }
+        
+        svg:first-child {
+            margin-left: 5px;
+        }
 
-    & > input:focus,
-    & > textarea:focus {
-        border-color: $primary;
-        transition: all .2s ease;
-        background-color: transparent;
-    }
+        svg:last-child {
+            margin-right: 5px;
+        }
+    
+        & > input,
+        & > textarea {
+            outline: none;
+            border: none;
+            background-color: transparent;
+            width: 100%;
+        }
+    
+        & > i {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
+            z-index: 2;
 
-    & > input:focus ~ i,
-    & > textarea:focus ~ i {
-        display: block;
-        transition: all .3s ease-in-out;
-    }
-
-    & > input:focus ~ .input-field > label,
-    & > textarea:focus ~ .input-field > label {
-        color: $primary;
-    }
-
-    & > i {
-        display: none;
-        position: absolute;
-        right: 5px;
-        top: calc(50% - 12px);
-        cursor: pointer;
-        z-index: 3;
+            svg {
+                margin-right: 0 !important;
+            }
+        }
     }
 }
