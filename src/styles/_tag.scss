@@ -1,0 +1,127 @@
+.tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    border-radius: $radius;
+    border-color: $lightgray;
+    background-color: $lightgray;
+
+    &.upprecase {
+        text-transform: uppercase;
+    }
+
+    &.lifted {
+        box-shadow: 0 0 4px rgba(black, .2);
+    }
+
+    &:not(.small) {
+        padding: 0 6px;
+        height: 30px;
+        margin: 5px;
+        font-size: .9rem;
+
+        svg {
+            min-width: 18px;
+            min-height: 18px;
+            width: 18px;
+            height: 18px;
+            margin: 0 1px;
+        }
+    }
+
+    &.small {
+        padding: 0 5px;
+        height: 20px;
+        margin: 3px;
+        font-size: .75rem;
+
+        svg {
+            min-width: 14px;
+            min-height: 14px;
+            width: 14px;
+            height: 14px;
+            margin: 0 1px;
+        }
+    }
+
+    &.rounded {
+        border-radius: 60px;
+    }
+
+    &.smooth {
+        border-radius: $radius * 2;
+    }
+
+    &.yellow {
+        background-color: $yellow;
+        border-color: $yellow;
+        color: $dark;
+
+        &.outlined {
+            border-color: $yellow;
+            background-color: transparent;
+            color: $yellow;
+        }
+    }
+
+    &.primary {
+        background-color: $primary;
+        color: #fff;
+
+        path {
+            fill: #fff;
+        }
+
+        &.outlined {
+            border-color: $primary;
+            background-color: transparent;
+            color: $primary;
+        }
+    }
+
+    &.info {
+        background-color: $info;
+        color: #fff;
+
+        path {
+            fill: #fff;
+        }
+
+        &.outlined {
+            border-color: $info;
+            background-color: transparent;
+            color: $info;
+        }
+    }
+
+    &.error {
+        background-color: $error;
+        color: #fff;
+
+        path {
+            fill: #fff;
+        }
+
+        &.outlined {
+            border-color: $error;
+            background-color: transparent;
+            color: $error;
+        }
+    }
+
+    &.success {
+        background-color: $success;
+        color: #fff;
+
+        path {
+            fill: #fff;
+        }
+
+        &.outlined {
+            border-color: $success;
+            background-color: transparent;
+            color: $success;
+        }
+    }
+}

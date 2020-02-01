@@ -2,17 +2,23 @@
 
 #### Main Goal: Create a lot of usefull and maximum reusable UI components
 
+##### Used stack:
+- JS, React.js;
+- React-Transition-Group;
+- Styles: SCSS;
+
 #### TODO:
 - [ ] Popover
 - [ ] Dialog
 - [ ] Radio button
 - [ ] Date picker / Calendar
 - [ ] Badge
-- [ ] Tag
+- [X] Tag
 - [X] Card
 - [ ] Expansion List
 - [ ] Stepper
 - [ ] Rating
+- [ ] Icon
 - [ ] Dock
 - [ ] Alert
 - [ ] Notification
