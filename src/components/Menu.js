@@ -2,12 +2,25 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 export const Menu = (props) => {
+    const menuClass = () => {
+        let result = '';
+        let className = {
+            menu: 'menu-container',
+            className: props.className ? props.className : ''
+        }
+        
+        for (const key in className) {
+            if (className[key]) result += className[key] + ' '
+        }
+        return result.trim();
+    }
+
     const handleSelect = (item) => {
         props.onClose()
         props.onSelect(item)
     }
     return (
-        <div className="menu-container" 
+        <div className={menuClass()} 
             tabIndex={-1}
             onBlur={() => props.onClose()}>
             {props.trigger}

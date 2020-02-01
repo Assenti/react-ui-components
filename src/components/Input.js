@@ -33,7 +33,7 @@ export const InputField = (props) => {
     }
 
     const handleBlur = (e) => {
-        if (props.onFocus) props.onBlur(e)
+        if (props.onBlur) props.onBlur(e)
         setFocus(false)
     }
 

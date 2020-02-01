@@ -15,7 +15,7 @@ import { SwitchPage } from './pages/SwitchPage';
 import { TagPage } from './pages/TagPage';
 
 export const routes = [
-    { path: '/', name: 'Home', Component: HomePage },
+    { path: '/', name: 'Get started', Component: HomePage },
     { path: '/btns', name: 'Button', Component: ButtonPage },
     { path: '/menus', name: 'Menu', Component: MenuPage },
     { path: '/lists', name: 'List', Component: ListPage },

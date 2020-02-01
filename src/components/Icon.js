@@ -16,7 +16,8 @@ import {
     Moon,
     Star,
     StarOutline,
-    Smartphone
+    Smartphone,
+    Hammer
 } from '../icons/index';
 
 export const Icon = (props) => {
@@ -56,7 +57,9 @@ export const Icon = (props) => {
             case 'star-outline':
                 return <StarOutline size={props.size} color={props.color}/>;   
             case 'smartphone':
-                return <Smartphone size={props.size} color={props.color}/>;    
+                return <Smartphone size={props.size} color={props.color}/>; 
+            case 'hammer':
+                return <Hammer size={props.size} color={props.color}/>;    
             default:
                 return '';
         }
