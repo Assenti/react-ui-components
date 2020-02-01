@@ -2,7 +2,7 @@ import React,  { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Drawer } from '../components/Drawer';
 import { Button } from '../components/Button';
-import { List } from '../components/List';
+import { List, ListItem } from '../components/List';
 import { Tooltip } from '../components/Tooltip';
 import reactLogo from '../img/logo.svg';
 
@@ -26,7 +26,6 @@ export const DrawerContent = (props) => {
                 onResize={() => setDrawerMin(!drawerMin)}>
                 {drawerMin ? 
                 <List onItemClick={() => {}} 
-                    items={props.items} 
                     isActiveItem={() => false}>
                         {props.items.map((item, index) => 
                             <Tooltip key={index}    
@@ -39,12 +38,17 @@ export const DrawerContent = (props) => {
                             </Tooltip>
                         )}
                     </List> : 
-                <List dark
-                    hover
-                    onItemClick={handleItemClick} 
-                    items={props.items} 
-                    itemTitle="name" 
-                    isActiveItem={current => current.path === window.location.pathname}/>}
+                <List dark>
+                    {props.items.map((item, index) => 
+                        <ListItem
+                            key={index}
+                            isActiveItem={current => current.path === window.location.pathname}
+                            onItemClick={() => handleItemClick(item)}
+                            itemTitle="name"
+                            hover
+                            item={item}/>
+                    )}
+                </List>}
             </Drawer>
         </div>
     )

@@ -1,6 +1,8 @@
 .list {
     &.dense > .list-item {
-        padding: 10px;
+        padding: 0 10px;
+        height: 30px;
+        font-size: .9rem;
     }
 
     &.dark > .list-item {
@@ -34,11 +36,29 @@
     font-size: .75rem;
     color: gray;
     margin-left: 30px;
+    padding-bottom: 5px;
+
+    .tag {
+        margin: 0 !important;
+    }
 }
 
 .list-item {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     color: $dark;
-    padding: 15px;
+    padding: 0 15px;
+    min-height: 40px;
+    font-size: 1rem;
+
+    svg {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        min-height: 20px;
+        margin-right: 8px;
+    }
 
     &.divider {
         border-bottom: 1px solid lightgray;

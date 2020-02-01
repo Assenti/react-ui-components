@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from '../components/Card';
-import { List } from '../components/List';
+import { List, ListItem } from '../components/List';
+import { Table } from '../components/Table';
 import logo from '../img/logo.svg';
 
 export const CardPage = () => {
@@ -11,17 +12,86 @@ export const CardPage = () => {
         { name: 'Bruce Benner', hero: 'Hulk', icon: 'account', check: false }
     ];
 
+    const keys = ['property', 'description', 'default', 'type', 'value'];
+    const items = [
+        { 
+            property: 'header', 
+            description: 'Set card header',
+            default: '', 
+            type: 'any',
+            value: ''
+        },
+        { 
+            property: 'footer',
+            description: 'Set card footer', 
+            default: '', 
+            type: 'any',
+            value: ''
+        },
+        { 
+            property: 'width',
+            description: 'Set card width', 
+            default: '', 
+            type: 'string | number',
+            value: '100, "100%", "100px"'
+        },
+        { 
+            property: 'img',
+            description: 'Set card image', 
+            default: '', 
+            type: 'string | base64',
+            value: ''
+        },
+        { 
+            property: 'flat', 
+            description: 'Remove card box shadow',
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'dark',
+            description: 'Set dark mode', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'className',
+            description: 'Set a custom css class to component', 
+            default: '', 
+            type: 'string',
+            value: ''
+        }
+    ]
+
     return (
         <div className="page">
             <div className="page-title">Cards</div>
             <div style={{ maxWidth: 500 }}>
                 <h3>Card with header</h3>
                 <Card header="Marvel heroes">
-                    <List items={itemsComplexInitial} itemTitle="name"/>
+                    <List>
+                        {itemsComplexInitial.map((item, index) => 
+                            <ListItem 
+                                key={index}
+                                item={item}
+                                hover
+                                itemTitle="name"/>
+                        )}
+                    </List>
                 </Card>
                 <h3>Card flat</h3>
                 <Card header="Marvel heroes" flat>
-                    <List items={itemsComplexInitial} itemTitle="name"/>
+                    <List>
+                        {itemsComplexInitial.map((item, index) => 
+                            <ListItem 
+                                key={index}
+                                item={item}
+                                hover
+                                itemTitle="name"/>
+                        )}
+                    </List>
                 </Card>
                 <h3>Card with image</h3>
                 <Card 
@@ -31,6 +101,13 @@ export const CardPage = () => {
                     <p>Some title</p>
                 </Card>
             </div>
+            <h2>API</h2>
+            <Table
+                bordered
+                headers={keys}
+                items={items}
+                index={true}
+                itemTitles={keys}/>
         </div>
     )
 }

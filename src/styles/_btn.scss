@@ -310,5 +310,9 @@
         height: 36px;
         width: 0;
         border-radius: 50%;
+        
+        svg {
+            margin: 0 !important;
+        }
     }
 }

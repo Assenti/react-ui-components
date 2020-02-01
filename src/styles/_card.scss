@@ -3,6 +3,14 @@
     border: 1px solid $lightgray;
     border-radius: $radius * 2;
 
+    &.dark {
+        background-color: $night;
+    }
+
+    &.flat {
+        border-color: lightgray;
+    }
+
     &:not(.flat) {
         box-shadow: 0 0 3px rgba(black, .3);
     }

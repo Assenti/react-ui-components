@@ -5,7 +5,8 @@ export const Card = (props) => {
         let result = '';
         let className = {
             card: 'card',
-            flat: props.flat ? 'flat' : ''
+            flat: props.flat ? 'flat' : '',
+            dark: props.dark ? 'dark' : ''
         }
 
         for (const key in className) {

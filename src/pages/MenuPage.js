@@ -23,7 +23,7 @@ export const MenuPage = () => {
         },
         { 
             property: 'itemTitle', 
-            description: 'If you pass items as array of object pass the key of field that you want to display', 
+            description: 'If you pass items as array of objects pass the key of field that you want to display', 
             default: '', 
             type: 'string',
             value: ''

@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { List, ListItem } from '../components/List';
 import { Button } from '../components/Button';
 import { Checkbox } from '../components/Checkbox';
+import { Table } from '../components/Table';
+import { Card } from '../components/Card';
+import { Tag } from '../components/Tag';
 
 export const ListPage = () => {
-    const items = ['John Doe', 'Peter Parker', 'Tony Stark', 'Bruce Benner'];
+    const names = ['John Doe', 'Peter Parker', 'Tony Stark', 'Bruce Benner'];
 
     const itemsComplexInitial = [
         { name: 'Steve Rogers', hero: 'Captain America', icon: 'account', check: false }, 
@@ -12,6 +15,104 @@ export const ListPage = () => {
         { name: 'Tony Stark', hero: 'Iron man', icon: 'account', check: false }, 
         { name: 'Bruce Benner', hero: 'Hulk', icon: 'account', check: false }
     ];
+
+    const keys = ['property', 'description', 'default', 'type', 'value'];
+    const items = [
+        { 
+            property: 'header', 
+            description: 'Set list header',
+            default: '', 
+            type: 'any',
+            value: ''
+        },
+        { 
+            property: 'dense', 
+            description: 'Set list item density',
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'dark',
+            description: 'Set dark mode (can not be used with light prop)', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'className',
+            description: 'Set a custom css class to component', 
+            default: '', 
+            type: 'string',
+            value: ''
+        }
+    ]
+
+    const items2 = [
+        { 
+            property: 'itemTitle', 
+            description: 'If you pass items as array of objects pass the key of field that you want to display', 
+            default: '', 
+            type: 'string',
+            value: ''
+        },
+        { 
+            property: 'subTitle', 
+            description: 'Set subtitle in list item (It can be just text or Tag and etc.)', 
+            default: '', 
+            type: 'any',
+            value: ''
+        },
+        { 
+            property: 'isActiveItem', 
+            description: 'Define the active item and set active class (return boolean)', 
+            default: '', 
+            type: 'function',
+            value: ''
+        },
+        { 
+            property: 'checkbox',
+            description: 'A placeholder for checkbox (Expect a checkbox element or Component)', 
+            default: '', 
+            type: 'any',
+            value: ''
+        },
+        { 
+            property: 'icon',
+            description: 'Set icon before the text in list item', 
+            default: '', 
+            type: 'string',
+            value: 'home | search | etc. (see icon names list in docs)'
+        },
+        { 
+            property: 'controls',
+            description: 'A placeholder for item controls like buttons or etc.', 
+            default: '', 
+            type: 'any',
+            value: ''
+        },
+        { 
+            property: 'noDivider',
+            description: 'Remove the divider line between items', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'hover',
+            description: 'Set background color on item hover', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'className',
+            description: 'Set a custom css class to component', 
+            default: '', 
+            type: 'string',
+            value: ''
+        }
+    ]
 
     const [itemsComplex, setItemsComplex] = useState(itemsComplexInitial);
     const [selected, setSelected] = useState([]);
@@ -37,46 +138,90 @@ export const ListPage = () => {
             <div className="page-title">Lists</div>
             <div className="half-width">
                 <h3>Simple list</h3>
-                <List items={items}/>
-                <h3>Simple list dark mode with hover and icons</h3>
-                <div className="bg-night pa-10 smooth-border">
-                    <List items={itemsComplex} itemTitle="hero" dark hover/>
-                </div>
+                <Card>
+                    <List>
+                        {names.map((item, index) => 
+                            <ListItem 
+                                key={index} 
+                                item={item}/>
+                        )}
+                    </List>
+                </Card>
+                <h3>Simple list with dark mode, hover and icons</h3>
+                <Card dark>
+                    <List items={itemsComplex} itemTitle="hero" dark hover>
+                        {itemsComplex.map((item, index) => 
+                            <ListItem 
+                                key={index} 
+                                item={item}
+                                icon={item.icon}
+                                itemTitle="hero"
+                                hover/>
+                        )}
+                    </List>
+                </Card>
                 <h3>Dense size list with header and hover</h3>
-                <List dense hover items={items} header="Marvel avengers:"/>
+                <Card>
+                    <List dense header="Marvel avengers:">
+                        {names.map((item, index) => 
+                            <ListItem 
+                                key={index} 
+                                item={item}
+                                icon="account"
+                                itemTitle="hero"
+                                hover/>
+                        )}
+                    </List>
+                </Card>
                 <h3>List with checkbox</h3>
-                <List 
-                    onItemClick={() => {}} 
-                    header={'Selected Marvel avengers: ' + selected.length}>
-                    {itemsComplex.map((item, index) => 
-                        <ListItem 
-                            key={index} 
-                            item={item}
-                            itemTitle="hero"
-                            noIcon
-                            hover
-                            checkbox={<Checkbox 
-                                checked={isSelected(item, 'hero')}
-                                onChange={() => selectOne(item)}/>}/>
-                    )}
-                </List>
+                <Card>
+                    <List header={'Selected Marvel avengers: ' + selected.length}>
+                        {itemsComplex.map((item, index) => 
+                            <ListItem 
+                                key={index} 
+                                item={item}
+                                itemTitle="hero"
+                                hover
+                                checkbox={<Checkbox 
+                                    checked={isSelected(item, 'hero')}
+                                    onChange={() => selectOne(item)}/>}/>
+                        )}
+                    </List>
+                </Card>
                 <h3>List with controls and subtitles</h3>
-                <List>
-                    {itemsComplex.map((item, index) => 
-                        <ListItem 
-                            key={index} 
-                            item={item} 
-                            itemTitle="name"
-                            subTitle={item.hero}
-                            controls={
-                                <React.Fragment>
-                                    <Button outlined small color="light" className="mr-10" icon="edit" onClick={() => {}}/>
-                                    <Button outlined small color="light" icon="delete" onClick={() => {}}/>
-                                </React.Fragment>
-                            }/>
-                    )}
-                </List>
+                <Card>
+                    <List>
+                        {itemsComplex.map((item, index) => 
+                            <ListItem 
+                                key={index} 
+                                item={item}
+                                icon={item.icon} 
+                                itemTitle="name"
+                                subTitle={<Tag small color="info" value={item.hero}/>}
+                                controls={
+                                    <React.Fragment>
+                                        <Button small color="light" className="mr-10" icon="edit" onClick={() => {}}/>
+                                        <Button small color="light" icon="close" onClick={() => {}}/>
+                                    </React.Fragment>
+                                }/>
+                        )}
+                    </List>
+                </Card>
             </div>
+            <h2>List API</h2>
+            <Table
+                bordered
+                headers={keys}
+                items={items}
+                index={true}
+                itemTitles={keys}/>
+            <h2>ListItem API</h2>
+            <Table
+                bordered
+                headers={keys}
+                items={items2}
+                index={true}
+                itemTitles={keys}/>
         </div>
     )
 }
