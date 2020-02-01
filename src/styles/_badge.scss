@@ -1,0 +1,58 @@
+.badge-container {
+    display: inline-block;
+    position: relative;
+    padding: 2px;
+
+    &.rounded {
+        .badge {
+            border-radius: 60px;
+        }
+    }
+
+    &:not(.rounded) {
+        .badge {
+            border-radius: $radius;
+        }
+    }
+
+    &.primary {
+        .badge {
+            background-color: $primary;
+            color: #fff;
+        }
+    }
+
+    &.info {
+        .badge {
+            background-color: $info;
+            color: #fff;
+        }
+    }
+
+    &.success {
+        .badge {
+            background-color: $success;
+            color: #fff;
+        }
+    }
+
+    &.error {
+        .badge {
+            background-color: $error;
+            color: #fff;
+        }
+    }
+
+    .badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        font-size: .7rem;
+        padding: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $lightgray;
+    }
+}
+

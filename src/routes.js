@@ -13,6 +13,7 @@ import { CheckboxPage } from './pages/CheckboxPage';
 import { CardPage } from './pages/CardPage';
 import { SwitchPage } from './pages/SwitchPage';
 import { TagPage } from './pages/TagPage';
+import { BadgePage } from './pages/BadgePage';
 
 export const routes = [
     { path: '/', name: 'Get started', Component: HomePage },
@@ -29,5 +30,6 @@ export const routes = [
     { path: '/checkbox', name: 'Checkbox', Component: CheckboxPage },
     { path: '/switch', name: 'Switch', Component: SwitchPage },
     { path: '/card', name: 'Card', Component: CardPage },
-    { path: '/tag', name: 'Tag', Component: TagPage }
+    { path: '/tag', name: 'Tag', Component: TagPage },
+    { path: '/badge', name: 'Badge', Component: BadgePage }
 ]

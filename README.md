@@ -12,7 +12,7 @@
 - [ ] Dialog
 - [ ] Radio button
 - [ ] Date picker / Calendar
-- [ ] Badge
+- [X] Badge
 - [X] Tag
 - [X] Card
 - [ ] Expansion List

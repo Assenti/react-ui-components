@@ -13,6 +13,7 @@
     align-items: center;
     border: 1px solid transparent;
     font-size: .9rem;
+    background-color: $lightgray;
 
     &.lifted {
         box-shadow: 0 2px 5px rgba(black, .3);
