@@ -35,7 +35,7 @@ export const ButtonPage = () => {
         },
         { 
             property: 'disabled',
-            description: 'Make button disabled', 
+            description: 'Make Radio group disabled', 
             default: 'false',
             type: 'boolean', 
             value: 'true | false'},

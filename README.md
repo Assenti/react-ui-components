@@ -10,7 +10,7 @@
 #### TODO:
 - [ ] Popover
 - [ ] Dialog
-- [ ] Radio button
+- [X] Radio button
 - [ ] Date picker / Calendar
 - [X] Badge
 - [X] Tag

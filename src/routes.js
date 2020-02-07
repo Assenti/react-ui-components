@@ -14,6 +14,7 @@ import { CardPage } from './pages/CardPage';
 import { SwitchPage } from './pages/SwitchPage';
 import { TagPage } from './pages/TagPage';
 import { BadgePage } from './pages/BadgePage';
+import { RadioPage } from './pages/RadioPage';
 
 export const routes = [
     { path: '/', name: 'Get started', Component: HomePage },
@@ -28,6 +29,7 @@ export const routes = [
     { path: '/table', name: 'Table', Component: TablePage },
     { path: '/modal', name: 'Modal', Component: ModalPage },
     { path: '/checkbox', name: 'Checkbox', Component: CheckboxPage },
+    { path: '/radio', name: 'Radio Group', Component: RadioPage },
     { path: '/switch', name: 'Switch', Component: SwitchPage },
     { path: '/card', name: 'Card', Component: CardPage },
     { path: '/tag', name: 'Tag', Component: TagPage },

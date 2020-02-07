@@ -48,6 +48,7 @@ export const InputField = (props) => {
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                     ref={input}
+                    readOnly={props.readOnly}
                     disabled={props.disabled}
                     required={props.required}
                     autoComplete={props.autoComplete}
@@ -56,7 +57,7 @@ export const InputField = (props) => {
                     placeholder={props.placeholder} 
                     onChange={props.onChange}
                     type={props.type}/>
-                {props.value ? <i onClick={() => {props.onClear()}}><Icon name="close" size={20}/></i> : ''}
+                {props.value && props.clearable ? <i onClick={() => {props.onClear()}}><Icon name="close" size={20}/></i> : ''}
                 {props.suffix ? props.suffix : ''}
             </div>
             {props.hint ? <div className="input-field__hint">{props.hint}</div> : ''}

@@ -1,0 +1,35 @@
+.radio-group {
+    display: inline-flex;
+
+    &.vertical {
+        flex-direction: column;
+    }
+}
+
+.radio {
+    display: inline-flex;
+    align-items: center;
+    margin: 5px;
+    cursor: pointer;
+
+    &.disabled {
+        cursor: not-allowed;
+        color: gray;
+        user-select: none;
+        -moz-user-select: none;
+    }
+
+    input[type=radio] {
+        outline: none;
+        cursor: pointer;
+    }
+
+    input:disabled {
+        cursor: not-allowed;
+    }
+
+    & > span {
+        font-size: .9rem;
+        margin-left: 5px;
+    }
+}
