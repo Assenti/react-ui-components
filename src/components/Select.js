@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { ChevronNext, ChevronDown } from '../icons/index';
 import { CSSTransition } from 'react-transition-group';
+import { Icon } from './Icon';
 
 export const Select = ({ 
     items, 
@@ -101,7 +102,7 @@ export const Select = ({
                         title={selectedItem}>
                             {selectedItem ? cutLongText(selectedItem) : ''}
                     </div> : ''}
-                <ChevronDown size={12}/>
+                <Icon name="chevron-down"/>
                 
                 <CSSTransition
                     in={open}
@@ -114,7 +115,7 @@ export const Select = ({
                                 className={selectItemClass(item)}
                                 onClick={e => subItems(item).length > 0 ? {} : handleSelect(e, itemName ? item[itemName] : item)}>
                                 {itemName ? item[itemName] : item}
-                                {subItems(item).length > 0 ? <ChevronNext size={14}/> : ''}
+                                {subItems(item).length > 0 ? <Icon name="chevron-next"/> : ''}
                                 {subItems(item).length > 0 ? 
                                     <div className="select-menu__subitems">
                                         {subTitle ? <div className="select-menu__subitem-title">{itemName ? item[itemName] : item}</div> : ''}

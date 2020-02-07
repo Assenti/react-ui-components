@@ -19,31 +19,24 @@ export const ChevronDoubleRight = (props) => {
 
 export const ChevronBack = (props) => {
     return (
-        <svg viewBox="0 0 477.175 477.175" 
-            width={props.size ? props.size : 24} height={props.size ? props.size : 24}><g><g>
-            <path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225   c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z" 
-                fill={props.color ? props.color : '#4D4D4D'}/>
-            </g></g>
+        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : '#4d4d4d'} d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
         </svg>
     )
 }
 
 export const ChevronNext = (props) => {
     return (
-        <svg viewBox="0 0 477.175 477.175" 
-            width={props.size ? props.size : 32} height={props.size ? props.size : 32}><g><g>
-            <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5   c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z   " 
-            fill={props.color ? props.color : '#4D4D4D'}/>
-        </g></g> </svg>
+        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : '#4D4D4D'} d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+        </svg>
     )
 }
 
 export const ChevronDown = (props) => {
     return (
-        <svg width={props.size ? props.size : 32} height={props.size ? props.size : 32} 
-            viewBox="0 0 407.437 407.437">
-            <polygon points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 " fill={props.color ? props.color : '#4D4D4D'}/>
-            <g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : '#4D4D4D'} d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
         </svg>
     )
 }
@@ -99,7 +92,8 @@ export const Account = (props) => {
 
 export const Search = (props) => {
     return (
-        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
+        <svg width={props.size ? props.size : 24} 
+            height={props.size ? props.size : 24} viewBox="0 0 24 24">
             <path fill={props.color ? props.color : '#4d4d4d'} d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
         </svg>
     )
@@ -123,7 +117,9 @@ export const Chip = (props) => {
 
 export const Empty = (props) => {
     return (
-        <svg viewBox="0 0 512 512" width={props.size ? props.size : 32} height={props.size ? props.size : 32}>
+        <svg viewBox="0 0 512 512" 
+            width={props.size ? props.size : 24} 
+            height={props.size ? props.size : 24}>
         <g>
             <g>
                 <path fill={props.color ? props.color : '#4D4D4D'} d="M510.417,201.092l-48.2-96.4c-2.541-5.082-7.735-8.292-13.417-8.292H63.2c-5.682,0-10.875,3.21-13.417,8.292l-48.2,96.4
@@ -139,7 +135,7 @@ export const Empty = (props) => {
 
 export const Sun = (props) => {
     return (
-        <svg width={props.size ? props.size : 32} height={props.size ? props.size : 32} viewBox="0 0 24 24">
+        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
             <path fill={props.color ? props.color : '#4D4D4D'}
                 d="M3.55,18.54L4.96,19.95L6.76,18.16L5.34,16.74M11,22.45C11.32,22.45 13,22.45 13,22.45V19.5H11M12,5.5A6,6 0 0,0 6,11.5A6,6 0 0,0 12,17.5A6,6 0 0,0 18,11.5C18,8.18 15.31,5.5 12,5.5M20,12.5H23V10.5H20M17.24,18.16L19.04,19.95L20.45,18.54L18.66,16.74M20.45,4.46L19.04,3.05L17.24,4.84L18.66,6.26M13,0.55H11V3.5H13M4,10.5H1V12.5H4M6.76,4.84L4.96,3.05L3.55,4.46L5.34,6.26L6.76,4.84Z" />
         </svg>
@@ -148,7 +144,7 @@ export const Sun = (props) => {
 
 export const Moon = (props) => {
     return (
-        <svg width={props.size ? props.size : 32} height={props.size ? props.size : 32} viewBox="0 0 24 24">
+        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
             <path fill={props.color ? props.color : '#4D4D4D'} 
                 d="M2 12A10 10 0 0 0 15 21.54A10 10 0 0 1 15 2.46A10 10 0 0 0 2 12Z" />
         </svg>
@@ -157,7 +153,7 @@ export const Moon = (props) => {
 
 export const Star = (props) => {
     return (
-        <svg width={props.size ? props.size : 32} height={props.size ? props.size : 32} viewBox="0 0 24 24">
+        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
             <path fill={props.color ? props.color : '#4D4D4D'} d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
         </svg>
     )
@@ -165,7 +161,7 @@ export const Star = (props) => {
 
 export const StarOutline = (props) => {
     return (
-        <svg width={props.size ? props.size : 32} height={props.size ? props.size : 32} viewBox="0 0 24 24">
+        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
             <path fill={props.color ? props.color : '#4D4D4D'} d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" />
         </svg>
     )
@@ -173,7 +169,7 @@ export const StarOutline = (props) => {
 
 export const Smartphone = (props) => {
     return (
-        <svg width={props.size ? props.size : 32} height={props.size ? props.size : 32} viewBox="0 0 24 24">
+        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
             <path fill={props.color ? props.color : '#4D4D4D'} d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3C19,1.89 18.1,1 17,1Z" />
         </svg>
     )
@@ -181,7 +177,7 @@ export const Smartphone = (props) => {
 
 export const Hammer = (props) => {
     return (
-        <svg width={props.size ? props.size : 32} height={props.size ? props.size : 32} viewBox="0 0 24 24">
+        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
             <path fill={props.color ? props.color : '#4D4D4D'} d="M2 19.63L13.43 8.2L12.72 7.5L14.14 6.07L12 3.89C13.2 2.7 15.09 2.7 16.27 3.89L19.87 7.5L18.45 8.91H21.29L22 9.62L18.45 13.21L17.74 12.5V9.62L16.27 11.04L15.56 10.33L4.13 21.76L2 19.63Z" />
         </svg>
     )
@@ -189,7 +185,7 @@ export const Hammer = (props) => {
 
 export const City = (props) => {
     return (
-        <svg width={props.size ? props.size : 32} height={props.size ? props.size : 32} viewBox="0 0 24 24">
+        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
             <path fill={props.color ? props.color : '#4D4D4D'} d="M19,15H17V13H19M19,19H17V17H19M13,7H11V5H13M13,11H11V9H13M13,15H11V13H13M13,19H11V17H13M7,11H5V9H7M7,15H5V13H7M7,19H5V17H7M15,11V5L12,2L9,5V7H3V21H21V11H15Z" />
         </svg>
     )

@@ -1,5 +1,5 @@
 .btn {
-    padding: 8px;
+    padding: 0 8px;
     text-align: center;
     cursor: pointer;
     user-select: none;
@@ -14,6 +14,7 @@
     border: 1px solid transparent;
     font-size: .9rem;
     background-color: $lightgray;
+    box-sizing: border-box;
 
     &.lifted {
         box-shadow: 0 2px 5px rgba(black, .3);
@@ -24,7 +25,7 @@
     }
 
     &:not(.icon):not(.medium):not(.large) {
-        height: 35px;
+        height: 30px;
     }
 
     &.uppercase {
@@ -41,7 +42,8 @@
     }
 
     &.medium {
-        padding: 15px 10px;
+        height: 40px;
+        padding: 0 10px;
         font-size: 1rem;
 
         &.uppercase {
@@ -50,7 +52,8 @@
     }
 
     &.large {
-        padding: 20px 15px;
+        height: 50px;
+        padding: 0 15px;
         font-size: 1.1rem;
 
         &.uppercase {
@@ -312,7 +315,7 @@
         width: 0;
         border-radius: 50%;
         
-        svg {
+        i {
             margin: 0 !important;
         }
     }

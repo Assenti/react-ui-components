@@ -8,6 +8,10 @@ $sizes: (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,25,
     }
 }
 
+.row-inline {
+    display: inline-flex;
+}
+
 .col {
     flex-grow: 1;
 }
@@ -79,6 +83,30 @@ $sizes: (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,25,
 
 .smooth-border {
     border-radius: $radius * 2;
+}
+
+.hoverable:hover {
+    background-color: $lightgray;
+    transition: all .2s ease-in-out;
+    border-radius: $radius;
+}
+
+.fz-8 {
+    font-size: .8rem;
+}
+
+.fz-9 {
+    font-size: .9rem;
+}
+
+.fz-10 {
+    font-size: 1rem;
+}
+
+@each $size in $sizes {
+    .ma-#{$size} {
+        margin: #{$size}px;
+    }
 }
 
 @each $size in $sizes {

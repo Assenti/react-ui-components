@@ -15,10 +15,12 @@ import { SwitchPage } from './pages/SwitchPage';
 import { TagPage } from './pages/TagPage';
 import { BadgePage } from './pages/BadgePage';
 import { RadioPage } from './pages/RadioPage';
+import { IconPage } from './pages/IconPage';
 
 export const routes = [
     { path: '/', name: 'Get started', Component: HomePage },
     { path: '/btns', name: 'Button', Component: ButtonPage },
+    { path: '/icon', name: 'Icon', Component: IconPage },
     { path: '/menus', name: 'Menu', Component: MenuPage },
     { path: '/lists', name: 'List', Component: ListPage },
     { path: '/inputs', name: 'Input', Component: InputsPage },

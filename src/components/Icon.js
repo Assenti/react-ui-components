@@ -9,6 +9,7 @@ import {
     ChevronDoubleRight,
     ChevronDoubleLeft,
     ChevronDown,
+    ChevronNext,
     Code,
     Chip,
     Account,
@@ -18,7 +19,9 @@ import {
     StarOutline,
     Smartphone,
     Hammer,
-    City
+    City,
+    ChevronBack,
+    Empty
 } from '../icons/index';
 
 export const Icon = (props) => {
@@ -48,7 +51,11 @@ export const Icon = (props) => {
             case 'account':
                 return <Account size={props.size} color={props.color}/>; 
             case 'chevron-down':
-                return <ChevronDown size={props.size} color={props.color}/>;    
+                return <ChevronDown size={props.size} color={props.color}/>; 
+            case 'chevron-next':
+                return <ChevronNext size={props.size} color={props.color}/>;
+            case 'chevron-back':
+                return <ChevronBack size={props.size} color={props.color}/>;    
             case 'sun':
                 return <Sun size={props.size} color={props.color}/>;    
             case 'moon':
@@ -62,13 +69,28 @@ export const Icon = (props) => {
             case 'hammer':
                 return <Hammer size={props.size} color={props.color}/>;  
             case 'city':
-                return <City size={props.size} color={props.color}/>;    
+                return <City size={props.size} color={props.color}/>;   
+            case 'empty':
+                return <Empty size={props.size} color={props.color}/>;    
             default:
                 return '';
         }
     }
 
+    const iconClass = () => {
+        if (props.className) {
+            return `icon ${props.className}`
+        } else {
+            return 'icon'
+        }
+    }
+
     return (
-        <Icon/>
+        <i title={props.title}
+            style={{ width: props.size ? props.size : 24, height: props.size ? props.size : 24 }}
+            className={iconClass()} 
+            onClick={(e) => props.onClick ? props.onClick(e) : {}}>
+            <Icon/>
+        </i>
     )
 }
