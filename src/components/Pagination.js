@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Select } from './Select';
 import { ChevronBack, ChevronNext } from '../icons/index';
 
 const generateMockArr = (length) => {
@@ -11,20 +11,31 @@ const generateMockArr = (length) => {
 }
 
 export const Pagination = (props) => {
-    const { 
-        pages, 
-        currentPage, 
-        onNext, 
-        onPage, 
-        onPrev, 
-        onPerPageSelect, 
-        perPageVariants, 
-        perPage 
-    } = props
-    
-    const getLimit = () => Math.ceil(pages/perPage) >= 5 ? 5 : Math.ceil(pages/perPage)
-    const [perPageLocal, setPerPageLocal] = useState(perPage)
-    const [allPages, setAllPages] = useState(generateMockArr(Math.ceil(pages/perPage)))
+    const paginationClass = () => {
+        let result = '';
+        let className = {
+            btn: 'pagination',
+            size: props.size ? props.size : '',
+            rounded: props.rounded ? 'rounded' : '',
+            color: props.color ? props.color : '',
+            className: props.className ? props.className : ''
+        }
+        
+        for (const key in className) {
+            if (className[key]) result += className[key] + ' '
+        }
+        return result.trim();
+    }
+
+    let perPage = props.perPage ? props.perPage : 10;
+
+    const getLimit = () => {
+        return Math.ceil(props.itemsCount/perPage) >= 5 ?
+            5 : Math.ceil(props.itemsCount/perPage)
+    }
+    const [currentPage, setCurrentPage] = useState(props.current ? props.current : 1);
+    const [perPageLocal, setPerPageLocal] = useState(perPage);
+    const [allPages, setAllPages] = useState(generateMockArr(Math.ceil(props.itemsCount/perPage)));
     const [activePages, setActivePages] = useState(allPages.slice(0, getLimit()))
 
     const isPrevAvailable = () => {
@@ -32,7 +43,9 @@ export const Pagination = (props) => {
     }
 
     const isNextAvailable = () => {
-        if (currentPage === pages || pages === 0 || currentPage === Math.ceil(pages/perPage)) return false 
+        if (currentPage === props.itemsCount || 
+            props.itemsCount === 0 || 
+            currentPage === Math.ceil(props.itemsCount/perPage)) return false 
         else return true
     }
 
@@ -40,11 +53,9 @@ export const Pagination = (props) => {
        if (isNextAvailable()) {
             if (currentPage % getLimit() === 0 && currentPage < allPages.length) {
                 setActivePages(allPages.slice(currentPage, currentPage + getLimit()))
-                currentPage++
-                onNext()
+                setCurrentPage(currentPage + 1)
             } else if (currentPage < allPages.length) {
-                currentPage++
-                onNext()
+                setCurrentPage(currentPage + 1)
             }
        }
     }
@@ -52,37 +63,26 @@ export const Pagination = (props) => {
     const handleOnPrev = () => {
         if (isPrevAvailable()) {
             if((currentPage - 1) % getLimit() === 0 && currentPage > 1){
-                currentPage--
                 setActivePages(allPages.slice(currentPage - getLimit(), currentPage))
-                onPrev()
+                setCurrentPage(currentPage - 1)
             } else if (currentPage > 1) {
-                currentPage--
-                onPrev()
+                setCurrentPage(currentPage - 1)
             }
         }
     }
 
-    const handlePerPageSelect = e => {
-        setPerPageLocal(e.target.value)
-        if (e.target.value === 'Все') {
-            onPerPageSelect(-1)
-        } else {
-            onPerPageSelect(parseInt(e.target.value))
-        }
+    const handlePerPageSelect = (value) => {
+        setPerPageLocal(value)
+    }
+
+    const getSize = () => {
+        if (props.size === 'medium') return 100
+        else if (props.size === 'large') return 100
+        else return 100
     }
 
     return (
-        <div className="pagination">
-            <div className="d-flex align-center">
-                <div className="mr-10" style={{ fontSize: '.9rem' }}>Кол-во заявок на стр.</div>
-                <select className="select"
-                    style={{ height: '40px', marginRight: '40px' }}
-                    onChange={handlePerPageSelect} 
-                    value={perPageLocal}
-                    disabled={pages === 0}>
-                    {perPageVariants.map((item, index) => <option key={index}>{item}</option>)}
-                </select>
-            </div>
+        <div className={paginationClass()}>
 
             <div className={isPrevAvailable() ? 'pagination-item' : 'pagination-item disabled'} onClick={handleOnPrev}>
                 <ChevronBack />
@@ -91,7 +91,7 @@ export const Pagination = (props) => {
             {activePages.map((item, index) => {
                 return (
                     <div key={index} className={(item + 1) === currentPage ? 'pagination-item active' : 'pagination-item'}
-                        onClick={() => onPage(item + 1)}>
+                        onClick={() => setCurrentPage(item + 1)}>
                         {item + 1}
                     </div>
                 )
@@ -99,6 +99,18 @@ export const Pagination = (props) => {
 
             <div className={isNextAvailable() ? 'pagination-item' : 'pagination-item disabled'} onClick={handleOnNext}>
                 <ChevronNext />
+            </div>
+
+            <div className="pagination-per-page">
+                <Select
+                    minWidth={getSize()}
+                    size={props.size}
+                    rounded={props.rounded}
+                    color={props.color}
+                    items={props.perPageVariants ? props.perPageVariants : [10, 20, 50, 100]}
+                    normalTitle={true}
+                    selectedItem={`${perPageLocal} / ${props.pageText ? props.pageText : 'page'}`}
+                    onSelect={handlePerPageSelect}/>
             </div>
         </div>
     )

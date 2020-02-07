@@ -1,7 +1,6 @@
 .pagination {
     display: flex;
     align-items: center;
-    padding: 5px 10px;
 
     &.middle {
         justify-content: center;
@@ -10,47 +9,166 @@
     &.right {
         justify-content: flex-end;
     }
+
+    &.rounded > .pagination-item {
+        border-radius: 50%;
+    }
+
+    &:not(.medium):not(.large) > .pagination-item {
+        height: 30px;
+        width: 30px;
+        font-size: .9rem;
+
+        & > svg {
+            width: 13px;
+            height: 13px;
+        }
+    }
+
+    &.medium > .pagination-item {
+        height: 40px;
+        width: 40px;
+        font-size: 1rem;
+
+        & > svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    &.large > .pagination-item {
+        height: 50px;
+        width: 50px;
+        font-size: 1.1rem;
+
+        & > svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    &.info {
+        .pagination-item {
+            &.active {
+                background-color: $info;
+                border-color: $info;
+                color: #fff;
+            }
+
+            &:not(.disabled):not(.active):hover {
+                color: $info;
+                border-color: $info;
+
+                path {
+                    fill: $info;
+                }
+            }
+        }
+    }
+
+    &.primary {
+        .pagination-item {
+            &.active {
+                background-color: $primary;
+                border-color: $primary;
+                color: #fff;
+            }
+
+            &:not(.disabled):not(.active):hover {
+                color: $primary;
+                border-color: $primary;
+
+                path {
+                    fill: $primary;
+                }
+            }
+        }
+    }
+
+    &.success {
+        .pagination-item {
+            &.active {
+                background-color: $success;
+                border-color: $success;
+                color: #fff;
+            }
+
+            &:not(.disabled):not(.active):hover {
+                color: $success;
+                border-color: $success;
+
+                path {
+                    fill: $success;
+                }
+            }
+        }
+    }
+
+    &.error {
+        .pagination-item {
+            &.active {
+                background-color: $error;
+                border-color: $error;
+                color: #fff;
+            }
+
+            &:not(.disabled):not(.active):hover {
+                color: $error;
+                border-color: $error;
+
+                path {
+                    fill: $error;
+                }
+            }
+        }
+    }
+
+    .pagination-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $lightgray;
+        border: 1px solid lightgray;
+        cursor: pointer;
+        margin: 0 1px;
+        user-select: none;
+        -moz-user-select: none;
+        border-radius: $radius;
+    
+        &.active {
+            background-color: $primary;
+            border-color: $primary;
+            color: #fff;
+        }
+    
+        &:active:not(.disabled) {
+            box-shadow: 0 2px 5px rgba(black, .3);
+        }
+    
+        &.disabled {
+            background-color: transparent;
+            border-color: transparent;
+            color: $dark;
+            cursor: not-allowed;
+
+            path {
+                fill: lightgray;
+            }
+        }
+    
+        &:not(.disabled):not(.active):hover {
+            transition: all .2s ease-in-out;
+        }
+    }
 }
 
-.pagination-item {
+.pagination-per-page {
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 40px;
-    width: 40px;
-    background-color: $gray;
-    font-size: 14px;
-    border: 1px solid lightgray;
-    cursor: pointer;
-    margin: 0 1px;
-    user-select: none;
-    -moz-user-select: none;
-    border-radius: 2px;
+    margin-left: 5px;
 
-    &.active {
-        background-color: $primary;
-        border-color: $primary;
-        color: #fff;
-    }
-
-    &:active:not(.disabled) {
-        box-shadow: 0 2px 5px rgba(black, .3);
-    }
-
-    &.disabled {
-        background-color: $light;
-        border-color: $light;
-        color: $dark;
-        cursor: not-allowed;
-    }
-
-    &:not(.disabled):not(.active):hover {
-        background-color: darken($gray, 10%) !important;
-        transition: all .2s ease-in-out;
-    }
-
-    & > svg {
-        width: 16px;
-        height: 16px;
+    & > span {
+        margin-right: 5px;
+        font-size: .9rem;
     }
 }

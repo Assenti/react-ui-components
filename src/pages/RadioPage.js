@@ -71,6 +71,7 @@ export const RadioPage = () => {
                 value={city} 
                 placeholder="Choose a city" 
                 readOnly
+                color="info"
                 prefix={<Icon name="city"/>}
                 width={270}/>
             <h3>Vertical position with label</h3>
@@ -84,6 +85,7 @@ export const RadioPage = () => {
                 value={cityUS} 
                 placeholder="Choose a city" 
                 readOnly
+                color="info"
                 rounded
                 prefix={<Icon name="city"/>}
                 width={270}/>
