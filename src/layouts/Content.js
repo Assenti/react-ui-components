@@ -9,7 +9,10 @@ export const Content = (props) => {
 
     return (
         <div className="content">
-            <Header title="React UI Components"
+            <Header title={<div className="row align-center">
+                    <Button className="hidden-sm-and-up" icon="menu" dark onClick={() => props.onDrawerToggle()}/>
+                    <span className="fz-10 ml-5">React UI Components</span>
+                </div>}
                 rightSide={
                 <div className="row align-center">
                     <div className="text-lightgray mr-20"><small>Version: {version}</small></div>

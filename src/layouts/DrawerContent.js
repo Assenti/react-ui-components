@@ -20,6 +20,7 @@ export const DrawerContent = (props) => {
                 drawer={props.drawer}
                 fullHeight
                 dark
+                onClose={() => props.onClose()}
                 headerCentered
                 header={<img src={reactLogo} alt="React logo"/>}
                 min={drawerMin}

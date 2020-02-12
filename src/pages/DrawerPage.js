@@ -4,6 +4,7 @@ import { List, ListItem } from '../components/List';
 import { Button } from '../components/Button';
 import { Tooltip } from '../components/Tooltip';
 import { Table } from '../components/Table';
+import { Card } from '../components/Card';
 
 export const DrawerPage = () => {
     const [drawer, setDrawer] = useState(true);
@@ -74,45 +75,47 @@ export const DrawerPage = () => {
     return (
         <div className="page">
             <div className="page-title">Drawer</div>
-            <div className="app bordered" style={{ minHeight: 400 }}>
-                <Drawer
-                    drawer={drawer}
-                    min={drawerMin}
-                    header="Title"
-                    onResize={() => setDrawerMin(!drawerMin)}>
-                    {drawerMin ? 
-                        <List>
-                            {stack.map(({name, icon}, index) => 
-                                <Tooltip key={index}    
-                                    tooltip={name}
-                                    position="right">
-                                    <Button
-                                        light 
-                                        onClick={() => setContent(name)} 
-                                        icon={icon}/>
-                                </Tooltip>
-                            )}
-                        </List> : 
-                        <List>
-                            {stack.map((item, index) => 
-                                <ListItem 
-                                    key={index}    
-                                    item={item}
-                                    hover
-                                    itemTitle="name" />
-                            )}
-                        </List>
-                    }
-                </Drawer>
-                <div className="px-20">
-                    <h1>Just content</h1>
-                    <Button 
-                        name="Toggle" 
-                        color="info"
-                        onClick={() => setDrawer(!drawer)}/>
-                    <p>{content}</p>
+            <Card flat>
+                <div className="app">
+                    <Drawer
+                        drawer={drawer}
+                        min={drawerMin}
+                        header="Title"
+                        onResize={() => setDrawerMin(!drawerMin)}>
+                        {drawerMin ? 
+                            <List>
+                                {stack.map(({name, icon}, index) => 
+                                    <Tooltip key={index}    
+                                        tooltip={name}
+                                        position="right">
+                                        <Button
+                                            light 
+                                            onClick={() => setContent(name)} 
+                                            icon={icon}/>
+                                    </Tooltip>
+                                )}
+                            </List> : 
+                            <List>
+                                {stack.map((item, index) => 
+                                    <ListItem 
+                                        key={index}    
+                                        item={item}
+                                        hover
+                                        itemTitle="name" />
+                                )}
+                            </List>
+                        }
+                    </Drawer>
+                    <div className="px-20">
+                        <h1>Just content</h1>
+                        <Button 
+                            name="Toggle" 
+                            color="info"
+                            onClick={() => setDrawer(!drawer)}/>
+                        <p>{content}</p>
+                    </div>
                 </div>
-            </div>
+            </Card>
             <h2>API</h2>
             <Table
                 bordered

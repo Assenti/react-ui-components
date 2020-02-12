@@ -8,6 +8,7 @@ export const Drawer = (props) => {
         let result = '';
         let className = {
             btn: 'drawer',
+            collapsable: props.collapsable ? 'collapsable' : '',
             min: props.min ? 'min' : '',
             absolute: props.absolute ? 'absolute' : '',
             fullHeight: props.fullHeight ? 'full-height' : '',
@@ -20,34 +21,44 @@ export const Drawer = (props) => {
         return result.trim();
     }
 
+    const handleClose = (e) => {
+        e.preventDefault();
+        if (e.currentTarget === e.target) {
+            if (props.onClose) props.onClose()
+        } 
+    }
+
     return (
-        <CSSTransition
-            in={props.drawer}
-            timeout={300}
-            classNames="drawer"
-            unmountOnExit>
+        <div className={props.drawer ? 'drawer-background' : 'drawer-background none'} onClick={handleClose}>
             <CSSTransition
-                in={props.min}
+                in={props.drawer}
                 timeout={300}
-                classNames="expand">
-                <div className={drawerClass()}>
-                    <div className="drawer-content">
-                        {props.header ? <div className={props.headerCentered ? 
-                                'drawer-header centered' : 'drawer-header'}>
-                                    {props.header}</div> : ''}
-                        {props.children}
-                    </div>
-                    <div className="drawer-footer">
-                        <Tooltip tooltip={props.min ? 'Expand' : 'Collapse'}>
-                            <Button
-                                dark={props.dark}
-                                light={props.dark ? false : true}
-                                icon={props.min ? 'chevron-double-right' : 'chevron-double-left'}
-                                onClick={() => props.onResize()}/>
-                        </Tooltip>
-                    </div>
-                </div>
+                classNames="drawer"
+                unmountOnExit>
+                <CSSTransition
+                    in={props.min}
+                    timeout={300}
+                    classNames="expand">
+                        <div className={drawerClass()}>
+                            <div className="drawer-content">
+                                {props.header ? <div className={props.headerCentered ? 
+                                        'drawer-header centered' : 'drawer-header'}>
+                                            {props.header}</div> : ''}
+                                {props.children}
+                            </div>
+                            {props.collapsable ? <div className="drawer-footer">
+                                <Tooltip tooltip={props.min ? 'Expand' : 'Collapse'}>
+                                    <Button
+                                        dark={props.dark}
+                                        light={props.dark ? false : true}
+                                        icon={props.min ? 'chevron-double-right' : 'chevron-double-left'}
+                                        onClick={() => props.onResize()}/>
+                                </Tooltip>
+                            </div> : ''}
+                        </div>
+                    
+                </CSSTransition>
             </CSSTransition>
-        </CSSTransition>
+        </div>
     )
 }

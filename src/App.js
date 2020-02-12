@@ -11,7 +11,10 @@ const App = () => {
     return (
         <div className="app">
             <Router>
-                <DrawerContent drawer={drawer} items={routes}/>
+                <DrawerContent 
+                    drawer={drawer}
+                    onClose={() => setDrawer(false)} 
+                    items={routes}/>
                 <Switch>
                     {routes.map(({path, Component}, index) => 
                         <Route key={index} exact path={path}>
@@ -22,7 +25,7 @@ const App = () => {
                                 classNames="page"
                                 unmountOnExit>
                                 <div className="page">
-                                    <Content>
+                                    <Content onDrawerToggle={() => setDrawer(!drawer)}>
                                         <Component />
                                     </Content>
                                 </div>
