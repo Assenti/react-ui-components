@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { InputField, TextareaField } from '../components/Input';
+import { InputField, TextareaField, Uploader } from '../components/Input';
 import { Icon } from '../components/Icon';
 import { Card } from '../components/Card';
 import { Button } from '../components/Button';
@@ -8,6 +8,7 @@ import { Table } from '../components/Table';
 export const InputsPage = () => {
     const [first, setFirst] = useState('');
     const [second, setSecond] = useState('');
+    const [files, setFiles] = useState('');
 
     const keys = ['property', 'description', 'default', 'type', 'value'];
     const items = [
@@ -87,20 +88,27 @@ export const InputsPage = () => {
             type: 'any',
             value: ''
         },
-        // { 
-        //     property: 'dark',
-        //     description: 'Set dark mode (can not be used with light prop)', 
-        //     default: 'false', 
-        //     type: 'boolean',
-        //     value: 'true | false'
-        // },
-        // { 
-        //     property: 'light',
-        //     description: 'Set light mode (can not be used with dark prop)', 
-        //     default: 'false', 
-        //     type: 'boolean',
-        //     value: 'true | false'
-        // },
+        { 
+            property: 'width',
+            description: 'Set InputField width', 
+            default: '', 
+            type: 'string | number',
+            value: ''
+        },
+        { 
+            property: 'required',
+            description: 'Set input required', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'readOnly',
+            description: 'Set input readOnly', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
         { 
             property: 'className',
             description: 'Set a custom css class to component', 
@@ -109,6 +117,103 @@ export const InputsPage = () => {
             value: ''
         }
     ]
+
+    const itemsUploader = [
+        { 
+            property: 'onChange', 
+            description: 'Handle files values', 
+            default: '', 
+            type: 'function',
+            value: 'Return array of files'
+        },
+        { 
+            property: 'value', 
+            description: 'State value that holds uploaded file(-s)', 
+            default: '', 
+            type: 'File[]',
+            value: ''
+        },
+        { 
+            property: 'lifted', 
+            description: 'Lift up the uploader', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'color', 
+            description: 'Set color from list', 
+            default: '', 
+            type: 'string',
+            value: 'primary | info | success | error'
+        },
+        { 
+            property: 'disabled',
+            description: 'Make uploader disabled', 
+            default: 'false',
+            type: 'boolean', 
+            value: 'true | false'},
+        { 
+            property: 'rounded', 
+            description: 'Make border radius rounded',
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'smooth',
+            description: 'Set input field borders more smooth', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'size', 
+            description: 'Set input field size',
+            default: '', 
+            type: 'string',
+            value: 'medium | large'
+        },
+        { 
+            property: 'multiple', 
+            description: 'Allow choosing multiple files',
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'accept', 
+            description: 'Set accepted MIME types for files',
+            default: '', 
+            type: 'string',
+            value: ''
+        },
+        { 
+            property: 'width',
+            description: 'Set Uploader width', 
+            default: '', 
+            type: 'string | number',
+            value: ''
+        },
+        { 
+            property: 'required',
+            description: 'Set Uploader required', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'className',
+            description: 'Set a custom css class to component', 
+            default: '', 
+            type: 'string',
+            value: ''
+        }
+    ]
+
+    const handleFileDelete = (name) => {
+        setFiles(files => files.filter(item => item.name !== name))
+    }
 
     return (
         <div className="page">
@@ -266,7 +371,56 @@ export const InputsPage = () => {
                     </div>
                 </div>
             </Card>
-            <h3>Textareas</h3>
+            <h3>Uploader</h3>
+            <Card>
+                <span>Rounded Uploader</span>
+                <Uploader
+                    label="File upload"
+                    value={files}
+                    rounded
+                    title="Сhoose a file please"
+                    color="info"
+                    multiple
+                    onDelete={handleFileDelete}
+                    width={300}
+                    onChange={files => setFiles(files)}/>
+                <br/>
+                <Uploader
+                    label="File upload"
+                    value={files}
+                    rounded
+                    title="Сhoose a file please"
+                    color="success"
+                    multiple
+                    onDelete={handleFileDelete}
+                    width={300}
+                    onChange={files => setFiles(files)}/>
+                <br/>
+                <span>Medium size Uploader</span>
+                <Uploader
+                    label="File upload"
+                    value={files}
+                    title="Сhoose a file please"
+                    size="medium"
+                    color="info"
+                    multiple
+                    onDelete={handleFileDelete}
+                    width={300}
+                    onChange={files => setFiles(files)}/>
+                <br/>
+                <span>Disabled lifted Uploader</span>
+                <Uploader
+                    label="File upload"
+                    value={files}
+                    title="Сhoose a file please"
+                    color="info"
+                    disabled
+                    lifted
+                    onDelete={handleFileDelete}
+                    width={300}
+                    onChange={files => setFiles(files)}/>
+            </Card>
+            {/* <h3>Textareas</h3>
             <Card>
                 <TextareaField
                     label="Textarea field"
@@ -285,12 +439,19 @@ export const InputsPage = () => {
                     value={first}
                     onClear={() => setFirst('')} 
                     onChange={e => setFirst(e.target.value)}/>
-            </Card>
-            <h2>API</h2>
+            </Card> */}
+            <h2>InputField API</h2>
             <Table
                 bordered
                 headers={keys}
                 items={items}
+                index={true}
+                itemTitles={keys}/>
+            <h2>Uploader API</h2>
+            <Table
+                bordered
+                headers={keys}
+                items={itemsUploader}
                 index={true}
                 itemTitles={keys}/>
             

@@ -25,7 +25,7 @@
     }
 
     &:not(.icon):not(.medium):not(.large) {
-        height: 30px;
+        height: $defaultSize;
     }
 
     &.uppercase {
@@ -42,7 +42,7 @@
     }
 
     &.medium {
-        height: 40px;
+        height: $mediumSize;
         padding: 0 10px;
         font-size: 1rem;
 
@@ -52,7 +52,7 @@
     }
 
     &.large {
-        height: 50px;
+        height: $largeSize;
         padding: 0 15px;
         font-size: 1.1rem;
 

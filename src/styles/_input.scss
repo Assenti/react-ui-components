@@ -72,13 +72,18 @@
         user-select: none;
         -moz-user-select: none;
         transition: all .2s ease-in-out;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 2px 0;
+        color: $dark;
     }
 
     &:not(.medium):not(.large) {
         .input-container {
             input,
             textarea {
-                height: 30px;
+                height: $defaultSize;
                 padding: 0 5px;
                 font-size: 1rem;
             }
@@ -95,7 +100,7 @@
     &.medium {
         .input-container {
             input {
-                height: 40px;
+                height: $mediumSize;
                 padding: 0 8px;
                 font-size: 1.1rem;
             }
@@ -112,7 +117,7 @@
     &.large {
         .input-container {
             input {
-                height: 50px;
+                height: $largeSize;
                 padding: 0 10px;
                 font-size: 1.3rem;
             }
@@ -140,6 +145,15 @@
             border-color: $primary;
             background-color: #fff;
             transition: all .2s ease-in-out;
+
+            i {
+                svg {
+                    path {
+                        fill: $primary;
+                        transition: all .2s ease-in-out;
+                    }
+                }
+            }
         }
 
         .input-container.focus {
@@ -155,6 +169,14 @@
             }
         }
     }
+
+    i {
+        svg {
+            path {
+                fill: gray;
+            }
+        }
+    }
     
     &.info {
         label.active {
@@ -165,6 +187,15 @@
             border-color: $info;
             background-color: #fff;
             transition: all .2s ease-in-out;
+
+            i {
+                svg {
+                    path {
+                        fill: $info;
+                        transition: all .2s ease-in-out;
+                    }
+                }
+            }
         }
 
         .input-container.focus {
@@ -191,6 +222,15 @@
             border-color: $error;
             background-color: #fff;
             transition: all .2s ease-in-out;
+
+            i {
+                svg {
+                    path {
+                        fill: $error;
+                        transition: all .2s ease-in-out;
+                    }
+                }
+            }
         }
 
         .input-container.focus {
@@ -217,6 +257,15 @@
             border-color: $success;
             background-color: #fff;
             transition: all .2s ease-in-out;
+
+            i {
+                svg {
+                    path {
+                        fill: $success;
+                        transition: all .2s ease-in-out;
+                    }
+                }
+            }
         }
 
         .input-container.focus {
@@ -273,6 +322,226 @@
 
             svg {
                 margin-right: 0 !important;
+            }
+        }
+    }
+}
+
+.input-uploader {
+    width: 100%;
+    margin: 5px 0;
+
+    .input-uploader__container {
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        border: 1px solid lightgray;
+        background-color: $lightgray;
+
+        &.lifted {
+            box-shadow: 0 0 4px rgba(black, .2);
+        }
+
+        &:not(.disabled) {
+            cursor: pointer;
+
+            label, i {
+                cursor: pointer;
+            }
+        }
+
+        &.disabled {
+            cursor: not-allowed;
+
+            label, i {
+                cursor: not-allowed;
+            }
+        }
+
+        &:not(.rounded):not(.smooth) {
+            border-radius: $radius;
+        }
+
+        &.rounded {
+            border-radius: 60px;
+        }
+
+        &.smooth {
+            border-radius: $radius * 2;
+        }
+
+        &:not(.medium):not(.large) {
+            height: $defaultSize;
+        }
+
+        &.medium {
+            height: $mediumSize;
+
+        }
+
+        &.large {
+            height: $largeSize;
+        }
+
+        &:hover {
+            transition: all .2s ease-in-out;
+
+            label {
+                transition: all .2s ease-in-out;
+            }
+
+            path {
+                transition: all .2s ease-in-out;
+            }
+        }
+
+        &.info {
+            &:hover {
+                border-color: $info;
+        
+                label {
+                    color: $info;
+                }
+
+                path {
+                    fill: $info;
+                }
+            }
+        }
+        
+        &.primary {
+            &:hover {
+                border-color: $primary;
+        
+                label {
+                    color: $primary;
+                }
+
+                path {
+                    fill: $primary;
+                }
+            }
+        }
+
+        &.success {
+            &:hover {
+                border-color: $success;
+        
+                label {
+                    color: $success;
+                }
+
+                path {
+                    fill: $success;
+                }
+            }
+        }
+
+        &.error {
+            &:hover {
+                border-color: $error;
+        
+                label {
+                    color: $error;
+                }
+
+                path {
+                    fill: $error;
+                }
+            }
+        }
+
+        i {
+            margin: 0 5px;
+            svg {
+                path {
+                    fill: gray;
+                }
+            }
+        }
+
+        span {
+            font-size: .9rem;
+            color: gray;
+        }
+
+        label {
+            display: block;
+            width: calc(100% - 50px);
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            outline: none;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+
+            &:not(:disabled) {
+                cursor: pointer;
+            }
+
+            &:disabled {
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    .input-uploader__items {
+        margin-top: 5px;
+        border: 1px solid lightgray;
+        overflow: hidden;
+
+        &:not(.rounded) {
+            border-radius: $radius;
+        }
+    
+        &.rounded {
+            border-radius: 10px;
+        }
+    }
+
+    .input-uploader__item {
+        padding: 5px 0;
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid lightgray;
+        
+
+        & > span {
+            width: calc(100% - 30px);
+            color: $dark;
+            font-size: .9rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:hover {
+            background-color: $lightgray;
+            transition: all .2s ease-in-out;
+        }
+
+        i {
+            margin: 0 5px;
+            cursor: pointer;
+            svg {
+                path {
+                    fill: $error;
+                }
             }
         }
     }

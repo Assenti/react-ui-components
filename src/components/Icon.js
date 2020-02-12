@@ -21,7 +21,8 @@ import {
     Hammer,
     City,
     ChevronBack,
-    Empty
+    Empty,
+    Download
 } from '../icons/index';
 
 export const Icon = (props) => {
@@ -71,7 +72,9 @@ export const Icon = (props) => {
             case 'city':
                 return <City size={props.size} color={props.color}/>;   
             case 'empty':
-                return <Empty size={props.size} color={props.color}/>;    
+                return <Empty size={props.size} color={props.color}/>;
+            case 'download':
+                return <Download size={props.size} color={props.color}/>;    
             default:
                 return '';
         }

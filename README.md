@@ -12,13 +12,15 @@
 - [ ] Dialog
 - [X] Radio button
 - [ ] Date picker / Calendar
+- [ ] InputMask 
 - [X] Badge
 - [X] Tag
 - [X] Card
 - [ ] Expansion List
 - [ ] Stepper
 - [ ] Rating
-- [ ] Icon
+- [X] Icon
+- [X] Uploader
 - [ ] Dock
 - [ ] Alert
 - [ ] Notification
