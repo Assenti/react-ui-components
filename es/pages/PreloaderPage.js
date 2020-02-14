@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '../components/button/Button';
-import { Preloader } from '../components/Preloader';
+import { Preloader } from '../components/preloader/Preloader';
 import { Table } from '../components/Table';
 
 export const PreloaderPage = () => {
