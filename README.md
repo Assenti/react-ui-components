@@ -40,7 +40,7 @@
 - [ ] Add API descriptions
 - [ ] Add Component usage code modules
 - [ ] Add i18n
-- [ ] NPM register
+- [X] NPM register
 
 ###### Start date: Jan 6th 2020
 

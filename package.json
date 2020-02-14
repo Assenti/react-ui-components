@@ -1,8 +1,8 @@
 {
-  "name": "react-ui-components",
+  "name": "@assenti/rui-components",
   "version": "0.1.15",
   "description": "React UI Components",
-  "private": true,
+  "private": false,
   "license": "MIT",
   "author": "Asset Sultanov <asset.sultan@gmail.com>",
   "dependencies": {
@@ -33,6 +33,7 @@
     "type": "git",
     "url": "https://github.com/Assenti/react-ui-components.git"
   },
+  "homepage": "https://assenti.github.io/react-ui-components",
   "keywords": [
     "component",
     "components",
