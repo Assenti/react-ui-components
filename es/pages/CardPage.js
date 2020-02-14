@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from '../components/Card';
 import { List, ListItem } from '../components/List';
 import { Table } from '../components/Table';
-import logo from '../img/logo.svg';
+import { Icon } from '../components/Icon';
 
 export const CardPage = () => {
     const itemsComplexInitial = [
@@ -102,7 +102,7 @@ export const CardPage = () => {
                         key={index}
                         className="ma-5 col"
                         width={200} 
-                        img={logo}
+                        img={<div className="row justify-center"><Icon name="react" size={50} color="#42a5f5"/></div>}
                         footer={'Some description ' + item}>
                         <p>Some title {item}</p>
                     </Card>

@@ -23,7 +23,7 @@ export const Card = (props) => {
             style={{ width: props.width ? props.width : '', minWidth: props.minWidth ? props.minWidth : '' }}>
             {props.title && props.outlined && !props.dark ? <div className="card-title">{props.title}</div> : ''}
             {props.header ? <div className="card-header">{props.header}</div> : ''}
-            {props.img ? <img src={props.img} alt={props.desc ? props.desc : 'Image'}/> : ''}
+            {props.img ? props.img : ''}
             {props.children}
             {props.footer ? <div className="card-footer">{props.footer}</div> : ''}
         </div>

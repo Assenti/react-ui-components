@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Drawer } from '../components/Drawer';
 import { List, ListItem } from '../components/List';
-import reactLogo from '../img/logo.svg';
+import { Icon } from '../components/Icon';
 
 export const DrawerContent = (props) => {
     const history = useHistory();
@@ -19,7 +19,7 @@ export const DrawerContent = (props) => {
                 dark
                 onClose={() => props.onClose()}
                 headerCentered
-                header={<img src={reactLogo} alt="React logo"/>}>
+                header={<Icon name="react" color="white" size={30}/>}>
                 <List dark>
                     {props.items.map((item, index) => 
                         <ListItem

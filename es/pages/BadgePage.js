@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Badge } from '../components/Badge';
+import { Badge } from '../components/badge/Badge';
 import { Card } from '../components/Card';
 import { Table } from '../components/Table';
 import { Icon } from '../components/Icon';
