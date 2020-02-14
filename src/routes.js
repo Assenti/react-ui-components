@@ -16,6 +16,7 @@ import { TagPage } from './pages/TagPage';
 import { BadgePage } from './pages/BadgePage';
 import { RadioPage } from './pages/RadioPage';
 import { IconPage } from './pages/IconPage';
+import { PreloaderPage } from './pages/PreloaderPage';
 
 export const routes = [
     { path: '/', name: 'Get started', Component: HomePage },
@@ -35,5 +36,6 @@ export const routes = [
     { path: '/switch', name: 'Switch', Component: SwitchPage },
     { path: '/card', name: 'Card', Component: CardPage },
     { path: '/tag', name: 'Tag', Component: TagPage },
-    { path: '/badge', name: 'Badge', Component: BadgePage }
+    { path: '/badge', name: 'Badge', Component: BadgePage },
+    { path: '/preloader', name: 'Preloader', Component: PreloaderPage }
 ]

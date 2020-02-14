@@ -2,7 +2,9 @@
 
 #### Main Goal: Create a lot of usefull and maximum reusable UI components
 
-##### Used stack:
+## Usage:
+
+## Used stack:
 - JS, React.js;
 - React-Transition-Group;
 - Styles: SCSS;
@@ -29,13 +31,14 @@
 - [X] Switch
 - [ ] Carousel
 - [ ] Timeline
-- [ ] Preloader
+- [X] Preloader
+- [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable
 - [ ] Declare types for TS using
 - [ ] Make a-la-carte using 
 - [ ] Add API descriptions
 - [ ] Add i18n
-- [ ] Dark & Light Mode
+- [ ] NPM register
 
 ###### Start date: Jan 6th 2020
 
