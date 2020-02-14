@@ -1,23 +1,11 @@
-@media (max-width: $xs) {
-    .drawer {
-        position: absolute !important;
-    }
-
-    .drawer-background {
-        background-color: rgba(black, .4);
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        z-index: 999;
-    }
-}
-
 .drawer-background {
-    &.none {
-        display: none;
-    }
+    background-color: rgba(black, .4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
 }
 
 .drawer {
@@ -32,15 +20,24 @@
     justify-content: space-between;
     position: sticky;
 
+    &.smooth {
+        border-top-right-radius: $radius * 2;
+        border-bottom-right-radius: $radius * 2;
+
+        .drawer-header {
+            border-top-right-radius: $radius * 2;
+        }
+    }
+
     &.absolute {
-        position: fixed !important;
+        position: absolute !important;
         z-index: 999;
     }
 
     &.dark {
         background-color: $night;
 
-        & .drawer-header {
+        .drawer-header {
             color: #000;
             background-color: $night;
         }
@@ -108,27 +105,34 @@
     
   
 .drawer-enter {
-    transform: translateX(-100%);
-    -moz-transform: translateX(-100%);
+    // transform: translateX(-100%);
+    // -moz-transform: translateX(-100%);
+    width: 0;
 }
 
 .drawer-enter-active {
-    transform: translateX(0%);
-    transition: transform 300ms;
-    -moz-transform: translateX(0%);
-    -moz-transition: transform 300ms;
+    // transform: translateX(0%);
+    // transition: transform 300ms;
+    // -moz-transform: translateX(0%);
+    // -moz-transition: transform 300ms;
+    animation: drawerOpening 300ms ease-out;
+    -moz-animation: drawerOpening 300ms ease-out;
 }
 
 .drawer-exit {
-    transform: translateX(0%);
-    -moz-transform: translateX(0%);
+    // transform: translateX(0%);
+    // -moz-transform: translateX(0%);
+    width: 0;
 }
 
 .drawer-exit-active {
-    transform: translateX(-100%);
-    transition: transform 300ms;
-    -moz-transform: translateX(-100%);
-    -moz-transition: transform 300ms;
+    // transform: translateX(-100%);
+    // transition: transform 300ms;
+    // -moz-transform: translateX(-100%);
+    // -moz-transition: transform 300ms;
+    animation: drawerClosing 300ms ease-out;
+    -moz-animation: drawerClosing 300ms ease-out;
+    
 }
 
 .expand-enter {
@@ -147,6 +151,24 @@
 .expand-exit-active {
     animation: expanding 300ms ease-out;
     -moz-animation: expanding 300ms ease-out;
+}
+
+.drawer-background-enter {
+    opacity: 0;
+}
+
+.drawer-background-enter-active {
+    opacity: 1;
+    transition: all 100ms;
+}
+
+.drawer-background-exit {
+    opacity: 1;
+}
+
+.drawer-background-exit-active {
+    opacity: 0;
+    transition: all 100ms;
 }
   
 @keyframes expanding {
@@ -167,4 +189,24 @@
 @-moz-keyframes collapsing {
     0% { width: 280px; min-width: 280px; }
     100% { width: 50px; min-width: 50px; }
+}
+
+@keyframes drawerOpening {
+    0% { width: 0; min-width: 0;}
+    100% { width: 280px; min-width: 280px;}
+}
+
+@-moz-keyframes drawerOpening {
+    0% { width: 0; min-width: 0;}
+    100% { width: 280px; min-width: 280px;}
+}
+  
+@keyframes drawerClosing {
+    0% { width: 280px; min-width: 280px; }
+    100% { width: 0; min-width: 0; }
+}
+
+@-moz-keyframes drawerClosing {
+    0% { width: 280px; min-width: 280px; }
+    100% { width: 0; min-width: 0; }
 }

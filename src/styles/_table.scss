@@ -1,12 +1,27 @@
 .table-container {
     position: relative;
-    // min-height: 200px;
     width: 100%;
 
     &.bordered {
         border: 1px solid lightgray;
         border-radius: $radius;
         overflow: hidden;
+    }
+}
+
+@media (max-width: $xs) {
+    .table {
+        td {
+            font-size: .75rem;
+        }
+    }
+}
+
+@media (min-width: $xs + 1) {
+    .table {
+        td {
+            font-size: .9rem;
+        }
     }
 }
 
@@ -37,7 +52,6 @@
     td {
         padding: 10px;
         text-align: center;
-        font-size: .9rem;
     }
 
     tr.small > td {

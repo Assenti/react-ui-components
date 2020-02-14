@@ -16,7 +16,8 @@ export const Card = (props) => {
     }
 
     return (
-        <div className={cardClass()} style={{ width: props.width ? props.width : '' }}>
+        <div className={cardClass()} 
+            style={{ width: props.width ? props.width : '', padding: props.padding ? props.padding : '15px' }}>
             {props.header ? <div className="card-header">{props.header}</div> : ''}
             {props.img ? <img src={props.img} alt={props.desc ? props.desc : 'Image'}/> : ''}
             {props.children}

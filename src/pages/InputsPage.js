@@ -203,6 +203,13 @@ export const InputsPage = () => {
             value: 'true | false'
         },
         { 
+            property: 'title',
+            description: 'Set Uploader title', 
+            default: '', 
+            type: 'string',
+            value: ''
+        },
+        { 
             property: 'className',
             description: 'Set a custom css class to component', 
             default: '', 

@@ -1,7 +1,7 @@
 .card {
-    padding: 15px;
     border: 1px solid $lightgray;
     border-radius: $radius * 2;
+    overflow-y: auto;
 
     &.dark {
         background-color: $night;

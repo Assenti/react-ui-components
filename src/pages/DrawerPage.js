@@ -29,6 +29,13 @@ export const DrawerPage = () => {
             value: 'true | false'
         },
         { 
+            property: 'collapsable', 
+            description: 'Make drawer collapsable', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
             property: 'min', 
             description: 'Set drawer width to minimum size', 
             default: '', 
@@ -38,6 +45,13 @@ export const DrawerPage = () => {
         { 
             property: 'onResize', 
             description: 'Handle drawer min prop toggling', 
+            default: '', 
+            type: 'function',
+            value: ''
+        },
+        { 
+            property: 'onClose', 
+            description: 'Handle drawer state', 
             default: '', 
             type: 'function',
             value: ''
@@ -55,6 +69,13 @@ export const DrawerPage = () => {
             default: '', 
             type: 'any',
             value: ''
+        },
+        { 
+            property: 'headerCentered', 
+            description: 'Set drawer header content position to center', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
         },
         { 
             property: 'dark', 
@@ -75,12 +96,16 @@ export const DrawerPage = () => {
     return (
         <div className="page">
             <div className="page-title">Drawer</div>
-            <Card flat>
-                <div className="app">
+            <Card flat padding={'0'}>
+                <div className="app relative" style={{ minHeight: 260 }}>
                     <Drawer
                         drawer={drawer}
                         min={drawerMin}
+                        onClose={() => setDrawer(false)}
                         header="Title"
+                        smooth
+                        collapsable
+                        headerCentered
                         onResize={() => setDrawerMin(!drawerMin)}>
                         {drawerMin ? 
                             <List>
@@ -107,7 +132,7 @@ export const DrawerPage = () => {
                         }
                     </Drawer>
                     <div className="px-20">
-                        <h1>Just content</h1>
+                        <p>Drawer in light mode with collapsable prop</p>
                         <Button 
                             name="Toggle" 
                             color="info"

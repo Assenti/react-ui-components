@@ -36,6 +36,13 @@ export const CardPage = () => {
             value: '100, "100%", "100px"'
         },
         { 
+            property: 'padding',
+            description: 'Set card padding', 
+            default: '15px', 
+            type: 'string | number',
+            value: ''
+        },
+        { 
             property: 'img',
             description: 'Set card image', 
             default: '', 
