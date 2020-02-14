@@ -3,7 +3,7 @@ import { RadioGroup } from '../components/Radio';
 import { InputField } from '../components/Input';
 import { Icon } from '../components/Icon';
 import { Table } from '../components/Table';
-import { Button } from '../components/Button';
+import { Button } from '../components/button/Button';
 
 export const RadioPage = () => {
     const [cityUS, setCityUS] = useState('');

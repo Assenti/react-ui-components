@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { Button } from './Button';
+import { Button } from './button/Button';
 import { Tooltip } from './Tooltip';
 
 export const Drawer = (props) => {

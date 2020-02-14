@@ -1,5 +1,5 @@
 export { Badge } from './components/badge/Badge';
-export { Button } from './components/Button';
+export { Button } from './components/button/Button';
 export { Card } from './components/Card';
 export { Checkbox } from './components/Checkbox';
 export { Drawer } from './components/Drawer';
@@ -11,7 +11,7 @@ export { List } from './components/List';
 export { ListItem } from './components/List';
 export { Modal } from './components/Modal';
 export { Pagination } from './components/Pagination';
-export { Preloader } from './components/Preloader';
+export { Preloader } from './components/button/Preloader';
 export { RadioGroup } from './components/Radio';
 export { Select } from './components/Select';
 export { Switch } from './components/Switch';
