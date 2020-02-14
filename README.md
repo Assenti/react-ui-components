@@ -37,5 +37,9 @@
 - [ ] Add i18n
 - [ ] Dark & Light Mode
 
-###### Author: Asset Sultanov
 ###### Start date: Jan 6th 2020
+
+## License
+
+[MIT Licensed](/LICENSE)
+Copyright (c) 2020 Asset Sultanov
