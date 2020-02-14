@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Drawer } from '../components/Drawer';
 import { List, ListItem } from '../components/List';
-import { Button } from '../components/Button';
+import { Button } from '../components/button/Button';
 import { Tooltip } from '../components/Tooltip';
 import { Table } from '../components/Table';
 import { Card } from '../components/Card';

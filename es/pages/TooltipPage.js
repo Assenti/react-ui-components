@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tooltip } from '../components/Tooltip';
-import { Button } from '../components/Button';
+import { Button } from '../components/button/Button';
 
 export const TooltipPage = () => {
     return (

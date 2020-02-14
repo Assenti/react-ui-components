@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table } from '../components/Table';
-import { Button } from '../components/Button';
+import { Button } from '../components/button/Button';
 import { Tooltip } from '../components/Tooltip';
 
 export const TablePage = () => {

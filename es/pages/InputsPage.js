@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { InputField, TextareaField, Uploader } from '../components/Input';
 import { Icon } from '../components/Icon';
 import { Card } from '../components/Card';
-import { Button } from '../components/Button';
+import { Button } from '../components/button/Button';
 import { Table } from '../components/Table';
 
 export const InputsPage = () => {

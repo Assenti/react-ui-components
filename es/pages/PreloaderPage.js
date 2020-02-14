@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from '../components/Button';
+import { Button } from '../components/button/Button';
 import { Preloader } from '../components/Preloader';
 import { Table } from '../components/Table';
 

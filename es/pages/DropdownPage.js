@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Dropdown } from '../components/Dropdown';
-import { Button } from '../components/Button';
+import { Button } from '../components/button/Button';
 import { InputField } from '../components/Input';
 import { Card } from '../components/Card';
 import { Table } from '../components/Table';

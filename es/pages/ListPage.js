@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { List, ListItem } from '../components/List';
-import { Button } from '../components/Button';
+import { Button } from '../components/button/Button';
 import { Checkbox } from '../components/Checkbox';
 import { Table } from '../components/Table';
 import { Card } from '../components/Card';

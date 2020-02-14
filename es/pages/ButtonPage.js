@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from '../components/Button';
+import { Button } from '../components/button/Button';
 import { Table } from '../components/Table';
 import { Card } from '../components/Card';
 import { Switch } from '../components/Switch';

@@ -3,7 +3,7 @@ import { Badge } from '../components/badge/Badge';
 import { Card } from '../components/Card';
 import { Table } from '../components/Table';
 import { Icon } from '../components/Icon';
-import { Button } from '../components/Button';
+import { Button } from '../components/button/Button';
 
 export const BadgePage = () => {
     const keys = ['property', 'description', 'default', 'type', 'value'];
