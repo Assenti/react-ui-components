@@ -23,7 +23,9 @@ import {
     ChevronBack,
     Empty,
     Download,
-    Menu
+    Menu,
+    Person,
+    Loading
 } from '../icons/index';
 
 export const Icon = (props) => {
@@ -52,6 +54,8 @@ export const Icon = (props) => {
                 return <Chip size={props.size} color={props.color}/>; 
             case 'account':
                 return <Account size={props.size} color={props.color}/>; 
+            case 'person':
+                return <Person size={props.size} color={props.color}/>; 
             case 'chevron-down':
                 return <ChevronDown size={props.size} color={props.color}/>; 
             case 'chevron-next':
@@ -77,7 +81,9 @@ export const Icon = (props) => {
             case 'download':
                 return <Download size={props.size} color={props.color}/>;  
             case 'menu':
-                return <Menu size={props.size} color={props.color}/>;    
+                return <Menu size={props.size} color={props.color}/>;
+            case 'loading':
+                return <Loading size={props.size} color={props.color}/>;    
             default:
                 return '';
         }

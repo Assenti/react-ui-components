@@ -1,6 +1,7 @@
 {
   "name": "react-ui-components",
   "version": "0.1.14",
+  "description": "React UI Components",
   "private": true,
   "author": "Asset Sultanov <asset.sultan@gmail.com>",
   "dependencies": {

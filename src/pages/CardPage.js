@@ -64,6 +64,27 @@ export const CardPage = () => {
             value: 'true | false'
         },
         { 
+            property: 'outlined',
+            description: 'Set card borders outlined', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'color',
+            description: 'Set card borders color from colors list', 
+            default: '', 
+            type: 'string',
+            value: 'primary | info | success | error'
+        },
+        { 
+            property: 'title',
+            description: 'Set outlined card title (has effect only with outlined prop)', 
+            default: '', 
+            type: 'string',
+            value: ''
+        },
+        { 
             property: 'className',
             description: 'Set a custom css class to component', 
             default: '', 
@@ -71,6 +92,24 @@ export const CardPage = () => {
             value: ''
         }
     ]
+
+    const imageCards = () => {
+        let cards = [1,2,3]
+        return (
+            <div className="row">
+                {cards.map((item, index) => 
+                    <Card 
+                        key={index}
+                        className="ma-5 col"
+                        width={200} 
+                        img={logo}
+                        footer={'Some description ' + item}>
+                        <p>Some title {item}</p>
+                    </Card>
+                )}
+            </div>
+        )
+    }
 
     return (
         <div className="page">
@@ -101,11 +140,18 @@ export const CardPage = () => {
                     </List>
                 </Card>
                 <h3>Card with image</h3>
-                <Card 
-                    width={200} 
-                    img={logo}
-                    footer="Some description">
-                    <p>Some title</p>
+                {imageCards()}
+                <h3>Outlined Cards with titles</h3>
+                <Card outlined title="Marvel Avengers" color="info">
+                    <List>
+                        {itemsComplexInitial.map((item, index) => 
+                            <ListItem 
+                                key={index}
+                                item={item}
+                                hover
+                                itemTitle="name"/>
+                        )}
+                    </List>
                 </Card>
             </div>
             <h2>API</h2>

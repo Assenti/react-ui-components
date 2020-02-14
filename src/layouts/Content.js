@@ -2,7 +2,7 @@ import React from 'react';
 import { Header } from '../components/Header';
 import { Tooltip } from '../components/Tooltip';
 import { Button } from '../components/Button';
-import { version } from '../../package.json';
+import { version, description } from '../../package.json';
 
 export const Content = (props) => {
     const github = 'https://github.com/Assenti/react-ui-components';
@@ -11,7 +11,7 @@ export const Content = (props) => {
         <div className="content">
             <Header title={<div className="row align-center">
                     <Button className="hidden-sm-and-up" icon="menu" dark onClick={() => props.onDrawerToggle()}/>
-                    <span className="fz-10 ml-5">React UI Components</span>
+                    <span className="fz-10 ml-5">{description}</span>
                 </div>}
                 rightSide={
                 <div className="row align-center">

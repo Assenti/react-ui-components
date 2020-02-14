@@ -1,5 +1,5 @@
 .switch-container {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     margin: 0 5px;
 
@@ -25,7 +25,7 @@
             &.active {
                 & > span {
                     bottom: -1px;
-                    background-color: $dark;
+                    background-color: gray;
                 }
             }
         }
@@ -47,14 +47,14 @@
         &.active {
             & > span {
                 right: -1px;
-                background-color: $dark;
+                background-color: gray;
             }
         }
     }
 
     .switch {
         border-radius: 60px;
-        border: 1px solid gray;
+        border: 1px solid lightgray;
         width: 34px;
         height: 18px;
         display: flex;
@@ -77,7 +77,9 @@
         }
     
         &.primary {
-            border-color: $primary;
+            &.active {
+                border-color: $primary;
+            }
     
             &.active > span {
                 background-color: $primary;
@@ -89,7 +91,9 @@
         }
     
         &.info {
-            border-color: $info;
+            &.active {
+                border-color: $info;
+            }
     
             &.active > span {
                 background-color: $info;
@@ -101,7 +105,9 @@
         }
     
         &.success {
-            border-color: $success;
+            &.active {
+                border-color: $success;
+            }
     
             &.active > span {
                 background-color: $success;
@@ -113,7 +119,9 @@
         }
     
         &.error {
-            border-color: $error;
+            &.active {
+                border-color: $error;
+            }
     
             &.active > span {
                 background-color: $error;
@@ -127,13 +135,17 @@
         &.disabled {
             border-color: lightgray;
             cursor: not-allowed;
+
+            &.active {
+                border-color: lightgray;
+            }
     
             &.active > span {
-                background-color: $lightgray;
+                background-color: lightgray;
             }
     
             &.disactive > span {
-                background-color: $lightgray;
+                background-color: lightgray;
             }
         }
     }

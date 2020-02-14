@@ -6,15 +6,22 @@
     -moz-user-select: none;
     border: none;
     outline: none;
-    min-width: 100px;
+    min-width: 80px;
     border-radius: $radius;
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     border: 1px solid transparent;
     font-size: .9rem;
     background-color: $lightgray;
     box-sizing: border-box;
+
+    &.loading {
+        i {
+            animation: loading .8s infinite ease-in;
+            -moz-animation: loading .8s infinite ease-in;
+        }
+    }
 
     &.lifted {
         box-shadow: 0 2px 5px rgba(black, .3);
@@ -70,17 +77,39 @@
         height: 30px;
     }
 
-    &.disabled {
+    &.disabled:not(.outlined),
+    &.loading:not(.outlined) {
         cursor: not-allowed;
         box-shadow: none;
         background-color: $gray;
         border-color: $gray;
-        color: $dark;
+        color: gray;
         box-shadow: none;
     }
 
-    &:active:not(:disabled) {
+    &.disabled.outlined,
+    &.loading.outlined {
+        cursor: not-allowed;
+        box-shadow: none;
+        background-color: transparent;
+        border-color: $gray;
+        color: $dark;
+        box-shadow: none;
+
+        path {
+            fill: lightgray;
+        }
+    }
+
+    &:active:not(:disabled):not(.loading) {
         box-shadow: 0 1px 5px rgba(black, .3);
+    }
+
+    &:hover {
+        transition: all .2s ease-in-out;
+        path {
+            transition: all .2s ease-in-out;
+        }
     }
 
     &.primary {
@@ -88,13 +117,8 @@
         border: 1px solid $primary;
         color: #fff;
 
-        &:hover {
+        &:not(:disabled):hover {
             background-color: darken($primary, 10%);
-        }
-
-        svg {
-            width: 14px;
-            height: 14px;
         }
 
         path {
@@ -107,14 +131,12 @@
         border-color: $primary;
         color: $primary;
 
-        &:hover {
-            transition: all .2s ease-in-out;
+        &:not(:disabled):hover {
             background-color: $primary;
             color: #fff;
 
             path {
                 fill: #fff;
-                transition: all .2s ease-in-out;
             }
         }
 
@@ -127,7 +149,7 @@
         background-color: $gray;
         border: 1px solid $gray;
 
-        &:hover {
+        &:not(:disabled):hover {
             background-color: darken($gray, 10%);
         }
     }
@@ -137,14 +159,12 @@
         border-color: $gray;
         color: $gray;
 
-        &:hover {
-            transition: all .2s ease-in-out;
+        &:not(:disabled):hover {
             background-color: $gray;
             color: $dark;
 
             path {
                 fill: #fff;
-                transition: all .2s ease-in-out;
             }
         }
 
@@ -158,7 +178,7 @@
         border: 1px solid $info;
         color: #fff;
 
-        &:hover {
+        &:not(:disabled):hover {
             background-color: darken($info, 10%);
         }
 
@@ -172,10 +192,9 @@
         border-color: $info;
         color: $info;
 
-        &:hover {
+        &:not(:disabled):hover {
             background-color: $info;
             color: #fff;
-            transition: all .2s ease-in-out;
 
             path, polygon {
                 fill: #fff;
@@ -192,7 +211,7 @@
         border: 1px solid $success;
         color: #fff;
 
-        &:hover {
+        &:not(:disabled):hover {
             background-color: darken($success, 10%);
         }
 
@@ -206,10 +225,9 @@
         background-color: #fff;
         color: $success;
 
-        &:hover {
+        &:not(:disabled):hover {
             color: #fff;
             background-color: $success;
-            transition: all .2s ease-in-out;
 
             path {
                 fill: #fff;
@@ -226,9 +244,8 @@
         border: 1px solid $error;
         color: #fff;
 
-        &:hover {
+        &:not(:disabled):hover {
             background-color: darken($error, 10%);
-            transition: all .2s ease-in-out;
         }
 
         path {
@@ -241,10 +258,9 @@
         background-color: #fff;
         color: $error;
 
-        &:hover {
+        &:not(:disabled):hover {
             color: #fff;
             background-color: $error;
-            transition: all .2s ease-in-out;
 
             path {
                 fill: #fff;
@@ -261,7 +277,7 @@
         border-color: $dark;
         color: #fff;
 
-        &:hover {
+        &:not(:disabled):hover {
             background-color: darken($dark, 10%);
         }
 
@@ -275,8 +291,7 @@
         background-color: transparent;
         color: $dark;
 
-        &:hover {
-            transition: all .2s ease-in-out;
+        &:not(:disabled):hover {
             background-color: $lightgray;
         }
 
@@ -290,8 +305,7 @@
         background-color: transparent;
         color: $dark;
 
-        &:hover {
-            transition: all .2s ease-in-out;
+        &:not(:disabled):hover {
             background-color: rgba($lightgray, .3);
         }
 
@@ -319,4 +333,10 @@
             margin: 0 !important;
         }
     }
+}
+
+@keyframes loading {
+    0% { transform: rotate(0); }
+    // 30% { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
 }

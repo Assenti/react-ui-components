@@ -37,6 +37,7 @@
 - [ ] Declare types for TS using
 - [ ] Make a-la-carte using 
 - [ ] Add API descriptions
+- [ ] Add Component usage code modules
 - [ ] Add i18n
 - [ ] NPM register
 

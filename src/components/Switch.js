@@ -8,7 +8,8 @@ export const Switch = (props) => {
             btn: 'switch',
             active: props.check ? 'active' : 'disactive',
             disabled: props.disabled ? 'disabled' : '',
-            color: props.color ? props.color : ''
+            color: props.color ? props.color : '',
+            className: props.className ? props.className : ''
         }
         
         for (const key in className) {

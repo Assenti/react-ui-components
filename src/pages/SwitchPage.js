@@ -87,6 +87,13 @@ export const SwitchPage = () => {
             default: '', 
             type: 'string',
             value: 'hex | rgba | css standard preset'
+        },
+        { 
+            property: 'className', 
+            description: 'Set css custom class', 
+            default: '', 
+            type: 'string',
+            value: ''
         }
     ]
 
@@ -109,7 +116,7 @@ export const SwitchPage = () => {
                 leftLabel="Off"
                 rightLabel="On" 
                 onChange={() => setCheck1(!check1)}/>
-            <br/>
+            <br/><br/>
             <Switch color="primary" 
                 check={check1}
                 leftIcon="moon"

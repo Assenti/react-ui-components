@@ -82,7 +82,7 @@ export const Github = (props) => {
     )
 }
 
-export const Account = (props) => {
+export const Person = (props) => {
     return (
         <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
             <path fill={props.color ? props.color : '#4d4d4d'} d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
@@ -90,10 +90,17 @@ export const Account = (props) => {
     )
 }
 
+export const Account = (props) => {
+    return (
+        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : '#4d4d4d'} d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
+        </svg>
+    )
+}
+
 export const Search = (props) => {
     return (
-        <svg width={props.size ? props.size : 24} 
-            height={props.size ? props.size : 24} viewBox="0 0 24 24">
+        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
             <path fill={props.color ? props.color : '#4d4d4d'} d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
         </svg>
     )
@@ -203,6 +210,14 @@ export const Menu = (props) => {
     return (
         <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
             <path fill={props.color ? props.color : '#4D4D4D'} d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+        </svg>
+    )
+}
+
+export const Loading = (props) => {
+    return (
+        <svg width={props.size ? props.size : 24} height={props.size ? props.size : 24} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : '#4D4D4D'} d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z" />
         </svg>
     )
 }

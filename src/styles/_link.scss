@@ -1,0 +1,10 @@
+a,
+.link {
+    color: $info;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        color: darken($info, 5%);
+    }
+}

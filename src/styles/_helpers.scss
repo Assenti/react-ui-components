@@ -28,6 +28,10 @@
     }
 }
 
+.overflow-y {
+    overflow-y: auto;
+}
+
 .text-white {
     color: #fff;
 }
@@ -201,7 +205,7 @@
 
 @each $size in $sizes {
     .pa-#{$size} {
-        padding: #{$size}px;
+        padding: #{$size}px !important;
     }
 }
 

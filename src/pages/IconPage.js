@@ -1,6 +1,8 @@
 import React from 'react';
 import { Table } from '../components/Table';
 import { Icon } from '../components/Icon';
+import { description } from '../../package.json';
+import { Card } from '../components/Card';
 
 export const IconPage = () => {
     const icons = [
@@ -15,6 +17,7 @@ export const IconPage = () => {
         'code',
         'chip',
         'account',
+        'person',
         'chevron-down',
         'chevron-next', 
         'chevron-back', 
@@ -78,14 +81,23 @@ export const IconPage = () => {
 
     return (
         <div className="page">
-            <div className="page-title">Icons</div>
-            {icons.map((item, index) => 
-                <div key={index} 
-                    className="row-inline text-center column justify-center align-center pa-5 ma-10 hoverable">
-                    <Icon name={item}/>
-                    <div className="mt-5 fz-8">{item}</div>
-                </div>
-            )}
+            <div className="page-title">Icon Component</div>
+            <p><strong>{description}</strong> use primarily
+                <a href="https://materialdesignicons.com/"
+                    target="blank_"
+                    className="ml-5">Material Design Icons</a>
+            </p>
+            <br/>
+            <Card outlined color="primary" title="Icons collection">
+                {icons.map((item, index) => 
+                    <div key={index} 
+                        style={{ minWidth: 60 }}
+                        className="row-inline text-center column justify-center align-center pa-5 ma-10 hoverable">
+                        <Icon name={item}/>
+                        <div className="mt-5 fz-8">{item}</div>
+                    </div>
+                )}
+            </Card>
             <h2>API</h2>
             <Table
                 bordered

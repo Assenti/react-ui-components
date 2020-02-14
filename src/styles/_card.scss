@@ -1,7 +1,7 @@
 .card {
     border: 1px solid $lightgray;
     border-radius: $radius * 2;
-    overflow-y: auto;
+    padding: 15px;
 
     &.dark {
         background-color: $night;
@@ -11,8 +11,8 @@
         border-color: lightgray;
     }
 
-    &:not(.flat) {
-        box-shadow: 0 0 3px rgba(black, .3);
+    &:not(.flat):not(.outlined) {
+        box-shadow: 0 0 2px rgba(black, .6);
     }
 
     &.dense {
@@ -24,6 +24,54 @@
         margin: 0 auto;
         padding-bottom: 5px;
         border-bottom: 1px solid lightgray;
+    }
+
+    &.outlined {
+        border-color: $dark;
+        position: relative;
+
+        .card-title {
+            position: absolute;
+            top: -13px;
+            left: 15px;
+            font-size: 1rem;
+            padding: 3px 5px;
+            background-color: #fff;
+            font-weight: 600;
+            color: $dark;
+        }
+    }
+
+    &.info {
+        border-color: $info;
+
+        .card-title {
+            color: $info;
+        }
+    }
+
+    &.primary {
+        border-color: $primary;
+
+        .card-title {
+            color: $primary;
+        }
+    }
+
+    &.success {
+        border-color: $success;
+
+        .card-title {
+            color: $success;
+        }
+    }
+
+    &.error {
+        border-color: $error;
+
+        .card-title {
+            color: $error;
+        }
     }
 }
 

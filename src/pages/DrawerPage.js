@@ -96,7 +96,7 @@ export const DrawerPage = () => {
     return (
         <div className="page">
             <div className="page-title">Drawer</div>
-            <Card flat padding={'0'}>
+            <Card flat className="overflow-y pa-0">
                 <div className="app relative" style={{ minHeight: 260 }}>
                     <Drawer
                         drawer={drawer}
