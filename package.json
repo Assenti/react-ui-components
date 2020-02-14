@@ -1,8 +1,9 @@
 {
   "name": "react-ui-components",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "React UI Components",
   "private": true,
+  "license": "MIT",
   "author": "Asset Sultanov <asset.sultan@gmail.com>",
   "dependencies": {
     "react": "^16.12.0",

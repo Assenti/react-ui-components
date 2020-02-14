@@ -11,7 +11,7 @@
         border-color: lightgray;
     }
 
-    &:not(.flat):not(.outlined) {
+    &:not(.flat):not(.outlined):not(.dark) {
         box-shadow: 0 0 2px rgba(black, .6);
     }
 

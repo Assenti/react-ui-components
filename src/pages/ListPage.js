@@ -7,13 +7,18 @@ import { Card } from '../components/Card';
 import { Tag } from '../components/Tag';
 
 export const ListPage = () => {
-    const names = ['John Doe', 'Peter Parker', 'Tony Stark', 'Bruce Benner'];
+    const names = [
+        { name: 'John Doe', active: false },
+        { name: 'Peter Parker', active: true },
+        { name: 'Tony Stark', active: false },
+        { name: 'Bruce Benner', active: false }
+    ];
 
     const itemsComplexInitial = [
-        { name: 'Steve Rogers', hero: 'Captain America', icon: 'account', check: false }, 
-        { name: 'Peter Parker', hero: 'Spider man', icon: 'account', check: false }, 
-        { name: 'Tony Stark', hero: 'Iron man', icon: 'account', check: false }, 
-        { name: 'Bruce Benner', hero: 'Hulk', icon: 'account', check: false }
+        { name: 'Steve Rogers', hero: 'Captain America', icon: 'shield-account', check: false }, 
+        { name: 'Peter Parker', hero: 'Spider man', icon: 'shield-account', check: false }, 
+        { name: 'Tony Stark', hero: 'Iron man', icon: 'shield-account', check: false }, 
+        { name: 'Bruce Benner', hero: 'Hulk', icon: 'shield-account', check: false }
     ];
 
     const keys = ['property', 'description', 'default', 'type', 'value'];
@@ -136,78 +141,94 @@ export const ListPage = () => {
     return (
         <div className="page">
             <div className="page-title">Lists</div>
-            <div className="half-width">
-                <h3>Simple list</h3>
-                <Card>
-                    <List>
-                        {names.map((item, index) => 
-                            <ListItem 
-                                key={index} 
-                                item={item}/>
-                        )}
-                    </List>
-                </Card>
-                <h3>Simple list with dark mode, hover and icons</h3>
-                <Card dark>
-                    <List items={itemsComplex} itemTitle="hero" dark hover>
-                        {itemsComplex.map((item, index) => 
-                            <ListItem 
-                                key={index} 
-                                item={item}
-                                icon={item.icon}
-                                itemTitle="hero"
-                                hover/>
-                        )}
-                    </List>
-                </Card>
-                <h3>Dense size list with header and hover</h3>
-                <Card>
-                    <List dense header="Marvel avengers:">
-                        {names.map((item, index) => 
-                            <ListItem 
-                                key={index} 
-                                item={item}
-                                icon="account"
-                                itemTitle="hero"
-                                hover/>
-                        )}
-                    </List>
-                </Card>
-                <h3>List with checkbox</h3>
-                <Card>
-                    <List header={'Selected Marvel avengers: ' + selected.length}>
-                        {itemsComplex.map((item, index) => 
-                            <ListItem 
-                                key={index} 
-                                item={item}
-                                itemTitle="hero"
-                                hover
-                                checkbox={<Checkbox 
-                                    checked={isSelected(item, 'hero')}
-                                    onChange={() => selectOne(item)}/>}/>
-                        )}
-                    </List>
-                </Card>
-                <h3>List with controls and subtitles</h3>
-                <Card>
-                    <List>
-                        {itemsComplex.map((item, index) => 
-                            <ListItem 
-                                key={index} 
-                                item={item}
-                                icon={item.icon} 
-                                itemTitle="name"
-                                subTitle={<Tag small color="info" value={item.hero}/>}
-                                controls={
-                                    <React.Fragment>
-                                        <Button small color="light" className="mr-10" icon="edit" onClick={() => {}}/>
-                                        <Button small color="light" icon="close" onClick={() => {}}/>
-                                    </React.Fragment>
-                                }/>
-                        )}
-                    </List>
-                </Card>
-            </div>
+            <Card 
+                outlined 
+                className="px-0"
+                color="primary" 
+                title="Simple list with active item">
+                <List>
+                    {names.map((item, index) => 
+                        <ListItem
+                            isActiveItem={item => item.active} 
+                            key={index} 
+                            item={item}
+                            itemTitle="name"/>
+                    )}
+                </List>
+            </Card>
+            <h4>Dark mode</h4>
+            <Card 
+                color="primary" 
+                title="Simple list with dark mode, hover and icons" 
+                dark
+                className="px-0">
+                <List items={itemsComplex} itemTitle="hero" dark hover>
+                    {itemsComplex.map((item, index) => 
+                        <ListItem 
+                            key={index} 
+                            item={item}
+                            icon={item.icon}
+                            itemTitle="hero"
+                            hover/>
+                    )}
+                </List>
+            </Card>
+            <br/>
+            <Card 
+                outlined 
+                color="primary" 
+                title="Dense size list with header and hover"
+                className="px-0">
+                <List dense header="Marvel avengers:">
+                    {names.map((item, index) => 
+                        <ListItem 
+                            key={index} 
+                            item={item}
+                            icon="account"
+                            itemTitle="name"
+                            hover/>
+                    )}
+                </List>
+            </Card>
+            <br/>
+            <Card 
+                outlined 
+                color="primary" 
+                title="List with checkbox"
+                className="px-0">
+                <List header={'Selected Marvel avengers: ' + selected.length}>
+                    {itemsComplex.map((item, index) => 
+                        <ListItem 
+                            key={index} 
+                            item={item}
+                            itemTitle="hero"
+                            isActiveItem={item => isSelected(item, 'hero')}
+                            hover
+                            checkbox={<Checkbox 
+                                checked={isSelected(item, 'hero')}
+                                onChange={() => selectOne(item)}/>}/>
+                    )}
+                </List>
+            </Card>
+            <br/>
+            <Card outlined color="primary" title="List with controls and subtitles">
+                <List>
+                    {itemsComplex.map((item, index) => 
+                        <ListItem 
+                            key={index} 
+                            item={item}
+                            icon={item.icon} 
+                            itemTitle="name"
+                            subTitle={<Tag small color="info" value={item.hero}/>}
+                            controls={
+                                <React.Fragment>
+                                    <Button small color="light" className="mr-10" icon="edit"/>
+                                    <Button small color="light" icon="close"/>
+                                </React.Fragment>
+                            }/>
+                    )}
+                </List>
+            </Card>
             <h2>List API</h2>
             <Table
                 bordered

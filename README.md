@@ -16,6 +16,7 @@
 - [ ] Date picker / Calendar
 - [ ] InputMask 
 - [X] Badge
+- [X] Dropdown
 - [X] Tag
 - [X] Card
 - [ ] Expansion List

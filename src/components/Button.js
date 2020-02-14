@@ -39,7 +39,7 @@ export const Button = (props) => {
         <button 
             disabled={props.disabled || props.loading}
             className={btnClass()} 
-            onClick={(e) => props.onClick(e)}>
+            onClick={(e) => props.onClick ? props.onClick(e) : {}}>
             {props.loading ?
                 <Icon name="loading" color="gray"/> :
                 <React.Fragment>

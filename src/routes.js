@@ -1,6 +1,6 @@
 import { HomePage } from './pages/HomePage';
 import { ButtonPage } from './pages/ButtonPage';
-import { MenuPage } from './pages/MenuPage';
+import { DropdownPage } from './pages/DropdownPage';
 import { ListPage } from './pages/ListPage';
 import { InputsPage } from './pages/InputsPage';
 import { DrawerPage } from './pages/DrawerPage';
@@ -22,7 +22,7 @@ export const routes = [
     { path: '/', name: 'Get started', Component: HomePage },
     { path: '/btns', name: 'Button', Component: ButtonPage },
     { path: '/icon', name: 'Icon', Component: IconPage },
-    { path: '/menus', name: 'Menu', Component: MenuPage },
+    { path: '/dropdown', name: 'Dropdown', Component: DropdownPage },
     { path: '/lists', name: 'List', Component: ListPage },
     { path: '/inputs', name: 'Input', Component: InputsPage },
     { path: '/drawer', name: 'Drawer', Component: DrawerPage },

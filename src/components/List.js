@@ -30,6 +30,8 @@ export const ListItem = (props) => {
         let result = '';
         let className = {
             item: 'list-item',
+            right: props.right && !props.left ? 'right' : '',
+            left: props.left && !props.right ? 'left' : '',
             active: (props.isActiveItem && props.isActiveItem(props.item)) ? 'active' : '',
             hover: props.hover ? 'hover' : '',
             noDivider: props.noDivider ? '' : 'divider',
@@ -47,7 +49,7 @@ export const ListItem = (props) => {
             className={itemClass()}>
             <div>
                 <div className="row align-center">
-                    {props.icon ? <Icon name={props.icon}/> : ''}
+                    {props.icon ? <Icon name={props.icon} className="mr-5"/> : ''}
                     <div className="list-item__left-side">
                         {props.checkbox}
                         {props.item[props.itemTitle] ? props.item[props.itemTitle] : props.item}

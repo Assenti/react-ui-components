@@ -5,18 +5,32 @@
         font-size: .9rem;
     }
 
-    &.dark > .list-item {
-        color: #fff;
-        border-bottom-color: gray;
+    &.dark {
+        .list-item {
+            color: #fff;
+            border-bottom-color: gray;
 
-        path {
-            fill: #fff;
+            path {
+                fill: #fff;
+            }
+
+            &.hover:hover:not(.active)  {
+                background-color: rgba($light, .3);
+                transition: all .2s ease-in-out;
+                cursor: pointer;
+            }
         }
 
-        &.hover:hover:not(.active)  {
-            background-color: rgba($light, .3);
-            transition: all .2s ease-in-out;
-            cursor: pointer;
+        .list-item.active {
+            background-color: rgba($info, .4);
+            border-right: 5px solid $info;
+        }
+    }
+
+    &:not(.dark) {
+        .list-item.active {
+            background-color: rgba($info, .2);
+            border-right: 5px solid $info;
         }
     }
 
@@ -57,7 +71,6 @@
         height: 20px;
         min-width: 20px;
         min-height: 20px;
-        margin-right: 8px;
     }
 
     &.divider {
@@ -79,10 +92,6 @@
         border-bottom: none;
     }
 
-    &.active {
-        background-color: $info;
-    }
-
     &.hover:hover:not(.active) {
         background-color: $lightgray;
         transition: all .2s ease-in-out;
@@ -98,10 +107,6 @@
 
 .list-item__left-side {
     .checkbox {
-        margin-right: 15px;
-    }
-
-    svg {
         margin-right: 10px;
     }
 }

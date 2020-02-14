@@ -49,7 +49,7 @@ export const InputField = (props) => {
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                     ref={input}
-                    readOnly={props.readOnly}
+                    readOnly={props.readOnly || !props.onChange ? true : false}
                     disabled={props.disabled}
                     required={props.required}
                     autoComplete={props.autoComplete}

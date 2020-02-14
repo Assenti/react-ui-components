@@ -7,8 +7,8 @@ export const Card = (props) => {
             card: 'card',
             flat: props.flat ? 'flat' : '',
             dark: props.dark ? 'dark' : '',
-            outlined: props.outlined ? 'outlined' : '',
-            color: props.color ? props.color : '',
+            outlined: props.outlined && !props.dark ? 'outlined' : '',
+            color: props.color && !props.dark ? props.color : '',
             className: props.className ? props.className : ''
         }
 
@@ -21,7 +21,7 @@ export const Card = (props) => {
     return (
         <div className={cardClass()} 
             style={{ width: props.width ? props.width : '', minWidth: props.minWidth ? props.minWidth : '' }}>
-            {props.title && props.outlined ? <div className="card-title">{props.title}</div> : ''}
+            {props.title && props.outlined && !props.dark ? <div className="card-title">{props.title}</div> : ''}
             {props.header ? <div className="card-header">{props.header}</div> : ''}
             {props.img ? <img src={props.img} alt={props.desc ? props.desc : 'Image'}/> : ''}
             {props.children}

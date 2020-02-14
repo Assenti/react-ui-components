@@ -25,7 +25,8 @@ import {
     Download,
     Menu,
     Person,
-    Loading
+    Loading,
+    ShieldAccount
 } from '../icons/index';
 
 export const Icon = (props) => {
@@ -83,7 +84,9 @@ export const Icon = (props) => {
             case 'menu':
                 return <Menu size={props.size} color={props.color}/>;
             case 'loading':
-                return <Loading size={props.size} color={props.color}/>;    
+                return <Loading size={props.size} color={props.color}/>;
+            case 'shield-account':
+                return <ShieldAccount size={props.size} color={props.color}/>;    
             default:
                 return '';
         }

@@ -138,33 +138,33 @@ export const ButtonPage = () => {
                         color="primary"
                         lifted
                         name="Primary"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         smooth
                         className="mr-5"
                         color="primary"
                         name="Smooth"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         className="mr-5"
                         outlined
                         color="primary"
                         name="Outlined"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         className="mr-5"
                         outlined
                         uppercase
                         color="primary"
                         name="uppercase"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         className="mr-5"
                         outlined
                         rounded
                         color="primary"
                         name="Rounded"
-                        onClick={() => {}}/>
+                        />
                 </div>
             </Card>
             <br/>
@@ -174,25 +174,25 @@ export const ButtonPage = () => {
                         className="mr-5"
                         color="info"
                         name="Default"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         className="mr-5"
                         color="info"
                         size="medium"
                         name="Medium"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         className="mr-5"
                         size="large"
                         color="info"
                         name="Large"
-                        onClick={() => {}}/> 
+                        /> 
                     <Button
                         rounded
                         className="mr-5"
                         color="info"
                         name="Default"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         rounded
                         outlined
@@ -201,14 +201,14 @@ export const ButtonPage = () => {
                         color="info"
                         size="medium"
                         name="Medium"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         rounded
                         uppercase
                         size="large"
                         color="info"
                         name="Large"
-                        onClick={() => {}}/>  
+                        />  
                 </div>
             </Card>
             <br/>
@@ -217,37 +217,37 @@ export const ButtonPage = () => {
                     className="mr-5"
                     color="primary"
                     name="Primary"
-                    onClick={() => {}}/>
+                    />
                 <Button
                     className="mr-5"
                     color="info"
                     name="Info"
-                    onClick={() => {}}/>  
+                    />  
                 <Button
                     className="mr-5"
                     color="error"
                     name="Error"
-                    onClick={() => {}}/> 
+                    /> 
                 <Button
                     className="mr-5"
                     color="success"
                     name="Success"
-                    onClick={() => {}}/> 
+                    /> 
                 <Button
                     className="mr-5"
                     color="secondary"
                     name="Secondary"
-                    onClick={() => {}}/> 
+                    /> 
                 <Button
                     className="mr-5"
                     color="black"
                     name="Black"
-                    onClick={() => {}}/> 
+                    /> 
                 <Button
                     disabled
                     color="success"
                     name="Disabled"
-                    onClick={() => {}}/> 
+                    /> 
             </Card>
             <br/>
             <Card outlined color="primary" title="Block button">
@@ -257,14 +257,14 @@ export const ButtonPage = () => {
                         className="my-5"
                         color="primary"
                         name="Block button"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         block
                         className="my-10"
                         color="primary"
                         outlined
                         name="Block button"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         block
                         rounded
@@ -272,7 +272,7 @@ export const ButtonPage = () => {
                         className="my-5"
                         color="error"
                         name="Block button"
-                        onClick={() => {}}/>   
+                        />   
                 </div>
             </Card>
             <br/>
@@ -282,38 +282,38 @@ export const ButtonPage = () => {
                         className="mr-10"
                         color="primary"
                         icon="search"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         outlined
                         className="mr-10"
                         color="primary"
                         icon="menu"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         light
                         className="mr-10"
                         icon="search"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         className="mr-10"
                         color="primary"
                         name="Search"
                         icon="search"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         outlined
                         className="mr-10"
                         color="primary"
                         name="Search"
                         icon="search"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         className="mr-10"
                         color="info"
                         name="Home"
                         icon="home"
                         iconLeft
-                        onClick={() => {}}/>
+                        />
                 </div>
             </Card>
             <br/>
@@ -333,13 +333,13 @@ export const ButtonPage = () => {
                         color="primary"
                         loading={loading}
                         icon="search"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         className="mr-10"
                         light
                         loading={loading}
                         icon="search"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         className="mx-10"
                         color="info"
@@ -347,14 +347,14 @@ export const ButtonPage = () => {
                         icon="home"
                         loading={loading}
                         iconLeft
-                        onClick={() => {}}/>
+                        />
                     <Button
                         className="mx-10"
                         color="info"
                         loading={loading}
                         rounded
                         name="Button"
-                        onClick={() => {}}/>
+                        />
                     <Button
                         className="mx-10"
                         color="info"
@@ -362,7 +362,7 @@ export const ButtonPage = () => {
                         rounded
                         outlined
                         name="Button"
-                        onClick={() => {}}/>
+                        />
                 </div>
             </Card>
             <h2>API</h2>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Header } from '../components/Header';
 import { Tooltip } from '../components/Tooltip';
-import { Button } from '../components/Button';
 import { version, description } from '../../package.json';
+import { Button } from '../components/Button';
 
 export const Content = (props) => {
     const github = 'https://github.com/Assenti/react-ui-components';
@@ -15,7 +15,7 @@ export const Content = (props) => {
                 </div>}
                 rightSide={
                 <div className="row align-center">
-                    <div className="text-lightgray mr-20"><small>Version: {version}</small></div>
+                    <div className="text-lightgray mr-20"><small>v {version}</small></div>
                     <Tooltip tooltip="Visit Github repo" position="bottom-right">
                         <Button 
                             dark

@@ -128,8 +128,7 @@
     font-size: .8rem;
 }
 
-.bordered {
-    border: 1px solid $gray;
+.border {
     border-radius: $radius;
 }
 
@@ -148,15 +147,15 @@
 }
 
 .fz-8 {
-    font-size: .8rem;
+    font-size: .8rem !important;
 }
 
 .fz-9 {
-    font-size: .9rem;
+    font-size: .9rem !important;
 }
 
 .fz-10 {
-    font-size: 1rem;
+    font-size: 1rem !important; 
 }
 
 @each $size in $sizes {
@@ -211,8 +210,8 @@
 
 @each $size in $sizes {
     .px-#{$size} {
-        padding-right: #{$size}px;
-        padding-left: #{$size}px;
+        padding-right: #{$size}px !important;
+        padding-left: #{$size}px !important;
     }
 }
 

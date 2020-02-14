@@ -1,4 +1,4 @@
-.menu-container {
+.dropdown-container {
     position: relative;
     display: inline-flex;
     outline: none;
@@ -8,16 +8,14 @@
     }
 }
 
-.menu {
+.dropdown {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
+    min-width: 100%;
     background-color: white;
     box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
     border-radius: $radius;
-    overflow-y: auto;
-    max-height: 50vh;
     z-index: 100;
 }
   
@@ -47,23 +45,23 @@
     border-bottom: none;
 }
 
-.menu-enter {
+.dropdown-enter {
     opacity: 0;
     transform: translateY(-3%);
 }
 
-.menu-enter-active {
+.dropdown-enter-active {
     opacity: 1;
     transform: translateY(0%);
     transition: opacity 300ms, transform 300ms;
 }
 
-.menu-exit {
+.dropdown-exit {
     opacity: 1;
     transform: scale(1);
 }
 
-.menu-exit-active {
+.dropdown-exit-active {
     opacity: 0;
     transform: scale(0.9);
     transition: opacity 300ms, transform 300ms;

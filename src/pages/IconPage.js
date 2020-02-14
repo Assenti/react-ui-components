@@ -18,6 +18,7 @@ export const IconPage = () => {
         'chip',
         'account',
         'person',
+        'shield-account',
         'chevron-down',
         'chevron-next', 
         'chevron-back', 

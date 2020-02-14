@@ -1,13 +1,17 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { routes } from './routes';
 import { Content } from './layouts/Content';
 import { DrawerContent } from './layouts/DrawerContent';
-import { Preloader } from './components/Preloader';
+import { description } from '../package.json';
 
 const App = () => {
     const [drawer, setDrawer] = useState(true);
+
+    useEffect(() => {
+        document.title = description
+    }, [])
     
     return (
         <div className="app">
@@ -27,9 +31,7 @@ const App = () => {
                                 unmountOnExit>
                                 <div className="page">
                                     <Content onDrawerToggle={() => setDrawer(!drawer)}>
-                                        <Suspense fallback={<Preloader visible={true}/>}>
-                                            <Component />
-                                        </Suspense>
+                                        <Component />
                                     </Content>
                                 </div>
                                 </CSSTransition>
