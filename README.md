@@ -14,7 +14,7 @@ Create a lot of usefull and maximum reusable UI components
 ### Usage
 index.js
 ```jsx
-import '@assenti/react-ui-components/build/static/css/main.css';
+import '@assenti/react-ui-components/build/css/main.css';
 ```
 App.js
 ```jsx
