@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Drawer } from '../components/drawer';
-import { List, ListItem } from '../components/list';
-import { Icon } from '../components/icon';
+import { List, ListItem, Icon, Drawer } from '../components';
 
 export const DrawerContent = (props) => {
     const history = useHistory();

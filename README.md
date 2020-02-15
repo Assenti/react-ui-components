@@ -64,9 +64,9 @@ export default App;
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable
 - [ ] Declare types for TS using
-- [ ] Make a-la-carte using 
+- [X] Make a-la-carte using 
 - [ ] Add API descriptions
-- [ ] Add Component usage code modules
+- [ ] Add Component Usage code modules
 - [ ] Add i18n
 - [X] NPM register
 

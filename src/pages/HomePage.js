@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tag } from '../../es';
+import { Tag } from '../components';
 
 export const HomePage = () => {
     return (

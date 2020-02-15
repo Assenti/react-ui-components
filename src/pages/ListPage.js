@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import { List, ListItem } from '../components/list';
-import { Button } from '../components/button';
-import { Checkbox } from '../components/checkbox';
-import { Table } from '../components/table';
-import { Card } from '../components/card';
-import { Tag } from '../components/tag';
+import { List, ListItem, Button, Checkbox, Table, Card, Tag } from '../components';
 
 export const ListPage = () => {
     const names = [

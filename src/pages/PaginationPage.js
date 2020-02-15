@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Pagination } from '../components/pagination';
-import { InputField } from '../components/input';
-import { Table } from '../components/table';
+import { Pagination, InputField, Table } from '../components';
 
 export const PaginationPage = () => {
     const [itemsCount, setItemsCount] = useState(100);

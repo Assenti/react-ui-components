@@ -1,7 +1,5 @@
 import React from 'react';
-import { Tag } from '../components/tag';
-import { Card } from '../components/card';
-import { Table } from '../components/table';
+import { Tag, Card, Table } from '../components';
 
 export const TagPage = () => {
     const keys = ['property', 'description', 'default', 'type', 'value'];

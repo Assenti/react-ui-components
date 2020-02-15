@@ -1,8 +1,7 @@
 import React from 'react';
 import { Header } from './Header';
-import { Tooltip } from '../components/tooltip';
+import { Tooltip, Button } from '../components';
 import { version, description } from '../../package.json';
-import { Button } from '../components/button';
 
 export const Content = (props) => {
     const github = 'https://github.com/Assenti/react-ui-components';

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Select } from '../components/select';
-import { Table } from '../components/table';
+import { Select, Table } from '../components';
 
 export const SelectPage = () => {
     const items = [
