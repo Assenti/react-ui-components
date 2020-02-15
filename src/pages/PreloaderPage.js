@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Button } from '../components/button/Button';
-import { Preloader } from '../components/preloader/Preloader';
-import { Table } from '../components/Table';
+import { Button } from '../components/button';
+import { Preloader } from '../components/preloader';
+import { Table } from '../components/table';
 
 export const PreloaderPage = () => {
     const [loading, setLoading] = useState(false);

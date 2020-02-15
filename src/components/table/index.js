@@ -1,6 +1,6 @@
 import React from 'react';
-import { Empty } from '../icons/index';
-import { Checkbox } from './Checkbox';
+import { Empty } from '../../../icons/index';
+import { Checkbox } from '../checkbox';
 
 
 export const Table = (props) => {

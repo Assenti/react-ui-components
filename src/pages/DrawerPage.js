@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Drawer } from '../components/Drawer';
-import { List, ListItem } from '../components/List';
-import { Button } from '../components/button/Button';
-import { Tooltip } from '../components/Tooltip';
-import { Table } from '../components/Table';
-import { Card } from '../components/Card';
+import { Drawer } from '../components/drawer';
+import { List, ListItem } from '../components/list';
+import { Button } from '../components/button';
+import { Tooltip } from '../components/tooltip';
+import { Table } from '../components/table';
+import { Card } from '../components/card';
 
 export const DrawerPage = () => {
     const [drawer, setDrawer] = useState(true);

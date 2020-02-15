@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { Icon } from '../Icon';
+import { Icon } from '../icon';
 
 export const Select = ({ 
     items, 

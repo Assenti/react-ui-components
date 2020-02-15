@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import { Badge } from '../components/badge/Badge';
-import { Card } from '../components/Card';
-import { Table } from '../components/Table';
-import { Icon } from '../components/Icon';
-import { Button } from '../components/button/Button';
+import { Badge, Card, Table, Icon, Button } from '../../es';
 
 export const BadgePage = () => {
     const keys = ['property', 'description', 'default', 'type', 'value'];

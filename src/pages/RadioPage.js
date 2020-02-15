@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { RadioGroup } from '../components/Radio';
-import { InputField } from '../components/Input';
-import { Icon } from '../components/Icon';
-import { Table } from '../components/Table';
-import { Button } from '../components/button/Button';
+import { RadioGroup } from '../components/radio';
+import { InputField } from '../components/input';
+import { Icon } from '../components/icon';
+import { Table } from '../components/table';
+import { Button } from '../components/button';
 
 export const RadioPage = () => {
     const [cityUS, setCityUS] = useState('');

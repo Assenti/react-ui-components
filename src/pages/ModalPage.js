@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Modal } from '../components/Modal';
-import { Button } from '../components/button/Button';
+import { Modal } from '../components/modal';
+import { Button } from '../components/button';
 
 export const ModalPage = () => {
     const [modal, setModal] = useState(false);

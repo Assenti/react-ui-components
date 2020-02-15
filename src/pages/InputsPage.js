@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { InputField, TextareaField, Uploader } from '../components/Input';
-import { Icon } from '../components/Icon';
-import { Card } from '../components/Card';
-import { Button } from '../components/button/Button';
-import { Table } from '../components/Table';
+import { InputField, Uploader } from '../components/input';
+import { Icon } from '../components/icon';
+import { Card } from '../components/card';
+import { Button } from '../components/button';
+import { Table } from '../components/table';
 
 export const InputsPage = () => {
     const [first, setFirst] = useState('');

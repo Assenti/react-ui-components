@@ -1,8 +1,8 @@
 import React from 'react';
-import { Table } from '../components/Table';
-import { Icon } from '../components/Icon';
+import { Table } from '../components/table';
+import { Icon } from '../components/icon';
 import { description } from '../../package.json';
-import { Card } from '../components/Card';
+import { Card } from '../components/card';
 
 export const IconPage = () => {
     const icons = [

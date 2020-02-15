@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Dropdown } from '../components/Dropdown';
-import { Button } from '../components/button/Button';
-import { InputField } from '../components/Input';
-import { Card } from '../components/Card';
-import { Table } from '../components/Table';
-import { Tag } from '../components/Tag';
-import { Icon } from '../components/Icon';
+import { Dropdown } from '../components/dropdown';
+import { Button } from '../components/button';
+import { InputField } from '../components/input';
+import { Card } from '../components/card';
+import { Table } from '../components/table';
+import { Tag } from '../components/tag';
+import { Icon } from '../components/icon';
 
 export const DropdownPage = () => {
     const [item, setItem] = useState('');

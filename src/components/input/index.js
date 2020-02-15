@@ -1,6 +1,5 @@
-import React, { useRef, useState, createRef } from 'react';
-import { Icon } from './Icon';
-import { CSSTransition } from 'react-transition-group';
+import React, { useRef, useState } from 'react';
+import { Icon } from '../icon';
 
 export const InputField = (props) => {
     const input = useRef(null);

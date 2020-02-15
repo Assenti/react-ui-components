@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card } from '../components/Card';
-import { List, ListItem } from '../components/List';
-import { Table } from '../components/Table';
-import { Icon } from '../components/Icon';
+import { Card } from '../components/card';
+import { List, ListItem } from '../components/list';
+import { Table } from '../components/table';
+import { Icon } from '../components/icon';
 
 export const CardPage = () => {
     const itemsComplexInitial = [

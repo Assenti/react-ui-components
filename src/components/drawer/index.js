@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { Button } from './button/Button';
-import { Tooltip } from './Tooltip';
+import { Button } from '../button';
+import { Tooltip } from '../tooltip';
 
 export const Drawer = (props) => {
     const [isXs, setIsXs] = useState(false);

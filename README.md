@@ -12,12 +12,12 @@ Create a lot of usefull and maximum reusable UI components
 ```
 
 ### Usage
-```
-> index.js
+index.js
+```jsx
 import '@assenti/react-ui-components/build/static/css/main.css';
 ```
-```
-> App.js
+App.js
+```jsx
 import { Card, Button } from '@assenti/react-ui-components';
 
 import React from 'react';

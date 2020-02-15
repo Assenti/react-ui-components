@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { List, ListItem } from '../components/List';
-import { Button } from '../components/button/Button';
-import { Checkbox } from '../components/Checkbox';
-import { Table } from '../components/Table';
-import { Card } from '../components/Card';
-import { Tag } from '../components/Tag';
+import { List, ListItem } from '../components/list';
+import { Button } from '../components/button';
+import { Checkbox } from '../components/checkbox';
+import { Table } from '../components/table';
+import { Card } from '../components/card';
+import { Tag } from '../components/tag';
 
 export const ListPage = () => {
     const names = [

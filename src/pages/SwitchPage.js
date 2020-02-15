@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Switch } from '../components/Switch';
-import { Table } from '../components/Table';
+import { Switch } from '../components/switch';
+import { Table } from '../components/table';
 
 export const SwitchPage = () => {
     const [check, setCheck] = useState(true);

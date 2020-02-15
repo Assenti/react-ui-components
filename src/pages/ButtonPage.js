@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Button } from '../components/button/Button';
-import { Table } from '../components/Table';
-import { Card } from '../components/Card';
-import { Switch } from '../components/Switch';
+import { Button } from '../components/button';
+import { Table } from '../components/table';
+import { Card } from '../components/card';
+import { Switch } from '../components/switch';
 
 export const ButtonPage = () => {
     const [loading, setLoading] = useState(true);

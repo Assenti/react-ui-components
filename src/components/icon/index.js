@@ -28,7 +28,7 @@ import {
     Loading,
     ShieldAccount,
     ReactLogo
-} from '../icons/index';
+} from '../../../icons/index';
 
 export const Icon = (props) => {
 

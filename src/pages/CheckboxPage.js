@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Checkbox } from '../components/Checkbox';
-import { Table } from '../components/Table';
+import { Checkbox } from '../components/checkbox';
+import { Table } from '../components/table';
 
 export const CheckboxPage = () => {
     const [check, setCheck] = useState(true);
