@@ -67,7 +67,10 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Assenti/react-ui-components.git"
