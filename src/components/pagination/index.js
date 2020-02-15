@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Select } from '../select';
-import { ChevronBack, ChevronNext } from '../../../icons/index';
+import { ChevronBack, ChevronNext } from '../icon/icons/index';
 
 const generateMockArr = (length) => {
     let arr = []

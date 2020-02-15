@@ -1,5 +1,5 @@
 import React from 'react';
-import { Empty } from '../../../icons/index';
+import { Empty } from '../icon/icons/index';
 import { Checkbox } from '../checkbox';
 
 

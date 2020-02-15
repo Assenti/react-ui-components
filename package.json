@@ -1,6 +1,6 @@
 {
   "name": "@assenti/rui-components",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "React UI Components",
   "private": false,
   "license": "MIT",
@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "compile": "NODE_ENV=production ./node_modules/.bin/babel src/components --out-dir es/components"
+    "compile": "NODE_ENV=production ./node_modules/.bin/babel src/components --out-dir es -s"
   },
   "dependencies": {
     "@babel/core": "7.8.4",
@@ -103,8 +103,7 @@
   "files": [
     "build",
     "lib",
-    "es",
-    "icons"
+    "es"
   ],
   "main": "lib/index.js",
   "module": "src/index.js",
