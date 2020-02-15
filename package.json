@@ -1,6 +1,6 @@
 {
   "name": "@assenti/rui-components",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "description": "React UI Components",
   "private": false,
   "license": "MIT",
@@ -105,8 +105,8 @@
     "lib",
     "es"
   ],
-  "main": "lib/index.js",
-  "module": "src/index.js",
+  "main": "es/index.js",
+  "module": "es/index.js",
   "typings": "lib/index.d.ts",
   "browserslist": {
     "production": [
