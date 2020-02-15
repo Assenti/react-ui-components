@@ -403,7 +403,7 @@ module.exports = function(webpackEnv) {
                 presets: [
                   [
                     require.resolve('babel-preset-react-app/dependencies'),
-                    { helpers: true },
+                    { helpers: true }
                   ],
                 ],
                 cacheDirectory: true,

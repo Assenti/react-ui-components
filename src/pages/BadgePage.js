@@ -38,28 +38,7 @@ export const BadgePage = () => {
             default: '', 
             type: 'boolean',
             value: 'true | false'
-        },
-        // { 
-        //     property: 'header', 
-        //     description: 'Set drawer header', 
-        //     default: '', 
-        //     type: 'any',
-        //     value: ''
-        // },
-        // { 
-        //     property: 'dark', 
-        //     description: 'Set dark mode', 
-        //     default: 'false', 
-        //     type: 'boolean',
-        //     value: 'true | false'
-        // },
-        // { 
-        //     property: 'absolute', 
-        //     description: 'Set drawer position to absolute', 
-        //     default: 'false', 
-        //     type: 'boolean',
-        //     value: 'true | false'
-        // },
+        }
     ]
 
     const [badge, setBadge] = useState(true);

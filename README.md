@@ -19,9 +19,7 @@ import '@assenti/react-ui-components/build/css/main.css';
 App.js
 ```jsx
 import { Card, Button } from '@assenti/react-ui-components';
-
 import React from 'react';
-import { Card, Button } from './react-ui-components';
 
 function App() {
   return (

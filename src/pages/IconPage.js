@@ -29,7 +29,8 @@ export const IconPage = () => {
         'city',
         'empty',
         'download',
-        'menu'  
+        'menu',
+        'file-outline'  
     ]
 
     const keys = ['property', 'description', 'default', 'type', 'value'];

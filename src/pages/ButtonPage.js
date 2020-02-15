@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Table, Card, Switch } from '../components';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export const ButtonPage = () => {
     const [loading, setLoading] = useState(true);
@@ -125,6 +127,89 @@ export const ButtonPage = () => {
         }
     ]
 
+    const buttonTypes = 
+`// Usage examples
+import { Button } from '@assenti/react-ui-components';
+
+<Button
+    className="mr-5"
+    color="primary"
+    lifted
+    name="Primary"
+    />
+<Button
+    smooth
+    className="mr-5"
+    color="primary"
+    name="Smooth"
+    />
+<Button
+    className="mr-5"
+    outlined
+    color="primary"
+    name="Outlined"
+    />
+<Button
+    className="mr-5"
+    outlined
+    uppercase
+    color="primary"
+    name="uppercase"
+    />
+<Button
+    className="mr-5"
+    outlined
+    rounded
+    color="primary"
+    name="Rounded"
+    />
+`
+
+    const buttonSizes = 
+`// Usage examples
+import { Button } from '@assenti/react-ui-components';
+
+<Button
+    className="mr-5"
+    color="info"
+    name="Default"
+    />
+<Button
+    className="mr-5"
+    color="info"
+    size="medium"
+    name="Medium"
+    />
+<Button
+    className="mr-5"
+    size="large"
+    color="info"
+    name="Large"
+    /> 
+<Button
+    rounded
+    className="mr-5"
+    color="info"
+    name="Default"
+    />
+<Button
+    rounded
+    outlined
+    uppercase
+    className="mr-5"
+    color="info"
+    size="medium"
+    name="Medium"
+    />
+<Button
+    rounded
+    uppercase
+    size="large"
+    color="info"
+    name="Large"
+    /> 
+`
+
     return (
         <div className="page">
             <div className="page-title">Button Component</div>
@@ -163,6 +248,9 @@ export const ButtonPage = () => {
                         name="Rounded"
                         />
                 </div>
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {buttonTypes}
+                </SyntaxHighlighter>
             </Card>
             <br/>
             <Card outlined color="primary" title="Button sizes">
@@ -205,8 +293,11 @@ export const ButtonPage = () => {
                         size="large"
                         color="info"
                         name="Large"
-                        />  
+                        /> 
                 </div>
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {buttonSizes}
+                </SyntaxHighlighter> 
             </Card>
             <br/>
             <Card outlined color="primary" title="Button colors">

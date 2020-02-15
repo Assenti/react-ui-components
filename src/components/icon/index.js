@@ -27,7 +27,8 @@ import {
     Person,
     Loading,
     ShieldAccount,
-    ReactLogo
+    ReactLogo,
+    FileOutline
 } from './icons/index';
 
 export const Icon = (props) => {
@@ -90,6 +91,8 @@ export const Icon = (props) => {
                 return <ShieldAccount size={props.size} color={props.color}/>;    
             case 'react':
                 return <ReactLogo size={props.size} color={props.color}/>;
+            case 'file-outline':
+                return <FileOutline size={props.size} color={props.color}/>;
             default:
                 return '';
         }
