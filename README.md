@@ -12,13 +12,32 @@ Create a lot of usefull and maximum reusable UI components
 ```
 
 ### Usage
+```
+> index.js
+import '@assenti/react-ui-components/build/static/css/main.css';
+```
+```
+> App.js
+import { Card, Button } from '@assenti/react-ui-components';
 
-## Used stack:
-- JS, React.js;
-- React-Transition-Group;
-- Styles: SCSS;
+import React from 'react';
+import { Card, Button } from './react-ui-components';
 
-#### TODO:
+function App() {
+  return (
+    <div>
+      <Card>
+        <Button color="primary" name="Button" icon="search"/>
+      </Card>
+    </div>
+  );
+}
+
+export default App;
+```
+
+
+### TODO
 - [ ] Popover
 - [ ] Dialog
 - [X] Radio button
