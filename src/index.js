@@ -13,7 +13,7 @@ export { Modal } from './components/Modal';
 export { Pagination } from './components/Pagination';
 export { Preloader } from './components/preloader/Preloader';
 export { RadioGroup } from './components/Radio';
-export { Select } from './components/Select';
+export { Select } from './components/select/Select';
 export { Switch } from './components/Switch';
 export { Table } from './components/Table';
 export { Tag } from './components/Tag';

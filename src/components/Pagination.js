@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Select } from './Select';
+import { Select } from './select/Select';
 import { ChevronBack, ChevronNext } from '../icons/index';
 
 const generateMockArr = (length) => {

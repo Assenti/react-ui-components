@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { ChevronNext, ChevronDown } from '../icons/index';
 import { CSSTransition } from 'react-transition-group';
-import { Icon } from './Icon';
+import { Icon } from '../Icon';
 
 export const Select = ({ 
     items, 
