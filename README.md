@@ -1,12 +1,17 @@
 # React UI Components
 
-#### Main Goal: Create a lot of usefull and maximum reusable UI components
+### Main Goal
+Create a lot of usefull and maximum reusable UI components
 
-## Usage:
+### Homepage
+[React UI Components](https://r-ui-components.netlify.com/)
+
+### Install
 ```bash
 % npm i @assenti/rui-components
 ```
 
+### Usage
 
 ## Used stack:
 - JS, React.js;
@@ -46,9 +51,9 @@
 - [ ] Add i18n
 - [X] NPM register
 
-###### Start date: Jan 6th 2020
+Project start date: Jan 6th 2020
 
-## License
+### License
 
 [MIT Licensed](/LICENSE)
 Copyright (c) 2020 Asset Sultanov
