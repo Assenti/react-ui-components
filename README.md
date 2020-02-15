@@ -1,8 +1,12 @@
-## React UI Components
+# React UI Components
 
 #### Main Goal: Create a lot of usefull and maximum reusable UI components
 
 ## Usage:
+```bash
+% npm i @assenti/rui-components
+```
+
 
 ## Used stack:
 - JS, React.js;

@@ -11,7 +11,7 @@ export { List } from './components/List';
 export { ListItem } from './components/List';
 export { Modal } from './components/Modal';
 export { Pagination } from './components/Pagination';
-export { Preloader } from './components/button/Preloader';
+export { Preloader } from './components/preloader/Preloader';
 export { RadioGroup } from './components/Radio';
 export { Select } from './components/Select';
 export { Switch } from './components/Switch';
