@@ -2,7 +2,6 @@ import React from 'react';
 import { Icon } from '../icon';
 
 export const Tag = (props) => {
-
     const tagClass = () => {
         let result = '';
         let className = {
@@ -24,7 +23,7 @@ export const Tag = (props) => {
     }
 
     return (
-        <div className={tagClass()}>
+        <div className={tagClass()} style={{ width: props.width ? props.width : ''}}>
             {props.iconLeft ? <Icon name={props.iconLeft}/> : ''}
             {props.value}
             {props.iconRight ? <Icon name={props.iconRight}/> : ''}

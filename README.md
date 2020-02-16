@@ -58,13 +58,15 @@ export default App;
 - [X] Switch
 - [ ] Carousel
 - [ ] Timeline
+- [ ] Tabs
+- [ ] GoUpButton
 - [X] Preloader
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable
 - [ ] Declare types for TS using
 - [X] Make a-la-carte using 
-- [ ] Add API descriptions
-- [ ] Add Component Usage code modules
+- [X] Add API descriptions
+- [X] Add Component Usage code modules
 - [ ] Add i18n
 - [X] NPM register
 

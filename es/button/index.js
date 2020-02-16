@@ -45,7 +45,7 @@ export var Button = function Button(props) {
   }) : React.createElement(React.Fragment, null, props.icon && props.iconLeft ? React.createElement(Icon, {
     size: 20,
     name: props.icon
-  }) : '', props.name ? React.createElement("span", {
+  }) : '', props.name ? React.createElement("div", {
     className: setMargin()
   }, props.name) : '', props.icon && !props.iconLeft ? React.createElement(Icon, {
     size: 20,

@@ -68,6 +68,13 @@ export const TagPage = () => {
             value: 'home | search | etc. (see icon names list in docs)'
         },
         { 
+            property: 'width',
+            description: 'Set a tag width', 
+            default: '', 
+            type: 'string | number',
+            value: ''
+        },
+        { 
             property: 'className',
             description: 'Set a custom css class to component', 
             default: '', 

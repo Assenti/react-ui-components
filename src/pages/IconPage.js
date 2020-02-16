@@ -1,6 +1,8 @@
 import React from 'react';
 import { Table, Icon, Card } from '../components';
 import { description } from '../../package.json';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export const IconPage = () => {
     const icons = [
@@ -30,7 +32,10 @@ export const IconPage = () => {
         'empty',
         'download',
         'menu',
-        'file-outline'  
+        'file-outline' ,
+        'email',
+        'rocket',
+        'key' 
     ]
 
     const keys = ['property', 'description', 'default', 'type', 'value'];
@@ -79,9 +84,21 @@ export const IconPage = () => {
         }
     ]
 
+    const usage = 
+`// Usage examples
+import { Icon } from '@assenti/rui-components';
+
+<Icon name="search" size={20} color="red"/>
+<Icon name="home" size={20} color="#1976d2"/>
+<Icon name="account" size={20} color="#rgb(0,0,5)"/>
+`
+
     return (
         <div className="page">
-            <div className="page-title">Icon Component</div>
+            <div className="row align-center space-between">
+                <div className="page-title">Icon Component</div>
+                <a href="#icon-api" className="fz-13 fw-bold">API</a>
+            </div>
             <p><strong>{description}</strong> use primarily
                 <a href="https://materialdesignicons.com/"
                     target="blank_"
@@ -97,8 +114,11 @@ export const IconPage = () => {
                         <div className="mt-5 fz-8">{item}</div>
                     </div>
                 )}
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {usage}
+                </SyntaxHighlighter>
             </Card>
-            <h2>API</h2>
+            <h2 id="icon-api">API</h2>
             <Table
                 bordered
                 headers={keys}

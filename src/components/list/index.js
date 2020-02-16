@@ -45,21 +45,27 @@ export const ListItem = (props) => {
     }
 
     return (
-        <div onClick={() => props.onItemClick ? props.onItemClick() : {}} 
+        <div onClick={() => props.onClick ? props.onClick() : {}} 
             className={itemClass()}>
-            <div>
-                <div className="row align-center">
-                    {props.icon ? <Icon name={props.icon} className="mr-5"/> : ''}
-                    <div className="list-item__left-side">
-                        {props.checkbox}
-                        {props.item[props.itemTitle] ? props.item[props.itemTitle] : props.item}
+            {
+                !props.render ?
+                <React.Fragment>
+                    <div>
+                        <div className="row align-center">
+                            {props.icon ? <Icon name={props.icon} className="mr-5"/> : ''}
+                            <div className="list-item__left-side">
+                                {props.checkbox}
+                                {props.item[props.itemTitle] ? props.item[props.itemTitle] : props.item}
+                            </div>
+                        </div>
+                        <div className="list-item__right-side">
+                            {props.controls}
+                        </div>
                     </div>
-                </div>
-                <div className="list-item__right-side">
-                    {props.controls}
-                </div>
-            </div>
-            {props.subTitle ? <div className="list-subtitle">{props.subTitle}</div> : ''}
+                    {props.subTitle ? <div className="list-subtitle">{props.subTitle}</div> : ''}
+                </React.Fragment> :
+                props.render
+            }
         </div>
     )
 }

@@ -1,0 +1,81 @@
+@each $size in $sizes {
+    .ma-#{$size} {
+        margin: #{$size}px;
+    }
+}
+
+@each $size in $sizes {
+    .mx-#{$size} {
+        margin-left: #{$size}px;
+        margin-right: #{$size}px;
+    }
+}
+
+@each $size in $sizes {
+    .my-#{$size} {
+        margin-top: #{$size}px;
+        margin-bottom: #{$size}px;
+    }
+}
+
+@each $size in $sizes {
+    .mr-#{$size} {
+        margin-right: #{$size}px;
+    }
+}
+
+@each $size in $sizes {
+    .ml-#{$size} {
+        margin-left: #{$size}px;
+    }
+}
+
+@each $size in $sizes {
+    .mb-#{$size} {
+        margin-bottom: #{$size}px;
+    }
+}
+
+@each $size in $sizes {
+    .mt-#{$size} {
+        margin-top: #{$size}px;
+    }
+}
+
+@each $size in $sizes {
+    .pa-#{$size} {
+        padding: #{$size}px !important;
+    }
+}
+
+@each $size in $sizes {
+    .px-#{$size} {
+        padding-right: #{$size}px !important;
+        padding-left: #{$size}px !important;
+    }
+}
+
+@each $size in $sizes {
+    .py-#{$size} {
+        padding-top: #{$size}px;
+        padding-bottom: #{$size}px;
+    }
+}
+
+@each $size in $sizes {
+    .pb-#{$size} {
+        padding-bottom: #{$size}px;
+    }
+}
+
+@each $size in $sizes {
+    .pt-#{$size} {
+        padding-top: #{$size}px;
+    }
+}
+
+@each $size in $sizes {
+    .pr-#{$size} {
+        padding-right: #{$size}px;
+    }
+}

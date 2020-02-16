@@ -1,11 +1,14 @@
 .tag {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    // justify-content: center;
     border: 1px solid;
     border-radius: $radius;
     border-color: $lightgray;
     background-color: $lightgray;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 
     &.upprecase {
         text-transform: uppercase;

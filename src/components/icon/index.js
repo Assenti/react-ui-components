@@ -28,7 +28,10 @@ import {
     Loading,
     ShieldAccount,
     ReactLogo,
-    FileOutline
+    FileOutline,
+    Email,
+    Rocket,
+    Key
 } from './icons/index';
 
 export const Icon = (props) => {
@@ -93,6 +96,12 @@ export const Icon = (props) => {
                 return <ReactLogo size={props.size} color={props.color}/>;
             case 'file-outline':
                 return <FileOutline size={props.size} color={props.color}/>;
+            case 'email':
+                return <Email size={props.size} color={props.color}/>;
+            case 'rocket':
+                return <Rocket size={props.size} color={props.color}/>;
+            case 'key':
+                return <Key size={props.size} color={props.color}/>;
             default:
                 return '';
         }

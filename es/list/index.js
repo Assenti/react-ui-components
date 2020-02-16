@@ -45,10 +45,10 @@ export var ListItem = function ListItem(props) {
 
   return React.createElement("div", {
     onClick: function onClick() {
-      return props.onItemClick ? props.onItemClick() : {};
+      return props.onClick ? props.onClick() : {};
     },
     className: itemClass()
-  }, React.createElement("div", null, React.createElement("div", {
+  }, !props.render ? React.createElement(React.Fragment, null, React.createElement("div", null, React.createElement("div", {
     className: "row align-center"
   }, props.icon ? React.createElement(Icon, {
     name: props.icon,
@@ -59,6 +59,6 @@ export var ListItem = function ListItem(props) {
     className: "list-item__right-side"
   }, props.controls)), props.subTitle ? React.createElement("div", {
     className: "list-subtitle"
-  }, props.subTitle) : '');
+  }, props.subTitle) : '') : props.render);
 };
 //# sourceMappingURL=index.js.map

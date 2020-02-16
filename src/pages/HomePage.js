@@ -14,9 +14,9 @@ import { Card, Button } from '@assenti/react-ui-components';
 function App() {
     return (
         <div>
-        <Card outlined color="primary" title="Button">
-            <Button color="primary" name="Button" icon="search"/>
-        </Card>
+            <Card outlined color="primary" title="Button">
+                <Button color="primary" name="Button" icon="search"/>
+            </Card>
         </div>
     );
 } 
@@ -25,7 +25,10 @@ export default App;`
     return (
         <React.Fragment>
             <h1 className="text-info">Welcome to React UI Components</h1>
-            <h3><Tag value="Main Goal:" color="info"/> Create a lot of usefull and maximum reusable UI components for React apps</h3>
+            <div className="row align-center wrap">
+                <Tag value={<strong>Main Goal</strong>} color="info"/>
+                <div className="col fz-12 fw-bold py-10 px-5" style={{ minWidth: 400 }}>Create a lot of usefull and maximum reusable UI components for React apps</div>
+            </div>
             <Tag iconLeft="hammer" value="Work in progress..."/>
             <h3>Install</h3>
             <SyntaxHighlighter language="bash" style={prism}>

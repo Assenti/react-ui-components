@@ -23,7 +23,10 @@ export var Tag = function Tag(props) {
   };
 
   return React.createElement("div", {
-    className: tagClass()
+    className: tagClass(),
+    style: {
+      width: props.width ? props.width : ''
+    }
   }, props.iconLeft ? React.createElement(Icon, {
     name: props.iconLeft
   }) : '', props.value, props.iconRight ? React.createElement(Icon, {

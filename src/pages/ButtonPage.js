@@ -129,90 +129,297 @@ export const ButtonPage = () => {
 
     const buttonTypes = 
 `// Usage examples
+import React from 'react';
 import { Button } from '@assenti/react-ui-components';
 
-<Button
-    className="mr-5"
-    color="primary"
-    lifted
-    name="Primary"
-    />
-<Button
-    smooth
-    className="mr-5"
-    color="primary"
-    name="Smooth"
-    />
-<Button
-    className="mr-5"
-    outlined
-    color="primary"
-    name="Outlined"
-    />
-<Button
-    className="mr-5"
-    outlined
-    uppercase
-    color="primary"
-    name="uppercase"
-    />
-<Button
-    className="mr-5"
-    outlined
-    rounded
-    color="primary"
-    name="Rounded"
-    />
+function Example() {
+    return (
+        <div className="row align-center">
+            <Button
+                className="mr-5"
+                color="primary"
+                lifted
+                name="Primary"
+                />
+            <Button
+                smooth
+                className="mr-5"
+                color="primary"
+                name="Smooth"
+                />
+            <Button
+                className="mr-5"
+                outlined
+                color="primary"
+                name="Outlined"
+                />
+            <Button
+                className="mr-5"
+                outlined
+                uppercase
+                color="primary"
+                name="uppercase"
+                />
+            <Button
+                className="mr-5"
+                outlined
+                rounded
+                color="primary"
+                name="Rounded"
+                />
+        </div>
+    )
+}
 `
 
     const buttonSizes = 
 `// Usage examples
+import React from 'react';
 import { Button } from '@assenti/react-ui-components';
 
-<Button
-    className="mr-5"
-    color="info"
-    name="Default"
-    />
-<Button
-    className="mr-5"
-    color="info"
-    size="medium"
-    name="Medium"
-    />
-<Button
-    className="mr-5"
-    size="large"
-    color="info"
-    name="Large"
-    /> 
-<Button
-    rounded
-    className="mr-5"
-    color="info"
-    name="Default"
-    />
-<Button
-    rounded
-    outlined
-    uppercase
-    className="mr-5"
-    color="info"
-    size="medium"
-    name="Medium"
-    />
-<Button
-    rounded
-    uppercase
-    size="large"
-    color="info"
-    name="Large"
-    /> 
+function Example() {
+    return(
+        <div className="row align-center">
+            <Button
+                className="mr-5"
+                color="info"
+                name="Default"
+                />
+            <Button
+                className="mr-5"
+                color="info"
+                size="medium"
+                name="Medium"
+                />
+            <Button
+                className="mr-5"
+                size="large"
+                color="info"
+                name="Large"
+                /> 
+            <Button
+                rounded
+                className="mr-5"
+                color="info"
+                name="Default"
+                />
+            <Button
+                rounded
+                outlined
+                uppercase
+                className="mr-5"
+                color="info"
+                size="medium"
+                name="Medium"
+                />
+            <Button
+                rounded
+                uppercase
+                size="large"
+                color="info"
+                name="Large"
+                /> 
+        </div>
+    )
+}
+`
+
+const buttonColors = 
+`// Usage examples
+import React from 'react';
+import { Button } from '@assenti/react-ui-components';
+
+function Example() {
+    return(
+        <div>
+            <Button
+                className="mr-5"
+                color="primary"
+                name="Primary"
+                />
+            <Button
+                className="mr-5"
+                color="info"
+                name="Info"
+                />  
+            <Button
+                className="mr-5"
+                color="error"
+                name="Error"
+                /> 
+            <Button
+                className="mr-5"
+                color="success"
+                name="Success"
+                /> 
+            <Button
+                className="mr-5"
+                color="secondary"
+                name="Secondary"
+                /> 
+            <Button
+                className="mr-5"
+                color="black"
+                name="Black"
+                /> 
+            <Button
+                disabled
+                color="success"
+                name="Disabled"
+                />  
+        </div>
+    )
+}
+`
+
+    const blockButtons =
+`// Usage examples
+import React from 'react';
+import { Button } from '@assenti/rui-components';
+
+function Example() {
+    return (
+        <div style={{ width: 300 }} className="mb-10">
+            <Button
+                block
+                className="my-5"
+                color="primary"
+                name="Block button"
+                />
+            <Button
+                block
+                className="my-10"
+                color="primary"
+                outlined
+                name="Block button"
+                />
+            <Button
+                block
+                rounded
+                outlined
+                className="my-5"
+                color="error"
+                name="Block button"
+                />   
+        </div>
+    )
+}
+`
+
+    const usageIcon =
+`// Usage examples
+import React from 'react';
+import { Button } from '@assenti/rui-components';
+
+function Example() {
+    return (
+        <div className="row align-center">
+            <Button
+                className="mr-10"
+                color="primary"
+                icon="search"
+                />
+            <Button
+                outlined
+                className="mr-10"
+                color="primary"
+                icon="menu"
+                />
+            <Button
+                light
+                className="mr-10"
+                icon="search"
+                />
+            <Button
+                className="mr-10"
+                color="primary"
+                name="Search"
+                icon="search"
+                />
+            <Button
+                outlined
+                className="mr-10"
+                color="primary"
+                name="Search"
+                icon="search"
+                />
+            <Button
+                className="mr-10"
+                color="info"
+                name="Home"
+                icon="home"
+                iconLeft
+                />
+        </div>
+    )
+}
+`
+
+    const loadingButtons =
+`// Usage examples
+import React, { useState } from 'react';
+import { Button, Switch } from '@assenti/rui-components';
+
+function Example() {
+    const [loading, setLoading] = useState(true);
+
+    return (
+        <div className="row align-center py-20">
+            <label>Toggle loaders</label>
+            <Switch 
+                check={loading} 
+                color="info" 
+                className="ml-10"
+                onChange={() => setLoading(!loading)}/>
+        </div>
+        <div className="row align-center">
+            <Button
+                outlined
+                className="mr-10"
+                color="primary"
+                loading={loading}
+                icon="search"
+                />
+            <Button
+                className="mr-10"
+                light
+                loading={loading}
+                icon="search"
+                />
+            <Button
+                className="mx-10"
+                color="info"
+                name="Home"
+                icon="home"
+                loading={loading}
+                iconLeft
+                />
+            <Button
+                className="mx-10"
+                color="info"
+                loading={loading}
+                rounded
+                name="Button"
+                />
+            <Button
+                className="mx-10"
+                color="info"
+                loading={loading}
+                rounded
+                outlined
+                name="Button"
+                />
+        </div>
+    )
+}
 `
 
     return (
         <div className="page">
-            <div className="page-title">Button Component</div>
+            <div className="row align-center space-between">
+                <div className="page-title">Button Component</div>
+                <a href="#btn-api" className="fz-13 fw-bold">API</a>
+            </div>
             <Card outlined color="primary" title="Button types">
                 <div className="row align-center">
                     <Button
@@ -336,6 +543,9 @@ import { Button } from '@assenti/react-ui-components';
                     color="success"
                     name="Disabled"
                     /> 
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {buttonColors}
+                </SyntaxHighlighter>
             </Card>
             <br/>
             <Card outlined color="primary" title="Block button">
@@ -362,6 +572,9 @@ import { Button } from '@assenti/react-ui-components';
                         name="Block button"
                         />   
                 </div>
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {blockButtons}
+                </SyntaxHighlighter>
             </Card>
             <br/>
             <Card outlined color="primary" title="Icon buttons">
@@ -403,6 +616,9 @@ import { Button } from '@assenti/react-ui-components';
                         iconLeft
                         />
                 </div>
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {usageIcon}
+                </SyntaxHighlighter> 
             </Card>
             <br/>
             <Card outlined color="primary" title="Loading">
@@ -452,8 +668,11 @@ import { Button } from '@assenti/react-ui-components';
                         name="Button"
                         />
                 </div>
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {loadingButtons}
+                </SyntaxHighlighter> 
             </Card>
-            <h2>API</h2>
+            <h2 id="btn-api">API</h2>
             <Table
                 bordered
                 headers={keys}

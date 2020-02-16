@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Preloader, Table } from '../components';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export const PreloaderPage = () => {
     const [loading, setLoading] = useState(false);
@@ -41,11 +43,31 @@ export const PreloaderPage = () => {
         }
     ]
 
+    const usage = 
+`// Usage examples
+import React, { useState } from 'react';
+import { Preloader } from '@assenti/rui-components';
+
+function Example() {
+    const [loading, setLoading] = useState(false);
+
+    return (
+        <div>
+            <Preloader visible={loading}/>
+        </div>
+    )
+}
+`
+
     return (
         <div className="page">
-            <div className="page-title">Preloader</div>
-            <div className="pa-10">
+            <div className="page-title">Preloader Component</div>
+            <p>Launch full page preloader and make all actions on screen disabled</p>
+            <div className="py-10">
                 <Button name="Activate" color="info" onClick={handleClick}/>
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {usage}
+                </SyntaxHighlighter>
             </div>
             <Preloader visible={loading}/>
             <h2>API</h2>

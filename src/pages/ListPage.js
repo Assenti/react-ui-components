@@ -50,6 +50,13 @@ export const ListPage = () => {
 
     const items2 = [
         { 
+            property: 'render', 
+            description: 'You can pass your own custom element', 
+            default: '', 
+            type: 'any',
+            value: ''
+        },
+        { 
             property: 'itemTitle', 
             description: 'If you pass items as array of objects pass the key of field that you want to display', 
             default: '', 
@@ -135,7 +142,13 @@ export const ListPage = () => {
 
     return (
         <div className="page">
-            <div className="page-title">Lists</div>
+            <div className="row align-center space-between">
+                <div className="page-title">List, ListItem Components</div>
+                <div className="row">
+                    <a href="#list-api" className="fz-13 fw-bold mr-10">List API</a>
+                    <a href="#list-item-api" className="fz-13 fw-bold">ListItem API</a>
+                </div>
+            </div>
             <Card 
                 outlined 
                 className="px-0"
@@ -224,14 +237,14 @@ export const ListPage = () => {
                     )}
                 </List>
             </Card>
-            <h2>List API</h2>
+            <h2 id="list-api">List API</h2>
             <Table
                 bordered
                 headers={keys}
                 items={items}
                 index={true}
                 itemTitles={keys}/>
-            <h2>ListItem API</h2>
+            <h2 id="list-item-api">ListItem API</h2>
             <Table
                 bordered
                 headers={keys}

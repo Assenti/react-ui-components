@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { InputField, Uploader, Icon, Card, Button, Table } from '../components';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export const InputsPage = () => {
     const [first, setFirst] = useState('');
@@ -218,9 +220,108 @@ export const InputsPage = () => {
         setFiles(files => files.filter(item => item.name !== name))
     }
 
+    const inputTypes = 
+`// Usage examples
+import React, { useState } from 'react';
+import { InputField } from '@assenti/react-ui-components';
+
+function Example() {
+    const [first, setFirst] = useState('');
+
+    return (
+        <div className="row wrap">
+            <div className="col">
+                <InputField
+                    label="Standard input with clear button and hint"
+                    placeholder="Input a text" 
+                    value={first}
+                    color="primary"
+                    width="300px"
+                    hint="Some hint"
+                    onClear={() => setFirst('')} 
+                    onChange={e => setFirst(e.target.value)}/>
+                <InputField
+                    label="Smooth input with prefix, clear button with lifted prop"
+                    placeholder="Input a text" 
+                    value={first}
+                    smooth
+                    lifted
+                    color="primary"
+                    prefix={<Icon name="search"/>}
+                    width="300px"
+                    onClear={() => setFirst('')} 
+                    onChange={e => setFirst(e.target.value)}/>
+                <InputField
+                    label="Rounded input field with prefix, suffix and clear button"
+                    placeholder="Defaul size input field" 
+                    value={first}
+                    rounded
+                    prefix={<Icon name="search"/>}
+                    suffix={<Icon name="edit"/>}
+                    color="info"
+                    width="300px"
+                    onClear={() => setFirst('')} 
+                    onChange={e => setFirst(e.target.value)}/>
+                <InputField
+                    label="Disabled input field"
+                    placeholder="Defaul size rounded input field" 
+                    value={first}
+                    rounded
+                    disabled
+                    prefix={<Icon name="account"/>}
+                    color="info"
+                    width="300px"
+                    onClear={() => setFirst('')} 
+                    onChange={e => setFirst(e.target.value)}/>
+            </div>
+            <div className="col">
+                <InputField
+                    label="Standard input field with suffix button"
+                    placeholder="Search..." 
+                    value={first}
+                    color="primary"
+                    width="100%"
+                    prefix={<Icon name="search"/>}
+                    suffix={<Button name="Search" color="primary" onClick={() => {}}/>}
+                    onClear={() => setFirst('')} 
+                    onChange={e => setFirst(e.target.value)}/>
+                <InputField
+                    label="Smooth input field with suffix button"
+                    placeholder="Search..." 
+                    value={first}
+                    color="primary"
+                    width="100%"
+                    smooth
+                    prefix={<Icon name="search"/>}
+                    suffix={<Button name="Search" color="primary" onClick={() => {}}/>}
+                    onClear={() => setFirst('')} 
+                    onChange={e => setFirst(e.target.value)}/>
+                <InputField
+                    label="Rounded input field with suffix button"
+                    placeholder="Search..." 
+                    value={first}
+                    color="error"
+                    width="100%"
+                    rounded
+                    prefix={<Icon name="search"/>}
+                    suffix={<Button name="Search" color="error" onClick={() => {}}/>}
+                    onClear={() => setFirst('')} 
+                    onChange={e => setFirst(e.target.value)}/>
+            </div>
+        </div>
+    )
+}
+`
+
     return (
         <div className="page">
-            <div className="page-title">Inputs</div>
+            <div className="row align-center space-between">
+                <div className="page-title">InputField, Uploader Components</div>
+                <div className="row">
+                    <a href="#input-field-api" className="fz-13 fw-bold mr-10">InputField API</a>
+                    <a href="#uploader-api" className="fz-13 fw-bold">Uploader API</a>
+                </div>
+            </div>
             <h3>Input types</h3>
             <Card>
                 <div className="row wrap">
@@ -303,6 +404,9 @@ export const InputsPage = () => {
                             onChange={e => setFirst(e.target.value)}/>
                     </div>
                 </div>
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {inputTypes}
+                </SyntaxHighlighter>
             </Card>
             <h3>Input sizes</h3>
             <Card>
@@ -443,14 +547,14 @@ export const InputsPage = () => {
                     onClear={() => setFirst('')} 
                     onChange={e => setFirst(e.target.value)}/>
             </Card> */}
-            <h2>InputField API</h2>
+            <h2 id="input-field-api">InputField API</h2>
             <Table
                 bordered
                 headers={keys}
                 items={items}
                 index={true}
                 itemTitles={keys}/>
-            <h2>Uploader API</h2>
+            <h2 id="uploader-api">Uploader API</h2>
             <Table
                 bordered
                 headers={keys}

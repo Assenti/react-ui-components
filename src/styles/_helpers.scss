@@ -1,35 +1,13 @@
-@media (max-width: $xs) {
-    .hidden-xs {
-        display: none;
-    }
-}
-
-@media (max-width: $sm) {
-    .hidden-sm {
-        display: none;
-    }
-}
-
-@media (max-width: $md) {
-    .hidden-md {
-        display: none;
-    }
-}
-
-@media (max-width: $lg) {
-    .hidden-lg {
-        display: none;
-    }
-}
-
-@media (min-width: $xs + 1) {
-    .hidden-sm-and-up {
-        display: none;
-    }
-}
-
 .overflow-y {
     overflow-y: auto;
+}
+
+.overflow-x {
+    overflow-x: auto;
+}
+
+.overflow {
+    overflow: auto;
 }
 
 .text-white {
@@ -54,10 +32,10 @@
 
 .row {
     display: flex;
+}
 
-    .wrap {
-        flex-wrap: wrap;
-    }
+.wrap {
+    flex-wrap: wrap;
 }
 
 .row-inline {
@@ -104,10 +82,6 @@
     text-align: right;
 }
 
-.text-bold {
-    font-weight: bold;
-}
-
 .full-width {
     width: 100%;
 }
@@ -122,10 +96,6 @@
 
 .spacer {
     flex-grow: 1;
-}
-
-.text-hint {
-    font-size: .8rem;
 }
 
 .border {
@@ -146,96 +116,11 @@
     position: relative;
 }
 
-.fz-8 {
-    font-size: .8rem !important;
+.absolute {
+    position: absolute;
 }
 
-.fz-9 {
-    font-size: .9rem !important;
-}
-
-.fz-10 {
-    font-size: 1rem !important; 
-}
-
-@each $size in $sizes {
-    .ma-#{$size} {
-        margin: #{$size}px;
-    }
-}
-
-@each $size in $sizes {
-    .mx-#{$size} {
-        margin-left: #{$size}px;
-        margin-right: #{$size}px;
-    }
-}
-
-@each $size in $sizes {
-    .my-#{$size} {
-        margin-top: #{$size}px;
-        margin-bottom: #{$size}px;
-    }
-}
-
-@each $size in $sizes {
-    .mr-#{$size} {
-        margin-right: #{$size}px;
-    }
-}
-
-@each $size in $sizes {
-    .ml-#{$size} {
-        margin-left: #{$size}px;
-    }
-}
-
-@each $size in $sizes {
-    .mb-#{$size} {
-        margin-bottom: #{$size}px;
-    }
-}
-
-@each $size in $sizes {
-    .mt-#{$size} {
-        margin-top: #{$size}px;
-    }
-}
-
-@each $size in $sizes {
-    .pa-#{$size} {
-        padding: #{$size}px !important;
-    }
-}
-
-@each $size in $sizes {
-    .px-#{$size} {
-        padding-right: #{$size}px !important;
-        padding-left: #{$size}px !important;
-    }
-}
-
-@each $size in $sizes {
-    .py-#{$size} {
-        padding-top: #{$size}px;
-        padding-bottom: #{$size}px;
-    }
-}
-
-@each $size in $sizes {
-    .pb-#{$size} {
-        padding-bottom: #{$size}px;
-    }
-}
-
-@each $size in $sizes {
-    .pt-#{$size} {
-        padding-top: #{$size}px;
-    }
-}
-
-@each $size in $sizes {
-    .pr-#{$size} {
-        padding-right: #{$size}px;
-    }
+.sticky {
+    position: sticky;
+    top: 0;
 }

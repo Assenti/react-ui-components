@@ -1,5 +1,5 @@
 import React from 'react';
-import { Delete, Search, Home, Edit, Close, Github, ChevronDoubleRight, ChevronDoubleLeft, ChevronDown, ChevronNext, Code, Chip, Account, Sun, Moon, Star, StarOutline, Smartphone, Hammer, City, ChevronBack, Empty, Download, Menu, Person, Loading, ShieldAccount, ReactLogo, FileOutline } from './icons/index';
+import { Delete, Search, Home, Edit, Close, Github, ChevronDoubleRight, ChevronDoubleLeft, ChevronDown, ChevronNext, Code, Chip, Account, Sun, Moon, Star, StarOutline, Smartphone, Hammer, City, ChevronBack, Empty, Download, Menu, Person, Loading, ShieldAccount, ReactLogo, FileOutline, Email, Rocket, Key } from './icons/index';
 export var Icon = function Icon(props) {
   var Icon = function Icon() {
     switch (props.name) {
@@ -173,6 +173,24 @@ export var Icon = function Icon(props) {
 
       case 'file-outline':
         return React.createElement(FileOutline, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'email':
+        return React.createElement(Email, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'rocket':
+        return React.createElement(Rocket, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'key':
+        return React.createElement(Key, {
           size: props.size,
           color: props.color
         });

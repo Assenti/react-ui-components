@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Dropdown, Button, InputField, Card, Table, Tag, Icon } from '../components';
+import { Dropdown, Button, InputField, Card, Table, Tag, Icon, List, ListItem } from '../components';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export const DropdownPage = () => {
     const [item, setItem] = useState('');
@@ -51,36 +53,158 @@ export const DropdownPage = () => {
         { name: 'Bruce Benner', hero: 'Hulk', icon: 'account', check: false }
     ];
 
+    const usage =
+`// Usage examples
+import React, { useState } from 'react';
+import { Dropdown, Button, Tag } from '@assenti/rui-components';
+const heroes = [
+    { hero: 'Captain America' }, 
+    { hero: 'Spider man' }, 
+    { hero: 'Iron man' }, 
+    { hero: 'Hulk' }
+];
+
+function Example() {
+    const [item, setItem] = useState('');
+
+    return (
+        <div>
+            <Dropdown
+                width={250}
+                content={
+                    <List dense>
+                        {heroes.map((item, index) => 
+                            <ListItem
+                                key={index}
+                                hover 
+                                onClick={() => setItem(item.hero)}
+                                item={item}
+                                itemTitle="hero"/>
+                        )}
+                    </List>
+                }
+                itemTitle="name"
+                trigger={<Button
+                    color="info"
+                    name="Button"/>}
+                    />
+            <Tag value={\`Your select: \${item}\`} color={item ? 'error' : ''} className="ml-10"/>
+        </div>
+    )
+}
+`
+
+    const usageInput =
+`// Usage examples
+import React, { useState } from 'react';
+import { Dropdown, InputField, Icon, List, ListItem } from '@assenti/rui-components';
+const heroes = [
+    { hero: 'Captain America' }, 
+    { hero: 'Spider man' }, 
+    { hero: 'Iron man' }, 
+    { hero: 'Hulk' }
+];
+
+function Example() {
+    const [item, setItem] = useState('');
+
+    return (
+        <div>
+            <Dropdown
+                content={
+                    <List dense>
+                        {heroes.map((item, index) => 
+                            <ListItem
+                                key={index}
+                                hover 
+                                onClick={() => setItem(item.hero)}
+                                item={item}
+                                itemTitle="hero"/>
+                        )}
+                    </List>
+                }
+                trigger={<InputField
+                        color="info"
+                        prefix={<Icon name="shield-account"/>}
+                            value={item}
+                            placeholder="Choose a hero"/>}
+                            />
+        </div>
+    )
+}
+`
+
+    const usageIcon =
+`// Usage examples
+import React from 'react';
+import { Dropdown, Button, Icon } from '@assenti/rui-components';
+
+function Example() {
+    return (
+        <div>
+            <Dropdown
+                content={
+                    <div className="row column justify-center px-15 pt-15 pb-20">
+                        <Icon name="account" color="gray" size={90}/>
+                        <strong className="text-center text-info fz-9 pt-5">John Doe</strong>
+                    </div>
+                }
+                trigger={<Button
+                        light
+                        icon="account"/>}
+                        />
+        </div>
+    )
+}
+`
+
     return (
         <div className="page">
-            <div className="page-title">Dropdown Component</div>
+            <div className="row align-center space-between">
+                <div className="page-title">Dropdown Component</div>
+                <a href="#dropdown-api" className="fz-13 fw-bold">API</a>
+            </div>
             <Card outlined color="primary" title="Dropdown on Button">
                 <div className="row align-center">
                     <Dropdown
+                        width={250}
                         content={
-                            heroes.map((item, index) => 
-                                <div key={index} 
-                                    className="menu-item fz-8" 
-                                    onClick={() => setItem(item.hero)}>{item.hero}</div>
-                            )
+                            <List dense>
+                                {heroes.map((item, index) => 
+                                    <ListItem
+                                        key={index}
+                                        hover 
+                                        onClick={() => setItem(item.hero)}
+                                        item={item}
+                                        itemTitle="hero"/>
+                                )}
+                            </List>
                         }
                         itemTitle="name"
                         trigger={<Button
                             color="info"
                             name="Button"/>}/>
-                    <Tag value={`Your select: ${item}`} className="ml-10"/>
+                    <Tag value={`Your select: ${item}`} color={item ? 'error' : ''} className="ml-10"/>
                 </div>
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {usage}
+                </SyntaxHighlighter>
             </Card>
             <br/>
             <Card outlined color="primary" title="Dropdown on InputField">
-                <div className="row">
+                <div className="row mb-10">
                     <Dropdown
                         content={
-                            heroes.map((item, index) => 
-                                <div key={index} 
-                                    className="menu-item" 
-                                    onClick={() => setItem2(item.hero)}>{item.hero}</div>
-                            )
+                            <List dense>
+                                {heroes.map((item, index) => 
+                                    <ListItem
+                                        key={index}
+                                        hover 
+                                        onClick={() => setItem2(item.hero)}
+                                        item={item}
+                                        itemTitle="hero"/>
+                                )}
+                            </List>
                         }
                         trigger={<InputField
                                 color="info"
@@ -88,6 +212,9 @@ export const DropdownPage = () => {
                                 value={item2}
                                 placeholder="Choose a hero"/>}/>
                 </div>
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {usageInput}
+                </SyntaxHighlighter>
             </Card>
             <br/>
             <Card outlined color="primary" title="Dropdown on Icon button">
@@ -103,8 +230,11 @@ export const DropdownPage = () => {
                                     light
                                     icon="account"/>}/>
                 </div>
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {usageIcon}
+                </SyntaxHighlighter>
             </Card>
-            <h2>API</h2>
+            <h2 id="dropdown-api">API</h2>
             <Table
                 bordered
                 headers={keys}

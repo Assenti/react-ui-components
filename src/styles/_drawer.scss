@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: sticky;
+    // position: sticky;
 
     &.smooth {
         border-top-right-radius: $radius * 2;
@@ -85,6 +85,7 @@
     font-weight: bold;
     position: sticky;
     top: 0;
+    z-index: 1;
 
     &.centered {
       justify-content: center;

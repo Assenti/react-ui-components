@@ -1,0 +1,29 @@
+@media (max-width: $xs) {
+    .hidden-xs {
+        display: none;
+    }
+}
+
+@media (max-width: $sm) {
+    .hidden-sm {
+        display: none;
+    }
+}
+
+@media (max-width: $md) {
+    .hidden-md {
+        display: none;
+    }
+}
+
+@media (max-width: $lg) {
+    .hidden-lg {
+        display: none;
+    }
+}
+
+@media (min-width: $xs + 1) {
+    .hidden-sm-and-up {
+        display: none;
+    }
+}

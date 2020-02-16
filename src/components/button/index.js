@@ -44,7 +44,7 @@ export const Button = (props) => {
                 <Icon name="loading" color="gray"/> :
                 <React.Fragment>
                     {props.icon && props.iconLeft ? <Icon size={20} name={props.icon}/> : ''}
-                    {props.name ? <span className={setMargin()}>{props.name}</span> : ''}
+                    {props.name ? <div className={setMargin()}>{props.name}</div> : ''}
                     {props.icon && !props.iconLeft ? <Icon size={20} name={props.icon}/> : ''}
                 </React.Fragment>
             }
