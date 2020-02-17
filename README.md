@@ -59,7 +59,7 @@ export default App;
 - [ ] Carousel
 - [ ] Timeline
 - [ ] Tabs
-- [ ] GoUpButton
+- [X] BackTopBtn
 - [X] Preloader
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable

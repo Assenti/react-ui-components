@@ -4,10 +4,11 @@ import { CSSTransition } from 'react-transition-group';
 export const Dropdown = (props) => {
     const [visible, setVisible] = useState(false);
 
-    const menuClass = () => {
+    const dropdownClass = () => {
         let result = '';
         let className = {
             name: 'dropdown-container',
+            position: props.position ? props.position : '',
             className: props.className ? props.className : ''
         }
         
@@ -18,7 +19,7 @@ export const Dropdown = (props) => {
     }
 
     return (
-        <div className={menuClass()} 
+        <div className={dropdownClass()} 
             tabIndex={-1}
             onBlur={() => setVisible(false)}>
             <div onClick={() => setVisible(true)}>{props.trigger}</div>
@@ -28,7 +29,12 @@ export const Dropdown = (props) => {
                 classNames="dropdown"
                 unmountOnExit>
                 <div className="dropdown" 
-                    style={{ width: props.width ? props.width : '', minWidth: props.minWidth ? props.minWidth : ''}}>
+                    style={{ 
+                        width: props.width ? props.width : '', 
+                        minWidth: props.minWidth ? props.minWidth : '',
+                        right: props.rightOffset && !props.legtOffset ? props.rightOffset : '',
+                        left: props.legtOffset && !props.rightOffset ? props.legtOffset : ''
+                    }}>
                     <div onClick={() => setVisible(false)}>{props.content}</div>
                 </div>
             </CSSTransition>

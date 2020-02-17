@@ -42,3 +42,4 @@ export { Switch } from './switch';
 export { Table } from './table';
 export { Tag } from './tag';
 export { Tooltip } from './tooltip';
+export { BackTopBtn } from './backtop';

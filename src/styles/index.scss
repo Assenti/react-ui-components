@@ -1,3 +1,5 @@
+@import 'constants';
+
 body {
     margin: 0;
     padding: 0;
@@ -15,8 +17,22 @@ code {
 * {
     box-sizing: border-box;
 }
+
+html {
+    scroll-behavior: smooth !important;
+    
+    &::-webkit-scrollbar {
+        width: 3.5px;
+        background-color: #fff;
+        border-radius: $radius;
+    }
+     
+    &::-webkit-scrollbar-thumb {
+      background-color: $light;
+      outline: 1px solid #fff;
+    }
+}
  
-@import 'constants';
 @import 'helpers';
 @import 'app';
 @import 'header';

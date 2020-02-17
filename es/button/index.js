@@ -1,3 +1,4 @@
+import _objectSpread from "/Users/assetsultanov/Documents/my_apps/react-ui-components/node_modules/@babel/runtime/helpers/esm/objectSpread2";
 import React from 'react';
 import { Icon } from '../icon';
 export var Button = function Button(props) {
@@ -34,6 +35,8 @@ export var Button = function Button(props) {
   };
 
   return React.createElement("button", {
+    ref: props.ref ? props.ref : null,
+    style: _objectSpread({}, props.style),
     disabled: props.disabled || props.loading,
     className: btnClass(),
     onClick: function onClick(e) {

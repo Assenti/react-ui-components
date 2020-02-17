@@ -321,4 +321,24 @@ export var Key = function Key(props) {
     d: "M22,18V22H18V19H15V16H12L9.74,13.74C9.19,13.91 8.61,14 8,14A6,6 0 0,1 2,8A6,6 0 0,1 8,2A6,6 0 0,1 14,8C14,8.61 13.91,9.19 13.74,9.74L22,18M7,5A2,2 0 0,0 5,7A2,2 0 0,0 7,9A2,2 0 0,0 9,7A2,2 0 0,0 7,5Z"
   }));
 };
+export var ExitToApp = function ExitToApp(props) {
+  return React.createElement("svg", {
+    width: props.size ? props.size : defaultSize,
+    height: props.size ? props.size : defaultSize,
+    viewBox: "0 0 24 24"
+  }, React.createElement("path", {
+    fill: props.color ? props.color : defaultColor,
+    d: "M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z"
+  }));
+};
+export var ArrowUpBold = function ArrowUpBold(props) {
+  return React.createElement("svg", {
+    width: props.size ? props.size : defaultSize,
+    height: props.size ? props.size : defaultSize,
+    viewBox: "0 0 24 24"
+  }, React.createElement("path", {
+    fill: props.color ? props.color : defaultColor,
+    d: "M15,20H9V12H4.16L12,4.16L19.84,12H15V20Z"
+  }));
+};
 //# sourceMappingURL=index.js.map

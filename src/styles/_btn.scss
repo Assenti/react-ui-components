@@ -15,6 +15,10 @@
     font-size: .9rem;
     background-color: $lightgray;
     box-sizing: border-box;
+    
+    &:not(.light) {
+        box-shadow: 0 0 2px rgba(black, .3);
+    }
 
     &.loading {
         i {
@@ -102,7 +106,7 @@
     }
 
     &:active:not(:disabled):not(.loading) {
-        box-shadow: 0 1px 5px rgba(black, .3);
+        box-shadow: 0 1px 10px rgba(black, .3);
     }
 
     &:hover {
@@ -150,7 +154,7 @@
         border: 1px solid $gray;
 
         &:not(:disabled):hover {
-            background-color: darken($gray, 10%);
+            background-color: darken($gray, 5%);
         }
     }
 
@@ -339,4 +343,59 @@
     0% { transform: rotate(0); }
     // 30% { transform: rotate(180deg); }
     100% { transform: rotate(360deg); }
+}
+
+.btn-back-top {
+    transition: all .5s ease-in-out;
+    position: absolute;
+    z-index: 999;
+
+    &:not(.dark) {
+        button,
+        button:hover {
+            background-color: rgba($light, .9);
+            path {
+                fill: gray;
+            }
+        }
+    }
+
+    &.dark {
+        button {
+            background-color: rgba(black, .4);
+            path {
+                fill: #fff;
+            }
+
+            &:hover {
+                background-color: rgba(black, .6) !important;
+
+                path {
+                    fill: #fff !important;
+                }
+            }
+        }
+    }
+}
+
+.btn-back-top-enter {
+    opacity: 0;
+    transform: scale(.9);
+}
+
+.btn-back-top-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 500, transform 500;
+}
+
+.btn-back-top-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.btn-back-top-exit-active {
+    opacity: 0;
+    transform: scale(.9);
+    transition: opacity 500, transform 500;;
 }

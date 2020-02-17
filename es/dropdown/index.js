@@ -7,10 +7,11 @@ export var Dropdown = function Dropdown(props) {
       visible = _useState2[0],
       setVisible = _useState2[1];
 
-  var menuClass = function menuClass() {
+  var dropdownClass = function dropdownClass() {
     var result = '';
     var className = {
       name: 'dropdown-container',
+      position: props.position ? props.position : '',
       className: props.className ? props.className : ''
     };
 
@@ -22,7 +23,7 @@ export var Dropdown = function Dropdown(props) {
   };
 
   return React.createElement("div", {
-    className: menuClass(),
+    className: dropdownClass(),
     tabIndex: -1,
     onBlur: function onBlur() {
       return setVisible(false);
@@ -40,7 +41,9 @@ export var Dropdown = function Dropdown(props) {
     className: "dropdown",
     style: {
       width: props.width ? props.width : '',
-      minWidth: props.minWidth ? props.minWidth : ''
+      minWidth: props.minWidth ? props.minWidth : '',
+      right: props.rightOffset && !props.legtOffset ? props.rightOffset : '',
+      left: props.legtOffset && !props.rightOffset ? props.legtOffset : ''
     }
   }, React.createElement("div", {
     onClick: function onClick() {

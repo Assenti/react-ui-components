@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Button, Table, Card, Switch } from '../components';
+import React, { useState, createRef } from 'react';
+import { Button, Table, Card, Switch, BackTopBtn } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export const ButtonPage = () => {
     const [loading, setLoading] = useState(true);
+    const parentRef = createRef();
     const keys = ['property', 'description', 'default', 'type', 'value'];
     const items = [
         { 
@@ -415,7 +416,7 @@ function Example() {
 `
 
     return (
-        <div className="page">
+        <div className="page" ref={parentRef}>
             <div className="row align-center space-between">
                 <div className="page-title">Button Component</div>
                 <a href="#btn-api" className="fz-13 fw-bold">API</a>
@@ -672,6 +673,7 @@ function Example() {
                     {loadingButtons}
                 </SyntaxHighlighter> 
             </Card>
+            <BackTopBtn setRef={parentRef} dark/>
             <h2 id="btn-api">API</h2>
             <Table
                 bordered

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Delete, Search, Home, Edit, Close, Github, ChevronDoubleRight, ChevronDoubleLeft, ChevronDown, ChevronNext, Code, Chip, Account, Sun, Moon, Star, StarOutline, Smartphone, Hammer, City, ChevronBack, Empty, Download, Menu, Person, Loading, ShieldAccount, ReactLogo, FileOutline, Email, Rocket, Key } from './icons/index';
+import { Delete, Search, Home, Edit, Close, Github, ChevronDoubleRight, ChevronDoubleLeft, ChevronDown, ChevronNext, Code, Chip, Account, Sun, Moon, Star, StarOutline, Smartphone, Hammer, City, ChevronBack, Empty, Download, Menu, Person, Loading, ShieldAccount, ReactLogo, FileOutline, Email, Rocket, Key, ExitToApp, ArrowUpBold } from './icons/index';
 export var Icon = function Icon(props) {
   var Icon = function Icon() {
     switch (props.name) {
@@ -195,17 +195,25 @@ export var Icon = function Icon(props) {
           color: props.color
         });
 
+      case 'exit-to-app':
+        return React.createElement(ExitToApp, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'arrow-up-bold':
+        return React.createElement(ArrowUpBold, {
+          size: props.size,
+          color: props.color
+        });
+
       default:
         return '';
     }
   };
 
   var iconClass = function iconClass() {
-    if (props.className) {
-      return "icon ".concat(props.className);
-    } else {
-      return 'icon';
-    }
+    if (props.className) return "icon ".concat(props.className);else return 'icon';
   };
 
   return React.createElement("i", {

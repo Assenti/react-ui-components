@@ -35,7 +35,9 @@ export const IconPage = () => {
         'file-outline' ,
         'email',
         'rocket',
-        'key' 
+        'key',
+        'exit-to-app',
+        'arrow-up-bold' 
     ]
 
     const keys = ['property', 'description', 'default', 'type', 'value'];

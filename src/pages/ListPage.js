@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { List, ListItem, Button, Checkbox, Table, Card, Tag } from '../components';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export const ListPage = () => {
     const names = [
@@ -140,6 +142,36 @@ export const ListPage = () => {
         return result
     }
 
+    const simpleList =
+`// Usage examples
+import React, { useState } from 'react';
+import { List, ListItem } from '@assenti/rui-components';
+const names = [
+    { name: 'John Doe', active: false },
+    { name: 'Peter Parker', active: true },
+    { name: 'Tony Stark', active: false },
+    { name: 'Bruce Benner', active: false }
+];
+
+function Example() {
+    const [item, setItem] = useState('');
+
+    return (
+        <div>
+            <List>
+                {names.map((item, index) => 
+                    <ListItem
+                        isActiveItem={item => item.active} 
+                        key={index} 
+                        item={item}
+                        itemTitle="name"/>
+                )}
+            </List>
+        </div>
+    )
+}
+`
+
     return (
         <div className="page">
             <div className="row align-center space-between">
@@ -163,6 +195,9 @@ export const ListPage = () => {
                             itemTitle="name"/>
                     )}
                 </List>
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {simpleList}
+                </SyntaxHighlighter>
             </Card>
             <h4>Dark mode</h4>
             <Card 

@@ -38,7 +38,7 @@
 
 @each $size in $sizes {
     .mt-#{$size} {
-        margin-top: #{$size}px;
+        margin-top: #{$size}px !important;
     }
 }
 

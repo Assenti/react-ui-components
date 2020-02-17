@@ -31,11 +31,12 @@ import {
     FileOutline,
     Email,
     Rocket,
-    Key
+    Key,
+    ExitToApp,
+    ArrowUpBold
 } from './icons/index';
 
 export const Icon = (props) => {
-
     const Icon = () => {
         switch (props.name) {
             case 'delete':
@@ -102,17 +103,18 @@ export const Icon = (props) => {
                 return <Rocket size={props.size} color={props.color}/>;
             case 'key':
                 return <Key size={props.size} color={props.color}/>;
+            case 'exit-to-app':
+                return <ExitToApp size={props.size} color={props.color}/>;
+            case 'arrow-up-bold':
+                return <ArrowUpBold size={props.size} color={props.color}/>;
             default:
                 return '';
         }
     }
 
     const iconClass = () => {
-        if (props.className) {
-            return `icon ${props.className}`
-        } else {
-            return 'icon'
-        }
+        if (props.className) return `icon ${props.className}`
+        else return 'icon'
     }
 
     return (

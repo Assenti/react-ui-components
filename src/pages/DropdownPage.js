@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { Dropdown, Button, InputField, Card, Table, Tag, Icon, List, ListItem } from '../components';
+import React, { useState, createRef } from 'react';
+import { Dropdown, Button, InputField, Card, Table, Tag, Icon, List, ListItem, BackTopBtn } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export const DropdownPage = () => {
     const [item, setItem] = useState('');
     const [item2, setItem2] = useState('');
+    const parentRef = createRef();
 
     const keys = ['property', 'description', 'default', 'type', 'value'];
     const items = [
@@ -35,6 +36,27 @@ export const DropdownPage = () => {
             description: 'Set Dropdown content minWidth',
             default: '', 
             type: 'string | number',
+            value: ''
+        },
+        { 
+            property: 'position', 
+            description: 'Set Dropdown content position',
+            default: 'left', 
+            type: 'string',
+            value: 'centered | right'
+        },
+        { 
+            property: 'leftOffset', 
+            description: 'Set Dropdown content offset from left side',
+            default: '0', 
+            type: 'number',
+            value: ''
+        },
+        { 
+            property: 'rightOffset', 
+            description: 'Set Dropdown content offset from right side',
+            default: '0', 
+            type: 'number',
             value: ''
         },
         { 
@@ -141,25 +163,55 @@ import { Dropdown, Button, Icon } from '@assenti/rui-components';
 
 function Example() {
     return (
-        <div>
+        <div className="row space-around">
             <Dropdown
+                width={180}
                 content={
-                    <div className="row column justify-center px-15 pt-15 pb-20">
-                        <Icon name="account" color="gray" size={90}/>
-                        <strong className="text-center text-info fz-9 pt-5">John Doe</strong>
+                    <div className="row column align-center justify-center px-15 pt-15 pb-20">
+                        <Icon name="account" color="gray" size={80}/>
+                        <span className="text-center text-gray fz-9 pt-5">John Doe</span>
+                        <hr className="my-10 full-width"/>
+                        <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
                     </div>
                 }
                 trigger={<Button
-                        light
-                        icon="account"/>}
-                        />
+                            light
+                            icon="account"/>}/>
+            <Dropdown
+                width={180}
+                position="centered"
+                content={
+                    <div className="row column align-center justify-center px-15 pt-15 pb-20">
+                        <Icon name="account" color="gray" size={80}/>
+                        <span className="text-center text-gray fz-9 pt-5">John Doe</span>
+                        <hr className="my-10 full-width"/>
+                        <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
+                    </div>
+                }
+                trigger={<Button
+                            light
+                            icon="account"/>}/>
+            <Dropdown
+                width={180}
+                position="right"
+                content={
+                    <div className="row column align-center justify-center px-15 pt-15 pb-20">
+                        <Icon name="account" color="gray" size={80}/>
+                        <span className="text-center text-gray fz-9 pt-5">John Doe</span>
+                        <hr className="my-10 full-width"/>
+                        <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
+                    </div>
+                }
+                trigger={<Button
+                            light
+                            icon="account"/>}/>
         </div>
     )
 }
 `
 
     return (
-        <div className="page">
+        <div className="page" ref={parentRef}>
             <div className="row align-center space-between">
                 <div className="page-title">Dropdown Component</div>
                 <a href="#dropdown-api" className="fz-13 fw-bold">API</a>
@@ -218,12 +270,43 @@ function Example() {
             </Card>
             <br/>
             <Card outlined color="primary" title="Dropdown on Icon button">
-                <div className="row">
+                <div className="row space-around">
                     <Dropdown
+                        width={180}
                         content={
-                            <div className="row column justify-center px-15 pt-15 pb-20">
-                                <Icon name="account" color="gray" size={90}/>
-                                <strong className="text-center text-info fz-9 pt-5">John Doe</strong>
+                            <div className="row column align-center justify-center px-15 pt-15 pb-20">
+                                <Icon name="account" color="gray" size={80}/>
+                                <span className="text-center text-gray fz-9 pt-5">John Doe</span>
+                                <hr className="my-10 full-width"/>
+                                <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
+                            </div>
+                        }
+                        trigger={<Button
+                                    light
+                                    icon="account"/>}/>
+                    <Dropdown
+                        width={180}
+                        position="centered"
+                        content={
+                            <div className="row column align-center justify-center px-15 pt-15 pb-20">
+                                <Icon name="account" color="gray" size={80}/>
+                                <span className="text-center text-gray fz-9 pt-5">John Doe</span>
+                                <hr className="my-10 full-width"/>
+                                <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
+                            </div>
+                        }
+                        trigger={<Button
+                                    light
+                                    icon="account"/>}/>
+                    <Dropdown
+                        width={180}
+                        position="right"
+                        content={
+                            <div className="row column align-center justify-center px-15 pt-15 pb-20">
+                                <Icon name="account" color="gray" size={80}/>
+                                <span className="text-center text-gray fz-9 pt-5">John Doe</span>
+                                <hr className="my-10 full-width"/>
+                                <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
                             </div>
                         }
                         trigger={<Button
@@ -234,6 +317,7 @@ function Example() {
                     {usageIcon}
                 </SyntaxHighlighter>
             </Card>
+            <BackTopBtn setRef={parentRef} dark/>
             <h2 id="dropdown-api">API</h2>
             <Table
                 bordered
