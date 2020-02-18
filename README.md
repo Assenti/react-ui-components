@@ -71,7 +71,7 @@ export default App;
 - [X] NPM register
 
 ### Changelog
-You can track changelog [here](/CHANGELOG)
+You can track changelog [here](/CHANGELOG.md)
 
 Project start date: Jan 6th 2020
 
