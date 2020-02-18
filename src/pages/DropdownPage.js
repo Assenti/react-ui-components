@@ -1,5 +1,5 @@
 import React, { useState, createRef } from 'react';
-import { Dropdown, Button, InputField, Card, Table, Tag, Icon, List, ListItem, BackTopBtn } from '../components';
+import { Dropdown, Button, InputField, Card, Table, Tag, Icon, List, ListItem, BackTopBtn, Collapse } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -238,9 +238,11 @@ function Example() {
                             name="Button"/>}/>
                     <Tag value={`Your select: ${item}`} color={item ? 'error' : ''} className="ml-10"/>
                 </div>
-                <SyntaxHighlighter language="jsx" style={prism}>
-                    {usage}
-                </SyntaxHighlighter>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {usage}
+                    </SyntaxHighlighter>
+                </Collapse>
             </Card>
             <br/>
             <Card outlined color="primary" title="Dropdown on InputField">
@@ -264,9 +266,11 @@ function Example() {
                                 value={item2}
                                 placeholder="Choose a hero"/>}/>
                 </div>
-                <SyntaxHighlighter language="jsx" style={prism}>
-                    {usageInput}
-                </SyntaxHighlighter>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {usageInput}
+                    </SyntaxHighlighter>
+                </Collapse>
             </Card>
             <br/>
             <Card outlined color="primary" title="Dropdown on Icon button">
@@ -313,9 +317,11 @@ function Example() {
                                     light
                                     icon="account"/>}/>
                 </div>
-                <SyntaxHighlighter language="jsx" style={prism}>
-                    {usageIcon}
-                </SyntaxHighlighter>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {usageIcon}
+                    </SyntaxHighlighter>
+                </Collapse>
             </Card>
             <BackTopBtn setRef={parentRef} dark/>
             <h2 id="dropdown-api">API</h2>

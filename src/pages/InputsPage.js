@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { InputField, Uploader, Icon, Card, Button, Table } from '../components';
+import { InputField, Uploader, Icon, Card, Button, Table, Collapse } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -404,9 +404,11 @@ function Example() {
                             onChange={e => setFirst(e.target.value)}/>
                     </div>
                 </div>
-                <SyntaxHighlighter language="jsx" style={prism}>
-                    {inputTypes}
-                </SyntaxHighlighter>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {inputTypes}
+                    </SyntaxHighlighter>
+                </Collapse>
             </Card>
             <h3>Input sizes</h3>
             <Card>

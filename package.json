@@ -1,6 +1,6 @@
 {
   "name": "@assenti/rui-components",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "React UI Components",
   "private": false,
   "license": "MIT",
@@ -15,6 +15,20 @@
     "compile": "NODE_ENV=production ./node_modules/.bin/babel src/components --out-dir es -s"
   },
   "dependencies": {
+    "react": "^16.12.0",
+    "react-app-polyfill": "^1.0.6",
+    "react-dev-utils": "^10.2.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "react-syntax-highlighter": "^12.2.1",
+    "react-transition-group": "^4.3.0"
+  },
+  "peerDependencies": {
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "react-transition-group": "^4.3.0"
+  },
+  "devDependencies": {
     "@babel/core": "7.8.4",
     "@svgr/webpack": "4.3.3",
     "@typescript-eslint/eslint-plugin": "^2.10.0",
@@ -72,24 +86,6 @@
     "webpack-dev-server": "3.10.2",
     "webpack-manifest-plugin": "2.2.0",
     "workbox-webpack-plugin": "4.3.1"
-  },
-  "peerDependencies": {
-    "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2",
-    "react-transition-group": "^4.3.0"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
-    "@babel/preset-env": "^7.8.4",
-    "@babel/preset-react": "^7.8.3",
-    "babel-loader": "^8.0.6",
-    "node-sass": "^4.13.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2",
-    "react-transition-group": "^4.3.0",
-    "sass-loader": "8.0.2"
   },
   "repository": {
     "type": "git",

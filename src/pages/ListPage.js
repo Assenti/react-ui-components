@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { List, ListItem, Button, Checkbox, Table, Card, Tag } from '../components';
+import { List, ListItem, Button, Checkbox, Table, Card, Tag, Collapse } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -172,6 +172,152 @@ function Example() {
 }
 `
 
+    const darkMode =
+`// Usage examples
+import React, { useState } from 'react';
+import { List, ListItem, Card } from '@assenti/rui-components';
+const heroes = [
+    { hero: 'Captain America', icon: 'shield-account' }, 
+    { hero: 'Spider man', icon: 'shield-account' }, 
+    { hero: 'Iron man', icon: 'shield-account' }, 
+    { hero: 'Hulk', icon: 'shield-account' }
+];
+
+function Example() {
+    return (
+        <Card 
+            color="primary" 
+            title="Simple list with dark mode, hover and icons" 
+            dark
+            className="px-0">
+            <List items={itemsComplex} itemTitle="hero" dark hover>
+                {heroes.map((item, index) => 
+                    <ListItem 
+                        key={index} 
+                        item={item}
+                        icon={item.icon}
+                        itemTitle="hero"
+                        hover/>
+                )}
+            </List>
+        </Card>
+    )
+}
+`
+    const denseSize =
+`// Usage examples
+import React, { useState } from 'react';
+import { List, ListItem } from '@assenti/rui-components';
+const names = [
+    { name: 'John Doe' },
+    { name: 'Peter Parker' },
+    { name: 'Tony Stark' },
+    { name: 'Bruce Benner' }
+];
+
+function Example() {
+    return (
+        <div>
+            <List dense header="Marvel avengers:">
+                {names.map((item, index) => 
+                    <ListItem 
+                        key={index} 
+                        item={item}
+                        icon="account"
+                        itemTitle="name"
+                        hover/>
+                )}
+            </List>
+        </div>
+    )
+}
+`
+
+    const checkboxList =
+`// Usage examples
+import React, { useState } from 'react';
+import { List, ListItem, Checkbox } from '@assenti/rui-components';
+const names = [
+    { name: 'Steve Rogers', hero: 'Captain America', check: false }, 
+    { name: 'Peter Parker', hero: 'Spider man', check: false }, 
+    { name: 'Tony Stark', hero: 'Iron man', check: false }, 
+    { name: 'Bruce Benner', hero: 'Hulk', check: false }
+];
+
+function Example() {
+    const [selected, setSelected] = useState([]);
+
+    const selectOne = (item) => {
+        if (isSelected(item, 'hero')) {
+            setSelected(selected => selected.filter(_item => _item.hero !== item.hero))
+        } else setSelected([...selected, item]);
+    }
+
+    const isSelected = (item, prop) => {
+        let result = false
+        if (prop) {
+            for (const select of selected) {
+                if (item[prop] === select[prop]) result = true 
+            }
+        }
+        return result
+    }
+
+    return (
+        <div>
+            <List header={'Selected Marvel avengers: ' + selected.length}>
+                {names.map((item, index) => 
+                    <ListItem 
+                        key={index} 
+                        item={item}
+                        itemTitle="hero"
+                        isActiveItem={item => isSelected(item, 'hero')}
+                        hover
+                        checkbox={<Checkbox 
+                            checked={isSelected(item, 'hero')}
+                            onChange={() => selectOne(item)}/>}/>
+                )}
+            </List>
+        </div>
+    )
+}
+`
+
+    const controlsList =
+`// Usage examples
+import React, { useState } from 'react';
+import { List, ListItem, Button, Tag } from '@assenti/rui-components';
+const names = [
+    { name: 'Steve Rogers', hero: 'Captain America', icon: 'shield-account' }, 
+    { name: 'Peter Parker', hero: 'Spider man', icon: 'shield-account' }, 
+    { name: 'Tony Stark', hero: 'Iron man', icon: 'shield-account' }, 
+    { name: 'Bruce Benner', hero: 'Hulk', icon: 'shield-account' }
+];
+
+function Example() {
+    return (
+        <div>
+            <List>
+                {names.map((item, index) => 
+                    <ListItem 
+                        key={index} 
+                        item={item}
+                        icon={item.icon} 
+                        itemTitle="name"
+                        subTitle={<Tag small color="info" value={item.hero}/>}
+                        controls={
+                            <React.Fragment>
+                                <Button small color="light" className="mr-10" icon="edit"/>
+                                <Button small color="light" icon="close"/>
+                            </React.Fragment>
+                        }/>
+                )}
+            </List>
+        </div>
+    )
+}
+`
+
     return (
         <div className="page">
             <div className="row align-center space-between">
@@ -195,9 +341,11 @@ function Example() {
                             itemTitle="name"/>
                     )}
                 </List>
-                <SyntaxHighlighter language="jsx" style={prism}>
-                    {simpleList}
-                </SyntaxHighlighter>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {simpleList}
+                    </SyntaxHighlighter>
+                </Collapse>
             </Card>
             <h4>Dark mode</h4>
             <Card 
@@ -216,6 +364,11 @@ function Example() {
                     )}
                 </List>
             </Card>
+            <Collapse icon="code" iconSize={18} tooltip="Code">
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {darkMode}
+                </SyntaxHighlighter>
+            </Collapse>
             <br/>
             <Card 
                 outlined 
@@ -232,6 +385,11 @@ function Example() {
                             hover/>
                     )}
                 </List>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {denseSize}
+                    </SyntaxHighlighter>
+                </Collapse>
             </Card>
             <br/>
             <Card 
@@ -252,6 +410,11 @@ function Example() {
                                 onChange={() => selectOne(item)}/>}/>
                     )}
                 </List>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {checkboxList}
+                    </SyntaxHighlighter>
+                </Collapse>
             </Card>
             <br/>
             <Card outlined color="primary" title="List with controls and subtitles">
@@ -271,6 +434,11 @@ function Example() {
                             }/>
                     )}
                 </List>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {controlsList}
+                    </SyntaxHighlighter>
+                </Collapse>
             </Card>
             <h2 id="list-api">List API</h2>
             <Table

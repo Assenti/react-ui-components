@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { List, ListItem, Icon, Drawer, InputField, Dropdown } from '../components';
+import { HomePage } from '../pages/HomePage';
+
+const compare = (a, b) => {
+    if (a.name > b.name) return 1;
+    if (b.name > a.name) return -1;
+    return 0;
+}
 
 export const DrawerContent = (props) => {
     const history = useHistory();
@@ -20,6 +27,12 @@ export const DrawerContent = (props) => {
 
     const handleKeyUp = (e) => {
         if (e.key === 'Escape') setSearch('')
+    }
+
+    const sortedRoutes = () => {
+        let filtered = props.items.sort(compare).filter(item => item.path !== '/')
+        filtered.unshift({ path: '/', name: 'Get started', Component: HomePage, icon: 'rocket' })
+        return filtered;
     }
     
     return (
@@ -60,10 +73,11 @@ export const DrawerContent = (props) => {
                                     placeholder="Search components"/>}/>
                 </div>
                 <List dark>
-                    {props.items.map((item, index) => 
+                    {sortedRoutes().map((item, index) => 
                         <ListItem
                             key={index}
                             right
+                            icon={item.icon ? item.icon : ''}
                             isActiveItem={current => current.path === window.location.pathname}
                             onClick={() => handleItemClick(item)}
                             itemTitle="name"

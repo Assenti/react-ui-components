@@ -8,8 +8,18 @@ export var Tooltip = function Tooltip(props) {
       setShow = _useState2[1];
 
   var tooltipClass = function tooltipClass() {
-    var result = "tooltip ".concat(props.position ? props.position : '');
-    return result;
+    var result = '';
+    var className = {
+      name: 'tooltip',
+      position: props.position ? props.position : '',
+      className: props.className ? props.className : ''
+    };
+
+    for (var key in className) {
+      if (className[key]) result += className[key] + ' ';
+    }
+
+    return result.trim();
   };
 
   return React.createElement("div", {

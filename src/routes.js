@@ -18,9 +18,10 @@ import { RadioPage } from './pages/RadioPage';
 import { IconPage } from './pages/IconPage';
 import { PreloaderPage } from './pages/PreloaderPage';
 import { BackTopBtnPage } from './pages/BackTopBtnPage';
+import { CollapsePage } from './pages/CollapsePage';
 
 export const routes = [
-    { path: '/', name: 'Get started', Component: HomePage },
+    { path: '/', name: 'Get started', Component: HomePage, icon: 'rocket' },
     { path: '/btns', name: 'Button', Component: ButtonPage },
     { path: '/icon', name: 'Icon', Component: IconPage },
     { path: '/dropdown', name: 'Dropdown', Component: DropdownPage },
@@ -39,5 +40,6 @@ export const routes = [
     { path: '/tag', name: 'Tag', Component: TagPage },
     { path: '/badge', name: 'Badge', Component: BadgePage },
     { path: '/preloader', name: 'Preloader', Component: PreloaderPage },
-    { path: '/backtopbtn', name: 'BackTopBtn', Component: BackTopBtnPage }
+    { path: '/backtopbtn', name: 'BackTopBtn', Component: BackTopBtnPage },
+    { path: '/collapse', name: 'Collapse', Component: CollapsePage },
 ]

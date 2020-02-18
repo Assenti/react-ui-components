@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Icon, Card } from '../components';
+import { Table, Icon, Card, Collapse } from '../components';
 import { description } from '../../package.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -88,11 +88,18 @@ export const IconPage = () => {
 
     const usage = 
 `// Usage examples
+import React from 'react';
 import { Icon } from '@assenti/rui-components';
 
-<Icon name="search" size={20} color="red"/>
-<Icon name="home" size={20} color="#1976d2"/>
-<Icon name="account" size={20} color="#rgb(0,0,5)"/>
+funcation Example() {
+    return (
+        <div>
+            <Icon name="search" size={20} color="red"/>
+            <Icon name="home" size={20} color="#1976d2"/>
+            <Icon name="account" size={20} color="#rgb(0,0,5)"/>
+        </div>
+    )
+}
 `
 
     return (
@@ -116,9 +123,11 @@ import { Icon } from '@assenti/rui-components';
                         <div className="mt-5 fz-8">{item}</div>
                     </div>
                 )}
-                <SyntaxHighlighter language="jsx" style={prism}>
-                    {usage}
-                </SyntaxHighlighter>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {usage}
+                    </SyntaxHighlighter>
+                </Collapse>
             </Card>
             <h2 id="icon-api">API</h2>
             <Table
