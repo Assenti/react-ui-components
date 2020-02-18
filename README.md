@@ -34,7 +34,6 @@ function App() {
 export default App;
 ```
 
-
 ### TODO
 - [ ] Popover
 - [ ] Dialog
@@ -45,6 +44,7 @@ export default App;
 - [X] Dropdown
 - [X] Tag
 - [X] Card
+- [X] Collapse
 - [ ] Expansion List
 - [ ] Stepper
 - [ ] Rating
@@ -69,6 +69,9 @@ export default App;
 - [X] Add Component Usage code modules
 - [ ] Add i18n
 - [X] NPM register
+
+### Changelog
+You can track changelog [here](/CHANGELOG)
 
 Project start date: Jan 6th 2020
 
