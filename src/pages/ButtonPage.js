@@ -3,10 +3,7 @@ import { Button, Table, Card, Switch, BackTopBtn, Collapse } from '../components
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export const ButtonPage = () => {
-    const [loading, setLoading] = useState(true);
-    const parentRef = createRef();
-    const keys = ['property', 'description', 'default', 'type', 'value'];
+const keys = ['property', 'description', 'default', 'type', 'value'];
     const items = [
         { 
             property: 'onClick', 
@@ -415,11 +412,20 @@ function Example() {
 }
 `
 
+export const ButtonPage = () => {
+    const [loading, setLoading] = useState(true);
+    const parentRef = createRef();
+    const api = createRef();
+
+    const goToApi = () => {
+        if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+
     return (
         <div className="page" ref={parentRef}>
             <div className="row align-center space-between">
                 <div className="page-title">Button Component</div>
-                <a href="#btn-api" className="fz-13 fw-bold">API</a>
+                <a onClick={goToApi} className="fz-13 fw-bold">API</a>
             </div>
             <Card outlined color="primary" title="Button types">
                 <div className="row align-center">
@@ -686,7 +692,7 @@ function Example() {
                 </Collapse> 
             </Card>
             <BackTopBtn setRef={parentRef} dark/>
-            <h2 id="btn-api">API</h2>
+            <h2 ref={api}>API</h2>
             <Table
                 bordered
                 headers={keys}

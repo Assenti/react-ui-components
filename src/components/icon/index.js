@@ -33,7 +33,10 @@ import {
     Rocket,
     Key,
     ExitToApp,
-    ArrowUpBold
+    ArrowUpBold,
+    FormatAlignCenter,
+    FormatAlignLeft,
+    FormatAlignRight
 } from './icons/index';
 
 export const Icon = (props) => {
@@ -107,6 +110,12 @@ export const Icon = (props) => {
                 return <ExitToApp size={props.size} color={props.color}/>;
             case 'arrow-up-bold':
                 return <ArrowUpBold size={props.size} color={props.color}/>;
+            case 'format-align-center':
+                return <FormatAlignCenter size={props.size} color={props.color}/>;
+            case 'format-align-left':
+                return <FormatAlignLeft size={props.size} color={props.color}/>;
+                case 'format-align-right':
+            return <FormatAlignRight size={props.size} color={props.color}/>;
             default:
                 return '';
         }

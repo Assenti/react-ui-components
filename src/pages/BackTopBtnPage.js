@@ -28,6 +28,20 @@ export const BackTopBtnPage = () => {
             value: ''
         },
         { 
+            property: 'size', 
+            description: 'Set button size',
+            default: '', 
+            type: 'string',
+            value: 'medium | large'
+        },
+        { 
+            property: 'tooltip', 
+            description: 'Set button tooltip',
+            default: '', 
+            type: 'string',
+            value: ''
+        },
+        { 
             property: 'offsetX', 
             description: 'Set offset from right',
             default: '25px', 
@@ -114,7 +128,7 @@ function Example() {
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
-            <BackTopBtn dark setRef={blockref}/>
+            <BackTopBtn dark setRef={blockref} size="medium" tooltip="Up"/>
             <h2 ref={api}>API</h2>
             <Table
                 bordered

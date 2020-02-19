@@ -1,90 +1,92 @@
-import React from 'react';
-import { Table, Icon, Card, Collapse } from '../components';
+import React, { createRef, useState } from 'react';
+import { Table, Icon, Card, Collapse, Tooltip, InputField } from '../components';
 import { description } from '../../package.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export const IconPage = () => {
-    const icons = [
-        'delete', 
-        'search', 
-        'home', 
-        'edit', 
-        'github', 
-        'close', 
-        'chevron-double-right', 
-        'chevron-double-left',
-        'code',
-        'chip',
-        'account',
-        'person',
-        'shield-account',
-        'chevron-down',
-        'chevron-next', 
-        'chevron-back', 
-        'sun',
-        'moon',
-        'star',
-        'star-outline',
-        'smartphone',
-        'hammer',
-        'city',
-        'empty',
-        'download',
-        'menu',
-        'file-outline' ,
-        'email',
-        'rocket',
-        'key',
-        'exit-to-app',
-        'arrow-up-bold' 
-    ]
+const icons = [
+    'delete', 
+    'search', 
+    'home', 
+    'edit', 
+    'github', 
+    'close', 
+    'chevron-double-right', 
+    'chevron-double-left',
+    'code',
+    'chip',
+    'account',
+    'person',
+    'shield-account',
+    'chevron-down',
+    'chevron-next', 
+    'chevron-back', 
+    'sun',
+    'moon',
+    'star',
+    'star-outline',
+    'smartphone',
+    'hammer',
+    'city',
+    'empty',
+    'download',
+    'menu',
+    'file-outline' ,
+    'email',
+    'rocket',
+    'key',
+    'exit-to-app',
+    'arrow-up-bold',
+    'format-align-left',
+    'format-align-center',
+    'format-align-right'
+]
 
-    const keys = ['property', 'description', 'default', 'type', 'value'];
-    const items = [
-        { 
-            property: 'name', 
-            description: 'Set icon name', 
-            default: '', 
-            type: 'string',
-            value: ''
-        },
-        { 
-            property: 'onClick', 
-            description: 'Handle click event', 
-            default: '', 
-            type: 'function',
-            value: ''
-        },
-        { 
-            property: 'title', 
-            description: 'Set title', 
-            default: '', 
-            type: 'string',
-            value: ''
-        },
-        { 
-            property: 'color', 
-            description: 'Set icon color', 
-            default: '', 
-            type: 'string',
-            value: 'hex | rgb() | css preset colors'
-        },
-        { 
-            property: 'size', 
-            description: 'Set icon size',
-            default: '24', 
-            type: 'number',
-            value: ''
-        },
-        { 
-            property: 'className',
-            description: 'Set a custom css class to component', 
-            default: '', 
-            type: 'string',
-            value: ''
-        }
-    ]
+const keys = ['property', 'description', 'default', 'type', 'value'];
+const items = [
+    { 
+        property: 'name', 
+        description: 'Set icon name', 
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'onClick', 
+        description: 'Handle click event', 
+        default: '', 
+        type: 'function',
+        value: ''
+    },
+    { 
+        property: 'title', 
+        description: 'Set title', 
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'color', 
+        description: 'Set icon color', 
+        default: '', 
+        type: 'string',
+        value: 'hex | rgb() | css preset colors'
+    },
+    { 
+        property: 'size', 
+        description: 'Set icon size',
+        default: '24', 
+        type: 'number',
+        value: ''
+    },
+    { 
+        property: 'className',
+        description: 'Set a custom css class to component', 
+        default: '', 
+        type: 'string',
+        value: ''
+    }
+]
 
     const usage = 
 `// Usage examples
@@ -102,11 +104,27 @@ funcation Example() {
 }
 `
 
+export const IconPage = () => {
+    const api = createRef();
+    const [search, setSearch] = useState('');
+
+    const goToApi = () => {
+        if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+
+    const filteredIcons = () => {
+        if (search) {
+            return icons.filter(item => item.toLowerCase().includes(search.toLowerCase()))
+        } else {
+            return icons
+        }
+    }
+
     return (
         <div className="page">
             <div className="row align-center space-between">
                 <div className="page-title">Icon Component</div>
-                <a href="#icon-api" className="fz-13 fw-bold">API</a>
+                <a onClick={goToApi} className="fz-13 fw-bold">API</a>
             </div>
             <p><strong>{description}</strong> use primarily
                 <a href="https://materialdesignicons.com/"
@@ -115,12 +133,22 @@ funcation Example() {
             </p>
             <br/>
             <Card outlined color="primary" title="Icons collection">
-                {icons.map((item, index) => 
+                <div className="pa-10">
+                    <InputField 
+                        value={search}
+                        prefix={<Icon name="search"/>}
+                        placeholder="Search icons"
+                        color="primary"
+                        onChange={e => setSearch(e.target.value)}/>
+                </div>
+                {filteredIcons().map((item, index) => 
                     <div key={index} 
-                        style={{ minWidth: 60 }}
+                        style={{ width: 35, height: 35 }}
                         className="row-inline text-center column justify-center align-center pa-5 ma-10 hoverable">
-                        <Icon name={item}/>
-                        <div className="mt-5 fz-8">{item}</div>
+                        <Tooltip tooltip={item}>
+                            <Icon name={item}/>
+                        </Tooltip>
+                        {/* <div className="mt-5 fz-8">{item}</div> */}
                     </div>
                 )}
                 <Collapse icon="code" iconSize={18} tooltip="Code">
@@ -129,7 +157,7 @@ funcation Example() {
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
-            <h2 id="icon-api">API</h2>
+            <h2 ref={api}>API</h2>
             <Table
                 bordered
                 headers={keys}

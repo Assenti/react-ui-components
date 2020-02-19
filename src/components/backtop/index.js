@@ -1,6 +1,7 @@
 import React, { useEffect, useState, createRef } from 'react'
 import { Button } from '../button';
 import { CSSTransition } from 'react-transition-group';
+import { Tooltip } from '../tooltip';
 
 export const BackTopBtn = (props) => {
     const [visible, setVisible] = useState(false);
@@ -51,12 +52,24 @@ export const BackTopBtn = (props) => {
                 timeout={500}
                 classNames="btn-back-top"
                 unmountOnExit>
-                <Button 
-                    icon="arrow-up-bold"
-                    lifted
-                    onClick={() => goTop()} 
-                    light={!props.dark ? true : false}
-                    dark={props.dark ? true : false}/>
+                {props.tooltip ?
+                    <Tooltip tooltip={props.tooltip}>
+                        <Button 
+                            icon="arrow-up-bold"
+                            lifted
+                            size={props.size ? props.size : ''}
+                            onClick={() => goTop()} 
+                            light={!props.dark ? true : false}
+                            dark={props.dark ? true : false}/>
+                    </Tooltip> : 
+                    <Button 
+                        icon="arrow-up-bold"
+                        lifted
+                        size={props.size ? props.size : ''}
+                        onClick={() => goTop()} 
+                        light={!props.dark ? true : false}
+                        dark={props.dark ? true : false}/>
+                }
             </CSSTransition>
         </div>
     )

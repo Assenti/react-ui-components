@@ -29,7 +29,9 @@ export var Table = function Table(props) {
     return React.createElement("tr", {
       key: index,
       className: props.noHover ? 'no-hover' : ''
-    }, props.checkbox ? React.createElement("td", null, React.createElement(Checkbox, null)) : React.createElement(React.Fragment, null), props.index ? React.createElement("td", null, index + 1) : React.createElement(React.Fragment, null), props.itemTitles.map(function (title, iter) {
+    }, props.checkbox ? React.createElement("td", null, React.createElement(Checkbox, {
+      onChange: function onChange() {}
+    })) : React.createElement(React.Fragment, null), props.index ? React.createElement("td", null, index + 1) : React.createElement(React.Fragment, null), props.itemTitles.map(function (title, iter) {
       return React.createElement("td", {
         key: iter
       }, item[title]);

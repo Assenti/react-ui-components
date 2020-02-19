@@ -31,7 +31,7 @@ export const Table = (props) => {
                     {props.items.map((item, index) => 
                         <tr key={index} className={props.noHover ? 'no-hover' : ''}>
                             {props.checkbox ? <td>
-                                <Checkbox/>
+                                <Checkbox onChange={() => {}}/>
                             </td> : <React.Fragment/>}
                             {props.index ? <td>{index + 1}</td> : <React.Fragment/>}
                             {props.itemTitles.map((title, iter) => 

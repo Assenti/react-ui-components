@@ -287,3 +287,27 @@ export const ArrowUpBold = (props) => {
         </svg>
     )
 }
+
+export const FormatAlignLeft = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M3,3H21V5H3V3M3,7H15V9H3V7M3,11H21V13H3V11M3,15H15V17H3V15M3,19H21V21H3V19Z" />
+        </svg>
+    )
+}
+
+export const FormatAlignCenter = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M3,3H21V5H3V3M7,7H17V9H7V7M3,11H21V13H3V11M7,15H17V17H7V15M3,19H21V21H3V19Z" />
+        </svg>
+    )
+}
+
+export const FormatAlignRight = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M3,3H21V5H3V3M9,7H21V9H9V7M3,11H21V13H3V11M9,15H21V17H9V15M3,19H21V21H3V19Z" />
+        </svg>
+    )
+}

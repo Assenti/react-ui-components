@@ -1,5 +1,6 @@
 .badge-container {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: flex-end;
     position: relative;
     padding: 2px;
 
@@ -45,8 +46,8 @@
 
     .badge {
         position: absolute;
-        top: -8px;
-        right: -8px;
+        bottom: calc(100%);
+        left: calc(100% - 10px);
         font-size: .7rem;
         padding: 2px;
         display: flex;

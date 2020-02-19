@@ -19,6 +19,7 @@ import { IconPage } from './pages/IconPage';
 import { PreloaderPage } from './pages/PreloaderPage';
 import { BackTopBtnPage } from './pages/BackTopBtnPage';
 import { CollapsePage } from './pages/CollapsePage';
+import { ButtonGroupPage } from './pages/ButtonGroupPage';
 
 export const routes = [
     { path: '/', name: 'Get started', Component: HomePage, icon: 'rocket' },
@@ -42,4 +43,5 @@ export const routes = [
     { path: '/preloader', name: 'Preloader', Component: PreloaderPage },
     { path: '/backtopbtn', name: 'BackTopBtn', Component: BackTopBtnPage },
     { path: '/collapse', name: 'Collapse', Component: CollapsePage },
+    { path: '/buttonGroup', name: 'ButtonGroup', Component: ButtonGroupPage }
 ]

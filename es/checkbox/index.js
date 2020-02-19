@@ -20,7 +20,6 @@ export var Checkbox = function Checkbox(props) {
     var className = {
       checkbox: 'checkbox-label',
       color: props.color ? props.color : '',
-      className: props.className ? props.className : '',
       disabled: props.disabled ? 'disabled' : ''
     };
 
@@ -32,7 +31,7 @@ export var Checkbox = function Checkbox(props) {
   };
 
   return React.createElement("div", {
-    className: "checkbox-wrapper"
+    className: props.className ? "checkbox-wrapper ".concat(props.className) : 'checkbox-wrapper'
   }, React.createElement("label", {
     className: checkboxClass()
   }, React.createElement("input", {

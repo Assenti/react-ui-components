@@ -40,3 +40,4 @@ export { Tag } from './tag';
 export { Tooltip } from './tooltip';
 export { BackTopBtn } from './backtop';
 export { Collapse } from './collapse';
+export { ButtonGroup } from './buttonGroup';

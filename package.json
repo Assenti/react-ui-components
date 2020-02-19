@@ -103,7 +103,7 @@
     "ui"
   ],
   "files": [
-    "build",
+    "build/css",
     "lib",
     "es"
   ],

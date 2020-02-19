@@ -21,7 +21,6 @@ export const Checkbox = (props) => {
         let className = {
             checkbox: 'checkbox-label',
             color: props.color ? props.color : '', 
-            className: props.className ? props.className : '',
             disabled: props.disabled ? 'disabled' : ''
         }
 
@@ -32,7 +31,9 @@ export const Checkbox = (props) => {
     }
 
     return (
-        <div className="checkbox-wrapper">
+        <div className={props.className ? 
+                `checkbox-wrapper ${props.className}` : 
+                'checkbox-wrapper'}>
             <label className={checkboxClass()}>
                 <input
                     type="checkbox"
