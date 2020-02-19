@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Badge, Card, Table, Icon, Button } from '../components';
+import { Badge, Card, Table, Icon, Button, Collapse } from '../components';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export const BadgePage = () => {
-    const keys = ['property', 'description', 'default', 'type', 'value'];
+const keys = ['property', 'description', 'default', 'type', 'value'];
     const items = [
         { 
             property: 'value', 
@@ -41,11 +42,46 @@ export const BadgePage = () => {
         }
     ]
 
+    const usage =
+`// Usage examples
+import React from 'react';
+import { Badge, Button } from '@assenti/rui-components';
+
+function Example() {
+    const [badge, setBadge] = useState(true);
+
+    return (
+        <div className="row align-center">
+            <Badge 
+                color="info" 
+                value={100} 
+                className="mr-20"
+                parent={<Icon size={24} name="account"/>}/>
+            <Badge 
+                color="error" 
+                value={10} 
+                rounded
+                className="mr-20"
+                parent={<Icon size={24} name="smartphone"/>}/>
+            <Badge 
+                color="error" 
+                value={10} 
+                rounded
+                visible={badge}
+                className="mr-20"
+                parent={<Icon size={24} name="smartphone"/>}/>
+            <Button name="Toggle badge" color="info" onClick={() => setBadge(!badge)}/>
+        </div>
+    )
+}
+`
+
+export const BadgePage = () => {
     const [badge, setBadge] = useState(true);
 
     return (
         <div className="page">
-            <div className="page-title">Badges</div>
+            <div className="page-title">Badge Component</div>
             <Card>
                 <div className="row align-center">
                     <Badge 
@@ -68,6 +104,11 @@ export const BadgePage = () => {
                         parent={<Icon size={24} name="smartphone"/>}/>
                     <Button name="Toggle badge" color="info" onClick={() => setBadge(!badge)}/>
                 </div>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {usage}
+                    </SyntaxHighlighter>
+                </Collapse>
             </Card>
             <h2>API</h2>
             <Table

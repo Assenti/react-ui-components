@@ -21,8 +21,7 @@ export const BackTopBtn = (props) => {
         if (props.setRef.current) {
             props.setRef.current.scrollIntoView({
                 behavior: "smooth",
-                top: 0,
-                left: 0
+                block: 'start'
             })
         }
     }

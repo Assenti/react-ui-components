@@ -9,13 +9,19 @@ export const Content = (props) => {
     return (
         <div className="content">
             <Header title={<div className="row align-center">
-                    <Button className="hidden-sm-and-up" icon="menu" dark onClick={() => props.onDrawerToggle()}/>
+                    <Button icon="menu" dark onClick={() => props.onDrawerToggle()}/>
                     <span className="fz-10 ml-5">{description}</span>
                 </div>}
                 rightSide={
                 <div className="row align-center">
-                    <div className="text-lightgray mr-20"><small>v {version}</small></div>
-                    <Tooltip tooltip="Visit Github repo" position="bottom-right">
+                    <div className="text-lightgray mr-20">
+                        <a href="https://github.com/Assenti/react-ui-components/blob/master/CHANGELOG.md" 
+                            rel="noopener noreferrer"
+                            target="_blank">
+                            <small>v {version}</small>
+                        </a>
+                    </div>
+                    <Tooltip tooltip="Visit Github repo" position="left">
                         <Button 
                             dark
                             icon="github" 

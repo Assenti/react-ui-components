@@ -1,10 +1,11 @@
 import React, { createRef } from 'react';
-import { BackTopBtn, Card, Table } from '../components';
+import { BackTopBtn, Card, Table, Collapse } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export const BackTopBtnPage = () => {
     const blockref = createRef();
+    const api = createRef();
     const rows = []
     for (let i = 0; i < 20; i++) {
         rows.push(i)
@@ -85,12 +86,15 @@ function Example() {
     )
 }
 `
+    const goToApi = () => {
+        if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
 
     return (
         <div className="page" ref={blockref}>
             <div className="row align-center space-between">
                 <div className="page-title">BackTopBtn Component</div>
-                <a href="#back-top-btn-api" className="fz-13 fw-bold">API</a>
+                <a className="fz-13 fw-bold" onClick={goToApi}>API</a>
             </div>
             <p>Set the scroll to top button when scroll down the page</p>
             <Card outlined color="primary" title="BackTopBtn" className="mt-20">
@@ -104,12 +108,14 @@ function Example() {
                         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                 )}
-                <SyntaxHighlighter language="jsx" style={prism}>
-                    {simpleList}
-                </SyntaxHighlighter>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {simpleList}
+                    </SyntaxHighlighter>
+                </Collapse>
             </Card>
             <BackTopBtn dark setRef={blockref}/>
-            <h2 id="back-top-btn-api">API</h2>
+            <h2 ref={api}>API</h2>
             <Table
                 bordered
                 headers={keys}
