@@ -1,5 +1,5 @@
 import React, { useState, createRef } from 'react';
-import { Button, Table, Card, Switch, BackTopBtn, Collapse } from '../components';
+import { Button, Table, Card, Switch, BackTopBtn, Collapse, Tooltip } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -90,14 +90,21 @@ const keys = ['property', 'description', 'default', 'type', 'value'];
             value: 'medium | large'},
         { 
             property: 'icon',
-            description: 'Set icon in button and give circle shape to it (can be set with name)', 
+            description: 'Set icon in a button and give circle shape to it (can be set with name)', 
             default: '', 
             type: 'string',
-            value: 'home | search | etc. (see icon names list in docs)'
+            value: 'home | search | etc.'
         },
         { 
             property: 'iconLeft',
             description: 'Change icon position to the left from name', 
+            default: 'false', 
+            type: 'boolean',
+            value: 'true | false'
+        },
+        { 
+            property: 'iconAllotted',
+            description: 'Allot an icon (has effect with outlined prop)', 
             default: 'false', 
             type: 'boolean',
             value: 'true | false'
@@ -307,47 +314,68 @@ function Example() {
     const usageIcon =
 `// Usage examples
 import React from 'react';
-import { Button } from '@assenti/rui-components';
+import { Button, Tooltip } from '@assenti/rui-components';
 
 function Example() {
     return (
-        <div className="row align-center">
-            <Button
-                className="mr-10"
-                color="primary"
-                icon="search"
-                />
-            <Button
-                outlined
-                className="mr-10"
-                color="primary"
-                icon="menu"
-                />
-            <Button
-                light
-                className="mr-10"
-                icon="search"
-                />
-            <Button
-                className="mr-10"
-                color="primary"
-                name="Search"
-                icon="search"
-                />
-            <Button
-                outlined
-                className="mr-10"
-                color="primary"
-                name="Search"
-                icon="search"
-                />
-            <Button
-                className="mr-10"
-                color="info"
-                name="Home"
-                icon="home"
-                iconLeft
-                />
+        <div>
+            <div className="row align-center my-5">
+                <Tooltip tooltip="Search">
+                    <Button
+                        className="mr-10"
+                        color="primary"
+                        icon="search"
+                        />
+                </Tooltip>
+                <Tooltip tooltip="Menu">
+                    <Button
+                        outlined
+                        className="mr-10"
+                        color="primary"
+                        icon="menu"
+                        />
+                </Tooltip>
+                <Tooltip tooltip="Search">
+                    <Button
+                        light
+                        className="mr-10"
+                        icon="search"
+                        />
+                </Tooltip>
+            </div>
+            <div className="row align-center my-5">
+                <Button
+                    className="mr-10"
+                    color="primary"
+                    name="Search"
+                    icon="search"
+                    />
+                <Button
+                    className="mr-10"
+                    color="info"
+                    name="Home"
+                    icon="home"
+                    iconLeft
+                    />
+            </div>
+            <div className="row align-center my-5">
+                <Button
+                    iconAllotted
+                    outlined
+                    className="mr-10"
+                    color="primary"
+                    name="Search"
+                    icon="search"
+                    />
+                <Button
+                    iconAllotted
+                    outlined
+                    className="mr-10"
+                    color="secondary"
+                    name="Search"
+                    icon="search"
+                    />
+            </div>
         </div>
     )
 }
@@ -425,10 +453,10 @@ export const ButtonPage = () => {
         <div className="page" ref={parentRef}>
             <div className="row align-center space-between">
                 <div className="page-title">Button Component</div>
-                <a onClick={goToApi} className="fz-13 fw-bold">API</a>
+                <div onClick={goToApi} className="link fz-13 fw-bold">API</div>
             </div>
             <Card outlined color="primary" title="Button types">
-                <div className="row align-center">
+                <div className="row wrap align-center">
                     <Button
                         className="mr-5"
                         color="primary"
@@ -470,7 +498,7 @@ export const ButtonPage = () => {
             </Card>
             <br/>
             <Card outlined color="primary" title="Button sizes">
-                <div className="row align-center">
+                <div className="row wrap align-center">
                     <Button
                         className="mr-5"
                         color="info"
@@ -592,32 +620,33 @@ export const ButtonPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Icon buttons">
-                <div className="row align-center">
+            <Card outlined color="primary" title="Icon buttons and buttons with icons">
+                <div className="row align-center my-5">
+                    <Tooltip tooltip="Search">
+                        <Button
+                            className="mr-10"
+                            color="primary"
+                            icon="search"
+                            />
+                    </Tooltip>
+                    <Tooltip tooltip="Menu">
+                        <Button
+                            outlined
+                            className="mr-10"
+                            color="primary"
+                            icon="menu"
+                            />
+                    </Tooltip>
+                    <Tooltip tooltip="Search">
+                        <Button
+                            light
+                            className="mr-10"
+                            icon="search"
+                            />
+                    </Tooltip>
+                </div>
+                <div className="row align-center my-5">
                     <Button
-                        className="mr-10"
-                        color="primary"
-                        icon="search"
-                        />
-                    <Button
-                        outlined
-                        className="mr-10"
-                        color="primary"
-                        icon="menu"
-                        />
-                    <Button
-                        light
-                        className="mr-10"
-                        icon="search"
-                        />
-                    <Button
-                        className="mr-10"
-                        color="primary"
-                        name="Search"
-                        icon="search"
-                        />
-                    <Button
-                        outlined
                         className="mr-10"
                         color="primary"
                         name="Search"
@@ -629,6 +658,25 @@ export const ButtonPage = () => {
                         name="Home"
                         icon="home"
                         iconLeft
+                        />
+                </div>
+                <div className="row align-center my-5">
+                    <Button
+                        iconAllotted
+                        iconLeft
+                        outlined
+                        className="mr-10"
+                        color="primary"
+                        name="Search"
+                        icon="search"
+                        />
+                    <Button
+                        iconAllotted
+                        outlined
+                        className="mr-10"
+                        color="secondary"
+                        name="Search"
+                        icon="search"
                         />
                 </div>
                 <Collapse icon="code" iconSize={18} tooltip="Code">

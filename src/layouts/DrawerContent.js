@@ -30,7 +30,10 @@ export const DrawerContent = (props) => {
     }
 
     const sortedRoutes = () => {
-        let filtered = props.items.sort(compare).filter(item => item.path !== '/')
+        let filtered = props.items
+                            .sort(compare)
+                            .filter(item => item.path !== '/' && item.path !== '/colors')
+        // filtered.unshift({ path: '/colors', name: 'Colors', Component: HomePage, icon: 'brush' })
         filtered.unshift({ path: '/', name: 'Get started', Component: HomePage, icon: 'rocket' })
         return filtered;
     }

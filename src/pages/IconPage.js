@@ -39,7 +39,10 @@ const icons = [
     'arrow-up-bold',
     'format-align-left',
     'format-align-center',
-    'format-align-right'
+    'format-align-right',
+    'brush',
+    'lock',
+    'filter'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];

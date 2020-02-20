@@ -10,9 +10,40 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    font-size: .9rem;
     background-color: $lightgray;
     box-sizing: border-box;
+    margin: 5px;
+    overflow: hidden;
+
+    .btn__text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &.allotted:not(.icon-left) {
+        padding: 0;
+        padding-left: 8px;
+    }
+
+    &.icon-left {
+        padding: 0;
+        padding-right: 8px;
+        margin-right: 5px;
+    }
+
+    &:not(.icon-left) {
+        .btn__allotted-icon {
+            margin-left: 5px;
+        }
+    }
+
+    .btn__allotted-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $gray;
+    }
 
     &:not(.icon) {
         min-width: 80px;
@@ -32,8 +63,16 @@
         }
     }
 
-    &:not(.icon):not(.medium):not(.large) {
+    &:not(.icon):not(.medium):not(.large),
+    & > .btn__text {
         height: $defaultSize;
+        font-size: .85rem;
+
+        .btn__allotted-icon {
+            height: $defaultSize;
+            width: $defaultSize + 5px;
+            min-width: $defaultSize + 5px;
+        }
     }
 
     &.uppercase {
@@ -60,13 +99,18 @@
 
     &.icon:not(.medium):not(.large) {
         width: $defaultSize;
+        min-width: $defaultSize;
         height: $defaultSize;
     }
 
     &.medium {
         height: $mediumSize;
         padding: 0 10px;
-        font-size: 1rem;
+
+        & > .btn__text {
+            height: $mediumSize;
+            font-size: .9rem;
+        }
 
         &.uppercase {
             font-size: .8rem;
@@ -74,22 +118,42 @@
 
         &.icon {
             width: $mediumSize;
+            min-width: $mediumSize;
             height: $mediumSize;
+        }
+
+        .btn__allotted-icon {
+            height: $mediumSize;
+            width: $mediumSize;
+            min-width: $mediumSize + 5px;
         }
     }
 
     &.large {
         height: $largeSize;
         padding: 0 15px;
-        font-size: 1.1rem;
+
+        & > .btn__text {
+            height: $largeSize;
+            font-size: 1rem;
+        }
 
         &.uppercase {
-            font-size: .9rem;
+            & > .btn__text {
+                font-size: .85rem;
+            }
         }
 
         &.icon {
             width: $largeSize;
+            min-width: $largeSize;
             height: $largeSize;
+        }
+
+        .btn__allotted-icon {
+            width: $largeSize;
+            height: $largeSize;
+            min-width: $largeSize + 5px;
         }
     }
 
@@ -108,8 +172,7 @@
         cursor: not-allowed;
         box-shadow: none;
         background-color: transparent;
-        border-color: $gray;
-        color: $dark;
+        border: 1px solid $gray;
         box-shadow: none;
 
         path {
@@ -133,9 +196,9 @@
         color: #fff;
 
         &:not(:disabled):hover,
-        &.active {
+        &.active,
+        .btn__allotted-icon {
             background-color: darken($primary, 10%);
-            border-color: darken($primary, 10%);
         }
 
         path {
@@ -149,7 +212,8 @@
         border: 1px solid $primary;
 
         &:not(:disabled):hover,
-        &.active {
+        &.active,
+        .btn__allotted-icon {
             background-color: $primary;
             border-color: $primary;
             color: #fff;
@@ -171,7 +235,8 @@
             background-color: darken($gray, 5%);
         }
 
-        &.active {
+        &.active,
+        .btn__allotted-icon {
             background-color: darken($gray, 10%);
         }
     }
@@ -179,10 +244,14 @@
     &.secondary.outlined {
         background-color: #fff;
         border: 1px solid $gray;
-        color: gray;
+        
+        &:not(:disabled) {
+            color: $dark;
+        }
 
         &:not(:disabled):hover,
-        &.active {
+        &.active,
+        .btn__allotted-icon {
             background-color: $gray;
             border-color: $gray;
             color: $dark;
@@ -198,9 +267,9 @@
         color: #fff;
 
         &:not(:disabled):hover,
-        &.active {
+        &.active,
+        .btn__allotted-icon {
             background-color: darken($info, 10%);
-            border-color: darken($info, 10%);
         }
 
         path, polygon {
@@ -214,7 +283,8 @@
         color: $info;
 
         &:not(:disabled):hover,
-        &.active {
+        &.active,
+        .btn__allotted-icon {
             background-color: $info;
             border-color: $info;
             color: #fff;
@@ -234,9 +304,9 @@
         color: #fff;
 
         &:not(:disabled):hover,
-        &.active {
+        &.active,
+        .btn__allotted-icon {
             background-color: darken($success, 10%);
-            border-color: darken($success, 10%);
         }
 
         path {
@@ -250,7 +320,8 @@
         color: $success;
 
         &:not(:disabled):hover,
-        &.active {
+        &.active,
+        .btn__allotted-icon {
             color: #fff;
             background-color: $success;
             border-color: $success;
@@ -270,7 +341,8 @@
         color: #fff;
 
         &:not(:disabled):hover,
-        &.active {
+        &.active,
+        .btn__allotted-icon {
             background-color: darken($error, 10%);
         }
 
@@ -285,7 +357,8 @@
         color: $error;
 
         &:not(:disabled):hover,
-        &.active {
+        &.active,
+        .btn__allotted-icon {
             color: #fff;
             background-color: $error;
 
@@ -304,7 +377,8 @@
         color: #fff;
 
         &:not(:disabled):hover,
-        &.active {
+        &.active,
+        .btn__allotted-icon {
             background-color: darken($dark, 15%);
         }
 
@@ -423,6 +497,11 @@
     .btn {
         min-width: 30px;
         border-radius: 0;
+        margin: 0;
+        
+        &:not(:last-child) {
+            border-right: 1px solid transparent !important;
+        }
 
         &:first-child {
             border-top-left-radius: $radius;

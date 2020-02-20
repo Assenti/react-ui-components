@@ -1,5 +1,5 @@
 import React from 'react';
-import { Delete, Search, Home, Edit, Close, Github, ChevronDoubleRight, ChevronDoubleLeft, ChevronDown, ChevronNext, Code, Chip, Account, Sun, Moon, Star, StarOutline, Smartphone, Hammer, City, ChevronBack, Empty, Download, Menu, Person, Loading, ShieldAccount, ReactLogo, FileOutline, Email, Rocket, Key, ExitToApp, ArrowUpBold, FormatAlignCenter, FormatAlignLeft, FormatAlignRight } from './icons/index';
+import { Delete, Search, Home, Edit, Close, Github, ChevronDoubleRight, ChevronDoubleLeft, ChevronDown, ChevronNext, Code, Chip, Account, Sun, Moon, Star, StarOutline, Smartphone, Hammer, City, ChevronBack, Empty, Download, Menu, Person, Loading, ShieldAccount, ReactLogo, FileOutline, Email, Rocket, Key, ExitToApp, ArrowUpBold, FormatAlignCenter, FormatAlignLeft, FormatAlignRight, Brush, Lock, Filter } from './icons/index';
 export var Icon = function Icon(props) {
   var Icon = function Icon() {
     switch (props.name) {
@@ -221,6 +221,24 @@ export var Icon = function Icon(props) {
 
       case 'format-align-right':
         return React.createElement(FormatAlignRight, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'brush':
+        return React.createElement(Brush, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'lock':
+        return React.createElement(Lock, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'filter':
+        return React.createElement(Filter, {
           size: props.size,
           color: props.color
         });

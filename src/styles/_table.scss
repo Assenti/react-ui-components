@@ -1,11 +1,23 @@
-.table-container {
+.table__container {
     position: relative;
     width: 100%;
+    border: 1px solid transparent;
+    border-radius: $radius;
 
     &.bordered {
-        border: 1px solid lightgray;
-        border-radius: $radius;
+        border-color: lightgray;
         overflow: hidden;
+    }
+
+    .table__pagination {
+        padding: 10px 0;
+        padding-left: 5px;
+    }
+
+    &.right > .table__pagination {
+        justify-content: flex-end;
+        padding-left: 0;
+        padding-right: 5px;
     }
 }
 
@@ -29,6 +41,12 @@
     width: 100%;
     border-collapse: collapse;
 
+    &.stripped {
+        tbody > tr:nth-child(even) {
+            background-color: $lightgray;
+        }
+    }
+
     tr, th, td {
         border-bottom: 1px solid lightgray;
         border-left: none;
@@ -37,21 +55,73 @@
         font-weight: normal;
     }
 
+    &:not(.center):not(.right) {
+        th {
+            text-align: left;
+        }
+    }
+
+    &.center {
+        td, th {
+            text-align: center;
+        }
+    }
+
+    &.right {
+        td, th {
+            text-align: right;
+        }
+    }
+
+    &.controls {
+        td {
+            padding: 2px 10px;
+        }
+    }
+
+    &:not(.controls) {
+        td {
+            padding: 10px;
+        }
+    }
+
+    &.primary {
+        th {
+            background-color: $primary;
+            color: #fff;
+        }
+    }
+
+    &.info {
+        th {
+            background-color: $info;
+            color: #fff;
+        }
+    }
+
+    &.success {
+        th {
+            background-color: $success;
+            color: #fff;
+        }
+    }
+
+    &.error {
+        th {
+            background-color: $error;
+            color: #fff;
+        }
+    }
+
     th {
         padding: 10px;
-        font-size: .8rem;
+        font-size: .85rem;
         background-color: $lightgray;
-        text-align: center;
         position: sticky;
         top: 0;
         z-index: 2;
         user-select: none;
         -moz-user-select: none;
-    }
-    
-    td {
-        padding: 10px;
-        text-align: center;
     }
 
     tr.small > td {
@@ -118,12 +188,34 @@
     }
 }
 
-.table-footer {
+.table__footer {
     background-color: $lightgray;
     padding: 10px;
+    font-size: .9rem;
+    border-bottom: 1px solid lightgray;
+
+    &.primary {
+        background-color: $primary;
+        color: #fff;
+    }
+
+    &.info {
+        background-color: $info;
+        color: #fff;
+    }
+
+    &.success {
+        background-color: $success;
+        color: #fff;
+    }
+
+    &.error {
+        background-color: $error;
+        color: #fff;
+    }
 }
 
-.table-empty {
+.table__empty {
     position: absolute;
     top: calc(50% - 50px);
     left: calc(50% - 50px);

@@ -36,7 +36,10 @@ import {
     ArrowUpBold,
     FormatAlignCenter,
     FormatAlignLeft,
-    FormatAlignRight
+    FormatAlignRight,
+    Brush,
+    Lock,
+    Filter
 } from './icons/index';
 
 export const Icon = (props) => {
@@ -114,8 +117,14 @@ export const Icon = (props) => {
                 return <FormatAlignCenter size={props.size} color={props.color}/>;
             case 'format-align-left':
                 return <FormatAlignLeft size={props.size} color={props.color}/>;
-                case 'format-align-right':
-            return <FormatAlignRight size={props.size} color={props.color}/>;
+            case 'format-align-right':
+                return <FormatAlignRight size={props.size} color={props.color}/>;
+            case 'brush':
+                return <Brush size={props.size} color={props.color}/>;
+            case 'lock':
+                return <Lock size={props.size} color={props.color}/>;
+            case 'filter':
+                return <Filter size={props.size} color={props.color}/>;
             default:
                 return '';
         }

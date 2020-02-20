@@ -2,6 +2,7 @@
     border: 1px solid $lightgray;
     border-radius: $radius * 2;
     padding: 15px;
+    margin: 5px 0;
 
     &.dark {
         background-color: $night;
@@ -29,6 +30,7 @@
     &.outlined {
         border-color: $dark;
         position: relative;
+        margin-top: 15px;
 
         .card-title {
             position: absolute;
@@ -39,6 +41,7 @@
             background-color: #fff;
             font-weight: 600;
             color: $dark;
+            border-radius: 30px;
         }
     }
 

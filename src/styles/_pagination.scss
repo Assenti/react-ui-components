@@ -2,6 +2,10 @@
     display: flex;
     align-items: center;
 
+    .select-menu {
+        margin: 0;
+    }
+
     &.middle {
         justify-content: center;
     }
@@ -15,35 +19,35 @@
     }
 
     &:not(.medium):not(.large) > .pagination-item {
-        height: 30px;
-        width: 30px;
+        height: $defaultSize;
+        width: $defaultSize;
         font-size: .9rem;
 
         & > svg {
-            width: 13px;
-            height: 13px;
+            width: 20px;
+            height: 20px;
         }
     }
 
     &.medium > .pagination-item {
-        height: 40px;
-        width: 40px;
+        height: $mediumSize;
+        width: $mediumSize;
         font-size: 1rem;
 
         & > svg {
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
         }
     }
 
     &.large > .pagination-item {
-        height: 50px;
-        width: 50px;
+        height: $largeSize;
+        width: $largeSize;
         font-size: 1.1rem;
 
         & > svg {
-            width: 16px;
-            height: 16px;
+            width: 24px;
+            height: 24px;
         }
     }
 

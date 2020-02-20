@@ -20,6 +20,8 @@ export const Button = (props) => {
             size: props.size ? props.size : '',
             block: props.block ? 'block' : '',
             outlined: props.outlined ? 'outlined' : '',
+            allotted: props.iconAllotted ? 'allotted' : '',
+            iconLeft: props.iconLeft ? 'icon-left' : '',
             className: props.className ? props.className : ''
         }
         
@@ -30,9 +32,9 @@ export const Button = (props) => {
     }
 
     const setMargin = () => {
-        if (props.icon && !props.iconLeft) return 'mr-5';
-        else if (props.icon && props.iconLeft) return 'ml-5';
-        else return '';
+        if (props.icon && !props.iconLeft) return 'btn__text mr-5';
+        else if (props.icon && props.iconLeft) return 'btn__text ml-5';
+        else return 'btn__text';
     }
 
     return (
@@ -45,9 +47,20 @@ export const Button = (props) => {
             {props.loading ?
                 <Icon name="loading" color="gray"/> :
                 <React.Fragment>
-                    {props.icon && props.iconLeft ? <Icon size={20} name={props.icon}/> : ''}
+                    {props.icon && props.iconLeft ? 
+                        (props.iconAllotted ? 
+                            <div className="btn__allotted-icon"><Icon size={20} name={props.icon}/></div> :
+                            <Icon size={20} name={props.icon}/>
+                        )
+                        : ''
+                    }
                     {props.name ? <div className={setMargin()}>{props.name}</div> : ''}
-                    {props.icon && !props.iconLeft ? <Icon size={20} name={props.icon}/> : ''}
+                    {props.icon && !props.iconLeft ? 
+                        (props.iconAllotted ? 
+                            <div className="btn__allotted-icon"><Icon size={20} name={props.icon}/></div> :
+                            <Icon size={20} name={props.icon}/>    
+                        ) : ''
+                    }
                 </React.Fragment>
             }
             

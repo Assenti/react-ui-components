@@ -8,12 +8,18 @@ Create a lot of usefull and maximum reusable UI components
 
 ### Install
 ```bash
-% npm i @assenti/rui-components
+# Install package from NPM
+% npm install @assenti/rui-components -S
+
+               #or
+
+% yarn add @assenti/rui-components
 ```
 
 ### Usage
 index.js
 ```jsx
+// Import styles in index.js (or your main.js file)
 import '@assenti/react-ui-components/build/css/main.css';
 ```
 App.js
@@ -37,38 +43,23 @@ export default App;
 ### TODO
 - [ ] Popover
 - [ ] Dialog
-- [X] Radio button
 - [ ] Date picker / Calendar
 - [ ] InputMask 
-- [X] Badge
-- [X] Dropdown
-- [X] Tag
-- [X] Card
-- [X] Collapse
 - [ ] Expansion List
 - [ ] Stepper
 - [ ] Rating
-- [X] Icon
-- [X] Uploader
 - [ ] Dock
 - [ ] Alert
 - [ ] Notification
 - [ ] Header / Toolbar
 - [ ] Breadcrumbs
-- [X] Switch
 - [ ] Carousel
 - [ ] Timeline
 - [ ] Tabs
-- [X] BackTopBtn
-- [X] Preloader
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable
 - [ ] Declare types for TS using
-- [X] Make a-la-carte using 
-- [X] Add API descriptions
-- [X] Add Component Usage code modules
 - [ ] Add i18n
-- [X] NPM register
 
 ### Changelog
 You can track changelog [here](/CHANGELOG.md)

@@ -50,7 +50,7 @@
     }
 
     &:not(.medium):not(.large) {
-        height: 30px;
+        height: $defaultSize;
 
         .select-menu__item,
         .select-menu__subitem,
@@ -72,7 +72,7 @@
     }
 
     &.medium {
-        height: 40px;
+        height: $mediumSize;
 
         .select-menu__item,
         .select-menu__subitem,
@@ -92,7 +92,7 @@
     }
 
     &.large {
-        height: 50px;
+        height: $largeSize;
 
         .select-menu__item,
         .select-menu__subitem,

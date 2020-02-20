@@ -15,7 +15,7 @@ export const BackTopBtn = (props) => {
 
     useEffect(() => {
         document.addEventListener('scroll', handleScroll, true);
-        return () => document.removeEventListener('scroll', handleScroll);
+        return () => document.removeEventListener('scroll', handleScroll, true);
     }, ['scroll', document])
 
     const goTop = () => {
