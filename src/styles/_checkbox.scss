@@ -55,7 +55,8 @@
     }
 
     & > span:active {
-        transform: scale(.95);
+        transform: scale(.98);
+        box-shadow: 0 1px 5px rgba(black, .3);;
     }
 
     & > span:after {

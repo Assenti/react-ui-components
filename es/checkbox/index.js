@@ -39,12 +39,12 @@ export var Checkbox = function Checkbox(props) {
     checked: props.checked ? props.checked : false,
     disabled: props.disabled ? props.disabled : false,
     onChange: function onChange(e) {
-      return props.onChange(e);
+      return props.onChange ? props.onChange(e) : {};
     }
   }), React.createElement("span", null)), props.label ? React.createElement("div", {
     className: checkboxLabelClass(),
     onClick: function onClick() {
-      return props.onChange();
+      return props.onChange ? props.onChange() : {};
     }
   }, props.label) : '');
 };

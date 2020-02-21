@@ -1,11 +1,49 @@
 .list {
-    &.dense > .list-item {
-        padding: 0 10px;
-        height: 30px;
-        font-size: .9rem;
+    &:not(.medium):not(.large) {
+        .list-item {
+            padding: 0 10px;
+            min-height: $defaultSize;
+            font-size: $defaultFont;
+
+            a {
+                font-size: $defaultFont;
+            }
+    
+            .list-item__title-row {
+                height: $defaultSize;
+            }
+        }
+    }
+
+    &.medium {
+        .list-item {
+            padding: 0 10px;
+            height: $mediumSize;
+            font-size: $mediumFont;
+
+            a {
+                font-size: $mediumFont;
+            }
+        }
+    }
+
+    &.large {
+        .list-item {
+            padding: 0 10px;
+            height: $largeSize;
+            font-size: $largeFont;
+
+            a {
+                font-size: $largeFont;
+            }
+        }
     }
 
     &.dark {
+        .list-header {
+            color: #fff;
+        }
+
         .list-item {
             color: #fff;
             border-bottom-color: gray;
@@ -19,11 +57,26 @@
                 transition: all .2s ease-in-out;
                 cursor: pointer;
             }
+
+            &.hover.rounded:hover:not(.active)  {
+                background-color: rgba($light, .3);
+                transition: all .2s ease-in-out;
+                cursor: pointer;
+                border-top-left-radius: 30px;
+                border-bottom-left-radius: 30px;
+            }
         }
 
         .list-item.active {
             background-color: rgba($info, .4);
             border-right: 5px solid $info;
+        }
+
+        .list-item.active.rounded {
+            background-color: rgba($info, .4);
+            border-right: 5px solid $info;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
         }
     }
 
@@ -42,7 +95,7 @@
 .list-header {
     font-size: .9rem;
     padding: 10px;
-    color: $dark;
+    color: gray;
 }
 
 .list-subtitle {
@@ -61,10 +114,11 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    color: $dark;
-    padding: 0 15px;
-    min-height: 40px;
-    font-size: 1rem;
+    color: rgba(black, .8);
+
+    .list-item__title-row {
+
+    }
 
     svg {
         width: 20px;

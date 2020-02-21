@@ -39,11 +39,11 @@ export const Checkbox = (props) => {
                     type="checkbox"
                     checked={props.checked ? props.checked : false}
                     disabled={props.disabled ? props.disabled : false}
-                    onChange={(e) => props.onChange(e)}/>
+                    onChange={(e) => props.onChange ? props.onChange(e) : {}}/>
                 <span></span>
             </label>
             {props.label ? <div className={checkboxLabelClass()} 
-                    onClick={() => props.onChange()}>{props.label}</div> : ''}
+                    onClick={() => props.onChange ? props.onChange() : {}}>{props.label}</div> : ''}
         </div>
     )
 }

@@ -1,6 +1,4 @@
 .btn {
-    padding: 0 8px;
-    text-align: center;
     cursor: pointer;
     user-select: none;
     -moz-user-select: none;
@@ -13,6 +11,7 @@
     background-color: $lightgray;
     box-sizing: border-box;
     margin: 5px;
+    padding: 0 8px;
     overflow: hidden;
 
     .btn__text {
@@ -50,7 +49,7 @@
     }
 
     &.loading {
-        i {
+        svg {
             animation: loading .8s infinite ease-in;
             -moz-animation: loading .8s infinite ease-in;
         }
@@ -66,7 +65,7 @@
     &:not(.icon):not(.medium):not(.large),
     & > .btn__text {
         height: $defaultSize;
-        font-size: .85rem;
+        font-size: $defaultFont;
 
         .btn__allotted-icon {
             height: $defaultSize;
@@ -75,9 +74,9 @@
         }
     }
 
-    &.uppercase {
+    &.uppercase > .btn__text {
         text-transform: uppercase;
-        font-size: .75rem;
+        font-size: $defaultFont;
     }
 
     & > span {
@@ -85,7 +84,7 @@
     }
 
     &.smooth {
-        border-radius: $radius * 2;
+        border-radius: $radius * 2.3;
     }
 
     &.icon {
@@ -109,11 +108,11 @@
 
         & > .btn__text {
             height: $mediumSize;
-            font-size: .9rem;
+            font-size: $mediumFont;
         }
 
-        &.uppercase {
-            font-size: .8rem;
+        &.uppercase > .btn__text {
+            font-size: $mediumFont;
         }
 
         &.icon {
@@ -140,7 +139,7 @@
 
         &.uppercase {
             & > .btn__text {
-                font-size: .85rem;
+                font-size: $largeFont;
             }
         }
 
@@ -185,9 +184,9 @@
     }
 
     &:hover {
-        transition: all .2s ease-in-out;
+        transition: all .3s ease-in-out;
         path {
-            transition: all .2s ease-in-out;
+            transition: all .3s ease-in-out;
         }
     }
 
@@ -198,7 +197,7 @@
         &:not(:disabled):hover,
         &.active,
         .btn__allotted-icon {
-            background-color: darken($primary, 10%);
+            background-color: darken($primary, 8%);
         }
 
         path {
@@ -424,9 +423,15 @@
     }
 }
 
+.loading {
+    svg {
+        animation: loading .8s infinite ease-in;
+        -moz-animation: loading .8s infinite ease-in;
+    }
+}
+
 @keyframes loading {
     0% { transform: rotate(0); }
-    // 30% { transform: rotate(180deg); }
     100% { transform: rotate(360deg); }
 }
 

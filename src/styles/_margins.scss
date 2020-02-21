@@ -79,3 +79,9 @@
         padding-right: #{$size}px;
     }
 }
+
+@each $size in $sizes {
+    .pl-#{$size} {
+        padding-left: #{$size}px;
+    }
+}

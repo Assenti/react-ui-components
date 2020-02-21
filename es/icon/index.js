@@ -1,5 +1,5 @@
 import React from 'react';
-import { Delete, Search, Home, Edit, Close, Github, ChevronDoubleRight, ChevronDoubleLeft, ChevronDown, ChevronNext, Code, Chip, Account, Sun, Moon, Star, StarOutline, Smartphone, Hammer, City, ChevronBack, Empty, Download, Menu, Person, Loading, ShieldAccount, ReactLogo, FileOutline, Email, Rocket, Key, ExitToApp, ArrowUpBold, FormatAlignCenter, FormatAlignLeft, FormatAlignRight, Brush, Lock, Filter } from './icons/index';
+import { Delete, Search, Home, Edit, Close, Github, ChevronDoubleRight, ChevronDoubleLeft, ChevronDown, ChevronNext, Code, Chip, Account, Sun, Moon, Star, StarOutline, Smartphone, Hammer, City, ChevronBack, Empty, Download, Menu, Person, Loading, ShieldAccount, ReactLogo, FileOutline, Email, Rocket, Key, ExitToApp, ArrowUpBold, FormatAlignCenter, FormatAlignLeft, FormatAlignRight, Brush, Lock, Filter, SortAscending, SortDescending, ContentCopy, ToyBrick, ChevronUp } from './icons/index';
 export var Icon = function Icon(props) {
   var Icon = function Icon() {
     switch (props.name) {
@@ -239,6 +239,36 @@ export var Icon = function Icon(props) {
 
       case 'filter':
         return React.createElement(Filter, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'sort-ascending':
+        return React.createElement(SortAscending, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'sort-descending':
+        return React.createElement(SortDescending, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'content-copy':
+        return React.createElement(ContentCopy, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'toy-brick':
+        return React.createElement(ToyBrick, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'chevron-up':
+        return React.createElement(ChevronUp, {
           size: props.size,
           color: props.color
         });

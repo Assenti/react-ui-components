@@ -1,6 +1,21 @@
 pre {
-    font-size: .8rem !important;
+    font-size: .85rem !important;
     background-color: $lightgray !important;
     border-radius: $radius;
     margin: 0 !important;
+
+    code {
+        font-size: .85rem !important;
+    }
+}
+
+.icon.code-copy {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+
+    &:active {
+        transform: scale(.97);
+    }
 }

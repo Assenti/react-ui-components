@@ -1,8 +1,22 @@
 import React, { useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
 
 export const Tooltip = (props) => {
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
+
+    function myFunction() {
+        var copyText = document.getElementById("myInput");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copied: " + copyText.value;
+    }
+      
+    function outFunc() {
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copy to clipboard";
+    }
 
     const tooltipClass = () => {
         let result = '';
@@ -11,7 +25,6 @@ export const Tooltip = (props) => {
             position: props.position ? props.position : '',
             className: props.className ? props.className : ''
         }
-        
         for (const key in className) {
             if (className[key]) result += className[key] + ' '
         }
@@ -19,16 +32,8 @@ export const Tooltip = (props) => {
     }
    
     return (
-        <div className={tooltipClass()}
-            onMouseEnter={() => setShow(true)}
-            onMouseLeave={() => setShow(false)}>
-            <CSSTransition
-                in={show}
-                timeout={300}
-                classNames="tooltip"
-                unmountOnExit>
-                <div>{props.tooltip}</div>
-            </CSSTransition>
+        <div className={tooltipClass()}>
+            <span className="tooltip__text">{props.tooltip}</span>
             {props.children}
         </div>
     )

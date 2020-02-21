@@ -1,64 +1,170 @@
+// .tooltip {
+//     position: relative;
+//     display: flex;
+//     justify-content: center;
+
+//     & > div {
+//         background-color: rgba($dark, .9);
+//         color: white;
+//         white-space: nowrap;
+//         width: auto;
+//         padding: 5px;
+//         font-size: .8rem;
+//         border-radius: $radius;
+//         text-align: center;
+//         position: absolute;
+//         z-index: 1000;
+//     }
+
+//     &:not(.right):not(.left):not(.bottom) {
+//         & > div {
+//             bottom: calc(100% + 5px);
+//         }
+//     }
+
+//     &.right {
+//         align-items: center !important;
+
+//         & > div {
+//             left: calc(100% + 5px);
+//         }
+//     }
+
+//     &.bottom {
+//         & > div {
+//             top: calc(100% + 5px);
+//         }
+//     }
+
+//     &.left {
+//         align-items: center !important;
+        
+//         & > div {
+//             right: calc(100% + 5px);
+//         }
+//     }
+// }
+
+// .tooltip-enter {
+//     opacity: 0;
+// }
+
+// .tooltip-enter-active {
+//     opacity: 1;
+//     transition: opacity 300ms;
+// }
+
+// .tooltip-exit {
+//     opacity: 1;
+// }
+
+// .tooltip-exit-active {
+//     opacity: 0;
+//     transition: opacity 300ms;
+// }
+
 .tooltip {
     position: relative;
-    display: flex;
-    justify-content: center;
+    display: inline-flex;
+    justify-content: center !important;
 
-    & > div {
-        background-color: rgba($dark, .9);
-        color: white;
-        white-space: nowrap;
-        width: auto;
-        padding: 5px;
-        font-size: .8rem;
-        border-radius: $radius;
-        text-align: center;
-        position: absolute;
-        z-index: 1000;
+    &:hover {
+        .tooltip__text {
+            visibility: visible;
+            opacity: 1;
+            font-size: $defaultFont;
+        }
     }
 
-    &:not(.right):not(.left):not(.bottom) {
-        & > div {
+    .tooltip__text {
+        visibility: hidden;
+        // width: 100px;
+        // max-width: 200px;
+        // min-width: 60px;
+        white-space: nowrap;
+        background-color: rgba(black, .6);
+        color: #fff;
+        text-align: center;
+        border-radius: $radius;
+        padding: 5px;
+        position: absolute;
+        z-index: 1000;
+        font-size: $defaultFont;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    &:not(.left):not(.right):not(.bottom) {
+        .tooltip__text {
             bottom: calc(100% + 5px);
+
+            &::after {
+                content: " ";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: rgba(black, .6) transparent transparent transparent;
+            }
         }
     }
 
     &.right {
-        align-items: center;
+        align-items: center !important;
 
-        & > div {
+        .tooltip__text {
             left: calc(100% + 5px);
+
+            &::after {
+                content: " ";
+                position: absolute;
+                top: 50%;
+                right: 100%;
+                margin-top: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: transparent rgba(black, .6) transparent transparent;
+            }
         }
     }
 
     &.bottom {
-        & > div {
+        justify-content: center !important;
+
+        .tooltip__text {
             top: calc(100% + 5px);
+
+            &::after {
+                content: " ";
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: transparent transparent rgba(black, .6) transparent;
+            }
         }
     }
 
     &.left {
-        align-items: center;
-        
-        & > div {
+        align-items: center !important;
+
+        .tooltip__text {
             right: calc(100% + 5px);
+    
+            &::after {
+                content: " ";
+                position: absolute;
+                top: 50%;
+                left: 100%; 
+                margin-top: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: transparent transparent transparent rgba(black, .6);
+            }
         }
     }
-}
-
-.tooltip-enter {
-    opacity: 0;
-}
-
-.tooltip-enter-active {
-    opacity: 1;
-    transition: opacity 300ms;
-}
-
-.tooltip-exit {
-    opacity: 1;
-}
-
-.tooltip-exit-active {
-    opacity: 0;
-    transition: opacity 300ms;
 }

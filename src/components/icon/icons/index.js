@@ -43,6 +43,14 @@ export const ChevronDown = (props) => {
     )
 }
 
+export const ChevronUp = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
+        </svg>
+    )
+}
+
 export const Delete = (props) => {
     return (
         <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
@@ -332,6 +340,38 @@ export const Filter = (props) => {
     return (
         <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
             <path fill={props.color ? props.color : defaultColor} d="M14,12V19.88C14.04,20.18 13.94,20.5 13.71,20.71C13.32,21.1 12.69,21.1 12.3,20.71L10.29,18.7C10.06,18.47 9.96,18.16 10,17.87V12H9.97L4.21,4.62C3.87,4.19 3.95,3.56 4.38,3.22C4.57,3.08 4.78,3 5,3V3H19V3C19.22,3 19.43,3.08 19.62,3.22C20.05,3.56 20.13,4.19 19.79,4.62L14.03,12H14Z" />
+        </svg>
+    )
+}
+
+export const SortAscending = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M19 17H22L18 21L14 17H17V3H19M2 17H6V19H2M12 5V7H2V5M2 11H9V13H2Z" />
+        </svg>
+    )
+}
+
+export const SortDescending = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M19 7H22L18 3L14 7H17V21H19M2 17H6V19H2M12 5V7H2V5M2 11H9V13H2Z" />
+        </svg>
+    )
+}
+
+export const ContentCopy = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" />
+        </svg>
+    )
+}
+
+export const ToyBrick = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M19 6V5A2 2 0 0 0 17 3H15A2 2 0 0 0 13 5V6H11V5A2 2 0 0 0 9 3H7A2 2 0 0 0 5 5V6H3V20H21V6Z" />
         </svg>
     )
 }

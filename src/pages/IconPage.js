@@ -19,6 +19,7 @@ const icons = [
     'person',
     'shield-account',
     'chevron-down',
+    'chevron-up',
     'chevron-next', 
     'chevron-back', 
     'sun',
@@ -42,7 +43,11 @@ const icons = [
     'format-align-right',
     'brush',
     'lock',
-    'filter'
+    'filter',
+    'sort-ascending',
+    'sort-descending',
+    'content-copy',
+    'toy-brick'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];

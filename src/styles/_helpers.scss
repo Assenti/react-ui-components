@@ -124,3 +124,36 @@
     position: sticky;
     top: 0;
 }
+
+.tile {
+    border-radius: 0 !important;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.no-select {
+    user-select: none;
+    -moz-user-select: none;
+}

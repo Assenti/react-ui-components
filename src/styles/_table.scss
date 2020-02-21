@@ -1,50 +1,206 @@
 .table__container {
     position: relative;
     width: 100%;
-    border: 1px solid transparent;
+    min-height: 200px;
     border-radius: $radius;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &.bordered {
-        border-color: lightgray;
+        border: 1px solid lightgray;
         overflow: hidden;
     }
 
-    .table__pagination {
+    .pagination {
         padding: 10px 0;
         padding-left: 5px;
     }
 
-    &.right > .table__pagination {
+    &.right > .pagination {
         justify-content: flex-end;
         padding-left: 0;
         padding-right: 5px;
     }
-}
 
-@media (max-width: $xs) {
-    .table {
-        td {
-            font-size: .75rem;
+    &.grid {
+        .table {
+            th, td {
+                border: 1px solid lightgray;
+                border-top: none;
+            }
+
+            th:first-child,
+            td:first-child {
+                border-left: none;
+            }
+
+            th:last-child,
+            td:last-child {
+                border-right: none;
+            }
         }
     }
-}
 
-@media (min-width: $xs + 1) {
-    .table {
-        td {
-            font-size: .9rem;
+    &:not(.medium):not(.large) {
+        .table {
+            tr, td {
+                height: $defaultSize;
+                font-size: $defaultFont;
+            }
+        }
+
+        .table__footer,
+        .table tr div {
+            font-size: $defaultFont;
+            div, span, strong {
+                font-size: $defaultFont;
+            }
+        }
+    }
+
+    &.medium {
+        .table {
+            tr, td {
+                height: $mediumSize;
+                font-size: $mediumFont;
+            }
+        }
+
+        .table__footer {
+            font-size: $mediumFont;
+
+            div, span, strong {
+                font-size: $mediumFont;
+            }
+        }
+    }
+
+    &.large {
+        .table {
+            tr, td {
+                height: $largeSize;
+                font-size: $largeFont;
+            }
+        }
+
+        .table__footer {
+            font-size: $largeFont;
+
+            div, span, strong {
+                font-size: $largeFont;
+            }
+        }
+    }
+
+    &.primary {
+        .table__footer {
+            background-color: $primary;
+            color: #fff;
+        }
+
+        .table.stripped {
+            tbody > tr:nth-child(even) {
+                background-color: rgba($primary, .1);
+            }
+        }
+
+        .table__placeholder.loading {
+            path {
+                fill: $primary;
+            }
+        }
+    }
+
+    &.info {
+        .table__footer {
+            background-color: $info;
+            color: #fff;
+        }
+
+        .table.stripped {
+            tbody > tr:nth-child(even) {
+                background-color: rgba($info, .1);
+            }
+        }
+
+        .table__placeholder.loading {
+            path {
+                fill: $info;
+            }
+        }
+    }
+
+    &.success {
+        .table__footer {
+            background-color: $success;
+            color: #fff;
+        }
+
+        .table.stripped {
+            tbody > tr:nth-child(even) {
+                background-color: rgba($success, .1);
+            }
+        }
+
+        .table__placeholder.loading {
+            path {
+                fill: $success;
+            }
+        }
+    }
+
+    &.error {
+        .table__footer {
+            background-color: $error;
+            color: #fff;
+        }
+
+        .table.stripped {
+            tbody > tr:nth-child(even) {
+                background-color: rgba($error, .1);
+            }
+        }
+
+        .table__placeholder.loading {
+            path {
+                fill: $error;
+            }
         }
     }
 }
 
 .table {
-    width: 100%;
+    margin: 0 auto;
+    width: calc(100% + 1px);
     border-collapse: collapse;
+    border-radius: $radius;
 
     &.stripped {
         tbody > tr:nth-child(even) {
             background-color: $lightgray;
         }
+    }
+
+    thead, tr {
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius; 
+        
+        .icon {
+            cursor: pointer;
+        }
+
+        .icon:active {
+            transform: scale(.97);
+        }
+    }
+
+    th:first-child {
+        border-top-left-radius: $radius;
+    }
+
+    th:last-child {
+        border-top-right-radius: $radius;
     }
 
     tr, th, td {
@@ -53,6 +209,7 @@
         border-right: none;
         border-collapse: collapse;
         font-weight: normal;
+        padding: 0 10px;
     }
 
     &:not(.center):not(.right) {
@@ -73,19 +230,11 @@
         }
     }
 
-    &.controls {
-        td {
-            padding: 2px 10px;
-        }
-    }
-
-    &:not(.controls) {
-        td {
-            padding: 10px;
-        }
-    }
-
     &.primary {
+        thead {
+            border-color: $primary; 
+        }
+
         th {
             background-color: $primary;
             color: #fff;
@@ -114,7 +263,7 @@
     }
 
     th {
-        padding: 10px;
+        padding: 0 10px;
         font-size: .85rem;
         background-color: $lightgray;
         position: sticky;
@@ -124,11 +273,7 @@
         -moz-user-select: none;
     }
 
-    tr.small > td {
-        font-size: .75rem;
-    }
-
-    tr:not(.no-hover):hover {
+    &:not(.no-hover) tr:hover {
         background-color: $lightgray;
         transition: all .2s ease-in-out;
     }
@@ -191,41 +336,27 @@
 .table__footer {
     background-color: $lightgray;
     padding: 10px;
-    font-size: .9rem;
-    border-bottom: 1px solid lightgray;
-
-    &.primary {
-        background-color: $primary;
-        color: #fff;
-    }
-
-    &.info {
-        background-color: $info;
-        color: #fff;
-    }
-
-    &.success {
-        background-color: $success;
-        color: #fff;
-    }
-
-    &.error {
-        background-color: $error;
-        color: #fff;
-    }
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
 }
 
-.table__empty {
+.table__placeholder {
     position: absolute;
-    top: calc(50% - 50px);
-    left: calc(50% - 50px);
+    top: 70px;
+    left: calc(50% - 22.5px);
 
     svg {
-        width: 100px;
-        height: 100px;
+        width: 45px;
+        height: 45px;
     }
 
     path {
         fill: $lightgray;
+    }
+
+    &.loading {
+        path {
+            fill: lightgray;
+        }
     }
 }

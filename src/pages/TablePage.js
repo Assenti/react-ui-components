@@ -1,5 +1,5 @@
-import React, { createRef, useState } from 'react';
-import { Table, Button, Tooltip, Card, BackTopBtn, Collapse } from '../components';
+import React, { createRef } from 'react';
+import { Table, Button, Tooltip, Card, BackTopBtn, Collapse, Icon } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -25,7 +25,14 @@ const rows = [
     },
     { 
         property: 'itemTitles', 
-        description: 'Set header titles',
+        description: 'Set items keys that should be rendered',
+        default: '', 
+        type: 'string[]',
+        value: ''
+    },
+    { 
+        property: 'headers', 
+        description: 'Set table headers title',
         default: '', 
         type: 'string[]',
         value: ''
@@ -59,6 +66,13 @@ const rows = [
         value: ''
     },
     { 
+        property: 'onPerPageSelect', 
+        description: 'Invokes on per page selection (return perPage value)', 
+        default: '', 
+        type: 'function',
+        value: ''
+    },
+    { 
         property: 'paginationColor', 
         description: 'Set pagination color',
         default: 'primary', 
@@ -73,6 +87,48 @@ const rows = [
         value: ''
     },
     { 
+        property: 'checkbox', 
+        description: 'Set checkboxes',
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'selectKey', 
+        description: 'Set select key for activate row selection with checkbox',
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'onSelect', 
+        description: 'Invokes on table row select (has effect with checkbox prop, returns selected rows array)',
+        default: '', 
+        type: 'function',
+        value: ''
+    },
+    { 
+        property: 'sortable', 
+        description: 'Set sorting filters on table header (sort asc | desc)',
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'size', 
+        description: 'Set table rows size',
+        default: '', 
+        type: 'string',
+        value: 'medium | large'
+    },
+    { 
+        property: 'indexSign', 
+        description: 'Set order index sign in table header',
+        default: '#', 
+        type: 'string',
+        value: ''
+    },
+    { 
         property: 'stripped',
         description: 'Highlight every even row in table', 
         default: 'false', 
@@ -80,25 +136,18 @@ const rows = [
         value: 'true | false'
     },
     { 
-        property: 'headerColor',
-        description: 'Set header color', 
-        default: 'gray', 
+        property: 'color',
+        description: 'Set table color set', 
+        default: '', 
         type: 'string',
         value: 'primary | info | success | error'
     },
     { 
         property: 'footer',
-        description: 'Set table footer', 
+        description: 'Set table footer (auto set on checkbox prop)', 
         default: '', 
         type: 'any',
         value: ''
-    },
-    { 
-        property: 'footerColor',
-        description: 'Set footer color', 
-        default: 'gray', 
-        type: 'string',
-        value: 'primary | info | success | error'
     },
     { 
         property: 'className',
@@ -130,6 +179,44 @@ function Example() {
     )
 }
 `
+
+const complexUsage =
+`// Usage examples
+import React from 'react';
+import { Table } from '@assenti/rui-components';
+
+let goods = []
+for (let i = 0; i < 100; i++) {
+    goods.push({
+        name: Product \${i+1},
+        price: $ \${Math.ceil(Math.random() * 1000)},
+        count: Math.ceil(Math.random() * 500)
+    })
+}
+
+function Example() {
+    return (
+        <div>
+            <Table
+                noHover
+                pagination
+                paginationPosition="right"
+                itemsTotal={goods.length}
+                stripped
+                grid
+                sortable
+                checkbox
+                selectKey="name"
+                onSelect={(selected) => console.log(selected)}
+                color="primary"
+                headers={['Name', 'Price', 'Count']}
+                items={goods}
+                footer={<div>Total count: <strong>{goods.length}</strong></div>}
+                itemTitles={['name', 'price', 'count']}/> 
+        </div>
+    )
+}`
+
 let goods = []
 for (let i = 0; i < 100; i++) {
     goods.push({
@@ -161,6 +248,7 @@ export const TablePage = () => {
                     headers={headers}
                     items={items}
                     index
+                    indexSign="№"
                     footer={<div>I am a footer</div>}
                     itemTitles={['country', 'capital', 'population']}/>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
@@ -205,22 +293,27 @@ export const TablePage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Table with pagination">
+            <Card outlined color="primary" 
+                title="Sortable table with pagination, checkbox and grid prop">
                 <Table
                     noHover
                     pagination
                     paginationPosition="right"
-                    stripped
-                    bordered
-                    headerColor="primary"
                     itemsTotal={goods.length}
+                    stripped
+                    grid
+                    sortable
+                    checkbox
+                    selectKey="name"
+                    onSelect={(selected) => console.log(selected)}
+                    color="primary"
                     headers={['Name', 'Price', 'Count']}
                     items={goods}
                     footer={<div>Total count: <strong>{goods.length}</strong></div>}
                     itemTitles={['name', 'price', 'count']}/>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {simpleUsage}
+                        {complexUsage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>

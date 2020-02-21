@@ -27,7 +27,14 @@ const items = [
         value: ''
     },
     { 
-        property: 'pageText', 
+        property: 'onPerPageSelect', 
+        description: 'Invokes on per page selection (return perPage value)', 
+        default: '', 
+        type: 'function',
+        value: ''
+    },
+    { 
+        property: 'perPageText', 
         description: 'Set "10 / page" text', 
         default: 'page', 
         type: 'string',
@@ -43,7 +50,7 @@ const items = [
     { 
         property: 'color', 
         description: 'Set color of pagination from list', 
-        default: '', 
+        default: 'primary', 
         type: 'string',
         value: 'primary | info | success | error'
     },

@@ -1,5 +1,5 @@
 import _slicedToArray from "/Users/assetsultanov/Documents/my_apps/react-ui-components/node_modules/@babel/runtime/helpers/esm/slicedToArray";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Select } from '../select';
 import { ChevronBack, ChevronNext } from '../icon/icons/index';
 
@@ -20,7 +20,7 @@ export var Pagination = function Pagination(props) {
       btn: 'pagination',
       size: props.size ? props.size : '',
       rounded: props.rounded ? 'rounded' : '',
-      color: props.color ? props.color : '',
+      color: props.color ? props.color : 'primary',
       className: props.className ? props.className : ''
     };
 
@@ -31,10 +31,8 @@ export var Pagination = function Pagination(props) {
     return result.trim();
   };
 
-  var perPage = props.perPage ? props.perPage : 10;
-
   var getLimit = function getLimit() {
-    return Math.ceil(props.itemsCount / perPage) >= 5 ? 5 : Math.ceil(props.itemsCount / perPage);
+    return Math.ceil(props.itemsCount / props.perPage) >= 5 ? 5 : Math.ceil(props.itemsCount / props.perPage);
   };
 
   var _useState = useState(props.current ? props.current : 1),
@@ -42,27 +40,22 @@ export var Pagination = function Pagination(props) {
       currentPage = _useState2[0],
       setCurrentPage = _useState2[1];
 
-  var _useState3 = useState(perPage),
+  var _useState3 = useState(generateMockArr(Math.ceil(props.itemsCount / props.perPage))),
       _useState4 = _slicedToArray(_useState3, 2),
-      perPageLocal = _useState4[0],
-      setPerPageLocal = _useState4[1];
+      allPages = _useState4[0],
+      setAllPages = _useState4[1];
 
-  var _useState5 = useState(generateMockArr(Math.ceil(props.itemsCount / perPage))),
+  var _useState5 = useState(allPages.slice(0, getLimit())),
       _useState6 = _slicedToArray(_useState5, 2),
-      allPages = _useState6[0],
-      setAllPages = _useState6[1];
-
-  var _useState7 = useState(allPages.slice(0, getLimit())),
-      _useState8 = _slicedToArray(_useState7, 2),
-      activePages = _useState8[0],
-      setActivePages = _useState8[1];
+      activePages = _useState6[0],
+      setActivePages = _useState6[1];
 
   var isPrevAvailable = function isPrevAvailable() {
     return currentPage === 1 ? false : true;
   };
 
   var isNextAvailable = function isNextAvailable() {
-    if (currentPage === props.itemsCount || props.itemsCount === 0 || currentPage === Math.ceil(props.itemsCount / perPage)) return false;else return true;
+    if (currentPage === props.itemsCount || props.itemsCount === 0 || currentPage === Math.ceil(props.itemsCount / props.perPage)) return false;else return true;
   };
 
   var handleOnNext = function handleOnNext() {
@@ -80,8 +73,8 @@ export var Pagination = function Pagination(props) {
 
   var handleOnPrev = function handleOnPrev() {
     if (isPrevAvailable()) {
-      if ((currentPage - 1) % getLimit() === 0 && currentPage > 1) {
-        setActivePages(allPages.slice(currentPage - getLimit(), currentPage));
+      if (currentPage > 1 && (currentPage - 1) % getLimit() === 0) {
+        setActivePages(allPages.slice(currentPage - 1 - getLimit(), currentPage - 1));
         setCurrentPage(currentPage - 1);
         props.onChange(currentPage - 1);
       } else if (currentPage > 1) {
@@ -92,13 +85,17 @@ export var Pagination = function Pagination(props) {
   };
 
   var handlePerPageSelect = function handlePerPageSelect(value) {
-    setPerPageLocal(value);
+    props.onPerPageSelect(value);
+    setAllPages(generateMockArr(Math.ceil(props.itemsCount / value)));
   };
 
   var getSize = function getSize() {
     if (props.size === 'medium') return 100;else if (props.size === 'large') return 100;else return 100;
   };
 
+  useEffect(function () {
+    setActivePages(allPages.slice(0, getLimit()));
+  }, [props.perPage, props.itemsCount]);
   return React.createElement("div", {
     className: paginationClass()
   }, React.createElement("div", {
@@ -125,7 +122,7 @@ export var Pagination = function Pagination(props) {
     color: props.color,
     items: props.perPageVariants ? props.perPageVariants : [10, 20, 50, 100],
     normalTitle: true,
-    selectedItem: "".concat(perPageLocal, " / ").concat(props.pageText ? props.pageText : 'page'),
+    selectedItem: "".concat(props.perPage, " / ").concat(props.perPageText ? props.perPageText : 'page'),
     onSelect: handlePerPageSelect
   })));
 };

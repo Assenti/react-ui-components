@@ -5,7 +5,7 @@ export var List = function List(props) {
     var result = '';
     var className = {
       list: 'list',
-      dense: props.dense ? 'dense' : '',
+      size: props.size ? props.size : '',
       dark: props.dark ? 'dark' : '',
       className: props.className ? props.className : ''
     };
@@ -28,6 +28,7 @@ export var ListItem = function ListItem(props) {
     var result = '';
     var className = {
       item: 'list-item',
+      roundedActive: props.roundedActive ? 'rounded' : '',
       right: props.right && !props.left ? 'right' : '',
       left: props.left && !props.right ? 'left' : '',
       active: props.isActiveItem && props.isActiveItem(props.item) ? 'active' : '',
@@ -48,7 +49,9 @@ export var ListItem = function ListItem(props) {
       return props.onClick ? props.onClick() : {};
     },
     className: itemClass()
-  }, !props.render ? React.createElement(React.Fragment, null, React.createElement("div", null, React.createElement("div", {
+  }, !props.render ? React.createElement(React.Fragment, null, React.createElement("div", {
+    className: "list-item__title-row"
+  }, React.createElement("div", {
     className: "row align-center"
   }, props.icon ? React.createElement(Icon, {
     name: props.icon,

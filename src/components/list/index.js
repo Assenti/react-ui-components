@@ -6,7 +6,7 @@ export const List = (props) => {
         let result = '';
         let className = {
             list: 'list',
-            dense: props.dense ? 'dense' : '',
+            size: props.size ? props.size : '',
             dark: props.dark ? 'dark' : '',
             className: props.className ? props.className : ''
         }
@@ -30,6 +30,7 @@ export const ListItem = (props) => {
         let result = '';
         let className = {
             item: 'list-item',
+            roundedActive: props.roundedActive ? 'rounded' : '',
             right: props.right && !props.left ? 'right' : '',
             left: props.left && !props.right ? 'left' : '',
             active: (props.isActiveItem && props.isActiveItem(props.item)) ? 'active' : '',
@@ -50,7 +51,7 @@ export const ListItem = (props) => {
             {
                 !props.render ?
                 <React.Fragment>
-                    <div>
+                    <div className="list-item__title-row">
                         <div className="row align-center">
                             {props.icon ? <Icon name={props.icon} className="mr-5"/> : ''}
                             <div className="list-item__left-side">

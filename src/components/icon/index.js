@@ -39,7 +39,12 @@ import {
     FormatAlignRight,
     Brush,
     Lock,
-    Filter
+    Filter,
+    SortAscending,
+    SortDescending,
+    ContentCopy,
+    ToyBrick,
+    ChevronUp
 } from './icons/index';
 
 export const Icon = (props) => {
@@ -125,6 +130,16 @@ export const Icon = (props) => {
                 return <Lock size={props.size} color={props.color}/>;
             case 'filter':
                 return <Filter size={props.size} color={props.color}/>;
+            case 'sort-ascending':
+                return <SortAscending size={props.size} color={props.color}/>;
+            case 'sort-descending':
+                return <SortDescending size={props.size} color={props.color}/>;
+            case 'content-copy':
+                return <ContentCopy size={props.size} color={props.color}/>;
+            case 'toy-brick':
+                return <ToyBrick size={props.size} color={props.color}/>;
+            case 'chevron-up':
+                return <ChevronUp size={props.size} color={props.color}/>;
             default:
                 return '';
         }
