@@ -1,12 +1,12 @@
 # React UI Components
 
-### Main Goal
+## Main Goal
 Create a lot of usefull and maximum reusable UI components
 
-### Homepage
+## Homepage
 [React UI Components](https://r-ui-components.netlify.com/)
 
-### Install
+## Install
 ```bash
 # Install package from NPM
 % npm install @assenti/rui-components -S
@@ -16,13 +16,13 @@ Create a lot of usefull and maximum reusable UI components
 % yarn add @assenti/rui-components
 ```
 
-### Usage
-index.js
+## Usage
+index.js / index.ts
 ```jsx
 // Import styles in index.js (or your main.js file)
 import '@assenti/react-ui-components/build/css/main.css';
 ```
-App.js
+App.js / App.tsx
 ```jsx
 import { Card, Button } from '@assenti/react-ui-components';
 import React from 'react';
@@ -61,7 +61,7 @@ export default App;
 - [ ] Declare types for TS using
 - [ ] Add i18n
 
-### Changelog
+## Changelog
 You can track changelog [here](/CHANGELOG.md)
 
 Project start date: Jan 6th 2020

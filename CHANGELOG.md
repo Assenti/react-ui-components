@@ -13,6 +13,7 @@ timeline: true
 - Table component updated;
 - Pagination component updated;
 - Tooltip component updated;
+- `NEW!` Now you can use components in projects with TypeScript (Warning: types declarations in process)
 - `NEW!` New icons added;
 
 #### 0.2.24 `2020-02-20`
