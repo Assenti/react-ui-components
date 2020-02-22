@@ -31,7 +31,7 @@ export var ListItem = function ListItem(props) {
       roundedActive: props.roundedActive ? 'rounded' : '',
       right: props.right && !props.left ? 'right' : '',
       left: props.left && !props.right ? 'left' : '',
-      active: props.isActiveItem && props.isActiveItem(props.item) ? 'active' : '',
+      active: props.isActiveItem ? 'active' : '',
       hover: props.hover ? 'hover' : '',
       noDivider: props.noDivider ? '' : 'divider',
       className: props.className ? props.className : ''
@@ -50,18 +50,15 @@ export var ListItem = function ListItem(props) {
     },
     className: itemClass()
   }, !props.render ? React.createElement(React.Fragment, null, React.createElement("div", {
-    className: "list-item__title-row"
-  }, React.createElement("div", {
-    className: "row align-center"
-  }, props.icon ? React.createElement(Icon, {
-    name: props.icon,
-    className: "mr-5"
-  }) : '', React.createElement("div", {
     className: "list-item__left-side"
-  }, props.checkbox, props.item[props.itemTitle] ? props.item[props.itemTitle] : props.item)), React.createElement("div", {
-    className: "list-item__right-side"
-  }, props.controls)), props.subTitle ? React.createElement("div", {
+  }, React.createElement("div", {
+    className: "list-item__title-row"
+  }, props.icon ? React.createElement(Icon, {
+    name: props.icon
+  }) : '', props.checkbox, props.item), props.subTitle ? React.createElement("div", {
     className: "list-subtitle"
-  }, props.subTitle) : '') : props.render);
+  }, props.subTitle) : ''), React.createElement("div", {
+    className: "list-item__right-side"
+  }, props.controls)) : props.render);
 };
 //# sourceMappingURL=index.js.map

@@ -41,7 +41,6 @@ export default App;
 ```
 
 ### TODO
-- [ ] Popover
 - [ ] Dialog
 - [ ] Date picker / Calendar
 - [ ] InputMask 
@@ -51,11 +50,11 @@ export default App;
 - [ ] Dock
 - [ ] Alert
 - [ ] Notification
-- [ ] Header / Toolbar
 - [ ] Breadcrumbs
 - [ ] Carousel
 - [ ] Timeline
 - [ ] Tabs
+- [ ] CopyToClipboard
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable
 - [ ] Declare types for TS using

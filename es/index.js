@@ -40,4 +40,7 @@ export { Tooltip } from './tooltip';
 export { BackTopBtn } from './backtop';
 export { Collapse } from './collapse';
 export { ButtonGroup } from './buttonGroup';
+export { PopOver } from './popover';
+export { Header } from './header';
+export { convertToNum, compare } from './utils';
 //# sourceMappingURL=index.js.map

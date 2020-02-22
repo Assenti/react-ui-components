@@ -96,6 +96,13 @@ const keys = ['property', 'description', 'default', 'type', 'value'];
             value: 'home | search | etc.'
         },
         { 
+            property: 'iconSize',
+            description: 'Set icon size', 
+            default: '24px', 
+            type: 'number',
+            value: ''
+        },
+        { 
             property: 'iconLeft',
             description: 'Change icon position to the left from name', 
             default: 'false', 

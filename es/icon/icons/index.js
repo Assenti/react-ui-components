@@ -451,4 +451,44 @@ export var ToyBrick = function ToyBrick(props) {
     d: "M19 6V5A2 2 0 0 0 17 3H15A2 2 0 0 0 13 5V6H11V5A2 2 0 0 0 9 3H7A2 2 0 0 0 5 5V6H3V20H21V6Z"
   }));
 };
+export var HelpCircleOutline = function HelpCircleOutline(props) {
+  return React.createElement("svg", {
+    width: props.size ? props.size : defaultSize,
+    height: props.size ? props.size : defaultSize,
+    viewBox: "0 0 24 24"
+  }, React.createElement("path", {
+    fill: props.color ? props.color : defaultColor,
+    d: "M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z"
+  }));
+};
+export var DotsVertical = function DotsVertical(props) {
+  return React.createElement("svg", {
+    width: props.size ? props.size : defaultSize,
+    height: props.size ? props.size : defaultSize,
+    viewBox: "0 0 24 24"
+  }, React.createElement("path", {
+    fill: props.color ? props.color : defaultColor,
+    d: "M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z"
+  }));
+};
+export var DotsHorizontal = function DotsHorizontal(props) {
+  return React.createElement("svg", {
+    width: props.size ? props.size : defaultSize,
+    height: props.size ? props.size : defaultSize,
+    viewBox: "0 0 24 24"
+  }, React.createElement("path", {
+    fill: props.color ? props.color : defaultColor,
+    d: "M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z"
+  }));
+};
+export var LanguageCss3 = function LanguageCss3(props) {
+  return React.createElement("svg", {
+    width: props.size ? props.size : defaultSize,
+    height: props.size ? props.size : defaultSize,
+    viewBox: "0 0 24 24"
+  }, React.createElement("path", {
+    fill: props.color ? props.color : defaultColor,
+    d: "M5,3L4.35,6.34H17.94L17.5,8.5H3.92L3.26,11.83H16.85L16.09,15.64L10.61,17.45L5.86,15.64L6.19,14H2.85L2.06,18L9.91,21L18.96,18L20.16,11.97L20.4,10.76L21.94,3H5Z"
+  }));
+};
 //# sourceMappingURL=index.js.map

@@ -6,15 +6,15 @@
 
 @each $size in $sizes {
     .mx-#{$size} {
-        margin-left: #{$size}px;
-        margin-right: #{$size}px;
+        margin-left: #{$size}px !important;
+        margin-right: #{$size}px !important;
     }
 }
 
 @each $size in $sizes {
     .my-#{$size} {
-        margin-top: #{$size}px;
-        margin-bottom: #{$size}px;
+        margin-top: #{$size}px !important;
+        margin-bottom: #{$size}px !important;
     }
 }
 

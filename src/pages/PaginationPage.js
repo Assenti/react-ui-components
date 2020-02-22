@@ -1,5 +1,5 @@
 import React, { useState, createRef } from 'react';
-import { Pagination, InputField, Table, Card, Collapse, BackTopBtn } from '../components';
+import { Pagination, Table, Card, Collapse, BackTopBtn } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -7,7 +7,7 @@ const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'itemsCount', 
-        description: 'Pass items count', 
+        description: 'Pass items total count', 
         default: '', 
         type: 'number',
         value: ''
@@ -48,6 +48,13 @@ const items = [
         value: ''
     },
     { 
+        property: 'onChange', 
+        description: 'Invokes on page selection (return page value)', 
+        default: '', 
+        type: 'function',
+        value: ''
+    },
+    { 
         property: 'color', 
         description: 'Set color of pagination from list', 
         default: 'primary', 
@@ -84,38 +91,44 @@ import { Pagination, InputField } from '@assenti/rui-components';
 
 function Example() {
     const [itemsCount, setItemsCount] = useState(100);
+    const [perPage, setPerPage] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
 
     return (
         <div>
-            <InputField 
-                value={itemsCount}
-                color="info"
-                type="number"
-                width={150}
-                label="Input items count" 
-                onChange={e => setItemsCount(e.target.value)}/>
             <Pagination
                 itemsCount={itemsCount}
                 color="primary"
+                perPage={perPage}
+                current={currentPage}
+                onChange={page => setCurrentPage(page)}
+                onPerPageSelect={value => setPerPage(value)}
                 className="pa-5"
                 pageText="module"/>
             <Pagination
                 itemsCount={itemsCount}
                 color="info"
-                current={2}
+                current={currentPage}
+                onChange={page => setCurrentPage(page)}
                 className="pa-5"
-                perPage={20}/>
+                perPage={perPage}
+                onPerPageSelect={value => setPerPage(value)}/>
             <Pagination
                 itemsCount={itemsCount}
                 color="success"
                 className="pa-5"
-                current={3}
-                perPage={20}/>
+                current={currentPage}
+                onChange={page => setCurrentPage(page)}
+                perPage={perPage}
+                onPerPageSelect={value => setPerPage(value)}/>
             <Pagination
                 itemsCount={itemsCount}
                 color="error"
+                perPage={perPage}
+                onPerPageSelect={value => setPerPage(value)}
                 className="pa-5"
-                current={4}/> 
+                current={currentPage}
+                onChange={page => setCurrentPage(page)}/>
         </div>
     )
 }
@@ -123,16 +136,24 @@ function Example() {
 
 const mediumSize =
 `// Usage examples
-import React from 'react';
+import React, { useState } from 'react';
 import { Pagination } from '@assenti/rui-components';
 
 function Example() {
+    const [itemsCount, setItemsCount] = useState(100);
+    const [perPage, setPerPage] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
+
     return (
         <div>
             <Pagination
                 itemsCount={itemsCount}
                 color="info"
+                perPage={perPage}
+                onPerPageSelect={value => setPerPage(value)}
                 className="pa-5"
+                current={currentPage}
+                onChange={page => setCurrentPage(page)}
                 size="medium"
                 rounded/>
         </div>
@@ -142,15 +163,23 @@ function Example() {
 
 const largeSize =
 `// Usage examples
-import React from 'react';
+import React, { useState } from 'react';
 import { Pagination } from '@assenti/rui-components';
 
 function Example() {
+    const [itemsCount, setItemsCount] = useState(100);
+    const [perPage, setPerPage] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
+
     return (
         <div>
             <Pagination
                 itemsCount={itemsCount}
                 color="info"
+                perPage={perPage}
+                current={currentPage}
+                onChange={page => setCurrentPage(page)}
+                onPerPageSelect={value => setPerPage(value)}
                 className="pa-5"
                 size="large"/>
         </div>
@@ -159,7 +188,9 @@ function Example() {
 `
 
 export const PaginationPage = () => {
-    const [itemsCount, setItemsCount] = useState(100);
+    const [itemsCount] = useState(100);
+    const [perPage, setPerPage] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
     const api = createRef();
     const parent = createRef();
 
@@ -174,35 +205,39 @@ export const PaginationPage = () => {
                 <div onClick={goToApi} className="link fz-13 fw-bold">API</div>
             </div>
             <Card outlined color="primary" title="Default pagination (in different colors)">
-                <InputField 
-                    value={itemsCount}
-                    color="info"
-                    type="number"
-                    width={150}
-                    label="Input items count" 
-                    onChange={e => setItemsCount(e.target.value)}/>
                 <Pagination
                     itemsCount={itemsCount}
                     color="primary"
+                    perPage={perPage}
+                    current={currentPage}
+                    onChange={page => setCurrentPage(page)}
+                    onPerPageSelect={value => setPerPage(value)}
                     className="pa-5"
                     pageText="module"/>
                 <Pagination
                     itemsCount={itemsCount}
                     color="info"
-                    current={2}
+                    current={currentPage}
+                    onChange={page => setCurrentPage(page)}
                     className="pa-5"
-                    perPage={20}/>
+                    perPage={perPage}
+                    onPerPageSelect={value => setPerPage(value)}/>
                 <Pagination
                     itemsCount={itemsCount}
                     color="success"
                     className="pa-5"
-                    current={3}
-                    perPage={20}/>
+                    current={currentPage}
+                    onChange={page => setCurrentPage(page)}
+                    perPage={perPage}
+                    onPerPageSelect={value => setPerPage(value)}/>
                 <Pagination
                     itemsCount={itemsCount}
                     color="error"
+                    perPage={perPage}
+                    onPerPageSelect={value => setPerPage(value)}
                     className="pa-5"
-                    current={4}/>
+                    current={currentPage}
+                    onChange={page => setCurrentPage(page)}/>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {defaultUsage}
@@ -214,7 +249,11 @@ export const PaginationPage = () => {
                 <Pagination
                     itemsCount={itemsCount}
                     color="info"
+                    perPage={perPage}
+                    onPerPageSelect={value => setPerPage(value)}
                     className="pa-5"
+                    current={currentPage}
+                    onChange={page => setCurrentPage(page)}
                     size="medium"
                     rounded/>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
@@ -228,6 +267,10 @@ export const PaginationPage = () => {
                 <Pagination
                     itemsCount={itemsCount}
                     color="info"
+                    perPage={perPage}
+                    current={currentPage}
+                    onChange={page => setCurrentPage(page)}
+                    onPerPageSelect={value => setPerPage(value)}
                     className="pa-5"
                     size="large"/>
                 <Collapse icon="code" iconSize={18} tooltip="Code">

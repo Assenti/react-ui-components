@@ -392,7 +392,7 @@
         color: $dark;
 
         &:not(:disabled):hover {
-            background-color: $lightgray;
+            background-color: rgba(lightgray, .4);
         }
 
         path {

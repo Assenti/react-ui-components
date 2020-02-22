@@ -1,5 +1,88 @@
 import React, { useState } from 'react';
-import { Switch, Table } from '../components';
+import { Switch, Table, Card, Collapse } from '../components';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+const simpleUsage =
+`// Usage examples
+import React, { useState } from 'react';
+import { Switch } from '@assenti/rui-components';
+
+function Example() {
+    const [check, setCheck] = useState(true);
+    const [check2, setCheck2] = useState(true);
+
+    return (
+        <div className="row">
+            <Switch check={check} onChange={() => setCheck(!check)}/>
+            <Switch check={check} color="primary" onChange={() => setCheck(!check)}/>
+            <Switch check={check} color="info" onChange={() => setCheck(!check)}/>
+            <Switch check={check} color="success" onChange={() => setCheck(!check)}/>
+            <Switch check={check} color="error" onChange={() => setCheck(!check)}/>
+            <Switch check={check2} color="error" disabled onChange={() => setCheck2(!check2)}/>
+        </div>
+    )
+}
+`
+
+const withIcons =
+`// Usage examples
+import React, { useState } from 'react';
+import { Switch } from '@assenti/rui-components';
+
+function Example() {
+    const [check2, setCheck2] = useState(true);
+
+    return (
+        <div className="row">
+            <Switch color="info" 
+                check={check1}
+                leftLabel="Off"
+                rightLabel="On" 
+                onChange={() => setCheck1(!check1)}/>
+            <Switch color="primary" 
+                check={check1}
+                leftIcon="moon"
+                leftIconColor="darkblue"
+                rightIcon="sun" 
+                rightIconColor="#feda24"
+                onChange={() => setCheck1(!check1)}/>
+        </div>
+    )
+}
+`
+
+const withLabels =
+`// Usage examples
+import React, { useState } from 'react';
+import { Switch } from '@assenti/rui-components';
+
+function Example() {
+    const [check3, setCheck3] = useState(true);
+    const [check4, setCheck4] = useState(false);
+
+    return (
+        <div className="row align-center">
+            <Switch color="primary" 
+                check={check3}
+                position="vertical"
+                onChange={() => setCheck3(!check3)}/>
+            <Switch color="error" 
+                check={check4}
+                position="vertical"
+                leftLabel="Off"
+                rightLabel="On" 
+                onChange={() => setCheck4(!check4)}/>
+            <Switch color="info" 
+                check={check3}
+                position="vertical"
+                leftIcon="moon"
+                rightIcon="sun" 
+                onChange={() => setCheck3(!check3)}/>
+        </div>
+    )
+}
+`
 
 export const SwitchPage = () => {
     const [check, setCheck] = useState(true);
@@ -98,50 +181,70 @@ export const SwitchPage = () => {
 
     return (
         <div className="page">
-            <div className="page-title">Switches</div>
-            <h3>Simple switches</h3>
-            <div className="row">
-                <Switch check={check} onChange={() => setCheck(!check)}/>
-                <Switch check={check} color="primary" onChange={() => setCheck(!check)}/>
-                <Switch check={check} color="info" onChange={() => setCheck(!check)}/>
-                <Switch check={check} color="success" onChange={() => setCheck(!check)}/>
-                <Switch check={check} color="error" onChange={() => setCheck(!check)}/>
-                <Switch check={check2} color="error" disabled onChange={() => setCheck2(!check2)}/>
-
-            </div>
-            <h3>Switches with icons and labels</h3>
-            <Switch color="info" 
-                check={check1}
-                leftLabel="Off"
-                rightLabel="On" 
-                onChange={() => setCheck1(!check1)}/>
-            <br/><br/>
-            <Switch color="primary" 
-                check={check1}
-                leftIcon="moon"
-                leftIconColor="darkblue"
-                rightIcon="sun" 
-                rightIconColor="#feda24"
-                onChange={() => setCheck1(!check1)}/>
-            <h3>Switches positions</h3>
-            <div className="row align-center">
-                <Switch color="primary" 
-                    check={check3}
-                    position="vertical"
-                    onChange={() => setCheck3(!check3)}/>
-                <Switch color="error" 
-                    check={check4}
-                    position="vertical"
-                    leftLabel="Off"
-                    rightLabel="On" 
-                    onChange={() => setCheck4(!check4)}/>
-                <Switch color="info" 
-                    check={check3}
-                    position="vertical"
-                    leftIcon="moon"
-                    rightIcon="sun" 
-                    onChange={() => setCheck3(!check3)}/>
-            </div>
+            <div className="page-title">Switch Component</div>
+            <Card outlined color="primary" title="Simple switches">
+                <div className="row">
+                    <Switch check={check} onChange={() => setCheck(!check)}/>
+                    <Switch check={check} color="primary" onChange={() => setCheck(!check)}/>
+                    <Switch check={check} color="info" onChange={() => setCheck(!check)}/>
+                    <Switch check={check} color="success" onChange={() => setCheck(!check)}/>
+                    <Switch check={check} color="error" onChange={() => setCheck(!check)}/>
+                    <Switch check={check2} color="error" disabled onChange={() => setCheck2(!check2)}/>
+                </div>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {simpleUsage}
+                    </SyntaxHighlighter>
+                </Collapse>
+            </Card>
+            <br/>
+            <Card outlined color="primary" title="Switches with icons and labels">
+                <div className="row">
+                    <Switch color="info" 
+                        check={check1}
+                        leftLabel="Off"
+                        rightLabel="On" 
+                        onChange={() => setCheck1(!check1)}/>
+                    <Switch color="primary" 
+                        check={check1}
+                        leftIcon="moon"
+                        leftIconColor="darkblue"
+                        rightIcon="sun" 
+                        rightIconColor="#feda24"
+                        onChange={() => setCheck1(!check1)}/>
+                </div>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {withIcons}
+                    </SyntaxHighlighter>
+                </Collapse>
+            </Card>
+            <br/>
+            <Card outlined color="primary" title="Switches positions">
+                <div className="row align-center">
+                    <Switch color="primary" 
+                        check={check3}
+                        position="vertical"
+                        onChange={() => setCheck3(!check3)}/>
+                    <Switch color="error" 
+                        check={check4}
+                        position="vertical"
+                        leftLabel="Off"
+                        rightLabel="On" 
+                        onChange={() => setCheck4(!check4)}/>
+                    <Switch color="info" 
+                        check={check3}
+                        position="vertical"
+                        leftIcon="moon"
+                        rightIcon="sun" 
+                        onChange={() => setCheck3(!check3)}/>
+                </div>
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {withLabels}
+                    </SyntaxHighlighter>
+                </Collapse>
+            </Card>
             <h2>API</h2>
             <Table
                 bordered

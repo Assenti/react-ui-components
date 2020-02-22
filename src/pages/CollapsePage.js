@@ -1,18 +1,26 @@
-import React from 'react';
-import { Card, Collapse, Table } from '../components'
+import React, { useState } from 'react';
+import { Card, Collapse, Table, List, ListItem } from '../components'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
     const usage = 
 `// Usage examples
 import React from 'react';
-import { Collapse } from '@assenti/react-ui-components';
+import { Collapse, List, ListItem } from '@assenti/react-ui-components';
+
+const names = [
+    { name: 'Steve Rogers', hero: 'Captain America', icon: 'shield-account', check: false }, 
+    { name: 'Peter Parker', hero: 'Spider man', icon: 'shield-account', check: false }, 
+    { name: 'Tony Stark', hero: 'Iron man', icon: 'shield-account', check: false }, 
+    { name: 'Bruce Benner', hero: 'Hulk', icon: 'shield-account', check: false }
+];
 
 function Example() {
     return (
         <div>
-            <Collapse defaultState={true}>
-                <p>
+            <Collapse defaultState={true} border>
+                <p className="px-10 fz-9 fw-bold">Some Article</p>
+                <p className="pa-10">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -20,6 +28,24 @@ function Example() {
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
+            </Collapse>
+            <br/>
+            <Collapse 
+                title={<span className="mx-10 fz-10 fw-bold">Marvel Avengers</span>}
+                defaultState={true} 
+                border 
+                tooltip="Expand/Collapse">
+                <List 
+                    size="medium"
+                    hover>
+                    {names.map((item, index) => 
+                        <ListItem 
+                            key={index} 
+                            item={item.hero}
+                            icon={item.icon}
+                            hover/>
+                    )}
+                </List>
             </Collapse>
         </div>
     )
@@ -85,6 +111,13 @@ const items = [
     }
 ]
 
+const names = [
+    { name: 'Steve Rogers', hero: 'Captain America', icon: 'shield-account', check: false }, 
+    { name: 'Peter Parker', hero: 'Spider man', icon: 'shield-account', check: false }, 
+    { name: 'Tony Stark', hero: 'Iron man', icon: 'shield-account', check: false }, 
+    { name: 'Bruce Benner', hero: 'Hulk', icon: 'shield-account', check: false }
+];
+
 export const CollapsePage = () => {
     return (
         <div className="page">
@@ -94,13 +127,33 @@ export const CollapsePage = () => {
             </div>
             <Card outlined color="primary" title="Collapse Component usage">
                 <Collapse defaultState={true} border>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    <p className="px-10 fz-9 fw-bold">Some Article</p>
+                    <p className="pa-10">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
+                </Collapse>
+                <br/>
+                <Collapse 
+                    title={<span className="mx-10 fz-10 fw-bold">Marvel Avengers</span>}
+                    defaultState={true} 
+                    border 
+                    tooltip="Expand/Collapse">
+                    <List 
+                        size="medium"
+                        hover>
+                        {names.map((item, index) => 
+                            <ListItem 
+                                key={index} 
+                                item={item.hero}
+                                icon={item.icon}
+                                hover/>
+                        )}
+                    </List>
                 </Collapse>
                 <br/>
                 <Collapse 

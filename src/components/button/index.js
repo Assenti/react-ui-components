@@ -45,7 +45,7 @@ export const Button = (props) => {
             className={btnClass()} 
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>
             {props.loading ?
-                <Icon name="loading" color="gray"/> :
+                <Icon name="loading" color="gray" size={props.iconSize ? props.iconSize : ''}/> :
                 <React.Fragment>
                     {props.icon && props.iconLeft ? 
                         (props.iconAllotted ? 

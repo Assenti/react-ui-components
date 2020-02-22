@@ -47,7 +47,12 @@ const icons = [
     'sort-ascending',
     'sort-descending',
     'content-copy',
-    'toy-brick'
+    'toy-brick',
+    'help-circle-outline',
+    'dots-vertical',
+    'dots-horizontal',
+    'react',
+    'language-css-3'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];

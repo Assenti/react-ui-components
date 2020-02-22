@@ -1,6 +1,5 @@
 import React from 'react';
-import { Header } from './Header';
-import { Tooltip, Button } from '../components';
+import { Tooltip, Button, Header } from '../components';
 import { version, description } from '../../package.json';
 
 export const Content = (props) => {
@@ -8,23 +7,27 @@ export const Content = (props) => {
 
     return (
         <div className="content">
-            <Header title={<div className="row align-center">
-                    <Button icon="menu" dark onClick={() => props.onDrawerToggle()}/>
-                    <span className="fz-10 ml-5">{description}</span>
-                </div>}
+            <Header
+                leftControl
+                sticky
+                onLeftControl={() => props.onDrawerToggle()} 
+                title={description}
                 rightSide={
                 <div className="row align-center">
-                    <div className="text-lightgray mr-20">
-                        <a href="https://github.com/Assenti/react-ui-components/blob/master/CHANGELOG.md" 
-                            rel="noopener noreferrer"
-                            target="_blank">
-                            <small>v {version}</small>
-                        </a>
+                    <div className="mr-20">
+                        <Tooltip tooltip="Current version" position="left">
+                            <a href="https://github.com/Assenti/react-ui-components/blob/master/CHANGELOG.md" 
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                className="fw-bold">
+                                <small>v {version}</small>
+                            </a>
+                        </Tooltip>
                     </div>
                     <Tooltip tooltip="Visit Github repo" position="left">
                         <Button 
-                            dark
-                            icon="github" 
+                            icon="github"
+                            light 
                             onClick={e => { 
                             e.preventDefault()
                             window.open(github, '_blank')}}/>

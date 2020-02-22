@@ -62,6 +62,13 @@ const items = [
         value: 'true | false'
     },
     { 
+        property: 'hover',
+        description: 'Lift up the card on hover', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'outlined',
         description: 'Set card borders outlined', 
         default: 'false', 
@@ -105,17 +112,28 @@ const names = [
 
 function Example() {
     return (
-        <Card header="Marvel heroes">
-            <List>
-                {names.map((item, index) => 
-                    <ListItem 
-                        key={index}
-                        item={item}
-                        hover
-                        itemTitle="name"/>
-                )}
-            </List>
-        </Card>
+        <div>
+            <Card header="Marvel heroes">
+                <List>
+                    {names.map((item, index) => 
+                        <ListItem 
+                            key={index}
+                            item={item.name}
+                            hover/>
+                    )}
+                </List>
+            </Card>
+            <Card dark header="Marvel heroes">
+                <List dark>
+                    {names.map((item, index) => 
+                        <ListItem 
+                            key={index}
+                            item={item.name}
+                            hover/>
+                    )}
+                </List>
+            </Card>
+        </div>
     )
 }
 `
@@ -149,7 +167,7 @@ function Example() {
 }
 `
 
-    const usageImage =
+const usageImage =
 `// Usage examples
 import React from 'react';
 import { Card, Icon } from '@assenti/rui-components';
@@ -162,6 +180,7 @@ function Example() {
             {cards.map((item, index) => 
                 <Card 
                     key={index}
+                    hover
                     className="ma-5 col"
                     width={200} 
                     img={<div className="row justify-center">
@@ -176,7 +195,7 @@ function Example() {
 }
 `
 
-    const usageOutlined =
+const usageOutlined =
 `// Usage examples
 import React from 'react';
 import { Card, List, ListItem } from '@assenti/rui-components';
@@ -216,6 +235,7 @@ export const CardPage = () => {
                 {cards.map((item, index) => 
                     <Card 
                         key={index}
+                        hover
                         className="ma-5 col"
                         width={200} 
                         img={<div className="row justify-center"><Icon name="react" size={50} color="#42a5f5"/></div>}
@@ -235,60 +255,74 @@ export const CardPage = () => {
         <div className="page" ref={parentRef}>
             <div className="row align-center space-between">
                 <div className="page-title">Card Component</div>
-                <a className="fz-13 fw-bold" onClick={goToApi}>API</a>
+                <div className="link fz-13 fw-bold" onClick={goToApi}>API</div>
             </div>
-            <h3>Card with header</h3>
-            <Card header="Marvel heroes">
-                <List>
-                    {itemsComplexInitial.map((item, index) => 
-                        <ListItem 
-                            key={index}
-                            item={item}
-                            hover
-                            itemTitle="name"/>
-                    )}
-                </List>
+            <Card outlined color="primary" title="Card with header">
+                <Card header="Marvel heroes">
+                    <List>
+                        {itemsComplexInitial.map((item, index) => 
+                            <ListItem 
+                                key={index}
+                                item={item.name}
+                                hover/>
+                        )}
+                    </List>
+                </Card>
+                <Card dark header="Marvel heroes">
+                    <List dark>
+                        {itemsComplexInitial.map((item, index) => 
+                            <ListItem 
+                                key={index}
+                                item={item.name}
+                                hover/>
+                        )}
+                    </List>
+                </Card>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
-            <h3>Card flat</h3>
-            <Card header="Marvel heroes" flat>
-                <List>
-                    {itemsComplexInitial.map((item, index) => 
-                        <ListItem 
-                            key={index}
-                            item={item}
-                            hover
-                            itemTitle="name"/>
-                    )}
-                </List>
+            <br/>
+            <Card outlined color="primary" title="Card flat">
+                <Card header="Marvel heroes" flat>
+                    <List>
+                        {itemsComplexInitial.map((item, index) => 
+                            <ListItem 
+                                key={index}
+                                item={item.name}
+                                hover/>
+                        )}
+                    </List>
+                </Card>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usageFlat}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
-            <h3>Card with image</h3>
-            {imageCards()}
-            <Collapse icon="code" iconSize={18} tooltip="Code">
-                <SyntaxHighlighter language="jsx" style={prism}>
-                    {usageImage}
-                </SyntaxHighlighter>
-            </Collapse>
-            <h3>Outlined Cards with titles</h3>
-            <Card outlined title="Marvel Avengers" color="primary">
-                <List>
-                    {itemsComplexInitial.map((item, index) => 
-                        <ListItem 
-                            key={index}
-                            item={item}
-                            hover
-                            itemTitle="name"/>
-                    )}
-                </List>
+            <br/>
+            <Card outlined color="primary" title="Card with image and hover">
+                {imageCards()}
+                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {usageImage}
+                    </SyntaxHighlighter>
+                </Collapse>
+            </Card>
+            <br/>
+            <Card outlined color="primary" title="Outlined Cards with titles">
+                <Card outlined title="Marvel Avengers" color="primary">
+                    <List>
+                        {itemsComplexInitial.map((item, index) => 
+                            <ListItem 
+                                key={index}
+                                item={item.name}
+                                hover/>
+                        )}
+                    </List>
+                </Card>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usageOutlined}

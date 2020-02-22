@@ -26,7 +26,7 @@
     }
 
     .collapse-trigger {
-        height: 30px;
+        min-height: $defaultSize;
         display: flex;
         align-items: center;
 
@@ -63,30 +63,24 @@
 
 .collapse-enter {
     opacity: 0;
-    height: 0;
-    animation: collapseOpening 150ms ease-in;
-    -moz-animation: collapseOpening 150ms ease-in;
+    transform: translateY(-5%);
 }
 
 .collapse-enter-active {
-    animation: collapseOpening 150ms ease-in;
-    -moz-animation: collapseOpening 150ms ease-in;
     opacity: 1;
-    // height: auto;
-    // transition: height .3s ease-in;
+    transform: translateY(0%);
+    transition: opacity 300, transform 300;
 }
 
 .collapse-exit {
     opacity: 1;
-    height: auto;
+    transform: translateY(0%);
 }
 
 .collapse-exit-active {
     opacity: 0;
-    // height: 0;
-    // transition: height .3s ease-out;
-    animation: collapseClosing 150ms ease-out;
-    -moz-animation: collapseClosing 150ms ease-in;
+    transform: translateY(-5%);
+    transition: opacity 300, transform 300;
 }
 
 @keyframes collapseOpening {

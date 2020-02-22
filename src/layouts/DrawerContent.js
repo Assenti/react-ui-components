@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { List, ListItem, Icon, Drawer, InputField, Dropdown, Button, Collapse } from '../components';
-import { HomePage } from '../pages/HomePage';
-
-const compare = (a, b) => {
-    if (a.name > b.name) return 1;
-    if (b.name > a.name) return -1;
-    return 0;
-}
+import { List, ListItem, Icon, Drawer, InputField, Dropdown } from '../components';
+import { compare } from '../components';
 
 export const DrawerContent = (props) => {
     const history = useHistory();
@@ -32,29 +26,29 @@ export const DrawerContent = (props) => {
 
     const sortedRoutes = () => {
         let filtered = props.items
-                            .sort(compare)
-                            .filter(item => item.path !== '/' && item.path !== '/colors')
+                            .sort((a, b) => compare(a, b, 'name', 'asc'))
+                            .filter(item => item.path !== '/' && 
+                                            item.path !== '/colors' &&
+                                            item.path !== '/helper')
         // filtered.unshift({ path: '/colors', name: 'Colors', Component: HomePage, icon: 'brush' })
-        // filtered.unshift({ path: '/', name: 'Get started', Component: HomePage, icon: 'rocket' })
         return filtered;
     }
     
     return (
-        <div>
+        <React.Fragment>
             <Drawer
                 drawer={props.drawer}
                 fullHeight
-                dark
                 onClose={() => props.onClose()}
                 headerCentered
-                header={<Icon name="react" color="white" size={30}/>}>
+                header={<Icon name="react" size={30}/>}>
                 <div className="row py-5 justify-center">
                     <Dropdown
                         className="full-width mx-10"
                         content={
                             <React.Fragment>
-                                <div className="fz-8 text-gray pa-10">Let's find your component</div>
-                                <List dense>
+                                <div className="fz-8 text-gray pa-15">Let's find your component</div>
+                                <List>
                                     {searchedItems().map((item, index) => 
                                         <ListItem
                                             key={index}
@@ -64,7 +58,7 @@ export const DrawerContent = (props) => {
                                     )}
                                 </List>
                                 {searchedItems().length > 0 ?
-                                    <div className="fz-8 text-gray pa-10 text-right">
+                                    <div className="fz-8 text-gray pa-15 text-right">
                                         {searchedItems().length} results</div> : ''
                                 }
                             </React.Fragment>
@@ -79,23 +73,35 @@ export const DrawerContent = (props) => {
                                     onChange={e => setSearch(e.target.value)}
                                     placeholder="Search components"/>}/>
                 </div>
-                <List size="medium" dark>
+                <List size="medium">
                     <ListItem
                         right
                         icon="rocket"
-                        isActiveItem={() => '/' === window.location.pathname}
-                        onClick={() => handleItemClick({ path: '/', name: 'Get started', Component: HomePage, icon: 'rocket' })}
+                        isActiveItem={'/' === window.location.pathname}
+                        onClick={() => handleItemClick({ path: '/'})}
                         itemTitle="name"
                         hover
-                        item={{ path: '/', name: 'Get started', Component: HomePage, icon: 'rocket' }}/>
+                        item="Getting started"/>
+                    <ListItem
+                        right
+                        icon="language-css-3"
+                        isActiveItem={'/helper' === window.location.pathname}
+                        onClick={() => handleItemClick({ path: '/helper'})}
+                        itemTitle="name"
+                        hover
+                        item="Helper CSS classes"/>
                     <ListItem
                         icon="toy-brick"
                         onClick={() => setList(!list)}
                         hover
-                        item="Components"
-                        controls={<Icon color="#fff" size={20} name={list ? 'chevron-up' : 'chevron-down'}/>}/>
+                        item={<span>Components 
+                            <small className="fw-bold ml-10 text-info">{sortedRoutes().length}</small>
+                        </span>}
+                        controls={<Icon 
+                                size={20} 
+                                name={list ? 'chevron-up' : 'chevron-down'}/>}/>
                 </List>
-                {list ? <List dark className="pl-30">
+                {list ? <List className="pl-30">
                     {sortedRoutes().map((item, index) => 
                         <ListItem
                             key={index}
@@ -103,15 +109,14 @@ export const DrawerContent = (props) => {
                             noDivider
                             icon={item.icon ? item.icon : ''}
                             roundedActive
-                            isActiveItem={current => current.path === window.location.pathname}
+                            isActiveItem={item.path === window.location.pathname}
                             onClick={() => handleItemClick(item)}
-                            itemTitle="name"
                             className="no-select"
                             hover
-                            item={item}/>
+                            item={item.name}/>
                     )}
                 </List> : ''}
             </Drawer>
-        </div>
+        </React.Fragment>
     )
 }

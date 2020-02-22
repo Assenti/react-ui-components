@@ -1,5 +1,5 @@
 import React from 'react';
-import { Delete, Search, Home, Edit, Close, Github, ChevronDoubleRight, ChevronDoubleLeft, ChevronDown, ChevronNext, Code, Chip, Account, Sun, Moon, Star, StarOutline, Smartphone, Hammer, City, ChevronBack, Empty, Download, Menu, Person, Loading, ShieldAccount, ReactLogo, FileOutline, Email, Rocket, Key, ExitToApp, ArrowUpBold, FormatAlignCenter, FormatAlignLeft, FormatAlignRight, Brush, Lock, Filter, SortAscending, SortDescending, ContentCopy, ToyBrick, ChevronUp } from './icons/index';
+import { Delete, Search, Home, Edit, Close, Github, ChevronDoubleRight, ChevronDoubleLeft, ChevronDown, ChevronNext, Code, Chip, Account, Sun, Moon, Star, StarOutline, Smartphone, Hammer, City, ChevronBack, Empty, Download, Menu, Person, Loading, ShieldAccount, ReactLogo, FileOutline, Email, Rocket, Key, ExitToApp, ArrowUpBold, FormatAlignCenter, FormatAlignLeft, FormatAlignRight, Brush, Lock, Filter, SortAscending, SortDescending, ContentCopy, ToyBrick, ChevronUp, HelpCircleOutline, DotsVertical, DotsHorizontal, LanguageCss3 } from './icons/index';
 export var Icon = function Icon(props) {
   var Icon = function Icon() {
     switch (props.name) {
@@ -269,6 +269,30 @@ export var Icon = function Icon(props) {
 
       case 'chevron-up':
         return React.createElement(ChevronUp, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'help-circle-outline':
+        return React.createElement(HelpCircleOutline, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'dots-vertical':
+        return React.createElement(DotsVertical, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'dots-horizontal':
+        return React.createElement(DotsHorizontal, {
+          size: props.size,
+          color: props.color
+        });
+
+      case 'language-css-3':
+        return React.createElement(LanguageCss3, {
           size: props.size,
           color: props.color
         });

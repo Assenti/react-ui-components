@@ -33,7 +33,7 @@ export const ListItem = (props) => {
             roundedActive: props.roundedActive ? 'rounded' : '',
             right: props.right && !props.left ? 'right' : '',
             left: props.left && !props.right ? 'left' : '',
-            active: (props.isActiveItem && props.isActiveItem(props.item)) ? 'active' : '',
+            active: props.isActiveItem ? 'active' : '',
             hover: props.hover ? 'hover' : '',
             noDivider: props.noDivider ? '' : 'divider',
             className: props.className ? props.className : ''
@@ -51,19 +51,17 @@ export const ListItem = (props) => {
             {
                 !props.render ?
                 <React.Fragment>
-                    <div className="list-item__title-row">
-                        <div className="row align-center">
-                            {props.icon ? <Icon name={props.icon} className="mr-5"/> : ''}
-                            <div className="list-item__left-side">
-                                {props.checkbox}
-                                {props.item[props.itemTitle] ? props.item[props.itemTitle] : props.item}
-                            </div>
+                    <div className="list-item__left-side">
+                        <div className="list-item__title-row">
+                            {props.icon ? <Icon name={props.icon}/> : ''}
+                            {props.checkbox}
+                            {props.item}
                         </div>
-                        <div className="list-item__right-side">
-                            {props.controls}
-                        </div>
+                        {props.subTitle ? <div className="list-subtitle">{props.subTitle}</div> : ''}
                     </div>
-                    {props.subTitle ? <div className="list-subtitle">{props.subTitle}</div> : ''}
+                    <div className="list-item__right-side">
+                        {props.controls}
+                    </div>
                 </React.Fragment> :
                 props.render
             }

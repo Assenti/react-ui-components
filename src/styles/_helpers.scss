@@ -10,26 +10,6 @@
     overflow: auto;
 }
 
-.text-white {
-    color: #fff;
-}
-
-.text-info {
-    color: $info;
-}
-
-.text-lightgray {
-    color: $lightgray;
-}
-
-.text-primary {
-    color: $primary;
-}
-
-.bg-night {
-    background-color: $night;
-}
-
 .row {
     display: flex;
 }
@@ -54,6 +34,10 @@
     align-items: flex-start;
 }
 
+.align-bottom {
+    align-items: flex-end;
+}
+
 .align-center {
     align-items: center;
 }
@@ -72,6 +56,10 @@
 
 .justify-end {
     justify-content: flex-end;
+}
+
+.justify-start {
+    justify-content: flex-start;
 }
 
 .text-center {
@@ -156,4 +144,13 @@ h4 {
 .no-select {
     user-select: none;
     -moz-user-select: none;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+p {
+    margin: 10px 0;
+    font-size: $defaultFont;
 }

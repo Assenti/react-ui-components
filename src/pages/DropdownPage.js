@@ -255,8 +255,7 @@ function Example() {
                                         key={index}
                                         hover 
                                         onClick={() => setItem2(item.hero)}
-                                        item={item}
-                                        itemTitle="hero"/>
+                                        item={item.hero}/>
                                 )}
                             </List>
                         }

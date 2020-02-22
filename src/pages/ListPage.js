@@ -56,7 +56,7 @@ function Example() {
     const darkMode =
 `// Usage examples
 import React, { useState } from 'react';
-import { List, ListItem, Card } from '@assenti/rui-components';
+import { List, ListItem } from '@assenti/rui-components';
 const heroes = [
     { hero: 'Captain America', icon: 'shield-account' }, 
     { hero: 'Spider man', icon: 'shield-account' }, 
@@ -66,23 +66,22 @@ const heroes = [
 
 function Example() {
     return (
-        <Card 
-            color="primary" 
-            title="Simple list with dark mode, hover and icons" 
-            dark
-            header="Marvel Avengers"
-            className="px-0">
-            <List items={itemsComplex} itemTitle="hero" dark hover>
-                {heroes.map((item, index) => 
-                    <ListItem 
-                        key={index} 
-                        item={item}
-                        icon={item.icon}
-                        itemTitle="hero"
-                        hover/>
-                )}
+        <div>
+            <List dark
+            header="Marvel Avengers" 
+            items={itemsComplex} 
+            itemTitle="hero" 
+            hover>
+            {itemsComplex.map((item, index) => 
+                <ListItem 
+                    key={index} 
+                    item={item}
+                    icon={item.icon}
+                    itemTitle="hero"
+                    hover/>
+            )}
             </List>
-        </Card>
+        </div>
     )
 }
 `
@@ -127,7 +126,8 @@ function Example() {
                         itemTitle="hero"
                         isActiveItem={item => isSelected(item, 'hero')}
                         hover
-                        checkbox={<Checkbox 
+                        checkbox={<Checkbox
+                            color="info" 
                             checked={isSelected(item, 'hero')}
                             onChange={() => selectOne(item)}/>}/>
                 )}
@@ -173,10 +173,10 @@ function Example() {
 `
 
 const names = [
-    { name: 'John Doe', active: false },
-    { name: 'Peter Parker', active: true },
-    { name: 'Tony Stark', active: false },
-    { name: 'Bruce Benner', active: false }
+    { name: 'John Doe', hero: 'Captain America', active: false },
+    { name: 'Peter Parker', hero: 'Spider man', active: true },
+    { name: 'Tony Stark', hero: 'Iron man', active: false },
+    { name: 'Bruce Benner', hero: 'Hulk', active: false }
 ];
 
 const itemsComplexInitial = [
@@ -227,8 +227,15 @@ const items2 = [
         value: ''
     },
     { 
-        property: 'itemTitle', 
-        description: 'If you pass items as array of objects pass the key of field that you want to display', 
+        property: 'onClick', 
+        description: 'Invokes on item click', 
+        default: '', 
+        type: 'function',
+        value: ''
+    },
+    { 
+        property: 'item', 
+        description: 'Set list item', 
         default: '', 
         type: 'string',
         value: ''
@@ -242,10 +249,10 @@ const items2 = [
     },
     { 
         property: 'isActiveItem', 
-        description: 'Define the active item and set active class (return boolean)', 
-        default: '', 
-        type: 'function',
-        value: ''
+        description: 'Set active list item', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
     },
     { 
         property: 'roundedActive', 
@@ -284,7 +291,7 @@ const items2 = [
     },
     { 
         property: 'hover',
-        description: 'Set background color on item hover', 
+        description: 'Highlight hovered list item', 
         default: 'false', 
         type: 'boolean',
         value: 'true | false'
@@ -314,17 +321,15 @@ export const ListPage = () => {
     }
 
     const selectOne = (item) => {
-        if (isSelected(item, 'hero')) {
-            setSelected(selected => selected.filter(_item => _item.hero !== item.hero))
+        if (isSelected(item)) {
+            setSelected(selected => selected.filter(_item => _item !== item))
         } else setSelected([...selected, item]);
     }
 
-    const isSelected = (item, prop) => {
+    const isSelected = (item) => {
         let result = false
-        if (prop) {
-            for (const select of selected) {
-                if (item[prop] === select[prop]) result = true 
-            }
+        for (const select of selected) {
+            if (item === select) result = true 
         }
         return result
     }
@@ -346,30 +351,30 @@ export const ListPage = () => {
                 <List header="Default size">
                     {names.map((item, index) => 
                         <ListItem
-                            isActiveItem={item => item.active} 
+                            isActiveItem={item.active} 
                             key={index} 
-                            item={item}
-                            itemTitle="name"/>
+                            item={item.name}
+                            subTitle={item.hero}/>
                     )}
                 </List>
                 <br/>
                 <List size="medium" header="Medium size">
                     {names.map((item, index) => 
                         <ListItem
-                            isActiveItem={item => item.active} 
+                            isActiveItem={item.active} 
                             key={index} 
-                            item={item}
-                            itemTitle="name"/>
+                            item={item.name}
+                            subTitle={item.hero}/>
                     )}
                 </List>
                 <br/>
                 <List size="large" header="Large size">
                     {names.map((item, index) => 
                         <ListItem
-                            isActiveItem={item => item.active} 
+                            isActiveItem={item.active} 
                             key={index} 
-                            item={item}
-                            itemTitle="name"/>
+                            item={item.name}
+                            subTitle={item.hero}/>
                     )}
                 </List>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
@@ -380,22 +385,17 @@ export const ListPage = () => {
             </Card>
             <br/>
             <Card outlined color="primary" title="Dark mode">
-                <Card 
-                    color="primary" 
-                    title="Simple list with dark mode, hover and icons" 
-                    dark
-                    className="px-0">
-                    <List header="Marvel Avengers" items={itemsComplex} itemTitle="hero" dark hover>
-                        {itemsComplex.map((item, index) => 
-                            <ListItem 
-                                key={index} 
-                                item={item}
-                                icon={item.icon}
-                                itemTitle="hero"
-                                hover/>
-                        )}
-                    </List>
-                </Card>
+                <List dark
+                    header="Marvel Avengers" 
+                    hover>
+                    {itemsComplex.map((item, index) => 
+                        <ListItem 
+                            key={index} 
+                            item={item.hero}
+                            icon={item.icon}
+                            hover/>
+                    )}
+                </List>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {darkMode}
@@ -412,13 +412,13 @@ export const ListPage = () => {
                     {itemsComplex.map((item, index) => 
                         <ListItem 
                             key={index} 
-                            item={item}
-                            itemTitle="hero"
-                            isActiveItem={item => isSelected(item, 'hero')}
+                            item={item.hero}
+                            isActiveItem={isSelected(item.hero)}
                             hover
-                            checkbox={<Checkbox 
-                                checked={isSelected(item, 'hero')}
-                                onChange={() => selectOne(item)}/>}/>
+                            checkbox={<Checkbox
+                                color="info" 
+                                checked={isSelected(item.hero)}
+                                onChange={() => selectOne(item.hero)}/>}/>
                     )}
                 </List>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
@@ -433,13 +433,15 @@ export const ListPage = () => {
                     {itemsComplex.map((item, index) => 
                         <ListItem 
                             key={index} 
-                            item={item}
+                            item={item.name}
                             icon={item.icon} 
-                            itemTitle="name"
-                            subTitle={<Tag small color="info" value={item.hero}/>}
+                            subTitle={item.hero}
                             controls={
                                 <React.Fragment>
-                                    <Button small color="light" className="mr-10" icon="edit"/>
+                                    <Button color="light" 
+                                        className="mr-10" 
+                                        icon="edit"
+                                        iconSize={16}/>
                                     <Button small color="light" icon="close"/>
                                 </React.Fragment>
                             }/>

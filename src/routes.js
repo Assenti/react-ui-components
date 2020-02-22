@@ -21,9 +21,12 @@ import { BackTopBtnPage } from './pages/BackTopBtnPage';
 import { CollapsePage } from './pages/CollapsePage';
 import { ButtonGroupPage } from './pages/ButtonGroupPage';
 import { ColorsPage } from './pages/ColorsPage';
+import { PopOverPage } from './pages/PopOverPage';
+import { HeaderPage } from './pages/HeaderPage';
+import { HelperPage } from './pages/HelperPage';
 
 export const routes = [
-    { path: '/', name: 'Get started', Component: HomePage, icon: 'rocket' },
+    { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
     { path: '/btns', name: 'Button', Component: ButtonPage },
     { path: '/icon', name: 'Icon', Component: IconPage },
     { path: '/dropdown', name: 'Dropdown', Component: DropdownPage },
@@ -45,5 +48,8 @@ export const routes = [
     { path: '/backtopbtn', name: 'BackTopBtn', Component: BackTopBtnPage },
     { path: '/collapse', name: 'Collapse', Component: CollapsePage },
     { path: '/buttonGroup', name: 'ButtonGroup', Component: ButtonGroupPage },
-    { path: '/colors', name: 'Colors', Component: ColorsPage }
+    { path: '/colors', name: 'Colors', Component: ColorsPage },
+    { path: '/popover', name: 'PopOver', Component: PopOverPage },
+    { path: '/header', name: 'Header', Component: HeaderPage },
+    { path: '/helper', name: 'Helper CSS classes', Component: HelperPage }
 ]

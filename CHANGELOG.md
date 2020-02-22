@@ -7,6 +7,20 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.3.0 `2020-02-22`
+
+- `NEW!` PopOver component added;
+- `NEW!` Header component added;
+- List component updated;
+- Table component updated;
+- Pagination component updated;
+- Tooltip component updated;
+- Collapse component updated;
+- Drawer component updated;
+- Card component updated;
+- `NEW!` New icons added;
+- `NEW!` Helper classes decription page added;
+
 #### 0.2.25 `2020-02-21`
 
 - List component updated;

@@ -46,7 +46,8 @@ export var Button = function Button(props) {
     }
   }, props.loading ? React.createElement(Icon, {
     name: "loading",
-    color: "gray"
+    color: "gray",
+    size: props.iconSize ? props.iconSize : ''
   }) : React.createElement(React.Fragment, null, props.icon && props.iconLeft ? props.iconAllotted ? React.createElement("div", {
     className: "btn__allotted-icon"
   }, React.createElement(Icon, {

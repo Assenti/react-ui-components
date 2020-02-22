@@ -110,7 +110,6 @@ export const Drawer = (props) => {
                                 </Tooltip>
                             </div> : ''}
                         </div>
-                    
                 </CSSTransition>
             </CSSTransition>
             }

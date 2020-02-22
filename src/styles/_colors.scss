@@ -1,0 +1,27 @@
+$colors: (
+    'white': #fff,
+    'black': black,
+    'night': $night, 
+    'light': $light, 
+    'lightgray': $lightgray, 
+    'dark': $dark, 
+    'info': $info,
+    'gray': $gray,  
+    'primary': $primary, 
+    'error': $error, 
+    'success': $success, 
+    'yellow': $yellow, 
+    'warning': $warning
+);
+
+@each $name, $color in $colors {
+    .bg-#{$name} {
+        background-color: $color;
+    }
+}
+
+@each $name, $color in $colors {
+    .text-#{$name} {
+        color: $color;
+    }
+}

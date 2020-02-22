@@ -8,16 +8,17 @@ export const HomePage = () => {
 `# Install package from NPM
 % npm install @assenti/rui-components -S
 
-               or
+               # or
 
 % yarn add @assenti/rui-components
 `
     const stylesInstallation = 
-`// Import styles in index.js (or your main.js file)
+`// Import styles in index.js / index.ts (or your main.js / main.ts file)
 import '@assenti/react-ui-components/build/css/main.css';`;
 
     const codeUsage = 
-`import React from 'react';
+`// Usage example
+import React from 'react';
 import { Card, Button } from '@assenti/react-ui-components';
 
 function App() {
@@ -33,13 +34,16 @@ export default App;`
 
     return (
         <React.Fragment>
-            <h2 className="text-primary">Welcome to React UI Components</h2>
+            <h2 className="text-night">Welcome to React UI Components</h2>
             <div className="row align-center wrap">
                 <Tag value={<strong>Main Goal</strong>} color="info"/>
-                <div className="col fz-12 fw-bold py-10 px-5" style={{ minWidth: 400 }}>Create a lot of usefull and maximum reusable UI components for React apps</div>
+                <div className="col fz-11 fw-bold py-10 px-5" style={{ minWidth: 400 }}>
+                    Create a lot of usefull and maximum reusable UI components for React apps
+                </div>
             </div>
-            <Tag iconLeft="hammer" value="Work in progress..."/>
-            <Card outlined color="primary" title="Install" className="mt-15">
+            <Tag iconLeft="hammer" color="info" value="Work in progress..."/>
+            <h2 className="text-night">Getting started with React UI Components</h2>
+            <Card outlined color="primary" title="Install" className="mt-20">
                 <SyntaxHighlighter language="bash" style={prism}>
                     {codeInstallation}
                 </SyntaxHighlighter>
@@ -52,6 +56,15 @@ export default App;`
                 <SyntaxHighlighter language="jsx" style={prism}>
                     {codeUsage}
                 </SyntaxHighlighter>
+            </Card>
+            <Card outlined 
+                color="primary" 
+                title="TypeScript" 
+                className="mt-15">
+                <div className="py-20">
+                    <div>TypeScript supported. Just install package to your react typescript app and use it.</div>
+                    <div className="py-10 fz-9 text-dark">Warning: components types declaration in process... But it does not interfere with use.</div>
+                </div>
             </Card>
         </React.Fragment>
     )

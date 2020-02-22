@@ -11,6 +11,16 @@
     
             .list-item__title-row {
                 height: $defaultSize;
+
+                .icon {
+                    width: 18px;
+                    height: 18px;
+                    margin-right: 8px;
+                }
+            }
+
+            .list-subtitle {
+                font-size: .8rem;
             }
         }
     }
@@ -18,11 +28,25 @@
     &.medium {
         .list-item {
             padding: 0 10px;
-            height: $mediumSize;
+            min-height: $mediumSize;
             font-size: $mediumFont;
+
+            .list-subtitle {
+                font-size: .85rem;
+            }
 
             a {
                 font-size: $mediumFont;
+            }
+
+            .list-item__title-row {
+                height: $mediumSize;
+
+                .icon {
+                    width: 18px;
+                    height: 18px;
+                    margin-right: 8px;
+                }
             }
         }
     }
@@ -30,23 +54,41 @@
     &.large {
         .list-item {
             padding: 0 10px;
-            height: $largeSize;
+            min-height: $largeSize;
             font-size: $largeFont;
+
+            .list-subtitle {
+                font-size: .85rem;
+                padding: 0;
+                padding: 5px 0;
+            }
 
             a {
                 font-size: $largeFont;
+            }
+
+            .list-item__title-row {
+                height: $largeSize;
+
+                .icon {
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 8px;
+                }
             }
         }
     }
 
     &.dark {
+        background-color: $night;
+
         .list-header {
             color: #fff;
         }
 
         .list-item {
             color: #fff;
-            border-bottom-color: gray;
+            border-bottom-color: lightgray;
 
             path {
                 fill: #fff;
@@ -70,6 +112,15 @@
         .list-item.active {
             background-color: rgba($info, .4);
             border-right: 5px solid $info;
+            color: $info;
+
+            .list-item__title-row {
+                .icon {
+                    path {
+                        fill: $info;
+                    }
+                }
+            }
         }
 
         .list-item.active.rounded {
@@ -81,9 +132,55 @@
     }
 
     &:not(.dark) {
+        .list-item {
+            &.hover:hover:not(.active)  {
+                background-color: rgba(lightgray, .4); //rgba(, .3);
+                transition: all .2s ease-in-out;
+                cursor: pointer;
+            }
+
+            &.hover.rounded:hover:not(.active)  {
+                background-color: rgba(lightgray, .4);
+                transition: all .2s ease-in-out;
+                cursor: pointer;
+                border-top-left-radius: 30px;
+                border-bottom-left-radius: 30px;
+            }
+        }
+
         .list-item.active {
             background-color: rgba($info, .2);
             border-right: 5px solid $info;
+            color: $info;
+
+            &.hover:hover:not(.active)  {
+                background-color: lightgray; 
+                transition: all .2s ease-in-out;
+                cursor: pointer;
+            }
+
+            &.hover.rounded:hover:not(.active)  {
+                background-color: lightgray;
+                transition: all .2s ease-in-out;
+                cursor: pointer;
+                border-top-left-radius: 30px;
+                border-bottom-left-radius: 30px;
+            }
+
+            .list-item__title-row {
+                .icon {
+                    path {
+                        fill: $info;
+                    }
+                }
+            }
+        }
+
+        .list-item.active.rounded {
+            background-color: rgba($info, .2);
+            border-right: 5px solid $info;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
         }
     }
 
@@ -100,10 +197,9 @@
 
 .list-subtitle {
     display: block;
-    font-size: .75rem;
+    font-size: .8rem;
     color: gray;
-    margin-left: 30px;
-    padding-bottom: 5px;
+    padding: 5px 0;
 
     .tag {
         margin: 0 !important;
@@ -112,12 +208,12 @@
 
 .list-item {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    color: rgba(black, .8);
+    justify-content: space-between;
+    align-items: center;
 
     .list-item__title-row {
-
+        display: flex;
+        align-items: center;
     }
 
     svg {
@@ -136,12 +232,6 @@
         font-size: .9rem;
     }
 
-    & > div:first-child {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
     &:last-child {
         border-bottom: none;
     }
@@ -153,13 +243,15 @@
     }
 }
 
-.list-item__left-side,
+
 .list-item__right-side {
     display: flex;
     align-items: center;
 }
 
 .list-item__left-side {
+    display: block;
+
     .checkbox {
         margin-right: 10px;
     }

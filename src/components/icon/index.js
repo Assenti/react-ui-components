@@ -44,7 +44,11 @@ import {
     SortDescending,
     ContentCopy,
     ToyBrick,
-    ChevronUp
+    ChevronUp,
+    HelpCircleOutline,
+    DotsVertical,
+    DotsHorizontal,
+    LanguageCss3
 } from './icons/index';
 
 export const Icon = (props) => {
@@ -140,6 +144,14 @@ export const Icon = (props) => {
                 return <ToyBrick size={props.size} color={props.color}/>;
             case 'chevron-up':
                 return <ChevronUp size={props.size} color={props.color}/>;
+            case 'help-circle-outline':
+                return <HelpCircleOutline size={props.size} color={props.color}/>;
+            case 'dots-vertical':
+                return <DotsVertical size={props.size} color={props.color}/>;
+            case 'dots-horizontal':
+                return <DotsHorizontal size={props.size} color={props.color}/>;
+            case 'language-css-3':
+                return <LanguageCss3 size={props.size} color={props.color}/>;
             default:
                 return '';
         }

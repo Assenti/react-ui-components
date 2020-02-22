@@ -43,9 +43,9 @@ export const Collapse = (props) => {
             </div>
             <CSSTransition
                 in={visible}
-                timeout={150}
-                classNames="collapse"
-                unmountOnExit>
+                timeout={300}
+                unmountOnExit
+                classNames="collapse">
                 <div className="collapse-content"
                     style={{...props.contentStyles}}>
                     {props.children}

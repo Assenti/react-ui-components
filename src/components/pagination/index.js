@@ -48,10 +48,10 @@ export const Pagination = (props) => {
             if (currentPage % getLimit() === 0 && currentPage < allPages.length) {
                 setActivePages(allPages.slice(currentPage, currentPage + getLimit()))
                 setCurrentPage(currentPage + 1)
-                props.onChange(currentPage + 1)
+                if (props.onChange) props.onChange(currentPage + 1)
             } else if (currentPage < allPages.length) {
                 setCurrentPage(currentPage + 1)
-                props.onChange(currentPage + 1)
+                if (props.onChange) props.onChange(currentPage + 1)
             }
         }
     }
@@ -61,16 +61,16 @@ export const Pagination = (props) => {
             if(currentPage > 1 && (currentPage - 1) % getLimit() === 0){
                 setActivePages(allPages.slice((currentPage-1) - getLimit(), currentPage-1))
                 setCurrentPage(currentPage - 1)
-                props.onChange(currentPage - 1)
+                if (props.onChange) props.onChange(currentPage - 1)
             } else if (currentPage > 1) {
                 setCurrentPage(currentPage - 1)
-                props.onChange(currentPage - 1)
+                if (props.onChange) props.onChange(currentPage - 1)
             }
         }
     }
 
     const handlePerPageSelect = (value) => {
-        props.onPerPageSelect(value)
+        if (props.onPerPageSelect) props.onPerPageSelect(value)
         setAllPages(generateMockArr(Math.ceil(props.itemsCount/value)))
     }
 
@@ -98,7 +98,7 @@ export const Pagination = (props) => {
                             'pagination-item active' : 'pagination-item'}
                         onClick={() => {
                             setCurrentPage(item + 1)
-                            props.onChange(item + 1)
+                            if (props.onChange) props.onChange(item + 1)
                         }}>
                         {item + 1}
                     </div>

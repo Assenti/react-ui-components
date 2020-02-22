@@ -6,6 +6,7 @@ export var Card = function Card(props) {
       card: 'card',
       flat: props.flat ? 'flat' : '',
       dark: props.dark ? 'dark' : '',
+      hover: props.hover ? 'hover' : '',
       outlined: props.outlined && !props.dark ? 'outlined' : '',
       color: props.color && !props.dark ? props.color : '',
       className: props.className ? props.className : ''
