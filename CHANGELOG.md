@@ -7,6 +7,10 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.3.1 `2020-02-23`
+
+- Bugs fixing;
+
 #### 0.3.0 `2020-02-22`
 
 - `NEW!` PopOver component added;
