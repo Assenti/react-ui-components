@@ -262,6 +262,13 @@ const items2 = [
         value: 'true | false'
     },
     { 
+        property: 'leftBorder', 
+        description: 'Set left border highlighting on active item', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'checkbox',
         description: 'A placeholder for checkbox (Expect a checkbox element or Component)', 
         default: '', 
@@ -335,12 +342,12 @@ export const ListPage = () => {
     }
     
     return (
-        <div className="page" ref={parent}>
+        <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="page-title">List, ListItem Components</div>
+                <div className="rui-page-title">List, ListItem Components</div>
                 <div className="row">
-                    <div className="link fz-13 fw-bold mr-10" onClick={() => goListApi()}>List API</div>
-                    <div className="link fz-13 fw-bold" onClick={() => goListItemApi()}>ListItem API</div>
+                    <div className="rui-link fz-13 fw-bold mr-10" onClick={() => goListApi()}>List API</div>
+                    <div className="rui-link fz-13 fw-bold" onClick={() => goListItemApi()}>ListItem API</div>
                 </div>
             </div>
             <Card 
@@ -358,11 +365,12 @@ export const ListPage = () => {
                     )}
                 </List>
                 <br/>
-                <List size="medium" header="Medium size">
+                <List size="medium" header="Medium size, left bordered active item">
                     {names.map((item, index) => 
                         <ListItem
                             isActiveItem={item.active} 
-                            key={index} 
+                            key={index}
+                            leftBorder 
                             item={item.name}
                             subTitle={item.hero}/>
                     )}

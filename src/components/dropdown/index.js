@@ -7,7 +7,7 @@ export const Dropdown = (props) => {
     const dropdownClass = () => {
         let result = '';
         let className = {
-            name: 'dropdown-container',
+            name: 'rui-dropdown-container',
             position: props.position ? props.position : '',
             className: props.className ? props.className : ''
         }
@@ -28,7 +28,7 @@ export const Dropdown = (props) => {
                 timeout={300}
                 classNames="dropdown"
                 unmountOnExit>
-                <div className="dropdown" 
+                <div className="rui-dropdown" 
                     style={{ 
                         width: props.width ? props.width : '', 
                         minWidth: props.minWidth ? props.minWidth : '',

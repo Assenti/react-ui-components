@@ -5,7 +5,7 @@ export const Tag = (props) => {
     const tagClass = () => {
         let result = '';
         let className = {
-            btn: 'tag',
+            btn: 'rui-tag',
             lifted: props.lifted ? 'lifted' : '',
             uppercase: props.uppercase ? 'uppercase' : '',
             smooth: props.smooth && !props.rounded ? 'smooth' : '',

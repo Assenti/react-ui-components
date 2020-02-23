@@ -134,10 +134,10 @@ export const IconPage = () => {
     }
 
     return (
-        <div className="page">
+        <div className="rui-page">
             <div className="row align-center space-between">
-                <div className="page-title">Icon Component</div>
-                <a onClick={goToApi} className="fz-13 fw-bold">API</a>
+                <div className="rui-page-title">Icon Component</div>
+                <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
             <p><strong>{description}</strong> use primarily
                 <a href="https://materialdesignicons.com/"

@@ -252,10 +252,10 @@ export const CardPage = () => {
     }
 
     return (
-        <div className="page" ref={parentRef}>
+        <div className="rui-page" ref={parentRef}>
             <div className="row align-center space-between">
-                <div className="page-title">Card Component</div>
-                <div className="link fz-13 fw-bold" onClick={goToApi}>API</div>
+                <div className="rui-page-title">Card Component</div>
+                <div className="rui-link fz-13 fw-bold" onClick={goToApi}>API</div>
             </div>
             <Card outlined color="primary" title="Card with header">
                 <Card header="Marvel heroes">
@@ -329,7 +329,7 @@ export const CardPage = () => {
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
-            <BackTopBtn dark setRef={parentRef}/>
+            <BackTopBtn dark setRef={parentRef} size="medium"/>
             <h2 ref={api}>API</h2>
             <Table
                 bordered

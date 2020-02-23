@@ -1,5 +1,5 @@
-import React from 'react';
-import { Card, Table } from '../components';
+import React, { createRef } from 'react';
+import { Card, Table, BackTopBtn } from '../components';
 
 const colors = [
     { name: 'primary', value: '#1678c2' },
@@ -18,10 +18,12 @@ const colors = [
 const keys = ['Color', 'Name', 'HEX']
 
 export const ColorsPage = () => {
+    const parent = createRef();
+
     return (
-        <div>
+        <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="page-title">Colors set</div>
+                <div className="rui-page-title">Colors set</div>
             </div>
             <Card outlined color="primary" title="Colors set">
                 <p>Colors set that used in styles.</p>
@@ -35,6 +37,7 @@ export const ColorsPage = () => {
                         height: 40
                     }}></div>, 'name', 'value']}/>
             </Card>
+            <BackTopBtn setRef={parent} dark size="medium"/>
         </div>
     )
 }

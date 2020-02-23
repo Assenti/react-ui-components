@@ -39,26 +39,30 @@ export const DrawerContent = (props) => {
             <Drawer
                 drawer={props.drawer}
                 fullHeight
+                dark={props.dark}
                 onClose={() => props.onClose()}
                 headerCentered
-                header={<Icon name="react" size={30}/>}>
+                header={<Icon name="react" size={30} color={props.dark ? '#fff' : ''}/>}>
                 <div className="row py-5 justify-center">
                     <Dropdown
                         className="full-width mx-10"
                         content={
                             <React.Fragment>
-                                <div className="fz-8 text-gray pa-15">Let's find your component</div>
-                                <List>
+                                <div className="fz-8 text-info pa-15">Let's find your component</div>
+                                <List dark={props.dark}>
                                     {searchedItems().map((item, index) => 
                                         <ListItem
                                             key={index}
                                             hover
-                                            render={<Link to={item.path} 
-                                                onClick={() => setSearch('')}>{item.name}</Link>}/>
+                                            onClick={() => {
+                                                handleItemClick(item)
+                                                setSearch('')
+                                            }}
+                                            item={item.name}/>
                                     )}
                                 </List>
                                 {searchedItems().length > 0 ?
-                                    <div className="fz-8 text-gray pa-15 text-right">
+                                    <div className="fz-8 text-dark pa-15 text-right">
                                         {searchedItems().length} results</div> : ''
                                 }
                             </React.Fragment>
@@ -73,7 +77,7 @@ export const DrawerContent = (props) => {
                                     onChange={e => setSearch(e.target.value)}
                                     placeholder="Search components"/>}/>
                 </div>
-                <List size="medium">
+                <List size="medium" dark={props.dark}>
                     <ListItem
                         right
                         icon="rocket"
@@ -101,7 +105,7 @@ export const DrawerContent = (props) => {
                                 size={20} 
                                 name={list ? 'chevron-up' : 'chevron-down'}/>}/>
                 </List>
-                {list ? <List className="pl-30">
+                {list ? <List className="pl-30" dark={props.dark}>
                     {sortedRoutes().map((item, index) => 
                         <ListItem
                             key={index}

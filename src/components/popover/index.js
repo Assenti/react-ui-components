@@ -10,7 +10,7 @@ export const PopOver = (props) => {
     const popoverClass = () => {
         let result = '';
         let className = {
-            name: 'popover',
+            name: 'rii-popover',
             dark: props.dark ? 'dark' : '',
             position: props.bottom ? 'bottom' : '',
             className: props.className ? props.className : ''
@@ -33,18 +33,18 @@ export const PopOver = (props) => {
                 timeout={150}
                 classNames={props.bottom ? 'popdown' : 'popup' }
                 unmountOnExit>
-                <div className="popover__content" id="popover-content" ref={content}>
-                    <div className="popover__content-header">
+                <div className="rui-popover__content" ref={content}>
+                    <div className="rui-popover__content-header">
                         <span>{props.title}</span>
                         <Icon size={18} 
                             name="close" 
                             color={props.dark ? '#fff' : 'gray'} 
                             onClick={() => props.control ? props.onClose() : setVisible(false)}/>
                     </div>
-                    <div className="popover__content-body">{props.content}</div>
+                    <div className="rui-popover__content-body">{props.content}</div>
                 </div>
             </CSSTransition>
-            <div className="popover__children"
+            <div className="rui-popover__children"
                 onMouseOver={() => props.trigger === 'hover' ? setVisible(true) : {}}
                 onClick={() => props.trigger !== 'hover' ? 
                     (props.control ? {} : setVisible(!visible)) : {}}>{props.children}</div>

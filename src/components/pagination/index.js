@@ -14,7 +14,7 @@ export const Pagination = (props) => {
     const paginationClass = () => {
         let result = '';
         let className = {
-            btn: 'pagination',
+            btn: 'rui-pagination',
             size: props.size ? props.size : '',
             rounded: props.rounded ? 'rounded' : '',
             color: props.color ? props.color : 'primary',
@@ -86,7 +86,7 @@ export const Pagination = (props) => {
 
     return (
         <div className={paginationClass()}>
-            <div className={isPrevAvailable() ? 'pagination-item' : 'pagination-item disabled'} 
+            <div className={isPrevAvailable() ? 'rui-pagination-item' : 'rui-pagination-item disabled'} 
                 onClick={handleOnPrev}>
                 <ChevronBack />
             </div>
@@ -95,7 +95,7 @@ export const Pagination = (props) => {
                 return (
                     <div key={index} 
                         className={(item + 1) === currentPage ? 
-                            'pagination-item active' : 'pagination-item'}
+                            'rui-pagination-item active' : 'rui-pagination-item'}
                         onClick={() => {
                             setCurrentPage(item + 1)
                             if (props.onChange) props.onChange(item + 1)
@@ -105,12 +105,12 @@ export const Pagination = (props) => {
                 )
             })}
 
-            <div className={isNextAvailable() ? 'pagination-item' : 'pagination-item disabled'} 
+            <div className={isNextAvailable() ? 'rui-pagination-item' : 'rui-pagination-item disabled'} 
                 onClick={handleOnNext}>
                 <ChevronNext />
             </div>
 
-            <div className="pagination-per-page">
+            <div className="rui-pagination-per-page">
                 <Select
                     minWidth={getSize()}
                     size={props.size}

@@ -1,11 +1,11 @@
-.popover {
+.rui-popover {
     position: relative;
     display: inline-flex;
     justify-content: center;
     outline: none;
 
     &.dark {
-        .popover__content {
+        .rui-popover__content {
             background-color: rgba(black, .8);
             color: #fff;
 
@@ -14,13 +14,13 @@
             }
         }
 
-        .popover__content-body {
+        .rui-popover__content-body {
             color: #fff;
         }
     }
 
     &:not(.dark) {
-        .popover__content {
+        .rui-popover__content {
             background-color: #fff;
             color: black;
 
@@ -29,12 +29,12 @@
             }
         }
 
-        .popover__content-body {
+        .rui-popover__content-body {
             color: black;
         }
     }
     
-    .popover__content {
+    .rui-popover__content {
         display: inline-block;
         min-width: 150px;
         max-width: 300px;
@@ -55,7 +55,7 @@
         }
     }
 
-    .popover__content-header {
+    .rui-popover__content-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -69,7 +69,7 @@
             font-weight: 600;
         }
 
-        .icon {
+        .rui-icon {
             cursor: pointer;
 
             &:active {
@@ -78,12 +78,12 @@
         }
     }
 
-    .popover__content-body {
+    .rui-popover__content-body {
         padding: 10px;
     }
 
     &:not(.bottom) {
-        .popover__content {
+        .rui-popover__content {
             bottom: calc(100% + 8px);
     
             &::after {
@@ -93,7 +93,7 @@
     }
 
     &.bottom {
-        .popover__content {
+        .rui-popover__content {
             top: calc(100% + 8px);
             box-shadow: 0 1px 15px rgba($dark, .4);
     

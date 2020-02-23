@@ -17,12 +17,12 @@ Create a lot of usefull and maximum reusable UI components
 ```
 
 ## Usage
-index.js / index.ts
+index.js 
 ```jsx
-// Import styles in index.js (or your main.js file)
+// Import styles in index.js
 import '@assenti/react-ui-components/build/css/main.css';
 ```
-App.js / App.tsx
+App.js
 ```jsx
 import { Card, Button } from '@assenti/react-ui-components';
 import React from 'react';
@@ -44,6 +44,7 @@ export default App;
 - [ ] Dialog
 - [ ] Date picker / Calendar
 - [ ] InputMask 
+- [ ] TextareaField
 - [ ] Expansion List
 - [ ] Stepper
 - [ ] Rating
@@ -57,7 +58,7 @@ export default App;
 - [ ] CopyToClipboard
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable
-- [ ] Declare types for TS using
+- [ ] TypeScript support (Declare types for TS using)
 - [ ] Add i18n
 
 ## Changelog

@@ -5,7 +5,7 @@ export const Button = (props) => {
     const btnClass = () => {
         let result = '';
         let className = {
-            btn: 'btn',
+            btn: 'rui-btn',
             lifted: props.lifted ? 'lifted' : '',
             loading: props.loading ? 'loading' : '',
             uppercase: props.uppercase ? 'uppercase' : '',
@@ -32,9 +32,9 @@ export const Button = (props) => {
     }
 
     const setMargin = () => {
-        if (props.icon && !props.iconLeft) return 'btn__text mr-5';
-        else if (props.icon && props.iconLeft) return 'btn__text ml-5';
-        else return 'btn__text';
+        if (props.icon && !props.iconLeft) return 'rui-btn__text mr-5';
+        else if (props.icon && props.iconLeft) return 'rui-btn__text ml-5';
+        else return 'rui-btn__text';
     }
 
     return (
@@ -49,7 +49,7 @@ export const Button = (props) => {
                 <React.Fragment>
                     {props.icon && props.iconLeft ? 
                         (props.iconAllotted ? 
-                            <div className="btn__allotted-icon"><Icon size={20} name={props.icon}/></div> :
+                            <div className="rui-btn__allotted-icon"><Icon size={20} name={props.icon}/></div> :
                             <Icon size={20} name={props.icon}/>
                         )
                         : ''
@@ -57,7 +57,7 @@ export const Button = (props) => {
                     {props.name ? <div className={setMargin()}>{props.name}</div> : ''}
                     {props.icon && !props.iconLeft ? 
                         (props.iconAllotted ? 
-                            <div className="btn__allotted-icon"><Icon size={20} name={props.icon}/></div> :
+                            <div className="rui-btn__allotted-icon"><Icon size={20} name={props.icon}/></div> :
                             <Icon size={20} name={props.icon}/>    
                         ) : ''
                     }

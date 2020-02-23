@@ -112,14 +112,13 @@ function Example() {
                 leftControl/>
         </div>
     )
-}
-`
+}`
 
 export const HeaderPage = () => {
     return (
-        <div className="page">
+        <div className="rui-page">
             <div className="row align-center space-between">
-                <div className="page-title">Header Component</div>
+                <div className="rui-page-title">Header Component</div>
             </div>
             <Card outlined title="Header usage">
                 <Header title="Header light" leftControl/>

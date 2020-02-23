@@ -1,4 +1,4 @@
-.table__container {
+.rui-table__container {
     position: relative;
     width: 100%;
     min-height: 200px;
@@ -12,19 +12,19 @@
         overflow: hidden;
     }
 
-    .pagination {
+    .rui-pagination {
         padding: 10px 0;
         padding-left: 5px;
     }
 
-    &.right > .pagination {
+    &.right > .rui-pagination {
         justify-content: flex-end;
         padding-left: 0;
         padding-right: 5px;
     }
 
     &.grid {
-        .table {
+        .rui-table {
             th, td {
                 border: 1px solid lightgray;
                 border-top: none;
@@ -43,15 +43,15 @@
     }
 
     &:not(.medium):not(.large) {
-        .table {
+        .rui-table {
             tr, td {
                 height: $defaultSize;
                 font-size: $defaultFont;
             }
         }
 
-        .table__footer,
-        .table tr div {
+        .rui-table__footer,
+        .rui-table tr div {
             font-size: $defaultFont;
             div, span, strong {
                 font-size: $defaultFont;
@@ -60,14 +60,14 @@
     }
 
     &.medium {
-        .table {
+        .rui-table {
             tr, td {
                 height: $mediumSize;
                 font-size: $mediumFont;
             }
         }
 
-        .table__footer {
+        .rui-table__footer {
             font-size: $mediumFont;
 
             div, span, strong {
@@ -77,14 +77,14 @@
     }
 
     &.large {
-        .table {
+        .rui-table {
             tr, td {
                 height: $largeSize;
                 font-size: $largeFont;
             }
         }
 
-        .table__footer {
+        .rui-table__footer {
             font-size: $largeFont;
 
             div, span, strong {
@@ -94,18 +94,18 @@
     }
 
     &.primary {
-        .table__footer {
+        .rui-table__footer {
             background-color: $primary;
             color: #fff;
         }
 
-        .table.stripped {
+        .rui-table.stripped {
             tbody > tr:nth-child(even) {
                 background-color: rgba($primary, .1);
             }
         }
 
-        .table__placeholder.loading {
+        .rui-table__placeholder.loading {
             path {
                 fill: $primary;
             }
@@ -113,18 +113,18 @@
     }
 
     &.info {
-        .table__footer {
+        .rui-table__footer {
             background-color: $info;
             color: #fff;
         }
 
-        .table.stripped {
+        .rui-table.stripped {
             tbody > tr:nth-child(even) {
                 background-color: rgba($info, .1);
             }
         }
 
-        .table__placeholder.loading {
+        .rui-table__placeholder.loading {
             path {
                 fill: $info;
             }
@@ -132,18 +132,18 @@
     }
 
     &.success {
-        .table__footer {
+        .rui-table__footer {
             background-color: $success;
             color: #fff;
         }
 
-        .table.stripped {
+        .rui-table.stripped {
             tbody > tr:nth-child(even) {
                 background-color: rgba($success, .1);
             }
         }
 
-        .table__placeholder.loading {
+        .rui-table__placeholder.loading {
             path {
                 fill: $success;
             }
@@ -151,18 +151,18 @@
     }
 
     &.error {
-        .table__footer {
+        .rui-table__footer {
             background-color: $error;
             color: #fff;
         }
 
-        .table.stripped {
+        .rui-table.stripped {
             tbody > tr:nth-child(even) {
                 background-color: rgba($error, .1);
             }
         }
 
-        .table__placeholder.loading {
+        .rui-table__placeholder.loading {
             path {
                 fill: $error;
             }
@@ -170,7 +170,7 @@
     }
 }
 
-.table {
+.rui-table {
     margin: 0 auto;
     width: calc(100% + 1px);
     border-collapse: collapse;
@@ -283,7 +283,7 @@
     }
 }
 
-.table-header__filter {
+.rui-table-header__filter {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -320,7 +320,7 @@
     }
 }
 
-.table__menu-container {
+.rui-table__menu-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -333,14 +333,14 @@
     }
 }
 
-.table__footer {
+.rui-table__footer {
     background-color: $lightgray;
     padding: 10px;
     border-bottom-left-radius: $radius;
     border-bottom-right-radius: $radius;
 }
 
-.table__placeholder {
+.rui-table__placeholder {
     position: absolute;
     top: 70px;
     left: calc(50% - 22.5px);

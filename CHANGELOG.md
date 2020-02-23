@@ -7,6 +7,12 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.3.3, 0.3.4, 0.3.5 `2020-02-23`
+
+- Css styles renamed ("rui-prefix" added to avoid conflicts with user custom css classes);
+- InputField component updated;
+- Modal component updated;
+
 #### 0.3.1, 0.3.2. `2020-02-23`
 
 - Bugs fixing;

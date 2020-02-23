@@ -26,42 +26,47 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
 import { routes } from './routes';
 import { Content } from './layouts/Content';
 import { DrawerContent } from './layouts/DrawerContent';
 import { description } from '../package.json';
 
+const defineDarkDefinition = () => {
+    let value = localStorage.getItem('dark')
+    if (!value || value === 'false') return false
+    else return true
+}
+
 const App = () => {
     const [drawer, setDrawer] = useState(true);
+    const [dark, setDark] = useState(defineDarkDefinition());
+
+    const handleSwitchDark = () => {
+        setDark(!dark);
+        localStorage.setItem('dark', (!dark).toString());
+    }
 
     useEffect(() => {
         document.title = description
     }, [])
     
     return (
-        <div className="app">
+        <div className="rui-app">
             <Router>
-                <DrawerContent 
+                <DrawerContent
+                    dark={dark}
                     drawer={drawer}
                     onClose={() => setDrawer(false)} 
                     items={routes}/>
                 <Switch>
                     {routes.map(({path, Component}, index) => 
                         <Route key={index} exact path={path}>
-                            {({ match }) => (
-                                <CSSTransition
-                                in={match != null}
-                                timeout={300}
-                                classNames="page"
-                                unmountOnExit>
-                                <div className="page">
-                                    <Content onDrawerToggle={() => setDrawer(!drawer)}>
-                                        <Component />
-                                    </Content>
-                                </div>
-                                </CSSTransition>
-                            )}
+                            <Content 
+                                dark={dark} 
+                                onSwitch={() => handleSwitchDark()} 
+                                onDrawerToggle={() => setDrawer(!drawer)}>
+                                <Component />
+                            </Content>
                         </Route>
                     )}
                     <Route path="*">

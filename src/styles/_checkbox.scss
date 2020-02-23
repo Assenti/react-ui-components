@@ -1,9 +1,9 @@
-.checkbox-wrapper {
+.rui-checkbox-wrapper {
     display: flex;
     align-items: center;
 }
 
-.checkbox {
+.rui-checkbox {
     display: flex;
     align-items: center;
     position: relative;
@@ -132,7 +132,7 @@
     }
 }
 
-.checkbox-label {
+.rui-checkbox-label {
     margin-left: 2px;
     cursor: pointer;
     font-size: .9rem;

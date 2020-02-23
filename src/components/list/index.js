@@ -5,7 +5,7 @@ export const List = (props) => {
     const listClass = () => {
         let result = '';
         let className = {
-            list: 'list',
+            list: 'rui-list',
             size: props.size ? props.size : '',
             dark: props.dark ? 'dark' : '',
             className: props.className ? props.className : ''
@@ -19,7 +19,7 @@ export const List = (props) => {
 
     return (
         <div className={listClass()}>
-            {props.header ? <div className="list-header">{props.header}</div> : ''}
+            {props.header ? <div className="rui-list-header">{props.header}</div> : ''}
             {props.children}
         </div>
     )
@@ -29,10 +29,9 @@ export const ListItem = (props) => {
     const itemClass = () => {
         let result = '';
         let className = {
-            item: 'list-item',
+            item: 'rui-list-item',
             roundedActive: props.roundedActive ? 'rounded' : '',
-            right: props.right && !props.left ? 'right' : '',
-            left: props.left && !props.right ? 'left' : '',
+            right: props.leftBorder ? 'left' : 'right',
             active: props.isActiveItem ? 'active' : '',
             hover: props.hover ? 'hover' : '',
             noDivider: props.noDivider ? '' : 'divider',
@@ -51,15 +50,15 @@ export const ListItem = (props) => {
             {
                 !props.render ?
                 <React.Fragment>
-                    <div className="list-item__left-side">
-                        <div className="list-item__title-row">
+                    <div className="rui-list-item__left-side">
+                        <div className="rui-list-item__title-row">
                             {props.icon ? <Icon name={props.icon}/> : ''}
                             {props.checkbox}
                             {props.item}
                         </div>
-                        {props.subTitle ? <div className="list-subtitle">{props.subTitle}</div> : ''}
+                        {props.subTitle ? <div className="rui-list-subtitle">{props.subTitle}</div> : ''}
                     </div>
-                    <div className="list-item__right-side">
+                    <div className="rui-list-item__right-side">
                         {props.controls}
                     </div>
                 </React.Fragment> :

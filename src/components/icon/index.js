@@ -158,8 +158,8 @@ export const Icon = (props) => {
     }
 
     const iconClass = () => {
-        if (props.className) return `icon ${props.className}`
-        else return 'icon'
+        if (props.className) return `rui-icon ${props.className}`
+        else return 'rui-icon'
     }
 
     return (

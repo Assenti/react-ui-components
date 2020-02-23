@@ -4,7 +4,7 @@ export const Badge = (props) => {
     const badgeClass = () => {
         let result = '';
         let className = {
-            btn: 'badge-container',
+            btn: 'rui-badge-container',
             rounded: props.rounded ? 'rounded' : '',
             color: props.color ? props.color : '',
             className: props.className ? props.className : ''
@@ -24,7 +24,7 @@ export const Badge = (props) => {
     return (
         <div className={badgeClass()}>
             {props.parent}
-            <div className="badge">
+            <div className="rui-badge">
                 {visibility() ? props.value : ''}
             </div>
         </div>

@@ -199,9 +199,9 @@ export const PaginationPage = () => {
     }
 
     return (
-        <div className="page" ref={parent}>
+        <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="page-title">Pagination Component</div>
+                <div className="rui-page-title">Pagination Component</div>
                 <div onClick={goToApi} className="link fz-13 fw-bold">API</div>
             </div>
             <Card outlined color="primary" title="Default pagination (in different colors)">

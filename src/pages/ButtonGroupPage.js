@@ -145,9 +145,9 @@ const icons = ['format-align-left', 'format-align-center', 'format-align-right']
 
 export const ButtonGroupPage = () => {
     return (
-        <div className="page">
+        <div className="rui-page">
             <div className="row align-center space-between">
-                <div className="page-title">ButtonGroup Component</div>
+                <div className="rui-page-title">ButtonGroup Component</div>
             </div>
             <Card outlined color="primary" title="ButtonGroup types">
                 <div className="row align-center my-10">

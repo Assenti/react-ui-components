@@ -3,7 +3,7 @@ import React from 'react';
 export const Preloader = (props) => {
     return (
         <React.Fragment>
-            {props.visible ? <div className="preloader"
+            {props.visible ? <div className="rui-preloader"
                 style={{ background: props.backgroundColor ? props.backgroundColor : ''}}>
                 {
                     props.preloader ? props.preloader :

@@ -1,40 +1,15 @@
-.input {
-    height: 50px;
-    outline: none;
-    padding: 5px 10px;
-    border: 1px solid lightgray;
-    font-size: 1rem;
-    background-color: $lightgray;
-    border-radius: 2px;
-
-    &:focus {
-        border-color: $info;
-        transition: all .2s ease-in-out;
-        background-color: transparent;
-    }
-
-    &:hover {
-        border-color: $info;
-        transition: all .2s ease-in-out;
-    }
-
-    .small {
-        font-size: .8rem !important;
-    }
-}
-
-.input-field {
+.rui-input-field {
     margin: 5px;
     width: 100%;
 
     &.lifted:not(.disabled) {
-        .input-container {
-            box-shadow: 0 0 4px rgba(black, .2);
+        .rui-input-container {
+            box-shadow: 0 0 2px rgba(black, .3);
         }
     }
 
     &.disabled {
-        .input-container,
+        .rui-input-container,
         input,
         textarea {
             cursor: not-allowed;
@@ -42,19 +17,19 @@
     }
 
     &.rounded {
-        .input-container {
+        .rui-input-container {
             border-radius: 60px;
         }
     }
 
     &.smooth {
-        .input-container {
-            border-radius: $radius * 2;
+        .rui-input-container {
+            border-radius: $radius * 2.3;
         }
     }
 
     &:not(.rounded):not(.smooth) {
-        .input-container {
+        .rui-input-container {
             border-radius: $radius;
         }
     }
@@ -69,24 +44,39 @@
 
     & > label {
         display: block;
-        font-size: .8rem;
+        font-size: .85rem;
         user-select: none;
         -moz-user-select: none;
         transition: all .2s ease-in-out;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        padding: 2px 0;
+        padding: 3px 0;
+        color: $dark;
+        cursor: pointer;
+    }
+
+    i {
+        svg {
+            path {
+                fill: gray;
+            }
+        }
+    }
+
+    .rui-input-field__hint {
+        padding: 3px 0;
+        font-size: .8rem;
         color: $dark;
     }
 
     &:not(.medium):not(.large) {
-        .input-container {
+        .rui-input-container {
             input,
             textarea {
                 height: $defaultSize;
-                padding: 0 5px;
-                font-size: 1rem;
+                padding: 0 8px;
+                font-size: $defaultFont;
             }
 
             svg {
@@ -99,11 +89,11 @@
     }
 
     &.medium {
-        .input-container {
+        .rui-input-container {
             input {
                 height: $mediumSize;
                 padding: 0 8px;
-                font-size: 1.1rem;
+                font-size: $mediumFont;
             }
 
             svg {
@@ -116,25 +106,20 @@
     }
 
     &.large {
-        .input-container {
+        .rui-input-container {
             input {
                 height: $largeSize;
                 padding: 0 10px;
-                font-size: 1.3rem;
+                font-size: $largeFont;
             }
 
             svg {
-                min-width: 24px;
-                min-height: 24px;
-                width: 24px;
-                height: 24px;
+                min-width: 20px;
+                min-height: 20px;
+                width: 20px;
+                height: 20px;
             }
         }
-    }
-
-    .input-field__hint {
-        font-size: .8rem;
-        color: $dark;
     }
 
     &.primary {
@@ -142,7 +127,7 @@
             color: $primary;
         }
 
-        .input-container:hover {
+        .rui-input-container:hover {
             border-color: $primary;
             background-color: #fff;
             transition: all .2s ease-in-out;
@@ -157,9 +142,10 @@
             }
         }
 
-        .input-container.focus {
+        .rui-input-container.focus {
             border-color: $primary;
             background-color: #fff;
+            box-shadow: 0 0 3px 1px rgba($primary, .3);
             transition: all .2s ease-in-out;
 
             svg:first-child {
@@ -170,21 +156,13 @@
             }
         }
     }
-
-    i {
-        svg {
-            path {
-                fill: gray;
-            }
-        }
-    }
     
     &.info {
         label.active {
             color: $info;
         }
 
-        .input-container:hover {
+        .rui-input-container:hover {
             border-color: $info;
             background-color: #fff;
             transition: all .2s ease-in-out;
@@ -199,8 +177,9 @@
             }
         }
 
-        .input-container.focus {
+        .rui-input-container.focus {
             border-color: $info;
+            box-shadow: 0 0 3px 1px rgba($info, .3);
             background-color: #fff;
             transition: all .2s ease-in-out;
 
@@ -219,7 +198,7 @@
             color: $error;
         }
 
-        .input-container:hover {
+        .rui-input-container:hover {
             border-color: $error;
             background-color: #fff;
             transition: all .2s ease-in-out;
@@ -234,9 +213,10 @@
             }
         }
 
-        .input-container.focus {
+        .rui-input-container.focus {
             border-color: $error;
             background-color: #fff;
+            box-shadow: 0 0 3px 1px rgba($error, .3);
             transition: all .2s ease-in-out;
 
             svg:first-child,
@@ -254,7 +234,7 @@
             color: $success;
         }
 
-        .input-container:hover {
+        .rui-input-container:hover {
             border-color: $success;
             background-color: #fff;
             transition: all .2s ease-in-out;
@@ -269,8 +249,9 @@
             }
         }
 
-        .input-container.focus {
+        .rui-input-container.focus {
             border-color: $success;
+            box-shadow: 0 0 3px 1px rgba($success, .3);
             background-color: #fff;
             transition: all .2s ease-in-out;
 
@@ -284,7 +265,7 @@
         }
     }
     
-    .input-container {
+    .rui-input-container {
         display: inline-flex;
         align-items: center;
         width: 100%;
@@ -293,18 +274,38 @@
         outline: none;
         overflow: hidden;
 
-        .btn {
+        .rui-btn {
             border-radius: 0;
-        }
-        
-        svg:first-child {
-            margin-left: 5px;
+            margin: 0;
         }
 
-        svg:last-child {
-            margin-right: 5px;
+        .rui-input-prefix {
+            margin-left: 5px;
         }
-    
+        
+        .rui-input-suffix {
+            .rui-icon {
+                margin-right: 5px;
+            }
+        }
+
+        .rui-input-clear {
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            margin: 0 5px;
+                
+            svg {
+                width: 20px;
+                height: 20px;
+                min-width: 20px;
+
+                path {
+                    fill: gray !important;
+                }
+            }
+        }
+
         & > input,
         & > textarea {
             outline: none;
@@ -319,230 +320,9 @@
             align-items: center;
             justify-content: center;
             margin-right: 5px;
-            // z-index: 2;
 
             svg {
                 margin-right: 0 !important;
-            }
-        }
-    }
-}
-
-.input-uploader {
-    width: 100%;
-    margin: 5px 0;
-
-    .input-uploader__container {
-        width: 100%;
-        position: relative;
-        display: flex;
-        align-items: center;
-        border: 1px solid lightgray;
-        background-color: $lightgray;
-
-        &.lifted {
-            box-shadow: 0 0 4px rgba(black, .2);
-        }
-
-        &:not(.disabled) {
-            cursor: pointer;
-
-            label, i {
-                cursor: pointer;
-            }
-        }
-
-        &.disabled {
-            cursor: not-allowed;
-
-            label, i {
-                cursor: not-allowed;
-            }
-        }
-
-        &:not(.rounded):not(.smooth) {
-            border-radius: $radius;
-        }
-
-        &.rounded {
-            border-radius: 60px;
-        }
-
-        &.smooth {
-            border-radius: $radius * 2;
-        }
-
-        &:not(.medium):not(.large) {
-            height: $defaultSize;
-        }
-
-        &.medium {
-            height: $mediumSize;
-
-        }
-
-        &.large {
-            height: $largeSize;
-        }
-
-        &:hover {
-            transition: all .2s ease-in-out;
-
-            label {
-                transition: all .2s ease-in-out;
-            }
-
-            path {
-                transition: all .2s ease-in-out;
-            }
-        }
-
-        &.info {
-            &:hover {
-                border-color: $info;
-        
-                label {
-                    color: $info;
-                }
-
-                path {
-                    fill: $info;
-                }
-            }
-        }
-        
-        &.primary {
-            &:hover {
-                border-color: $primary;
-        
-                label {
-                    color: $primary;
-                }
-
-                path {
-                    fill: $primary;
-                }
-            }
-        }
-
-        &.success {
-            &:hover {
-                border-color: $success;
-        
-                label {
-                    color: $success;
-                }
-
-                path {
-                    fill: $success;
-                }
-            }
-        }
-
-        &.error {
-            &:hover {
-                border-color: $error;
-        
-                label {
-                    color: $error;
-                }
-
-                path {
-                    fill: $error;
-                }
-            }
-        }
-
-        i {
-            margin: 0 5px;
-            svg {
-                path {
-                    fill: gray;
-                }
-            }
-        }
-
-        span {
-            font-size: .9rem;
-            color: gray;
-        }
-
-        label {
-            display: block;
-            width: calc(100% - 50px);
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        input {
-            position: absolute;
-            top: 0;
-            left: 0;
-            outline: none;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-
-            &:not(:disabled) {
-                cursor: pointer;
-            }
-
-            &:disabled {
-                cursor: not-allowed;
-            }
-        }
-    }
-
-    .input-uploader__items {
-        margin-top: 5px;
-        border: 1px solid lightgray;
-        overflow: hidden;
-
-        &:not(.rounded) {
-            border-radius: $radius;
-        }
-    
-        &.rounded {
-            border-radius: 10px;
-        }
-    }
-
-    .input-uploader__item {
-        padding: 5px 0;
-        padding-left: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid lightgray;
-        
-
-        & > span {
-            width: calc(100% - 30px);
-            color: $dark;
-            font-size: .9rem;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-            user-select: none;
-        }
-
-        &:last-child {
-            border-bottom: none;
-        }
-
-        &:hover {
-            background-color: $lightgray;
-            transition: all .2s ease-in-out;
-        }
-
-        i {
-            margin: 0 5px;
-            cursor: pointer;
-            svg {
-                path {
-                    fill: $error;
-                }
             }
         }
     }

@@ -30,7 +30,7 @@ export const BackTopBtn = (props) => {
     const btnBackTopClass = () => {
         let result = '';
         let className = {
-            name: 'btn-back-top',
+            name: 'rui-btn-back-top',
             dark: props.dark ? 'dark' : ''
         }
         for (const key in className) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tag, Icon, Card } from '../components';
+import { Tag, Card } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -13,7 +13,7 @@ export const HomePage = () => {
 % yarn add @assenti/rui-components
 `
     const stylesInstallation = 
-`// Import styles in index.js / index.ts (or your main.js / main.ts file)
+`// Import styles in index.js
 import '@assenti/react-ui-components/build/css/main.css';`;
 
     const codeUsage = 
@@ -33,7 +33,7 @@ function App() {
 export default App;`
 
     return (
-        <React.Fragment>
+        <div className="rui-page">
             <h2 className="text-night">Welcome to React UI Components</h2>
             <div className="row align-center wrap">
                 <Tag value={<strong>Main Goal</strong>} color="info"/>
@@ -57,7 +57,7 @@ export default App;`
                     {codeUsage}
                 </SyntaxHighlighter>
             </Card>
-            <Card outlined 
+            {/* <Card outlined 
                 color="primary" 
                 title="TypeScript" 
                 className="mt-15">
@@ -65,7 +65,7 @@ export default App;`
                     <div>TypeScript supported. Just install package to your react typescript app and use it.</div>
                     <div className="py-10 fz-9 text-dark">Warning: components types declaration in process... But it does not interfere with use.</div>
                 </div>
-            </Card>
-        </React.Fragment>
+            </Card> */}
+        </div>
     )
 }

@@ -1,4 +1,4 @@
-.card {
+.rui-card {
     border: 1px solid transparent;
     border-radius: $radius * 2;
     padding: 15px;
@@ -9,7 +9,7 @@
         border-color: $night;
         box-shadow: 0 0 5px rgba(black, .6);
 
-        .card-header {
+        .rui-card-header {
             color: #fff;
         }
     }
@@ -47,7 +47,7 @@
         position: relative;
         margin-top: 15px;
 
-        .card-title {
+        .rui-card-title {
             position: absolute;
             top: -13px;
             left: 15px;
@@ -63,7 +63,7 @@
     &.info {
         border-color: $info;
 
-        .card-title {
+        .rui-card-title {
             color: $info;
         }
     }
@@ -71,7 +71,7 @@
     &.primary {
         border-color: $primary;
 
-        .card-title {
+        .rui-card-title {
             color: $primary;
         }
     }
@@ -79,7 +79,7 @@
     &.success {
         border-color: $success;
 
-        .card-title {
+        .rui-card-title {
             color: $success;
         }
     }
@@ -87,17 +87,17 @@
     &.error {
         border-color: $error;
 
-        .card-title {
+        .rui-card-title {
             color: $error;
         }
     }
 }
 
-.card-header {
+.rui-card-header {
     padding: 10px;
 }
 
-.card-footer {
+.rui-card-footer {
     padding: 5px 0;
     font-size: .8rem;
     color: $dark;

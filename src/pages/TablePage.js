@@ -235,10 +235,10 @@ export const TablePage = () => {
     }
 
     return (
-        <div className="page" ref={parent}>
+        <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="page-title">Table Component</div>
-                <div onClick={goToApi} className="link fz-13 fw-bold">API</div>
+                <div className="rui-page-title">Table Component</div>
+                <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
             <Card outlined color="primary" title="Table with order index, no hover, stripped and footer">
                 <Table

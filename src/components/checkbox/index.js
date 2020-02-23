@@ -5,7 +5,7 @@ export const Checkbox = (props) => {
     const checkboxClass = () => {
         let result = '';
         let className = {
-            checkbox: 'checkbox',
+            checkbox: 'rui-checkbox',
             color: props.color ? props.color : '',
             disabled: props.disabled ? 'disabled' : ''
         }
@@ -19,7 +19,7 @@ export const Checkbox = (props) => {
     const checkboxLabelClass = () => {
         let result = '';
         let className = {
-            checkbox: 'checkbox-label',
+            checkbox: 'rui-checkbox-label',
             color: props.color ? props.color : '', 
             disabled: props.disabled ? 'disabled' : ''
         }
@@ -32,8 +32,8 @@ export const Checkbox = (props) => {
 
     return (
         <div className={props.className ? 
-                `checkbox-wrapper ${props.className}` : 
-                'checkbox-wrapper'}>
+                `rui-checkbox-wrapper ${props.className}` : 
+                'rui-checkbox-wrapper'}>
             <label className={checkboxClass()}>
                 <input
                     type="checkbox"

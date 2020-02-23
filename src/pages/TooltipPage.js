@@ -48,9 +48,9 @@ const items = [
 
 export const TooltipPage = () => {
     return (
-        <div className="page">
+        <div className="rui-page">
             <div className="row align-center space-between">
-                <div className="page-title">Tooltip Component</div>
+                <div className="rui-page-title">Tooltip Component</div>
             </div>
             <Card outlined color="primary" title="Tooltips">
                 <div className="row align-center py-20">

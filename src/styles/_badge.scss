@@ -1,50 +1,50 @@
-.badge-container {
+.rui-badge-container {
     display: inline-flex;
     justify-content: flex-end;
     position: relative;
     padding: 2px;
 
     &.rounded {
-        .badge {
+        .rui-badge {
             border-radius: 60px;
         }
     }
 
     &:not(.rounded) {
-        .badge {
+        .rui-badge {
             border-radius: $radius;
         }
     }
 
     &.primary {
-        .badge {
+        .rui-badge {
             background-color: $primary;
             color: #fff;
         }
     }
 
     &.info {
-        .badge {
+        .rui-badge {
             background-color: $info;
             color: #fff;
         }
     }
 
     &.success {
-        .badge {
+        .rui-badge {
             background-color: $success;
             color: #fff;
         }
     }
 
     &.error {
-        .badge {
+        .rui-badge {
             background-color: $error;
             color: #fff;
         }
     }
 
-    .badge {
+    .rui-badge {
         position: absolute;
         bottom: calc(100%);
         left: calc(100% - 10px);

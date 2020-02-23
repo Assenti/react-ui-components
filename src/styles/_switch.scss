@@ -1,4 +1,4 @@
-.switch-container {
+.rui-switch-container {
     display: inline-flex;
     align-items: center;
     margin: 0 5px;
@@ -7,7 +7,7 @@
         flex-direction: column;
         display: inline-flex;
 
-        & > .switch {
+        & > .rui-switch {
             height: 34px;
             width: 18px;
 
@@ -31,7 +31,7 @@
         }
     }
 
-    &:not(.vertical) > .switch {
+    &:not(.vertical) > .rui-switch {
 
         & > span {
             top: -2px;
@@ -52,7 +52,7 @@
         }
     }
 
-    .switch {
+    .rui-switch {
         border-radius: 60px;
         border: 1px solid lightgray;
         width: 34px;
@@ -151,21 +151,22 @@
     }
 
     svg {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        min-width: 18px;
+        height: 18px;
     }
 
-    .switch-right-label,
-    .switch-left-label {
-        font-size: .9rem;
+    .rui-switch-right-label,
+    .rui-switch-left-label {
+        font-size: $defaultFont;
     }
 
     &:not(.vertical) {
-        .switch-left-label {
+        .rui-switch-left-label {
             margin-right: 5px;
         }
 
-        .switch-right-label {
+        .rui-switch-right-label {
             margin-left: 5px;
         }
 
@@ -179,11 +180,11 @@
     }
 
     &.vertical {
-        .switch-left-label {
+        .rui-switch-left-label {
             margin-bottom: 5px;
         }
 
-        .switch-right-label {
+        .rui-switch-right-label {
             margin-top: 5px;
         }
 

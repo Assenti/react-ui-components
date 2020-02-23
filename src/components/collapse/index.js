@@ -9,7 +9,7 @@ export const Collapse = (props) => {
     const collapseClass = () => {
         let result = '';
         let className = {
-            name: 'collapse',
+            name: 'rui-collapse',
             border: props.border ? 'bordered' : '',
             title: props.title ? 'titled' : '',
             position: !props.title ? (props.position ? props.position : 'right') : '',
@@ -24,7 +24,7 @@ export const Collapse = (props) => {
 
     return (
         <div className={collapseClass()}>
-            <div className="collapse-trigger">
+            <div className="rui-collapse-trigger">
                 {props.title ? <span>{props.title}</span> : ''}
                 {props.tooltip ?
                     <Tooltip tooltip={props.tooltip}>

@@ -1,8 +1,8 @@
-.pagination {
+.rui-pagination {
     display: flex;
     align-items: center;
 
-    .select-menu {
+    .rui-select-menu {
         margin: 0;
     }
 
@@ -14,11 +14,11 @@
         justify-content: flex-end;
     }
 
-    &.rounded > .pagination-item {
+    &.rounded > .rui-pagination-item {
         border-radius: 50%;
     }
 
-    &:not(.medium):not(.large) > .pagination-item {
+    &:not(.medium):not(.large) > .rui-pagination-item {
         height: $defaultSize;
         width: $defaultSize;
         font-size: .9rem;
@@ -29,7 +29,7 @@
         }
     }
 
-    &.medium > .pagination-item {
+    &.medium > .rui-pagination-item {
         height: $mediumSize;
         width: $mediumSize;
         font-size: 1rem;
@@ -40,7 +40,7 @@
         }
     }
 
-    &.large > .pagination-item {
+    &.large > .rui-pagination-item {
         height: $largeSize;
         width: $largeSize;
         font-size: 1.1rem;
@@ -52,7 +52,7 @@
     }
 
     &.info {
-        .pagination-item {
+        .rui-pagination-item {
             &.active {
                 background-color: $info;
                 border-color: $info;
@@ -71,7 +71,7 @@
     }
 
     &.primary {
-        .pagination-item {
+        .rui-pagination-item {
             &.active {
                 background-color: $primary;
                 border-color: $primary;
@@ -90,7 +90,7 @@
     }
 
     &.success {
-        .pagination-item {
+        .rui-pagination-item {
             &.active {
                 background-color: $success;
                 border-color: $success;
@@ -109,7 +109,7 @@
     }
 
     &.error {
-        .pagination-item {
+        .rui-pagination-item {
             &.active {
                 background-color: $error;
                 border-color: $error;
@@ -127,7 +127,7 @@
         }
     }
 
-    .pagination-item {
+    .rui-pagination-item {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -170,7 +170,7 @@
     }
 }
 
-.pagination-per-page {
+.rui-pagination-per-page {
     display: flex;
     align-items: center;
     margin-left: 5px;

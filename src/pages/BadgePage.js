@@ -80,8 +80,8 @@ export const BadgePage = () => {
     const [badge, setBadge] = useState(true);
 
     return (
-        <div className="page">
-            <div className="page-title">Badge Component</div>
+        <div className="rui-page">
+            <div className="rui-page-title">Badge Component</div>
             <Card>
                 <div className="row align-center">
                     <Badge 

@@ -1,4 +1,4 @@
-.collapse {
+.rui-collapse {
     margin: 5px 0;
 
     &.bordered {
@@ -8,24 +8,24 @@
     }
 
     &.titled {
-        .collapse-trigger {
+        .rui-collapse-trigger {
             justify-content: space-between;
         }
     }
 
     &.left:not(.titled) {
-        .collapse-trigger {
+        .rui-collapse-trigger {
             justify-content: flex-start;
         }
     }
 
     &.right:not(.titled) {
-        .collapse-trigger {
+        .rui-collapse-trigger {
             justify-content: flex-end;
         }
     }
 
-    .collapse-trigger {
+    .rui-collapse-trigger {
         min-height: $defaultSize;
         display: flex;
         align-items: center;
@@ -53,7 +53,7 @@
         }
     }
 
-    .collapse-content {
+    .rui-collapse-content {
         box-sizing: border-box !important;
         padding: 5px;
         background-color: transparent;

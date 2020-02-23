@@ -9,7 +9,7 @@ export const Drawer = (props) => {
     const drawerClass = () => {
         let result = '';
         let className = {
-            name: 'drawer',
+            name: 'rui-drawer',
             collapsable: props.collapsable ? 'collapsable' : '',
             smooth: props.smooth ? 'smooth' : '',
             min: props.min ? 'min' : '',
@@ -50,8 +50,8 @@ export const Drawer = (props) => {
                 classNames="drawer-background"
                 unmountOnExit>
                 <div className={props.drawer ? 
-                        'drawer-background' : 
-                        'drawer-background none'} 
+                        'rui-drawer-background' : 
+                        'rui-drawer-background none'} 
                         onClick={handleClose}>
                     <CSSTransition
                         in={props.drawer}
@@ -63,13 +63,13 @@ export const Drawer = (props) => {
                             timeout={300}
                             classNames="expand">
                                 <div className={drawerClass()}>
-                                    <div className="drawer-content">
+                                    <div className="rui-drawer-content">
                                         {props.header ? <div className={props.headerCentered ? 
-                                                'drawer-header centered' : 'drawer-header'}>
+                                                'rui-drawer-header centered' : 'rui-drawer-header'}>
                                                     {props.header}</div> : ''}
                                         {props.children}
                                     </div>
-                                    {props.collapsable ? <div className="drawer-footer">
+                                    {props.collapsable ? <div className="rui-drawer-footer">
                                         <Tooltip tooltip={props.min ? 'Expand' : 'Collapse'}>
                                             <Button
                                                 dark={props.dark}
@@ -94,13 +94,13 @@ export const Drawer = (props) => {
                     timeout={300}
                     classNames="expand">
                         <div className={drawerClass()}>
-                            <div className="drawer-content">
+                            <div className="rui-drawer-content">
                                 {props.header ? <div className={props.headerCentered ? 
-                                        'drawer-header centered' : 'drawer-header'}>
+                                        'rui-drawer-header centered' : 'rui-drawer-header'}>
                                             {props.header}</div> : ''}
                                 {props.children}
                             </div>
-                            {props.collapsable ? <div className="drawer-footer">
+                            {props.collapsable ? <div className="rui-drawer-footer">
                                 <Tooltip tooltip={props.min ? 'Expand' : 'Collapse'}>
                                     <Button
                                         dark={props.dark}

@@ -21,7 +21,7 @@ export const Tooltip = (props) => {
     const tooltipClass = () => {
         let result = '';
         let className = {
-            name: 'tooltip',
+            name: 'rui-tooltip',
             position: props.position ? props.position : '',
             className: props.className ? props.className : ''
         }
@@ -33,7 +33,7 @@ export const Tooltip = (props) => {
    
     return (
         <div className={tooltipClass()}>
-            <span className="tooltip__text">{props.tooltip}</span>
+            <span className="rui-tooltip__text">{props.tooltip}</span>
             {props.children}
         </div>
     )

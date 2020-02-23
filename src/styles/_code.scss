@@ -8,14 +8,3 @@ pre {
         font-size: .85rem !important;
     }
 }
-
-.icon.code-copy {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
-
-    &:active {
-        transform: scale(.97);
-    }
-}

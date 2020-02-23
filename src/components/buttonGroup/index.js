@@ -7,7 +7,7 @@ export const ButtonGroup = (props) => {
     const componentClass = () => {
         let result = '';
         let className = {
-            btn: 'btn-group',
+            btn: 'rui-btn-group',
             lifted: props.lifted ? 'lifted' : '',
             icons: props.icon ? 'icons' : '',
             size: props.size ? props.size : '',

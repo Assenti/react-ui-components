@@ -156,10 +156,10 @@ export const DrawerPage = () => {
     const [page, setPage] = useState(stack[0].name)
 
     return (
-        <div className="page">
-            <div className="page-title">Drawer Component</div>
+        <div className="rui-page">
+            <div className="rui-page-title">Drawer Component</div>
             <Card flat className="overflow-y pa-0">
-                <div className="app" style={{ minHeight: 260 }}>
+                <div className="rui-app" style={{ minHeight: 260 }}>
                     <Drawer
                         drawer={drawer}
                         min={drawerMin}
@@ -200,7 +200,7 @@ export const DrawerPage = () => {
                             </List>
                         }
                     </Drawer>
-                    <div className="page">
+                    <div className="rui-page">
                         <Header 
                             title="Header" 
                             leftControl

@@ -1,14 +1,14 @@
-.drawer-background {
+.rui-drawer-background {
     background-color: rgba(black, .4);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: 999;
+    z-index: 9999;
 }
 
-.drawer {
+.rui-drawer {
     top: 0;
     left: 0;
     height: auto;
@@ -19,7 +19,7 @@
     flex-direction: column;
     justify-content: space-between;
 
-    .drawer-header {
+    .rui-drawer-header {
         display: flex;
         align-items: center;
         height: 50px;
@@ -42,7 +42,7 @@
         border-top-right-radius: $radius * 2;
         border-bottom-right-radius: $radius * 2;
 
-        .drawer-header {
+        .rui-drawer-header {
             border-top-right-radius: $radius * 2;
         }
     }
@@ -55,14 +55,14 @@
     &.dark {
         background-color: $night;
 
-        .drawer-header {
+        .rui-drawer-header {
             color: #000;
             background-color: $night;
         }
     }
 
     &:not(.dark) {
-        .drawer-header {
+        .rui-drawer-header {
             color: $dark;
             background-color: $lightgray;
         }
@@ -77,13 +77,13 @@
         width: 50px !important;
         min-width: 50px !important; 
         
-        .drawer-content {
+        .rui-drawer-content {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .list-item {
+        .rui-list-item {
             display: flex;
             justify-content: center;
             padding-left: 0 !important;
@@ -94,32 +94,32 @@
         }
     }
 
-    .drawer-content {
+    .rui-drawer-content {
         height: 100%;
         overflow-x: visible !important;
         overflow-y: auto;
 
         div,
-        .list,
-        .list-item {
+        .rui-list,
+        .rui-list-item {
             overflow-x: visible !important;
         }
     }
 
     &:not(.collapsable) {
-        .drawer-content {
+        .rui-drawer-content {
             max-height: 100%;
         }
     }
 
     &.collapsable {
-        .drawer-content {
+        .rui-drawer-content {
             max-height: calc(100% - 40px);
         }
     }
 }
 
-.drawer-footer {
+.rui-drawer-footer {
     display: flex;
     align-items: center;
     justify-content: center;

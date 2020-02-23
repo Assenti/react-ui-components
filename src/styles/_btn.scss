@@ -1,4 +1,4 @@
-.btn {
+.rui-btn {
     cursor: pointer;
     user-select: none;
     -moz-user-select: none;
@@ -14,7 +14,7 @@
     padding: 0 8px;
     overflow: hidden;
 
-    .btn__text {
+    .rui-btn__text {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -32,19 +32,19 @@
     }
 
     &:not(.icon-left) {
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             margin-left: 5px;
         }
     }
 
-    .btn__allotted-icon {
+    .rui-btn__allotted-icon {
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: $gray;
     }
 
-    &:not(.icon) {
+    &:not(.rui-icon) {
         min-width: 80px;
     }
 
@@ -63,18 +63,18 @@
     }
 
     &:not(.icon):not(.medium):not(.large),
-    & > .btn__text {
+    & > .rui-btn__text {
         height: $defaultSize;
         font-size: $defaultFont;
 
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             height: $defaultSize;
             width: $defaultSize + 5px;
             min-width: $defaultSize + 5px;
         }
     }
 
-    &.uppercase > .btn__text {
+    &.uppercase > .rui-btn__text {
         text-transform: uppercase;
         font-size: $defaultFont;
     }
@@ -106,12 +106,12 @@
         height: $mediumSize;
         padding: 0 10px;
 
-        & > .btn__text {
+        & > .rui-btn__text {
             height: $mediumSize;
             font-size: $mediumFont;
         }
 
-        &.uppercase > .btn__text {
+        &.uppercase > .rui-btn__text {
             font-size: $mediumFont;
         }
 
@@ -121,7 +121,7 @@
             height: $mediumSize;
         }
 
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             height: $mediumSize;
             width: $mediumSize;
             min-width: $mediumSize + 5px;
@@ -132,13 +132,13 @@
         height: $largeSize;
         padding: 0 15px;
 
-        & > .btn__text {
+        & > .rui-btn__text {
             height: $largeSize;
             font-size: 1rem;
         }
 
         &.uppercase {
-            & > .btn__text {
+            & > .rui-btn__text {
                 font-size: $largeFont;
             }
         }
@@ -149,7 +149,7 @@
             height: $largeSize;
         }
 
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             width: $largeSize;
             height: $largeSize;
             min-width: $largeSize + 5px;
@@ -196,7 +196,7 @@
 
         &:not(:disabled):hover,
         &.active,
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             background-color: darken($primary, 8%);
         }
 
@@ -212,7 +212,7 @@
 
         &:not(:disabled):hover,
         &.active,
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             background-color: $primary;
             border-color: $primary;
             color: #fff;
@@ -235,7 +235,7 @@
         }
 
         &.active,
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             background-color: darken($gray, 10%);
         }
     }
@@ -250,7 +250,7 @@
 
         &:not(:disabled):hover,
         &.active,
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             background-color: $gray;
             border-color: $gray;
             color: $dark;
@@ -267,7 +267,7 @@
 
         &:not(:disabled):hover,
         &.active,
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             background-color: darken($info, 10%);
         }
 
@@ -283,7 +283,7 @@
 
         &:not(:disabled):hover,
         &.active,
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             background-color: $info;
             border-color: $info;
             color: #fff;
@@ -304,7 +304,7 @@
 
         &:not(:disabled):hover,
         &.active,
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             background-color: darken($success, 10%);
         }
 
@@ -320,7 +320,7 @@
 
         &:not(:disabled):hover,
         &.active,
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             color: #fff;
             background-color: $success;
             border-color: $success;
@@ -341,7 +341,7 @@
 
         &:not(:disabled):hover,
         &.active,
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             background-color: darken($error, 10%);
         }
 
@@ -357,7 +357,7 @@
 
         &:not(:disabled):hover,
         &.active,
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             color: #fff;
             background-color: $error;
 
@@ -377,7 +377,7 @@
 
         &:not(:disabled):hover,
         &.active,
-        .btn__allotted-icon {
+        .rui-btn__allotted-icon {
             background-color: darken($dark, 15%);
         }
 
@@ -435,7 +435,7 @@
     100% { transform: rotate(360deg); }
 }
 
-.btn-back-top {
+.rui-btn-back-top {
     transition: all .5s ease-in-out;
     position: absolute;
     z-index: 999;
@@ -490,7 +490,7 @@
     transition: opacity 500, transform 500;;
 }
 
-.btn-group {
+.rui-btn-group {
     border-radius: $radius;
     overflow: hidden;
     display: inline-flex;
@@ -499,7 +499,7 @@
         box-shadow:  0 1px 2px 0 rgba(34,36,38,.15);
     }
 
-    .btn {
+    .rui-btn {
         min-width: 30px;
         border-radius: 0;
         margin: 0;

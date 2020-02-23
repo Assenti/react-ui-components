@@ -1,4 +1,4 @@
-.modal-container {
+.rui-modal-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -8,14 +8,14 @@
     align-items: center;
     justify-content: center;
     background-color: rgba(black, .4);
-    z-index: 100;
+    z-index: 1000;
 
     &.hidden {
         display: none;
     }
 }
 
-.modal {
+.rui-modal {
     padding: 15px;
     border-radius: $radius;
     border: 1px solid $lightgray;
@@ -25,12 +25,55 @@
     background-color: $light;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;    
-}
+    justify-content: space-between;
 
-.modal-header {
-    padding: 10px 0;
-    font-size: 1.1rem;
+    &.dark {
+        background-color: $night;
+        border-color: $night;
+
+        .rui-modal-header {
+            color: #fff;
+
+            .rui-icon {
+                path {
+                    fill: #fff;
+                }
+            }
+        }
+
+        .rui-modal-content {
+            color: #fff;
+        }
+    }
+    
+    .rui-modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+        font-size: $largeFont;
+        font-weight: 600;
+
+        .rui-icon {
+            cursor: pointer;
+            margin: 0 5px;
+            width: 20px;
+            height: 20px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    .rui-modal-footer {
+        border-top: 1px solid lightgray;
+        padding: 10px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
 }
 
 .modal-enter {
@@ -52,16 +95,4 @@
     opacity: 0;
     transform: scale(0.9);
     transition: opacity 300ms, transform 300ms;
-}
-
-.modal-content {
-
-}
-
-.modal-footer {
-    border-top: 1px solid lightgray;
-    padding: 10px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
 }

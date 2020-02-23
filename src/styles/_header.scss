@@ -1,4 +1,4 @@
-.header {
+.rui-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -23,51 +23,51 @@
     &.dark {
         background-color: $night;
 
-        .header__title {
+        .rui-header__title {
             color: white;
         }
     }
 
     &.primary {
         background-color: $primary;
-        .header__title {
+        .rui-header__title {
             color: white;
         }
     }
 
     &.info {
         background-color: $info;
-        .header__title {
+        .rui-header__title {
             color: white;
         }
     }
 
     &.success {
         background-color: $success;
-        .header__title {
+        .rui-header__title {
             color: white;
         }
     }
 
     &.error {
         background-color: $error;
-        .header__title {
+        .rui-header__title {
             color: white;
         }
     }
 
-    .header__left-side {
+    .rui-header__left-side {
         display: flex;
         align-items: center;
     }
     
-    .header__logo {
+    .rui-header__logo {
         width: 35px;
         height: 35px;
         margin: 0 5px;
     }
     
-    .header__title {
+    .rui-header__title {
         font-size: $largeFont;
         font-weight: 600;
         color: $dark;

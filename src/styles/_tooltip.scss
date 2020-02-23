@@ -1,17 +1,17 @@
-.tooltip {
+.rui-tooltip {
     position: relative;
     display: inline-flex;
     justify-content: center !important;
 
     &:hover {
-        .tooltip__text {
+        .rui-tooltip__text {
             visibility: visible;
             opacity: 1;
             font-size: $defaultFont;
         }
     }
 
-    .tooltip__text {
+    .rui-tooltip__text {
         visibility: hidden;
         white-space: nowrap;
         background-color: rgba(black, .6);
@@ -27,7 +27,7 @@
     }
 
     &:not(.left):not(.right):not(.bottom) {
-        .tooltip__text {
+        .rui-tooltip__text {
             bottom: calc(100% + 5px);
 
             &::after {
@@ -46,7 +46,7 @@
     &.right {
         align-items: center !important;
 
-        .tooltip__text {
+        .rui-tooltip__text {
             left: calc(100% + 5px);
 
             &::after {
@@ -65,7 +65,7 @@
     &.bottom {
         justify-content: center !important;
 
-        .tooltip__text {
+        .rui-tooltip__text {
             top: calc(100% + 5px);
 
             &::after {
@@ -84,7 +84,7 @@
     &.left {
         align-items: center !important;
 
-        .tooltip__text {
+        .rui-tooltip__text {
             right: calc(100% + 5px);
     
             &::after {

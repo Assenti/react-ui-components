@@ -105,9 +105,9 @@ function Example() {
     }
 
     return (
-        <div className="page" ref={blockref}>
+        <div className="rui-page" ref={blockref}>
             <div className="row align-center space-between">
-                <div className="page-title">BackTopBtn Component</div>
+                <div className="rui-page-title">BackTopBtn Component</div>
                 <a className="fz-13 fw-bold" onClick={goToApi}>API</a>
             </div>
             <p>Set the scroll to top button when scroll down the page</p>

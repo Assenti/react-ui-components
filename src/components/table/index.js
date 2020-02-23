@@ -38,7 +38,7 @@ export const Table = (props) => {
     const tableContainerClass = () => {
         let result = '';
         let className = {
-            name: 'table__container',
+            name: 'rui-table__container',
             bordered: props.bordered ? 'bordered' : '',
             grid: props.grid ? 'grid' : '',
             color: props.color ? props.color : '',
@@ -55,7 +55,7 @@ export const Table = (props) => {
     const tableClass = () => {
         let result = '';
         let className = {
-            name: 'table',
+            name: 'rui-table',
             headerColor: props.color ? props.color : '',
             empty: props.items.length === 0 ? 'empty' : '',
             alignment: props.alignment ? props.alignment : '',
@@ -238,17 +238,17 @@ export const Table = (props) => {
             {props.footer || props.checkbox ? 
                 (
                     props.checkbox ? 
-                    <div className="table__footer row space-between">
+                    <div className="rui-table__footer row space-between">
                         <span>{props.selectedText ? props.selectedText : 'Selected: '} <strong>{selected.length}</strong></span>
                         {props.footer}
                     </div> : 
-                    <div className="table__footer">{props.footer}</div>
+                    <div className="rui-table__footer">{props.footer}</div>
                 ) : 
             ''}
             {props.items.length === 0 && !props.loading ?
-                <div className="table__placeholder"><Empty/></div> : ''}
+                <div className="rui-table__placeholder"><Empty/></div> : ''}
             {props.loading ? 
-                <div className={props.loading ? 'table__placeholder loading' : 'table__placeholder'}>
+                <div className={props.loading ? 'rui-table__placeholder loading' : 'rui-table__placeholder'}>
                     <Loading/>
                 </div> 
             : ''}

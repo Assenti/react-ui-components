@@ -1,4 +1,4 @@
-.select-menu {
+.rui-select-menu {
     background-color: $lightgray;
     position: relative;
     border: 1px solid lightgray;
@@ -24,25 +24,25 @@
             margin: 0 7px;
         }
 
-        .select-menu__value,
+        .rui-select-menu__value,
         & > span {
             padding-left: 8px;
         }
 
-        .select-menu__items,
-        .select-menu__subitems {
+        .rui-select-menu__items,
+        .rui-select-menu__subitems {
             border-radius: 10px;
             border-color: lightgray;
         }
 
-        .select-menu__item:first-child,
-        .select-menu__subitem:first-child {
+        .rui-select-menu__item:first-child,
+        .rui-select-menu__subitem:first-child {
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
         }
     
-        .select-menu__item:last-child,
-        .select-menu__subitem:last-child {
+        .rui-select-menu__item:last-child,
+        .rui-select-menu__subitem:last-child {
             border-bottom: none;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
@@ -52,15 +52,15 @@
     &:not(.medium):not(.large) {
         height: $defaultSize;
 
-        .select-menu__item,
-        .select-menu__subitem,
-        .select-menu__value,
+        .rui-select-menu__item,
+        .rui-select-menu__subitem,
+        .rui-select-menu__value,
         & > span {
             font-size: .9rem;
         }
 
         &:not(.rounded) {
-            .select-menu__value,
+            .rui-select-menu__value,
             & > span {
                 padding-left: 5px;
             }
@@ -74,9 +74,9 @@
     &.medium {
         height: $mediumSize;
 
-        .select-menu__item,
-        .select-menu__subitem,
-        .select-menu__value,
+        .rui-select-menu__item,
+        .rui-select-menu__subitem,
+        .rui-select-menu__value,
         & > span {
             font-size: 1rem;
         }
@@ -85,7 +85,7 @@
             margin: 0 8px;
         }
 
-        .select-menu__value,
+        .rui-select-menu__value,
         & > span {
             padding-left: 8px;
         }
@@ -94,9 +94,9 @@
     &.large {
         height: $largeSize;
 
-        .select-menu__item,
-        .select-menu__subitem,
-        .select-menu__value,
+        .rui-select-menu__item,
+        .rui-select-menu__subitem,
+        .rui-select-menu__value,
         & > span {
             font-size: 1rem;
         }
@@ -105,7 +105,7 @@
             margin: 0 8px;
         }
 
-        .select-menu__value,
+        .rui-select-menu__value,
         & > span {
             padding-left: 8px;
         }
@@ -128,8 +128,8 @@
             }
         }
 
-        .select-menu__item.active,
-        .select-menu__subitem.active {
+        .rui-select-menu__item.active,
+        .rui-select-menu__subitem.active {
             color: lightgray;
         }
     }
@@ -150,8 +150,8 @@
             }
         }
 
-        .select-menu__item.active,
-        .select-menu__subitem.active {
+        .rui-select-menu__item.active,
+        .rui-select-menu__subitem.active {
             color: $primary;
         }
     }
@@ -172,8 +172,8 @@
             }
         }
 
-        .select-menu__item.active,
-        .select-menu__subitem.active {
+        .rui-select-menu__item.active,
+        .rui-select-menu__subitem.active {
             color: $info;
         }
     }
@@ -195,8 +195,8 @@
             }
         }
 
-        .select-menu__item.active,
-        .select-menu__subitem.active {
+        .rui-select-menu__item.active,
+        .rui-select-menu__subitem.active {
             color: $success;
         }
     }
@@ -218,8 +218,8 @@
             }
         }
 
-        .select-menu__item.active,
-        .select-menu__subitem.active {
+        .rui-select-menu__item.active,
+        .rui-select-menu__subitem.active {
             color: $error;
         }
     }
@@ -262,12 +262,12 @@
     }
 }
 
-.select-menu__label {
+.rui-select-menu__label {
     font-size: .8rem;
     color: $dark;
 }
 
-.select-menu__value {
+.rui-select-menu__value {
     height: 100%;
     width: 100%;
     cursor: pointer;
@@ -280,7 +280,7 @@
     overflow: hidden;
 }
 
-.select-menu__items {
+.rui-select-menu__items {
     position: absolute;
     left: -1px;
     width: calc(100% + 2px);
@@ -316,7 +316,7 @@
     }
 }
 
-.select-menu__item {
+.rui-select-menu__item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -362,14 +362,14 @@
     }
 }
 
-.select-menu__subitem-title {
+.rui-select-menu__subitem-title {
     text-align: center;
     padding: 8px;
     font-size: 1.1rem;
     font-weight: bold;
 }
 
-.select-menu__subitems {
+.rui-select-menu__subitems {
     display: none;
     position: absolute;
     left: calc(100% + 1px);
@@ -395,7 +395,7 @@
     }
 }
 
-.select-menu__subitem {
+.rui-select-menu__subitem {
     display: flex;
     align-items: center;
     padding: 8px;

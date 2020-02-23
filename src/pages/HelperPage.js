@@ -1,5 +1,7 @@
 import React, { createRef } from 'react';
 import { Card, Table, BackTopBtn, List, ListItem } from '../components';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const margins = [
     { 
@@ -140,6 +142,28 @@ const colors = [
     }
 ]
 
+const fonts = [
+    { class: 'fz-5', description: 'Set font-size: 0.5rem' },
+    { class: 'fz-6', description: 'Set font-size: 0.6rem' },
+    { class: 'fz-7', description: 'Set font-size: 0.7rem' },
+    { class: 'fz-8', description: 'Set font-size: 0.8rem' },
+    { class: 'fz-9', description: 'Set font-size: 0.9rem' },
+    { class: 'fz-10', description: 'Set font-size: 1rem' },
+    { class: 'fz-11', description: 'Set font-size: 1.1rem' },
+    { class: 'fz-12', description: 'Set font-size: 1.2rem' },
+    { class: 'fz-13', description: 'Set font-size: 1.3rem' },
+    { class: 'fz-14', description: 'Set font-size: 1.4rem' },
+    { class: 'fz-15', description: 'Set font-size: 1.5rem' },
+    { class: 'fz-16', description: 'Set font-size: 1.6rem' },
+    { class: 'fz-17', description: 'Set font-size: 1.7rem' },
+    { class: 'fz-18', description: 'Set font-size: 1.8rem' },
+    { class: 'fz-19', description: 'Set font-size: 1.9rem' },
+    { class: 'fz-20', description: 'Set font-size: 2rem' },
+    { class: 'fw-normal', description: 'Set font-weight: normal' },
+    { class: 'fw-bold', description: 'Set font-weight: 600' },
+    { class: 'fw-thin', description: 'Set font-weight: thin' }
+]
+
 const presetColors = [
     { name: 'primary', value: '#1678c2' },
     { name: 'info', value: '#42a5f5' },
@@ -154,13 +178,26 @@ const presetColors = [
     { name: 'gray', value: '#e0e0e0' }
 ]
 
+const usage = 
+`// Usage examples
+import React from 'react';
+
+function Example() {
+    return (
+        <div>
+            <div className="text-primary">Text</div>
+            <div className="bg-primary">Background</div>
+        </div>
+    )
+}`
+
 export const HelperPage = () => {
     const parent = createRef();
 
     return (
-        <div className="page" ref={parent}>
+        <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="page-title">Helper CSS classes</div>
+                <div className="rui-page-title">Helper CSS classes</div>
             </div>
             <Card outlined color="primary" title="Margins & Paddings">
                 <h4>Margins</h4>
@@ -178,6 +215,15 @@ export const HelperPage = () => {
                     items={paddings}
                     index={true}
                     itemTitles={['class', 'description', 'example']}/>
+            </Card>
+            <br/>
+            <Card outlined color="primary" title="Font size and weight">
+                <Table
+                    bordered
+                    headers={['Class', 'Description']}
+                    items={fonts}
+                    index={true}
+                    itemTitles={['class', 'description']}/>
             </Card>
             <br/>
             <Card outlined color="primary" title="Flex box">
@@ -201,12 +247,17 @@ export const HelperPage = () => {
                                         className={`bg-${item.name} border row align-center justify-center fz-9`}>
                                         {item.value}
                                     </div>
-                                    <span className={`ml-10 text-${item.name}`}>{item.name}</span>
+                                    <span className="ml-10">{item.name}</span>
                                 </div>
                             }
                             />
                     )}
                 </List>
+                <div className="py-10">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {usage}
+                    </SyntaxHighlighter> 
+                </div>
                 <Table
                     className="mt-10"
                     bordered

@@ -3,77 +3,72 @@ import { Dropdown, Button, InputField, Card, Table, Tag, Icon, List, ListItem, B
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export const DropdownPage = () => {
-    const [item, setItem] = useState('');
-    const [item2, setItem2] = useState('');
-    const parentRef = createRef();
+const keys = ['property', 'description', 'default', 'type', 'value'];
+const items = [
+    { 
+        property: 'content', 
+        description: 'Dropdown content', 
+        default: '', 
+        type: 'any',
+        value: ''
+    },
+    { 
+        property: 'trigger', 
+        description: 'Trigger element (Button, InputField & etc.)',
+        default: '', 
+        type: 'any',
+        value: ''
+    },
+    { 
+        property: 'width', 
+        description: 'Set Dropdown content width',
+        default: '', 
+        type: 'string | number',
+        value: ''
+    },
+    { 
+        property: 'minWidth', 
+        description: 'Set Dropdown content minWidth',
+        default: '', 
+        type: 'string | number',
+        value: ''
+    },
+    { 
+        property: 'position', 
+        description: 'Set Dropdown content position',
+        default: 'left', 
+        type: 'string',
+        value: 'centered | right'
+    },
+    { 
+        property: 'leftOffset', 
+        description: 'Set Dropdown content offset from left side',
+        default: '0', 
+        type: 'number',
+        value: ''
+    },
+    { 
+        property: 'rightOffset', 
+        description: 'Set Dropdown content offset from right side',
+        default: '0', 
+        type: 'number',
+        value: ''
+    },
+    { 
+        property: 'className',
+        description: 'Set a custom css class to component', 
+        default: '', 
+        type: 'string',
+        value: ''
+    }
+]
 
-    const keys = ['property', 'description', 'default', 'type', 'value'];
-    const items = [
-        { 
-            property: 'content', 
-            description: 'Dropdown content', 
-            default: '', 
-            type: 'any',
-            value: ''
-        },
-        { 
-            property: 'trigger', 
-            description: 'Trigger element (Button, InputField & etc.)',
-            default: '', 
-            type: 'any',
-            value: ''
-        },
-        { 
-            property: 'width', 
-            description: 'Set Dropdown content width',
-            default: '', 
-            type: 'string | number',
-            value: ''
-        },
-        { 
-            property: 'minWidth', 
-            description: 'Set Dropdown content minWidth',
-            default: '', 
-            type: 'string | number',
-            value: ''
-        },
-        { 
-            property: 'position', 
-            description: 'Set Dropdown content position',
-            default: 'left', 
-            type: 'string',
-            value: 'centered | right'
-        },
-        { 
-            property: 'leftOffset', 
-            description: 'Set Dropdown content offset from left side',
-            default: '0', 
-            type: 'number',
-            value: ''
-        },
-        { 
-            property: 'rightOffset', 
-            description: 'Set Dropdown content offset from right side',
-            default: '0', 
-            type: 'number',
-            value: ''
-        },
-        { 
-            property: 'className',
-            description: 'Set a custom css class to component', 
-            default: '', 
-            type: 'string',
-            value: ''
-        }
-    ]
-
-    const heroes = [
-        { name: 'Steve Rogers', hero: 'Captain America', icon: 'account', check: false }, 
-        { name: 'Peter Parker', hero: 'Spider man', icon: 'account', check: false }, 
-        { name: 'Tony Stark', hero: 'Iron man', icon: 'account', check: false }, 
-        { name: 'Bruce Benner', hero: 'Hulk', icon: 'account', check: false }
-    ];
+const heroes = [
+    { name: 'Steve Rogers', hero: 'Captain America', icon: 'account', check: false }, 
+    { name: 'Peter Parker', hero: 'Spider man', icon: 'account', check: false }, 
+    { name: 'Tony Stark', hero: 'Iron man', icon: 'account', check: false }, 
+    { name: 'Bruce Benner', hero: 'Hulk', icon: 'account', check: false }
+];
 
     const usage =
 `// Usage examples
@@ -210,11 +205,21 @@ function Example() {
 }
 `
 
+export const DropdownPage = () => {
+    const [item, setItem] = useState('');
+    const [item2, setItem2] = useState('');
+    const parentRef = createRef();
+    const api = createRef();
+
+    const goToApi = () => {
+        if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+
     return (
-        <div className="page" ref={parentRef}>
+        <div className="rui-page" ref={parentRef}>
             <div className="row align-center space-between">
-                <div className="page-title">Dropdown Component</div>
-                <a href="#dropdown-api" className="fz-13 fw-bold">API</a>
+                <div className="rui-page-title">Dropdown Component</div>
+                <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
             <Card outlined color="primary" title="Dropdown on Button">
                 <div className="row align-center">
@@ -227,8 +232,7 @@ function Example() {
                                         key={index}
                                         hover 
                                         onClick={() => setItem(item.hero)}
-                                        item={item}
-                                        itemTitle="hero"/>
+                                        item={item.hero}/>
                                 )}
                             </List>
                         }
@@ -323,7 +327,7 @@ function Example() {
                 </Collapse>
             </Card>
             <BackTopBtn setRef={parentRef} dark/>
-            <h2 id="dropdown-api">API</h2>
+            <h2 ref={api}>API</h2>
             <Table
                 bordered
                 headers={keys}

@@ -51,7 +51,7 @@ export const Select = ({
         let isSelected = itemName ? item[itemName] === selectedItem : item === selectedItem
         let result = '';
         let className = {
-            item: 'select-menu__item',
+            item: 'rui-select-menu__item',
             active: isSelected ? 'active' : ''
         }
         for (const key in className) {
@@ -66,13 +66,13 @@ export const Select = ({
         let classes = {
             active: isSelected ? 'active' : ''
         }
-        return `select-menu__subitem ${classes.normalTitle} ${classes.active}`
+        return `rui-select-menu__subitem ${classes.normalTitle} ${classes.active}`
     }
 
     const selectClass = (item) => {
         let result = '';
         let className = {
-            main: 'select-menu',
+            main: 'rui-select-menu',
             rounded: rounded ? 'rounded' : '',
             size: size ? size : '',
             color: color ? color : ''
@@ -85,7 +85,7 @@ export const Select = ({
 
     return (
         <React.Fragment>
-            {labelName ? <label className="select-menu__label">{labelName}</label> : ''}
+            {labelName ? <label className="rui-select-menu__label">{labelName}</label> : ''}
             <div className={selectClass()}
                 ref={selectMenu}
                 style={{ width: width ? width : '', minWidth: minWidth ? minWidth : '' }} 
@@ -96,7 +96,7 @@ export const Select = ({
                 {!cutLongText(selectedItem ? selectedItem : '') ? 
                 <span onClick={openMenu}>{placeholder}</span> : ''}
                 {cutLongText(selectedItem ? selectedItem : '') ? 
-                    <div className="select-menu__value" 
+                    <div className="rui-select-menu__value" 
                         onClick={openMenu} 
                         title={selectedItem}>
                             {selectedItem ? cutLongText(selectedItem) : ''}
@@ -108,7 +108,7 @@ export const Select = ({
                     timeout={300}
                     classNames="select-menu"
                     unmountOnExit>
-                    <div className="select-menu__items">
+                    <div className="rui-select-menu__items">
                         {getItems().map((item, index) => 
                             <div key={index} 
                                 className={selectItemClass(item)}
@@ -116,8 +116,8 @@ export const Select = ({
                                 {itemName ? item[itemName] : item}
                                 {subItems(item).length > 0 ? <Icon name="chevron-next"/> : ''}
                                 {subItems(item).length > 0 ? 
-                                    <div className="select-menu__subitems">
-                                        {subTitle ? <div className="select-menu__subitem-title">{itemName ? item[itemName] : item}</div> : ''}
+                                    <div className="rui-select-menu__subitems">
+                                        {subTitle ? <div className="rui-select-menu__subitem-title">{itemName ? item[itemName] : item}</div> : ''}
                                         {subItems(item).map((subItem, subIndex) => 
                                             <div key={subIndex} 
                                                 className={selectSubItemClass(subItem)}

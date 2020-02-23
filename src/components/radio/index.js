@@ -4,7 +4,7 @@ const Radio = (props) => {
     const radioClass = () => {
         let result = '';
         let className = {
-            btn: 'radio',
+            name: 'rui-radio',
             disabled: props.disabled ? 'disabled' : '',
             className: props.className ? props.className : ''
         }
@@ -32,7 +32,7 @@ export const RadioGroup = (props) => {
     const radioGroupClass = () => {
         let result = '';
         let className = {
-            btn: 'radio-group',
+            btn: 'rui-radio-group',
             vertical: props.vertical ? 'vertical' : '',
             className: props.className ? props.className : ''
         }

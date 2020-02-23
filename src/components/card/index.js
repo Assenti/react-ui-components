@@ -4,7 +4,7 @@ export const Card = (props) => {
     const cardClass = () => {
         let result = '';
         let className = {
-            card: 'card',
+            card: 'rui-card',
             flat: props.flat ? 'flat' : '',
             dark: props.dark ? 'dark' : '',
             hover: props.hover ? 'hover' : '',
@@ -22,11 +22,11 @@ export const Card = (props) => {
     return (
         <div className={cardClass()} 
             style={{ width: props.width ? props.width : '', minWidth: props.minWidth ? props.minWidth : '' }}>
-            {props.title && props.outlined && !props.dark ? <div className="card-title">{props.title}</div> : ''}
-            {props.header ? <div className="card-header">{props.header}</div> : ''}
+            {props.title && props.outlined && !props.dark ? <div className="rui-card-title">{props.title}</div> : ''}
+            {props.header ? <div className="rui-card-header">{props.header}</div> : ''}
             {props.img ? props.img : ''}
             {props.children}
-            {props.footer ? <div className="card-footer">{props.footer}</div> : ''}
+            {props.footer ? <div className="rui-card-footer">{props.footer}</div> : ''}
         </div>
     )
 }

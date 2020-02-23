@@ -119,8 +119,8 @@ export const CheckboxPage = () => {
     const [checkLabel, setCheckLabel] = useState(true);
 
     return (
-        <div className="page">
-            <div className="page-title">Checkbox Component</div>
+        <div className="rui-page">
+            <div className="rui-page-title">Checkbox Component</div>
             <Card outlined color="primary" title="Simple checkboxes">
                 <div className="row">
                     <Checkbox

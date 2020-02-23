@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Icon } from '../icon';
 
 export const InputField = (props) => {
@@ -8,7 +8,7 @@ export const InputField = (props) => {
     const inputFieldClass = () => {
         let result = '';
         let className = {
-            input: 'input-field',
+            input: 'rui-input-field',
             size: props.size ? props.size : '',
             lifted: props.lifted ? 'lifted' : '',
             uppercase: props.uppercase ? 'uppercase' : '',
@@ -37,14 +37,29 @@ export const InputField = (props) => {
         setFocus(false)
     }
 
+    const handleClear = () => {
+        setFocus(false)
+        props.onClear()
+    }
+
+    useEffect(() => {
+        if (props.autoFocus) input.current.focus();
+    }, [])
+
     return (
-        <div className={inputFieldClass()} style={{ width: props.width ? props.width : ''}}>
+        <div className={inputFieldClass()} 
+            style={{ width: props.width ? props.width : ''}}>
             {props.label ? 
-            <label className={focus ? 'active' : ''} onClick={() => input.current.focus()}>{props.label}</label> 
+            <label className={focus ? 'active' : ''} 
+                onClick={() => input.current.focus()}>{props.label}</label> 
             : ''}
-            <div className={focus ? 'input-container focus' : 'input-container'}>
-                {props.prefix ? props.prefix : ''}
+            <div className={focus ? 'rui-input-container focus' : 'rui-input-container'}>
+                {props.prefix ? <span className="rui-input-prefix">{props.prefix}</span> : ''}
                 <input
+                    style={{ 
+                        paddingLeft: props.prefix ? 0 : '',
+                        paddingRight: props.suffix ? 0 : ''
+                    }}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                     ref={input}
@@ -56,23 +71,26 @@ export const InputField = (props) => {
                     onKeyUp={props.onKeyUp}
                     placeholder={props.placeholder} 
                     onChange={props.onChange}
-                    type={props.type}/>
-                {props.value && props.clearable ? <i onClick={() => {props.onClear()}}><Icon name="close" size={20}/></i> : ''}
-                {props.suffix ? props.suffix : ''}
+                    type={props.type ? props.type : 'text'}/>
+                {props.value && props.clearable ? 
+                    <Icon name="close" 
+                        onClick={() => props.onClear ? handleClear() : {}} 
+                        className="rui-input-clear"/> : ''}
+                {props.suffix ? <span className="rui-input-suffix">{props.suffix}</span> : ''}
             </div>
-            {props.hint ? <div className="input-field__hint">{props.hint}</div> : ''}
+            {props.hint ? <div className="rui-input-field__hint">{props.hint}</div> : ''}
         </div>
     )
 }
 
 export const TextareaField = (props) => {
     const inputFieldClass = () => {
-        let result = `input-field ${props.medium ? 'medium' : ''} ${props.large ? 'large' : ''}`
+        let result = `rui-input-field ${props.medium ? 'medium' : ''} ${props.large ? 'large' : ''}`
         return result.trim()
     }
 
     const inputContainerClass = () => {
-        let result = `input-container ${props.color ? props.color : ''}`
+        let result = `rui-input-container ${props.color ? props.color : ''}`
         return result.trim()
     }
 
@@ -90,7 +108,6 @@ export const TextareaField = (props) => {
                     onChange={props.onChange}
                     type={props.type}/>
                 <i onClick={() => {
-                    console.log('clicked')
                     props.onClear()
                 }}><Icon name="close"/></i>
             </div>
@@ -105,7 +122,7 @@ export const Uploader = (props) => {
     const inputFieldClass = () => {
         let result = '';
         let className = {
-            input: 'input-uploader',
+            input: 'rui-input-uploader',
             className: props.className ? props.className : ''
         }
         
@@ -118,7 +135,7 @@ export const Uploader = (props) => {
     const inputContainer = () => {
         let result = ''
         let className = {
-            name: 'input-uploader__container',
+            name: 'rui-input-uploader__container',
             size: props.size ? props.size : '',
             color: props.color && !props.disabled && !props.light && !props.dark ? props.color : '',
             light: props.light && !props.dark ? 'light' : '',
@@ -164,9 +181,9 @@ export const Uploader = (props) => {
                 {props.value && props.value.length > 0 ? <span>{props.value.length}</span> : ""}
             </div>
             {props.value && props.value.length > 0 ? 
-                <div className={props.rounded ? 'input-uploader__items rounded' : 'input-uploader__items'}>
+                <div className={props.rounded ? 'rui-input-uploader__items rounded' : 'rui-input-uploader__items'}>
                     {props.value.map((item, index) => 
-                        <div key={index} className="input-uploader__item">
+                        <div key={index} className="rui-input-uploader__item">
                             <span>{item.name}</span>
                             <Icon name="close" size={20} onClick={() => props.onDelete(item.name)}/>
                         </div>

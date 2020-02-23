@@ -4,142 +4,142 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
-    const items = [
-        { 
-            property: 'onClick', 
-            description: 'Handle button click', 
-            default: '', 
-            type: 'function',
-            value: 'return a button click event object'
-        },
-        { 
-            property: 'name', 
-            description: 'Set button name (can be set with icon)', 
-            default: '', 
-            type: 'string',
-            value: ''
-        },
-        { 
-            property: 'lifted', 
-            description: 'Lift up the button', 
-            default: 'false', 
-            type: 'boolean',
-            value: 'true | false'
-        },
-        { 
-            property: 'color', 
-            description: 'Set background and border color of button from list', 
-            default: '', 
-            type: 'string',
-            value: 'primary | info | success | error | black | secondary'
-        },
-        { 
-            property: 'disabled',
-            description: 'Make Button disabled', 
-            default: 'false',
-            type: 'boolean', 
-            value: 'true | false'
-        },
-        { 
-            property: 'loading',
-            description: 'Activate loading and make Button disabled', 
-            default: 'false',
-            type: 'boolean', 
-            value: 'true | false'
-        },
-        { 
-            property: 'rounded', 
-            description: 'Make border radius rounded',
-            default: 'false', 
-            type: 'boolean',
-            value: 'true | false'
-        },
-        { 
-            property: 'smooth',
-            description: 'Set button borders more smooth', 
-            default: 'false', 
-            type: 'boolean',
-            value: 'true | false'
-        },
-        { 
-            property: 'outlined', 
-            description: 'Make button background transparent and outline borders', 
-            default: 'false',
-            type: 'boolean', 
-            value: 'true | false'
-        },
-        { 
-            property: 'uppercase',
-            description: 'Transform text to upper case', 
-            default: 'false', 
-            type: 'boolean',
-            value: 'true | false'
-        },
-        { 
-            property: 'block', 
-            description: 'Fills the parent component width',
-            default: 'false', 
-            type: 'boolean',
-            value: 'true | false'
-        },
-        { 
-            property: 'size', 
-            description: 'Set button size',
-            default: '', 
-            type: 'string',
-            value: 'medium | large'},
-        { 
-            property: 'icon',
-            description: 'Set icon in a button and give circle shape to it (can be set with name)', 
-            default: '', 
-            type: 'string',
-            value: 'home | search | etc.'
-        },
-        { 
-            property: 'iconSize',
-            description: 'Set icon size', 
-            default: '24px', 
-            type: 'number',
-            value: ''
-        },
-        { 
-            property: 'iconLeft',
-            description: 'Change icon position to the left from name', 
-            default: 'false', 
-            type: 'boolean',
-            value: 'true | false'
-        },
-        { 
-            property: 'iconAllotted',
-            description: 'Allot an icon (has effect with outlined prop)', 
-            default: 'false', 
-            type: 'boolean',
-            value: 'true | false'
-        },
-        { 
-            property: 'dark',
-            description: 'Set dark mode (can not be used with light prop)', 
-            default: 'false', 
-            type: 'boolean',
-            value: 'true | false'
-        },
-        { 
-            property: 'light',
-            description: 'Set light mode (can not be used with dark prop)', 
-            default: 'false', 
-            type: 'boolean',
-            value: 'true | false'
-        },
-        { 
-            property: 'className',
-            description: 'Set a custom css class to component', 
-            default: '', 
-            type: 'string',
-            value: ''
-        }
-    ]
+const items = [
+    { 
+        property: 'onClick', 
+        description: 'Handle button click', 
+        default: '', 
+        type: 'function',
+        value: 'return a button click event object'
+    },
+    { 
+        property: 'name', 
+        description: 'Set button name (can be set with icon)', 
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'lifted', 
+        description: 'Lift up the button', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'color', 
+        description: 'Set background and border color of button from list', 
+        default: '', 
+        type: 'string',
+        value: 'primary | info | success | error | black | secondary'
+    },
+    { 
+        property: 'disabled',
+        description: 'Make Button disabled', 
+        default: 'false',
+        type: 'boolean', 
+        value: 'true | false'
+    },
+    { 
+        property: 'loading',
+        description: 'Activate loading and make Button disabled', 
+        default: 'false',
+        type: 'boolean', 
+        value: 'true | false'
+    },
+    { 
+        property: 'rounded', 
+        description: 'Make border radius rounded',
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'smooth',
+        description: 'Set button borders more smooth', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'outlined', 
+        description: 'Make button background transparent and outline borders', 
+        default: 'false',
+        type: 'boolean', 
+        value: 'true | false'
+    },
+    { 
+        property: 'uppercase',
+        description: 'Transform text to upper case', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'block', 
+        description: 'Fills the parent component width',
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'size', 
+        description: 'Set button size',
+        default: '', 
+        type: 'string',
+        value: 'medium | large'},
+    { 
+        property: 'icon',
+        description: 'Set icon in a button and give circle shape to it (can be set with name)', 
+        default: '', 
+        type: 'string',
+        value: 'home | search | etc.'
+    },
+    { 
+        property: 'iconSize',
+        description: 'Set icon size', 
+        default: '24px', 
+        type: 'number',
+        value: ''
+    },
+    { 
+        property: 'iconLeft',
+        description: 'Change icon position to the left from name', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'iconAllotted',
+        description: 'Allot an icon (has effect with outlined prop)', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'dark',
+        description: 'Set dark mode (can not be used with light prop)', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'light',
+        description: 'Set light mode (can not be used with dark prop)', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'className',
+        description: 'Set a custom css class to component', 
+        default: '', 
+        type: 'string',
+        value: ''
+    }
+]
 
-    const buttonTypes = 
+const buttonTypes = 
 `// Usage examples
 import React from 'react';
 import { Button } from '@assenti/react-ui-components';
@@ -457,10 +457,10 @@ export const ButtonPage = () => {
     }
 
     return (
-        <div className="page" ref={parentRef}>
+        <div className="rui-page" ref={parentRef}>
             <div className="row align-center space-between">
-                <div className="page-title">Button Component</div>
-                <div onClick={goToApi} className="link fz-13 fw-bold">API</div>
+                <div className="rui-page-title">Button Component</div>
+                <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
             <Card outlined color="primary" title="Button types">
                 <div className="row wrap align-center">
@@ -746,7 +746,7 @@ export const ButtonPage = () => {
                     </SyntaxHighlighter>
                 </Collapse> 
             </Card>
-            <BackTopBtn setRef={parentRef} dark/>
+            <BackTopBtn tooltip="Up" setRef={parentRef} dark size="medium"/>
             <h2 ref={api}>API</h2>
             <Table
                 bordered
