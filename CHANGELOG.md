@@ -7,7 +7,7 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
-#### 0.3.1 `2020-02-23`
+#### 0.3.1, 0.3.2. `2020-02-23`
 
 - Bugs fixing;
 

@@ -1,6 +1,6 @@
 {
   "name": "@assenti/rui-components",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "React UI Components",
   "private": false,
   "license": "MIT",
@@ -106,9 +106,9 @@
     "build/css",
     "lib"
   ],
-  "main": "es/index.js",
-  "module": "es/index.js",
-  "typings": "es/index.d.ts",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "browserslist": {
     "production": [
       ">0.2%",
