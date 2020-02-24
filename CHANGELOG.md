@@ -7,6 +7,12 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.3.6 `2020-02-24`
+
+- Select component updated;
+- Dropdown component updated;
+- `NEW!` New icon added;
+
 #### 0.3.3, 0.3.4, 0.3.5 `2020-02-23`
 
 - Css styles renamed ("rui-prefix" added to avoid conflicts with user custom css classes);

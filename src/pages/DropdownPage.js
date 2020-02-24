@@ -55,6 +55,20 @@ const items = [
         value: ''
     },
     { 
+        property: 'closeManaged', 
+        description: 'Enable custom dropdown state control',
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'visible', 
+        description: 'Pass state visible value',
+        default: '', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 
@@ -163,9 +177,8 @@ function Example() {
                 width={180}
                 content={
                     <div className="row column align-center justify-center px-15 pt-15 pb-20">
-                        <Icon name="account" color="gray" size={80}/>
-                        <span className="text-center text-gray fz-9 pt-5">John Doe</span>
-                        <hr className="my-10 full-width"/>
+                        <Icon name="account" color="gray" size={70}/>
+                        <span className="text-center text-dark fz-9 py-5">John Doe</span>
                         <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
                     </div>
                 }
@@ -177,9 +190,8 @@ function Example() {
                 position="centered"
                 content={
                     <div className="row column align-center justify-center px-15 pt-15 pb-20">
-                        <Icon name="account" color="gray" size={80}/>
-                        <span className="text-center text-gray fz-9 pt-5">John Doe</span>
-                        <hr className="my-10 full-width"/>
+                        <Icon name="account" color="gray" size={70}/>
+                        <span className="text-center text-dark fz-9 py-5">John Doe</span>
                         <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
                     </div>
                 }
@@ -191,9 +203,8 @@ function Example() {
                 position="right"
                 content={
                     <div className="row column align-center justify-center px-15 pt-15 pb-20">
-                        <Icon name="account" color="gray" size={80}/>
-                        <span className="text-center text-gray fz-9 pt-5">John Doe</span>
-                        <hr className="my-10 full-width"/>
+                        <Icon name="account" color="gray" size={70}/>
+                        <span className="text-center text-dark fz-9 py-5">John Doe</span>
                         <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
                     </div>
                 }
@@ -282,9 +293,8 @@ export const DropdownPage = () => {
                         width={180}
                         content={
                             <div className="row column align-center justify-center px-15 pt-15 pb-20">
-                                <Icon name="account" color="gray" size={80}/>
-                                <span className="text-center text-gray fz-9 pt-5">John Doe</span>
-                                <hr className="my-10 full-width"/>
+                                <Icon name="account" color="gray" size={70}/>
+                                <span className="text-center text-dark fz-9 py-5">John Doe</span>
                                 <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
                             </div>
                         }
@@ -296,9 +306,8 @@ export const DropdownPage = () => {
                         position="centered"
                         content={
                             <div className="row column align-center justify-center px-15 pt-15 pb-20">
-                                <Icon name="account" color="gray" size={80}/>
-                                <span className="text-center text-gray fz-9 pt-5">John Doe</span>
-                                <hr className="my-10 full-width"/>
+                                <Icon name="account" color="gray" size={70}/>
+                                <span className="text-center text-dark fz-9 py-5">John Doe</span>
                                 <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
                             </div>
                         }
@@ -310,9 +319,8 @@ export const DropdownPage = () => {
                         position="right"
                         content={
                             <div className="row column align-center justify-center px-15 pt-15 pb-20">
-                                <Icon name="account" color="gray" size={80}/>
-                                <span className="text-center text-gray fz-9 pt-5">John Doe</span>
-                                <hr className="my-10 full-width"/>
+                                <Icon name="account" color="gray" size={70}/>
+                                <span className="text-center text-dark fz-9 py-5">John Doe</span>
                                 <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
                             </div>
                         }

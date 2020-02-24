@@ -48,7 +48,8 @@ import {
     HelpCircleOutline,
     DotsVertical,
     DotsHorizontal,
-    LanguageCss3
+    LanguageCss3,
+    Earth
 } from './icons/index';
 
 export const Icon = (props) => {
@@ -152,6 +153,8 @@ export const Icon = (props) => {
                 return <DotsHorizontal size={props.size} color={props.color}/>;
             case 'language-css-3':
                 return <LanguageCss3 size={props.size} color={props.color}/>;
+            case 'earth':
+                return <Earth size={props.size} color={props.color}/>;
             default:
                 return '';
         }

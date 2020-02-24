@@ -52,7 +52,8 @@ const icons = [
     'dots-vertical',
     'dots-horizontal',
     'react',
-    'language-css-3'
+    'language-css-3',
+    'earth'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];

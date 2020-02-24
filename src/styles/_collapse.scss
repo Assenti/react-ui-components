@@ -82,23 +82,3 @@
     transform: translateY(-5%);
     transition: opacity 300, transform 300;
 }
-
-@keyframes collapseOpening {
-    0% { height: 0;}
-    100% { height: auto;}
-}
-
-@-moz-keyframes collapseOpening {
-    0% { height: 0;}
-    100% { height: auto;}
-}
-  
-@keyframes collapseClosing {
-    0% { height: auto; }
-    100% { height: 0; }
-}
-
-@-moz-keyframes collapseClosing {
-    0% { height: auto; }
-    100% { height: 0; }
-}

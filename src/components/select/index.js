@@ -1,137 +1,154 @@
-import React, { useState, useRef } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import React, { useState } from 'react';
 import { Icon } from '../icon';
+import { InputField } from '../input';
+import { Dropdown } from '../dropdown';
+import { List, ListItem } from '../list';
+import { CSSTransition } from 'react-transition-group';
 
-export const Select = ({ 
-    items, 
-    itemName,
-    subItemsField, 
-    subItemName, 
-    labelName, 
-    placeholder, 
-    selectedItem,
-    onSelect,
-    width,
-    minWidth,
-    subTitle,
-    addSubItem,
-    showSubItemOnly,
-    color,
-    size,
-    rounded
-}) => {
-    const selectMenu = useRef(null);
-    const [open, setOpen] = useState(false);
-    const getItems = () => items ? items : [];
+export const Select = (props) => {
+    const [menu, setMenu] = useState(false);
+    const [subMenu, setSubMenu] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
 
-    const subItems = (parent) => {
-        if (subItemsField) return parent[subItemsField]
+    const selectMenuClass = () => {
+        let result = '';
+        let className = {
+            className: props.className ? props.className : ''
+        }
+        for (const key in className) {
+            if (className[key]) result += className[key] + ' '
+        }
+        return result.trim();
+    }
+
+    const subMenuClass = () => {
+        let result = '';
+        let className = {
+            name: 'rui-select__submenu',
+            light: props.dark ? 'dark' : 'light',
+        }
+        for (const key in className) {
+            if (className[key]) result += className[key] + ' '
+        }
+        return result.trim();
+    }
+
+    const resolveItemChildren = () => {
+        if (props.childrenKey) return props.items[activeIndex][props.childrenKey]
         else return []
     }
 
-    const openMenu = e => {
-        if (e.target === e.currentTarget) setOpen(true)
-    }
-
-    const handleSelect = (e, value, subValue) => {
-        if (e.target === e.currentTarget) {
-            let result = subValue ? (showSubItemOnly ? subValue : `${value} / ${subValue}`) : value
-            onSelect(result)
-            setOpen(false)
-            selectMenu.current.blur()
+    const handleItemClick = (item, index) => {
+        if (props.childrenKey) {
+            setSubMenu(true)
+            setActiveIndex(index)               
+        } else {
+            setMenu(false)
+            props.onChange(item)
         }
     }
 
-    const cutLongText = (text) => {
-        if (text.length > 130) return `${text.slice(0, 130)}...`
-        else return text
+    const getActiveItem = (item) => {
+        if (!props.childrenKey) {
+            if (props.itemTitle) {
+                return item[props.itemTitle] === props.value
+            } else {
+                return item === props.value
+            }
+        } else {
+            return item[props.childrenKey].includes(props.value)
+        }
     }
 
-    const selectItemClass = (item) => {
-        let isSelected = itemName ? item[itemName] === selectedItem : item === selectedItem
-        let result = '';
-        let className = {
-            item: 'rui-select-menu__item',
-            active: isSelected ? 'active' : ''
+    const handleCloseOnBlur = () => {
+        if (!props.childrenKey) {
+            setMenu(false)
+            setSubMenu(false)
         }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
     }
 
-    const selectSubItemClass = (item) => {
-        let selected = showSubItemOnly ? selectedItem : (selectedItem ? selectedItem.split('/')[1].trim() : '')
-        let isSelected = subItemName ? item[subItemName] === selected : item === selected
-        let classes = {
-            active: isSelected ? 'active' : ''
+    const filteredItems = () => {
+        if (props.search) {
+            return props.items.filter(item => {
+                return props.itemTitle ? 
+                    item[props.itemTitle].toLowerCase().includes(props.search.toLowerCase()) :
+                    item.toLowerCase().includes(props.search.toLowerCase())
+            })
+        } else {    
+            return props.items
         }
-        return `rui-select-menu__subitem ${classes.normalTitle} ${classes.active}`
-    }
-
-    const selectClass = (item) => {
-        let result = '';
-        let className = {
-            main: 'rui-select-menu',
-            rounded: rounded ? 'rounded' : '',
-            size: size ? size : '',
-            color: color ? color : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
     }
 
     return (
-        <React.Fragment>
-            {labelName ? <label className="rui-select-menu__label">{labelName}</label> : ''}
-            <div className={selectClass()}
-                ref={selectMenu}
-                style={{ width: width ? width : '', minWidth: minWidth ? minWidth : '' }} 
-                tabIndex={-1} 
-                onClick={openMenu} 
-                onBlur={() => setOpen(false)}>
-                
-                {!cutLongText(selectedItem ? selectedItem : '') ? 
-                <span onClick={openMenu}>{placeholder}</span> : ''}
-                {cutLongText(selectedItem ? selectedItem : '') ? 
-                    <div className="rui-select-menu__value" 
-                        onClick={openMenu} 
-                        title={selectedItem}>
-                            {selectedItem ? cutLongText(selectedItem) : ''}
-                    </div> : ''}
-                <Icon name="chevron-down"/>
-                
-                <CSSTransition
-                    in={open}
-                    timeout={300}
-                    classNames="select-menu"
-                    unmountOnExit>
-                    <div className="rui-select-menu__items">
-                        {getItems().map((item, index) => 
-                            <div key={index} 
-                                className={selectItemClass(item)}
-                                onClick={e => subItems(item).length > 0 ? {} : handleSelect(e, itemName ? item[itemName] : item)}>
-                                {itemName ? item[itemName] : item}
-                                {subItems(item).length > 0 ? <Icon name="chevron-next"/> : ''}
-                                {subItems(item).length > 0 ? 
-                                    <div className="rui-select-menu__subitems">
-                                        {subTitle ? <div className="rui-select-menu__subitem-title">{itemName ? item[itemName] : item}</div> : ''}
-                                        {subItems(item).map((subItem, subIndex) => 
-                                            <div key={subIndex} 
-                                                className={selectSubItemClass(subItem)}
-                                                onClick={e => handleSelect(e, itemName ? item[itemName] : item, subItemName ? subItem[subItemName] : subItem)}>
-                                                {subItemName ? subItem[subItemName] : subItem} {addSubItem ? ' (' + subItem[addSubItem] + ')' : ''}
-                                            </div>
-                                        )}
-                                    </div> : ''
-                                }
-                            </div>
+        <Dropdown
+            className={selectMenuClass()}
+            closeManaged
+            visible={menu}
+            content={
+                <div tabIndex={-1} 
+                    className="rui-select__menu" 
+                    onBlur={() => {
+                        setMenu(false)
+                        setSubMenu(false)
+                    }}>
+                    {props.searchable && !props.childrenKey ? 
+                    <InputField
+                        color={props.color ? props.color : 'primary'}
+                        prefix={<Icon name="search"/>}
+                        value={props.search}
+                        onChange={e => props.onSearch(e.target.value)}
+                        className="full-width pa-5"/> : ''}
+                    <List className="relative" size={props.size ? props.size : ''}>
+                        {filteredItems().map((item, index) => 
+                            <ListItem
+                                key={index}
+                                isActiveItem={getActiveItem(item)}
+                                onClick={() => handleItemClick(props.itemTitle ? item[props.itemTitle] : item, index)}
+                                controls={resolveItemChildren().length > 0 ? 
+                                    <Icon name="chevron-next" size={18}/> : ''}
+                                item={props.itemTitle ? item[props.itemTitle] : item}
+                                hover>
+                                <CSSTransition
+                                    in={subMenu}
+                                    timeout={300}
+                                    classNames="rui-select__submenu"
+                                    unmountOnExit>
+                                    <div className={subMenuClass()}>
+                                        <List size={props.size ? props.size : ''}>
+                                            {resolveItemChildren().map((subItem, iterator) => 
+                                                <ListItem
+                                                    onClick={() => {
+                                                        props.onChange(subItem)
+                                                        setMenu(false)
+                                                        setSubMenu(false)
+                                                        setActiveIndex(0)
+                                                    }}
+                                                    isActiveItem={subItem === props.value}
+                                                    key={iterator}
+                                                    item={subItem}
+                                                    hover/>
+                                            )}
+                                        </List>
+                                    </div>
+                                </CSSTransition>
+                            </ListItem>
                         )}
-                    </div>
-                </CSSTransition>
-            </div>
-        </React.Fragment>
+                    </List>
+                </div>}
+            trigger={<InputField
+                        label={props.label ? props.label : ''}
+                        color={props.color ? props.color : 'primary'}
+                        suffix={<Icon name={menu ? 'chevron-up' : 'chevron-down'}/>}
+                        value={props.value}
+                        size={props.size ? props.size : ''}
+                        rounded={props.rounded ? props.rounded : false}
+                        prefix={props.prefix ? props.prefix : ''}
+                        clearable={props.clearable ? props.clearable : false}
+                        onClear={props.onClear ? props.onClear() : {}}
+                        onFocus={() => setMenu(true)}
+                        onBlur={() => props.value ? handleCloseOnBlur() : {}}
+                        className="full-width"
+                        width={props.width ? props.width : ''}
+                        placeholder={props.placeholder}/>}/>
     )
 }

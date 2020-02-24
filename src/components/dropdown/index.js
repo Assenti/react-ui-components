@@ -21,10 +21,10 @@ export const Dropdown = (props) => {
     return (
         <div className={dropdownClass()} 
             tabIndex={-1}
-            onBlur={() => setVisible(false)}>
+            onBlur={() => props.closeManaged ? {} : setVisible(false)}>
             <div onClick={() => setVisible(true)}>{props.trigger}</div>
             <CSSTransition
-                in={visible}
+                in={props.closeManaged ? props.visible : visible}
                 timeout={300}
                 classNames="dropdown"
                 unmountOnExit>
@@ -35,7 +35,7 @@ export const Dropdown = (props) => {
                         right: props.rightOffset && !props.legtOffset ? props.rightOffset : '',
                         left: props.legtOffset && !props.rightOffset ? props.legtOffset : ''
                     }}>
-                    <div onClick={() => setVisible(false)}>{props.content}</div>
+                    <div onClick={() => props.closeManaged ? {} : setVisible(false)}>{props.content}</div>
                 </div>
             </CSSTransition>
         </div>

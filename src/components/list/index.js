@@ -47,8 +47,7 @@ export const ListItem = (props) => {
     return (
         <div onClick={() => props.onClick ? props.onClick() : {}} 
             className={itemClass()}>
-            {
-                !props.render ?
+            {!props.render ?
                 <React.Fragment>
                     <div className="rui-list-item__left-side">
                         <div className="rui-list-item__title-row">
@@ -61,7 +60,8 @@ export const ListItem = (props) => {
                     <div className="rui-list-item__right-side">
                         {props.controls}
                     </div>
-                </React.Fragment> :
+                    {props.children}
+                </React.Fragment>  :
                 props.render
             }
         </div>
