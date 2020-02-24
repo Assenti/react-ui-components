@@ -7,7 +7,7 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
-#### 0.3.6 `2020-02-24`
+#### 0.3.6, 0.3.7 `2020-02-24`
 
 - Select component updated;
 - Dropdown component updated;
