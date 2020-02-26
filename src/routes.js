@@ -1,29 +1,31 @@
-import { HomePage } from './pages/HomePage';
-import { ButtonPage } from './pages/ButtonPage';
-import { DropdownPage } from './pages/DropdownPage';
-import { ListPage } from './pages/ListPage';
-import { InputsPage } from './pages/InputsPage';
-import { DrawerPage } from './pages/DrawerPage';
-import { TooltipPage } from './pages/TooltipPage';
-import { PaginationPage } from './pages/PaginationPage';
-import { SelectPage } from './pages/SelectPage';
-import { TablePage } from './pages/TablePage';
-import { ModalPage } from './pages/ModalPage';
-import { CheckboxPage } from './pages/CheckboxPage';
-import { CardPage } from './pages/CardPage';
-import { SwitchPage } from './pages/SwitchPage';
-import { TagPage } from './pages/TagPage';
-import { BadgePage } from './pages/BadgePage';
-import { RadioPage } from './pages/RadioPage';
-import { IconPage } from './pages/IconPage';
-import { PreloaderPage } from './pages/PreloaderPage';
-import { BackTopBtnPage } from './pages/BackTopBtnPage';
-import { CollapsePage } from './pages/CollapsePage';
-import { ButtonGroupPage } from './pages/ButtonGroupPage';
-import { ColorsPage } from './pages/ColorsPage';
-import { PopOverPage } from './pages/PopOverPage';
-import { HeaderPage } from './pages/HeaderPage';
-import { HelperPage } from './pages/HelperPage';
+import { lazy } from 'react';
+const ButtonPage = lazy(() => import('./pages/ButtonPage'));
+const DropdownPage = lazy(() => import('./pages/DropdownPage'));
+const ListPage = lazy(() => import('./pages/ListPage'));
+const DrawerPage = lazy(() => import('./pages/DrawerPage'));
+const TooltipPage = lazy(() => import('./pages/TooltipPage'));
+const SelectPage = lazy(() => import('./pages/SelectPage'));
+const TablePage = lazy(() => import('./pages/TablePage'));
+const ModalPage = lazy(() => import('./pages/ModalPage'));
+const CheckboxPage = lazy(() => import('./pages/CheckboxPage'));
+const SwitchPage = lazy(() => import('./pages/SwitchPage'));
+const TagPage = lazy(() => import('./pages/TagPage'));
+const RadioPage = lazy(() => import('./pages/RadioPage'));
+const PreloaderPage = lazy(() => import('./pages/PreloaderPage'));
+const CollapsePage = lazy(() => import('./pages/CollapsePage'));
+const ButtonGroupPage = lazy(() => import('./pages/ButtonGroupPage'));
+const BadgePage = lazy(() => import('./pages/BadgePage'));
+const PopOverPage = lazy(() => import('./pages/PopOverPage'));
+const ColorsPage = lazy(() => import('./pages/ColorsPage'));
+const HeaderPage = lazy(() => import('./pages/HeaderPage'));
+const HomePage = lazy(() => import('./pages/HomePage'));
+const HelperPage = lazy(() => import('./pages/HelperPage'));
+const BackTopBtnPage = lazy(() => import('./pages/BackTopBtnPage'));
+const CopyToClipboardPage = lazy(() => import('./pages/CopyToClipboardPage'));
+const CardPage = lazy(() => import('./pages/CardPage'));
+const IconPage = lazy(() => import('./pages/IconPage'));
+const PaginationPage = lazy(() => import('./pages/PaginationPage'));
+const InputsPage = lazy(() => import('./pages/InputsPage'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
@@ -51,5 +53,6 @@ export const routes = [
     { path: '/colors', name: 'Colors', Component: ColorsPage },
     { path: '/popover', name: 'PopOver', Component: PopOverPage },
     { path: '/header', name: 'Header', Component: HeaderPage },
-    { path: '/helper', name: 'Helper CSS classes', Component: HelperPage }
+    { path: '/helper', name: 'Helper CSS classes', Component: HelperPage },
+    { path: '/copytoclipboard', name: 'CopyToClipboard', Component: CopyToClipboardPage }
 ]

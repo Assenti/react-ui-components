@@ -46,7 +46,7 @@ const items = [
     }
 ]
 
-export const TooltipPage = () => {
+const TooltipPage = () => {
     return (
         <div className="rui-page">
             <div className="row align-center space-between">
@@ -88,3 +88,5 @@ export const TooltipPage = () => {
         </div>
     )
 }
+
+export default TooltipPage;

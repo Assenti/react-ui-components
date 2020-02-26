@@ -224,7 +224,7 @@ function Example() {
 }
 `
 
-export const CardPage = () => {
+const CardPage = () => {
     const api = createRef();
     const parentRef = createRef();
 
@@ -340,3 +340,5 @@ export const CardPage = () => {
         </div>
     )
 }
+
+export default CardPage;

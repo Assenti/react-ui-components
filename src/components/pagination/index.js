@@ -114,12 +114,14 @@ export const Pagination = (props) => {
                 <Select
                     minWidth={getSize()}
                     size={props.size}
+                    width={props.size === 'large' ? 110 : 100}
                     rounded={props.rounded}
                     color={props.color}
+                    value={`${props.perPage} / ${props.perPageText ? props.perPageText : 'page'}`}
                     items={props.perPageVariants ? props.perPageVariants : [10, 20, 50, 100]}
                     normalTitle={true}
                     selectedItem={`${props.perPage} / ${props.perPageText ? props.perPageText : 'page'}`}
-                    onSelect={handlePerPageSelect}/>
+                    onChange={handlePerPageSelect}/>
             </div>
         </div>
     )

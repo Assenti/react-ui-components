@@ -312,7 +312,7 @@ const items2 = [
     }
 ]
 
-export const ListPage = () => {
+const ListPage = () => {
     const [itemsComplex] = useState(itemsComplexInitial);
     const [selected, setSelected] = useState([]);
     const listApi = createRef();
@@ -478,4 +478,7 @@ export const ListPage = () => {
             <BackTopBtn setRef={parent} dark size="medium"/>
         </div>
     )
+
 }
+
+export default ListPage;

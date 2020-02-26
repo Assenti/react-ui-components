@@ -99,6 +99,17 @@
         overflow-x: visible !important;
         overflow-y: auto;
 
+        &::-webkit-scrollbar {
+            width: 3.5px;
+            background-color: $lightgray;
+            border-radius: $radius;
+        }
+         
+        &::-webkit-scrollbar-thumb {
+          background-color: lightgray;
+          outline: 1px solid #fff;
+        }
+
         div,
         .rui-list,
         .rui-list-item {

@@ -120,7 +120,7 @@ const items = [
     }
 ]
 
-export const ModalPage = () => {
+const ModalPage = () => {
     const [modal, setModal] = useState(false);
     const [modalDark, setModalDark] = useState(false);
 
@@ -194,3 +194,5 @@ export const ModalPage = () => {
         </div>
     )
 }
+
+export default ModalPage;

@@ -36,7 +36,146 @@
     }
 }
 
+.rui-select__multiple {
+    width: 100%;
+    
+    label {
+        display: block;
+        font-size: .85rem;
+        user-select: none;
+        -moz-user-select: none;
+        transition: all .2s ease-in-out;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 3px 0;
+        color: $dark;
+        cursor: pointer;
+    }
 
+    .rui-select__multiple-items {
+        outline: none;
+        min-height: $defaultSize;
+        border: 1px solid lightgray;
+        border-radius: $radius;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $lightgray;
+
+        &:focus,
+        &:hover {
+            border-color: $info;
+            background-color: #fff;
+        }
+
+        &:hover {
+            transition: all .2s ease-in-out;
+
+            i {
+                svg {
+                    path {
+                        fill: $info;
+                    }
+                }
+            }
+        }
+
+        i {
+            svg {
+                path {
+                    fill: gray;
+                }
+            }
+        }
+
+        .rui-tag {
+            border-color: lightgray;
+            background-color: #fff;
+
+            i {
+                svg {
+                    path {
+                        fill: gray !important;
+                    }
+                }
+            }
+        }
+
+        .rui-select__multiple-placeholder {
+            height: 100%;
+            width: 100%;
+            text-align: left;
+            user-select: none;
+            -moz-user-select: none;
+        }
+
+        &:not(.medium):not(.large) {
+            .rui-select__multiple-placeholder {
+                font-size: $defaultFont;
+                color: $dark;
+            }
+
+            svg {
+                min-width: 18px;
+                min-height: 18px;
+                width: 18px;
+                height: 18px;
+            }
+        }
+    
+        &.medium {
+            .rui-select__multiple-placeholder {
+                font-size: $mediumFont;
+                color: $dark;
+            }
+
+            svg {
+                min-width: 20px;
+                min-height: 20px;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    
+        &.large {
+            .rui-select__multiple-placeholder {
+                font-size: $largeFont;
+                color: $dark;
+            }
+
+            svg {
+                min-width: 20px;
+                min-height: 20px;
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        .rui-btn {
+            border-radius: 0;
+            margin: 0;
+        }
+
+        .rui-input-prefix {
+            margin-left: 5px;
+        }
+        
+        .rui-input-suffix {
+            .rui-icon {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .rui-select__multiple-item {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
 
 .rui-select__submenu-enter {
     opacity: 0;

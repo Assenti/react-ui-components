@@ -473,7 +473,7 @@ const itemsUploader = [
     }
 ]
 
-export const InputsPage = () => {
+const InputsPage = () => {
     const [first, setFirst] = useState('');
     const [second, setSecond] = useState('');
     const [third, setThird] = useState('');
@@ -759,3 +759,5 @@ export const InputsPage = () => {
         </div>
     )
 }
+
+export default InputsPage;

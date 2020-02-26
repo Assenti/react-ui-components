@@ -49,7 +49,8 @@ import {
     DotsVertical,
     DotsHorizontal,
     LanguageCss3,
-    Earth
+    Earth,
+    Check
 } from './icons/index';
 
 export const Icon = (props) => {
@@ -155,6 +156,8 @@ export const Icon = (props) => {
                 return <LanguageCss3 size={props.size} color={props.color}/>;
             case 'earth':
                 return <Earth size={props.size} color={props.color}/>;
+            case 'check':
+                return <Check size={props.size} color={props.color}/>;
             default:
                 return '';
         }

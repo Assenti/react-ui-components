@@ -226,7 +226,7 @@ for (let i = 0; i < 100; i++) {
     })
 }
 
-export const TablePage = () => {
+const TablePage = () => {
     const api = createRef();
     const parent = createRef();
 
@@ -328,3 +328,5 @@ export const TablePage = () => {
         </div>
     )
 }
+
+export default TablePage;

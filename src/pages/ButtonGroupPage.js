@@ -143,7 +143,7 @@ const nums = [1, 2, 3];
 const icons = ['format-align-left', 'format-align-center', 'format-align-right'];
 
 
-export const ButtonGroupPage = () => {
+const ButtonGroupPage = () => {
     return (
         <div className="rui-page">
             <div className="row align-center space-between">
@@ -221,3 +221,5 @@ export const ButtonGroupPage = () => {
         </div>
     )
 }
+
+export default ButtonGroupPage;

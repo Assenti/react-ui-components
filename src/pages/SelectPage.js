@@ -97,6 +97,27 @@ const rows = [
         value: 'true | false'
     },
     { 
+        property: 'multiple', 
+        description: 'Enable multiple selection (Warning: if multiple prop set, childrenKey has no effect)',
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'onSelect', 
+        description: 'Invokes on multiple selection (return selected value & selected list)',
+        default: '', 
+        type: 'function',
+        value: ''
+    },
+    { 
+        property: 'tagColor', 
+        description: 'Set Tag color (Has effect only with multiple prop)',
+        default: '', 
+        type: 'string',
+        value: 'primary | info | success | error | black'
+    },
+    { 
         property: 'prefix', 
         description: 'Set prefix',
         default: '', 
@@ -117,6 +138,7 @@ const countries = [
     { country: 'Russia', cities: ['Moscow', 'St. Petersburg', 'Krasnodar'] }, 
     { country: 'USA', cities: ['Washington, D.C.', 'New York City', 'San Francisco'] }, 
     { country: 'United Kingdom', cities: ['London', 'York', 'Manchester'] }, 
+    { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
     { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] }
 ]
 
@@ -215,7 +237,38 @@ function Example() {
     )
 }`
 
-export const SelectPage = () => {
+const multipleUsage = 
+`// Usage examples
+import React from 'react';
+import { Select } from '@assenti/react-ui-components';
+
+const countries = [
+    { country: 'Kazakhstan', cities: [ 'Nur-Sultan', 'Almaty', 'Shymkent' ] }, 
+    { country: 'Russia', cities: ['Moscow', 'St. Petersburg', 'Krasnodar'] }, 
+    { country: 'USA', cities: ['Washington, D.C.', 'New York City', 'San Francisco'] }, 
+    { country: 'United Kingdom', cities: ['London', 'York', 'Manchester'] }, 
+    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] }
+]
+
+function Example() {
+    return (
+        <div>
+            <Select
+                items={countries}
+                prefix={<Icon name="earth"/>}
+                itemTitle="country"
+                label="Select your favourite countries"
+                width={250}
+                childrenKey="cities"
+                multiple
+                color="info"
+                placeholder="Countries"
+                onSelect={(value, selectedList) => console.log(value, selectedList)}/>
+        </div>
+    )
+}`
+
+const SelectPage = () => {
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
     const [country_, setCountry_] = useState('');
@@ -308,6 +361,29 @@ export const SelectPage = () => {
                     </SyntaxHighlighter> 
                 </Collapse>
             </Card>
+            <br/>
+            <Card outlined color="primary" title="Multiple selection">
+                <Select
+                    items={countries}
+                    prefix={<Icon name="earth"/>}
+                    itemTitle="country"
+                    label="Select your favourite countries"
+                    width={250}
+                    childrenKey="cities"
+                    multiple
+                    color="info"
+                    placeholder="Countries"
+                    onSelect={(value, selectedList) => console.log(value, selectedList)}/>
+                <Collapse 
+                    icon="code" 
+                    iconSize={18}
+                    contentStyles={{ padding: 0 }}
+                    tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {multipleUsage}
+                    </SyntaxHighlighter> 
+                </Collapse>
+            </Card>
             <BackTopBtn setRef={parent} dark size="medium"/>
             <h2 ref={api}>API</h2>
             <Table
@@ -320,3 +396,5 @@ export const SelectPage = () => {
         
     )
 }
+
+export default SelectPage;

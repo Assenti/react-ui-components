@@ -10,6 +10,10 @@
     white-space: nowrap;
     overflow: hidden;
 
+    .rui-tag__close {
+        cursor: pointer;
+    }
+
     &.upprecase {
         text-transform: uppercase;
     }
@@ -35,9 +39,9 @@
 
     &.small {
         padding: 0 5px;
-        height: 20px;
+        height: 25px;
         margin: 3px;
-        font-size: .75rem;
+        font-size: .8rem;
 
         svg {
             min-width: 14px;
@@ -45,6 +49,15 @@
             width: 14px;
             height: 14px;
             margin: 0 1px;
+        }
+
+        .rui-tag__close {
+            svg {
+                min-width: 14px !important;
+                min-height: 14px !important;
+                width: 14px !important;
+                height: 14px !important;
+            }
         }
     }
 
@@ -127,4 +140,26 @@
             color: $success;
         }
     }
+}
+
+.rui-tag-enter {
+    opacity: 0;
+    transform: scale(.8);
+}
+
+.rui-tag-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.rui-tag-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.rui-tag-exit-active {
+    opacity: 0;
+    transform: scale(.8);
+    transition: opacity 300ms, transform 300ms;
 }

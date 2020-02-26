@@ -187,7 +187,7 @@ function Example() {
 }
 `
 
-export const PaginationPage = () => {
+const PaginationPage = () => {
     const [itemsCount] = useState(100);
     const [perPage, setPerPage] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
@@ -290,3 +290,5 @@ export const PaginationPage = () => {
         </div>
     )
 }
+
+export default PaginationPage;

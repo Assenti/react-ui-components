@@ -58,7 +58,7 @@ function Example() {
     )
 }`
 
-export const PreloaderPage = () => {
+const PreloaderPage = () => {
     const [loading, setLoading] = useState(false);
 
     const handleClick = () => {
@@ -91,3 +91,5 @@ export const PreloaderPage = () => {
         </div>
     )
 }
+
+export default PreloaderPage;

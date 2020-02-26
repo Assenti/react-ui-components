@@ -197,7 +197,7 @@ function Example() {
     )
 }`
 
-export const PopOverPage = () => {
+const PopOverPage = () => {
     const [visible, setVisible] = useState(false);
 
     return (
@@ -342,3 +342,5 @@ export const PopOverPage = () => {
         </div>
     )
 }
+
+export default PopOverPage;

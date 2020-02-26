@@ -114,7 +114,7 @@ function Example() {
     )
 }`
 
-export const HeaderPage = () => {
+const HeaderPage = () => {
     return (
         <div className="rui-page">
             <div className="row align-center space-between">
@@ -159,3 +159,5 @@ export const HeaderPage = () => {
         </div>
     )
 }
+
+export default HeaderPage;

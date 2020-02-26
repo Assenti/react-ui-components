@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Icon } from '../icon';
+import { CSSTransition } from 'react-transition-group';
 
 export const Tag = (props) => {
+    const [visible, setVisible] = useState(props.visible ? props.visible : true);
+
     const tagClass = () => {
         let result = '';
         let className = {
@@ -22,11 +25,30 @@ export const Tag = (props) => {
         return result.trim();
     }
 
+    useEffect(() => {
+        if (props.closable) setVisible(props.visible)
+    }, [props.visible])
+
     return (
-        <div className={tagClass()} style={{ width: props.width ? props.width : ''}}>
-            {props.iconLeft ? <Icon name={props.iconLeft}/> : ''}
-            {props.value}
-            {props.iconRight ? <Icon name={props.iconRight}/> : ''}
-        </div>
+        <CSSTransition
+            in={visible}
+            timeout={300}
+            classNames="rui-tag"
+            unmountOnExit>
+            <div className={tagClass()} style={{ width: props.width ? props.width : ''}}>
+                {props.iconLeft ? <Icon name={props.iconLeft}/> : ''}
+                {props.value}
+                {props.iconRight ? <Icon name={props.iconRight}/> : ''}
+                {props.closable ? 
+                    <Icon 
+                        className="rui-tag__close" 
+                        name="close"
+                        color="gray" 
+                        onClick={() => {
+                            props.onClose()
+                            setVisible(false)
+                        }}/> : ''}
+            </div>
+        </CSSTransition>
     )
 }

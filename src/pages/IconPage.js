@@ -53,7 +53,8 @@ const icons = [
     'dots-horizontal',
     'react',
     'language-css-3',
-    'earth'
+    'earth',
+    'check'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
@@ -118,7 +119,7 @@ funcation Example() {
 }
 `
 
-export const IconPage = () => {
+const IconPage = () => {
     const api = createRef();
     const [search, setSearch] = useState('');
 
@@ -181,3 +182,5 @@ export const IconPage = () => {
         </div>
     )
 }
+
+export default IconPage;

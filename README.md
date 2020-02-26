@@ -55,7 +55,7 @@ export default App;
 - [ ] Carousel
 - [ ] Timeline
 - [ ] Tabs
-- [ ] CopyToClipboard
+- [X] CopyToClipboard
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable
 - [ ] TypeScript support (Declare types for TS using)

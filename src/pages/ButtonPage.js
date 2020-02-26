@@ -447,7 +447,7 @@ function Example() {
 }
 `
 
-export const ButtonPage = () => {
+const ButtonPage = () => {
     const [loading, setLoading] = useState(true);
     const parentRef = createRef();
     const api = createRef();
@@ -757,3 +757,5 @@ export const ButtonPage = () => {
         </div>
     )
 }
+
+export default ButtonPage;

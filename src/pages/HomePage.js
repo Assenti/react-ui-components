@@ -3,7 +3,7 @@ import { Tag, Card } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export const HomePage = () => {
+const HomePage = () => {
     const codeInstallation = 
 `# Install package from NPM
 % npm install @assenti/rui-components -S
@@ -69,3 +69,5 @@ export default App;`
         </div>
     )
 }
+
+export default HomePage;

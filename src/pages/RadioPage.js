@@ -138,7 +138,7 @@ function Example() {
     )
 }`
 
-export const RadioPage = () => {
+const RadioPage = () => {
     const [cityUS, setCityUS] = useState('');
     const [city, setCity] = useState('');
     const [isDisabled, setIsDisabled] = useState(true);
@@ -219,3 +219,5 @@ export const RadioPage = () => {
         </div>
     )
 }
+
+export default RadioPage;

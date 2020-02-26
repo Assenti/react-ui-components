@@ -1,6 +1,6 @@
 @each $size in $sizes {
     .ma-#{$size} {
-        margin: #{$size}px;
+        margin: #{$size}px !important;
     }
 }
 

@@ -235,6 +235,10 @@
     & .btn {
         padding: 0;
     }
+
+    &.scrollabe {
+        overflow-y: auto;
+    }
 }
 
 .rui-list-header {

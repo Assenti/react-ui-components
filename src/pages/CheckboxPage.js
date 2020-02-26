@@ -114,7 +114,7 @@ function Example() {
 }
 `
 
-export const CheckboxPage = () => {
+const CheckboxPage = () => {
     const [check, setCheck] = useState(true);
     const [checkLabel, setCheckLabel] = useState(true);
 
@@ -186,3 +186,5 @@ export const CheckboxPage = () => {
         </div>
     )
 }
+
+export default CheckboxPage;

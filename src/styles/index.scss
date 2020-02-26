@@ -15,12 +15,12 @@ html {
     
     &::-webkit-scrollbar {
         width: 3.5px;
-        background-color: #fff;
+        background-color: $lightgray;
         border-radius: $radius;
     }
-     
+    
     &::-webkit-scrollbar-thumb {
-      background-color: $light;
+      background-color: lightgray;
       outline: 1px solid #fff;
     }
 }

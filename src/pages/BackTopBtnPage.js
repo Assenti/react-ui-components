@@ -3,7 +3,7 @@ import { BackTopBtn, Card, Table, Collapse } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export const BackTopBtnPage = () => {
+const BackTopBtnPage = () => {
     const blockref = createRef();
     const api = createRef();
     const rows = []
@@ -139,5 +139,7 @@ function Example() {
         </div>
     )
 }
+
+export default BackTopBtnPage;
 
 

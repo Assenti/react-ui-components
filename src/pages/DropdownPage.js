@@ -216,7 +216,7 @@ function Example() {
 }
 `
 
-export const DropdownPage = () => {
+const DropdownPage = () => {
     const [item, setItem] = useState('');
     const [item2, setItem2] = useState('');
     const parentRef = createRef();
@@ -345,3 +345,5 @@ export const DropdownPage = () => {
         </div>
     )
 }
+
+export default DropdownPage;

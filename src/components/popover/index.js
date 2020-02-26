@@ -10,7 +10,7 @@ export const PopOver = (props) => {
     const popoverClass = () => {
         let result = '';
         let className = {
-            name: 'rii-popover',
+            name: 'rui-popover',
             dark: props.dark ? 'dark' : '',
             position: props.bottom ? 'bottom' : '',
             className: props.className ? props.className : ''

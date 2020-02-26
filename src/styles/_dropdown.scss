@@ -14,7 +14,6 @@
 
     & > div {
         width: 100%;
-        z-index: 5;
     }
 
     .rui-input-field {
@@ -29,6 +28,7 @@
     background-color: white;
     box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
     border-radius: $radius;
+    z-index: 5;
 
     .rui-list-item:first-child {
         border-top-left-radius: $radius;

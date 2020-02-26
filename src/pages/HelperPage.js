@@ -191,7 +191,7 @@ function Example() {
     )
 }`
 
-export const HelperPage = () => {
+const HelperPage = () => {
     const parent = createRef();
 
     return (
@@ -270,3 +270,5 @@ export const HelperPage = () => {
         </div>
     )
 }
+
+export default HelperPage;

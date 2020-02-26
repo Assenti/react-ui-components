@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
@@ -30,6 +30,7 @@ import { routes } from './routes';
 import { Content } from './layouts/Content';
 import { DrawerContent } from './layouts/DrawerContent';
 import { description } from '../package.json';
+import { Preloader } from './components';
 
 const defineDarkDefinition = () => {
     let value = localStorage.getItem('dark')
@@ -65,7 +66,9 @@ const App = () => {
                                 dark={dark} 
                                 onSwitch={() => handleSwitchDark()} 
                                 onDrawerToggle={() => setDrawer(!drawer)}>
-                                <Component />
+                                <Suspense fallback={<Preloader/>}>
+                                    <Component />
+                                </Suspense>
                             </Content>
                         </Route>
                     )}

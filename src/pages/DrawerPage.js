@@ -150,7 +150,7 @@ const stack = [
     { name: 'React Redux', icon: 'code' }
 ]
 
-export const DrawerPage = () => {
+const DrawerPage = () => {
     const [drawer, setDrawer] = useState(true);
     const [drawerMin, setDrawerMin] = useState(false);
     const [page, setPage] = useState(stack[0].name)
@@ -231,3 +231,5 @@ export const DrawerPage = () => {
         </div>
     )
 }
+
+export default DrawerPage;

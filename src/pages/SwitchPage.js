@@ -170,7 +170,7 @@ const items = [
     }
 ]
 
-export const SwitchPage = () => {
+const SwitchPage = () => {
     const [check, setCheck] = useState(true);
     const [check1, setCheck1] = useState(true);
     const [check2, setCheck2] = useState(true);
@@ -253,3 +253,5 @@ export const SwitchPage = () => {
         </div>
     )
 }
+
+export default SwitchPage;

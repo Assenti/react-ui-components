@@ -17,7 +17,7 @@ const colors = [
 
 const keys = ['Color', 'Name', 'HEX']
 
-export const ColorsPage = () => {
+const ColorsPage = () => {
     const parent = createRef();
 
     return (
@@ -41,3 +41,5 @@ export const ColorsPage = () => {
         </div>
     )
 }
+
+export default ColorsPage;

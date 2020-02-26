@@ -3,7 +3,7 @@ import { Card, Collapse, Table, List, ListItem } from '../components'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-    const usage = 
+const usage = 
 `// Usage examples
 import React from 'react';
 import { Collapse, List, ListItem } from '@assenti/react-ui-components';
@@ -49,8 +49,7 @@ function Example() {
             </Collapse>
         </div>
     )
-}
-`
+}`
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
@@ -118,7 +117,7 @@ const names = [
     { name: 'Bruce Benner', hero: 'Hulk', icon: 'shield-account', check: false }
 ];
 
-export const CollapsePage = () => {
+const CollapsePage = () => {
     const api = createRef();
 
     const goToApi = () => {
@@ -182,3 +181,5 @@ export const CollapsePage = () => {
         </div>
     )
 }
+
+export default CollapsePage;

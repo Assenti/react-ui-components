@@ -4,45 +4,45 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
-    const items = [
-        { 
-            property: 'value', 
-            description: 'Set badge value', 
-            default: '', 
-            type: 'string | number',
-            value: ''
-        },
-        { 
-            property: 'color', 
-            description: 'Set badge color', 
-            default: '', 
-            type: 'string',
-            value: 'primary | info | success | error'
-        },
-        { 
-            property: 'rounded', 
-            description: 'Set rounded badge borders', 
-            default: '', 
-            type: 'boolean',
-            value: 'true | false'
-        },
-        { 
-            property: 'parent', 
-            description: 'Parent component for badge', 
-            default: '', 
-            type: 'any',
-            value: ''
-        },
-        { 
-            property: 'visible', 
-            description: 'Badge visible state', 
-            default: '', 
-            type: 'boolean',
-            value: 'true | false'
-        }
-    ]
+const items = [
+    { 
+        property: 'value', 
+        description: 'Set badge value', 
+        default: '', 
+        type: 'string | number',
+        value: ''
+    },
+    { 
+        property: 'color', 
+        description: 'Set badge color', 
+        default: '', 
+        type: 'string',
+        value: 'primary | info | success | error'
+    },
+    { 
+        property: 'rounded', 
+        description: 'Set rounded badge borders', 
+        default: '', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'parent', 
+        description: 'Parent component for badge', 
+        default: '', 
+        type: 'any',
+        value: ''
+    },
+    { 
+        property: 'visible', 
+        description: 'Badge visible state', 
+        default: '', 
+        type: 'boolean',
+        value: 'true | false'
+    }
+]
 
-    const usage =
+const usage =
 `// Usage examples
 import React from 'react';
 import { Badge, Button } from '@assenti/rui-components';
@@ -73,10 +73,9 @@ function Example() {
             <Button name="Toggle badge" color="info" onClick={() => setBadge(!badge)}/>
         </div>
     )
-}
-`
+}`
 
-export const BadgePage = () => {
+const BadgePage = () => {
     const [badge, setBadge] = useState(true);
 
     return (
@@ -120,3 +119,5 @@ export const BadgePage = () => {
         </div>
     )
 }
+
+export default BadgePage;

@@ -1,5 +1,5 @@
-import React, { createRef } from 'react';
-import { Tag, Card, Table, Collapse, BackTopBtn } from '../components';
+import React, { createRef, useState } from 'react';
+import { Tag, Card, Table, Collapse, BackTopBtn, Button } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -73,6 +73,27 @@ const items = [
         description: 'Set a tag width', 
         default: '', 
         type: 'string | number',
+        value: ''
+    },
+    { 
+        property: 'closable',
+        description: 'Enable close function', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'visible',
+        description: 'Set Tag visible state', 
+        default: 'true', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'onClose',
+        description: 'Invokes on close icon click', 
+        default: '', 
+        type: 'function',
         value: ''
     },
     { 
@@ -151,9 +172,10 @@ function Example() {
     )
 }`
 
-export const TagPage = () => {
+const TagPage = () => {
     const parent = createRef();
     const api = createRef();
+    const [visible, setVisible] = useState(true);
 
     const goToApi = () => {
         if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'center'})
@@ -204,10 +226,22 @@ export const TagPage = () => {
             </Card>
             <br/>
             <Card outlined color="primary" title="Tag with icons">
-                <Tag iconLeft="smartphone" value="777 777 77 77" color="primary"/>
-                <Tag iconLeft="star" value="1020" small color="yellow"/>
-                <Tag iconLeft="account" value="John Doe" color="info"/>
-                <Tag iconLeft="account" value="John Doe" />
+                <div className="row align-center">
+                    <Tag iconLeft="smartphone" value="777 777 77 77" color="primary"/>
+                    <Tag iconLeft="star" value="1020" small color="yellow"/>
+                    <Tag iconLeft="account" value="John Doe" color="info"/>
+                    <Tag 
+                        iconLeft="account" 
+                        value="John Doe" 
+                        closable
+                        visible={visible} 
+                        onClose={() => setVisible(false)}/>
+                    <Button 
+                        name="Return Tag" 
+                        color="info" 
+                        className="ml-20" 
+                        onClick={() => setVisible(true)}/>
+                </div>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {tagIcons}
@@ -225,3 +259,5 @@ export const TagPage = () => {
         </div>
     )
 }
+
+export default TagPage;
