@@ -44,7 +44,6 @@ export default App;
 - [ ] Dialog
 - [ ] Date picker / Calendar
 - [ ] InputMask 
-- [ ] TextareaField
 - [ ] Expansion List
 - [ ] Stepper
 - [ ] Rating
@@ -55,7 +54,6 @@ export default App;
 - [ ] Carousel
 - [ ] Timeline
 - [ ] Tabs
-- [X] CopyToClipboard
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable
 - [ ] TypeScript support (Declare types for TS using)
