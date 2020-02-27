@@ -66,7 +66,7 @@ const App = () => {
                                 dark={dark} 
                                 onSwitch={() => handleSwitchDark()} 
                                 onDrawerToggle={() => setDrawer(!drawer)}>
-                                <Suspense fallback={<Preloader/>}>
+                                <Suspense fallback={<Preloader visible/>}>
                                     <Component />
                                 </Suspense>
                             </Content>
