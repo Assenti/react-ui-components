@@ -14,7 +14,6 @@ timeline: true
 - Table component updated;
 - ListItem component updated;
 - `NEW!` TextareaField component added;
-- `NEW!` New icon added;
 
 #### 0.3.8 `2020-02-26`
 
