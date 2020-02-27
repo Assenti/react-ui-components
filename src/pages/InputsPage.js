@@ -1,5 +1,5 @@
 import React, { useState, createRef } from 'react';
-import { InputField, Uploader, Icon, Card, Button, Table, Collapse, BackTopBtn } from '../components';
+import { InputField, Icon, Card, Button, Table, Collapse, BackTopBtn, TextareaField } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -177,62 +177,26 @@ function Example() {
     )
 }`
 
-const uploaderUsage =
+const textareaUsage =
 `// Usage examples
 import React, { useState } from 'react';
-import { InputField } from '@assenti/react-ui-components';
+import { TextareaField, Icon } from '@assenti/react-ui-components';
 
 function Example() {
-    const [files, setFiles] = useState('');
+    const [text, setText] = useState('');
 
     return (
         <div>
-            <span className="fz-8 text-dark">Rounded Uploader</span>
-            <Uploader
-                label="File upload"
-                value={files}
-                rounded
-                title="Сhoose a file please"
-                color="info"
-                multiple
-                onDelete={handleFileDelete}
-                width={300}
-                onChange={files => setFiles(files)}/>
-            <br/>
-            <Uploader
-                label="File upload"
-                value={files}
-                rounded
-                title="Сhoose a file please"
-                color="success"
-                multiple
-                onDelete={handleFileDelete}
-                width={300}
-                onChange={files => setFiles(files)}/>
-            <br/>
-            <span className="fz-8 text-dark">Medium size Uploader</span>
-            <Uploader
-                label="File upload"
-                value={files}
-                title="Сhoose a file please"
-                size="medium"
-                color="info"
-                multiple
-                onDelete={handleFileDelete}
-                width={300}
-                onChange={files => setFiles(files)}/>
-            <br/>
-            <span className="fz-8 text-dark">Disabled lifted Uploader</span>
-            <Uploader
-                label="File upload"
-                value={files}
-                title="Сhoose a file please"
-                color="info"
-                disabled
-                lifted
-                onDelete={handleFileDelete}
-                width={300}
-                onChange={files => setFiles(files)}/>
+        <TextareaField
+            prefix={<Icon name="edit" />}
+            label="Textarea field"
+            placeholder="Textarea field" 
+            value={text}
+            maxRows={20}
+            color="primary"
+            width={300}
+            onClear={() => setText('')} 
+            onChange={e => setText(e.target.value)}/>
         </div>
     )
 }`
@@ -365,6 +329,13 @@ const items = [
         value: 'true | false'
     },
     { 
+        property: 'whiteBackground',
+        description: 'Set input background color to white', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 
@@ -372,39 +343,73 @@ const items = [
         value: ''
     }
 ]
-
-const itemsUploader = [
+const itemsTextarea = [
     { 
         property: 'onChange', 
-        description: 'Handle files values', 
+        description: 'Handle input value change', 
         default: '', 
         type: 'function',
-        value: 'Return array of files'
+        value: 'return a input change event object'
     },
     { 
         property: 'value', 
-        description: 'State value that holds uploaded file(-s)', 
+        description: 'Input value', 
         default: '', 
-        type: 'File[]',
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'rows',
+        description: 'Set textarea rows count', 
+        default: '1', 
+        type: 'number',
+        value: ''
+    },
+    { 
+        property: 'maxRows',
+        description: 'Set maximum textarea rows', 
+        default: '10', 
+        type: 'number',
+        value: ''
+    },
+    { 
+        property: 'clearable', 
+        description: 'Allow clear icon on value inputted', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'onClear', 
+        description: 'Invokes on clear icon click', 
+        default: '', 
+        type: 'function',
         value: ''
     },
     { 
         property: 'lifted', 
-        description: 'Lift up the uploader', 
+        description: 'Lift up the input field', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'autoFocus', 
+        description: 'Set input focus on component mounted', 
         default: 'false', 
         type: 'boolean',
         value: 'true | false'
     },
     { 
         property: 'color', 
-        description: 'Set color from list', 
+        description: 'Set color of input field from list', 
         default: '', 
         type: 'string',
         value: 'primary | info | success | error'
     },
     { 
         property: 'disabled',
-        description: 'Make uploader disabled', 
+        description: 'Make input field disabled', 
         default: 'false',
         type: 'boolean', 
         value: 'true | false'},
@@ -423,46 +428,53 @@ const itemsUploader = [
         value: 'true | false'
     },
     { 
-        property: 'size', 
-        description: 'Set input field size',
-        default: '', 
-        type: 'string',
-        value: 'medium | large'
-    },
-    { 
-        property: 'multiple', 
-        description: 'Allow choosing multiple files',
+        property: 'uppercase',
+        description: 'Transform text to upper case', 
         default: 'false', 
         type: 'boolean',
         value: 'true | false'
     },
     { 
-        property: 'accept', 
-        description: 'Set accepted MIME types for files',
+        property: 'prefix',
+        description: 'Set prefix', 
         default: '', 
-        type: 'string',
+        type: 'any',
+        value: ''
+    },
+    { 
+        property: 'suffix',
+        description: 'Set suffix', 
+        default: '', 
+        type: 'any',
         value: ''
     },
     { 
         property: 'width',
-        description: 'Set Uploader width', 
+        description: 'Set InputField width', 
         default: '', 
         type: 'string | number',
         value: ''
     },
     { 
         property: 'required',
-        description: 'Set Uploader required', 
+        description: 'Set input required', 
         default: 'false', 
         type: 'boolean',
         value: 'true | false'
     },
     { 
-        property: 'title',
-        description: 'Set Uploader title', 
-        default: '', 
-        type: 'string',
-        value: ''
+        property: 'readOnly',
+        description: 'Set input readOnly', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'whiteBackground',
+        description: 'Set input background color to white', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
     },
     { 
         property: 'className',
@@ -477,31 +489,19 @@ const InputsPage = () => {
     const [first, setFirst] = useState('');
     const [second, setSecond] = useState('');
     const [third, setThird] = useState('');
-    const [files, setFiles] = useState('');
+    const [text, setText] = useState('');
     const api = createRef();
-    const api2 = createRef();
     const parent = createRef();
-    
-    const handleFileDelete = (name) => {
-        setFiles(files => files.filter(item => item.name !== name))
-    }
 
     const goToApi = () => {
         if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
 
-    const goToApi2 = () => {
-        if (api2.current) api2.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    }
-
     return (
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="rui-page-title">InputField, Uploader Components</div>
-                <div className="row">
-                    <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">InputField API</div>
-                    <div onClick={() => goToApi2()} className="rui-link fz-13 fw-bold">Uploader API</div>
-                </div>
+                <div className="rui-page-title">InputField, TextareaField Components</div>
+                <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
             </div>
             <Card outlined color="primary" title="Input types">
                 <div className="row wrap">
@@ -667,93 +667,37 @@ const InputsPage = () => {
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
-            <br/>
-            <Card outlined color="primary" title="Uploader">
-                <span className="fz-8 text-dark">Rounded Uploader</span>
-                <Uploader
-                    label="File upload"
-                    value={files}
-                    rounded
-                    title="Сhoose a file please"
-                    color="info"
-                    multiple
-                    onDelete={handleFileDelete}
+            <Card outlined color="primary" title="TextareaField Usage">
+                <TextareaField
+                    prefix={<Icon name="edit" />}
+                    label="Textarea field"
+                    placeholder="Textarea field" 
+                    value={text}
+                    maxRows={20}
+                    color="primary"
                     width={300}
-                    onChange={files => setFiles(files)}/>
-                <br/>
-                <Uploader
-                    label="File upload"
-                    value={files}
-                    rounded
-                    title="Сhoose a file please"
-                    color="success"
-                    multiple
-                    onDelete={handleFileDelete}
-                    width={300}
-                    onChange={files => setFiles(files)}/>
-                <br/>
-                <span className="fz-8 text-dark">Medium size Uploader</span>
-                <Uploader
-                    label="File upload"
-                    value={files}
-                    title="Сhoose a file please"
-                    size="medium"
-                    color="info"
-                    multiple
-                    onDelete={handleFileDelete}
-                    width={300}
-                    onChange={files => setFiles(files)}/>
-                <br/>
-                <span className="fz-8 text-dark">Disabled lifted Uploader</span>
-                <Uploader
-                    label="File upload"
-                    value={files}
-                    title="Сhoose a file please"
-                    color="info"
-                    disabled
-                    lifted
-                    onDelete={handleFileDelete}
-                    width={300}
-                    onChange={files => setFiles(files)}/>
+                    clearable
+                    onClear={() => setText('')} 
+                    onChange={e => setText(e.target.value)}/>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {uploaderUsage}
+                        {textareaUsage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
-            {/* <h3>Textareas</h3>
-            <Card>
-                <TextareaField
-                    label="Textarea field"
-                    placeholder="Textarea field" 
-                    value={first}
-                    width="300px"
-                    onClear={() => setFirst('')} 
-                    onChange={e => setFirst(e.target.value)}/>
-
-                <TextareaField
-                    rows={4}
-                    color="error"
-                    width="300px"
-                    label="Textarea field"
-                    placeholder="Textarea field" 
-                    value={first}
-                    onClear={() => setFirst('')} 
-                    onChange={e => setFirst(e.target.value)}/>
-            </Card> */}
-            <h2 ref={api}>InputField API</h2>
             <BackTopBtn setRef={parent} dark size="medium"/>
+            <h2 ref={api}>InputField API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>
-            <h2 ref={api2}>Uploader API</h2>
+            <h2>TextareaField API</h2>
             <Table
                 bordered
-                headers={keys}
-                items={itemsUploader}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                items={itemsTextarea}
                 index={true}
                 itemTitles={keys}/>
         </div>

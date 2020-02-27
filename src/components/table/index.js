@@ -3,6 +3,7 @@ import { Empty, Loading } from '../icon/icons/index';
 import { Checkbox } from '../checkbox';
 import { Pagination } from '../pagination';
 import { Icon } from '../icon';
+import { InputField } from '../input';
 import { compare } from '../utils';
 
 const makeSortableHeaders = (headers) => {
@@ -33,6 +34,7 @@ export const Table = (props) => {
     const [perPage, setPerPage] = useState(props.perPage ? props.perPage : 10);
     const [sortType, setSortType] = useState(props.sortable ? 'asc' : '');
     const [colIndex, setColIndex] = useState(0);
+    const [search, setSearch] = useState('');
     const [headers] = useState(initialHeaders());
 
     const tableContainerClass = () => {
@@ -152,7 +154,7 @@ export const Table = (props) => {
                     <th style={{ maxWidth: 40, width: 40 }}>
                         <Checkbox 
                             color={props.color ? props.color : ''}
-                            onChange={() => onSelectAll()} 
+                            onChange={() => props.checkbox ? onSelectAll() : {}} 
                             checked={isAllChecked()}/>
                     </th>
                     {headers.map((item, index) => 
@@ -176,10 +178,15 @@ export const Table = (props) => {
                     )}
                 </tr>
             )
-        } else if (props.checkbox) {
+        } else if (!props.sortable && props.checkbox) {
            return (
                 <tr>
-                    <th><Checkbox color={props.color ? props.color : ''}/></th>
+                    <th>
+                        <Checkbox 
+                            color={props.color ? props.color : ''}
+                            onChange={() => props.checkbox ? onSelectAll() : {}} 
+                            checked={isAllChecked()}/>
+                        </th>
                     {headers.map((item, index) => 
                         <th key={index}>{item}</th>
                     )}
@@ -202,17 +209,49 @@ export const Table = (props) => {
     }
 
     const getItems = () => {
-        if (props.pagination) {
-            return props.items
-                .slice((perPage * currentPage) - perPage, perPage * currentPage)
-                .sort((a, b) => compare(a, b, getItemKey(), sortType))
+        if (search) {
+            if (props.pagination && props.sortable) {
+                return props.items
+                    .slice((perPage * currentPage) - perPage, perPage * currentPage)
+                    .sort((a, b) => compare(a, b, getItemKey(), sortType))
+                    .filter(item => item[props.searchKey].toLowerCase().includes(search.toLowerCase()))
+            } else if (!props.pagination && props.sortable) {
+                return props.items
+                        .sort((a, b) => compare(a, b, getItemKey(), sortType))
+                        .filter(item => item[props.searchKey].toLowerCase().includes(search.toLowerCase()))
+            } else {
+                return props.items.filter(item => item[props.searchKey].toLowerCase().includes(search.toLowerCase()))
+            }
         } else {
-            return props.items.sort((a, b) => compare(a, b, getItemKey(), sortType))
+            if (props.pagination && props.sortable) {
+                return props.items
+                    .slice((perPage * currentPage) - perPage, perPage * currentPage)
+                    .sort((a, b) => compare(a, b, getItemKey(), sortType))
+            } else if (!props.pagination && props.sortable) {
+                return props.items.sort((a, b) => compare(a, b, getItemKey(), sortType))
+            } else {
+                return props.items
+            }
         }
+    }
+
+    const handleKeyUp = (e) => {
+        if (e.key === 'Escape') setSearch('')
     }
 
     return (
         <div className={tableContainerClass()}>
+            <div className="rui-table__header">
+                {props.tableTitle ? <div className="rui-table__title">{props.tableTitle}</div> : ''}
+                {props.searchable ? 
+                    <InputField
+                        color={props.color ? props.color : 'primary'}
+                        prefix={<Icon name="search"/>}
+                        value={search}
+                        onKeyUp={handleKeyUp}
+                        placeholder={props.searchPlaceholder ? props.searchPlaceholder : 'Search'}
+                        onChange={e => setSearch(e.target.value)}/> : ''}
+            </div>
             <table className={tableClass()}>
                 <thead>{prepareHeaders()}</thead>
                 <tbody>
@@ -229,7 +268,7 @@ export const Table = (props) => {
                                 <td key={iter}>{item[title]}</td>
                             )}
                             {props.controls ? <td>
-                                {props.controls}
+                                {props.controls(item)}
                             </td> : <React.Fragment/>}
                         </tr>
                     )}

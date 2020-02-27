@@ -12,7 +12,7 @@ export const PopOver = (props) => {
         let className = {
             name: 'rui-popover',
             dark: props.dark ? 'dark' : '',
-            position: props.bottom ? 'bottom' : '',
+            position: props.position ? props.position : 'top',
             className: props.className ? props.className : ''
         }
         
@@ -20,6 +20,19 @@ export const PopOver = (props) => {
             if (className[key]) result += className[key] + ' '
         }
         return result.trim();
+    }
+
+    const getPosition = () => {
+        switch (props.position) {
+            case 'left':
+                return 'popleft';
+            case 'right':
+                return 'popright';
+            case 'bottom':
+                return 'popdown';
+            default:
+                return 'popup';
+        }
     }
 
     return (
@@ -31,7 +44,7 @@ export const PopOver = (props) => {
             <CSSTransition
                 in={props.control ? props.visible : visible}
                 timeout={150}
-                classNames={props.bottom ? 'popdown' : 'popup' }
+                classNames={getPosition()}
                 unmountOnExit>
                 <div className="rui-popover__content" ref={content}>
                     <div className="rui-popover__content-header">

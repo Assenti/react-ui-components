@@ -47,11 +47,8 @@
         &::after {
             content: " ";
             position: absolute;
-            left: 50%;
-            margin-left: -5px;
             border-width: 8px;
             border-style: solid;
-            border-color: #fff transparent transparent transparent;
         }
     }
 
@@ -82,12 +79,15 @@
         padding: 10px;
     }
 
-    &:not(.bottom) {
+    &:not(.bottom):not(.left):not(.right) {
         .rui-popover__content {
             bottom: calc(100% + 8px);
     
             &::after {
                 top: 100%;
+                left: 50%;
+                margin-left: -5px;
+                border-color: #fff transparent transparent transparent;
             }
         }
     }
@@ -99,7 +99,43 @@
     
             &::after {
                 bottom: 100%;
+                left: 50%;
+                margin-left: -5px;
                 border-color: transparent transparent #fff transparent;
+            }
+        }
+    }
+
+    &.left {
+        display: inline-flex;
+        align-items: center;
+
+        .rui-popover__content {
+            right: calc(100% + 8px);
+            box-shadow: 0 1px 15px rgba($dark, .4);
+    
+            &::after {
+                top: 50%;
+                left: 100%; 
+                margin-top: -5px;
+                border-color: transparent transparent transparent #fff;
+            }
+        }
+    }
+
+    &.right {
+        display: inline-flex;
+        align-items: center;
+
+        .rui-popover__content {
+            left: calc(100% + 8px);
+            box-shadow: 0 1px 15px rgba($dark, .4);
+    
+            &::after {
+                top: 50%;
+                right: 100%; 
+                margin-top: -5px;
+                border-color: transparent #fff transparent transparent;
             }
         }
     }
@@ -144,6 +180,50 @@
 }
 
 .popdown-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.popleft-enter {
+    opacity: 0;
+    transform: translateX(10%);
+}
+
+.popleft-enter-active {
+    opacity: 1;
+    transform: translateX(0%);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.popleft-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.popleft-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.popright-enter {
+    opacity: 0;
+    transform: translateX(-10%);
+}
+
+.popright-enter-active {
+    opacity: 1;
+    transform: translateX(0%);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.popright-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.popright-exit-active {
     opacity: 0;
     transform: scale(0.9);
     transition: opacity 300ms, transform 300ms;

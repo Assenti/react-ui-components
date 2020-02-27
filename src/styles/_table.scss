@@ -7,6 +7,24 @@
     flex-direction: column;
     justify-content: space-between;
 
+    .rui-table__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .rui-input-field,
+        .rui-table__title {
+            flex-grow: 1;
+            width: 50%;
+        }
+    }
+
+    .rui-table__title {
+        padding: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
     &.bordered {
         border: 1px solid lightgray;
         overflow: hidden;

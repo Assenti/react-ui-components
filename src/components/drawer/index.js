@@ -64,7 +64,8 @@ export const Drawer = (props) => {
                             classNames="expand">
                                 <div className={drawerClass()}>
                                     <div className="rui-drawer-content">
-                                        {props.header ? <div className={props.headerCentered ? 
+                                        {props.header ? 
+                                        <div className={props.headerCentered ? 
                                                 'rui-drawer-header centered' : 'rui-drawer-header'}>
                                                     {props.header}</div> : ''}
                                         {props.children}

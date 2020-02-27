@@ -26,6 +26,7 @@ export { Drawer } from './drawer';
 export { Dropdown } from './dropdown';
 export { Icon } from './icon';
 export { InputField } from './input';
+export { TextareaField } from './input';
 export { Uploader } from './input';
 export { List } from './list';
 export { ListItem } from './list';

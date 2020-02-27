@@ -7,6 +7,15 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.3.9 `2020-02-27`
+
+- Select component updated;
+- PopOver component updated;
+- Table component updated;
+- ListItem component updated;
+- `NEW!` TextareaField component added;
+- `NEW!` New icon added;
+
 #### 0.3.8 `2020-02-26`
 
 - `NEW!` CopyToClipboard component added;

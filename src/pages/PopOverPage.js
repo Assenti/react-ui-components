@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Card, PopOver, Icon, Button, Table, Collapse } from '../components';
+import React, { useState, useRef } from 'react';
+import { Card, PopOver, Icon, Button, Table, Collapse, BackTopBtn } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -55,11 +55,11 @@ const items = [
         value: ''
     },
     { 
-        property: 'bottom', 
-        description: 'Set popover position to bottom', 
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
+        property: 'position', 
+        description: 'Set popover position', 
+        default: 'top', 
+        type: 'string',
+        value: 'top | bottom | right | left'
     },
     { 
         property: 'dark', 
@@ -84,21 +84,23 @@ import { PopOver, Icon, Button } from '@assenti/react-ui-components';
 
 function Example() {
     return (
-        <div className="pa-20">
-            <div>
-                <PopOver trigger="hover" title="Title" content="Content" className="mr-20">
+        <div className="px-20 py-40">
+            <div className="row align-center">
+                <PopOver 
+                    trigger="hover" 
+                    title="Title" 
+                    content="Content" 
+                    className="mr-20">
                     Hover me
                 </PopOver>
-            </div>
-            <br/>
-            <div className="row">
-                <div className="mr-20">
-                    Click on icon
+                <div className="row align-center mr-20">
+                    Hover on icon
                     <PopOver title="Title"
+                        trigger="hover"
                         content={
                             <div>
                                 <p>How are doing?</p>
-                                <div className="row align-center justify-center py-10">
+                                <div className="row align-center justify-center">
                                     <Button 
                                         name="Not bad" 
                                         color="info" 
@@ -117,13 +119,13 @@ function Example() {
                             className="ml-5 cursor-pointer"/>
                     </PopOver>
                 </div>
-                <div>
+                <div className="row align-center">
                     Click on icon
                     <PopOver dark title="Title"
                         content={
                             <div>
                                 <p>How are doing?</p>
-                                <div className="row align-center justify-center py-10">
+                                <div className="row align-center justify-center">
                                     <Button 
                                         name="Not bad" 
                                         color="info" 
@@ -143,31 +145,112 @@ function Example() {
                     </PopOver>
                 </div>
             </div>
-            <br/>
-            <div>
-                <PopOver title="Quit"
-                    bottom
-                    content={
-                        <div>
-                            <p>Are are sure?</p>
-                            <div className="row align-center justify-center">
-                                <Button 
-                                    name="Nope" 
-                                    color="secondary" 
-                                    className="mr-10"
-                                    onClick={() => console.log('Nope!')}/>
-                                <Button 
-                                    name="Yeap" 
-                                    color="primary" 
-                                    onClick={() => console.log('Yeap!')}/>
-                            </div>
+        </div>
+    )
+}`
+
+const positionsUsage = 
+`// Usage examples
+import React, { useState } from 'react';
+import { PopOver, Button } from '@assenti/react-ui-components';
+
+function Example() {
+    const [visible, setVisible] = useState(false);
+
+    return (
+        <div className="row justify-center py-30">
+            <PopOver 
+                title="Quit"
+                position="left"
+                content={
+                    <div>
+                        <p>Are are sure?</p>
+                        <div className="row align-center justify-center">
+                            <Button 
+                                name="Nope" 
+                                color="secondary" 
+                                className="mr-5"
+                                onClick={() => console.log('Nope!')}/>
+                            <Button 
+                                name="Yeap" 
+                                color="primary" 
+                                onClick={() => console.log('Yeap!')}/>
                         </div>
-                    }>
-                    <Button 
-                        name="Quit" 
-                        color="error"/>
-                </PopOver>
-            </div>
+                    </div>
+                }>
+                <Button 
+                    name="Left" 
+                    color="secondary"/>
+            </PopOver>
+            <PopOver 
+                title="Quit"
+                position="top"
+                content={
+                    <div>
+                        <p>Are are sure?</p>
+                        <div className="row align-center justify-center">
+                            <Button 
+                                name="Nope" 
+                                color="secondary" 
+                                className="mr-5"
+                                onClick={() => console.log('Nope!')}/>
+                            <Button 
+                                name="Yeap" 
+                                color="primary" 
+                                onClick={() => console.log('Yeap!')}/>
+                        </div>
+                    </div>
+                }>
+                <Button 
+                    name="Top" 
+                    color="secondary"/>
+            </PopOver>
+            <PopOver 
+                title="Quit"
+                position="bottom"
+                content={
+                    <div>
+                        <p>Are are sure?</p>
+                        <div className="row align-center justify-center">
+                            <Button 
+                                name="Nope" 
+                                color="secondary" 
+                                className="mr-5"
+                                onClick={() => console.log('Nope!')}/>
+                            <Button 
+                                name="Yeap" 
+                                color="primary" 
+                                onClick={() => console.log('Yeap!')}/>
+                        </div>
+                    </div>
+                }>
+                <Button 
+                    name="Bottom" 
+                    color="secondary"/>
+            </PopOver>
+            <PopOver 
+                title="Quit"
+                position="right"
+                content={
+                    <div>
+                        <p>Are are sure?</p>
+                        <div className="row align-center justify-center">
+                            <Button 
+                                name="Nope" 
+                                color="secondary" 
+                                className="mr-5"
+                                onClick={() => console.log('Nope!')}/>
+                            <Button 
+                                name="Yeap" 
+                                color="primary" 
+                                onClick={() => console.log('Yeap!')}/>
+                        </div>
+                    </div>
+                }>
+            <Button 
+                name="Right" 
+                color="secondary"/>
+            </PopOver>
         </div>
     )
 }`
@@ -199,28 +282,25 @@ function Example() {
 
 const PopOverPage = () => {
     const [visible, setVisible] = useState(false);
+    const parent = useRef();
 
     return (
-        <div className="rui-page">
+        <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
                 <div className="rui-page-title">PopOver Component</div>
             </div>
             <Card outlined color="primary" title="Pop over usage">
                 <br/>
-                <div className="pa-20">
-                    <div>
+                <div className="px-20 py-40">
+                    <div className="row align-center">
                         <PopOver 
-                            bottom
                             trigger="hover" 
                             title="Title" 
                             content="Content" 
                             className="mr-20">
                             Hover me
                         </PopOver>
-                    </div>
-                    <br/>
-                    <div className="row">
-                        <div className="mr-20">
+                        <div className="row align-center mr-20">
                             Hover on icon
                             <PopOver title="Title"
                                 trigger="hover"
@@ -246,7 +326,7 @@ const PopOverPage = () => {
                                     className="ml-5 cursor-pointer"/>
                             </PopOver>
                         </div>
-                        <div>
+                        <div className="row align-center">
                             Click on icon
                             <PopOver dark title="Title"
                                 content={
@@ -272,31 +352,6 @@ const PopOverPage = () => {
                             </PopOver>
                         </div>
                     </div>
-                    <br/>
-                    <div>
-                        <PopOver title="Quit"
-                            bottom
-                            content={
-                                <div>
-                                    <p>Are are sure?</p>
-                                    <div className="row align-center justify-center">
-                                        <Button 
-                                            name="Nope" 
-                                            color="secondary" 
-                                            className="mr-5"
-                                            onClick={() => console.log('Nope!')}/>
-                                        <Button 
-                                            name="Yeap" 
-                                            color="primary" 
-                                            onClick={() => console.log('Yeap!')}/>
-                                    </div>
-                                </div>
-                            }>
-                            <Button 
-                                name="Quit" 
-                                color="error"/>
-                        </PopOver>
-                    </div>
                 </div>
                 <Collapse 
                     icon="code" 
@@ -308,6 +363,113 @@ const PopOverPage = () => {
                     </SyntaxHighlighter> 
                 </Collapse>
             </Card>
+            <br/>
+            <Card outlined color="primary" title="PopOver positions">
+                <div className="row justify-center py-30">
+                    <PopOver 
+                        title="Quit"
+                        position="left"
+                        content={
+                            <div>
+                                <p>Are are sure?</p>
+                                <div className="row align-center justify-center">
+                                    <Button 
+                                        name="Nope" 
+                                        color="secondary" 
+                                        className="mr-5"
+                                        onClick={() => console.log('Nope!')}/>
+                                    <Button 
+                                        name="Yeap" 
+                                        color="primary" 
+                                        onClick={() => console.log('Yeap!')}/>
+                                </div>
+                            </div>
+                        }>
+                        <Button 
+                            name="Left" 
+                            color="secondary"/>
+                    </PopOver>
+                    <PopOver 
+                        title="Quit"
+                        position="top"
+                        content={
+                            <div>
+                                <p>Are are sure?</p>
+                                <div className="row align-center justify-center">
+                                    <Button 
+                                        name="Nope" 
+                                        color="secondary" 
+                                        className="mr-5"
+                                        onClick={() => console.log('Nope!')}/>
+                                    <Button 
+                                        name="Yeap" 
+                                        color="primary" 
+                                        onClick={() => console.log('Yeap!')}/>
+                                </div>
+                            </div>
+                        }>
+                        <Button 
+                            name="Top" 
+                            color="secondary"/>
+                    </PopOver>
+                    <PopOver 
+                        title="Quit"
+                        position="bottom"
+                        content={
+                            <div>
+                                <p>Are are sure?</p>
+                                <div className="row align-center justify-center">
+                                    <Button 
+                                        name="Nope" 
+                                        color="secondary" 
+                                        className="mr-5"
+                                        onClick={() => console.log('Nope!')}/>
+                                    <Button 
+                                        name="Yeap" 
+                                        color="primary" 
+                                        onClick={() => console.log('Yeap!')}/>
+                                </div>
+                            </div>
+                        }>
+                        <Button 
+                            name="Bottom" 
+                            color="secondary"/>
+                    </PopOver>
+                    <PopOver 
+                        title="Quit"
+                        position="right"
+                        content={
+                            <div>
+                                <p>Are are sure?</p>
+                                <div className="row align-center justify-center">
+                                    <Button 
+                                        name="Nope" 
+                                        color="secondary" 
+                                        className="mr-5"
+                                        onClick={() => console.log('Nope!')}/>
+                                    <Button 
+                                        name="Yeap" 
+                                        color="primary" 
+                                        onClick={() => console.log('Yeap!')}/>
+                                </div>
+                            </div>
+                        }>
+                    <Button 
+                        name="Right" 
+                        color="secondary"/>
+                </PopOver>
+                </div>
+                <Collapse 
+                    icon="code" 
+                    iconSize={18}
+                    contentStyles={{ padding: 0 }}
+                    tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {positionsUsage}
+                    </SyntaxHighlighter> 
+                </Collapse>
+            </Card>
+            <br/>
             <Card outlined color="primary" title="Control pop over state">
                 <div className="pa-20">
                     <PopOver 
@@ -333,9 +495,10 @@ const PopOverPage = () => {
                 </Collapse>
             </Card>
             <h2>API</h2>
+            <BackTopBtn setRef={parent} dark size="medium"/>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>

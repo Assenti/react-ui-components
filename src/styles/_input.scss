@@ -2,6 +2,12 @@
     margin: 5px;
     width: 100%;
 
+    &.white-background {
+        .rui-input-container {
+            background-color: #fff;
+        }
+    }
+
     &.lifted:not(.disabled) {
         .rui-input-container {
             box-shadow: 0 0 2px rgba(black, .3);
@@ -72,9 +78,13 @@
 
     &:not(.medium):not(.large) {
         .rui-input-container {
-            input,
-            textarea {
+            input {
                 height: $defaultSize;
+                padding: 0 8px;
+                font-size: $defaultFont;
+            }
+
+            textarea {
                 padding: 0 8px;
                 font-size: $defaultFont;
             }
@@ -90,7 +100,8 @@
 
     &.medium {
         .rui-input-container {
-            input {
+            input,
+            textarea {
                 height: $mediumSize;
                 padding: 0 8px;
                 font-size: $mediumFont;
@@ -107,7 +118,8 @@
 
     &.large {
         .rui-input-container {
-            input {
+            input,
+            textarea {
                 height: $largeSize;
                 padding: 0 10px;
                 font-size: $largeFont;
@@ -303,6 +315,21 @@
                 path {
                     fill: gray !important;
                 }
+            }
+        }
+
+        & > textarea {
+            resize: none;
+
+            &::-webkit-scrollbar {
+                width: 3.5px;
+                background-color: $lightgray;
+                border-radius: $radius;
+            }
+             
+            &::-webkit-scrollbar-thumb {
+              background-color: lightgray;
+              outline: 1px solid #fff;
             }
         }
 

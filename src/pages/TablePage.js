@@ -8,11 +8,9 @@ const items = [
     { country: 'Russia', capital: 'Moscow', population: 12476000 }, 
     { country: 'USA', capital: 'Washington, D.C.', population: 711571 }, 
     { country: 'United Kingdom', capital: 'London', population: 8787892 }, 
-    { country: 'China', capital: 'Beijing', population: 21542000 }
+    { country: 'China', capital: 'Beijing', population: 21542000 },
+    { country: 'Germany', capital: 'Berlin', population: 3748000 }
 ];
-
-const headers = ['Country', 'Capital', 'Population'];
-const headers2 = ['Country', 'Capital', 'Population'];
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const rows = [
@@ -43,6 +41,27 @@ const rows = [
         default: 'left', 
         type: 'string',
         value: 'left | center | right'
+    },
+    { 
+        property: 'tableTitle', 
+        description: 'Set table title',
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'searchable', 
+        description: 'Enable table data searching',
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'searchKey', 
+        description: 'Set searching column key',
+        default: '', 
+        type: 'string',
+        value: ''
     },
     { 
         property: 'pagination', 
@@ -158,7 +177,7 @@ const rows = [
     }
 ]
 
-    const simpleUsage =
+const simpleUsage =
 `// Usage examples
 import React from 'react';
 import { Table } from '@assenti/rui-components';
@@ -169,16 +188,60 @@ function Example() {
             <Table
                 bordered
                 stripped
-                noHover={true} 
-                headers={headers}
+                noHover
+                tableTitle="Capitals population" 
+                headers={['Country', 'Capital', 'Capital population']}
                 items={items}
-                index={true}
+                index
+                searchable
+                searchKey="capital"
+                indexSign="№"
                 footer={<div>I am a footer</div>}
-                itemTitles={['country', 'capital', 'population']}/>  
+                itemTitles={['country', 'capital', 'population']}/> 
         </div>
     )
-}
-`
+}`
+
+const controlsUsage =
+`// Usage examples
+import React from 'react';
+import { Table, Button, Tooltip } from '@assenti/rui-components';
+
+function Example() {
+    return (
+        <div>
+            <Table
+                bordered
+                checkbox 
+                onSelect={(selected) => console.log(selected)}
+                selectKey="country"
+                headers={['Country', 'Capital', 'Capital population']}
+                items={items}
+                itemTitles={['country', 'capital', 'population']}
+                controls={(item) =>
+                    <div className="row justify-center align-center">
+                        <Tooltip tooltip="Edit">
+                            <Button
+                                small
+                                className="mr-10"
+                                color="light"
+                                icon="edit"
+                                onClick={() => console.log(item, 'edited')}>
+                            </Button>
+                        </Tooltip>
+                        <Tooltip tooltip="Delete">
+                            <Button
+                                small
+                                color="light"
+                                icon="delete"
+                                onClick={() => console.log(item, 'deleted')}>
+                            </Button> 
+                        </Tooltip>
+                    </div>
+                }/>
+        </div>
+    )
+}`
 
 const complexUsage =
 `// Usage examples
@@ -244,10 +307,13 @@ const TablePage = () => {
                 <Table
                     bordered
                     stripped
-                    noHover 
-                    headers={headers}
+                    noHover
+                    tableTitle="Capitals population" 
+                    headers={['Country', 'Capital', 'Capital population']}
                     items={items}
                     index
+                    searchable
+                    searchKey="capital"
                     indexSign="№"
                     footer={<div>I am a footer</div>}
                     itemTitles={['country', 'capital', 'population']}/>
@@ -260,12 +326,14 @@ const TablePage = () => {
             <br/>
             <Card outlined color="primary" title="Table with checkboxes and controls">
                 <Table
+                    bordered
                     checkbox 
-                    noHover
-                    headers={headers2}
+                    onSelect={(selected) => console.log(selected)}
+                    selectKey="country"
+                    headers={['Country', 'Capital', 'Capital population']}
                     items={items}
                     itemTitles={['country', 'capital', 'population']}
-                    controls={
+                    controls={(item) =>
                         <div className="row justify-center align-center">
                             <Tooltip tooltip="Edit">
                                 <Button
@@ -273,7 +341,7 @@ const TablePage = () => {
                                     className="mr-10"
                                     color="light"
                                     icon="edit"
-                                    onClick={() => {}}>
+                                    onClick={() => console.log(item, 'edited')}>
                                 </Button>
                             </Tooltip>
                             <Tooltip tooltip="Delete">
@@ -281,14 +349,14 @@ const TablePage = () => {
                                     small
                                     color="light"
                                     icon="delete"
-                                    onClick={() => {}}>
+                                    onClick={() => console.log(item, 'deleted')}>
                                 </Button> 
                             </Tooltip>
                         </div>
                     }/>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {simpleUsage}
+                        {controlsUsage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
@@ -321,7 +389,7 @@ const TablePage = () => {
             <BackTopBtn size="medium" dark setRef={parent}/>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={rows}
                 index={true}
                 itemTitles={keys}/>

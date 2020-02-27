@@ -41,20 +41,6 @@ const rows = [
         value: 'true | false'
     },
     { 
-        property: 'search', 
-        description: 'Pass search state value', 
-        default: '', 
-        type: 'string',
-        value: ''
-    },
-    { 
-        property: 'onSearch', 
-        description: 'Invokes on search value change (return search value)', 
-        default: '', 
-        type: 'function',
-        value: ''
-    },
-    { 
         property: 'size', 
         description: 'Set select size', 
         default: '', 
@@ -125,6 +111,13 @@ const rows = [
         value: ''
     },
     { 
+        property: 'whiteBackground',
+        description: 'Set input background color to white', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 
@@ -139,6 +132,8 @@ const countries = [
     { country: 'USA', cities: ['Washington, D.C.', 'New York City', 'San Francisco'] }, 
     { country: 'United Kingdom', cities: ['London', 'York', 'Manchester'] }, 
     { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
+    { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
+    { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
     { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] }
 ]
 
@@ -152,9 +147,11 @@ const countries = [
     { country: 'Russia', cities: ['Moscow', 'St. Petersburg', 'Krasnodar'] }, 
     { country: 'USA', cities: ['Washington, D.C.', 'New York City', 'San Francisco'] }, 
     { country: 'United Kingdom', cities: ['London', 'York', 'Manchester'] }, 
+    { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
+    { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
+    { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
     { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] }
 ]
-
 function Example() {
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
@@ -196,6 +193,9 @@ const countries = [
     { country: 'Russia', cities: ['Moscow', 'St. Petersburg', 'Krasnodar'] }, 
     { country: 'USA', cities: ['Washington, D.C.', 'New York City', 'San Francisco'] }, 
     { country: 'United Kingdom', cities: ['London', 'York', 'Manchester'] }, 
+    { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
+    { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
+    { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
     { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] }
 ]
 
@@ -211,9 +211,8 @@ function Example() {
                 itemTitle="country"
                 label="Select your favourite country"
                 width={250}
-                search={search}
+                size="medium"
                 searchable
-                onSearch={value => setSearch(value)}
                 color="info"
                 placeholder="Countries"
                 value={country_}
@@ -224,11 +223,9 @@ function Example() {
                 itemTitle="country"
                 label="Select your favourite country"
                 width={250}
-                search={search}
                 searchable
                 rounded
                 className="ml-20"
-                onSearch={value => setSearch(value)}
                 color="info"
                 placeholder="Countries"
                 value={country_}
@@ -247,6 +244,9 @@ const countries = [
     { country: 'Russia', cities: ['Moscow', 'St. Petersburg', 'Krasnodar'] }, 
     { country: 'USA', cities: ['Washington, D.C.', 'New York City', 'San Francisco'] }, 
     { country: 'United Kingdom', cities: ['London', 'York', 'Manchester'] }, 
+    { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
+    { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
+    { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
     { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] }
 ]
 
@@ -261,6 +261,7 @@ function Example() {
                 width={250}
                 childrenKey="cities"
                 multiple
+                whiteBackground
                 color="info"
                 placeholder="Countries"
                 onSelect={(value, selectedList) => console.log(value, selectedList)}/>
@@ -272,7 +273,6 @@ const SelectPage = () => {
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
     const [country_, setCountry_] = useState('');
-    const [search, setSearch] = useState('');
     const parent = createRef();
     const api = createRef();
 
@@ -284,7 +284,7 @@ const SelectPage = () => {
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
                 <div className="rui-page-title">
-                    Select Component <Tag iconLeft="hammer" value="WIP" small color="error"/>
+                    Select Component
                 </div>
                 <div className="rui-link fz-13 fw-bold mr-10" onClick={() => goToApi()}>API</div>
             </div>
@@ -329,9 +329,7 @@ const SelectPage = () => {
                     label="Select your favourite country"
                     width={250}
                     size="medium"
-                    search={search}
                     searchable
-                    onSearch={value => setSearch(value)}
                     color="info"
                     placeholder="Countries"
                     value={country_}
@@ -342,11 +340,9 @@ const SelectPage = () => {
                     itemTitle="country"
                     label="Select your favourite country"
                     width={250}
-                    search={search}
                     searchable
                     rounded
                     className="ml-20"
-                    onSearch={value => setSearch(value)}
                     color="info"
                     placeholder="Countries"
                     value={country_}
@@ -371,6 +367,7 @@ const SelectPage = () => {
                     width={250}
                     childrenKey="cities"
                     multiple
+                    whiteBackground
                     color="info"
                     placeholder="Countries"
                     onSelect={(value, selectedList) => console.log(value, selectedList)}/>

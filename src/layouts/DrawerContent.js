@@ -43,7 +43,7 @@ export const DrawerContent = (props) => {
                 onClose={() => props.onClose()}
                 headerCentered
                 header={<Icon name="react" size={30} color={props.dark ? '#fff' : ''}/>}>
-                <div className="row py-5 justify-center">
+                <div className="row py-5 justify-center sticky" style={{ top: 45 }}>
                     <Dropdown
                         className="full-width mx-10"
                         content={
@@ -70,6 +70,7 @@ export const DrawerContent = (props) => {
                         trigger={<InputField
                                     color="info"
                                     width="100%"
+                                    whiteBackground
                                     onKeyUp={handleKeyUp}
                                     prefix={<Icon name="search"/>}
                                     value={search}
@@ -102,8 +103,9 @@ export const DrawerContent = (props) => {
                             <small className="fw-bold ml-10 text-info">{sortedRoutes().length}</small>
                         </span>}
                         controls={<Icon 
-                                size={20} 
-                                name={list ? 'chevron-up' : 'chevron-down'}/>}/>
+                                    onClick={() => setList(!list)}
+                                    size={20} 
+                                    name={list ? 'chevron-up' : 'chevron-down'}/>}/>
                 </List>
                 {list ? <List className="pl-30" dark={props.dark}>
                     {sortedRoutes().map((item, index) => 

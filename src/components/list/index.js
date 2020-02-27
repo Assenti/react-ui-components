@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon } from '../icon';
+import { Checkbox } from '../checkbox';
 
 export const List = (props) => {
     const listClass = () => {
@@ -44,16 +45,29 @@ export const ListItem = (props) => {
         return result.trim();
     }
 
+    const handleClick = (e) => {
+        if (e.currentTarget === e.target) {
+            if (props.onClick) {
+                props.onClick(e)
+            }
+        }
+    }
+
     return (
-        <div onClick={() => props.onClick ? props.onClick() : {}} 
+        <div onClick={handleClick}
+            tabIndex={props.tabIndex} 
             className={itemClass()}>
             {!props.render ?
                 <React.Fragment>
                     <div className="rui-list-item__left-side">
                         <div className="rui-list-item__title-row">
                             {props.icon ? <Icon name={props.icon}/> : ''}
-                            {props.checkbox}
-                            {props.item}
+                            {props.checkbox ? <Checkbox
+                                color="info"
+                                className="mr-10" 
+                                checked={props.isActiveItem}
+                                onChange={handleClick}/> : ''}
+                            <span onClick={handleClick}>{props.item}</span>
                         </div>
                         {props.subTitle ? <div className="rui-list-subtitle">{props.subTitle}</div> : ''}
                     </div>

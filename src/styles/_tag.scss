@@ -1,10 +1,9 @@
 .rui-tag {
     display: inline-flex;
     align-items: center;
-    // justify-content: center;
     border: 1px solid;
     border-radius: $radius;
-    border-color: $lightgray;
+    border-color: lightgray;
     background-color: $lightgray;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -83,6 +82,7 @@
 
     &.primary {
         background-color: $primary;
+        border-color: $primary;
         color: #fff;
 
         path {
@@ -98,6 +98,7 @@
 
     &.info {
         background-color: $info;
+        border-color: $info;
         color: #fff;
 
         path {
@@ -113,6 +114,7 @@
 
     &.error {
         background-color: $error;
+        border-color: $error;
         color: #fff;
 
         path {
@@ -128,6 +130,7 @@
 
     &.success {
         background-color: $success;
+        border-color: $success;
         color: #fff;
 
         path {

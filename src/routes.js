@@ -26,14 +26,15 @@ const CardPage = lazy(() => import('./pages/CardPage'));
 const IconPage = lazy(() => import('./pages/IconPage'));
 const PaginationPage = lazy(() => import('./pages/PaginationPage'));
 const InputsPage = lazy(() => import('./pages/InputsPage'));
+const UploaderPage = lazy(() => import('./pages/UploaderPage'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
     { path: '/btns', name: 'Button', Component: ButtonPage },
     { path: '/icon', name: 'Icon', Component: IconPage },
     { path: '/dropdown', name: 'Dropdown', Component: DropdownPage },
-    { path: '/lists', name: 'List', Component: ListPage },
-    { path: '/inputs', name: 'Input', Component: InputsPage },
+    { path: '/list', name: 'List', Component: ListPage },
+    { path: '/inputfield', name: 'InputField', Component: InputsPage },
     { path: '/drawer', name: 'Drawer', Component: DrawerPage },
     { path: '/tooltip', name: 'Tooltip', Component: TooltipPage },
     { path: '/pagination', name: 'Pagination', Component: PaginationPage },
@@ -54,5 +55,6 @@ export const routes = [
     { path: '/popover', name: 'PopOver', Component: PopOverPage },
     { path: '/header', name: 'Header', Component: HeaderPage },
     { path: '/helper', name: 'Helper CSS classes', Component: HelperPage },
-    { path: '/copytoclipboard', name: 'CopyToClipboard', Component: CopyToClipboardPage }
+    { path: '/copytoclipboard', name: 'CopyToClipboard', Component: CopyToClipboardPage },
+    { path: '/uploader', name: 'Uploader', Component: UploaderPage }
 ]

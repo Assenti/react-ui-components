@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Icon } from '../icon';
 import { InputField } from '../input';
 import { Dropdown } from '../dropdown';
@@ -11,6 +11,11 @@ export const Select = (props) => {
     const [subMenu, setSubMenu] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
     const [selected, setSelected] = useState([]);
+    const [index, setIndex] = useState(-1);
+    const [focus, setFocus] = useState(false);
+    const [search, setSearch] = useState('');
+    const [searchFocus, setSearchFocus] = useState(props.searchable ? true : false);
+    const inputRef = useRef(null);
 
     const selectMenuClass = () => {
         let result = '';
@@ -53,21 +58,24 @@ export const Select = (props) => {
         else return false
     }
 
-    const handleItemClick = (item, index) => {
-        if (props.childrenKey && !props.multiple) {
-            setSubMenu(true)
-            setActiveIndex(index)               
-        } else if (isMultiple()) {
-            if (isSelected(item)) {
-                setSelected(() => selected.filter(i => i !== item))
-                props.onSelect(item, selected.filter(i => i !== item))
+    const handleItemClick = (e, item, index) => {
+        if (e.currentTarget === e.target) {
+            if (props.childrenKey && !props.multiple) {
+                setSubMenu(true)
+                setActiveIndex(index)               
+            } else if (isMultiple()) {
+                if (isSelected(item)) {
+                    setSelected(() => selected.filter(i => i !== item))
+                    props.onSelect(item, selected.filter(i => i !== item))
+                } else {
+                    setSelected([...selected, item])
+                    props.onSelect(item, [...selected, item])
+                }
+                setFocus(false)
             } else {
-                setSelected([...selected, item])
-                props.onSelect(item, [...selected, item])
+                setMenu(false)
+                props.onChange(item)
             }
-        } else {
-            setMenu(false)
-            props.onChange(item)
         }
     }
 
@@ -85,19 +93,24 @@ export const Select = (props) => {
         }
     }
 
-    const handleCloseOnBlur = () => {
-        if (!props.childrenKey) {
+    const handleCloseOnBlur = (e) => {
+        if (e.currentTarget === e.target && !searchFocus) {
             setMenu(false)
             setSubMenu(false)
+
+            if (props.searchable) {
+                setSearchFocus(false)
+                setSearch('')
+            }
         }
     }
 
     const filteredItems = () => {
-        if (props.search) {
+        if (search) {
             return props.items.filter(item => {
                 return props.itemTitle ? 
-                    item[props.itemTitle].toLowerCase().includes(props.search.toLowerCase()) :
-                    item.toLowerCase().includes(props.search.toLowerCase())
+                    item[props.itemTitle].toLowerCase().includes(search.toLowerCase()) :
+                    item.toLowerCase().includes(search.toLowerCase())
             })
         } else {    
             return props.items
@@ -110,6 +123,26 @@ export const Select = (props) => {
 
     const handleFocus = (e) => {
         if (e.currentTarget === e.target) setMenu(true)
+    }
+
+    const handleBlur = (e) => {
+        if (e.currentTarget === e.target) setMenu(false)
+    }
+
+    const handleKeyUp = (e) => {
+        if (e.key === 'ArrowDown') setIndex(index + 1)
+        else if (e.key === 'ArrowUp') setIndex(index - 1)
+        else if (e.key === 'Escape') {
+            setMenu(false)
+            setSubMenu(false)
+        }
+    }
+
+    const handleLabelClick = () => {
+        if (inputRef) {
+            inputRef.current.focus()
+            setFocus(true)
+        }
     }
 
     return (
@@ -128,22 +161,23 @@ export const Select = (props) => {
                     <InputField
                         color={props.color ? props.color : 'primary'}
                         prefix={<Icon name="search"/>}
-                        value={props.search}
-                        onChange={e => props.onSearch(e.target.value)}
+                        value={search}
+                        autoFocus
+                        placeholder={props.searchPlaceholder ? props.searchPlaceholder : 'Search'}
+                        onChange={e => setSearch(e.target.value)}
                         className="full-width pa-5"/> : ''}
                     <List className="relative" 
                         size={props.size ? props.size : ''}>
                         {filteredItems().map((item, index) => 
                             <ListItem
                                 key={index}
+                                tabIndex={index}
                                 isActiveItem={getActiveItem(item)}
-                                onClick={() => handleItemClick(props.itemTitle ? item[props.itemTitle] : item, index)}
-                                controls={
-                                    resolveItemChildren().length > 0 && !props.multiple ? 
-                                        <Icon name="chevron-next" size={18}/> : 
-                                        (props.multiple && getActiveItem(item) ? 
-                                            <Icon name="check" color="#42a5f5" size={16}/> : '')
-                                    }
+                                onClick={e => handleItemClick(e, props.itemTitle ? 
+                                    item[props.itemTitle] : item, index)}
+                                checkbox={props.multiple}
+                                controls={!props.multiple && props.childrenKey ? 
+                                    <Icon name="chevron-next"/> : ''}
                                 item={props.itemTitle ? item[props.itemTitle] : item}
                                 hover>
                                 {!props.multiple ? <CSSTransition
@@ -183,25 +217,31 @@ export const Select = (props) => {
                         name={menu ? 'chevron-up' : 'chevron-down'} 
                         onClick={() => setMenu(true)}/>}
                     value={props.value}
+                    onKeyUp={handleKeyUp}
+                    whiteBackground={props.whiteBackground ? props.whiteBackground : false}
                     size={props.size ? props.size : ''}
                     rounded={props.rounded ? props.rounded : false}
                     prefix={props.prefix ? props.prefix : ''}
                     clearable={props.clearable ? props.clearable : false}
                     onClear={props.onClear ? props.onClear() : {}}
                     onFocus={() => setMenu(true)}
-                    onBlur={() => props.value || (!props.childrenKey) ? handleCloseOnBlur() : {}}
+                    onBlur={e => props.value && !props.childrenKey ? handleCloseOnBlur(e) : {}}
                     className="full-width"
                     width={props.width ? props.width : ''}
                     placeholder={props.placeholder}/> : 
                     <div style={{ width: props.width ? props.width : 100 }} 
                         className="rui-select__multiple">
-                        {props.label ? <label>{props.label}</label> : ''}
+                        {props.label ? 
+                            <label
+                                className={focus ? 'text-info' : ''} 
+                                onClick={handleLabelClick}>{props.label}</label> : ''}
                         <div tabIndex={-1}
+                            ref={inputRef}
                             onFocus={handleFocus}
+                            onBlur={handleBlur}
+                            style={{ backgroundColor: props.whiteBackground ? '#fff' : '' }} 
                             className={selectMultipleItemClass()}>
-                            {props.prefix ? 
-                                <span className="rui-input-prefix">{props.prefix}</span> 
-                            : ''}
+                            {props.prefix ? <span className="rui-input-prefix">{props.prefix}</span> : ''}
                             {selected.length > 0 ? 
                                 <div className="rui-select__multiple-item">
                                     {selected.map((item, index) => 
@@ -209,11 +249,9 @@ export const Select = (props) => {
                                             key={index} 
                                             small={props.size ? false : true}
                                             value={item} 
-                                            closable
                                             color={props.tagColor}
                                             visible={isSelected(item)}
-                                            className="ma-1" 
-                                            onClose={() => handleItemClick(item)}/>
+                                            className="ma-1"/>
                                     )}
                                 </div> :
                                 (props.placeholder ? <div className="rui-select__multiple-placeholder">{props.placeholder}</div> : '')

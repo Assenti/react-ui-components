@@ -4,6 +4,17 @@
     max-height: 100vh;
     min-height: 100vh;
     overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 3.5px;
+        background-color: $lightgray;
+        border-radius: $radius;
+    }
+     
+    &::-webkit-scrollbar-thumb {
+      background-color: lightgray;
+      outline: 1px solid #fff;
+    }
 }
 
 .rui-content-inner {

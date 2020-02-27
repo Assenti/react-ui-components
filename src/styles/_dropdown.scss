@@ -30,6 +30,10 @@
     border-radius: $radius;
     z-index: 5;
 
+    .rui-dropdown__content {
+        // padding: 10px 0;
+    }
+
     .rui-list-item:first-child {
         border-top-left-radius: $radius;
         border-top-right-radius: $radius;

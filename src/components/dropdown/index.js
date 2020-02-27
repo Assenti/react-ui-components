@@ -35,7 +35,10 @@ export const Dropdown = (props) => {
                         right: props.rightOffset && !props.legtOffset ? props.rightOffset : '',
                         left: props.legtOffset && !props.rightOffset ? props.legtOffset : ''
                     }}>
-                    <div onClick={() => props.closeManaged ? {} : setVisible(false)}>{props.content}</div>
+                    <div className="rui-dropdown__content" 
+                        onClick={() => props.closeManaged ? {} : setVisible(false)}>
+                            {props.content}
+                    </div>
                 </div>
             </CSSTransition>
         </div>

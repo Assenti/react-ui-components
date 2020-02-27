@@ -56,7 +56,7 @@
 
     & > span:active {
         transform: scale(.98);
-        box-shadow: 0 1px 5px rgba(black, .3);;
+        box-shadow: 0 0 5px rgba(black, .3);
     }
 
     & > span:after {
@@ -70,7 +70,7 @@
         top: -2px;
         width: 6px;
         height: 12px;
-        border: solid $dark;
+        border: solid gray;
         border-width: 0 3px 3px 0;
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);

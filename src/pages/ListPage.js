@@ -1,5 +1,5 @@
 import React, { useState, createRef } from 'react';
-import { List, ListItem, Button, Checkbox, Table, Card, Tag, Collapse, BackTopBtn } from '../components';
+import { List, ListItem, Button, Table, Card, Collapse, BackTopBtn } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -42,18 +42,18 @@ function Example() {
             <List size="large" header="Large size">
                 {names.map((item, index) => 
                     <ListItem
-                        isActiveItem={item => item.active} 
-                        key={index} 
-                        item={item}
-                        itemTitle="name"/>
+                        key={index}
+                        hover
+                        icon="account" 
+                        item={item.name}
+                        controls={<span className="fz-10 text-dark">+7 (777) 777-77-77</span>}/>
                 )}
             </List>
         </div>
     )
-}
-`
+}`
 
-    const darkMode =
+const darkMode =
 `// Usage examples
 import React, { useState } from 'react';
 import { List, ListItem } from '@assenti/rui-components';
@@ -83,10 +83,9 @@ function Example() {
             </List>
         </div>
     )
-}
-`
+}`
 
-    const checkboxList =
+const checkboxList =
 `// Usage examples
 import React, { useState } from 'react';
 import { List, ListItem, Checkbox } from '@assenti/rui-components';
@@ -119,25 +118,21 @@ function Example() {
     return (
         <div>
             <List header={'Selected Marvel avengers: ' + selected.length}>
-                {names.map((item, index) => 
+                {itemsComplex.map((item, index) => 
                     <ListItem 
                         key={index} 
-                        item={item}
-                        itemTitle="hero"
-                        isActiveItem={item => isSelected(item, 'hero')}
+                        item={item.hero}
+                        isActiveItem={isSelected(item.hero)}
                         hover
-                        checkbox={<Checkbox
-                            color="info" 
-                            checked={isSelected(item, 'hero')}
-                            onChange={() => selectOne(item)}/>}/>
+                        onClick={() => selectOne(item.hero)}
+                        checkbox/>
                 )}
             </List>
         </div>
     )
-}
-`
+}`
 
-    const controlsList =
+const controlsList =
 `// Usage examples
 import React, { useState } from 'react';
 import { List, ListItem, Button, Tag } from '@assenti/rui-components';
@@ -169,8 +164,7 @@ function Example() {
             </List>
         </div>
     )
-}
-`
+}`
 
 const names = [
     { name: 'John Doe', hero: 'Captain America', active: false },
@@ -217,7 +211,6 @@ const items = [
         value: ''
     }
 ]
-
 const items2 = [
     { 
         property: 'render', 
@@ -379,13 +372,14 @@ const ListPage = () => {
                 <List size="large" header="Large size">
                     {names.map((item, index) => 
                         <ListItem
-                            isActiveItem={item.active} 
-                            key={index} 
+                            key={index}
+                            hover
+                            icon="account" 
                             item={item.name}
-                            subTitle={item.hero}/>
+                            controls={<span className="fz-10 text-dark">+7 (777) 777-77-77</span>}/>
                     )}
                 </List>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse className="px-15" icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {simpleList}
                     </SyntaxHighlighter>
@@ -423,13 +417,11 @@ const ListPage = () => {
                             item={item.hero}
                             isActiveItem={isSelected(item.hero)}
                             hover
-                            checkbox={<Checkbox
-                                color="info" 
-                                checked={isSelected(item.hero)}
-                                onChange={() => selectOne(item.hero)}/>}/>
+                            onClick={() => selectOne(item.hero)}
+                            checkbox/>
                     )}
                 </List>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse className="px-15" icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {checkboxList}
                     </SyntaxHighlighter>

@@ -127,6 +127,10 @@
             background-color: rgba($info, .4);
             color: $info;
 
+            &.hover:hover {
+                cursor: pointer;
+            }
+
             &.left {
                 border-left: 5px solid $info;
             }
@@ -263,6 +267,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    outline: none;
+
+    &:focus {
+        background-color: $lightgray;
+    }
 
     .rui-list-item__title-row {
         display: flex;
@@ -289,7 +298,7 @@
         border-bottom: none;
     }
 
-    &.hover:hover:not(.active) {
+    &.hover:hover {
         background-color: $lightgray;
         transition: all .2s ease-in-out;
         cursor: pointer;
