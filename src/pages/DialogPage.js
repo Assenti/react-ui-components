@@ -27,7 +27,7 @@ function Example() {
                 onClick={() => setDialog(true)}/>
             <Dialog
                 onCancel={() => setDialog(false)}
-                onConfirm={actionImmitation}
+                onConfirm={actionImitation}
                 icon="alert"
                 iconColor="red"
                 titleColor="red" 
