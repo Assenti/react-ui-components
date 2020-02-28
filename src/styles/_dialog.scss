@@ -1,0 +1,68 @@
+.rui-dialog {
+    position: fixed;
+    top: calc(50vh - 120px);
+    left: calc(50% - 150px);
+    min-height: 120px;
+    width: 300px;
+    padding: 10px 15px;
+    border-radius: $radius;
+    border: 1px solid $lightgray;
+    box-shadow: 0 1px 40px rgba(black, .4);
+    background-color: $light;
+    z-index: 1000;
+
+    &.dark {
+        background-color: $night;
+        border-color: $night;
+
+        .rui-dialog__title,
+        .rui-dialog__description {
+            color: #fff;
+        }
+    }
+
+    .rui-dialog__title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        padding: 5px 0;
+        text-align: left;
+        display: flex;
+        align-items: center;
+    }
+
+
+    .rui-dialog__description {
+        font-size: .85rem;
+        padding: 5px 0;
+        text-align: left;
+    }
+    
+    .rui-dialog__controls {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-top: 10px;
+    }
+}
+
+.dialog-enter {
+    opacity: 0;
+    transform: scale(0.9) translateY(-10%);
+}
+
+.dialog-enter-active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.dialog-exit {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.dialog-exit-active {
+    opacity: 0;
+    transform: scale(0.9) translateY(-10%);
+    transition: opacity 300ms, transform 300ms;
+}

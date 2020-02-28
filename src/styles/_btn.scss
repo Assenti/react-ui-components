@@ -87,6 +87,10 @@
         border-radius: $radius * 2.3;
     }
 
+    &.tile {
+        border-radius: 0;
+    }
+
     &.icon {
         border-radius: 50%;
         padding: 0;
@@ -180,7 +184,7 @@
     }
 
     &:active:not(:disabled):not(.loading) {
-        box-shadow: 0 1px 10px rgba(black, .5);
+        box-shadow: 0 0 10px rgba(black, .4);
     }
 
     &:hover {
@@ -193,6 +197,10 @@
     &.primary {
         background-color: $primary;
         color: #fff;
+
+        &:focus {
+            box-shadow: 0 0 5px rgba($primary, .5);
+        }
 
         &:not(:disabled):hover,
         &.active,
@@ -230,6 +238,10 @@
     &.secondary {
         background-color: $gray;
 
+        &:focus {
+            box-shadow: 0 0 5px rgba($gray, .5);
+        }
+
         &:not(:disabled):hover {
             background-color: darken($gray, 5%);
         }
@@ -264,6 +276,10 @@
     &.info {
         background-color: $info;
         color: #fff;
+        
+        &:focus {
+            box-shadow: 0 0 5px rgba($info, .5);
+        }
 
         &:not(:disabled):hover,
         &.active,
@@ -302,6 +318,10 @@
         background-color: $success;
         color: #fff;
 
+        &:focus {
+            box-shadow: 0 0 5px rgba($success, .5);
+        }
+
         &:not(:disabled):hover,
         &.active,
         .rui-btn__allotted-icon {
@@ -339,6 +359,10 @@
         background-color: $error;
         color: #fff;
 
+        &:focus {
+            box-shadow: 0 0 5px rgba($error, .5);
+        }
+
         &:not(:disabled):hover,
         &.active,
         .rui-btn__allotted-icon {
@@ -374,6 +398,10 @@
     &.black {
         background-color: $dark;
         color: #fff;
+
+        &:focus {
+            box-shadow: 0 0 5px rgba($dark, .5);
+        }
 
         &:not(:disabled):hover,
         &.active,

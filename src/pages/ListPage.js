@@ -346,7 +346,6 @@ const ListPage = () => {
             <Card 
                 outlined 
                 className="px-0"
-                color="primary" 
                 title="Simple list with active item">
                 <List header="Default size">
                     {names.map((item, index) => 
@@ -386,7 +385,7 @@ const ListPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Dark mode">
+            <Card outlined title="Dark mode">
                 <List dark
                     header="Marvel Avengers" 
                     hover>
@@ -407,7 +406,6 @@ const ListPage = () => {
             <br/>
             <Card 
                 outlined 
-                color="primary" 
                 title="List with checkbox"
                 className="px-0">
                 <List header={'Selected Marvel avengers: ' + selected.length}>
@@ -428,7 +426,7 @@ const ListPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="List with controls and subtitles">
+            <Card outlined title="List with controls and subtitles">
                 <List>
                     {itemsComplex.map((item, index) => 
                         <ListItem 

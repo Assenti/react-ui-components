@@ -6,94 +6,73 @@ import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 const inputTypes = 
 `// Usage examples
 import React, { useState } from 'react';
-import { InputField } from '@assenti/react-ui-components';
+import { InputField, Icon } from '@assenti/react-ui-components';
 
 function Example() {
-    const [first, setFirst] = useState('');
+    const [login, setLogin] = useState('');
+    const [password, setPassword] = useState('');
+    const [search, setSearch] = useState('');
     const [second, setSecond] = useState('');
+    const [amount, setAmount] = useState(0);
 
     return (
-        <div className="row wrap">
-            <div className="col">
-                <InputField
-                    label="Standard input with clear button and hint"
-                    placeholder="Input a text" 
-                    value={first}
-                    color="primary"
-                    width="300px"
-                    hint="Some hint"
-                    onClear={() => setFirst('')} 
-                    onChange={e => setFirst(e.target.value)}/>
-                <InputField
-                    label="Smooth input with prefix, clear button with lifted prop"
-                    placeholder="Input a text" 
-                    value={first}
-                    smooth
-                    lifted
-                    color="primary"
-                    prefix={<Icon name="search"/>}
-                    width="300px"
-                    onClear={() => setFirst('')} 
-                    onChange={e => setFirst(e.target.value)}/>
-                <InputField
-                    label="Rounded input field with prefix, suffix and clear button"
-                    placeholder="Defaul size input field" 
-                    value={first}
-                    rounded
-                    clearable
-                    autoFocus
-                    onClear={() => setFirst('')} 
-                    prefix={<Icon name="search"/>}
-                    suffix={<Icon name="edit"/>}
-                    color="info"
-                    width="300px"
-                    onChange={e => setFirst(e.target.value)}/>
-                <InputField
-                    label="Disabled input field"
-                    placeholder="Defaul size rounded input field" 
-                    value={first}
-                    rounded
-                    disabled
-                    prefix={<Icon name="account"/>}
-                    color="info"
-                    width="300px"
-                    onClear={() => setFirst('')} 
-                    onChange={e => setFirst(e.target.value)}/>
-            </div>
-            <div className="col">
-                <InputField
-                    label="Standard input field with suffix button"
-                    placeholder="Search..." 
-                    value={second}
-                    color="primary"
-                    width="100%"
-                    prefix={<Icon name="search"/>}
-                    suffix={<Button name="Search" color="primary" onClick={() => {}}/>}
-                    onClear={() => setSecond('')} 
-                    onChange={e => setSecond(e.target.value)}/>
-                <InputField
-                    label="Smooth input field with suffix button"
-                    placeholder="Search..." 
-                    value={second}
-                    color="primary"
-                    width="100%"
-                    smooth
-                    prefix={<Icon name="search"/>}
-                    suffix={<Button name="Search" color="primary" onClick={() => {}}/>}
-                    onClear={() => setSecond('')} 
-                    onChange={e => setSecond(e.target.value)}/>
-                <InputField
-                    label="Rounded input field with suffix button"
-                    placeholder="Search..." 
-                    value={second}
-                    color="error"
-                    width="100%"
-                    rounded
-                    prefix={<Icon name="search"/>}
-                    suffix={<Button name="Search" color="error" onClick={() => {}}/>}
-                    onClear={() => setSecond('')} 
-                    onChange={e => setSecond(e.target.value)}/>
-            </div>
+        <div>
+            <InputField
+                label="Login"
+                placeholder="Input your login" 
+                value={login}
+                autoComplete
+                hint="InputField with tile borderType"
+                borderType="tile"
+                name="login"
+                color="primary"
+                width={300}
+                required
+                onChange={e => setLogin(e.target.value)}/>
+            <InputField
+                label="Password"
+                placeholder="Input your password" 
+                value={password}
+                type="password"
+                hint="InputField with default borderType"
+                color="info"
+                width={300}
+                onChange={e => setPassword(e.target.value)}/>
+            <InputField
+                label="Amount"
+                placeholder="Input amount" 
+                value={amount}
+                type="number"
+                min={0}
+                borderType="smooth"
+                hint="InputField with smooth borderType"
+                color="primary"
+                prefix={<Icon name="tenge"/>}
+                width={300}
+                onChange={e => setAmount(e.target.value)}/>
+            <InputField
+                label="Login"
+                placeholder="Input your login" 
+                value={first}
+                borderType="rounded"
+                hint="InputField with rounded borderType"
+                clearable
+                autoFocus
+                onClear={() => setFirst('')} 
+                prefix={<Icon name="account"/>}
+                color="info"
+                width={300}
+                onChange={e => setFirst(e.target.value)}/>
+            <InputField
+                placeholder="Search..." 
+                value={search}
+                hint="Let's find something interesting..."
+                color="primary"
+                width={300}
+                prefix={<Icon name="search"/>}
+                suffix={<Button name="Search" color="primary" onClick={() => console.log(search)}/>}
+                onEnter={() => console.log(search)}
+                onChange={e => setSearch(e.target.value)}/>
         </div>
     )
 }`
@@ -101,78 +80,36 @@ function Example() {
 const inputSizes =
 `// Usage examples
 import React, { useState } from 'react';
-import { InputField } from '@assenti/react-ui-components';
+import { InputField, Icon } from '@assenti/react-ui-components';
 
 function Example() {
     const [second, setSecond] = useState('');
 
     return (
         <div className="row">
-            <div className="col">
-                <InputField
-                    color="info"
-                    placeholder="777 777 77 77" 
-                    value={second} 
-                    label="Default input field with label and prefix"
-                    width="300px"
-                    prefix={<Icon name="smartphone"/>}
-                    onClear={() => setSecond('')} 
-                    onChange={e => setSecond(e.target.value)}/>
-                <InputField
-                    size="medium"
-                    color="info"
-                    label="Medium input field with label and prefix"
-                    prefix={<Icon name="smartphone"/>}
-                    placeholder="777 777 77 77" 
-                    value={second} 
-                    width="300px"
-                    onClear={() => setSecond('')} 
-                    onChange={e => setSecond(e.target.value)}/>
-                <InputField
-                    size="large"
-                    color="info"
-                    label="Large input field with label and prefix"
-                    prefix={<Icon name="smartphone"/>}
-                    placeholder="777 777 77 77 " 
-                    value={second} 
-                    width="300px"
-                    onClear={() => setSecond('')} 
-                    onChange={e => setSecond(e.target.value)}/>
-            </div>
-            <div className="col">
-                <InputField
-                    color="info"
-                    placeholder="777 777 77 77" 
-                    value={second}
-                    rounded 
-                    label="Rounded default size input field with label and prefix"
-                    width="300px"
-                    prefix={<Icon name="smartphone"/>}
-                    onClear={() => setSecond('')} 
-                    onChange={e => setSecond(e.target.value)}/>
-                <InputField
-                    size="medium"
-                    color="info"
-                    rounded 
-                    label="Rounded medium size input field with label and prefix"
-                    prefix={<Icon name="smartphone"/>}
-                    placeholder="777 777 77 77" 
-                    value={second} 
-                    width="300px"
-                    onClear={() => setSecond('')} 
-                    onChange={e => setSecond(e.target.value)}/>
-                <InputField
-                    size="large"
-                    color="info"
-                    rounded 
-                    label="Rounded large size input field with label and prefix"
-                    prefix={<Icon name="smartphone"/>}
-                    placeholder="777 777 77 77 " 
-                    value={second} 
-                    width="300px"
-                    onClear={() => setSecond('')} 
-                    onChange={e => setSecond(e.target.value)}/>
-            </div>
+            <InputField
+                color="info"
+                placeholder="John Doe" 
+                value={second} 
+                width={300}
+                prefix={<Icon name="account"/>}
+                onChange={e => setSecond(e.target.value)}/>
+            <InputField
+                size="medium"
+                color="info"
+                prefix={<Icon name="account"/>}
+                placeholder="John Doe" 
+                value={second} 
+                width={300}
+                onChange={e => setSecond(e.target.value)}/>
+            <InputField
+                size="large"
+                color="info"
+                prefix={<Icon name="account"/>}
+                placeholder="John Doe " 
+                value={second} 
+                width={300}
+                onChange={e => setSecond(e.target.value)}/>
         </div>
     )
 }`
@@ -187,16 +124,25 @@ function Example() {
 
     return (
         <div>
-        <TextareaField
-            prefix={<Icon name="edit" />}
-            label="Textarea field"
-            placeholder="Textarea field" 
-            value={text}
-            maxRows={20}
-            color="primary"
-            width={300}
-            onClear={() => setText('')} 
-            onChange={e => setText(e.target.value)}/>
+            <TextareaField
+                prefix={<Icon name="edit" />}
+                label="Textarea field"
+                placeholder="Textarea field" 
+                value={text}
+                maxRows={20}
+                color="primary"
+                width={300}
+                onChange={e => setText(e.target.value)}/>
+            <TextareaField
+                label="Textarea field"
+                placeholder="Textarea field" 
+                value={text}
+                maxRows={20}
+                color="info"
+                borderType="tile"
+                rows={4}
+                width={300}
+                onChange={e => setText(e.target.value)}/>
         </div>
     )
 }`
@@ -205,14 +151,42 @@ const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'onChange', 
-        description: 'Handle input value change', 
+        description: 'Handle input value change (return input change event object)', 
         default: '', 
         type: 'function',
-        value: 'return a input change event object'
+        value: ''
+    },
+    { 
+        property: 'onKeyUp', 
+        description: 'Invokes on InputField any key pressed (return key change event object)', 
+        default: '', 
+        type: 'function',
+        value: ''
+    },
+    { 
+        property: 'onEnter', 
+        description: 'Invokes on InputField "Enter" key pressed', 
+        default: '', 
+        type: 'function',
+        value: ''
     },
     { 
         property: 'value', 
         description: 'Input value', 
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'autoComplete', 
+        description: 'Enable input autocomplete', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'name', 
+        description: 'Set name prop for get all inputted values for autocomplete', 
         default: '', 
         type: 'string',
         value: ''
@@ -257,20 +231,14 @@ const items = [
         description: 'Make input field disabled', 
         default: 'false',
         type: 'boolean', 
-        value: 'true | false'},
-    { 
-        property: 'rounded', 
-        description: 'Make border radius rounded',
-        default: 'false', 
-        type: 'boolean',
         value: 'true | false'
     },
     { 
-        property: 'smooth',
-        description: 'Set input field borders more smooth', 
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
+        property: 'borderType', 
+        description: 'Set borders type', 
+        default: '', 
+        type: 'string',
+        value: 'tile | smooth | rounded'
     },
     { 
         property: 'uppercase',
@@ -312,6 +280,34 @@ const items = [
         description: 'Set input type', 
         default: 'text', 
         type: 'string',
+        value: ''
+    },
+    { 
+        property: 'min',
+        description: 'Set min number (has effect with type="number")', 
+        default: '', 
+        type: 'number',
+        value: ''
+    },
+    { 
+        property: 'max',
+        description: 'Set max number (has effect with type="number")', 
+        default: '', 
+        type: 'number',
+        value: ''
+    },
+    { 
+        property: 'minLength',
+        description: 'Set min length for text (has effect with type="text")', 
+        default: '', 
+        type: 'number',
+        value: ''
+    },
+    { 
+        property: 'maxLength',
+        description: 'Set max length for text (has effect with type="text")', 
+        default: '', 
+        type: 'number',
         value: ''
     },
     { 
@@ -412,20 +408,14 @@ const itemsTextarea = [
         description: 'Make input field disabled', 
         default: 'false',
         type: 'boolean', 
-        value: 'true | false'},
-    { 
-        property: 'rounded', 
-        description: 'Make border radius rounded',
-        default: 'false', 
-        type: 'boolean',
         value: 'true | false'
     },
     { 
-        property: 'smooth',
-        description: 'Set input field borders more smooth', 
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
+        property: 'borderType', 
+        description: 'Set borders type', 
+        default: '', 
+        type: 'string',
+        value: 'tile | smooth'
     },
     { 
         property: 'uppercase',
@@ -486,9 +476,11 @@ const itemsTextarea = [
 ]
 
 const InputsPage = () => {
-    const [first, setFirst] = useState('');
+    const [login, setLogin] = useState('');
+    const [password, setPassword] = useState('');
     const [second, setSecond] = useState('');
-    const [third, setThird] = useState('');
+    const [search, setSearch] = useState('');
+    const [amount, setAmount] = useState(0);
     const [text, setText] = useState('');
     const api = createRef();
     const parent = createRef();
@@ -503,89 +495,63 @@ const InputsPage = () => {
                 <div className="rui-page-title">InputField, TextareaField Components</div>
                 <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
             </div>
-            <Card outlined color="primary" title="Input types">
-                <div className="row wrap">
-                    <div className="col">
-                        <InputField
-                            label="Standard input with clear button and hint"
-                            placeholder="Input a text" 
-                            value={first}
-                            color="primary"
-                            width="300px"
-                            hint="Some hint"
-                            onClear={() => setFirst('')} 
-                            onChange={e => setFirst(e.target.value)}/>
-                        <InputField
-                            label="Smooth input with prefix, clear button with lifted prop"
-                            placeholder="Input a text" 
-                            value={first}
-                            smooth
-                            lifted
-                            color="primary"
-                            prefix={<Icon name="search"/>}
-                            width="300px"
-                            onClear={() => setFirst('')} 
-                            onChange={e => setFirst(e.target.value)}/>
-                        <InputField
-                            label="Rounded input field with prefix, suffix and clear button"
-                            placeholder="Defaul size input field" 
-                            value={first}
-                            rounded
-                            clearable
-                            autoFocus
-                            onClear={() => setFirst('')} 
-                            prefix={<Icon name="search"/>}
-                            suffix={<Icon name="edit"/>}
-                            color="info"
-                            width="300px"
-                            onChange={e => setFirst(e.target.value)}/>
-                        <InputField
-                            label="Disabled input field"
-                            placeholder="Defaul size rounded input field" 
-                            value={first}
-                            rounded
-                            disabled
-                            prefix={<Icon name="account"/>}
-                            color="info"
-                            width="300px"
-                            onClear={() => setFirst('')} 
-                            onChange={e => setFirst(e.target.value)}/>
-                    </div>
-                    <div className="col">
-                        <InputField
-                            label="Standard input field with suffix button"
-                            placeholder="Search..." 
-                            value={third}
-                            color="primary"
-                            width="100%"
-                            prefix={<Icon name="search"/>}
-                            suffix={<Button name="Search" color="primary" onClick={() => {}}/>}
-                            onClear={() => setThird('')} 
-                            onChange={e => setThird(e.target.value)}/>
-                        <InputField
-                            label="Smooth input field with suffix button"
-                            placeholder="Search..." 
-                            value={third}
-                            color="primary"
-                            width="100%"
-                            smooth
-                            prefix={<Icon name="search"/>}
-                            suffix={<Button name="Search" color="primary" onClick={() => {}}/>}
-                            onClear={() => setThird('')} 
-                            onChange={e => setThird(e.target.value)}/>
-                        <InputField
-                            label="Rounded input field with suffix button"
-                            placeholder="Search..." 
-                            value={third}
-                            color="error"
-                            width="100%"
-                            rounded
-                            prefix={<Icon name="search"/>}
-                            suffix={<Button name="Search" color="error" onClick={() => {}}/>}
-                            onClear={() => setThird('')} 
-                            onChange={e => setThird(e.target.value)}/>
-                    </div>
-                </div>
+            <Card outlined color="gray" title="Input types">
+                <InputField
+                    label="Login"
+                    placeholder="Input your login" 
+                    value={login}
+                    autoComplete
+                    hint="InputField with tile borderType"
+                    borderType="tile"
+                    name="login"
+                    color="primary"
+                    width={300}
+                    required
+                    onChange={e => setLogin(e.target.value)}/>
+                <InputField
+                    label="Password"
+                    placeholder="Input your password" 
+                    value={password}
+                    type="password"
+                    hint="InputField with default borderType"
+                    color="info"
+                    width={300}
+                    onChange={e => setPassword(e.target.value)}/>
+                <InputField
+                    label="Amount"
+                    placeholder="Input amount" 
+                    value={amount}
+                    type="number"
+                    min={0}
+                    borderType="smooth"
+                    hint="InputField with smooth borderType"
+                    color="primary"
+                    prefix={<Icon name="tenge"/>}
+                    width={300}
+                    onChange={e => setAmount(e.target.value)}/>
+                <InputField
+                    label="Login"
+                    placeholder="Input your login" 
+                    value={second}
+                    borderType="rounded"
+                    hint="InputField with rounded borderType"
+                    clearable
+                    autoFocus
+                    onClear={() => setSecond('')} 
+                    prefix={<Icon name="account"/>}
+                    color="info"
+                    width={300}
+                    onChange={e => setSecond(e.target.value)}/>
+                <InputField
+                    placeholder="Search..." 
+                    value={search}
+                    hint="Let's find something interesting..."
+                    color="primary"
+                    width={300}
+                    prefix={<Icon name="search"/>}
+                    suffix={<Button name="Search" color="primary" onClick={() => console.log(search)}/>}
+                    onEnter={() => console.log(search)}
+                    onChange={e => setSearch(e.target.value)}/>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {inputTypes}
@@ -593,81 +559,38 @@ const InputsPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Input sizes">
-                <div className="row">
-                    <div className="col">
-                        <InputField
-                            color="info"
-                            placeholder="777 777 77 77" 
-                            value={second} 
-                            label="Default input field with label and prefix"
-                            width="300px"
-                            prefix={<Icon name="smartphone"/>}
-                            onClear={() => setSecond('')} 
-                            onChange={e => setSecond(e.target.value)}/>
-                        <InputField
-                            size="medium"
-                            color="info"
-                            label="Medium input field with label and prefix"
-                            prefix={<Icon name="smartphone"/>}
-                            placeholder="777 777 77 77" 
-                            value={second} 
-                            width="300px"
-                            onClear={() => setSecond('')} 
-                            onChange={e => setSecond(e.target.value)}/>
-                        <InputField
-                            size="large"
-                            color="info"
-                            label="Large input field with label and prefix"
-                            prefix={<Icon name="smartphone"/>}
-                            placeholder="777 777 77 77 " 
-                            value={second} 
-                            width="300px"
-                            onClear={() => setSecond('')} 
-                            onChange={e => setSecond(e.target.value)}/>
-                    </div>
-                    <div className="col">
-                        <InputField
-                            color="info"
-                            placeholder="777 777 77 77" 
-                            value={second}
-                            rounded 
-                            label="Rounded default size input field with label and prefix"
-                            width="300px"
-                            prefix={<Icon name="smartphone"/>}
-                            onClear={() => setSecond('')} 
-                            onChange={e => setSecond(e.target.value)}/>
-                        <InputField
-                            size="medium"
-                            color="info"
-                            rounded 
-                            label="Rounded medium size input field with label and prefix"
-                            prefix={<Icon name="smartphone"/>}
-                            placeholder="777 777 77 77" 
-                            value={second} 
-                            width="300px"
-                            onClear={() => setSecond('')} 
-                            onChange={e => setSecond(e.target.value)}/>
-                        <InputField
-                            size="large"
-                            color="info"
-                            rounded 
-                            label="Rounded large size input field with label and prefix"
-                            prefix={<Icon name="smartphone"/>}
-                            placeholder="777 777 77 77 " 
-                            value={second} 
-                            width="300px"
-                            onClear={() => setSecond('')} 
-                            onChange={e => setSecond(e.target.value)}/>
-                    </div>
-                </div>
+            <Card outlined color="gray" title="Input sizes">
+                <InputField
+                    color="info"
+                    placeholder="John Doe" 
+                    value={second} 
+                    width={300}
+                    prefix={<Icon name="account"/>}
+                    onChange={e => setSecond(e.target.value)}/>
+                <InputField
+                    size="medium"
+                    color="info"
+                    prefix={<Icon name="account"/>}
+                    placeholder="John Doe" 
+                    value={second} 
+                    width={300}
+                    onChange={e => setSecond(e.target.value)}/>
+                <InputField
+                    size="large"
+                    color="info"
+                    prefix={<Icon name="account"/>}
+                    placeholder="John Doe " 
+                    value={second} 
+                    width={300}
+                    onChange={e => setSecond(e.target.value)}/>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {inputSizes}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
-            <Card outlined color="primary" title="TextareaField Usage">
+            <br/>
+            <Card outlined color="gray" title="TextareaField Usage">
                 <TextareaField
                     prefix={<Icon name="edit" />}
                     label="Textarea field"
@@ -676,8 +599,16 @@ const InputsPage = () => {
                     maxRows={20}
                     color="primary"
                     width={300}
-                    clearable
-                    onClear={() => setText('')} 
+                    onChange={e => setText(e.target.value)}/>
+                <TextareaField
+                    label="Textarea field"
+                    placeholder="Textarea field" 
+                    value={text}
+                    maxRows={20}
+                    color="info"
+                    borderType="tile"
+                    rows={4}
+                    width={300}
                     onChange={e => setText(e.target.value)}/>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>

@@ -289,7 +289,7 @@ const PopOverPage = () => {
             <div className="row align-center space-between">
                 <div className="rui-page-title">PopOver Component</div>
             </div>
-            <Card outlined color="primary" title="Pop over usage">
+            <Card outlined title="Pop over usage">
                 <br/>
                 <div className="px-20 py-40">
                     <div className="row align-center">
@@ -364,7 +364,7 @@ const PopOverPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="PopOver positions">
+            <Card outlined title="PopOver positions">
                 <div className="row justify-center py-30">
                     <PopOver 
                         title="Quit"
@@ -470,7 +470,7 @@ const PopOverPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Control pop over state">
+            <Card outlined title="Control pop over state">
                 <div className="pa-20">
                     <PopOver 
                         title="Title"

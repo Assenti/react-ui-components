@@ -130,7 +130,7 @@ const CollapsePage = () => {
                 <div className="rui-page-title">Collapse Component</div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined color="primary" title="Collapse Component usage">
+            <Card outlined title="Collapse Component usage">
                 <Collapse defaultState={true} border>
                     <p className="px-10 fz-9 fw-bold">Some Article</p>
                     <p className="pa-10">

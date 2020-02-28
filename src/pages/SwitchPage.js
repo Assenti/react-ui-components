@@ -180,7 +180,7 @@ const SwitchPage = () => {
     return (
         <div className="rui-page">
             <div className="rui-page-title">Switch Component</div>
-            <Card outlined color="primary" title="Simple switches">
+            <Card outlined title="Simple switches">
                 <div className="row">
                     <Switch check={check} onChange={() => setCheck(!check)}/>
                     <Switch check={check} color="primary" onChange={() => setCheck(!check)}/>
@@ -196,7 +196,7 @@ const SwitchPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Switches with icons and labels">
+            <Card outlined title="Switches with icons and labels">
                 <div className="row">
                     <Switch color="info" 
                         check={check1}
@@ -218,7 +218,7 @@ const SwitchPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Switches positions">
+            <Card outlined title="Switches positions">
                 <div className="row align-center">
                     <Switch color="primary" 
                         check={check3}

@@ -1,77 +1,69 @@
 import React, { createRef } from 'react';
-import { BackTopBtn, Card, Table, Collapse } from '../components';
+import { BackTopBtn, Card, Table, Collapse, Icon } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const BackTopBtnPage = () => {
-    const blockref = createRef();
-    const api = createRef();
-    const rows = []
-    for (let i = 0; i < 20; i++) {
-        rows.push(i)
+const keys = ['property', 'description', 'default', 'type', 'value'];
+const items = [
+    { 
+        property: 'setRef', 
+        description: 'Pass the reference of parent element to component',
+        default: '', 
+        type: '',
+        value: ''
+    },
+    { 
+        property: 'breakpoint', 
+        description: 'Set scrollY breakpoint when button should appear',
+        default: '60px', 
+        type: 'number',
+        value: ''
+    },
+    { 
+        property: 'size', 
+        description: 'Set button size',
+        default: '', 
+        type: 'string',
+        value: 'medium | large'
+    },
+    { 
+        property: 'tooltip', 
+        description: 'Set button tooltip',
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'offsetX', 
+        description: 'Set offset from right',
+        default: '25px', 
+        type: 'number | string',
+        value: ''
+    },
+    { 
+        property: 'offsetY', 
+        description: 'Set offset from bottom',
+        default: '25px', 
+        type: 'number | string',
+        value: ''
+    },
+    { 
+        property: 'dark',
+        description: 'Set dark mode', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'className',
+        description: 'Set a custom css class to component', 
+        default: '', 
+        type: 'string',
+        value: ''
     }
+]
 
-    const keys = ['property', 'description', 'default', 'type', 'value'];
-    const items = [
-        { 
-            property: 'setRef', 
-            description: 'Pass the reference of parent element to component',
-            default: '', 
-            type: '',
-            value: ''
-        },
-        { 
-            property: 'breakpoint', 
-            description: 'Set scrollY breakpoint when button should appear',
-            default: '60px', 
-            type: 'number',
-            value: ''
-        },
-        { 
-            property: 'size', 
-            description: 'Set button size',
-            default: '', 
-            type: 'string',
-            value: 'medium | large'
-        },
-        { 
-            property: 'tooltip', 
-            description: 'Set button tooltip',
-            default: '', 
-            type: 'string',
-            value: ''
-        },
-        { 
-            property: 'offsetX', 
-            description: 'Set offset from right',
-            default: '25px', 
-            type: 'number | string',
-            value: ''
-        },
-        { 
-            property: 'offsetY', 
-            description: 'Set offset from bottom',
-            default: '25px', 
-            type: 'number | string',
-            value: ''
-        },
-        { 
-            property: 'dark',
-            description: 'Set dark mode', 
-            default: 'false', 
-            type: 'boolean',
-            value: 'true | false'
-        },
-        { 
-            property: 'className',
-            description: 'Set a custom css class to component', 
-            default: '', 
-            type: 'string',
-            value: ''
-        }
-    ]
-
-    const simpleList =
+const simpleList =
 `// Usage examples
 import React, { createRef } from 'react';
 import { BackTopBtn } from '@assenti/rui-components';
@@ -100,6 +92,16 @@ function Example() {
     )
 }
 `
+
+const BackTopBtnPage = () => {
+    const blockref = createRef();
+    const api = createRef();
+    const rows = []
+    for (let i = 0; i < 20; i++) {
+        rows.push(i)
+    }
+
+
     const goToApi = () => {
         if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
@@ -108,10 +110,10 @@ function Example() {
         <div className="rui-page" ref={blockref}>
             <div className="row align-center space-between">
                 <div className="rui-page-title">BackTopBtn Component</div>
-                <a className="fz-13 fw-bold" onClick={goToApi}>API</a>
+                <div className="rui-link fz-13 fw-bold" onClick={goToApi}>API</div>
             </div>
-            <p>Set the scroll to top button when scroll down the page</p>
-            <Card outlined color="primary" title="BackTopBtn" className="mt-20">
+            <div className="row align-center">Scroll down <Icon className="ml-5" name="arrow-down-bold" size={18}/></div>
+            <Card outlined title="BackTopBtn" className="mt-20">
                 {rows.map(item => 
                     <p key={item}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -132,7 +134,7 @@ function Example() {
             <h2 ref={api}>API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>

@@ -150,14 +150,25 @@ function Example() {
             <Button
                 className="mr-5"
                 color="primary"
-                lifted
                 name="Primary"
                 />
             <Button
-                smooth
+                borderType="tile"
+                className="mr-5"
+                color="primary"
+                name="Tile"
+                />
+            <Button
+                borderType="smooth"
                 className="mr-5"
                 color="primary"
                 name="Smooth"
+                />
+            <Button
+                className="mr-5"
+                borderType="rounded"
+                color="primary"
+                name="Rounded"
                 />
             <Button
                 className="mr-5"
@@ -171,13 +182,6 @@ function Example() {
                 uppercase
                 color="primary"
                 name="uppercase"
-                />
-            <Button
-                className="mr-5"
-                outlined
-                rounded
-                color="primary"
-                name="Rounded"
                 />
         </div>
     )
@@ -444,8 +448,7 @@ function Example() {
                 />
         </div>
     )
-}
-`
+}`
 
 const ButtonPage = () => {
     const [loading, setLoading] = useState(true);
@@ -462,19 +465,30 @@ const ButtonPage = () => {
                 <div className="rui-page-title">Button Component</div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined color="primary" title="Button types">
+            <Card outlined title="Button types">
                 <div className="row wrap align-center">
                     <Button
                         className="mr-5"
                         color="primary"
-                        lifted
                         name="Primary"
                         />
                     <Button
-                        smooth
+                        borderType="tile"
+                        className="mr-5"
+                        color="primary"
+                        name="Tile"
+                        />
+                    <Button
+                        borderType="smooth"
                         className="mr-5"
                         color="primary"
                         name="Smooth"
+                        />
+                    <Button
+                        className="mr-5"
+                        borderType="rounded"
+                        color="primary"
+                        name="Rounded"
                         />
                     <Button
                         className="mr-5"
@@ -489,13 +503,6 @@ const ButtonPage = () => {
                         color="primary"
                         name="uppercase"
                         />
-                    <Button
-                        className="mr-5"
-                        outlined
-                        rounded
-                        color="primary"
-                        name="Rounded"
-                        />
                 </div>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
@@ -504,7 +511,7 @@ const ButtonPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Button sizes">
+            <Card outlined title="Button sizes">
                 <div className="row wrap align-center">
                     <Button
                         className="mr-5"
@@ -553,7 +560,7 @@ const ButtonPage = () => {
                 </Collapse> 
             </Card>
             <br/>
-            <Card outlined color="primary" title="Button colors">
+            <Card outlined title="Button colors">
                 <Button
                     className="mr-5"
                     color="primary"
@@ -596,7 +603,7 @@ const ButtonPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Block button">
+            <Card outlined title="Block button">
                 <div style={{ width: 300 }} className="mb-10">
                     <Button
                         block
@@ -627,7 +634,7 @@ const ButtonPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Icon buttons and buttons with icons">
+            <Card outlined title="Icon buttons and buttons with icons">
                 <div className="row align-center my-5">
                     <Tooltip tooltip="Search">
                         <Button
@@ -693,7 +700,7 @@ const ButtonPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Loading">
+            <Card outlined title="Loading">
                 <div className="row align-center py-20">
                     <label>Toggle loaders</label>
                     <Switch 

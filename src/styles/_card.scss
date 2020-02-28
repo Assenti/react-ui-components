@@ -91,6 +91,14 @@
             color: $error;
         }
     }
+
+    &.gray.outlined {
+        border-color: gray;
+
+        .rui-card-title {
+            color: gray;
+        }
+    }
 }
 
 .rui-card-header {

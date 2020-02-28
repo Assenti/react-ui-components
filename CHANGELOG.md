@@ -7,6 +7,17 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.3.10 `2020-02-28`
+
+- Card component updated;
+- PopOver component updated;
+- InputField component updated;
+- Modal component updated;
+- `NEW!` Masks for data rendering added;
+- `NEW!` InputMask component added;
+- `NEW!` Dialog component added;
+- `NEW!` New icons added;
+
 #### 0.3.9 `2020-02-27`
 
 - Select component updated;

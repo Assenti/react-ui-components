@@ -257,7 +257,7 @@ const CardPage = () => {
                 <div className="rui-page-title">Card Component</div>
                 <div className="rui-link fz-13 fw-bold" onClick={goToApi}>API</div>
             </div>
-            <Card outlined color="primary" title="Card with header">
+            <Card outlined title="Card with header">
                 <Card header="Marvel heroes">
                     <List>
                         {itemsComplexInitial.map((item, index) => 
@@ -268,6 +268,7 @@ const CardPage = () => {
                         )}
                     </List>
                 </Card>
+                <br/>
                 <Card dark header="Marvel heroes">
                     <List dark>
                         {itemsComplexInitial.map((item, index) => 
@@ -285,7 +286,7 @@ const CardPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Card flat">
+            <Card outlined title="Card flat">
                 <Card header="Marvel heroes" flat>
                     <List>
                         {itemsComplexInitial.map((item, index) => 
@@ -303,7 +304,7 @@ const CardPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Card with image and hover">
+            <Card outlined title="Card with image and hover">
                 {imageCards()}
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
@@ -312,7 +313,7 @@ const CardPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Outlined Cards with titles">
+            <Card outlined title="Outlined Cards with titles">
                 <Card outlined title="Marvel Avengers" color="primary">
                     <List>
                         {itemsComplexInitial.map((item, index) => 

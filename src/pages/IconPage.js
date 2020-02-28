@@ -38,6 +38,7 @@ const icons = [
     'key',
     'exit-to-app',
     'arrow-up-bold',
+    'arrow-down-bold',
     'format-align-left',
     'format-align-center',
     'format-align-right',
@@ -54,7 +55,17 @@ const icons = [
     'react',
     'language-css-3',
     'earth',
-    'check'
+    'check',
+    'eye',
+    'eye-off',
+    'tenge',
+    'currency-usd',
+    'credit-card',
+    'qrcode',
+    'calendar-month',
+    'card-account-details',
+    'translate',
+    'alert'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
@@ -83,7 +94,7 @@ const items = [
     { 
         property: 'color', 
         description: 'Set icon color', 
-        default: '', 
+        default: 'gray', 
         type: 'string',
         value: 'hex | rgb() | css preset colors'
     },
@@ -147,7 +158,7 @@ const IconPage = () => {
                     className="ml-5">Material Design Icons</a>
             </p>
             <br/>
-            <Card outlined color="primary" title="Icons collection">
+            <Card outlined color="gray" title="Icons collection">
                 <div className="pa-10">
                     <InputField 
                         value={search}

@@ -76,11 +76,11 @@ const rows = [
         value: 'primary | info | success | error'
     },
     { 
-        property: 'rounded', 
-        description: 'Make border radius rounded',
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
+        property: 'borderType', 
+        description: 'Set borders type', 
+        default: '', 
+        type: 'string',
+        value: 'tile | smooth | rounded'
     },
     { 
         property: 'multiple', 
@@ -288,7 +288,7 @@ const SelectPage = () => {
                 </div>
                 <div className="rui-link fz-13 fw-bold mr-10" onClick={() => goToApi()}>API</div>
             </div>
-            <Card outlined color="primary" title="Simple Selects">
+            <Card outlined title="Simple Selects">
                 <Select
                     items={countries}
                     prefix={<Icon name="earth"/>}
@@ -321,7 +321,7 @@ const SelectPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Simple Select with searching">
+            <Card outlined title="Simple Select with searching">
                 <Select
                     items={countries}
                     prefix={<Icon name="earth"/>}
@@ -341,7 +341,7 @@ const SelectPage = () => {
                     label="Select your favourite country"
                     width={250}
                     searchable
-                    rounded
+                    borderType="rounded"
                     className="ml-20"
                     color="info"
                     placeholder="Countries"
@@ -358,7 +358,7 @@ const SelectPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Multiple selection">
+            <Card outlined title="Multiple selection">
                 <Select
                     items={countries}
                     prefix={<Icon name="earth"/>}

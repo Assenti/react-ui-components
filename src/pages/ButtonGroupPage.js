@@ -149,7 +149,7 @@ const ButtonGroupPage = () => {
             <div className="row align-center space-between">
                 <div className="rui-page-title">ButtonGroup Component</div>
             </div>
-            <Card outlined color="primary" title="ButtonGroup types">
+            <Card outlined title="ButtonGroup types">
                 <div className="row align-center my-10">
                     <ButtonGroup 
                         default={0} 
@@ -180,7 +180,7 @@ const ButtonGroupPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="ButtonGroup sizes">
+            <Card outlined title="ButtonGroup sizes">
                 <ButtonGroup 
                     options={icons}
                     default={0} 

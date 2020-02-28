@@ -6,18 +6,16 @@ import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 const uploaderUsage =
 `// Usage examples
 import React, { useState } from 'react';
-import { InputField } from '@assenti/react-ui-components';
+import { Uploader } from '@assenti/react-ui-components';
 
 function Example() {
     const [files, setFiles] = useState('');
 
     return (
         <div>
-            <span className="fz-8 text-dark">Rounded Uploader</span>
             <Uploader
                 label="File upload"
                 value={files}
-                rounded
                 title="Сhoose a file please"
                 color="info"
                 multiple
@@ -28,27 +26,26 @@ function Example() {
             <Uploader
                 label="File upload"
                 value={files}
-                rounded
+                borderType="rounded"
                 title="Сhoose a file please"
-                color="success"
+                color="primary"
                 multiple
                 onDelete={handleFileDelete}
                 width={300}
                 onChange={files => setFiles(files)}/>
             <br/>
-            <span className="fz-8 text-dark">Medium size Uploader</span>
             <Uploader
                 label="File upload"
                 value={files}
                 title="Сhoose a file please"
                 size="medium"
+                borderType="tile"
                 color="info"
                 multiple
                 onDelete={handleFileDelete}
                 width={300}
                 onChange={files => setFiles(files)}/>
             <br/>
-            <span className="fz-8 text-dark">Disabled lifted Uploader</span>
             <Uploader
                 label="File upload"
                 value={files}
@@ -98,20 +95,14 @@ const itemsUploader = [
         description: 'Make uploader disabled', 
         default: 'false',
         type: 'boolean', 
-        value: 'true | false'},
-    { 
-        property: 'rounded', 
-        description: 'Make border radius rounded',
-        default: 'false', 
-        type: 'boolean',
         value: 'true | false'
     },
     { 
-        property: 'smooth',
-        description: 'Set input field borders more smooth', 
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
+        property: 'borderType', 
+        description: 'Set borders type', 
+        default: '', 
+        type: 'string',
+        value: 'tile | smooth | rounded'
     },
     { 
         property: 'size', 
@@ -183,12 +174,10 @@ const UploaderPage = () => {
                 <div className="rui-page-title">Uploader Components</div>
                 <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
             </div>
-            <Card outlined color="primary" title="Uploader">
-                <span className="fz-8 text-dark">Rounded Uploader</span>
+            <Card outlined title="Uploader">
                 <Uploader
                     label="File upload"
                     value={files}
-                    rounded
                     title="Сhoose a file please"
                     color="info"
                     multiple
@@ -199,27 +188,26 @@ const UploaderPage = () => {
                 <Uploader
                     label="File upload"
                     value={files}
-                    rounded
+                    borderType="rounded"
                     title="Сhoose a file please"
-                    color="success"
+                    color="primary"
                     multiple
                     onDelete={handleFileDelete}
                     width={300}
                     onChange={files => setFiles(files)}/>
                 <br/>
-                <span className="fz-8 text-dark">Medium size Uploader</span>
                 <Uploader
                     label="File upload"
                     value={files}
                     title="Сhoose a file please"
                     size="medium"
+                    borderType="tile"
                     color="info"
                     multiple
                     onDelete={handleFileDelete}
                     width={300}
                     onChange={files => setFiles(files)}/>
                 <br/>
-                <span className="fz-8 text-dark">Disabled lifted Uploader</span>
                 <Uploader
                     label="File upload"
                     value={files}

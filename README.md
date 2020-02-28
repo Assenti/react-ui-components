@@ -41,9 +41,7 @@ export default App;
 ```
 
 ### TODO
-- [ ] Dialog
 - [ ] Date picker / Calendar
-- [ ] InputMask 
 - [ ] Expansion List
 - [ ] Stepper
 - [ ] Rating

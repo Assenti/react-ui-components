@@ -146,7 +146,7 @@ const RadioPage = () => {
     return (
         <div className="rui-page">
             <div className="rui-page-title">Radio Group</div>
-            <Card outlined color="primary" title="Horizontal position with label">
+            <Card outlined title="Horizontal position with label">
                 <RadioGroup 
                     value={city}
                     name="town" 
@@ -166,7 +166,7 @@ const RadioPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Vertical position with label">
+            <Card outlined title="Vertical position with label">
                 <RadioGroup 
                     value={cityUS} 
                     vertical
@@ -188,7 +188,7 @@ const RadioPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Disabled">
+            <Card outlined title="Disabled">
                 <div className="row align-center">
                     <Button 
                         className="ml-15"

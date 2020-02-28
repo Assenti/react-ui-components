@@ -121,7 +121,7 @@ const CheckboxPage = () => {
     return (
         <div className="rui-page">
             <div className="rui-page-title">Checkbox Component</div>
-            <Card outlined color="primary" title="Simple checkboxes">
+            <Card outlined title="Simple checkboxes">
                 <div className="row">
                     <Checkbox
                         className="mr-20" 
@@ -155,7 +155,7 @@ const CheckboxPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Checkboxes with label">
+            <Card outlined title="Checkboxes with label">
                 <div className="row">
                     <Checkbox
                         className="mr-20"

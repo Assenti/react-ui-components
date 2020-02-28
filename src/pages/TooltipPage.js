@@ -52,7 +52,7 @@ const TooltipPage = () => {
             <div className="row align-center space-between">
                 <div className="rui-page-title">Tooltip Component</div>
             </div>
-            <Card outlined color="primary" title="Tooltips">
+            <Card outlined title="Tooltips">
                 <div className="row align-center py-20">
                     <Tooltip tooltip="Top position" className="mr-20">
                         <Button icon="search" color="info"/>

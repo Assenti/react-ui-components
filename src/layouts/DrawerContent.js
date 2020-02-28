@@ -42,8 +42,12 @@ export const DrawerContent = (props) => {
                 dark={props.dark}
                 onClose={() => props.onClose()}
                 headerCentered
-                header={<Icon name="react" size={30} color={props.dark ? '#fff' : ''}/>}>
-                <div className="row py-5 justify-center sticky" style={{ top: 45 }}>
+                header={<Icon 
+                    name="react" 
+                    size={30}
+                    className="rotating" 
+                    color="#61dafb"/>}>
+                <div className="row py-5 justify-center sticky" style={{ top: 40 }}>
                     <Dropdown
                         className="full-width mx-10"
                         content={

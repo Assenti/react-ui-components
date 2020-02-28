@@ -20,7 +20,7 @@ export const Content = (props) => {
                         leftIcon="sun"
                         leftIconColor={props.dark ? '#fff' : ''}
                         rightIconColor={props.dark ? '#fff' : ''}
-                        className="mr-20"
+                        className="mr-10"
                         rightIcon="moon" 
                         onChange={() => props.onSwitch()}/>
                     <div className="mr-20">

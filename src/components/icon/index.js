@@ -50,7 +50,20 @@ import {
     DotsHorizontal,
     LanguageCss3,
     Earth,
-    Check
+    Check,
+    Eye,
+    EyeOff,
+    Tenge,
+    CurrencyUsd,
+    CreditCard,
+    QrCode,
+    CalendarMonth,
+    CardAccountDetails,
+    Translate,
+    ArrowDownBold,
+    Fullscreen,
+    FullscreenExit,
+    Alert
 } from './icons/index';
 
 export const Icon = (props) => {
@@ -158,6 +171,32 @@ export const Icon = (props) => {
                 return <Earth size={props.size} color={props.color}/>;
             case 'check':
                 return <Check size={props.size} color={props.color}/>;
+            case 'eye':
+                return <Eye size={props.size} color={props.color}/>;
+            case 'eye-off':
+                return <EyeOff size={props.size} color={props.color}/>;
+            case 'tenge':
+                return <Tenge size={props.size} color={props.color}/>;
+            case 'currency-usd':
+                return <CurrencyUsd size={props.size} color={props.color}/>;
+            case 'credit-card':
+                return <CreditCard size={props.size} color={props.color}/>;
+            case 'qrcode':
+                return <QrCode size={props.size} color={props.color}/>;
+            case 'calendar-month':
+                return <CalendarMonth size={props.size} color={props.color}/>;
+            case 'card-account-details':
+                return <CardAccountDetails size={props.size} color={props.color}/>;
+            case 'translate':
+                return <Translate size={props.size} color={props.color}/>;
+            case 'arrow-down-bold':
+                return <ArrowDownBold size={props.size} color={props.color}/>;
+            case 'fullscreen':
+                return <Fullscreen size={props.size} color={props.color}/>;
+            case 'fullscreen-exit':
+                return <FullscreenExit size={props.size} color={props.color}/>;
+            case 'alert':
+                return <Alert size={props.size} color={props.color}/>;
             default:
                 return '';
         }

@@ -220,7 +220,7 @@ export const Select = (props) => {
                     onKeyUp={handleKeyUp}
                     whiteBackground={props.whiteBackground ? props.whiteBackground : false}
                     size={props.size ? props.size : ''}
-                    rounded={props.rounded ? props.rounded : false}
+                    borderType={props.borderType ? props.borderType : ''}
                     prefix={props.prefix ? props.prefix : ''}
                     clearable={props.clearable ? props.clearable : false}
                     onClear={props.onClear ? props.onClear() : {}}

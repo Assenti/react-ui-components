@@ -81,8 +81,8 @@ const BadgePage = () => {
     return (
         <div className="rui-page">
             <div className="rui-page-title">Badge Component</div>
-            <Card>
-                <div className="row align-center">
+            <Card outlined title="Usage">
+                <div className="row align-center py-10">
                     <Badge 
                         color="info" 
                         value={100} 
@@ -112,7 +112,7 @@ const BadgePage = () => {
             <h2>API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>

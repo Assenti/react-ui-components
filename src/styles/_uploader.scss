@@ -10,6 +10,10 @@
         border: 1px solid lightgray;
         background-color: $lightgray;
 
+        &:hover:not(.disabled) {
+            background-color: #fff;
+        }
+
         &.lifted {
             box-shadow: 0 0 2px rgba(black, .3);
         }
@@ -36,6 +40,10 @@
 
         &.rounded {
             border-radius: 60px;
+        }
+
+        &.tile {
+            border-radius: 0;
         }
 
         &.smooth {

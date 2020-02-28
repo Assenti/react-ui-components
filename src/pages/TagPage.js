@@ -187,7 +187,7 @@ const TagPage = () => {
                 <div className="rui-page-title">Tags</div>
                 <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
             </div>
-            <Card outlined color="primary" title="Tag colors">
+            <Card outlined title="Tag colors">
                 <Tag value="Price: 1000" />
                 <Tag value="Price: 1000" color="yellow"/>
                 <Tag value="Price: 1000" color="primary"/>
@@ -201,7 +201,7 @@ const TagPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Tag types">
+            <Card outlined title="Tag types">
                 <Tag value="Price: 1000" rounded color="yellow"/>
                 <Tag value="Price: 1000" rounded outlined color="primary"/>
                 <Tag value="Price: 1000" rounded lifted color="primary"/>
@@ -214,7 +214,7 @@ const TagPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Tag sizes">
+            <Card outlined title="Tag sizes">
                 <Tag value="Defaul tag" color="yellow"/>
                 <Tag value="Small tag" small color="yellow"/>
                 <Tag value="Small tag" small rounded color="yellow"/>
@@ -225,7 +225,7 @@ const TagPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Tag with icons">
+            <Card outlined title="Tag with icons">
                 <div className="row align-center">
                     <Tag iconLeft="smartphone" value="777 777 77 77" color="primary"/>
                     <Tag iconLeft="star" value="1020" small color="yellow"/>

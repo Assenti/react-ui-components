@@ -303,7 +303,7 @@ const TablePage = () => {
                 <div className="rui-page-title">Table Component</div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined color="primary" title="Table with order index, no hover, stripped and footer">
+            <Card outlined title="Table with order index, no hover, stripped and footer">
                 <Table
                     bordered
                     stripped
@@ -324,7 +324,7 @@ const TablePage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Table with checkboxes and controls">
+            <Card outlined title="Table with checkboxes and controls">
                 <Table
                     bordered
                     checkbox 
@@ -361,8 +361,7 @@ const TablePage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" 
-                title="Sortable table with pagination, checkbox and grid prop">
+            <Card outlined title="Sortable table with pagination, checkbox and grid prop">
                 <Table
                     noHover
                     pagination

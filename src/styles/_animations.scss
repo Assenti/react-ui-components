@@ -1,0 +1,22 @@
+.rotating {
+    animation-name: rotating;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-delay: 0;
+    animation-timing-function: linear;
+    -moz-animation-name: rotating;
+    -moz-animation-duration: 8s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -moz-animation-delay: 0;
+}
+
+@keyframes rotating {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@-moz-keyframes rotating {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

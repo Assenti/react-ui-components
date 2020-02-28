@@ -204,7 +204,7 @@ const PaginationPage = () => {
                 <div className="rui-page-title">Pagination Component</div>
                 <div onClick={goToApi} className="link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined color="primary" title="Default pagination (in different colors)">
+            <Card outlined title="Default pagination (in different colors)">
                 <Pagination
                     itemsCount={itemsCount}
                     color="primary"
@@ -245,7 +245,7 @@ const PaginationPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Medium size rounded pagination">
+            <Card outlined title="Medium size rounded pagination">
                 <Pagination
                     itemsCount={itemsCount}
                     color="info"
@@ -263,7 +263,7 @@ const PaginationPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Large size pagination">
+            <Card outlined title="Large size pagination">
                 <Pagination
                     itemsCount={itemsCount}
                     color="info"

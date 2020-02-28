@@ -1,4 +1,6 @@
 import { lazy } from 'react';
+const DialogPage = lazy(() => import('./pages/DialogPage'));
+const InputMaskPage = lazy(() => import('./pages/InputMaskPage'));
 const ButtonPage = lazy(() => import('./pages/ButtonPage'));
 const DropdownPage = lazy(() => import('./pages/DropdownPage'));
 const ListPage = lazy(() => import('./pages/ListPage'));
@@ -56,5 +58,7 @@ export const routes = [
     { path: '/header', name: 'Header', Component: HeaderPage },
     { path: '/helper', name: 'Helper CSS classes', Component: HelperPage },
     { path: '/copytoclipboard', name: 'CopyToClipboard', Component: CopyToClipboardPage },
-    { path: '/uploader', name: 'Uploader', Component: UploaderPage }
+    { path: '/uploader', name: 'Uploader', Component: UploaderPage },
+    { path: '/inputmask', name: 'InputMask', Component: InputMaskPage },
+    { path: '/dialog', name: 'Dialog', Component: DialogPage },
 ]

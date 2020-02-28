@@ -213,8 +213,7 @@ function Example() {
                             icon="account"/>}/>
         </div>
     )
-}
-`
+}`
 
 const DropdownPage = () => {
     const [item, setItem] = useState('');
@@ -232,7 +231,7 @@ const DropdownPage = () => {
                 <div className="rui-page-title">Dropdown Component</div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined color="primary" title="Dropdown on Button">
+            <Card outlined title="Dropdown on Button">
                 <div className="row align-center">
                     <Dropdown
                         width={250}
@@ -260,7 +259,7 @@ const DropdownPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Dropdown on InputField">
+            <Card outlined title="Dropdown on InputField">
                 <div className="row mb-10">
                     <Dropdown
                         content={
@@ -287,7 +286,7 @@ const DropdownPage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Dropdown on Icon button">
+            <Card outlined title="Dropdown on Icon button">
                 <div className="row space-around">
                     <Dropdown
                         width={180}
