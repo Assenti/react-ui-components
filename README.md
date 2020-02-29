@@ -19,7 +19,7 @@ Create a lot of usefull and maximum reusable UI components
 ## Usage
 index.js / index.ts
 ```jsx
-// Import styles in index.js
+// Import styles in index.js / index.ts
 import '@assenti/react-ui-components/build/css/main.css';
 ```
 App.js / App.tsx

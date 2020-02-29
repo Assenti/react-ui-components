@@ -7,7 +7,7 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
-#### 0.3.12, 0.3.13, 0.3.14 `2020-02-29`
+#### 0.3.12, 0.3.13, 0.3.14, 0.3.15 `2020-02-29`
 
 - `NEW!` Timeline component added;
 - Tag component updated;

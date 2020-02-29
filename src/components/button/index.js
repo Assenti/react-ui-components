@@ -40,7 +40,6 @@ const Button = (props) => {
         <button
             type={props.type ? props.type : 'button'}
             ref={props.ref ? props.ref : null} 
-            style={{...props.style}}
             disabled={props.disabled || props.loading}
             className={btnClass()} 
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>

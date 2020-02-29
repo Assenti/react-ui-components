@@ -45,8 +45,7 @@ const Collapse = (props) => {
                 timeout={300}
                 unmountOnExit
                 classNames="collapse">
-                <div className="collapse-content"
-                    style={{...props.contentStyles}}>
+                <div className="collapse-content">
                     {props.children}
                 </div>
             </CSSTransition>
