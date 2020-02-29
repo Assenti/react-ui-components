@@ -20,6 +20,13 @@ const items = [
         value: ''
     },
     { 
+        property: 'type', 
+        description: 'Set button type', 
+        default: 'button', 
+        type: 'string',
+        value: 'button | submit | reset'
+    },
+    { 
         property: 'lifted', 
         description: 'Lift up the button', 
         default: 'false', 
@@ -129,6 +136,13 @@ const items = [
         default: 'false', 
         type: 'boolean',
         value: 'true | false'
+    },
+    { 
+        property: 'ref', 
+        description: 'Set ref', 
+        default: '', 
+        type: 'React.RefObject',
+        value: ''
     },
     { 
         property: 'className',

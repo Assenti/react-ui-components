@@ -48,7 +48,7 @@ export const creditIssueMask = (value) => {
     }
 }
 
-export const phoneMaskFormatter = (value, code) => {
+export const phoneMaskFormatter = (value, code = '+7') => {
     if (value) {
         if (value.length <= 3) {
             return `${code} (${value})`;

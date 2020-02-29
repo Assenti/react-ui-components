@@ -38,6 +38,7 @@ const Button = (props) => {
 
     return (
         <button
+            type={props.type ? props.type : 'button'}
             ref={props.ref ? props.ref : null} 
             style={{...props.style}}
             disabled={props.disabled || props.loading}

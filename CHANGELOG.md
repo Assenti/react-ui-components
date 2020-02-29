@@ -7,9 +7,10 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
-#### 0.3.12 `2020-02-29`
+#### 0.3.12, 0.3.13 `2020-02-29`
 
 - InputMask component updated;
+- Working with types;
 
 #### 0.3.10, 0.3.11 `2020-02-28`
 
