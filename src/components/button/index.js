@@ -10,7 +10,7 @@ const Button = (props) => {
             loading: props.loading ? 'loading' : '',
             uppercase: props.uppercase ? 'uppercase' : '',
             borderType: props.borderType ? props.borderType : '',
-            color: props.color && !props.disabled && !props.loading && !props.light && !props.dark ? props.color : '',
+            color: props.color && !props.disabled && !props.loading && !props.light && !props.dark ? props.color : 'secondary',
             light: props.light && !props.dark ? 'light' : '',
             dark: props.dark && !props.light ? 'dark' : '',
             icon: props.icon && !props.name ? 'icon' : '',

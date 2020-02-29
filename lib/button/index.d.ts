@@ -25,7 +25,7 @@ export interface ButtonProps {
     borderType?: BorderType,
     className?: string,
     style?: object,
-    ref?: React.RefObject
+    ref?: React.RefObject<any>
 }
 
 export default Button;

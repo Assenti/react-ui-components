@@ -63,7 +63,9 @@ import {
     ArrowDownBold,
     Fullscreen,
     FullscreenExit,
-    Alert
+    Alert,
+    CalendarStar,
+    Shape
 } from './icons/index';
 
 const Icon = (props) => {
@@ -197,6 +199,10 @@ const Icon = (props) => {
                 return <FullscreenExit size={props.size} color={props.color}/>;
             case 'alert':
                 return <Alert size={props.size} color={props.color}/>;
+            case 'calendar-star':
+                return <CalendarStar size={props.size} color={props.color}/>;
+            case 'shape':
+                return <Shape size={props.size} color={props.color}/>;
             default:
                 return '';
         }

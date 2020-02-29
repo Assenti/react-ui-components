@@ -17,12 +17,12 @@ Create a lot of usefull and maximum reusable UI components
 ```
 
 ## Usage
-index.js 
+index.js / index.ts
 ```jsx
 // Import styles in index.js
 import '@assenti/react-ui-components/build/css/main.css';
 ```
-App.js
+App.js / App.tsx
 ```jsx
 import { Card, Button } from '@assenti/react-ui-components';
 import React from 'react';
@@ -30,9 +30,11 @@ import React from 'react';
 function App() {
   return (
     <div>
-      <Card>
-        <Button color="primary" name="Button" icon="search"/>
-      </Card>
+      <div>
+        <Card outlined color="primary" title="Button">
+          <Button color="primary" name="Rocket" icon="rocket"/>
+        </Card>
+      </div>
     </div>
   );
 }
@@ -50,11 +52,10 @@ export default App;
 - [ ] Notification
 - [ ] Breadcrumbs
 - [ ] Carousel
-- [ ] Timeline
 - [ ] Tabs
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable
-- [ ] TypeScript support (Declare types for TS using)
+- [ ] TypeScript support (Declare types for all TS using)
 - [ ] Add i18n
 
 ## Changelog

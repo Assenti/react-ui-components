@@ -29,6 +29,7 @@ const IconPage = lazy(() => import('./pages/IconPage'));
 const PaginationPage = lazy(() => import('./pages/PaginationPage'));
 const InputsPage = lazy(() => import('./pages/InputsPage'));
 const UploaderPage = lazy(() => import('./pages/UploaderPage'));
+const TimelinePage = lazy(() => import('./pages/TimelinePage'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
@@ -61,4 +62,5 @@ export const routes = [
     { path: '/uploader', name: 'Uploader', Component: UploaderPage },
     { path: '/inputmask', name: 'InputMask', Component: InputMaskPage },
     { path: '/dialog', name: 'Dialog', Component: DialogPage },
+    { path: '/timeline', name: 'Timeline', Component: TimelinePage },
 ]

@@ -8,12 +8,11 @@ const Tag = (props) => {
     const tagClass = () => {
         let result = '';
         let className = {
-            btn: 'rui-tag',
+            name: 'rui-tag',
             lifted: props.lifted ? 'lifted' : '',
             uppercase: props.uppercase ? 'uppercase' : '',
-            smooth: props.smooth && !props.rounded ? 'smooth' : '',
-            rounded: props.rounded && !props.smooth ? 'rounded' : '',
-            color: props.color && !props.disabled && !props.light && !props.dark ? props.color : '',
+            borderType: props.borderType ? (props.borderType === 'default' ? '' : props.borderType) : '',
+            color: props.color ? props.color : 'primary',
             small: props.small ? 'small' : '',
             outlined: props.outlined ? 'outlined' : '',
             className: props.className ? props.className : ''
@@ -35,7 +34,9 @@ const Tag = (props) => {
             timeout={300}
             classNames="rui-tag"
             unmountOnExit>
-            <div className={tagClass()} style={{ width: props.width ? props.width : ''}}>
+            <div className={tagClass()}
+                ref={props.setRef} 
+                style={{ width: props.width ? props.width : ''}}>
                 {props.iconLeft ? <Icon name={props.iconLeft}/> : ''}
                 {props.value}
                 {props.iconRight ? <Icon name={props.iconRight}/> : ''}

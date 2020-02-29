@@ -20,7 +20,8 @@ const Card = (props) => {
     }
 
     return (
-        <div className={cardClass()} 
+        <div className={cardClass()}
+            ref={props.setRef} 
             style={{ width: props.width ? props.width : '', minWidth: props.minWidth ? props.minWidth : '' }}>
             {props.title && props.outlined && !props.dark ? <div className="rui-card-title">{props.title}</div> : ''}
             {props.header ? <div className="rui-card-header">{props.header}</div> : ''}

@@ -18,7 +18,7 @@
     }
 
     &.lifted {
-        box-shadow: 0 0 4px rgba(black, .2);
+        box-shadow: 0 1px 10px rgba(black, .3);
     }
 
     &:not(.small) {
@@ -62,6 +62,10 @@
 
     &.rounded {
         border-radius: 60px;
+    }
+
+    &.tile {
+        border-radius: 0;
     }
 
     &.smooth {
@@ -141,6 +145,38 @@
             border-color: $success;
             background-color: transparent;
             color: $success;
+        }
+    }
+
+    &.secondary {
+        background-color: $secondary;
+        border-color: $secondary;
+        color: black;
+
+        path {
+            fill: $dark;
+        }
+
+        &.outlined {
+            border-color: $secondary;
+            background-color: transparent;
+            color: $secondary;
+        }
+    }
+
+    &.dark {
+        background-color: $dark;
+        border-color: $dark;
+        color: #fff;
+
+        path {
+            fill: #fff;
+        }
+
+        &.outlined {
+            border-color: $dark;
+            background-color: transparent;
+            color: $dark;
         }
     }
 }

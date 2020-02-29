@@ -29,4 +29,5 @@ export { default as ButtonGroup } from './buttonGroup';
 export { default as PopOver } from './popover';
 export { default as Header } from './header';
 export { default as Dialog } from './dialog';
+export { default as Timeline } from './timeline';
 export { convertToNum, compare, phoneMask, creditMask, creditIssueMask, iinMask } from './utils';

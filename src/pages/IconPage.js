@@ -63,6 +63,7 @@ const icons = [
     'credit-card',
     'qrcode',
     'calendar-month',
+    'calendar-star',
     'card-account-details',
     'translate',
     'alert'

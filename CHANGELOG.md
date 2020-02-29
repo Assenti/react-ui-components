@@ -7,10 +7,13 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
-#### 0.3.12, 0.3.13 `2020-02-29`
+#### 0.3.12, 0.3.13, 0.3.14 `2020-02-29`
 
+- `NEW!` Timeline component added;
+- Tag component updated;
 - InputMask component updated;
-- Working with types;
+- `NEW!` Typescript support added;
+- `NEW!` New icons added;
 
 #### 0.3.10, 0.3.11 `2020-02-28`
 

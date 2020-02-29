@@ -1,5 +1,5 @@
 import React, { createRef } from 'react';
-import { Table, Button, Tooltip, Card, BackTopBtn, Collapse, Icon } from '../components';
+import { Table, Button, Tooltip, Card, BackTopBtn, Collapse } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
