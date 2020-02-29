@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Icon } from '../icon';
-import { Tooltip } from '../tooltip';
+import { Icon, Tooltip } from '../index';
 import { CSSTransition } from 'react-transition-group';
 
-export const Collapse = (props) => {
+const Collapse = (props) => {
     const [visible, setVisible] = useState(props.defaultState ? props.defaultState : false);
 
     const collapseClass = () => {
@@ -54,3 +53,5 @@ export const Collapse = (props) => {
         </div>
     )
 }
+
+export default Collapse;

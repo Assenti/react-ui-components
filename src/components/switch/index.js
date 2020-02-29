@@ -1,7 +1,7 @@
 import React from 'react';
-import { Icon } from '../icon';
+import { Icon } from '../index';
 
-export const Switch = (props) => {
+const Switch = (props) => {
     const switchContainerClass = () => {
         let result = '';
         let className = {
@@ -44,3 +44,5 @@ export const Switch = (props) => {
         </div>
     )
 }
+
+export default Switch;

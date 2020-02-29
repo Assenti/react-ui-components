@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Card = (props) => {
+const Card = (props) => {
     const cardClass = () => {
         let result = '';
         let className = {
@@ -30,3 +30,5 @@ export const Card = (props) => {
         </div>
     )
 }
+
+export default Card;

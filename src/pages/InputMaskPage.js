@@ -99,6 +99,13 @@ const items = [
         value: ''
     },
     { 
+        property: 'dateDelimiter',
+        description: 'Set date delimiter (has effect with mask="date")', 
+        default: '.', 
+        type: 'string',
+        value: ''
+    },
+    { 
         property: 'InputField Component all props',
         description: 'You can set all InputField Component props', 
         default: '', 
@@ -112,6 +119,7 @@ const InputMaskPage = () => {
     const [card, setCard] = useState('');
     const [cardIssue, setCardIssue] = useState('');
     const [iin, setIin] = useState('');
+    const [date, setDate] = useState('');
     const kztPhone = '7777777777';
     const cardForm = '1234567890191112';
     const cardIssueForm = '0220';
@@ -179,6 +187,20 @@ const InputMaskPage = () => {
                         setIin(rowValue)
                     }}
                     prefix={<Icon name="card-account-details"/>}/>
+                <br/>
+                <div className="pa-5 fz-9">Date (DD.MM.YYYY or MM/DD/YYYY)</div>
+                <InputMask 
+                    width={250}
+                    size="medium"
+                    value={date}
+                    mask="date"
+                    placeholder="DD.MM.YYYY"
+                    onChange={(value, rowValue) => {
+                        console.log(value)
+                        console.log(rowValue)
+                        setDate(rowValue)
+                    }}
+                    prefix={<Icon name="calendar-month"/>}/>
                 <Collapse 
                     icon="code" 
                     iconSize={18}

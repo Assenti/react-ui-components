@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Icon } from '../icon';
+import { Icon } from '../index';
 import { CSSTransition } from 'react-transition-group';
 
-export const Tag = (props) => {
+const Tag = (props) => {
     const [visible, setVisible] = useState(props.visible ? props.visible : true);
 
     const tagClass = () => {
@@ -52,3 +52,5 @@ export const Tag = (props) => {
         </CSSTransition>
     )
 }
+
+export default Tag;

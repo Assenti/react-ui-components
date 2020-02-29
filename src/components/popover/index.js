@@ -1,8 +1,8 @@
 import React, { useState, createRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { Icon } from '../icon';
+import { Icon } from '../index';
 
-export const PopOver = (props) => {
+const PopOver = (props) => {
     const [visible, setVisible] = useState(false);
     const popup = createRef();
     const content = createRef();
@@ -64,3 +64,5 @@ export const PopOver = (props) => {
         </div>
     )
 }
+
+export default PopOver;

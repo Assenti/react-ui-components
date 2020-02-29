@@ -1,7 +1,7 @@
 import React from 'react';
-import { Icon } from '../icon';
+import { Icon } from '../index';
 
-export const Button = (props) => {
+const Button = (props) => {
     const btnClass = () => {
         let result = '';
         let className = {
@@ -66,3 +66,5 @@ export const Button = (props) => {
         </button>
     )
 }
+
+export default Button;

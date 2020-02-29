@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { Button } from '../button';
-import { Tooltip } from '../tooltip';
+import { Button, Tooltip } from '../index';
 
-export const Drawer = (props) => {
+const Drawer = (props) => {
     const [isXs, setIsXs] = useState(false);
 
     const drawerClass = () => {
@@ -117,3 +116,5 @@ export const Drawer = (props) => {
         </React.Fragment>
     )
 }
+
+export default Drawer;

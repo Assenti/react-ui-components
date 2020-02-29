@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Icon } from '../icon';
-import { Tooltip } from '../tooltip';
+import { Icon, Tooltip } from '../index';
 
-export const CopyToClipboard = (props) => {
+const CopyToClipboard = (props) => {
     const [tooltip, setTooltip] = useState(props.defaultText ? props.defaultText : 'Copy');
 
     const handleClick = () => {
@@ -24,3 +23,5 @@ export const CopyToClipboard = (props) => {
         </Tooltip>           
     )
 }
+
+export default CopyToClipboard;

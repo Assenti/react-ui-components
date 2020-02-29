@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Icon } from '../icon';
+import { Icon } from '../index';
 
-export const TextareaField = (props) => {
+const TextareaField = (props) => {
     const input = useRef(null);
     const [focus, setFocus] = useState(false);
     const [rows, setRows] = useState(props.rows ? props.rows : 1);
@@ -119,3 +119,5 @@ export const TextareaField = (props) => {
         </div>
     )
 }
+
+export default TextareaField; 

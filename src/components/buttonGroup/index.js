@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../index';
 
-export const ButtonGroup = (props) => {
+const ButtonGroup = (props) => {
     const [active, setActive] = useState(props.default);
 
     const componentClass = () => {
@@ -45,3 +45,5 @@ export const ButtonGroup = (props) => {
         </div>
     )
 }
+
+export default ButtonGroup;

@@ -99,3 +99,15 @@ export const cardIssueMaskFormatter = (value) => {
         }
     } else return '';
 }
+
+export const dateMaskFormatter = (value, delimiter = '.') => {
+    if (value) {
+        if (value.length <= 2) {
+            return `${value}`;
+        } else if (value.length > 2 && value.length <= 4) {
+            return `${value.slice(0,2)}${delimiter}${value.slice(2,value.length)}`;
+        } else {
+            return `${value.slice(0,2)}${delimiter}${value.slice(2,4)}${delimiter}${value.slice(4,8)}`;
+        }
+    } else return '';
+}

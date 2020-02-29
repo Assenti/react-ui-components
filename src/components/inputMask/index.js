@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { InputField } from '../input';
-import { phoneMaskFormatter, cardMaskFormatter, cardIssueMaskFormatter, iinMaskFormatter } from '../utils';
+import { InputField } from '../index';
+import { 
+    phoneMaskFormatter, 
+    cardMaskFormatter, 
+    cardIssueMaskFormatter, 
+    iinMaskFormatter,
+    dateMaskFormatter } from '../utils';
 
 const InputMask = (props) => {
     const [preValue, setPreValue] = useState('');
@@ -47,6 +52,16 @@ const InputMask = (props) => {
                     iinMaskFormatter(preValue.slice(0, preValue.length - 1))
                 }
                 break;
+            case 'date':
+                if (e.key.match(/^[0-9]+$/)) {
+                    let concatenatedValue = preValue + e.key;                    
+                    setPreValue(concatenatedValue.length <=8 ? concatenatedValue : preValue)
+                    dateMaskFormatter(concatenatedValue, props.dateDelimiter)
+                } else if (e.key === 'Backspace' && preValue) {
+                    setPreValue(preValue.slice(0, preValue.length - 1))
+                    dateMaskFormatter(preValue.slice(0, preValue.length - 1), props.dateDelimiter)
+                }
+                break;
             default:
                 break;
         }
@@ -66,6 +81,9 @@ const InputMask = (props) => {
             case 'iin':
                 props.onChange(iinMaskFormatter(preValue), preValue);
                 break;
+            case 'date':
+                props.onChange(dateMaskFormatter(preValue, props.dateDelimiter), preValue);
+                break;
             default:
                 break;
         }
@@ -81,6 +99,8 @@ const InputMask = (props) => {
                 return cardIssueMaskFormatter(preValue);
             case 'iin':
                 return iinMaskFormatter(preValue);
+            case 'date':
+                return dateMaskFormatter(preValue, props.dateDelimiter);
             default:
                 return '';
         }

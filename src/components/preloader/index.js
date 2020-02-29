@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Preloader = (props) => {
+const Preloader = (props) => {
     return (
         <React.Fragment>
             {props.visible ? <div className="rui-preloader"
@@ -18,3 +18,5 @@ export const Preloader = (props) => {
         </React.Fragment>
     )
 }
+
+export default Preloader;

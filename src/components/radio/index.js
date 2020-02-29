@@ -28,7 +28,7 @@ const Radio = (props) => {
     )
 }
 
-export const RadioGroup = (props) => {
+const RadioGroup = (props) => {
     const radioGroupClass = () => {
         let result = '';
         let className = {
@@ -57,3 +57,5 @@ export const RadioGroup = (props) => {
         </div>
     )
 }
+
+export default RadioGroup;

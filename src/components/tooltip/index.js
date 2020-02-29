@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Tooltip = (props) => {
+const Tooltip = (props) => {
     const tooltipClass = () => {
         let result = '';
         let className = {
@@ -21,3 +21,5 @@ export const Tooltip = (props) => {
         </div>
     )
 }
+
+export default Tooltip;

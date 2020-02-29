@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Badge = (props) => {
+const Badge = (props) => {
     const badgeClass = () => {
         let result = '';
         let className = {
@@ -30,3 +30,5 @@ export const Badge = (props) => {
         </div>
     )
 }
+
+export default Badge;

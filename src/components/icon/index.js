@@ -66,7 +66,7 @@ import {
     Alert
 } from './icons/index';
 
-export const Icon = (props) => {
+const Icon = (props) => {
     const Icon = () => {
         switch (props.name) {
             case 'delete':
@@ -216,3 +216,5 @@ export const Icon = (props) => {
         </i>
     )
 }
+
+export default Icon;

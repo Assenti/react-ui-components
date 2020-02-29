@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-export const Dropdown = (props) => {
+const Dropdown = (props) => {
     const [visible, setVisible] = useState(false);
 
     const dropdownClass = () => {
@@ -44,3 +44,5 @@ export const Dropdown = (props) => {
         </div>
     )
 }
+
+export default Dropdown;

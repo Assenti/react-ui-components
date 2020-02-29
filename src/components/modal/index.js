@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { Icon } from '../icon';
+import { Icon } from '../index';
 
-export const Modal = (props) => {
+const Modal = (props) => {
     const [full, setFull] = useState(false);
 
     const modalContainerClass = () => {
@@ -74,3 +74,5 @@ export const Modal = (props) => {
         </div>
     )
 }
+
+export default Modal;

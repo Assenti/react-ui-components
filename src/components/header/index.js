@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from '../button';
+import { Button } from '../index';
 
-export const Header = (props) => {
+const Header = (props) => {
     const headerClass = () => {
         let result = '';
         let className = {
@@ -41,3 +41,5 @@ export const Header = (props) => {
         </div>
     )
 }
+
+export default Header;

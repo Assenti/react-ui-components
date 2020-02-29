@@ -1,9 +1,8 @@
 import React, { useEffect, useState, createRef } from 'react'
-import { Button } from '../button';
 import { CSSTransition } from 'react-transition-group';
-import { Tooltip } from '../tooltip';
+import { Tooltip, Button } from '../index';
 
-export const BackTopBtn = (props) => {
+const BackTopBtn = (props) => {
     const [visible, setVisible] = useState(false);
     const [breakpoint] = useState(props.breakpoint ? props.breakpoint : 60);
     const blockRef = createRef();
@@ -74,3 +73,5 @@ export const BackTopBtn = (props) => {
         </div>
     )
 }
+
+export default BackTopBtn;

@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { Empty, Loading } from '../icon/icons/index';
-import { Checkbox } from '../checkbox';
-import { Pagination } from '../pagination';
-import { Icon } from '../icon';
-import { InputField } from '../input';
+import { Checkbox, Pagination, Icon, InputField } from '../index';
 import { compare } from '../utils';
 
 const makeSortableHeaders = (headers) => {
@@ -14,7 +11,7 @@ const makeSortableHeaders = (headers) => {
     return sortableHeaders;
 }
 
-export const Table = (props) => {
+const Table = (props) => {
     let initialHeaders = () => {
         if (props.controls && !props.checkbox) {
             return [...props.headers, ''];
@@ -307,3 +304,5 @@ export const Table = (props) => {
         </div>
     )
 }
+
+export default Table;

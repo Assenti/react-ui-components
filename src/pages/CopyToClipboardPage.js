@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Card, Collapse, InputField, Table } from '../components';
+import { Card, Collapse, InputField, Table, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { CopyToClipboard } from '../components/copyToClipboard';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [

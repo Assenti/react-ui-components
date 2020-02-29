@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { Icon } from '../icon';
+import { Icon } from '../index';
 
-export const Uploader = (props) => {
+const Uploader = (props) => {
     const inputFile = useRef();
     const [focus, setFocus] = useState(false);
 
@@ -76,3 +76,5 @@ export const Uploader = (props) => {
         </div>
     )
 }
+
+export default Uploader;

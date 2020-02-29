@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Icon } from '../icon';
+import { Icon } from '../index';
 
-export const InputField = (props) => {
+const InputField = (props) => {
     const input = useRef(null);
     const [focus, setFocus] = useState(false);
     const [isChanged, setIsChanged] = useState(false);
@@ -165,3 +165,5 @@ export const InputField = (props) => {
         </div>
     )
 }
+
+export default InputField;

@@ -1,12 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { Icon } from '../icon';
-import { InputField } from '../input';
-import { Dropdown } from '../dropdown';
-import { List, ListItem } from '../list';
-import { Tag } from '../tag';
+import { Icon, InputField, Dropdown, List, ListItem, Tag } from '../index';
 import { CSSTransition } from 'react-transition-group';
 
-export const Select = (props) => {
+const Select = (props) => {
     const [menu, setMenu] = useState(false);
     const [subMenu, setSubMenu] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -261,3 +257,5 @@ export const Select = (props) => {
                     </div>}/>
     )
 }
+
+export default Select;

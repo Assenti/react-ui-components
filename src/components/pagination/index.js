@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Select } from '../select';
+import { Select } from '../index';
 import { ChevronBack, ChevronNext } from '../icon/icons/index';
 
 const generateMockArr = (length) => {
@@ -10,7 +10,7 @@ const generateMockArr = (length) => {
     return arr
 }
 
-export const Pagination = (props) => {
+const Pagination = (props) => {
     const paginationClass = () => {
         let result = '';
         let className = {
@@ -126,3 +126,5 @@ export const Pagination = (props) => {
         </div>
     )
 }
+
+export default Pagination;

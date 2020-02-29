@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { Button } from '../button';
-import { Icon } from '../icon';
+import { Button, Icon } from '../index';
 
 const Dialog = (props) => {
     const [loading, setLoading] = useState(false);
