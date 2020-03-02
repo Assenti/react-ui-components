@@ -1,4 +1,7 @@
-<h1 align="center">React UI Components</h1> 
+<p align="center">
+  <h1 align="center">React UI Components</h1>
+  #### UI Components for web apps built on React
+</p>
 
 <p align="center">
   <a aria-label="NPM version" href="https://www.npmjs.com/package/@assenti/rui-components">
