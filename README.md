@@ -1,6 +1,6 @@
 <p align="center">
-  <h1 align="center">React UI Components</h1>
-  #### UI Components for web apps built on React
+  <h1>React UI Components</h1>
+  <p>UI Components for web apps built on React</p>
 </p>
 
 <p align="center">
