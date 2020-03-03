@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { List, ListItem, Icon, Drawer, InputField, Dropdown } from '../components';
+import { useHistory } from 'react-router-dom';
+import { List, ListItem, Icon, Drawer, InputField, Dropdown, Switch } from '../components';
 import { compare } from '../components';
 
 export const DrawerContent = (props) => {
@@ -14,7 +14,10 @@ export const DrawerContent = (props) => {
 
     const searchedItems = () => {
         if (search) {
-            return props.items.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+            return props.items
+                .filter(item => item.name.toLowerCase().includes(search.toLowerCase()) && 
+                    (item.path !== '/' &&
+                    item.path !== '/helper'))
         } else {
             return []
         }
@@ -126,6 +129,15 @@ export const DrawerContent = (props) => {
                             item={item.name}/>
                     )}
                 </List> : ''}
+                <div className="row justify-center pt-15 mt-10" style={{ borderTop: '1px solid lightgray'}}>
+                    <Switch color="primary" 
+                        check={props.dark}
+                        leftIcon="sun"
+                        leftIconColor={props.dark ? '#fff' : ''}
+                        rightIconColor={props.dark ? '#fff' : ''}
+                        rightIcon="moon" 
+                        onChange={() => props.onSwitch()}/>
+                </div>
             </Drawer>
         </React.Fragment>
     )

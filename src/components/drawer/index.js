@@ -10,13 +10,13 @@ const Drawer = (props) => {
         let className = {
             name: 'rui-drawer',
             collapsable: props.collapsable ? 'collapsable' : '',
+            position: props.position && props.position !== 'default' ? props.position : '',
             smooth: props.smooth ? 'smooth' : '',
             min: props.min ? 'min' : '',
             absolute: props.absolute ? 'absolute' : '',
             fullHeight: props.fullHeight ? 'full-height' : '',
             dark: props.dark && !props.light ? 'dark' : ''
         }
-        
         for (const key in className) {
             if (className[key]) result += className[key] + ' '
         }
@@ -30,6 +30,13 @@ const Drawer = (props) => {
         } 
     }
 
+    const handleCloseXs = (e) => {
+        e.preventDefault();
+        if (isXs || props.absolute) {
+            props.onClose()
+        }
+    }
+
     useEffect(() => {
         window.addEventListener('resize', () => {
             if (window.innerWidth > 529) {
@@ -38,20 +45,23 @@ const Drawer = (props) => {
                 setIsXs(true)
             }
         })
+
+        return(() => {
+            window.removeEventListener('resize', {},  false);
+        })
     }, [])
+
+    const drawerOverlayClass = () => props.drawer ? 'rui-drawer__overlay' : 'rui-drawer__overlay none';
 
     return (
         <React.Fragment>
-            {isXs ?
+            {isXs || props.absolute ?
             <CSSTransition
                 in={props.drawer}
                 timeout={100}
                 classNames="drawer-background"
                 unmountOnExit>
-                <div className={props.drawer ? 
-                        'rui-drawer-background' : 
-                        'rui-drawer-background none'} 
-                        onClick={handleClose}>
+                <div className={drawerOverlayClass()} onClick={handleClose}>
                     <CSSTransition
                         in={props.drawer}
                         timeout={300}
@@ -62,7 +72,7 @@ const Drawer = (props) => {
                             timeout={300}
                             classNames="expand">
                                 <div className={drawerClass()}>
-                                    <div className="rui-drawer-content">
+                                    <div className="rui-drawer-content" onClick={handleCloseXs}>
                                         {props.header ? 
                                         <div className={props.headerCentered ? 
                                                 'rui-drawer-header centered' : 'rui-drawer-header'}>
@@ -79,7 +89,6 @@ const Drawer = (props) => {
                                         </Tooltip>
                                     </div> : ''}
                                 </div>
-                            
                         </CSSTransition>
                     </CSSTransition>
                 </div>

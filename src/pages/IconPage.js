@@ -10,6 +10,7 @@ const icons = [
     'home', 
     'edit', 
     'github', 
+    'gitlab', 
     'close', 
     'chevron-double-right', 
     'chevron-double-left',
@@ -68,7 +69,20 @@ const icons = [
     'translate',
     'alert',
     'format-size',
-    'cog-outline'
+    'cog-outline',
+    'target',
+    'map',
+    'map-marker',
+    'language-js',
+    'language-ts',
+    'language-go',
+    'linkedin',
+    'facebook',
+    'facebook-workplace',
+    'instagram',
+    'whatsapp',
+    'telegram',
+    'flag'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
@@ -189,7 +203,7 @@ const IconPage = () => {
             <h2 ref={api}>API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>

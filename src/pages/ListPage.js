@@ -241,6 +241,20 @@ const items2 = [
         value: ''
     },
     { 
+        property: 'tooltip', 
+        description: 'Set tooltip', 
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'tooltipPosition', 
+        description: 'Set tooltip position', 
+        default: 'top', 
+        type: 'string',
+        value: 'left | right | bottom'
+    },
+    { 
         property: 'isActiveItem', 
         description: 'Set active list item', 
         default: 'false', 

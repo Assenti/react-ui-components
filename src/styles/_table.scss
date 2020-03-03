@@ -1,11 +1,22 @@
 .rui-table__container {
     position: relative;
     width: 100%;
-    // min-height: 200px;
     border-radius: $radius;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
+    &::-webkit-scrollbar {
+        width: 3.5px;
+        height: 3.5px;
+        background-color: $lightgray;
+        border-radius: $radius;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background-color: lightgray;
+      outline: 1px solid #fff;
+    }
 
     .rui-table__header {
         display: flex;
@@ -27,7 +38,7 @@
 
     &.bordered {
         border: 1px solid lightgray;
-        overflow: hidden;
+        overflow: auto;
     }
 
     .rui-pagination {

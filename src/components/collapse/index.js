@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Icon, Tooltip } from '../index';
-import { CSSTransition } from 'react-transition-group';
 
 const Collapse = (props) => {
     const [visible, setVisible] = useState(props.defaultState ? props.defaultState : false);
@@ -40,15 +39,13 @@ const Collapse = (props) => {
                         onClick={() => setVisible(!visible)}/>
                 }
             </div>
-            <CSSTransition
-                in={visible}
-                timeout={300}
-                unmountOnExit
-                classNames="collapse">
-                <div className="collapse-content">
-                    {props.children}
-                </div>
-            </CSSTransition>
+            <div style={{ 
+                    height: visible ? 'auto' : 0,
+                    padding: visible ? '' : '0 5px'
+                }} 
+                className="rui-collapse__content">
+                {props.children}
+            </div>
         </div>
     )
 }

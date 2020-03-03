@@ -68,7 +68,21 @@ import {
     Shape,
     FormatSize,
     BookOpen,
-    CogOutline
+    CogOutline,
+    Target,
+    Map,
+    MapMarker,
+    LanguageJS,
+    LanguageTS,
+    LanguageGo,
+    Gitlab,
+    LinkedIn,
+    Facebook,
+    FacebookWorkplace,
+    Instagram,
+    WhatsApp,
+    Telegram,
+    Flag
 } from './icons/index';
 
 const Icon = (props) => {
@@ -212,6 +226,34 @@ const Icon = (props) => {
                 return <BookOpen size={props.size} color={props.color}/>;
             case 'cog-outline':
                 return <CogOutline size={props.size} color={props.color}/>;
+            case 'target':
+                return <Target size={props.size} color={props.color}/>;
+            case 'map':
+                return <Map size={props.size} color={props.color}/>;
+            case 'map-marker':
+                return <MapMarker size={props.size} color={props.color}/>;
+            case 'language-js':
+                return <LanguageJS size={props.size} color={props.color}/>;
+            case 'language-ts':
+                return <LanguageTS size={props.size} color={props.color}/>;
+            case 'language-go':
+                return <LanguageGo size={props.size} color={props.color}/>;
+            case 'gitlab':
+                return <Gitlab size={props.size} color={props.color}/>;
+            case 'linkedin':
+                return <LinkedIn size={props.size} color={props.color}/>;
+            case 'facebook':
+                return <Facebook size={props.size} color={props.color}/>;
+            case 'facebook-workplace':
+                return <FacebookWorkplace size={props.size} color={props.color}/>;
+            case 'instagram':
+                return <Instagram size={props.size} color={props.color}/>;
+            case 'whatsapp':
+                return <WhatsApp size={props.size} color={props.color}/>;
+            case 'telegram':
+                return <Telegram size={props.size} color={props.color}/>;
+            case 'flag':
+                return <Flag size={props.size} color={props.color}/>;
             default:
                 return '';
         }

@@ -57,6 +57,7 @@ const App = () => {
                 <DrawerContent
                     dark={dark}
                     drawer={drawer}
+                    onSwitch={() => handleSwitchDark()}
                     onClose={() => setDrawer(false)} 
                     items={routes}/>
                 <Switch>

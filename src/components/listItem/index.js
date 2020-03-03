@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon, Checkbox } from '../index';
+import Tooltip from '../tooltip';
 
 const ListItem = (props) => {
     const itemClass = () => {
@@ -36,7 +37,13 @@ const ListItem = (props) => {
                 <React.Fragment>
                     <div className="rui-list-item__left-side">
                         <div className="rui-list-item__title-row">
-                            {props.icon ? <Icon name={props.icon}/> : ''}
+                            {props.icon ? 
+                                (props.tooltip ? 
+                                <Tooltip tooltip={props.tooltip} position={props.tooltipPosition}>
+                                    <Icon name={props.icon}/>
+                                </Tooltip> :
+                                <Icon name={props.icon}/>) : 
+                            ''}
                             {props.checkbox ? <Checkbox
                                 color="info"
                                 className="mr-10" 

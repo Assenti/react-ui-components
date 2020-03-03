@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Drawer, List, ListItem, Button, Tooltip, Table, Card, Header, Collapse, Icon } from '../components';
+import React, { useState, useRef } from 'react';
+import { Drawer, List, ListItem, Button, Tooltip, Table, Card, Header, Collapse, Icon, Select, Tag, BackTopBtn } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -23,37 +23,18 @@ function Example() {
                 collapsable
                 headerCentered
                 onResize={() => setDrawerMin(!drawerMin)}>
-                {drawerMin ? 
-                    <List>
-                        {stack.map(({name, icon}, index) => 
-                            <ListItem
-                                key={index}
-                                noDivider
-                                render={
-                                    <Tooltip 
-                                        tooltip={name}>
-                                        <Button
-                                            light 
-                                            onClick={() => setPage(name)} 
-                                            icon={icon}/>
-                                    </Tooltip>
-                                }
-                                />
-                        )}
-                    </List> : 
-                    <List size="medium">
-                        {stack.map((item, index) => 
-                            <ListItem 
-                                key={index}
-                                noDivider
-                                icon={item.icon} 
-                                isActiveItem={item.name === page}
-                                onClick={() => setPage(item.name)}   
-                                item={item.name}
-                                hover/>
-                        )}
-                    </List>
-                }
+                <List size="medium">
+                    {stack.map(({name, icon}, index) => 
+                        <ListItem
+                            key={index}
+                            isActiveItem={name === page}
+                            noDivider
+                            item={drawerMin ? '' : name}
+                            icon={icon}
+                            tooltip={name}
+                            tooltipPosition="right"/>
+                    )}
+                </List>
             </Drawer>
             <div className="page">
                 <Header 
@@ -68,11 +49,72 @@ function Example() {
     )
 )`
 
+const usagePositions =
+`// Usage examples
+import React, { useState } from 'react';
+import { Drawer, List, ListItem, Header, Icon } from '@assenti/react-ui-components';
+const positions = ['default', 'top', 'bottom', 'right'];
+const stack = [
+    { name: 'JavaScript', icon: 'code' }, 
+    { name: 'TypeScript', icon: 'code' },
+    { name: 'React', icon: 'code' },
+    { name: 'React Router', icon: 'code' },
+    { name: 'React Redux', icon: 'code' }
+]
+
+function Example() {
+    const [drawer, setDrawer] = useState(true);
+    const [drawerMin, setDrawerMin] = useState(false);
+    const [page, setPage] = useState(stack[0].name);
+    const [position, setPosition] = useState(positions[0]);
+    const [visible, setVisible] = useState(false);
+
+    return (
+        <div className="rui-app relative overflow-y pa-0" style={{ minHeight: 400 }}>
+            <div className="pa-10" style={{ width: 200 }}>
+                <Select
+                    items={positions}
+                    prefix={<Icon name="book-open"/>}
+                    color="primary"
+                    className="my-0"
+                    value={position}
+                    onChange={v => setPosition(v)}/>
+                <Button 
+                    name="Toggle drawer"
+                    color="primary"
+                    block
+                    className="my-10 mx-0"
+                    onClick={() => setVisible(!visible)}/>
+            </div>
+            <Drawer
+                drawer={visible}
+                absolute
+                position={position}
+                onClose={() => setVisible(false)}
+                header={<div className="row align-center"><Icon name="react" className="mr-5"/> Drawer Header</div>}>
+                <List size="medium">
+                    {stack.map((item, index) => 
+                    <ListItem 
+                        key={index}
+                        noDivider
+                        icon={item.icon} 
+                        isActiveItem={item.name === page}
+                        onClick={() => setPage(item.name)}   
+                        item={item.name}
+                        hover/>
+                    )}
+                </List>
+            </Drawer>
+        </div>
+    )
+)`
+
+const positions = ['default', 'top', 'bottom', 'right'];
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'drawer', 
-        description: 'Drawer visibilty state', 
+        description: 'Drawer visibility state', 
         default: '', 
         type: 'boolean',
         value: 'true | false'
@@ -87,7 +129,7 @@ const items = [
     { 
         property: 'min', 
         description: 'Set drawer width to minimum size', 
-        default: '', 
+        default: 'false', 
         type: 'boolean',
         value: 'true | false'
     },
@@ -111,6 +153,13 @@ const items = [
         default: '', 
         type: 'boolean',
         value: 'true | false'
+    },
+    { 
+        property: 'position', 
+        description: 'Set drawer position', 
+        default: 'left', 
+        type: 'string',
+        value: 'right | top | bottom'
     },
     { 
         property: 'header', 
@@ -143,23 +192,34 @@ const items = [
 ]
 
 const stack = [
-    { name: 'JavaScript', icon: 'code' }, 
-    { name: 'TypeScript', icon: 'code' },
-    { name: 'React', icon: 'code' },
-    { name: 'React Router', icon: 'code' },
-    { name: 'React Redux', icon: 'code' }
+    { name: 'JavaScript', icon: 'language-js' }, 
+    { name: 'TypeScript', icon: 'language-ts' },
+    { name: 'React', icon: 'react' },
+    { name: 'React Router', icon: 'react' },
+    { name: 'React Redux', icon: 'react' }
 ]
 
 const DrawerPage = () => {
+    const parent = useRef();
+    const api = useRef();
     const [drawer, setDrawer] = useState(true);
     const [drawerMin, setDrawerMin] = useState(false);
-    const [page, setPage] = useState(stack[0].name)
+    const [page, setPage] = useState(stack[0].name);
+    const [position, setPosition] = useState(positions[0]);
+    const [visible, setVisible] = useState(false);
+
+    const goToApi = () => {
+        if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
 
     return (
-        <div className="rui-page">
-            <div className="rui-page-title">Drawer Component</div>
-            <Card flat className="overflow-y pa-0">
-                <div className="rui-app" style={{ minHeight: 260 }}>
+        <div className="rui-page" ref={parent}>
+            <div className="row align-center space-between">
+                <div className="rui-page-title">Drawer Component</div>
+                <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
+            </div>
+            <Card outlined title="Drawer usage">
+                <div className="rui-app relative pa-0" style={{ minHeight: 260 }}>
                     <Drawer
                         drawer={drawer}
                         min={drawerMin}
@@ -168,37 +228,19 @@ const DrawerPage = () => {
                         collapsable
                         headerCentered
                         onResize={() => setDrawerMin(!drawerMin)}>
-                        {drawerMin ? 
-                            <List>
-                                {stack.map(({name, icon}, index) => 
-                                    <ListItem
-                                        key={index}
-                                        noDivider
-                                        render={
-                                            <Tooltip 
-                                                tooltip={name}>
-                                                <Button
-                                                    light 
-                                                    onClick={() => setPage(name)} 
-                                                    icon={icon}/>
-                                            </Tooltip>
-                                        }
-                                        />
-                                )}
-                            </List> : 
-                            <List size="medium">
-                                {stack.map((item, index) => 
-                                    <ListItem 
-                                        key={index}
-                                        noDivider
-                                        icon={item.icon} 
-                                        isActiveItem={item.name === page}
-                                        onClick={() => setPage(item.name)}   
-                                        item={item.name}
-                                        hover/>
-                                )}
-                            </List>
-                        }
+                        <List size="medium">
+                            {stack.map(({name, icon}, index) => 
+                                <ListItem
+                                    key={index}
+                                    isActiveItem={name === page}
+                                    noDivider
+                                    hover
+                                    item={drawerMin ? '' : name}
+                                    icon={icon}
+                                    tooltip={name}
+                                    tooltipPosition="right"/>
+                            )}
+                        </List>
                     </Drawer>
                     <div className="rui-page">
                         <Header 
@@ -221,10 +263,59 @@ const DrawerPage = () => {
                     </SyntaxHighlighter> 
                 </Collapse>
             </Card>
-            <h2>API</h2>
+            <br/>
+            <Card outlined title="Drawer positions">
+                <div className="rui-app relative overflow-y pa-0" style={{ minHeight: 400 }}>
+                    <div className="pa-10" style={{ width: 200 }}>
+                        <Select
+                            items={positions}
+                            prefix={<Icon name="book-open"/>}
+                            color="primary"
+                            className="my-0"
+                            value={position}
+                            onChange={v => setPosition(v)}/>
+                        <Button 
+                            name="Toggle drawer"
+                            color="primary"
+                            block
+                            className="my-10 mx-0"
+                            onClick={() => setVisible(!visible)}/>
+                    </div>
+                    <Drawer
+                        drawer={visible}
+                        absolute
+                        position={position}
+                        onClose={() => setVisible(false)}
+                        header={<div className="row align-center"><Icon name="react" className="mr-5"/> Drawer Header</div>}>
+                        <List size="medium">
+                            {stack.map((item, index) => 
+                            <ListItem 
+                                key={index}
+                                noDivider
+                                icon={item.icon} 
+                                isActiveItem={item.name === page}
+                                onClick={() => setPage(item.name)}   
+                                item={item.name}
+                                hover/>
+                            )}
+                        </List>
+                    </Drawer>
+                </div>
+                <Collapse 
+                    icon="code"
+                    iconSize={18}
+                    contentStyles={{ padding: 0 }}
+                    tooltip="Code">
+                    <SyntaxHighlighter language="jsx" style={prism}>
+                        {usagePositions}
+                    </SyntaxHighlighter> 
+                </Collapse>
+            </Card>
+            <h2 ref={api}>API</h2>
+            <BackTopBtn setRef={parent} size="medium" dark/>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>

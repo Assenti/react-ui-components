@@ -1,16 +1,14 @@
-.rui-drawer-background {
+.rui-drawer__overlay {
     background-color: rgba(black, .4);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 9999;
 }
 
 .rui-drawer {
-    top: 0;
-    left: 0;
     height: auto;
     width: 280px;
     min-width: 280px;
@@ -18,6 +16,30 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    &:not(.right):not(.top):not(.bottom) {
+        top: 0;
+        left: 0;
+    }
+
+    &.right {
+        top: 0;
+        right: 0;
+    }
+
+    &.bottom {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        min-width: 100%;
+    }
+
+    &.top {
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-width: 100%;
+    }
 
     .rui-drawer-header {
         display: flex;
@@ -27,9 +49,11 @@
         position: sticky;
         top: 0;
         z-index: 10;
+        padding: 0 10px;
     
         &.centered {
           justify-content: center;
+          padding: 0;
         }
     
         & > img {
@@ -48,8 +72,13 @@
     }
 
     &.absolute {
-        position: absolute !important;
+        position: absolute;
         z-index: 999;
+
+        &.left,
+        &:not(.bottom):not(.top) {
+            height: 100%;
+        }
     }
 
     &.dark {
@@ -96,12 +125,13 @@
 
     .rui-drawer-content {
         height: 100%;
-        padding-bottom: 10px;
+        padding-bottom: 20px;
         overflow-x: visible !important;
         overflow-y: auto;
 
         &::-webkit-scrollbar {
             width: 3.5px;
+            height: 3.5px;
             background-color: $lightgray;
             border-radius: $radius;
         }
@@ -154,7 +184,6 @@
 .drawer-exit-active {
     animation: drawerClosing 300ms ease-out;
     -moz-animation: drawerClosing 300ms ease-out;
-    
 }
 
 .expand-enter {
@@ -162,8 +191,8 @@
 }
 
 .expand-enter-active {
-    animation: collapsing 300ms ease-out;
-    -moz-animation: collapsing 300ms ease-out;
+    animation: collapsing 300ms ease-in;
+    -moz-animation: collapsing 300ms ease-in;
 }
 
 .expand-exit {

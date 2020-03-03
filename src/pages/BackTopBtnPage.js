@@ -1,5 +1,5 @@
 import React, { createRef } from 'react';
-import { BackTopBtn, Card, Table, Collapse, Icon } from '../components';
+import { BackTopBtn, Card, Table, Collapse, Icon, List, ListItem } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -65,33 +65,59 @@ const items = [
 
 const simpleList =
 `// Usage examples
-import React, { createRef } from 'react';
-import { BackTopBtn } from '@assenti/rui-components';
+import React, { useRef } from 'react';
+import { BackTopBtn, List, ListItem, Icon } from '@assenti/rui-components';
+
+const countries = [
+    { country: 'Kazakhstan', cities: [ 'Nur-Sultan', 'Almaty', 'Shymkent' ] }, 
+    { country: 'Russia', cities: ['Moscow', 'St. Petersburg', 'Krasnodar'] }, 
+    { country: 'USA', cities: ['Washington, D.C.', 'New York City', 'San Francisco'] }, 
+    { country: 'United Kingdom', cities: ['London', 'York', 'Manchester'] }, 
+    { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
+    { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
+    { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
+    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] },
+    { country: 'Japan', cities: ['Tokyo', 'Osaka', 'Kyoto'] },
+    { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'] }
+]
 
 function Example() {
-    const parentRef = createRef();
-    const rows = []
-    for (let i = 0; i < 20; i++) {
-        rows.push(i)
-    }
+    const parentRef = useRef();
 
     return (
         <div ref={parentRef}>
-            {rows.map(item => 
-                <p key={item}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            )}
+            <List size="large" header="Countries">
+                {countries.map((item, index) => 
+                    <ListItem
+                        key={index}
+                        hover
+                        icon="flag" 
+                        item={item.country}
+                        subTitle={
+                            <div className="row align-center">
+                                <Icon name="star-outline" className="mr-10"/>
+                                {item.cities[0]}
+                            </div>
+                        }/>
+                )}
+            </List>
             <BackTopBtn setRef={parentRef} dark/>
         </div>
     )
-}
-`
+}`
+
+const countries = [
+    { country: 'Kazakhstan', cities: [ 'Nur-Sultan', 'Almaty', 'Shymkent' ] }, 
+    { country: 'Russia', cities: ['Moscow', 'St. Petersburg', 'Krasnodar'] }, 
+    { country: 'USA', cities: ['Washington, D.C.', 'New York City', 'San Francisco'] }, 
+    { country: 'United Kingdom', cities: ['London', 'York', 'Manchester'] }, 
+    { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
+    { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
+    { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
+    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] },
+    { country: 'Japan', cities: ['Tokyo', 'Osaka', 'Kyoto'] },
+    { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'] }
+]
 
 const BackTopBtnPage = () => {
     const blockref = createRef();
@@ -100,7 +126,6 @@ const BackTopBtnPage = () => {
     for (let i = 0; i < 20; i++) {
         rows.push(i)
     }
-
 
     const goToApi = () => {
         if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -114,16 +139,21 @@ const BackTopBtnPage = () => {
             </div>
             <div className="row align-center">Scroll down <Icon className="ml-5" name="arrow-down-bold" size={18}/></div>
             <Card outlined title="BackTopBtn" className="mt-20">
-                {rows.map(item => 
-                    <p key={item}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                )}
+                <List size="large" header="Countries">
+                    {countries.map((item, index) => 
+                        <ListItem
+                            key={index}
+                            hover
+                            icon="flag" 
+                            item={item.country}
+                            subTitle={
+                                <div className="row align-center">
+                                    <Icon name="star-outline" className="mr-10"/>
+                                    {item.cities[0]}
+                                </div>
+                            }/>
+                    )}
+                </List>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {simpleList}

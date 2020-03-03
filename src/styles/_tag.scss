@@ -1,6 +1,7 @@
 .rui-tag {
     display: inline-flex;
     align-items: center;
+    align-items: center;
     border: 1px solid;
     border-radius: $radius;
     border-color: lightgray;
@@ -97,6 +98,10 @@
             border-color: $primary;
             background-color: transparent;
             color: $primary;
+
+            path {
+                fill: $primary;
+            }
         }
     }
 
@@ -113,6 +118,10 @@
             border-color: $info;
             background-color: transparent;
             color: $info;
+
+            path {
+                fill: $info;
+            }
         }
     }
 
@@ -129,6 +138,10 @@
             border-color: $error;
             background-color: transparent;
             color: $error;
+
+            path {
+                fill: $error;
+            }
         }
     }
 
@@ -145,6 +158,10 @@
             border-color: $success;
             background-color: transparent;
             color: $success;
+
+            path {
+                fill: $success;
+            }
         }
     }
 
@@ -177,6 +194,10 @@
             border-color: $dark;
             background-color: transparent;
             color: $dark;
+
+            path {
+                fill: $dark;
+            }
         }
     }
 }

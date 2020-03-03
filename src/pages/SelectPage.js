@@ -1,5 +1,5 @@
 import React, { useState, createRef } from 'react';
-import { Select, Table, Card, Collapse, Icon, BackTopBtn, Tag } from '../components';
+import { Select, Table, Card, Collapse, Icon, BackTopBtn } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -134,7 +134,9 @@ const countries = [
     { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
     { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
     { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
-    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] }
+    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] },
+    { country: 'Japan', cities: ['Tokyo', 'Osaka', 'Kyoto'] },
+    { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'] }
 ]
 
 const simpleUsage = 
@@ -150,7 +152,9 @@ const countries = [
     { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
     { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
     { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
-    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] }
+    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] },
+    { country: 'Japan', cities: ['Tokyo', 'Osaka', 'Kyoto'] },
+    { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'] }
 ]
 function Example() {
     const [city, setCity] = useState('');
@@ -196,7 +200,9 @@ const countries = [
     { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
     { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
     { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
-    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] }
+    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] },
+    { country: 'Japan', cities: ['Tokyo', 'Osaka', 'Kyoto'] },
+    { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'] }
 ]
 
 function Example() {
@@ -247,7 +253,9 @@ const countries = [
     { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
     { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
     { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
-    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] }
+    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] },
+    { country: 'Japan', cities: ['Tokyo', 'Osaka', 'Kyoto'] },
+    { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'] }
 ]
 
 function Example() {

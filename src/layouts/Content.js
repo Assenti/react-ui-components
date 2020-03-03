@@ -4,6 +4,7 @@ import { version, description } from '../../package.json';
 
 export const Content = (props) => {
     const github = 'https://github.com/Assenti/react-ui-components';
+    // https://github.com/assenti/react-ui-components/stargazers/
 
     return (
         <div className="rui-content">
@@ -23,13 +24,13 @@ export const Content = (props) => {
                         className="mr-10"
                         rightIcon="moon" 
                         onChange={() => props.onSwitch()}/>
-                    <div className="mr-20">
+                    <div className="mr-15">
                         <Tooltip tooltip="Current version" position="left">
                             <a href="https://github.com/Assenti/react-ui-components/blob/master/CHANGELOG.md" 
                                 rel="noopener noreferrer"
                                 target="_blank"
                                 className="fw-bold">
-                                <small>v {version}</small>
+                                <small>v{version}</small>
                             </a>
                         </Tooltip>
                     </div>

@@ -36,15 +36,32 @@ const HomePage = () => {
 
     return (
         <div className="rui-page" ref={parent}>
-            <h2 className="text-night">Welcome to React UI Components</h2>
-            <div className="row align-center wrap">
-                <Tag value="Main Goal" color="info"/>
-                <div className="col fz-11 fw-bold py-10 px-5" style={{ minWidth: 400 }}>
-                    Create a lot of usefull and maximum reusable UI components for React apps
+            <Tag iconLeft="hammer" color="secondary" value="Work in progress..." small/>
+            <div className="py-30">
+                <h1 className="text-center text-night">Welcome to React UI Components</h1>
+                <p className="text-center">UI Components for web apps built on React</p>
+                <div className="text-center">
+                    <a aria-label="NPM version"
+                        style={{ marginRight: 5 }}
+                        href="https://www.npmjs.com/package/@assenti/rui-components">
+                        <img alt="" src="https://badgen.net/npm/v/@assenti/rui-components"/>
+                    </a>
+                    <a aria-label="Downloads" 
+                        style={{ marginRight: 5 }}
+                        href="https://npm-stat.com/charts.html?package=%40assenti%2Frui-components">
+                        <img alt="" src="https://badgen.net/npm/dw/@assenti/rui-components"/>
+                    </a>
+                    <a aria-label="License" href="https://github.com/Assenti/react-ui-components/edit/master/LICENSE">
+                        <img alt="" src="https://badgen.net/npm/license/@assenti/rui-components"/>
+                    </a>
                 </div>
             </div>
-            <Tag iconLeft="hammer" color="secondary" value="Work in progress..."/>
-            <h2 className="text-night">Getting started with React UI Components</h2>
+            <div className="row column align-center justify-center">
+                <Tag value="Main Goal" outlined iconLeft="target"/>
+                <h4 className="py-10">
+                    Create a lot of usefull and maximum reusable UI components for React apps
+                </h4>
+            </div>
             <Card outlined title="Install" className="mt-20">
                 <SyntaxHighlighter language="bash" style={prism}>
                     {codeInstallation}

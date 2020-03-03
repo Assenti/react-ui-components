@@ -118,13 +118,14 @@ function Example() {
 
     return (
         <div>
-            <div className="row align-center pt-10">
+            <div className="row column">
                 <Select
                     items={colors}
                     prefix={<Icon name="brush"/>}
                     width={200}
                     label="Tabs color"
                     color="primary"
+                    className="my-5"
                     value={color}
                     onChange={v => setColor(v)}/>
                 <Select
@@ -133,7 +134,7 @@ function Example() {
                     width={200}
                     label="Tabs size"
                     color="primary"
-                    className="ml-20"
+                    className="my-5"
                     value={size}
                     onChange={v => setSize(v)}/>
                 <Select
@@ -142,35 +143,37 @@ function Example() {
                     width={200}
                     label="Tabs position"
                     color="primary"
-                    className="ml-20"
+                    className="my-5"
                     value={position}
                     onChange={v => setPosition(v)}/>
             </div>
-            <div className="row align-center py-20">
+            <div className="row column">
                 <Switch 
                     color="primary" 
                     check={icon}
                     rightLabel="Icon"
+                    className="my-5" 
                     onChange={() => setIcon(!icon)}/>
                 <Switch 
                     color="primary" 
                     check={fill}
                     rightLabel="Active highlight fill"
-                    className="ml-20" 
+                    className="my-5" 
                     onChange={() => setFill(!fill)}/>
                 <Switch 
                     color="primary" 
                     check={centered}
+                    className="my-5" 
                     rightLabel="Tabs items centered"
-                    className="ml-20" 
                     onChange={() => setCentered(!centered)}/>
                 <Switch 
                     color="primary" 
                     check={stretch}
                     rightLabel="Stretch Tabs items"
-                    className="ml-20" 
+                    className="my-5" 
                     onChange={() => setStretch(!stretch)}/>
             </div>
+            <br/>
             <Tabs 
                 defaultTab={1}
                 position={position}
@@ -219,13 +222,14 @@ const TabsPage = () => {
                 <div className="rui-page-title">Tabs Component</div>
             </div>
             <Card outlined title="Tabs usage">
-                <div className="row align-center pt-10">
+                <div className="row column">
                     <Select
                         items={colors}
                         prefix={<Icon name="brush"/>}
                         width={200}
                         label="Tabs color"
                         color="primary"
+                        className="my-5"
                         value={color}
                         onChange={v => setColor(v)}/>
                     <Select
@@ -234,7 +238,7 @@ const TabsPage = () => {
                         width={200}
                         label="Tabs size"
                         color="primary"
-                        className="ml-20"
+                        className="my-5"
                         value={size}
                         onChange={v => setSize(v)}/>
                     <Select
@@ -243,35 +247,37 @@ const TabsPage = () => {
                         width={200}
                         label="Tabs position"
                         color="primary"
-                        className="ml-20"
+                        className="my-5"
                         value={position}
                         onChange={v => setPosition(v)}/>
                 </div>
-                <div className="row align-center py-20">
+                <div className="row column">
                     <Switch 
                         color="primary" 
                         check={icon}
                         rightLabel="Icon"
+                        className="my-5" 
                         onChange={() => setIcon(!icon)}/>
                     <Switch 
                         color="primary" 
                         check={fill}
                         rightLabel="Active highlight fill"
-                        className="ml-20" 
+                        className="my-5" 
                         onChange={() => setFill(!fill)}/>
                     <Switch 
                         color="primary" 
                         check={centered}
+                        className="my-5" 
                         rightLabel="Tabs items centered"
-                        className="ml-20" 
                         onChange={() => setCentered(!centered)}/>
                     <Switch 
                         color="primary" 
                         check={stretch}
                         rightLabel="Stretch Tabs items"
-                        className="ml-20" 
+                        className="my-5" 
                         onChange={() => setStretch(!stretch)}/>
                 </div>
+                <br/>
                 <Tabs 
                     defaultTab={1}
                     position={position}

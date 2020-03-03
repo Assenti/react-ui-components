@@ -7,8 +7,11 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
-#### 0.3.16 `2020-03-03`
+#### 0.3.16, 0.3.17 `2020-03-03`
 
+- Drawer component updated;
+- ListItem component updated;
+- Collapse component updated;
 - `NEW!` Tabs component added;
 - `NEW!` New icons added;
 
