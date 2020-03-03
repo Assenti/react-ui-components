@@ -12,6 +12,13 @@ const rows = [
         type: 'string[] | object[]',
         value: ''
     },
+    {
+        property: 'defaultTab',
+        description: 'Set default active Tabs item (starts from 0)', 
+        default: '0', 
+        type: 'number',
+        value: ''
+    },
     { 
         property: 'tabTitleKey', 
         description: 'Set if Tabs items passed as array of object', 
