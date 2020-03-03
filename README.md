@@ -1,4 +1,16 @@
-# React UI Components
+<p align="center">
+  <h1 align="center">React UI Components</h1>
+  <p align="center">UI Components for web apps built on React</p>
+</p>
+
+<p align="center">
+  <a aria-label="NPM version" href="https://www.npmjs.com/package/@assenti/rui-components">
+    <img alt="" src="https://badgen.net/npm/v/@assenti/rui-components">
+  </a>
+  <a aria-label="License" href="https://github.com/Assenti/react-ui-components/edit/master/LICENSE">
+    <img alt="" src="https://badgen.net/npm/license/@assenti/rui-components">
+  </a>
+</p>
 
 ## Main Goal
 Create a lot of usefull and maximum reusable UI components
