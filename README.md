@@ -52,7 +52,6 @@ export default App;
 - [ ] Notification
 - [ ] Breadcrumbs
 - [ ] Carousel
-- [ ] Tabs
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable
 - [ ] TypeScript support (Declare types for all TS using)

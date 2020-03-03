@@ -26,7 +26,7 @@
 
 @each $size in $sizes {
     .ml-#{$size} {
-        margin-left: #{$size}px;
+        margin-left: #{$size}px !important;
     }
 }
 

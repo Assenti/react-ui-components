@@ -66,7 +66,9 @@ const icons = [
     'calendar-star',
     'card-account-details',
     'translate',
-    'alert'
+    'alert',
+    'format-size',
+    'cog-outline'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];

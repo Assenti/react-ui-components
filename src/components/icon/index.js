@@ -65,7 +65,10 @@ import {
     FullscreenExit,
     Alert,
     CalendarStar,
-    Shape
+    Shape,
+    FormatSize,
+    BookOpen,
+    CogOutline
 } from './icons/index';
 
 const Icon = (props) => {
@@ -203,6 +206,12 @@ const Icon = (props) => {
                 return <CalendarStar size={props.size} color={props.color}/>;
             case 'shape':
                 return <Shape size={props.size} color={props.color}/>;
+            case 'format-size':
+                return <FormatSize size={props.size} color={props.color}/>;
+            case 'book-open':
+                return <BookOpen size={props.size} color={props.color}/>;
+            case 'cog-outline':
+                return <CogOutline size={props.size} color={props.color}/>;
             default:
                 return '';
         }

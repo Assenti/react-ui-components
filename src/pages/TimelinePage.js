@@ -43,14 +43,14 @@ const rows = [
     { 
         property: 'centered', 
         description: 'Set timeline position to center', 
-        default: '', 
+        default: 'false', 
         type: 'boolean',
         value: 'true | false'
     },
     { 
         property: 'flatCard', 
         description: 'Set timeline data card flat', 
-        default: '', 
+        default: 'false', 
         type: 'boolean',
         value: 'true | false'
     },
@@ -106,7 +106,7 @@ const items = [
 
 const usage =
 `// Usage examples
-import React from 'react';
+import React, { useState } from 'react';
 import { Timeline, Switch, Select, Icon } from '@assenti/react-ui-components';
 const colors = ['primary', 'info', 'success', 'error', 'dark', 'yellow'];
 const items = [

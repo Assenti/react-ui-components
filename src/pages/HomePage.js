@@ -45,7 +45,7 @@ const HomePage = () => {
             </div>
             <Tag iconLeft="hammer" color="secondary" value="Work in progress..."/>
             <h2 className="text-night">Getting started with React UI Components</h2>
-            <Card outlined color="primary" title="Install" className="mt-20">
+            <Card outlined title="Install" className="mt-20">
                 <SyntaxHighlighter language="bash" style={prism}>
                     {codeInstallation}
                 </SyntaxHighlighter>
@@ -55,14 +55,13 @@ const HomePage = () => {
                 </SyntaxHighlighter>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Usage (A-la-carte)" className="mt-20">
+            <Card outlined title="Usage (A-la-carte)" className="mt-20">
                 <SyntaxHighlighter language="jsx" style={prism}>
                     {codeUsage}
                 </SyntaxHighlighter>
             </Card>
             <br/>
             <Card outlined 
-                color="primary" 
                 title="TypeScript" 
                 className="mt-15">
                 <div className="py-20">

@@ -1,0 +1,707 @@
+.rui-tabs {
+
+    &.left {
+        display: flex;
+
+        .rui-tabs__header {
+            flex-direction: column;
+            align-items: center;
+            border-bottom: none;
+            border-right: 1px solid;
+
+            .rui-tabs__tab {
+                padding: 20px;
+                justify-content: center;
+                text-align: center;
+                border-right: 2px solid transparent;
+            }
+
+            &.primary {
+                border-color: rgba($primary, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $primary;
+
+                    svg {
+                        path {
+                            fill: $primary;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $primary;
+                        border: none;
+                        background-color: rgba($primary, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $primary;
+                        border-color: $primary;
+                    }
+                }
+            }
+    
+            &.info {
+                border-color: rgba($info, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $info;
+
+                    svg {
+                        path {
+                            fill: $info;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $info;
+                        border: none;
+                        background-color: rgba($info, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $info;
+                        border-color: $info;
+                    }
+                }
+            }
+    
+            &.success {
+                border-color: rgba($success, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $success;
+
+                    svg {
+                        path {
+                            fill: $success;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $success;
+                        border: none;
+                        background-color: rgba($success, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $success;
+                        border-color: $success;
+                    }
+                }
+            }
+    
+            &.error {
+                border-color: rgba($error, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $error;
+
+                    svg {
+                        path {
+                            fill: $error;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $error;
+                        border: none;
+                        background-color: rgba($error, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $error;
+                        border-color: $error;
+                    }
+                }
+            }
+
+            &.dark {
+                border-color: rgba($dark, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $dark;
+
+                    svg {
+                        path {
+                            fill: $dark;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $dark;
+                        border: none;
+                        background-color: rgba($dark, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $dark;
+                        border-color: $dark;
+                    }
+                }
+            }
+        }
+    }
+
+    &.right {
+        display: flex;
+        flex-direction: row-reverse;
+
+        .rui-tabs__header {
+            flex-direction: column;
+            align-items: center;
+            border-bottom: none;
+            border-left: 1px solid;
+
+            .rui-tabs__tab {
+                padding: 20px;
+                font-size: $defaultFont;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                border-left: 2px solid transparent;
+            }
+
+            .rui-tabs__tab.active {
+                border-bottom: none;
+                font-weight: bold;
+            }
+
+            &.primary {
+                border-color: rgba($primary, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $primary;
+
+                    svg {
+                        path {
+                            fill: $primary;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $primary;
+                        border: none;
+                        background-color: rgba($primary, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $primary;
+                        border-color: $primary;
+                    }
+                }
+            }
+    
+            &.info {
+                border-color: rgba($info, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $info;
+
+                    svg {
+                        path {
+                            fill: $info;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $info;
+                        border: none;
+                        background-color: rgba($info, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $info;
+                        border-color: $info;
+                    }
+                }
+            }
+    
+            &.success {
+                border-color: rgba($success, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $success;
+
+                    svg {
+                        path {
+                            fill: $success;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $success;
+                        border: none;
+                        background-color: rgba($success, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $success;
+                        border-color: $success;
+                    }
+                }
+            }
+    
+            &.error {
+                border-color: rgba($error, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $error;
+
+                    svg {
+                        path {
+                            fill: $error;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $error;
+                        border: none;
+                        background-color: rgba($error, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $error;
+                        border-color: $error;
+                    }
+                }
+            }
+
+            &.dark {
+                border-color: rgba($dark, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $dark;
+
+                    svg {
+                        path {
+                            fill: $dark;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $dark;
+                        border: none;
+                        background-color: rgba($dark, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $dark;
+                        border-color: $dark;
+                    }
+                }
+            }
+        }
+    }
+
+    &.bottom {
+        display: flex;
+        flex-direction: column-reverse;
+
+        .rui-tabs__header {
+            display: flex;
+            border-top: 1px solid;
+    
+            &.center {
+                justify-content: center;
+            }
+    
+            &.right {
+                justify-content: flex-end;
+            }
+
+            .rui-tabs__tab {
+                padding: 10px 20px;
+                font-size: $defaultFont;
+                cursor: pointer;
+                border-top: 2px solid transparent;
+            }
+
+            .rui-tabs__tab.active {
+                font-weight: bold;
+            }
+    
+            &.primary {
+                border-color: rgba($primary, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $primary;
+
+                    svg {
+                        path {
+                            fill: $primary;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $primary;
+                        border: none;
+                        background-color: rgba($primary, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $primary;
+                        border-color: $primary;
+                    }
+                }
+            }
+    
+            &.info {
+                border-color: rgba($info, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $info;
+
+                    svg {
+                        path {
+                            fill: $info;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $info;
+                        border: none;
+                        background-color: rgba($info, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $info;
+                        border-color: $info;
+                    }
+                }
+            }
+    
+            &.success {
+                border-color: rgba($success, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $success;
+
+                    svg {
+                        path {
+                            fill: $success;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $success;
+                        border: none;
+                        background-color: rgba($success, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $success;
+                        border-color: $success;
+                    }
+                }
+            }
+    
+            &.error {
+                border-color: rgba($error, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $error;
+
+                    svg {
+                        path {
+                            fill: $error;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $error;
+                        border: none;
+                        background-color: rgba($error, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $error;
+                        border-color: $error;
+                    }
+                }
+            }
+
+            &.dark {
+                border-color: rgba($dark, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $dark;
+
+                    svg {
+                        path {
+                            fill: $dark;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $dark;
+                        border: none;
+                        background-color: rgba($dark, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $dark;
+                        border-color: $dark;
+                    }
+                }
+            }
+        }
+    }
+
+    &:not(.bottom):not(.right):not(.left) {
+        .rui-tabs__header {
+            display: flex;
+            border-bottom: 1px solid;
+    
+            &.center {
+                justify-content: center;
+            }
+    
+            &.right {
+                justify-content: flex-end;
+            }
+
+            .rui-tabs__tab {
+                padding: 10px 20px;
+                font-size: $defaultFont;
+                cursor: pointer;
+                border-bottom: 2px solid transparent;
+            }
+
+            .rui-tabs__tab.active {
+                font-weight: bold;
+            }
+    
+            &.primary {
+                border-color: rgba($primary, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $primary;
+
+                    svg {
+                        path {
+                            fill: $primary;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $primary;
+                        border: none;
+                        background-color: rgba($primary, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $primary;
+                        border-color: $primary;
+                    }
+                }
+            }
+    
+            &.info {
+                border-color: rgba($info, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $info;
+
+                    svg {
+                        path {
+                            fill: $info;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $info;
+                        border: none;
+                        background-color: rgba($info, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $info;
+                        border-color: $info;
+                    }
+                }
+            }
+    
+            &.success {
+                border-color: rgba($success, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $success;
+
+                    svg {
+                        path {
+                            fill: $success;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $success;
+                        border: none;
+                        background-color: rgba($success, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $success;
+                        border-color: $success;
+                    }
+                }
+            }
+    
+            &.error {
+                border-color: rgba($error, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $error;
+
+                    svg {
+                        path {
+                            fill: $error;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $error;
+                        border: none;
+                        background-color: rgba($error, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $error;
+                        border-color: $error;
+                    }
+                }
+            }
+
+            &.dark {
+                border-color: rgba($dark, .4);
+    
+                .rui-tabs__tab:hover {
+                    color: $dark;
+
+                    svg {
+                        path {
+                            fill: $dark;
+                        }
+                    }
+                }
+    
+                .rui-tabs__tab.active {
+                    &.fill {
+                        color: $dark;
+                        border: none;
+                        background-color: rgba($dark, .2);
+                    }
+
+                    &:not(.fill) {
+                        color: $dark;
+                        border-color: $dark;
+                    }
+                }
+            }
+        }
+    }
+
+    .rui-tabs__header {
+        &.stretch {
+            .rui-tabs__tab {
+                flex-grow: 1;
+                justify-content: center;
+            }
+        }
+
+        .rui-tabs__tab {
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            color: gray;
+
+            &.active {
+                font-weight: bold;
+            }
+        }
+
+        &.medium {
+            .rui-tabs__tab {
+                font-size: $mediumFont;
+            }
+        }
+
+        &.large {
+            .rui-tabs__tab {
+                font-size: $largeFont;
+            }
+        }
+    }
+
+    .rui-tabs__content {
+        padding: 15px;
+        overflow-y: auto;
+    }
+}
+
+@keyframes ruiSlideLeft {
+    0% { transform: translateX(-10%) }
+    100% { transform: translateX(0) }
+}
+
+.tabs-enter {
+    opacity: 0;
+    transform: translateX(-10%);
+}
+
+.tabs-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.tabs-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.tabs-exit-active {
+    opacity: 0;
+    transform: translateX(-10%);
+    transition: opacity 300ms, transform 300ms;
+}
