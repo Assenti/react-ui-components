@@ -15,8 +15,6 @@ const Table = (props) => {
     let initialHeaders = () => {
         if (props.controls && !props.checkbox) {
             return [...props.headers, ''];
-        } else if (props.index && !props.checkbox && !props.controls) {
-            return [props.indexSign ? props.indexSign : '#', ...props.headers];
         } else if (props.sortable) {
             return makeSortableHeaders(props.headers)
         } else if (props.sortable && props.checkbox) {
@@ -40,11 +38,10 @@ const Table = (props) => {
             name: 'rui-table__container',
             bordered: props.bordered ? 'bordered' : '',
             grid: props.grid ? 'grid' : '',
-            color: props.color ? props.color : '',
+            color: props.color && props.color !== 'default' ? props.color : '',
             paginationPosition: props.paginationPosition ? props.paginationPosition : '',
             className: props.className ? props.className : ''
         }
-        
         for (const key in className) {
             if (className[key]) result += className[key] + ' '
         }
@@ -55,9 +52,9 @@ const Table = (props) => {
         let result = '';
         let className = {
             name: 'rui-table',
+            alignment: props.alignment && props.alignment !== 'left' ? props.alignment : '',
             headerColor: props.color ? props.color : '',
             empty: props.items.length === 0 ? 'empty' : '',
-            alignment: props.alignment ? props.alignment : '',
             noHover: props.noHover ? 'no-hover' : '',
             stripped: props.stripped ? 'stripped' : ''
         }
@@ -120,26 +117,28 @@ const Table = (props) => {
         }
     }
 
+    const isIndexedTable = () => {
+        if (props.index) return <th className="indexed">{props.indexSign ? props.indexSign : '#'}</th>
+    }
+
     const prepareHeaders = () => {
         if (props.sortable && !props.checkbox) {
             return (
                 <tr>
-                    {headers.map((item, index) => 
+                    {isIndexedTable()}
+                    {headers.map((item, index) =>
                         <th key={index}>
                             <div className="row align-center">
                                 {item.name} 
                                 <Icon 
-                                    className="ml-8" 
+                                    className="ml-8 cursor-pointer" 
                                     name={item.sort === 'desc' ? 'sort-descending' : 'sort-ascending'}
                                     onClick={() => {
                                         item.sort = item.sort === 'asc' ? 'desc' : 'asc'
                                         handleColumnSort(index, item.sort)
                                     }}
-                                    size={16} 
-                                    color={props.color ? 
-                                        (colIndex === index ? '#fff' : '') : 
-                                        (colIndex === index ? 'gray' : 'lightgray')    
-                                    }/>
+                                    color={props.color && props.color !== 'default' ? '#fff' : ''}
+                                    size={16}/>
                             </div>
                         </th>
                     )}
@@ -148,6 +147,7 @@ const Table = (props) => {
         } else if (props.sortable && props.checkbox) {
             return (
                 <tr>
+                    {isIndexedTable()}
                     <th style={{ maxWidth: 40, width: 40 }}>
                         <Checkbox 
                             color={props.color ? props.color : ''}
@@ -165,11 +165,8 @@ const Table = (props) => {
                                         item.sort = item.sort === 'asc' ? 'desc' : 'asc'
                                         handleColumnSort(index, item.sort)
                                     }}
-                                    size={16} 
-                                    color={props.color ? 
-                                        (colIndex === index ? '#fff' : '') : 
-                                        (colIndex === index ? 'gray' : 'lightgray')    
-                                    }/>
+                                    color={props.color && props.color !== 'default' ? '#fff' : ''}
+                                    size={16}/>
                             </div>
                         </th>
                     )}
@@ -178,6 +175,7 @@ const Table = (props) => {
         } else if (!props.sortable && props.checkbox) {
            return (
                 <tr>
+                    {isIndexedTable()}
                     <th>
                         <Checkbox 
                             color={props.color ? props.color : ''}
@@ -193,6 +191,7 @@ const Table = (props) => {
         } else {
             return (
                 <tr>
+                    {isIndexedTable()}
                     {headers.map((item, index) => 
                         <th key={index}>{item}</th>
                     )}
@@ -201,9 +200,7 @@ const Table = (props) => {
         }
     }
 
-    const getItemKey = () => {
-        return props.itemTitles[colIndex];
-    }
+    const getItemKey = () => props.itemTitles[colIndex];
 
     const getItems = () => {
         if (search) {
@@ -254,13 +251,13 @@ const Table = (props) => {
                 <tbody>
                     {getItems().map((item, index) => 
                         <tr key={index}>
+                            {props.index ? <td className="indexed">{index + 1}</td> : <React.Fragment/>}
                             {props.checkbox ? <td>
                                 <Checkbox
                                     checked={isSelected(item)} 
                                     color={props.color ? props.color : ''} 
                                     onChange={() => onSelect(item)}/>
                             </td> : <React.Fragment/>}
-                            {props.index ? <td>{index + 1}</td> : <React.Fragment/>}
                             {props.itemTitles.map((title, iter) => 
                                 <td key={iter}>{item[title]}</td>
                             )}
@@ -296,7 +293,7 @@ const Table = (props) => {
                     perPageText={props.perPageText}
                     onPerPageSelect={value => setPerPage(value)}
                     itemsCount={props.itemsTotal ? props.itemsTotal : 0}
-                    color={props.color ? props.color : ''}
+                    color={props.color && props.color !== 'default' ? props.color : ''}
                     size={props.paginationSize ? props.paginationSize : ''}
                     current={props.currentPage ? props.currentPage : 1}
                     rounded={props.paginationRounded ? props.paginationRounded : false}/> : ''
@@ -304,5 +301,4 @@ const Table = (props) => {
         </div>
     )
 }
-
 export default Table;

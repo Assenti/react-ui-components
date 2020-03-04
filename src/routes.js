@@ -31,6 +31,7 @@ const InputsPage = lazy(() => import('./pages/InputsPage'));
 const UploaderPage = lazy(() => import('./pages/UploaderPage'));
 const TimelinePage = lazy(() => import('./pages/TimelinePage'));
 const TabsPage = lazy(() => import('./pages/TabsPage'));
+const RatingPage = lazy(() => import('./pages/RatingPage'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
@@ -64,5 +65,6 @@ export const routes = [
     { path: '/inputmask', name: 'InputMask', Component: InputMaskPage },
     { path: '/dialog', name: 'Dialog', Component: DialogPage },
     { path: '/timeline', name: 'Timeline', Component: TimelinePage },
-    { path: '/tabs', name: 'Tabs', Component: TabsPage }
+    { path: '/tabs', name: 'Tabs', Component: TabsPage },
+    { path: '/rating', name: 'Rating', Component: RatingPage }
 ]

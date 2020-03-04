@@ -60,7 +60,6 @@ export default App;
 - [ ] Date picker / Calendar
 - [ ] Expansion List
 - [ ] Stepper
-- [ ] Rating
 - [ ] Dock
 - [ ] Alert
 - [ ] Notification

@@ -82,7 +82,8 @@ import {
     Instagram,
     WhatsApp,
     Telegram,
-    Flag
+    Flag,
+    StarHalfFull
 } from './icons/index';
 
 const Icon = (props) => {
@@ -254,6 +255,8 @@ const Icon = (props) => {
                 return <Telegram size={props.size} color={props.color}/>;
             case 'flag':
                 return <Flag size={props.size} color={props.color}/>;
+            case 'star-half-full':
+                return <StarHalfFull size={props.size} color={props.color}/>;
             default:
                 return '';
         }
@@ -267,7 +270,9 @@ const Icon = (props) => {
     return (
         <i title={props.title}
             style={{ width: props.size ? props.size : 24, height: props.size ? props.size : 24 }}
-            className={iconClass()} 
+            className={iconClass()}
+            onMouseOver={e => props.onMouseOver ? props.onMouseOver(e) : {}}
+            onMouseLeave={e => props.onMouseOver ? props.onMouseLeave(e) : {}} 
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>
             <Icon/>
         </i>

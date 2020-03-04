@@ -73,10 +73,12 @@
     "js/34.chunk.js.map": "/js/34.chunk.js.map",
     "js/35.chunk.js": "/js/35.chunk.js",
     "js/35.chunk.js.map": "/js/35.chunk.js.map",
+    "js/36.chunk.js": "/js/36.chunk.js",
+    "js/36.chunk.js.map": "/js/36.chunk.js.map",
     "css/main.css.map": "/css/main.css.map",
     "index.html": "/index.html",
     "js/3.chunk.js.LICENSE.txt": "/js/3.chunk.js.LICENSE.txt",
-    "precache-manifest.8eb4a7da3f916eeb7e3d1673e221b1cc.js": "/precache-manifest.8eb4a7da3f916eeb7e3d1673e221b1cc.js",
+    "precache-manifest.7ac8e4920ff366173421b34ebda79354.js": "/precache-manifest.7ac8e4920ff366173421b34ebda79354.js",
     "service-worker.js": "/service-worker.js"
   },
   "entrypoints": [

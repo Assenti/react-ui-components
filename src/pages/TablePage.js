@@ -1,5 +1,5 @@
-import React, { createRef } from 'react';
-import { Table, Button, Tooltip, Card, BackTopBtn, Collapse } from '../components';
+import React, { createRef, useState } from 'react';
+import { Table, Button, Tooltip, Card, BackTopBtn, Collapse, Select, Icon, Switch, ButtonGroup } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -245,8 +245,8 @@ function Example() {
 
 const complexUsage =
 `// Usage examples
-import React from 'react';
-import { Table } from '@assenti/rui-components';
+import React, { useState } from 'react';
+import { Table, Switch, Icon, Select, ButtonGroup } from '@assenti/rui-components';
 
 let goods = []
 for (let i = 0; i < 100; i++) {
@@ -257,25 +257,90 @@ for (let i = 0; i < 100; i++) {
     })
 }
 
+const colors = ['default', 'primary', 'info', 'success', 'error', 'dark'];
+const textAligns = ['left', 'center', 'right'];
+const icons = ['format-align-left', 'format-align-center', 'format-align-right'];
+
 function Example() {
+    const [color, setColor] = useState(colors[0]);
+    const [grid, setGrid] = useState(false);
+    const [checkbox, setCheckbox] = useState(false);
+    const [footer, setFooter] = useState(true);
+    const [bordered, setBordered] = useState(false);
+    const [indexed, setIndexed] = useState(true);
+    const [textAlign, setTextAlign] = useState(textAligns[0]);
+
     return (
         <div>
-            <Table
-                noHover
-                pagination
-                paginationPosition="right"
-                itemsTotal={goods.length}
-                stripped
-                grid
-                sortable
-                checkbox
-                selectKey="name"
-                onSelect={(selected) => console.log(selected)}
-                color="primary"
-                headers={['Name', 'Price', 'Count']}
-                items={goods}
-                footer={<div>Total count: <strong>{goods.length}</strong></div>}
-                itemTitles={['name', 'price', 'count']}/> 
+            <div className="py-10">
+                <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        label="Table color theme"
+                        color="primary"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                </div>
+                <div className="row column">
+                    <Switch 
+                        color="primary" 
+                        check={grid}
+                        className="my-10"
+                        rightLabel="Grid"
+                        onChange={() => setGrid(!grid)}/>
+                    <Switch 
+                        color="primary" 
+                        check={checkbox}
+                        className="my-10"
+                        rightLabel="Checkbox"
+                        onChange={() => setCheckbox(!checkbox)}/>
+                    <Switch 
+                        color="primary" 
+                        check={footer}
+                        className="my-10"
+                        rightLabel="Footer"
+                        onChange={() => setFooter(!footer)}/>
+                    <Switch 
+                        color="primary" 
+                        check={bordered}
+                        className="my-10"
+                        rightLabel="Bordered"
+                        onChange={() => setBordered(!bordered)}/>
+                    <Switch 
+                        color="primary" 
+                        check={indexed}
+                        className="my-10"
+                        rightLabel="Set index"
+                        onChange={() => setIndexed(!indexed)}/>
+                    <ButtonGroup 
+                        default={0} 
+                        icon
+                        onChange={(item, index) => setTextAlign(textAligns[index])}
+                        className="my-10"
+                        options={icons} 
+                        color="secondary" 
+                        outlined/>
+                </div>
+                <Table
+                    noHover
+                    pagination
+                    paginationPosition="right"
+                    itemsTotal={goods.length}
+                    stripped
+                    grid={grid}
+                    index={indexed}
+                    sortable
+                    alignment={textAlign}
+                    checkbox={checkbox}
+                    selectKey="name"
+                    onSelect={(selected) => console.log(selected)}
+                    color={color}
+                    bordered={bordered}
+                    headers={['Name', 'Price', 'Count']}
+                    items={goods}
+                    footer={footer ? <div>Total count: <strong>{goods.length}</strong></div> : null}
+                    itemTitles={['name', 'price', 'count']}/>
         </div>
     )
 }`
@@ -289,9 +354,20 @@ for (let i = 0; i < 100; i++) {
     })
 }
 
+const colors = ['default', 'primary', 'info', 'success', 'error', 'dark'];
+const textAligns = ['left', 'center', 'right'];
+const icons = ['format-align-left', 'format-align-center', 'format-align-right'];
+
 const TablePage = () => {
     const api = createRef();
     const parent = createRef();
+    const [color, setColor] = useState(colors[0]);
+    const [grid, setGrid] = useState(false);
+    const [checkbox, setCheckbox] = useState(false);
+    const [footer, setFooter] = useState(true);
+    const [bordered, setBordered] = useState(false);
+    const [indexed, setIndexed] = useState(true);
+    const [textAlign, setTextAlign] = useState(textAligns[0]);
 
     const goToApi = () => {
         if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -324,10 +400,10 @@ const TablePage = () => {
                 </Collapse>
             </Card>
             <br/>
-            <Card outlined title="Table with checkboxes and controls">
+            <Card outlined title="Table with controls">
                 <Table
                     bordered
-                    checkbox 
+                    index 
                     onSelect={(selected) => console.log(selected)}
                     selectKey="country"
                     headers={['Country', 'Capital', 'Capital population']}
@@ -338,8 +414,8 @@ const TablePage = () => {
                             <Tooltip tooltip="Edit">
                                 <Button
                                     small
-                                    className="mr-10"
                                     color="light"
+                                    className="mr-10"
                                     icon="edit"
                                     onClick={() => console.log(item, 'edited')}>
                                 </Button>
@@ -362,21 +438,74 @@ const TablePage = () => {
             </Card>
             <br/>
             <Card outlined title="Sortable table with pagination, checkbox and grid prop">
+                <div className="py-10">
+                    <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        label="Table color theme"
+                        color="primary"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                </div>
+                <div className="row column">
+                    <Switch 
+                        color="primary" 
+                        check={grid}
+                        className="my-10"
+                        rightLabel="Grid"
+                        onChange={() => setGrid(!grid)}/>
+                    <Switch 
+                        color="primary" 
+                        check={checkbox}
+                        className="my-10"
+                        rightLabel="Checkbox"
+                        onChange={() => setCheckbox(!checkbox)}/>
+                    <Switch 
+                        color="primary" 
+                        check={footer}
+                        className="my-10"
+                        rightLabel="Footer"
+                        onChange={() => setFooter(!footer)}/>
+                    <Switch 
+                        color="primary" 
+                        check={bordered}
+                        className="my-10"
+                        rightLabel="Bordered"
+                        onChange={() => setBordered(!bordered)}/>
+                    <Switch 
+                        color="primary" 
+                        check={indexed}
+                        className="my-10"
+                        rightLabel="Set index"
+                        onChange={() => setIndexed(!indexed)}/>
+                    <ButtonGroup 
+                        default={0} 
+                        icon
+                        onChange={(item, index) => setTextAlign(textAligns[index])}
+                        className="my-10"
+                        options={icons} 
+                        color="secondary" 
+                        outlined/>
+                </div>
                 <Table
                     noHover
                     pagination
                     paginationPosition="right"
                     itemsTotal={goods.length}
                     stripped
-                    grid
+                    grid={grid}
+                    index={indexed}
                     sortable
-                    checkbox
+                    alignment={textAlign}
+                    checkbox={checkbox}
                     selectKey="name"
                     onSelect={(selected) => console.log(selected)}
-                    color="primary"
+                    color={color}
+                    bordered={bordered}
                     headers={['Name', 'Price', 'Count']}
                     items={goods}
-                    footer={<div>Total count: <strong>{goods.length}</strong></div>}
+                    footer={footer ? <div>Total count: <strong>{goods.length}</strong></div> : null}
                     itemTitles={['name', 'price', 'count']}/>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>

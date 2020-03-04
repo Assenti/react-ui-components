@@ -141,6 +141,12 @@
                 fill: $primary;
             }
         }
+
+        th.indexed,
+        td.indexed {
+            background-color: $primary;
+            color: #fff;
+        }
     }
 
     &.info {
@@ -159,6 +165,12 @@
             path {
                 fill: $info;
             }
+        }
+
+        th.indexed,
+        td.indexed {
+            background-color: $info;
+            color: #fff;
         }
     }
 
@@ -179,6 +191,12 @@
                 fill: $success;
             }
         }
+
+        th.indexed,
+        td.indexed {
+            background-color: $success;
+            color: #fff;
+        }
     }
 
     &.error {
@@ -198,12 +216,43 @@
                 fill: $error;
             }
         }
+
+        th.indexed,
+        td.indexed {
+            background-color: $error;
+            color: #fff;
+        }
+    }
+
+    &.dark {
+        .rui-table__footer {
+            background-color: $dark;
+            color: #fff;
+        }
+
+        .rui-table.stripped {
+            tbody > tr:nth-child(even) {
+                background-color: rgba($dark, .1);
+            }
+        }
+
+        .rui-table__placeholder.loading {
+            path {
+                fill: $dark;
+            }
+        }
+
+        th.indexed,
+        td.indexed {
+            background-color: $dark;
+            color: #fff;
+        }
     }
 }
 
 .rui-table {
     margin: 0 auto;
-    width: calc(100% + 1px);
+    width: 100%;
     border-collapse: collapse;
     border-radius: $radius;
 
@@ -243,6 +292,14 @@
         padding: 0 10px;
     }
 
+    th.indexed,
+    td.indexed {
+        border-right: 1px solid lightgray;
+        background-color: $lightgray;
+        width: 45px;
+        text-align: center !important;
+    }
+
     &:not(.center):not(.right) {
         th {
             text-align: left;
@@ -252,12 +309,18 @@
     &.center {
         td, th {
             text-align: center;
+            div {
+                justify-content: center;
+            }
         }
     }
 
     &.right {
         td, th {
             text-align: right;
+            div {
+                justify-content: flex-end;
+            }
         }
     }
 
@@ -289,6 +352,13 @@
     &.error {
         th {
             background-color: $error;
+            color: #fff;
+        }
+    }
+
+    &.dark {
+        th {
+            background-color: $dark;
             color: #fff;
         }
     }

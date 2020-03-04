@@ -1,0 +1,112 @@
+.rui-rating {
+    display: inline-block;
+
+    &:not(.disabled) {
+        .rui-icon {
+            cursor: pointer;
+        }
+
+        &.yellow {
+            svg {
+                path {
+                    fill: $yellow;
+                }
+            }
+            .rui-icon:hover {
+                svg {
+                    path {
+                        fill: $yellow;
+                    }
+                }
+            }
+        }
+
+        &.primary {
+            svg {
+                path {
+                    fill: $primary;
+                }
+            }
+            .rui-icon:hover {
+                svg {
+                    path {
+                        fill: $primary;
+                    }
+                }
+            }
+        }
+
+        &.info {
+            svg {
+                path {
+                    fill: $info;
+                }
+            }
+            .rui-icon:hover {
+                svg {
+                    path {
+                        fill: $info;
+                    }
+                }
+            }
+        }
+
+        &.success {
+            svg {
+                path {
+                    fill: $success;
+                }
+            }
+            .rui-icon:hover {
+                svg {
+                    path {
+                        fill: $success;
+                    }
+                }
+            }
+        }
+
+        &.error {
+            svg {
+                path {
+                    fill: $error;
+                }
+            }
+            .rui-icon:hover {
+                svg {
+                    path {
+                        fill: $error;
+                    }
+                }
+            }
+        }
+    }
+
+    &.disabled {
+        .rui-icon {
+            cursor: default;
+
+            svg {
+                path {
+                    fill: lightgray;
+                }
+            }
+        }
+
+        .rui-rating__rate {
+            color: lightgray;
+        }
+    }
+
+    .rui-rating__stars {
+        display: flex;
+        align-items: center;
+    }
+
+    .rui-rating__rate {
+        text-align: center;
+        display: block;
+        padding: 10px 0;
+        font-size: $defaultFont;
+    }
+}
