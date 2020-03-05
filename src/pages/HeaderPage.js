@@ -1,5 +1,5 @@
-import React from 'react';
-import { Header, Card, Table, Button, Collapse } from '../components';
+import React, { useState } from 'react';
+import { Header, Card, Table, Button, Collapse, Select, Icon, Switch } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -24,7 +24,7 @@ const items = [
         description: 'Set Header background color', 
         default: '', 
         type: 'string',
-        value: 'primary | info | success | info'
+        value: 'primary | info | success | info | black'
     },
     { 
         property: 'sticky',
@@ -86,59 +86,135 @@ const items = [
 
 const usage = 
 `// Usage examples
-import React from 'react';
-import { Header, Button } from '@assenti/react-ui-components';
+import React, { useState } from 'react';
+import { Header, Button, Select, Icon, Switch } from '@assenti/react-ui-components';
+const colors = ['default', 'primary', 'info', 'success', 'error', 'black'];
 
 function Example() {
+    const [color, setColor] = useState(colors[0]);
+    const [dark, setDark] = useState(false);
+    const [smooth, setSmooth] = useState(false);
+    const [leftControl, setLeftControl] = useState(true);
+    const [rightSide, setRightSide] = useState(false);
+
     return (
         <div>
-            <Header title="Header light" leftControl/>
-            <br/>
-            <Header dark title="Header dark" leftControl/>
-            <br/>
-            <Header 
-                dark
-                smooth 
-                title="Header dark" 
-                leftControl
-                rightSide={
-                    <Button icon="account" dark/>
-                }/>
-            <br/>
-            <Header 
-                smooth
+            <Select
+                items={colors}
+                prefix={<Icon name="brush"/>}
+                width={200}
+                label="Color theme"
                 color="primary"
-                title="Header with primary background" 
-                leftControl/>
+                value={color}
+                onChange={v => setColor(v)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={dark}
+                rightLabel="Dark"
+                className="my-10"
+                onChange={() => setDark(!dark)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={smooth}
+                rightLabel="Smooth borders"
+                className="my-10"
+                onChange={() => setSmooth(!smooth)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={rightSide}
+                rightLabel="Right side"
+                className="my-10"
+                onChange={() => setRightSide(!rightSide)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={leftControl}
+                rightLabel="Left control"
+                className="my-10"
+                onChange={() => setLeftControl(!leftControl)}/>
+            <br/>
+            <Header
+                color={!dark ? color : null}
+                smooth={smooth}
+                dark={dark}
+                title="Header light" 
+                leftControl={leftControl}
+                rightSide={rightSide ?
+                    <Button 
+                        dark={dark || (color && color !== 'default')}
+                        light={color === 'default' && !dark}
+                        icon="account"/> : null}/>
         </div>
     )
 }`
 
+const colors = ['default', 'primary', 'info', 'success', 'error', 'black'];
+
 const HeaderPage = () => {
+    const [color, setColor] = useState(colors[0]);
+    const [dark, setDark] = useState(false);
+    const [smooth, setSmooth] = useState(false);
+    const [leftControl, setLeftControl] = useState(true);
+    const [rightSide, setRightSide] = useState(false);
+
     return (
         <div className="rui-page">
             <div className="row align-center space-between">
                 <div className="rui-page-title">Header Component</div>
             </div>
             <Card outlined title="Header usage">
-                <Header title="Header light" leftControl/>
-                <br/>
-                <Header dark title="Header dark" leftControl/>
-                <br/>
-                <Header 
-                    dark
-                    smooth 
-                    title="Header dark" 
-                    leftControl
-                    rightSide={
-                        <Button icon="account" dark/>
-                    }/>
-                <br/>
-                <Header 
-                    smooth
+                <Select
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    label="Color theme"
                     color="primary"
-                    title="Header with primary background" 
-                    leftControl/>
+                    value={color}
+                    onChange={v => setColor(v)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={dark}
+                    rightLabel="Dark"
+                    className="my-10"
+                    onChange={() => setDark(!dark)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={smooth}
+                    rightLabel="Smooth borders"
+                    className="my-10"
+                    onChange={() => setSmooth(!smooth)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={rightSide}
+                    rightLabel="Right side"
+                    className="my-10"
+                    onChange={() => setRightSide(!rightSide)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={leftControl}
+                    rightLabel="Left control"
+                    className="my-10"
+                    onChange={() => setLeftControl(!leftControl)}/>
+                <br/>
+                <Header
+                    color={!dark ? color : null}
+                    smooth={smooth}
+                    dark={dark}
+                    title="Header light" 
+                    leftControl={leftControl}
+                    rightSide={rightSide ?
+                        <Button 
+                            dark={dark || (color && color !== 'default')}
+                            light={color === 'default' && !dark}
+                            icon="account"/> : null}/>
+                <br/>
                 <Collapse 
                     icon="code" 
                     iconSize={18}
@@ -152,12 +228,11 @@ const HeaderPage = () => {
             <h2>API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
-                index={true}
+                index
                 itemTitles={keys}/>
         </div>
     )
 }
-
 export default HeaderPage;

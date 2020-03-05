@@ -1,5 +1,5 @@
-import React, { useState, createRef } from 'react';
-import { Button, Table, Card, Switch, BackTopBtn, Collapse, Tooltip } from '../components';
+import React, { useState, useRef } from 'react';
+import { Button, Table, Card, Switch, BackTopBtn, Collapse, RadioGroup, Select, Icon } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -55,18 +55,11 @@ const items = [
         value: 'true | false'
     },
     { 
-        property: 'rounded', 
-        description: 'Make border radius rounded',
+        property: 'borderType', 
+        description: 'Set Button border type',
         default: 'false', 
         type: 'boolean',
-        value: 'true | false'
-    },
-    { 
-        property: 'smooth',
-        description: 'Set button borders more smooth', 
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
+        value: 'smooth | rounded | tile'
     },
     { 
         property: 'outlined', 
@@ -138,7 +131,7 @@ const items = [
         value: 'true | false'
     },
     { 
-        property: 'ref', 
+        property: 'setRef', 
         description: 'Set ref', 
         default: '', 
         type: 'React.RefObject',
@@ -153,321 +146,181 @@ const items = [
     }
 ]
 
-const buttonTypes = 
-`// Usage examples
-import React from 'react';
-import { Button } from '@assenti/react-ui-components';
-
-function Example() {
-    return (
-        <div className="row align-center">
-            <Button
-                className="mr-5"
-                color="primary"
-                name="Primary"
-                />
-            <Button
-                borderType="tile"
-                className="mr-5"
-                color="primary"
-                name="Tile"
-                />
-            <Button
-                borderType="smooth"
-                className="mr-5"
-                color="primary"
-                name="Smooth"
-                />
-            <Button
-                className="mr-5"
-                borderType="rounded"
-                color="primary"
-                name="Rounded"
-                />
-            <Button
-                className="mr-5"
-                outlined
-                color="primary"
-                name="Outlined"
-                />
-            <Button
-                className="mr-5"
-                outlined
-                uppercase
-                color="primary"
-                name="uppercase"
-                />
-        </div>
-    )
-}
-`
-
-    const buttonSizes = 
-`// Usage examples
-import React from 'react';
-import { Button } from '@assenti/react-ui-components';
-
-function Example() {
-    return(
-        <div className="row align-center">
-            <Button
-                className="mr-5"
-                color="info"
-                name="Default"
-                />
-            <Button
-                className="mr-5"
-                color="info"
-                size="medium"
-                name="Medium"
-                />
-            <Button
-                className="mr-5"
-                size="large"
-                color="info"
-                name="Large"
-                /> 
-            <Button
-                rounded
-                className="mr-5"
-                color="info"
-                name="Default"
-                />
-            <Button
-                rounded
-                outlined
-                uppercase
-                className="mr-5"
-                color="info"
-                size="medium"
-                name="Medium"
-                />
-            <Button
-                rounded
-                uppercase
-                size="large"
-                color="info"
-                name="Large"
-                /> 
-        </div>
-    )
-}
-`
-
-const buttonColors = 
-`// Usage examples
-import React from 'react';
-import { Button } from '@assenti/react-ui-components';
-
-function Example() {
-    return(
-        <div>
-            <Button
-                className="mr-5"
-                color="primary"
-                name="Primary"
-                />
-            <Button
-                className="mr-5"
-                color="info"
-                name="Info"
-                />  
-            <Button
-                className="mr-5"
-                color="error"
-                name="Error"
-                /> 
-            <Button
-                className="mr-5"
-                color="success"
-                name="Success"
-                /> 
-            <Button
-                className="mr-5"
-                color="secondary"
-                name="Secondary"
-                /> 
-            <Button
-                className="mr-5"
-                color="black"
-                name="Black"
-                /> 
-            <Button
-                disabled
-                color="success"
-                name="Disabled"
-                />  
-        </div>
-    )
-}
-`
-
-    const blockButtons =
-`// Usage examples
-import React from 'react';
-import { Button } from '@assenti/rui-components';
-
-function Example() {
-    return (
-        <div style={{ width: 300 }} className="mb-10">
-            <Button
-                block
-                className="my-5"
-                color="primary"
-                name="Block button"
-                />
-            <Button
-                block
-                className="my-10"
-                color="primary"
-                outlined
-                name="Block button"
-                />
-            <Button
-                block
-                rounded
-                outlined
-                className="my-5"
-                color="error"
-                name="Block button"
-                />   
-        </div>
-    )
-}
-`
-
-    const usageIcon =
-`// Usage examples
-import React from 'react';
-import { Button, Tooltip } from '@assenti/rui-components';
-
-function Example() {
-    return (
-        <div>
-            <div className="row align-center my-5">
-                <Tooltip tooltip="Search">
-                    <Button
-                        className="mr-10"
-                        color="primary"
-                        icon="search"
-                        />
-                </Tooltip>
-                <Tooltip tooltip="Menu">
-                    <Button
-                        outlined
-                        className="mr-10"
-                        color="primary"
-                        icon="menu"
-                        />
-                </Tooltip>
-                <Tooltip tooltip="Search">
-                    <Button
-                        light
-                        className="mr-10"
-                        icon="search"
-                        />
-                </Tooltip>
-            </div>
-            <div className="row align-center my-5">
-                <Button
-                    className="mr-10"
-                    color="primary"
-                    name="Search"
-                    icon="search"
-                    />
-                <Button
-                    className="mr-10"
-                    color="info"
-                    name="Home"
-                    icon="home"
-                    iconLeft
-                    />
-            </div>
-            <div className="row align-center my-5">
-                <Button
-                    iconAllotted
-                    outlined
-                    className="mr-10"
-                    color="primary"
-                    name="Search"
-                    icon="search"
-                    />
-                <Button
-                    iconAllotted
-                    outlined
-                    className="mr-10"
-                    color="secondary"
-                    name="Search"
-                    icon="search"
-                    />
-            </div>
-        </div>
-    )
-}
-`
-
-    const loadingButtons =
+const usage = 
 `// Usage examples
 import React, { useState } from 'react';
-import { Button, Switch } from '@assenti/rui-components';
+import { Button, Switch, Select, Icon, RadioGroup } from '@assenti/react-ui-components';
+const sizes = ['default', 'medium', 'large'];
+const colors = ['primary', 'info', 'success', 'error', 'secondary', 'black'];
+const borders = ['default', 'rounded', 'smooth', 'tile'];
+const types = ['dark', 'light', 'none'];
 
 function Example() {
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const [outlined, setOutlined] = useState(false);
+    const [uppercase, setUppercase] = useState(false);
+    const [block, setBlock] = useState(false);
+    const [disabled, setDisabled] = useState(false);
+    const [icon, setIcon] = useState(false);
+    const [iconLeft, setIconLeft] = useState(false);
+    const [lifted, setLifted] = useState(false);
+    const [iconAllotted, setIconAllotted] = useState(false);
+    const [iconOnly, setIconOnly] = useState(false);
+    const [size, setSize] = useState(sizes[0]);
+    const [border, setBorder] = useState(borders[0]);
+    const [color, setColor] = useState(colors[0]);
+    const [type, setType] = useState('');
 
     return (
-        <div className="row align-center py-20">
-            <label>Toggle loaders</label>
+        <div className="row align-center">
+            <Select
+                items={sizes}
+                prefix={<Icon name="format-size"/>}
+                width={200}
+                label="Button size"
+                color="primary"
+                className="pl-10"
+                value={size}
+                onChange={v => setSize(v)}/>
+            <br/>
+            <Select
+                items={borders}
+                prefix={<Icon name="shape"/>}
+                width={200}
+                label="Button border type"
+                color="primary"
+                className="pl-10"
+                value={border}
+                onChange={v => setBorder(v)}/>
+            <br/>
+            <Select
+                items={colors}
+                prefix={<Icon name="brush"/>}
+                width={200}
+                label="Button color"
+                color="primary"
+                className="pl-10"
+                value={color}
+                onChange={v => setColor(v)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={outlined}
+                rightLabel="Outlined"
+                className="pl-10 my-10"
+                onChange={() => setOutlined(!outlined)}/>
+            
+            <Switch 
+                check={uppercase} 
+                color="primary"
+                rightLabel="Uppercase" 
+                className="pl-10 my-10"
+                onChange={() => setUppercase(!uppercase)}/>
+            <br/>
             <Switch 
                 check={loading} 
-                color="info" 
-                className="ml-10"
-                onChange={() => setLoading(!loading)}/>
-        </div>
-        <div className="row align-center">
-            <Button
-                outlined
-                className="mr-10"
                 color="primary"
-                loading={loading}
-                icon="search"
-                />
-            <Button
-                className="mr-10"
-                light
-                loading={loading}
-                icon="search"
-                />
-            <Button
-                className="mx-10"
-                color="info"
-                name="Home"
-                icon="home"
-                loading={loading}
-                iconLeft
-                />
-            <Button
-                className="mx-10"
-                color="info"
-                loading={loading}
-                rounded
-                name="Button"
-                />
-            <Button
-                className="mx-10"
-                color="info"
-                loading={loading}
-                rounded
-                outlined
-                name="Button"
-                />
+                rightLabel="Loading" 
+                className="pl-10 my-10"
+                onChange={() => setLoading(!loading)}/>
+            <Switch 
+                check={disabled} 
+                color="primary"
+                rightLabel="Disabled" 
+                className="pl-10 my-10"
+                onChange={() => setDisabled(!disabled)}/>
+            <br/>
+            <Switch 
+                check={block} 
+                color="primary"
+                rightLabel="Block" 
+                className="pl-10 my-10"
+                onChange={() => setBlock(!block)}/>
+            <Switch 
+                check={lifted} 
+                color="primary"
+                rightLabel="Lifted" 
+                className="pl-10 my-10"
+                onChange={() => setLifted(!lifted)}/>
+            <br/>
+            <Switch 
+                check={icon} 
+                color="primary"
+                rightLabel="With icon" 
+                className="pl-10 my-10"
+                onChange={() => setIcon(!icon)}/>
+            <Switch 
+                check={iconLeft} 
+                color="primary"
+                rightLabel="Left icon" 
+                className="pl-10 my-10"
+                onChange={() => setIconLeft(!iconLeft)}/>
+            <Switch 
+                check={iconAllotted} 
+                color="primary"
+                rightLabel="Allotted icon" 
+                className="pl-10 my-10"
+                onChange={() => setIconAllotted(!iconAllotted)}/>
+            <br/>
+            <Switch 
+                check={iconOnly} 
+                color="primary"
+                rightLabel="Icon button" 
+                className="pl-10 my-10"
+                onChange={() => setIconOnly(!iconOnly)}/>
+            <br/>
+            <RadioGroup
+                options={types} 
+                value={type}
+                name="type"
+                className="pl-10 mt-10" 
+                onChange={(value) => setType(value)}/>
+            <br/>
+            <div className="pa-10">
+                <Button
+                    color={color}
+                    size={size}
+                    icon={icon || iconOnly ? 'search' : ''}
+                    iconAllotted={iconAllotted}
+                    iconLeft={iconLeft}
+                    outlined={outlined}
+                    borderType={border}
+                    loading={loading}
+                    disabled={disabled}
+                    block={block}
+                    lifted={lifted}
+                    dark={type === 'dark' ? true : false}
+                    light={type === 'light' ? true : false}
+                    uppercase={uppercase}
+                    name={iconOnly ? null : 'Button'}
+                    />
+            </div>
         </div>
     )
 }`
 
+const sizes = ['default', 'medium', 'large'];
+const colors = ['primary', 'info', 'success', 'error', 'secondary', 'black'];
+const borders = ['default', 'rounded', 'smooth', 'tile'];
+const types = ['dark', 'light', 'none'];
+
 const ButtonPage = () => {
-    const [loading, setLoading] = useState(true);
-    const parentRef = createRef();
-    const api = createRef();
+    const parentRef = useRef();
+    const api = useRef();
+    const [loading, setLoading] = useState(false);
+    const [outlined, setOutlined] = useState(false);
+    const [uppercase, setUppercase] = useState(false);
+    const [block, setBlock] = useState(false);
+    const [disabled, setDisabled] = useState(false);
+    const [icon, setIcon] = useState(false);
+    const [iconLeft, setIconLeft] = useState(false);
+    const [lifted, setLifted] = useState(false);
+    const [iconAllotted, setIconAllotted] = useState(false);
+    const [iconOnly, setIconOnly] = useState(false);
+    const [size, setSize] = useState(sizes[0]);
+    const [border, setBorder] = useState(borders[0]);
+    const [color, setColor] = useState(colors[0]);
+    const [type, setType] = useState('');
 
     const goToApi = () => {
         if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -479,304 +332,143 @@ const ButtonPage = () => {
                 <div className="rui-page-title">Button Component</div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined title="Button types">
-                <div className="row wrap align-center">
-                    <Button
-                        className="mr-5"
-                        color="primary"
-                        name="Primary"
-                        />
-                    <Button
-                        borderType="tile"
-                        className="mr-5"
-                        color="primary"
-                        name="Tile"
-                        />
-                    <Button
-                        borderType="smooth"
-                        className="mr-5"
-                        color="primary"
-                        name="Smooth"
-                        />
-                    <Button
-                        className="mr-5"
-                        borderType="rounded"
-                        color="primary"
-                        name="Rounded"
-                        />
-                    <Button
-                        className="mr-5"
-                        outlined
-                        color="primary"
-                        name="Outlined"
-                        />
-                    <Button
-                        className="mr-5"
-                        outlined
-                        uppercase
-                        color="primary"
-                        name="uppercase"
-                        />
-                </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {buttonTypes}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Button sizes">
-                <div className="row wrap align-center">
-                    <Button
-                        className="mr-5"
-                        color="info"
-                        name="Default"
-                        />
-                    <Button
-                        className="mr-5"
-                        color="info"
-                        size="medium"
-                        name="Medium"
-                        />
-                    <Button
-                        className="mr-5"
-                        size="large"
-                        color="info"
-                        name="Large"
-                        /> 
-                    <Button
-                        rounded
-                        className="mr-5"
-                        color="info"
-                        name="Default"
-                        />
-                    <Button
-                        rounded
-                        outlined
-                        uppercase
-                        className="mr-5"
-                        color="info"
-                        size="medium"
-                        name="Medium"
-                        />
-                    <Button
-                        rounded
-                        uppercase
-                        size="large"
-                        color="info"
-                        name="Large"
-                        /> 
-                </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {buttonSizes}
-                    </SyntaxHighlighter>
-                </Collapse> 
-            </Card>
-            <br/>
-            <Card outlined title="Button colors">
-                <Button
-                    className="mr-5"
+            <Card outlined title="Button usage">
+                <Select
+                    items={sizes}
+                    prefix={<Icon name="format-size"/>}
+                    width={200}
+                    label="Button size"
                     color="primary"
-                    name="Primary"
-                    />
-                <Button
-                    className="mr-5"
-                    color="info"
-                    name="Info"
-                    />  
-                <Button
-                    className="mr-5"
-                    color="error"
-                    name="Error"
-                    /> 
-                <Button
-                    className="mr-5"
-                    color="success"
-                    name="Success"
-                    /> 
-                <Button
-                    className="mr-5"
-                    color="secondary"
-                    name="Secondary"
-                    /> 
-                <Button
-                    className="mr-5"
-                    color="black"
-                    name="Black"
-                    /> 
-                <Button
-                    disabled
-                    color="success"
-                    name="Disabled"
-                    /> 
+                    className="pl-10"
+                    value={size}
+                    onChange={v => setSize(v)}/>
+                <br/>
+                <Select
+                    items={borders}
+                    prefix={<Icon name="shape"/>}
+                    width={200}
+                    label="Button border type"
+                    color="primary"
+                    className="pl-10"
+                    value={border}
+                    onChange={v => setBorder(v)}/>
+                <br/>
+                <Select
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    label="Button color"
+                    color="primary"
+                    className="pl-10"
+                    value={color}
+                    onChange={v => setColor(v)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={outlined}
+                    rightLabel="Outlined"
+                    className="pl-10 my-10"
+                    onChange={() => setOutlined(!outlined)}/>
+                <Switch 
+                    check={uppercase} 
+                    color="primary"
+                    rightLabel="Uppercase" 
+                    className="pl-10 my-10"
+                    onChange={() => setUppercase(!uppercase)}/>
+                <br/>
+                <Switch 
+                    check={loading} 
+                    color="primary"
+                    rightLabel="Loading" 
+                    className="pl-10 my-10"
+                    onChange={() => setLoading(!loading)}/>
+                <Switch 
+                    check={disabled} 
+                    color="primary"
+                    rightLabel="Disabled" 
+                    className="pl-10 my-10"
+                    onChange={() => setDisabled(!disabled)}/>
+                <br/>
+                <Switch 
+                    check={block} 
+                    color="primary"
+                    rightLabel="Block" 
+                    className="pl-10 my-10"
+                    onChange={() => setBlock(!block)}/>
+                <Switch 
+                    check={lifted} 
+                    color="primary"
+                    rightLabel="Lifted" 
+                    className="pl-10 my-10"
+                    onChange={() => setLifted(!lifted)}/>
+                <br/>
+                <Switch 
+                    check={icon} 
+                    color="primary"
+                    rightLabel="With icon" 
+                    className="pl-10 my-10"
+                    onChange={() => setIcon(!icon)}/>
+                <Switch 
+                    check={iconLeft} 
+                    color="primary"
+                    rightLabel="Left icon" 
+                    className="pl-10 my-10"
+                    onChange={() => setIconLeft(!iconLeft)}/>
+                <Switch 
+                    check={iconAllotted} 
+                    color="primary"
+                    rightLabel="Allotted icon" 
+                    className="pl-10 my-10"
+                    onChange={() => setIconAllotted(!iconAllotted)}/>
+                <br/>
+                <Switch 
+                    check={iconOnly} 
+                    color="primary"
+                    rightLabel="Icon button" 
+                    className="pl-10 my-10"
+                    onChange={() => setIconOnly(!iconOnly)}/>
+                <br/>
+                <RadioGroup
+                    options={types} 
+                    value={type}
+                    name="type"
+                    className="pl-10 mt-10" 
+                    onChange={(value) => setType(value)}/>
+                <br/>
+                <div className="pa-10">
+                    <Button
+                        color={color}
+                        size={size}
+                        icon={icon || iconOnly ? 'search' : ''}
+                        iconAllotted={iconAllotted}
+                        iconLeft={iconLeft}
+                        outlined={outlined}
+                        borderType={border}
+                        loading={loading}
+                        disabled={disabled}
+                        block={block}
+                        lifted={lifted}
+                        dark={type === 'dark' ? true : false}
+                        light={type === 'light' ? true : false}
+                        uppercase={uppercase}
+                        name={iconOnly ? null : 'Button'}
+                        />
+                </div>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {buttonColors}
+                        {usage}
                     </SyntaxHighlighter>
                 </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Block button">
-                <div style={{ width: 300 }} className="mb-10">
-                    <Button
-                        block
-                        className="my-5"
-                        color="primary"
-                        name="Block button"
-                        />
-                    <Button
-                        block
-                        className="my-10"
-                        color="primary"
-                        outlined
-                        name="Block button"
-                        />
-                    <Button
-                        block
-                        rounded
-                        outlined
-                        className="my-5"
-                        color="error"
-                        name="Block button"
-                        />   
-                </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {blockButtons}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Icon buttons and buttons with icons">
-                <div className="row align-center my-5">
-                    <Tooltip tooltip="Search">
-                        <Button
-                            className="mr-10"
-                            color="primary"
-                            icon="search"
-                            />
-                    </Tooltip>
-                    <Tooltip tooltip="Menu">
-                        <Button
-                            outlined
-                            className="mr-10"
-                            color="primary"
-                            icon="menu"
-                            />
-                    </Tooltip>
-                    <Tooltip tooltip="Search">
-                        <Button
-                            light
-                            className="mr-10"
-                            icon="search"
-                            />
-                    </Tooltip>
-                </div>
-                <div className="row align-center my-5">
-                    <Button
-                        className="mr-10"
-                        color="primary"
-                        name="Search"
-                        icon="search"
-                        />
-                    <Button
-                        className="mr-10"
-                        color="info"
-                        name="Home"
-                        icon="home"
-                        iconLeft
-                        />
-                </div>
-                <div className="row align-center my-5">
-                    <Button
-                        iconAllotted
-                        iconLeft
-                        outlined
-                        className="mr-10"
-                        color="primary"
-                        name="Search"
-                        icon="search"
-                        />
-                    <Button
-                        iconAllotted
-                        outlined
-                        className="mr-10"
-                        color="secondary"
-                        name="Search"
-                        icon="search"
-                        />
-                </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usageIcon}
-                    </SyntaxHighlighter> 
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Loading">
-                <div className="row align-center py-20">
-                    <label>Toggle loaders</label>
-                    <Switch 
-                        check={loading} 
-                        color="info" 
-                        className="ml-10"
-                        onChange={() => setLoading(!loading)}/>
-                </div>
-                <div className="row align-center">
-                    <Button
-                        outlined
-                        className="mr-10"
-                        color="primary"
-                        loading={loading}
-                        icon="search"
-                        />
-                    <Button
-                        className="mr-10"
-                        light
-                        loading={loading}
-                        icon="search"
-                        />
-                    <Button
-                        className="mx-10"
-                        color="info"
-                        name="Home"
-                        icon="home"
-                        loading={loading}
-                        iconLeft
-                        />
-                    <Button
-                        className="mx-10"
-                        color="info"
-                        loading={loading}
-                        rounded
-                        name="Button"
-                        />
-                    <Button
-                        className="mx-10"
-                        color="info"
-                        loading={loading}
-                        rounded
-                        outlined
-                        name="Button"
-                        />
-                </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {loadingButtons}
-                    </SyntaxHighlighter>
-                </Collapse> 
             </Card>
             <BackTopBtn tooltip="Up" setRef={parentRef} dark size="medium"/>
             <h2 ref={api}>API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>
         </div>
     )
 }
-
 export default ButtonPage;

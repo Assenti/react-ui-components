@@ -7,6 +7,18 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.4.0 `2020-03-05`
+
+- `NEW!` FloatingBtn component added;
+- `NEW!` Avatar component added;
+- Badge component updated;
+- Checkbox component updated;
+- RadioGroup component updated;
+- ListItem component updated;
+- Card component updated;
+- Dropdown component updated;
+- `NEW!` New icons added;
+
 #### 0.3.18 `2020-03-04`
 
 - Table component updated;

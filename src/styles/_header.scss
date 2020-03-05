@@ -56,6 +56,13 @@
         }
     }
 
+    &.black {
+        background-color: $dark;
+        .rui-header__title {
+            color: white;
+        }
+    }
+
     .rui-header__left-side {
         display: flex;
         align-items: center;

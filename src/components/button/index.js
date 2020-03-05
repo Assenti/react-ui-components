@@ -39,7 +39,7 @@ const Button = (props) => {
     return (
         <button
             type={props.type ? props.type : 'button'}
-            ref={props.ref ? props.ref : null} 
+            ref={props.setRef ? props.setRef : null} 
             disabled={props.disabled || props.loading}
             className={btnClass()} 
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>

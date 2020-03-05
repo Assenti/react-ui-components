@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { RadioGroup, InputField, Icon, Table, Button, Card, Collapse } from '../components';
+import { RadioGroup, Table, Card, Collapse, Switch, Select, Icon } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const cities = ['Nur-Sultan', 'Almaty', 'Shymkent'];
-const citiesUS = ['Washington, D.C.', 'New York City', 'Chicago'];
+const citiesUS = ['Washington, D.C.', 'New York City', 'Chicago', 'Boston', 'San Francisco', 'Los Angeles'];
+const colors = ['primary', 'info', 'success', 'error'];
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -30,8 +30,15 @@ const items = [
         value: ''
     },
     { 
+        property: 'color', 
+        description: 'Set radio button color', 
+        default: 'primary', 
+        type: 'string',
+        value: 'primary | info | success | error'
+    },
+    { 
         property: 'disabled',
-        description: 'Make button disabled', 
+        description: 'Make radio group disabled', 
         default: 'false',
         type: 'boolean', 
         value: 'true | false'
@@ -52,85 +59,49 @@ const items = [
     }
 ]
 
-const horizontalUsage =
+const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { InputField, RadioGroup } from '@assenti/rui-components';
-const cities = ['Nur-Sultan', 'Almaty', 'Shymkent'];
-
-function Example() {
-    const [city, setCity] = useState('');
-
-    return (
-        <div>
-            <RadioGroup 
-                value={city}
-                name="town" 
-                onChange={(value) => setCity(value)}
-                options={cities}/>
-            <InputField 
-                value={city} 
-                placeholder="Choose a city" 
-                readOnly
-                color="info"
-                prefix={<Icon name="city"/>}
-                width={270}/>
-        </div>
-    )
-}`
-
-const verticalUsage =
-`// Usage examples
-import React, { useState } from 'react';
-import { InputField, RadioGroup } from '@assenti/rui-components';
-const citiesUS = ['Washington, D.C.', 'New York City', 'Chicago'];
+import { RadioGroup, Switch, Select, Icon } from '@assenti/rui-components';
+const citiesUS = ['Washington, D.C.', 'New York City', 'Chicago', 'Boston', 'San Francisco', 'Los Angeles'];
+const colors = ['primary', 'info', 'success', 'error'];
 
 function Example() {
     const [cityUS, setCityUS] = useState('');
+    const [isDisabled, setIsDisabled] = useState(false);
+    const [vertical, setVertical] = useState(true);
+    const [color, setColor] = useState(colors[0]);
 
     return (
         <div>
+            <Select
+                items={colors}
+                prefix={<Icon name="brush"/>}
+                width={200}
+                label="Radio button color"
+                color="primary"
+                value={color}
+                onChange={v => setColor(v)}/>
+            <br/>
+            <Switch
+                check={vertical}
+                rightLabel="Vertical"
+                color="primary"
+                className="my-10"
+                onChange={() => setVertical(!vertical)}/>
+            <br/>
+            <Switch
+                check={isDisabled}
+                rightLabel="Disabled"
+                color="primary"
+                className="my-10"
+                onChange={() => setIsDisabled(!isDisabled)}/>
+            <br/>
             <RadioGroup 
                 value={cityUS} 
-                vertical
+                vertical={vertical}
                 name="city"
-                onChange={(value) => setCityUS(value)}
-                options={citiesUS}/>
-            <InputField 
-                value={cityUS} 
-                placeholder="Choose a city" 
-                readOnly
-                color="info"
-                rounded
-                prefix={<Icon name="city"/>}
-                width={270}/>
-        </div>
-    )
-}`
-
-const disabledUsage =
-`// Usage examples
-import React, { useState } from 'react';
-import { InputField, RadioGroup } from '@assenti/rui-components';
-const citiesUS = ['Washington, D.C.', 'New York City', 'Chicago'];
-
-function Example() {
-    const [cityUS, setCityUS] = useState('');
-    const [isDisabled, setIsDisabled] = useState(true);
-
-    return (
-        <div>
-            <div className="row align-center">
-                <Button 
-                    className="ml-15"
-                    color="info"
-                    name="Toggle disabling" 
-                    onClick={() => setIsDisabled(!isDisabled)}/>
-            </div>
-            <RadioGroup 
-                value={cityUS} 
-                vertical
-                name="city"
+                color={color}
                 disabled={isDisabled}
                 onChange={(value) => setCityUS(value)}
                 options={citiesUS}/>
@@ -140,84 +111,59 @@ function Example() {
 
 const RadioPage = () => {
     const [cityUS, setCityUS] = useState('');
-    const [city, setCity] = useState('');
-    const [isDisabled, setIsDisabled] = useState(true);
+    const [color, setColor] = useState(colors[0]);
+    const [isDisabled, setIsDisabled] = useState(false);
+    const [vertical, setVertical] = useState(true);
 
     return (
         <div className="rui-page">
             <div className="rui-page-title">RadioGroup Component</div>
-            <Card outlined title="Horizontal position with label">
-                <RadioGroup 
-                    value={city}
-                    name="town" 
-                    onChange={(value) => setCity(value)}
-                    options={cities}/>
-                <InputField 
-                    value={city} 
-                    placeholder="Choose a city" 
-                    readOnly
-                    color="info"
-                    prefix={<Icon name="city"/>}
-                    width={270}/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {horizontalUsage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Vertical position with label">
+            <Card outlined title="Usage">
+                <Select
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    label="Radio button color"
+                    color="primary"
+                    value={color}
+                    onChange={v => setColor(v)}/>
+                <br/>
+                <Switch
+                    check={vertical}
+                    rightLabel="Vertical"
+                    color="primary"
+                    className="my-10"
+                    onChange={() => setVertical(!vertical)}/>
+                <br/>
+                <Switch
+                    check={isDisabled}
+                    rightLabel="Disabled"
+                    color="primary"
+                    className="my-10"
+                    onChange={() => setIsDisabled(!isDisabled)}/>
+                <br/>
                 <RadioGroup 
                     value={cityUS} 
-                    vertical
+                    vertical={vertical}
                     name="city"
-                    onChange={(value) => setCityUS(value)}
-                    options={citiesUS}/>
-                <InputField 
-                    value={cityUS} 
-                    placeholder="Choose a city" 
-                    readOnly
-                    color="info"
-                    rounded
-                    prefix={<Icon name="city"/>}
-                    width={270}/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {verticalUsage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Disabled">
-                <div className="row align-center">
-                    <Button 
-                        className="ml-15"
-                        color="info"
-                        name="Toggle disabling" 
-                        onClick={() => setIsDisabled(!isDisabled)}/>
-                </div>
-                <RadioGroup 
-                    value={cityUS} 
-                    vertical
-                    name="city"
+                    color={color}
                     disabled={isDisabled}
                     onChange={(value) => setCityUS(value)}
                     options={citiesUS}/>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {disabledUsage}
+                        {usage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
             <h2>API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>
         </div>
     )
 }
-
 export default RadioPage;

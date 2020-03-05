@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Drawer, List, ListItem, Button, Tooltip, Table, Card, Header, Collapse, Icon, Select, Tag, BackTopBtn } from '../components';
+import { Drawer, List, ListItem, Button, Badge, Table, Card, Header, Collapse, Icon, Select, BackTopBtn } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -215,7 +215,14 @@ const DrawerPage = () => {
     return (
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="rui-page-title">Drawer Component</div>
+                <div className="row">
+                    <div className="rui-page-title">Drawer Component</div>
+                    <Badge 
+                        color="error" 
+                        value="WIP"
+                        className="ml-10"
+                        parent={<Icon name="wrench" size={20}/>}/>
+                </div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
             <Card outlined title="Drawer usage">

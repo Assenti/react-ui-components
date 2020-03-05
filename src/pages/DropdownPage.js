@@ -1,7 +1,8 @@
 import React, { useState, createRef } from 'react';
-import { Dropdown, Button, InputField, Card, Table, Tag, Icon, List, ListItem, BackTopBtn, Collapse } from '../components';
+import { Dropdown, Button, Switch, Card, Table, List, ListItem, Collapse, Header, Avatar, Icon } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import manImage from '../img/man_.png';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -55,6 +56,13 @@ const items = [
         value: ''
     },
     { 
+        property: 'dark', 
+        description: 'Set dark mode',
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'closeManaged', 
         description: 'Enable custom dropdown state control',
         default: 'false', 
@@ -77,272 +85,146 @@ const items = [
     }
 ]
 
-const heroes = [
-    { name: 'Steve Rogers', hero: 'Captain America', icon: 'account', check: false }, 
-    { name: 'Peter Parker', hero: 'Spider man', icon: 'account', check: false }, 
-    { name: 'Tony Stark', hero: 'Iron man', icon: 'account', check: false }, 
-    { name: 'Bruce Benner', hero: 'Hulk', icon: 'account', check: false }
+const modules = [
+    { name: 'Home', icon: 'home' }, 
+    { name: 'Profile', icon: 'account' }, 
+    { name: 'Settings', icon: 'cog-outline' }, 
+    { name: 'Exit', icon: 'exit-to-app' }
 ];
 
-    const usage =
+const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Dropdown, Button, Tag } from '@assenti/rui-components';
-const heroes = [
-    { hero: 'Captain America' }, 
-    { hero: 'Spider man' }, 
-    { hero: 'Iron man' }, 
-    { hero: 'Hulk' }
+import { Header, Dropdown, Button, List, ListItem, Icon, Switch, Avatar } from '@assenti/rui-components';
+const modules = [
+    { name: 'Home', icon: 'home' }, 
+    { name: 'Profile', icon: 'account' }, 
+    { name: 'Settings', icon: 'cog-outline' }, 
+    { name: 'Exit', icon: 'exit-to-app' }
 ];
 
 function Example() {
-    const [item, setItem] = useState('');
+    const [dark, setDark] = useState(false);
 
     return (
         <div>
-            <Dropdown
-                width={250}
-                content={
-                    <List dense>
-                        {heroes.map((item, index) => 
-                            <ListItem
-                                key={index}
-                                hover 
-                                onClick={() => setItem(item.hero)}
-                                item={item}
-                                itemTitle="hero"/>
-                        )}
-                    </List>
-                }
-                itemTitle="name"
-                trigger={<Button
-                    color="info"
-                    name="Button"/>}
-                    />
-            <Tag value={\`Your select: \${item}\`} color={item ? 'error' : ''} className="ml-10"/>
-        </div>
-    )
-}
-`
-
-    const usageInput =
-`// Usage examples
-import React, { useState } from 'react';
-import { Dropdown, InputField, Icon, List, ListItem } from '@assenti/rui-components';
-const heroes = [
-    { hero: 'Captain America' }, 
-    { hero: 'Spider man' }, 
-    { hero: 'Iron man' }, 
-    { hero: 'Hulk' }
-];
-
-function Example() {
-    const [item, setItem] = useState('');
-
-    return (
-        <div>
-            <Dropdown
-                content={
-                    <List dense>
-                        {heroes.map((item, index) => 
-                            <ListItem
-                                key={index}
-                                hover 
-                                onClick={() => setItem(item.hero)}
-                                item={item}
-                                itemTitle="hero"/>
-                        )}
-                    </List>
-                }
-                trigger={<InputField
-                        color="info"
-                        prefix={<Icon name="shield-account"/>}
-                            value={item}
-                            placeholder="Choose a hero"/>}
-                            />
-        </div>
-    )
-}
-`
-
-    const usageIcon =
-`// Usage examples
-import React from 'react';
-import { Dropdown, Button, Icon } from '@assenti/rui-components';
-
-function Example() {
-    return (
-        <div className="row space-around">
-            <Dropdown
-                width={180}
-                content={
-                    <div className="row column align-center justify-center px-15 pt-15 pb-20">
-                        <Icon name="account" color="gray" size={70}/>
-                        <span className="text-center text-dark fz-9 py-5">John Doe</span>
-                        <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
-                    </div>
-                }
-                trigger={<Button
-                            light
-                            icon="account"/>}/>
-            <Dropdown
-                width={180}
-                position="centered"
-                content={
-                    <div className="row column align-center justify-center px-15 pt-15 pb-20">
-                        <Icon name="account" color="gray" size={70}/>
-                        <span className="text-center text-dark fz-9 py-5">John Doe</span>
-                        <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
-                    </div>
-                }
-                trigger={<Button
-                            light
-                            icon="account"/>}/>
-            <Dropdown
-                width={180}
-                position="right"
-                content={
-                    <div className="row column align-center justify-center px-15 pt-15 pb-20">
-                        <Icon name="account" color="gray" size={70}/>
-                        <span className="text-center text-dark fz-9 py-5">John Doe</span>
-                        <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
-                    </div>
-                }
-                trigger={<Button
-                            light
-                            icon="account"/>}/>
+            <Switch 
+                color="primary" 
+                check={dark}
+                rightLabel="Dark"
+                className="my-10"
+                onChange={() => setDark(!dark)}/>
+            <br/>
+            <Header 
+                dark={dark}
+                smooth 
+                title={
+                    <div className="row align-center">
+                        <Icon name="react" color="#61dafb" className="mr-5"/>Header</div>
+                    } 
+                rightSide={
+                    <Dropdown
+                        dark={dark}
+                        width={200}
+                        position="right"
+                        content={
+                            <div className="pa-10">
+                                <div className="text-center">
+                                    <Avatar img={manImage} size={80}/>
+                                    <div 
+                                        className="text-center fw-bold fz-9 py-10" 
+                                        style={{ color: dark ? '#fff' : '#000', 
+                                        borderBottom: '1px solid lightgray'}}>John Doe</div>
+                                </div>
+                                <List dark={dark}>
+                                    {modules.map((item, index) =>
+                                        <ListItem 
+                                            keys={index}
+                                            hover
+                                            noDivider 
+                                            item={item.name} 
+                                            icon={item.icon}/>
+                                    )}
+                                </List>
+                            </div>
+                        }
+                        trigger={<Button dark={dark} light={!dark} icon="account"/>}/>
+                }/>
         </div>
     )
 }`
 
 const DropdownPage = () => {
-    const [item, setItem] = useState('');
-    const [item2, setItem2] = useState('');
-    const parentRef = createRef();
     const api = createRef();
+    const [dark, setDark] = useState(false);
 
     const goToApi = () => {
         if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
 
     return (
-        <div className="rui-page" ref={parentRef}>
+        <div className="rui-page">
             <div className="row align-center space-between">
                 <div className="rui-page-title">Dropdown Component</div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined title="Dropdown on Button">
-                <div className="row align-center">
-                    <Dropdown
-                        width={250}
-                        content={
-                            <List dense>
-                                {heroes.map((item, index) => 
-                                    <ListItem
-                                        key={index}
-                                        hover 
-                                        onClick={() => setItem(item.hero)}
-                                        item={item.hero}/>
-                                )}
-                            </List>
-                        }
-                        itemTitle="name"
-                        trigger={<Button
-                            color="info"
-                            name="Button"/>}/>
-                    <Tag value={`Your select: ${item}`} color={item ? 'error' : ''} className="ml-10"/>
-                </div>
+            <Card outlined title="Dropdown usage">
+                <Switch 
+                    color="primary" 
+                    check={dark}
+                    rightLabel="Dark"
+                    className="my-10"
+                    onChange={() => setDark(!dark)}/>
+                <br/>
+                <Header 
+                    dark={dark}
+                    smooth 
+                    title={
+                        <div className="row align-center">
+                            <Icon name="react" color="#61dafb" className="mr-5"/>Header</div>
+                        } 
+                    rightSide={
+                        <Dropdown
+                            dark={dark}
+                            width={200}
+                            position="right"
+                            content={
+                                <div className="pa-10">
+                                    <div className="text-center">
+                                        <Avatar img={manImage} size={80}/>
+                                        <div 
+                                            className="text-center fw-bold fz-9 py-10" 
+                                            style={{ color: dark ? '#fff' : '#000', 
+                                            borderBottom: '1px solid lightgray'}}>John Doe</div>
+                                    </div>
+                                    <List dark={dark}>
+                                        {modules.map((item, index) =>
+                                            <ListItem 
+                                                keys={index}
+                                                hover
+                                                noDivider 
+                                                item={item.name} 
+                                                icon={item.icon}/>
+                                        )}
+                                    </List>
+                                </div>
+                            }
+                            trigger={<Button dark={dark} light={!dark} icon="account"/>}/>
+                    }/>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
-            <br/>
-            <Card outlined title="Dropdown on InputField">
-                <div className="row mb-10">
-                    <Dropdown
-                        content={
-                            <List dense>
-                                {heroes.map((item, index) => 
-                                    <ListItem
-                                        key={index}
-                                        hover 
-                                        onClick={() => setItem2(item.hero)}
-                                        item={item.hero}/>
-                                )}
-                            </List>
-                        }
-                        trigger={<InputField
-                                color="info"
-                                prefix={<Icon name="shield-account"/>}
-                                value={item2}
-                                placeholder="Choose a hero"/>}/>
-                </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usageInput}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Dropdown on Icon button">
-                <div className="row space-around">
-                    <Dropdown
-                        width={180}
-                        content={
-                            <div className="row column align-center justify-center px-15 pt-15 pb-20">
-                                <Icon name="account" color="gray" size={70}/>
-                                <span className="text-center text-dark fz-9 py-5">John Doe</span>
-                                <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
-                            </div>
-                        }
-                        trigger={<Button
-                                    light
-                                    icon="account"/>}/>
-                    <Dropdown
-                        width={180}
-                        position="centered"
-                        content={
-                            <div className="row column align-center justify-center px-15 pt-15 pb-20">
-                                <Icon name="account" color="gray" size={70}/>
-                                <span className="text-center text-dark fz-9 py-5">John Doe</span>
-                                <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
-                            </div>
-                        }
-                        trigger={<Button
-                                    light
-                                    icon="account"/>}/>
-                    <Dropdown
-                        width={180}
-                        position="right"
-                        content={
-                            <div className="row column align-center justify-center px-15 pt-15 pb-20">
-                                <Icon name="account" color="gray" size={70}/>
-                                <span className="text-center text-dark fz-9 py-5">John Doe</span>
-                                <Button name="Sign out" color="error" icon="exit-to-app" iconLeft/>
-                            </div>
-                        }
-                        trigger={<Button
-                                    light
-                                    icon="account"/>}/>
-                </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usageIcon}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <BackTopBtn setRef={parentRef} dark/>
             <h2 ref={api}>API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>
         </div>
     )
 }
-
 export default DropdownPage;

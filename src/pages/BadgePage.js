@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Badge, Card, Table, Icon, Button, Collapse } from '../components';
+import { Badge, Card, Table, Icon, Collapse, Select, Switch, Avatar } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import manImage from '../img/hipster.png';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -13,11 +14,18 @@ const items = [
         value: ''
     },
     { 
-        property: 'color', 
-        description: 'Set badge color', 
+        property: 'icon', 
+        description: 'Set badge icon', 
         default: '', 
         type: 'string',
-        value: 'primary | info | success | error'
+        value: ''
+    },
+    { 
+        property: 'color', 
+        description: 'Set badge color', 
+        default: 'secondary', 
+        type: 'string',
+        value: 'primary | info | success | error | dark | secondary'
     },
     { 
         property: 'rounded', 
@@ -44,64 +52,105 @@ const items = [
 
 const usage =
 `// Usage examples
-import React from 'react';
-import { Badge, Button } from '@assenti/rui-components';
+import React, { useState } from 'react';
+import { Badge, Icon, Select, Switch, Avatar } from '@assenti/rui-components';
 
 function Example() {
     const [badge, setBadge] = useState(true);
+    const [rounded, setRounded] = useState(false);
+    const [color, setColor] = useState(colors[1]);
 
     return (
         <div className="row align-center">
-            <Badge 
-                color="info" 
-                value={100} 
-                className="mr-20"
-                parent={<Icon size={24} name="account"/>}/>
-            <Badge 
-                color="error" 
-                value={10} 
-                rounded
-                className="mr-20"
-                parent={<Icon size={24} name="smartphone"/>}/>
-            <Badge 
-                color="error" 
-                value={10} 
-                rounded
-                visible={badge}
-                className="mr-20"
-                parent={<Icon size={24} name="smartphone"/>}/>
-            <Button name="Toggle badge" color="info" onClick={() => setBadge(!badge)}/>
+            <Select
+                items={colors}
+                prefix={<Icon name="brush"/>}
+                width={200}
+                label="Button color"
+                color="primary"
+                value={color}
+                onChange={v => setColor(v)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={badge}
+                rightLabel="Hide"
+                className="my-10"
+                onChange={() => setBadge(!badge)}/>
+            <Switch 
+                color="primary" 
+                check={rounded}
+                rightLabel="Rounded"
+                className="my-10"
+                onChange={() => setRounded(!rounded)}/>
+            <br/>
+            <div className="row align-center py-10">
+                <Badge 
+                    color={color} 
+                    value={100}
+                    rounded={rounded} 
+                    className="mr-20"
+                    visible={badge}
+                    parent={<Icon size={30} name="email" color="#ffa600"/>}/>
+                <Badge 
+                    color={color} 
+                    icon="plus"
+                    rounded={rounded} 
+                    className="mr-20"
+                    visible={badge}
+                    parent={<Avatar img={manImage}/>}/>
+            </div>
         </div>
     )
 }`
+const colors = ['secondary', 'primary', 'info', 'success', 'error', 'dark'];
 
 const BadgePage = () => {
-    const [badge, setBadge] = useState(true);
+    const [badge, setBadge] = useState(false);
+    const [rounded, setRounded] = useState(false);
+    const [color, setColor] = useState(colors[1]);
 
     return (
         <div className="rui-page">
             <div className="rui-page-title">Badge Component</div>
             <Card outlined title="Usage">
+                <Select
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    label="Badge color"
+                    color="primary"
+                    value={color}
+                    onChange={v => setColor(v)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={badge}
+                    rightLabel="Hide"
+                    className="my-10"
+                    onChange={() => setBadge(!badge)}/>
+                <Switch 
+                    color="primary" 
+                    check={rounded}
+                    rightLabel="Rounded"
+                    className="my-10"
+                    onChange={() => setRounded(!rounded)}/>
+                <br/>
                 <div className="row align-center py-10">
                     <Badge 
-                        color="info" 
-                        value={100} 
+                        color={color} 
+                        value={100}
+                        rounded={rounded} 
                         className="mr-20"
-                        parent={<Icon size={24} name="account"/>}/>
-                    <Badge 
-                        color="error" 
-                        value={10} 
-                        rounded
-                        className="mr-20"
-                        parent={<Icon size={24} name="smartphone"/>}/>
-                    <Badge 
-                        color="error" 
-                        value={10} 
-                        rounded
                         visible={badge}
+                        parent={<Icon size={30} name="email" color="#ffa600"/>}/>
+                    <Badge 
+                        color={color} 
+                        icon="plus"
+                        rounded={rounded} 
                         className="mr-20"
-                        parent={<Icon size={24} name="smartphone"/>}/>
-                    <Button name="Toggle badge" color="info" onClick={() => setBadge(!badge)}/>
+                        visible={badge}
+                        parent={<Avatar img={manImage}/>}/>
                 </div>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
@@ -119,5 +168,4 @@ const BadgePage = () => {
         </div>
     )
 }
-
 export default BadgePage;

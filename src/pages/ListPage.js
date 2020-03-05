@@ -1,184 +1,198 @@
-import React, { useState, createRef } from 'react';
-import { List, ListItem, Button, Table, Card, Collapse, BackTopBtn } from '../components';
+import React, { useState, useRef } from 'react';
+import { List, ListItem, Button, Table, Card, Collapse, BackTopBtn, Select, Icon, Switch, RadioGroup, phoneMask } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import manImage from '../img/man.png';
+import manImage2 from '../img/hipster.png';
+import manImage3 from '../img/man_.png';
+import manImage4 from '../img/old.png';
 
-const simpleList =
+const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { List, ListItem } from '@assenti/rui-components';
+import { List, ListItem, Card, Select, Icon, Switch, RadioGroup, phoneMask } from '@assenti/rui-components';
 const names = [
-    { name: 'John Doe', active: false },
-    { name: 'Peter Parker', active: true },
-    { name: 'Tony Stark', active: false },
-    { name: 'Bruce Benner', active: false }
+    { name: 'Steve Rogers', hero: 'Captain America', phone: '1234567890', icon: 'shield-account', img: manImage, check: false, active: false }, 
+    { name: 'Peter Parker', hero: 'Spider man', phone: '1234567890', icon: 'shield-account', img: manImage2, check: false, active: true }, 
+    { name: 'Tony Stark', hero: 'Iron man', phone: '1234567890', icon: 'shield-account', img: manImage3, check: false, active: false }, 
+    { name: 'Bruce Benner', hero: 'Hulk', phone: '1234567890', icon: 'shield-account', img: manImage4, check: false, active: false }
 ];
-
-function Example() {
-    const [item, setItem] = useState('');
-
-    return (
-        <div>
-            <List>
-                {names.map((item, index) => 
-                    <ListItem
-                        isActiveItem={item => item.active} 
-                        key={index} 
-                        item={item}
-                        itemTitle="name"/>
-                )}
-            </List>
-            <br/>
-            <List size="medium" header="Medium size">
-                {names.map((item, index) => 
-                    <ListItem
-                        isActiveItem={item => item.active} 
-                        key={index} 
-                        item={item}
-                        itemTitle="name"/>
-                )}
-            </List>
-            <br/>
-            <List size="large" header="Large size">
-                {names.map((item, index) => 
-                    <ListItem
-                        key={index}
-                        hover
-                        icon="account" 
-                        item={item.name}
-                        controls={<span className="fz-10 text-dark">+7 (777) 777-77-77</span>}/>
-                )}
-            </List>
-        </div>
-    )
-}`
-
-const darkMode =
-`// Usage examples
-import React, { useState } from 'react';
-import { List, ListItem } from '@assenti/rui-components';
-const heroes = [
-    { hero: 'Captain America', icon: 'shield-account' }, 
-    { hero: 'Spider man', icon: 'shield-account' }, 
-    { hero: 'Iron man', icon: 'shield-account' }, 
-    { hero: 'Hulk', icon: 'shield-account' }
-];
-
-function Example() {
-    return (
-        <div>
-            <List dark
-            header="Marvel Avengers" 
-            items={itemsComplex} 
-            itemTitle="hero" 
-            hover>
-            {itemsComplex.map((item, index) => 
-                <ListItem 
-                    key={index} 
-                    item={item}
-                    icon={item.icon}
-                    itemTitle="hero"
-                    hover/>
-            )}
-            </List>
-        </div>
-    )
-}`
-
-const checkboxList =
-`// Usage examples
-import React, { useState } from 'react';
-import { List, ListItem, Checkbox } from '@assenti/rui-components';
-const names = [
-    { name: 'Steve Rogers', hero: 'Captain America', check: false }, 
-    { name: 'Peter Parker', hero: 'Spider man', check: false }, 
-    { name: 'Tony Stark', hero: 'Iron man', check: false }, 
-    { name: 'Bruce Benner', hero: 'Hulk', check: false }
-];
+const types = ['image', 'icon', 'none'];
+const sizes = ['default', 'medium', 'large'];
+const colors = ['primary', 'info', 'success', 'error'];
+const borders = ['default', 'rounded', 'tile'];
 
 function Example() {
     const [selected, setSelected] = useState([]);
+    const [size, setSize] = useState(sizes[0]);
+    const [border, setBorder] = useState(borders[1]);
+    const [color, setColor] = useState(colors[0]);
+    const [dark, setDark] = useState(false);
+    const [rounded, setRounded] = useState(false);
+    const [divider, setDivider] = useState(false);
+    const [hover, setHover] = useState(false);
+    const [subtitle, setSubtitle] = useState(false);
+    const [left, setLeft] = useState(false);
+    const [checkbox, setCheckbox] = useState(false);
+    const [controls, setControls] = useState(true);
+    const [type, setType] = useState('');
 
     const selectOne = (item) => {
-        if (isSelected(item, 'hero')) {
-            setSelected(selected => selected.filter(_item => _item.hero !== item.hero))
+        if (isSelected(item)) {
+            setSelected(selected => selected.filter(_item => _item !== item))
         } else setSelected([...selected, item]);
     }
 
-    const isSelected = (item, prop) => {
+    const isSelected = (item) => {
         let result = false
-        if (prop) {
-            for (const select of selected) {
-                if (item[prop] === select[prop]) result = true 
-            }
+        for (const select of selected) {
+            if (item === select) result = true 
         }
         return result
     }
 
     return (
         <div>
-            <List header={'Selected Marvel avengers: ' + selected.length}>
-                {itemsComplex.map((item, index) => 
-                    <ListItem 
-                        key={index} 
-                        item={item.hero}
-                        isActiveItem={isSelected(item.hero)}
-                        hover
-                        onClick={() => selectOne(item.hero)}
-                        checkbox/>
-                )}
-            </List>
+            <Select
+                items={sizes}
+                prefix={<Icon name="format-size"/>}
+                width={200}
+                label="List size"
+                color="primary"
+                className="pl-10"
+                value={size}
+                onChange={v => setSize(v)}/>
+            <br/>
+            <Select
+                items={borders}
+                prefix={<Icon name="shape"/>}
+                width={200}
+                label="Avatar border type"
+                color="primary"
+                className="pl-10"
+                value={border}
+                onChange={v => setBorder(v)}/>
+            <br/>
+            <Select
+                items={colors}
+                prefix={<Icon name="brush"/>}
+                width={200}
+                label="Active item color"
+                color="primary"
+                className="pl-10"
+                value={color}
+                onChange={v => setColor(v)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={dark}
+                rightLabel="Dark"
+                className="pl-10 my-10"
+                onChange={() => setDark(!dark)}/>
+            <Switch 
+                color="primary" 
+                check={hover}
+                rightLabel="Hover"
+                className="pl-10 my-10"
+                onChange={() => setHover(!hover)}/>
+            <Switch 
+                color="primary" 
+                check={divider}
+                rightLabel="Hide dividers"
+                className="pl-10 my-10"
+                onChange={() => setDivider(!divider)}/>
+            <br/>
+            <RadioGroup
+                options={types} 
+                value={type}
+                name="type"
+                className="pl-10 mt-10" 
+                onChange={(value) => setType(value)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={subtitle}
+                rightLabel="Subtitle"
+                className="pl-10 my-10"
+                onChange={() => setSubtitle(!subtitle)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={rounded}
+                rightLabel="Rounded active item"
+                className="pl-10 my-10"
+                onChange={() => setRounded(!rounded)}/>
+            <Switch 
+                color="primary" 
+                check={left}
+                rightLabel="Active item left border"
+                className="pl-10 my-10"
+                onChange={() => setLeft(!left)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={checkbox}
+                rightLabel="Checkbox"
+                className="pl-10 my-10"
+                onChange={() => setCheckbox(!checkbox)}/>
+            <Switch 
+                color="primary" 
+                check={controls}
+                rightLabel="Controls"
+                className="pl-10 my-10"
+                onChange={() => setControls(!controls)}/>
+            <Card
+                className="ma-10" 
+                dark={dark} 
+                width={400}>
+                <List
+                    size={size}
+                    dark={dark} 
+                    header={
+                        <div className="row align-center space-between">
+                            Selected persons: {selected.length}
+                            {selected.length > 0 ? <Button className="ma-0" light icon="share" size={18}/> : ''}
+                        </div>
+                    }>
+                    {names.map((item, index) => 
+                        <ListItem
+                            isActiveItem={isSelected(item.hero)}
+                            onClick={() => selectOne(item.hero)}
+                            key={index} 
+                            hover={hover}
+                            item={item.name}
+                            color={color}
+                            noDivider={divider}
+                            roundedActive={rounded}
+                            leftBorder={left}
+                            subTitle={subtitle ? item.hero : null}
+                            icon={type === 'icon' ? item.icon : null}
+                            avatar={type === 'image' ? item.img : null}
+                            avatarBorderType={border}
+                            checkbox={checkbox}
+                            controls={controls ?
+                                <div className="row align-center fz-9 text-dark">
+                                    <Icon name="smartphone" size={16} className="mr-5"/>
+                                    {phoneMask(item.phone)}
+                                    <Button color="light" 
+                                        className="ml-10" 
+                                        icon="edit"
+                                        iconSize={16}/>
+                                </div> : null}/>
+                    )}
+                </List>
+            </Card>
         </div>
     )
 }`
 
-const controlsList =
-`// Usage examples
-import React, { useState } from 'react';
-import { List, ListItem, Button, Tag } from '@assenti/rui-components';
 const names = [
-    { name: 'Steve Rogers', hero: 'Captain America', icon: 'shield-account' }, 
-    { name: 'Peter Parker', hero: 'Spider man', icon: 'shield-account' }, 
-    { name: 'Tony Stark', hero: 'Iron man', icon: 'shield-account' }, 
-    { name: 'Bruce Benner', hero: 'Hulk', icon: 'shield-account' }
+    { name: 'Steve Rogers', hero: 'Captain America', phone: '1234567890', icon: 'shield-account', img: manImage, check: false, active: false }, 
+    { name: 'Peter Parker', hero: 'Spider man', phone: '1234567890', icon: 'shield-account', img: manImage2, check: false, active: true }, 
+    { name: 'Tony Stark', hero: 'Iron man', phone: '1234567890', icon: 'shield-account', img: manImage3, check: false, active: false }, 
+    { name: 'Bruce Benner', hero: 'Hulk', phone: '1234567890', icon: 'shield-account', img: manImage4, check: false, active: false }
 ];
-
-function Example() {
-    return (
-        <div>
-            <List>
-                {names.map((item, index) => 
-                    <ListItem 
-                        key={index} 
-                        item={item}
-                        icon={item.icon} 
-                        itemTitle="name"
-                        subTitle={<Tag small color="info" value={item.hero}/>}
-                        controls={
-                            <React.Fragment>
-                                <Button small color="light" className="mr-10" icon="edit"/>
-                                <Button small color="light" icon="close"/>
-                            </React.Fragment>
-                        }/>
-                )}
-            </List>
-        </div>
-    )
-}`
-
-const names = [
-    { name: 'John Doe', hero: 'Captain America', active: false },
-    { name: 'Peter Parker', hero: 'Spider man', active: true },
-    { name: 'Tony Stark', hero: 'Iron man', active: false },
-    { name: 'Bruce Benner', hero: 'Hulk', active: false }
-];
-
-const itemsComplexInitial = [
-    { name: 'Steve Rogers', hero: 'Captain America', icon: 'shield-account', check: false }, 
-    { name: 'Peter Parker', hero: 'Spider man', icon: 'shield-account', check: false }, 
-    { name: 'Tony Stark', hero: 'Iron man', icon: 'shield-account', check: false }, 
-    { name: 'Bruce Benner', hero: 'Hulk', icon: 'shield-account', check: false }
-];
+const types = ['image', 'icon', 'none'];
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -269,6 +283,13 @@ const items2 = [
         value: 'true | false'
     },
     { 
+        property: 'color', 
+        description: 'Set active list item color', 
+        default: '', 
+        type: 'string',
+        value: 'primary | info | success | error'
+    },
+    { 
         property: 'leftBorder', 
         description: 'Set left border highlighting on active item', 
         default: 'false', 
@@ -319,12 +340,27 @@ const items2 = [
     }
 ]
 
+const sizes = ['default', 'medium', 'large'];
+const colors = ['primary', 'info', 'success', 'error'];
+const borders = ['default', 'rounded', 'tile'];
+
 const ListPage = () => {
-    const [itemsComplex] = useState(itemsComplexInitial);
     const [selected, setSelected] = useState([]);
-    const listApi = createRef();
-    const listItemApi = createRef();
-    const parent = createRef();
+    const [size, setSize] = useState(sizes[0]);
+    const [border, setBorder] = useState(borders[1]);
+    const [color, setColor] = useState(colors[0]);
+    const [dark, setDark] = useState(false);
+    const [rounded, setRounded] = useState(false);
+    const [divider, setDivider] = useState(false);
+    const [hover, setHover] = useState(false);
+    const [subtitle, setSubtitle] = useState(false);
+    const [left, setLeft] = useState(false);
+    const [checkbox, setCheckbox] = useState(false);
+    const [controls, setControls] = useState(true);
+    const listApi = useRef();
+    const listItemApi = useRef();
+    const parent = useRef();
+    const [type, setType] = useState('');
 
     const goListApi = () => {
         if (listApi.current) listApi.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -360,129 +396,158 @@ const ListPage = () => {
             <Card 
                 outlined 
                 className="px-0"
-                title="Simple list with active item">
-                <List header="Default size">
-                    {names.map((item, index) => 
-                        <ListItem
-                            isActiveItem={item.active} 
-                            key={index} 
-                            item={item.name}
-                            subTitle={item.hero}/>
-                    )}
-                </List>
+                title="List usage">
+                <Select
+                    items={sizes}
+                    prefix={<Icon name="format-size"/>}
+                    width={200}
+                    label="List size"
+                    color="primary"
+                    className="pl-10"
+                    value={size}
+                    onChange={v => setSize(v)}/>
                 <br/>
-                <List size="medium" header="Medium size, left bordered active item">
-                    {names.map((item, index) => 
-                        <ListItem
-                            isActiveItem={item.active} 
-                            key={index}
-                            leftBorder 
-                            item={item.name}
-                            subTitle={item.hero}/>
-                    )}
-                </List>
+                <Select
+                    items={borders}
+                    prefix={<Icon name="shape"/>}
+                    width={200}
+                    label="Avatar border type"
+                    color="primary"
+                    className="pl-10"
+                    value={border}
+                    onChange={v => setBorder(v)}/>
                 <br/>
-                <List size="large" header="Large size">
-                    {names.map((item, index) => 
-                        <ListItem
-                            key={index}
-                            hover
-                            icon="account" 
-                            item={item.name}
-                            controls={<span className="fz-10 text-dark">+7 (777) 777-77-77</span>}/>
-                    )}
-                </List>
+                <Select
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    label="Active item color"
+                    color="primary"
+                    className="pl-10"
+                    value={color}
+                    onChange={v => setColor(v)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={dark}
+                    rightLabel="Dark"
+                    className="pl-10 my-10"
+                    onChange={() => setDark(!dark)}/>
+                <Switch 
+                    color="primary" 
+                    check={hover}
+                    rightLabel="Hover"
+                    className="pl-10 my-10"
+                    onChange={() => setHover(!hover)}/>
+                <Switch 
+                    color="primary" 
+                    check={divider}
+                    rightLabel="Hide dividers"
+                    className="pl-10 my-10"
+                    onChange={() => setDivider(!divider)}/>
+                <br/>
+                <RadioGroup
+                    options={types} 
+                    value={type}
+                    name="type"
+                    className="pl-10 mt-10" 
+                    onChange={(value) => setType(value)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={subtitle}
+                    rightLabel="Subtitle"
+                    className="pl-10 my-10"
+                    onChange={() => setSubtitle(!subtitle)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={rounded}
+                    rightLabel="Rounded active item"
+                    className="pl-10 my-10"
+                    onChange={() => setRounded(!rounded)}/>
+                <Switch 
+                    color="primary" 
+                    check={left}
+                    rightLabel="Active item left border"
+                    className="pl-10 my-10"
+                    onChange={() => setLeft(!left)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={checkbox}
+                    rightLabel="Checkbox"
+                    className="pl-10 my-10"
+                    onChange={() => setCheckbox(!checkbox)}/>
+                <Switch 
+                    color="primary" 
+                    check={controls}
+                    rightLabel="Controls"
+                    className="pl-10 my-10"
+                    onChange={() => setControls(!controls)}/>
+                <Card
+                    className="ma-10" 
+                    dark={dark} 
+                    width={400}>
+                    <List
+                        size={size}
+                        dark={dark} 
+                        header={
+                            <div className="row align-center space-between">
+                                Selected persons: {selected.length}
+                                {selected.length > 0 ? <Button className="ma-0" light icon="share" size={18}/> : ''}
+                            </div>
+                        }>
+                        {names.map((item, index) => 
+                            <ListItem
+                                isActiveItem={isSelected(item.hero)}
+                                onClick={() => selectOne(item.hero)}
+                                key={index} 
+                                hover={hover}
+                                item={item.name}
+                                color={color}
+                                noDivider={divider}
+                                roundedActive={rounded}
+                                leftBorder={left}
+                                subTitle={subtitle ? item.hero : null}
+                                icon={type === 'icon' ? item.icon : null}
+                                avatar={type === 'image' ? item.img : null}
+                                avatarBorderType={border}
+                                checkbox={checkbox}
+                                controls={controls ?
+                                    <div className="row align-center fz-9 text-dark">
+                                        <Icon name="smartphone" size={16} className="mr-5"/>
+                                        {phoneMask(item.phone)}
+                                        <Button color="light" 
+                                            className="ml-10" 
+                                            icon="edit"
+                                            iconSize={16}/>
+                                    </div> : null}/>
+                        )}
+                    </List>
+                </Card>
                 <Collapse className="px-15" icon="code" iconSize={18} tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {simpleList}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Dark mode">
-                <List dark
-                    header="Marvel Avengers" 
-                    hover>
-                    {itemsComplex.map((item, index) => 
-                        <ListItem 
-                            key={index} 
-                            item={item.hero}
-                            icon={item.icon}
-                            hover/>
-                    )}
-                </List>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {darkMode}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card 
-                outlined 
-                title="List with checkbox"
-                className="px-0">
-                <List header={'Selected Marvel avengers: ' + selected.length}>
-                    {itemsComplex.map((item, index) => 
-                        <ListItem 
-                            key={index} 
-                            item={item.hero}
-                            isActiveItem={isSelected(item.hero)}
-                            hover
-                            onClick={() => selectOne(item.hero)}
-                            checkbox/>
-                    )}
-                </List>
-                <Collapse className="px-15" icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {checkboxList}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="List with controls and subtitles">
-                <List>
-                    {itemsComplex.map((item, index) => 
-                        <ListItem 
-                            key={index} 
-                            item={item.name}
-                            icon={item.icon} 
-                            subTitle={item.hero}
-                            controls={
-                                <React.Fragment>
-                                    <Button color="light" 
-                                        className="mr-10" 
-                                        icon="edit"
-                                        iconSize={16}/>
-                                    <Button small color="light" icon="close"/>
-                                </React.Fragment>
-                            }/>
-                    )}
-                </List>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {controlsList}
+                        {usage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
             <h2 ref={listApi}>List API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
-                index={true}
+                index
                 itemTitles={keys}/>
             <h2 ref={listItemApi}>ListItem API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items2}
-                index={true}
+                index
                 itemTitles={keys}/>
             <BackTopBtn setRef={parent} dark size="medium"/>
         </div>
     )
-
 }
-
 export default ListPage;

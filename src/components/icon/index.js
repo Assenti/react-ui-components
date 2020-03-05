@@ -83,7 +83,13 @@ import {
     WhatsApp,
     Telegram,
     Flag,
-    StarHalfFull
+    StarHalfFull,
+    Plus,
+    AccountPlus,
+    Share,
+    Phone,
+    Bell,
+    Wrench
 } from './icons/index';
 
 const Icon = (props) => {
@@ -257,6 +263,18 @@ const Icon = (props) => {
                 return <Flag size={props.size} color={props.color}/>;
             case 'star-half-full':
                 return <StarHalfFull size={props.size} color={props.color}/>;
+            case 'plus':
+                return <Plus size={props.size} color={props.color}/>;
+            case 'account-plus':
+                return <AccountPlus size={props.size} color={props.color}/>;
+            case 'share':
+                return <Share size={props.size} color={props.color}/>;
+            case 'phone':
+                return <Phone size={props.size} color={props.color}/>;
+            case 'bell':
+                return <Bell size={props.size} color={props.color}/>;
+            case 'wrench':
+                return <Wrench size={props.size} color={props.color}/>;
             default:
                 return '';
         }

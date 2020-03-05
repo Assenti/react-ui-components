@@ -15,11 +15,17 @@
     }
 
     &.flat {
-        border-color: lightgray;
+        &:not(.dark) {
+            border-color: lightgray;
+        }
+        &.dark {
+            border-color: $night;
+        }
+        box-shadow: none;
     }
 
     &:not(.flat):not(.outlined):not(.dark) {
-        box-shadow: 0 0 3px rgba(black, .6);
+        box-shadow: 0 1px 5px rgba(black, .3);
     }
 
     &.hover {
@@ -37,13 +43,12 @@
 
     img {
         display: block;
+        width: 100%;
         margin: 0 auto;
-        padding-bottom: 5px;
-        border-bottom: 1px solid lightgray;
+        border-radius: $radius;
     }
 
     &.outlined {
-        border-color: $dark;
         position: relative;
         margin-top: 15px;
 
@@ -55,48 +60,47 @@
             padding: 3px 5px;
             background-color: #fff;
             font-weight: 600;
-            color: $dark;
             border-radius: 30px;
         }
-    }
 
-    &.info {
-        border-color: $info;
-
-        .rui-card-title {
-            color: $info;
+        &.info {
+            border-color: $info;
+    
+            .rui-card-title {
+                color: $info;
+            }
         }
-    }
-
-    &.primary {
-        border-color: $primary;
-
-        .rui-card-title {
-            color: $primary;
+    
+        &.primary {
+            border-color: $primary;
+    
+            .rui-card-title {
+                color: $primary;
+            }
         }
-    }
-
-    &.success {
-        border-color: $success;
-
-        .rui-card-title {
-            color: $success;
+    
+        &.success {
+            border-color: $success;
+    
+            .rui-card-title {
+                color: $success;
+            }
         }
-    }
-
-    &.error {
-        border-color: $error;
-
-        .rui-card-title {
-            color: $error;
+    
+        &.error {
+            border-color: $error;
+    
+            .rui-card-title {
+                color: $error;
+            }
         }
-    }
-
-    &.gray.outlined {
-        border-color: gray;
-
-        .rui-card-title {
-            color: gray;
+    
+        &.gray {
+            border-color: gray;
+    
+            .rui-card-title {
+                color: gray;
+            }
         }
     }
 }
@@ -107,7 +111,6 @@
 }
 
 .rui-card-footer {
-    padding: 5px 0;
-    font-size: .8rem;
-    color: $dark;
+    padding: 15px 0;
+    font-size: $defaultFont;
 }

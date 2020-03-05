@@ -10,6 +10,7 @@
     box-shadow: 0 1px 40px rgba(black, .4);
     background-color: $light;
     z-index: 1000;
+    // outline: none;
 
     &.dark {
         background-color: $night;

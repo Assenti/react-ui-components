@@ -20,7 +20,7 @@
 
 @each $size in $sizes {
     .mr-#{$size} {
-        margin-right: #{$size}px;
+        margin-right: #{$size}px !important;
     }
 }
 

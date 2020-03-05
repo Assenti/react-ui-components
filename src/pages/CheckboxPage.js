@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Checkbox, Table, Collapse, Card } from '../components';
+import { Checkbox, Table, Collapse, Card, Select, Icon, Switch } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -34,6 +34,13 @@ const items = [
         value: 'primary | info | success | error'
     },
     { 
+        property: 'size', 
+        description: 'Set checkbox size', 
+        default: '', 
+        type: 'string',
+        value: 'medium | large'
+    },
+    { 
         property: 'label', 
         description: 'Set checkbox label', 
         default: '', 
@@ -49,103 +56,102 @@ const items = [
     }
 ]
 
-    const usage =
+const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Checkbox } from '@assenti/rui-components';
+import { Checkbox, Select, Icon, Switch } from '@assenti/rui-components';
+const colors = ['secondary', 'primary', 'info', 'success', 'error'];
+const sizes = ['default', 'medium', 'large'];
 
 function Example() {
     const [check, setCheck] = useState(true);
+    const [label, setLabel] = useState(false);
+    const [color, setColor] = useState(colors[1]);
+    const [size, setSize] = useState(sizes[0]);
 
     return (
-        <div className="row">
-            <Checkbox
-                className="mr-20" 
-                checked={check} 
-                onChange={() => setCheck(!check)}/>
-            <Checkbox
-                className="mr-20" 
-                checked={check} 
+        <div>
+            <Select
+                items={colors}
+                prefix={<Icon name="brush"/>}
+                width={200}
+                label="Checkbox color"
+                color="primary"
+                value={color}
+                onChange={v => setColor(v)}/>
+            <br/>
+            <Select
+                items={sizes}
+                prefix={<Icon name="format-size"/>}
+                width={200}
+                label="Checkbox size"
+                color="primary"
+                value={size}
+                onChange={v => setSize(v)}/>
+            <br/>
+            <Switch 
                 color="primary" 
-                onChange={() => setCheck(!check)}/>
-            <Checkbox 
-                className="mr-20"
-                checked={check} 
-                color="info" 
-                onChange={() => setCheck(!check)}/>
-            <Checkbox 
-                className="mr-20"
-                checked={check} 
-                color="error" 
-                onChange={() => setCheck(!check)}/>
-            <Checkbox 
-                className="mr-20"
-                checked={check} 
-                disabled
-                onChange={() => setCheck(!check)}/>
+                check={label}
+                rightLabel="Label"
+                className="my-10"
+                onChange={() => setLabel(!label)}/>
+            <br/>
+            <div className="pa-10">
+                <Checkbox
+                    checked={check}
+                    color={color}
+                    size={size}
+                    label={label ? 'Checkbox' : null} 
+                    onChange={() => setCheck(!check)}/>
+            </div>
         </div>
     )
-}
-`
+}`
 
-    const usageLabel =
-`// Usage examples
-import React, { useState } from 'react';
-import { Checkbox } from '@assenti/rui-components';
-
-function Example() {
-    const [checkLabel, setCheckLabel] = useState(true);
-
-    return (
-        <div className="row">
-            <Checkbox
-                className="mr-20"
-                label="Checkbox"
-                color="primary" 
-                checked={checkLabel} 
-                onChange={() => setCheckLabel(!checkLabel)}/>
-            <Checkbox
-                label="Checkbox"
-                color="info" 
-                checked={checkLabel} 
-                onChang e={() => setCheckLabel(!checkLabel)}/>
-        </div>
-    )
-}
-`
+const colors = ['secondary', 'primary', 'info', 'success', 'error'];
+const sizes = ['default', 'medium', 'large'];
 
 const CheckboxPage = () => {
     const [check, setCheck] = useState(true);
-    const [checkLabel, setCheckLabel] = useState(true);
+    const [label, setLabel] = useState(false);
+    const [color, setColor] = useState(colors[1]);
+    const [size, setSize] = useState(sizes[0]);
 
     return (
         <div className="rui-page">
             <div className="rui-page-title">Checkbox Component</div>
-            <Card outlined title="Simple checkboxes">
-                <div className="row">
+            <Card outlined title="Checkbox usage">
+                <Select
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    label="Checkbox color"
+                    color="primary"
+                    value={color}
+                    onChange={v => setColor(v)}/>
+                <br/>
+                <Select
+                    items={sizes}
+                    prefix={<Icon name="format-size"/>}
+                    width={200}
+                    label="Checkbox size"
+                    color="primary"
+                    value={size}
+                    onChange={v => setSize(v)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={label}
+                    rightLabel="Label"
+                    className="my-10"
+                    onChange={() => setLabel(!label)}/>
+                <br/>
+                <div className="pa-10">
                     <Checkbox
-                        className="mr-20" 
-                        checked={check} 
-                        onChange={() => setCheck(!check)}/>
-                    <Checkbox
-                        className="mr-20" 
-                        checked={check} 
-                        color="primary" 
-                        onChange={() => setCheck(!check)}/>
-                    <Checkbox 
-                        className="mr-20"
-                        checked={check} 
-                        color="info" 
-                        onChange={() => setCheck(!check)}/>
-                    <Checkbox 
-                        className="mr-20"
-                        checked={check} 
-                        color="error" 
-                        onChange={() => setCheck(!check)}/>
-                    <Checkbox 
-                        className="mr-20"
-                        checked={check} 
-                        disabled
+                        checked={check}
+                        color={color}
+                        size={size}
+                        label={label ? 'Checkbox' : null} 
                         onChange={() => setCheck(!check)}/>
                 </div>
                 <Collapse icon="code" iconSize={18} tooltip="Code">
@@ -154,37 +160,14 @@ const CheckboxPage = () => {
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
-            <br/>
-            <Card outlined title="Checkboxes with label">
-                <div className="row">
-                    <Checkbox
-                        className="mr-20"
-                        label="Checkbox"
-                        color="primary" 
-                        checked={checkLabel} 
-                        onChange={() => setCheckLabel(!checkLabel)}/>
-                    <Checkbox
-                        label="Checkbox"
-                        color="info" 
-                        checked={checkLabel} 
-                        onChange={() => setCheckLabel(!checkLabel)}/>
-                </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usageLabel}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            
             <h2>API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
-                index={true}
+                index
                 itemTitles={keys}/>
         </div>
     )
 }
-
 export default CheckboxPage;

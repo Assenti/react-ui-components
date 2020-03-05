@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Dialog, Button, Card, Collapse, Table } from '../components';
+import { Dialog, Button, Card, Collapse, Table, Switch } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Button, Dialog } from '@assenti/rui-components';
+import { Button, Dialog, Switch } from '@assenti/rui-components';
 
 function Example() {
     const [dialog, setDialog] = useState(false);
+    const [dark, setDark] = useState(false);
+    const [confirmOnly, setConfirmOnly] = useState(false);
 
     const actionImitation = async () => {
         return new Promise(async (resolve) => {
@@ -21,6 +23,20 @@ function Example() {
 
     return (
         <div>
+            <Switch 
+                color="primary" 
+                check={dark}
+                rightLabel="Dark"
+                className="my-10"
+                onChange={() => setDark(!dark)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={confirmOnly}
+                rightLabel="Confirm only"
+                className="my-10"
+                onChange={() => setConfirmOnly(!confirmOnly)}/>
+            <br/>
             <Button
                 color="error"
                 name="Delete account"
@@ -29,6 +45,9 @@ function Example() {
                 onCancel={() => setDialog(false)}
                 onConfirm={actionImitation}
                 icon="alert"
+                dark={dark}
+                confirmOnly={confirmOnly}
+                confirmText={confirmOnly ? 'OK' : ''}
                 iconColor="red"
                 titleColor="red" 
                 visible={dialog} 
@@ -74,6 +93,13 @@ const items = [
         default: 'primary', 
         type: 'string',
         value: ''
+    },
+    { 
+        property: 'confirmOnly', 
+        description: 'Set confirm button only', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
     },
     { 
         property: 'cancelText', 
@@ -135,6 +161,8 @@ const items = [
 
 const DialogPage = () => {
     const [dialog, setDialog] = useState(false);
+    const [dark, setDark] = useState(false);
+    const [confirmOnly, setConfirmOnly] = useState(false);
 
     const actionImitation = async () => {
         return new Promise(async (resolve) => {
@@ -148,6 +176,20 @@ const DialogPage = () => {
         <div className="rui-page">
             <div className="rui-page-title">Dialog Component</div>
             <Card outlined title="Modal usage">
+                <Switch 
+                    color="primary" 
+                    check={dark}
+                    rightLabel="Dark"
+                    className="my-10"
+                    onChange={() => setDark(!dark)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={confirmOnly}
+                    rightLabel="Confirm only"
+                    className="my-10"
+                    onChange={() => setConfirmOnly(!confirmOnly)}/>
+                <br/>
                 <Button
                     color="error"
                     name="Delete account"
@@ -156,6 +198,9 @@ const DialogPage = () => {
                     onCancel={() => setDialog(false)}
                     onConfirm={actionImitation}
                     icon="alert"
+                    dark={dark}
+                    confirmOnly={confirmOnly}
+                    confirmText={confirmOnly ? 'OK' : ''}
                     iconColor="red"
                     titleColor="red" 
                     visible={dialog} 
@@ -177,5 +222,4 @@ const DialogPage = () => {
         </div>
     )
 }
-
 export default DialogPage;

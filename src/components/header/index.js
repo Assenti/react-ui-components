@@ -7,7 +7,7 @@ const Header = (props) => {
         let className = {
             name: 'rui-header',
             dark: props.dark ? 'dark' : 'light',
-            color: props.color ? props.color : '',
+            color: props.color && props.color !== 'default' ? props.color : '',
             sticky: props.sticky ? 'sticky' : '',
             smooth: props.smooth ? 'smooth' : '',
             className: props.className ? props.className : ''

@@ -1,76 +1,80 @@
-import React from 'react';
-import { ButtonGroup, Card, Table, Collapse } from '../components';
+import React, { useState } from 'react';
+import { ButtonGroup, Card, Table, Collapse, Select, Icon, Switch } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-    const types = 
+const usage = 
 `// Usage examples
-import React from 'react';
-import { ButtonGroup } from '@assenti/react-ui-components';
-
+import React, { useState } from 'react';
+import { ButtonGroup, Select, Switch, Icon } from '@assenti/react-ui-components';
 const langs = ['KZ', 'RU', 'EN'];
-const nums = [1, 2, 3];
 const icons = ['format-align-left', 'format-align-center', 'format-align-right'];
+const colors = ['primary', 'info', 'success', 'error', 'secondary', 'black'];
+const sizes = ['default', 'medium', 'large'];
 
 function Example() {
-    return (
-        <div className="row align-center my-10">
-            <ButtonGroup 
-                default={0} 
-                options={langs} 
-                color="secondary"
-                outlined
-                className="mr-10"/>
-            <ButtonGroup 
-                default={0} 
-                options={nums} 
-                color="info" 
-                className="mr-10"/>
-            <ButtonGroup 
-                default={0} 
-                icon
-                options={icons} 
-                color="black" 
-                outlined/>
-        </div>
-    )
-}
-`
+    const [color, setColor] = useState(colors[0]);
+    const [size, setSize] = useState(sizes[0]);
+    const [outlined, setOutlined] = useState(false);
+    const [icon, setIcon] = useState(false);
+    const [lifted, setLifted] = useState(false);
 
-    const sizes = 
-`// Usage examples
-import React from 'react';
-import { ButtonGroup } from '@assenti/react-ui-components';
-
-const icons = ['format-align-left', 'format-align-center', 'format-align-right'];
-
-function Example() {
     return (
         <div>
-            <ButtonGroup 
-                options={icons}
-                default={0} 
-                lifted
-                icon color="secondary" 
-                className="ma-10"/>
-            <ButtonGroup 
-                options={icons}
-                default={0} 
-                lifted
-                size="medium"
-                className="ma-10"
-                icon color="secondary"/>
-            <ButtonGroup 
-                options={icons}
-                default={0} 
-                lifted
-                size="large"
-                className="ma-10"
-                icon color="secondary"/>
+            <Select
+                items={sizes}
+                prefix={<Icon name="format-size"/>}
+                width={200}
+                label="Button size"
+                color="primary"
+                className="ml-10"
+                value={size}
+                onChange={v => setSize(v)}/>
+            <br/>
+            <Select
+                items={colors}
+                prefix={<Icon name="brush"/>}
+                width={200}
+                label="Button color"
+                color="primary"
+                className="ml-10"
+                value={color}
+                onChange={v => setColor(v)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={outlined}
+                rightLabel="Outlined"
+                className="pl-10 my-10"
+                onChange={() => setOutlined(!outlined)}/>
+            <Switch 
+                color="primary" 
+                check={icon}
+                rightLabel="Icon"
+                className="pl-10 my-10"
+                onChange={() => setIcon(!icon)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={lifted}
+                rightLabel="Lifted"
+                className="pl-10 my-10"
+                onChange={() => setLifted(!lifted)}/>
+            <br/>
+            <div className="pa-10">
+                <ButtonGroup 
+                    default={0} 
+                    options={icon ? icons : langs} 
+                    color={color}
+                    size={size}
+                    icon={icon}
+                    lifted={lifted}
+                    outlined={outlined}
+                    className="mr-10"/>
+            </div>
         </div>
     )
-}
-`
+}`
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -139,35 +143,73 @@ const items = [
     }
 ];
 const langs = ['KZ', 'RU', 'EN'];
-const nums = [1, 2, 3];
 const icons = ['format-align-left', 'format-align-center', 'format-align-right'];
-
+const colors = ['primary', 'info', 'success', 'error', 'secondary', 'black'];
+const sizes = ['default', 'medium', 'large'];
 
 const ButtonGroupPage = () => {
+    const [color, setColor] = useState(colors[0]);
+    const [size, setSize] = useState(sizes[0]);
+    const [outlined, setOutlined] = useState(false);
+    const [icon, setIcon] = useState(false);
+    const [lifted, setLifted] = useState(false);
+
     return (
         <div className="rui-page">
             <div className="row align-center space-between">
                 <div className="rui-page-title">ButtonGroup Component</div>
             </div>
-            <Card outlined title="ButtonGroup types">
-                <div className="row align-center my-10">
+            <Card outlined title="ButtonGroup usage">
+                <Select
+                    items={sizes}
+                    prefix={<Icon name="format-size"/>}
+                    width={200}
+                    label="Button size"
+                    color="primary"
+                    className="ml-10"
+                    value={size}
+                    onChange={v => setSize(v)}/>
+                <br/>
+                <Select
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    label="Button color"
+                    color="primary"
+                    className="ml-10"
+                    value={color}
+                    onChange={v => setColor(v)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={outlined}
+                    rightLabel="Outlined"
+                    className="pl-10 my-10"
+                    onChange={() => setOutlined(!outlined)}/>
+                <Switch 
+                    color="primary" 
+                    check={icon}
+                    rightLabel="Icon"
+                    className="pl-10 my-10"
+                    onChange={() => setIcon(!icon)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={lifted}
+                    rightLabel="Lifted"
+                    className="pl-10 my-10"
+                    onChange={() => setLifted(!lifted)}/>
+                <br/>
+                <div className="pa-10">
                     <ButtonGroup 
                         default={0} 
-                        options={langs} 
-                        color="secondary"
-                        outlined
+                        options={icon ? icons : langs} 
+                        color={color}
+                        size={size}
+                        icon={icon}
+                        lifted={lifted}
+                        outlined={outlined}
                         className="mr-10"/>
-                    <ButtonGroup 
-                        default={0} 
-                        options={nums} 
-                        color="info" 
-                        className="mr-10"/>
-                    <ButtonGroup 
-                        default={0} 
-                        icon
-                        options={icons} 
-                        color="black" 
-                        outlined/>
                 </div>
                 <Collapse 
                     icon="code" 
@@ -175,51 +217,18 @@ const ButtonGroupPage = () => {
                     contentStyles={{ padding: 0 }}
                     tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {types}
-                    </SyntaxHighlighter> 
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="ButtonGroup sizes">
-                <ButtonGroup 
-                    options={icons}
-                    default={0} 
-                    lifted
-                    icon color="secondary" 
-                    className="ma-10"/>
-                <ButtonGroup 
-                    options={icons}
-                    default={0} 
-                    lifted
-                    size="medium"
-                    className="ma-10"
-                    icon color="secondary"/>
-                <ButtonGroup 
-                    options={icons}
-                    default={0} 
-                    lifted
-                    size="large"
-                    className="ma-10"
-                    icon color="secondary"/>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18}
-                    contentStyles={{ padding: 0 }}
-                    tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {sizes}
+                        {usage}
                     </SyntaxHighlighter> 
                 </Collapse>
             </Card>
             <h2>API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>
         </div>
     )
 }
-
 export default ButtonGroupPage;

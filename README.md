@@ -57,18 +57,23 @@ export default App;
 ```
 
 ### TODO
-- [ ] Date picker / Calendar
+- [ ] Calendar
+- [ ] Date picker
+- [ ] Time picker
 - [ ] Expansion List
 - [ ] Stepper
 - [ ] Dock
 - [ ] Alert
 - [ ] Notification
+- [ ] Snackbar
 - [ ] Breadcrumbs
 - [ ] Carousel
+- [ ] AutoComplete
+- [ ] Slider
+- [ ] Progress
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable
 - [ ] TypeScript support (Declare types for all TS using)
-- [ ] Add i18n
 
 ## Changelog
 You can track changelog [here](/CHANGELOG.md)

@@ -8,7 +8,7 @@
         &:not(.bottom):not(.left):not(.right) {
             .rui-popover__content {
                 &::after {
-                    border-color: rgba(black, .8) transparent transparent transparent;
+                    border-color: $night transparent transparent transparent;
                 }
             }
         }
@@ -16,7 +16,7 @@
         &.bottom {
             .rui-popover__content {
                 &::after {
-                    border-color: transparent transparent rgba(black, .8) transparent;
+                    border-color: transparent transparent $night transparent;
                 }
             }
         }
@@ -24,7 +24,7 @@
         &.left {
             .rui-popover__content {
                 &::after {
-                    border-color: transparent transparent transparent rgba(black, .8);
+                    border-color: transparent transparent transparent $night;
                 }
             }
         }
@@ -32,13 +32,13 @@
         &.right {
             .rui-popover__content {
                 &::after {
-                    border-color: transparent rgba(black, .8) transparent transparent;
+                    border-color: transparent $night transparent transparent;
                 }
             }
         }
 
         .rui-popover__content {
-            background-color: rgba(black, .8);
+            background-color: $night;
             color: #fff;
             
         }

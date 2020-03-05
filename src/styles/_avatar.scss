@@ -1,0 +1,62 @@
+.rui-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius;
+    padding: 4px;
+    overflow: hidden;
+
+    &.secondary {
+        background-color: $lightgray;
+    }
+
+    &.primary {
+        background-color: $primary;
+        svg {
+            path {
+                fill: #fff;
+            }
+        }
+    }
+
+    &.info {
+        background-color: $info;
+        svg {
+            path {
+                fill: #fff;
+            }
+        }
+    }
+
+    &.success {
+        background-color: $success;
+        svg {
+            path {
+                fill: #fff;
+            }
+        }
+    }
+
+    &.error {
+        background-color: $error;
+        svg {
+            path {
+                fill: #fff;
+            }
+        }
+    }
+
+    &.rounded {
+        border-radius: 50%;
+    }
+
+    &.tile {
+        border-radius: 0;
+    }
+
+    img,
+    .rui-icon {
+        width: 95%;
+        height: 95%;
+    }
+}

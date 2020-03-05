@@ -139,19 +139,15 @@ const BackTopBtnPage = () => {
             </div>
             <div className="row align-center">Scroll down <Icon className="ml-5" name="arrow-down-bold" size={18}/></div>
             <Card outlined title="BackTopBtn" className="mt-20">
-                <List size="large" header="Countries">
+                <List header="Countries">
                     {countries.map((item, index) => 
                         <ListItem
                             key={index}
                             hover
+                            noDivider
                             icon="flag" 
                             item={item.country}
-                            subTitle={
-                                <div className="row align-center">
-                                    <Icon name="star-outline" className="mr-10"/>
-                                    {item.cities[0]}
-                                </div>
-                            }/>
+                            subTitle={item.cities[0]}/>
                     )}
                 </List>
                 <Collapse icon="code" iconSize={18} tooltip="Code">

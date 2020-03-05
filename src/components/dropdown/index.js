@@ -8,6 +8,7 @@ const Dropdown = (props) => {
         let result = '';
         let className = {
             name: 'rui-dropdown-container',
+            dark: props.dark ? 'dark' : '',
             position: props.position ? props.position : '',
             className: props.className ? props.className : ''
         }

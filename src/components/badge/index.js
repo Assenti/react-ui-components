@@ -1,4 +1,5 @@
 import React from 'react';
+import { Icon } from '../index';
 
 const Badge = (props) => {
     const badgeClass = () => {
@@ -6,7 +7,7 @@ const Badge = (props) => {
         let className = {
             btn: 'rui-badge-container',
             rounded: props.rounded ? 'rounded' : '',
-            color: props.color ? props.color : '',
+            color: props.color ? props.color : 'secondary',
             className: props.className ? props.className : ''
         }
         
@@ -16,16 +17,16 @@ const Badge = (props) => {
         return result.trim();
     }
 
-    const visibility = () => {
-        if (typeof(props.visible) === 'undefined') return true
-        else return props.visible
-    }
-
     return (
         <div className={badgeClass()}>
             {props.parent}
-            <div className="rui-badge">
-                {visibility() ? props.value : ''}
+            <div className={!props.visible ? 'rui-badge' : 'rui-badge hide'}>
+                {!props.visible && !props.icon ? props.value : ''}
+                {!props.visible && !props.value && props.icon ? 
+                    <Icon 
+                        name={props.icon} 
+                        size={14} 
+                        color={props.color === 'secondary' ? '' : '#fff'}/> : ''}
             </div>
         </div>
     )

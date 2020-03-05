@@ -1,11 +1,11 @@
 import React from 'react';
 
 const Checkbox = (props) => {
-
     const checkboxClass = () => {
         let result = '';
         let className = {
             checkbox: 'rui-checkbox',
+            size: props.size ? props.size : '',
             color: props.color ? props.color : '',
             disabled: props.disabled ? 'disabled' : ''
         }
@@ -47,5 +47,4 @@ const Checkbox = (props) => {
         </div>
     )
 }
-
 export default Checkbox;

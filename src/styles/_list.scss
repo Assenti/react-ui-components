@@ -8,19 +8,13 @@
             a {
                 font-size: $defaultFont;
             }
-    
-            .rui-list-item__title-row {
-                height: $defaultSize;
-
-                .rui-icon {
-                    width: 18px;
-                    height: 18px;
-                    margin-right: 8px;
-                }
-            }
 
             .rui-list-subtitle {
                 font-size: .8rem;
+            }
+
+            .rui-icon {
+                margin-right: 10px;
             }
         }
     }
@@ -39,14 +33,8 @@
                 font-size: $mediumFont;
             }
 
-            .rui-list-item__title-row {
-                height: $mediumSize;
-
-                .rui-icon {
-                    width: 18px;
-                    height: 18px;
-                    margin-right: 8px;
-                }
+            .rui-icon {
+                margin-right: 10px;
             }
         }
     }
@@ -67,14 +55,8 @@
                 font-size: $largeFont;
             }
 
-            .rui-list-item__title-row {
-                height: $largeSize;
-
-                .rui-icon {
-                    width: 20px;
-                    height: 20px;
-                    margin-right: 8px;
-                }
+            .rui-icon {
+                margin-right: 10px;
             }
         }
     }
@@ -132,11 +114,11 @@
             }
 
             &.left {
-                border-left: 5px solid $info;
+                border-left: 3.5px solid $info;
             }
 
             &.right {
-                border-right: 5px solid $info;
+                border-right: 3.5px solid $info;
             }
 
             .rui-list-item__title-row {
@@ -189,15 +171,96 @@
         }
 
         .rui-list-item.active {
-            background-color: rgba($info, .2);
-            color: $info;
+            &.info {
+                background-color: rgba($info, .2);
+                color: $info;
 
-            &.left {
-                border-left: 5px solid $info;
+                &.left {
+                    border-left: 3.5px solid $info;
+                }
+
+                &.right {
+                    border-right: 3.5px solid $info;
+                }
+
+                .rui-list-item__left-side {
+                    .rui-icon {
+                        svg {
+                            path {
+                                fill: $info;
+                            }
+                        }
+                    }
+                }
             }
 
-            &.right {
-                border-right: 5px solid $info;
+            &.primary {
+                background-color: rgba($primary, .2);
+                color: $primary;
+
+                &.left {
+                    border-left: 3.5px solid $primary;
+                }
+
+                &.right {
+                    border-right: 3.5px solid $primary;
+                }
+
+                .rui-list-item__left-side {
+                    .rui-icon {
+                        svg {
+                            path {
+                                fill: $primary;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.success {
+                background-color: rgba($success, .2);
+                color: $success;
+
+                &.left {
+                    border-left: 3.5px solid $success;
+                }
+
+                &.right {
+                    border-right: 3.5px solid $success;
+                }
+
+                .rui-list-item__left-side {
+                    .rui-icon {
+                        svg {
+                            path {
+                                fill: $success;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            &.error {
+                background-color: rgba($error, .2);
+                color: $error;
+
+                &.left {
+                    border-left: 3.5px solid $error;
+                }
+
+                &.right {
+                    border-right: 3.5px solid $error;
+                }
+
+                .rui-list-item__left-side {
+                    .rui-icon {
+                        svg {
+                            path {
+                                fill: $error;
+                            }
+                        }
+                    }
+                }
             }
 
             &.hover:hover:not(.active)  {
@@ -211,19 +274,9 @@
                 transition: all .2s ease-in-out;
                 cursor: pointer;
             }
-
-            .rui-list-item__title-row {
-                .rui-icon {
-                    path {
-                        fill: $info;
-                    }
-                }
-            }
         }
 
         .rui-list-item.active.rounded {
-            background-color: rgba($info, .2);
-
             &.left {
                 border-top-right-radius: 30px;
                 border-bottom-right-radius: 30px;
@@ -276,17 +329,18 @@
     .rui-list-item__title-row {
         display: flex;
         align-items: center;
-    }
 
-    svg {
-        width: 20px;
-        height: 20px;
-        min-width: 20px;
-        min-height: 20px;
+        span {
+            padding: 5px 0;
+        }
     }
 
     &.divider {
         border-bottom: 1px solid lightgray;
+    }
+
+    &:not(.divider) {
+        margin: 5px 0;
     }
 
     &.dense {

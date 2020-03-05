@@ -5,13 +5,12 @@ import { Button, Icon } from '../index';
 const Dialog = (props) => {
     const [loading, setLoading] = useState(false);
 
-    const modalClass = () => {
+    const componentClass = () => {
         let result = '';
         let className = {
             name: 'rui-dialog',
             dark: props.dark ? 'dark' : ''
         }
-        
         for (const key in className) {
             if (className[key]) result += className[key] + ' '
         }
@@ -40,8 +39,10 @@ const Dialog = (props) => {
             in={props.visible}
             timeout={300}
             classNames="dialog"
+            mountOnEnter
             unmountOnExit>
-            <div className={modalClass()}>
+            <div 
+                className={componentClass()}>
                 <div className="rui-dialog__title">
                     {props.icon ? 
                         <Icon 
@@ -55,12 +56,12 @@ const Dialog = (props) => {
                 </div>
                 <div className="rui-dialog__description">{props.description}</div>
                 <div className="rui-dialog__controls">
-                    <Button 
+                    {!props.confirmOnly ? <Button 
                         onClick={() => props.onCancel()}
                         className="mx-5"
                         disabled={loading} 
                         color={props.cancelBtnColor ? props.cancelBtnColor : 'secondary'} 
-                        name={props.cancelText ? props.cancelText : 'Cancel'}/>
+                        name={props.cancelText ? props.cancelText : 'Cancel'}/> : ''}
                     <Button
                         onClick={handleConfirm}
                         className="mx-5"
@@ -72,5 +73,4 @@ const Dialog = (props) => {
         </CSSTransition>
     )
 }
-
 export default Dialog;

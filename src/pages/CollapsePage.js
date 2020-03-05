@@ -1,5 +1,5 @@
 import React, { createRef } from 'react';
-import { Card, Collapse, Table, List, ListItem } from '../components'
+import { Card, Collapse, Table, List, ListItem, Icon, Badge } from '../components'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -127,7 +127,14 @@ const CollapsePage = () => {
     return (
         <div className="rui-page">
             <div className="row align-center space-between">
-                <div className="rui-page-title">Collapse Component</div>
+                <div className="row">
+                    <div className="rui-page-title">Collapse Component</div>
+                    <Badge 
+                        color="error" 
+                        value="WIP"
+                        className="ml-10"
+                        parent={<Icon name="wrench" size={20}/>}/>
+                </div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
             <Card outlined title="Collapse Component usage">
@@ -174,7 +181,7 @@ const CollapsePage = () => {
             <h2 ref={api}>API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>

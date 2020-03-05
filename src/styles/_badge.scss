@@ -44,16 +44,32 @@
         }
     }
 
+    &.dark {
+        .rui-badge {
+            background-color: $dark;
+            color: #fff;
+        }
+    }
+
+    &.secondary {
+        .rui-badge {
+            background-color: $lightgray;
+        }
+    }
+
     .rui-badge {
         position: absolute;
-        bottom: calc(100%);
+        bottom: calc(100% - 10px);
         left: calc(100% - 10px);
         font-size: .7rem;
-        padding: 2px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: $lightgray;
+        transition: all .3s ease-in-out;
+
+        &:not(.hide) {
+            padding: 2px;
+        }
     }
 }
 

@@ -431,7 +431,7 @@
     &.dark {
         border-color: transparent;
         background-color: transparent;
-        color: $dark;
+        color: #fff;
 
         &:not(:disabled):hover {
             background-color: rgba($lightgray, .3);
@@ -524,7 +524,7 @@
     display: inline-flex;
 
     &.lifted:not(:disabled) {
-        box-shadow:  0 1px 2px 0 rgba(34,36,38,.15);
+        box-shadow: 0 1px 5px rgba(black, .3);
     }
 
     .rui-btn {

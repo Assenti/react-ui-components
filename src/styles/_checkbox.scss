@@ -13,9 +13,61 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    height: 18px;
-    width: 18px;
     margin: 3px;
+
+    &:not(.medium):not(.large) {
+        height: 16px;
+        width: 16px;
+
+        & > span {  
+            height: 16px;
+            width: 16px;
+        }
+
+        & > span:after {
+            left: 3.5px;
+            top: -1px;
+            width: 4px;
+            height: 10px;
+            border-width: 0 2.5px 2.5px 0;
+        }
+    }
+
+    &.medium {
+        height: 18px;
+        width: 18px;
+
+        & > span {  
+            height: 18px;
+            width: 18px;
+        }
+
+        & > span:after {
+            left: 3.5px;
+            top: -1px;
+            width: 5px;
+            height: 12px;
+            border-width: 0 3px 3px 0;
+        }
+    }
+
+    &.large {
+        height: 20px;
+        width: 20px;
+
+        & > span {  
+            height: 20px;
+            width: 20px;
+        }
+
+        & > span:after {
+            left: 5px;
+            top: -2px;
+            width: 6px;
+            height: 15px;
+            border-width: 0 3px 3px 0;
+        }
+    }
 
     &:hover input ~ span {
         background-color: $light;
@@ -47,8 +99,6 @@
         position: absolute;
         top: 0;
         left: 0;
-        height: 18px;
-        width: 18px;
         background-color: $lightgray;
         border: 1px solid gray;
         border-radius: 2px;
@@ -66,12 +116,7 @@
     }
 
     & > span:after {
-        left: 3.5px;
-        top: -2px;
-        width: 6px;
-        height: 12px;
         border: solid gray;
-        border-width: 0 3px 3px 0;
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
@@ -96,7 +141,7 @@
             border-color: $info;
         }
 
-        .checkbox-label {
+        .rui-checkbox-label {
             color: $info;
         }
     }
@@ -109,6 +154,10 @@
         & > span {
             border-color: $primary;
         }
+
+        .rui-checkbox-label {
+            color: $primary;
+        }
     }
 
     &.success {
@@ -119,6 +168,10 @@
         & > span {
             border-color: $success;
         }
+
+        .rui-checkbox-label {
+            color: $success;
+        }
     }
 
     &.error {
@@ -128,6 +181,10 @@
 
         & > span {
             border-color: $error;
+        }
+
+        .rui-checkbox-label {
+            color: $error;
         }
     }
 }

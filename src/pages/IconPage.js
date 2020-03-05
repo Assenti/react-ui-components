@@ -82,7 +82,15 @@ const icons = [
     'instagram',
     'whatsapp',
     'telegram',
-    'flag'
+    'flag',
+    'plus',
+    'account-plus',
+    'book-open',
+    'shape',
+    'share',
+    'phone',
+    'bell',
+    'wrench'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
