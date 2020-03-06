@@ -1,83 +1,80 @@
 import React, { useState } from 'react';
-import { Switch, Table, Card, Collapse } from '../components';
+import { Switch, Table, Card, Collapse, CopyToClipboard, Select, Icon, RadioGroup } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const simpleUsage =
+const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Switch } from '@assenti/rui-components';
+import { Switch, Select, Icon, RadioGroup } from '@assenti/rui-components';
+const colors = ['primary', 'info', 'success', 'error'];
+const types = ['icon', 'label', 'none']
+const sizes = ['default', 'medium', 'large'];
 
 function Example() {
-    const [check, setCheck] = useState(true);
-    const [check2, setCheck2] = useState(true);
+    const [check, setCheck] = useState(false);
+    const [disabled, setDisabled] = useState(false);
+    const [vertical, setVertical] = useState(false);
+    const [type, setType] = useState('');
+    const [color, setColor] = useState(colors[0]);
+    const [size, setSize] = useState(sizes[0]);
 
     return (
-        <div className="row">
-            <Switch check={check} onChange={() => setCheck(!check)}/>
-            <Switch check={check} color="primary" onChange={() => setCheck(!check)}/>
-            <Switch check={check} color="info" onChange={() => setCheck(!check)}/>
-            <Switch check={check} color="success" onChange={() => setCheck(!check)}/>
-            <Switch check={check} color="error" onChange={() => setCheck(!check)}/>
-            <Switch check={check2} color="error" disabled onChange={() => setCheck2(!check2)}/>
-        </div>
-    )
-}`
-
-const withIcons =
-`// Usage examples
-import React, { useState } from 'react';
-import { Switch } from '@assenti/rui-components';
-
-function Example() {
-    const [check2, setCheck2] = useState(true);
-
-    return (
-        <div className="row">
-            <Switch color="info" 
-                check={check1}
-                leftLabel="Off"
-                rightLabel="On" 
-                onChange={() => setCheck1(!check1)}/>
-            <Switch color="primary" 
-                check={check1}
-                leftIcon="moon"
-                leftIconColor="darkblue"
-                rightIcon="sun" 
-                rightIconColor="#feda24"
-                onChange={() => setCheck1(!check1)}/>
-        </div>
-    )
-}
-`
-
-const withLabels =
-`// Usage examples
-import React, { useState } from 'react';
-import { Switch } from '@assenti/rui-components';
-
-function Example() {
-    const [check3, setCheck3] = useState(true);
-    const [check4, setCheck4] = useState(false);
-
-    return (
-        <div className="row align-center">
-            <Switch color="primary" 
-                check={check3}
-                position="vertical"
-                onChange={() => setCheck3(!check3)}/>
-            <Switch color="error" 
-                check={check4}
-                position="vertical"
-                leftLabel="Off"
-                rightLabel="On" 
-                onChange={() => setCheck4(!check4)}/>
-            <Switch color="info" 
-                check={check3}
-                position="vertical"
-                leftIcon="moon"
-                rightIcon="sun" 
-                onChange={() => setCheck3(!check3)}/>
+        <div>
+            <Select
+                items={colors}
+                prefix={<Icon name="brush"/>}
+                width={200}
+                label="Switch color"
+                color="primary"
+                className="my-10"
+                value={color}
+                onChange={v => setColor(v)}/>
+            <br/>
+            <Select
+                items={sizes}
+                prefix={<Icon name="format-size"/>}
+                width={200}
+                label="Switch size"
+                color="primary"
+                className="my-10"
+                value={size}
+                onChange={v => setSize(v)}/>
+            <br/>
+            <Switch 
+                check={disabled} 
+                color="primary"
+                rightLabel="Disabled" 
+                className="my-10"
+                onChange={() => setDisabled(!disabled)}/>
+            <br/>
+            <Switch 
+                check={vertical} 
+                color="primary"
+                rightLabel="Vertical" 
+                className="my-10"
+                onChange={() => setVertical(!vertical)}/>
+            <br/>
+            <RadioGroup
+                options={types} 
+                value={type}
+                name="type"
+                className="my-10" 
+                onChange={(value) => setType(value)}/>
+            <br/>
+            <div className="py-10">
+                <Switch 
+                    check={check} 
+                    color={color}
+                    size={size}
+                    leftLabel={type === 'label' ? 'Left label' : ''}
+                    rightLabel={type === 'label' ? 'Right label' : ''} 
+                    leftIcon={type === 'icon' ? 'moon' : ''}
+                    rightIcon={type === 'icon' ? 'sun' : ''} 
+                    disabled={disabled}
+                    vertical={vertical} 
+                    onChange={() => setCheck(!check)}/>
+            </div>
         </div>
     )
 }`
@@ -114,8 +111,8 @@ const items = [
     },
     { 
         property: 'color', 
-        description: 'Set color of switch from list', 
-        default: '', 
+        description: 'Set color', 
+        default: 'gray', 
         type: 'string',
         value: 'primary | info | success | error'
     },
@@ -169,89 +166,94 @@ const items = [
         value: ''
     }
 ]
+const colors = ['primary', 'info', 'success', 'error'];
+const types = ['icon', 'label', 'none']
+const sizes = ['default', 'medium', 'large'];
 
 const SwitchPage = () => {
-    const [check, setCheck] = useState(true);
-    const [check1, setCheck1] = useState(true);
-    const [check2, setCheck2] = useState(true);
-    const [check3, setCheck3] = useState(true);
-    const [check4, setCheck4] = useState(false);
+    const [check, setCheck] = useState(false);
+    const [disabled, setDisabled] = useState(false);
+    const [vertical, setVertical] = useState(false);
+    const [type, setType] = useState('');
+    const [color, setColor] = useState(colors[0]);
+    const [size, setSize] = useState(sizes[0]);
 
     return (
         <div className="rui-page">
             <div className="rui-page-title">Switch Component</div>
             <Card outlined title="Simple switches">
-                <div className="row">
-                    <Switch check={check} onChange={() => setCheck(!check)}/>
-                    <Switch check={check} color="primary" onChange={() => setCheck(!check)}/>
-                    <Switch check={check} color="info" onChange={() => setCheck(!check)}/>
-                    <Switch check={check} color="success" onChange={() => setCheck(!check)}/>
-                    <Switch check={check} color="error" onChange={() => setCheck(!check)}/>
-                    <Switch check={check2} color="error" disabled onChange={() => setCheck2(!check2)}/>
+                <Select
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    label="Switch color"
+                    color="primary"
+                    className="my-10"
+                    value={color}
+                    onChange={v => setColor(v)}/>
+                <br/>
+                <Select
+                    items={sizes}
+                    prefix={<Icon name="format-size"/>}
+                    width={200}
+                    label="Switch size"
+                    color="primary"
+                    className="my-10"
+                    value={size}
+                    onChange={v => setSize(v)}/>
+                <br/>
+                <Switch 
+                    check={disabled} 
+                    color="primary"
+                    rightLabel="Disabled" 
+                    className="my-10"
+                    onChange={() => setDisabled(!disabled)}/>
+                <br/>
+                <Switch 
+                    check={vertical} 
+                    color="primary"
+                    rightLabel="Vertical" 
+                    className="my-10"
+                    onChange={() => setVertical(!vertical)}/>
+                <br/>
+                <RadioGroup
+                    options={types} 
+                    value={type}
+                    name="type"
+                    className="my-10" 
+                    onChange={(value) => setType(value)}/>
+                <br/>
+                <div className="py-10">
+                    <Switch 
+                        check={check} 
+                        color={color}
+                        size={size}
+                        leftLabel={type === 'label' ? 'Left label' : ''}
+                        rightLabel={type === 'label' ? 'Right label' : ''} 
+                        leftIcon={type === 'icon' ? 'moon' : ''}
+                        rightIcon={type === 'icon' ? 'sun' : ''} 
+                        disabled={disabled}
+                        vertical={vertical} 
+                        onChange={() => setCheck(!check)}/>
                 </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code" 
+                    iconSize={18} 
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {simpleUsage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Switches with icons and labels">
-                <div className="row">
-                    <Switch color="info" 
-                        check={check1}
-                        leftLabel="Off"
-                        rightLabel="On" 
-                        onChange={() => setCheck1(!check1)}/>
-                    <Switch color="primary" 
-                        check={check1}
-                        leftIcon="moon"
-                        leftIconColor="darkblue"
-                        rightIcon="sun" 
-                        rightIconColor="#feda24"
-                        onChange={() => setCheck1(!check1)}/>
-                </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {withIcons}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Switches positions">
-                <div className="row align-center">
-                    <Switch color="primary" 
-                        check={check3}
-                        position="vertical"
-                        onChange={() => setCheck3(!check3)}/>
-                    <Switch color="error" 
-                        check={check4}
-                        position="vertical"
-                        leftLabel="Off"
-                        rightLabel="On" 
-                        onChange={() => setCheck4(!check4)}/>
-                    <Switch color="info" 
-                        check={check3}
-                        position="vertical"
-                        leftIcon="moon"
-                        rightIcon="sun" 
-                        onChange={() => setCheck3(!check3)}/>
-                </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {withLabels}
+                        {usage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
             <h2>API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>
         </div>
     )
 }
-
 export default SwitchPage;

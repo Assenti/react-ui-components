@@ -7,6 +7,16 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.4.1 `2020-03-06`
+
+- `NEW!` Breadcrumbs component added;
+- RadioGroup component updated;
+- Collapse component updated;
+- Switch component updated;
+- Table component updated;
+- Tooltip component updated;
+- Uploader component updated;
+
 #### 0.4.0 `2020-03-05`
 
 - `NEW!` FloatingBtn component added;

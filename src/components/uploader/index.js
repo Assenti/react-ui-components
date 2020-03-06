@@ -47,9 +47,10 @@ const Uploader = (props) => {
 
     return (
         <div className={inputFieldClass()} style={{ width: props.width ? props.width : ''}}>
+            {props.label ? <div className="rui-input-uploader__label">{props.label}</div> : ''}
             <div className={inputContainer()}>
                 <Icon name="download" size={20}/>
-                {props.label ? <label onClick={() => inputFile.current.focus()}>{props.label}</label> : ''}
+                {props.placeholder ? <label onClick={() => inputFile.current.focus()}>{props.placeholder}</label> : ''}
                 <input
                     onFocus={handleFocus}
                     onBlur={handleBlur}

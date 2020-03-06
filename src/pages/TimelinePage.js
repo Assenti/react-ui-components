@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Timeline, Table, BackTopBtn, Card, Collapse, Switch, Select, Icon } from '../components';
+import { Timeline, Table, BackTopBtn, Card, Collapse, Switch, Select, Icon, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -243,7 +243,11 @@ const TimelinePage = () => {
                     icon={icon ? 'star' : ''}
                     title="title"
                     subtitle="subtitle"/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code" 
+                    iconSize={18} 
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter>
@@ -260,5 +264,4 @@ const TimelinePage = () => {
         </div>
     )
 }
-
 export default TimelinePage;

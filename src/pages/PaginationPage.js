@@ -1,5 +1,5 @@
-import React, { useState, createRef } from 'react';
-import { Pagination, Table, Card, Collapse, BackTopBtn } from '../components';
+import React, { useState, useRef } from 'react';
+import { Pagination, Table, Card, Collapse, BackTopBtn, CopyToClipboard, Select, Icon, Switch } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -84,7 +84,7 @@ const items = [
     }
 ]
 
-const defaultUsage =
+const usage =
 `// Usage examples
 import React, { useState } from 'react';
 import { Pagination, InputField } from '@assenti/rui-components';
@@ -184,111 +184,85 @@ function Example() {
                 size="large"/>
         </div>
     )
-}
-`
+}`
+
+const colors = ['primary', 'info', 'success', 'error'];
+const sizes = ['default', 'medium', 'large'];
+const positions = ['deafult', 'center', 'right'];
 
 const PaginationPage = () => {
     const [itemsCount] = useState(100);
     const [perPage, setPerPage] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
-    const api = createRef();
-    const parent = createRef();
+    const [color, setColor] = useState(colors[0]);
+    const [size, setSize] = useState(sizes[0]);
+    const [position, setPosition] = useState(positions[0]);
+    const [rounded, setRounded] = useState(false);
+    const parent = useRef();
 
-    const goToApi = () => {
-        if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
 
     return (
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
                 <div className="rui-page-title">Pagination Component</div>
-                <div onClick={goToApi} className="link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined title="Default pagination (in different colors)">
-                <Pagination
-                    itemsCount={itemsCount}
+            <Card outlined title="Pagination usage">
+                <Select
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    label="Pagination color"
                     color="primary"
+                    className="my-10"
+                    value={color}
+                    onChange={v => setColor(v)}/>
+                <br/>
+                <Select
+                    items={sizes}
+                    prefix={<Icon name="format-size"/>}
+                    width={200}
+                    label="Pagination size"
+                    color="primary"
+                    className="my-10"
+                    value={size}
+                    onChange={v => setSize(v)}/>
+                <br/>
+                <Switch 
+                    check={rounded} 
+                    color="primary"
+                    rightLabel="Rounded" 
+                    className="my-10"
+                    onChange={() => setRounded(!rounded)}/>
+                <br/>
+                <Pagination
+                    itemsCount={itemsCount}
+                    color={color}
+                    size={size}
                     perPage={perPage}
                     current={currentPage}
                     onChange={page => setCurrentPage(page)}
                     onPerPageSelect={value => setPerPage(value)}
                     className="pa-5"
-                    pageText="module"/>
-                <Pagination
-                    itemsCount={itemsCount}
-                    color="info"
-                    current={currentPage}
-                    onChange={page => setCurrentPage(page)}
-                    className="pa-5"
-                    perPage={perPage}
-                    onPerPageSelect={value => setPerPage(value)}/>
-                <Pagination
-                    itemsCount={itemsCount}
-                    color="success"
-                    className="pa-5"
-                    current={currentPage}
-                    onChange={page => setCurrentPage(page)}
-                    perPage={perPage}
-                    onPerPageSelect={value => setPerPage(value)}/>
-                <Pagination
-                    itemsCount={itemsCount}
-                    color="error"
-                    perPage={perPage}
-                    onPerPageSelect={value => setPerPage(value)}
-                    className="pa-5"
-                    current={currentPage}
-                    onChange={page => setCurrentPage(page)}/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                    rounded={rounded}/>
+                <Collapse 
+                    icon="code" 
+                    iconSize={18}
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>}  
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {defaultUsage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Medium size rounded pagination">
-                <Pagination
-                    itemsCount={itemsCount}
-                    color="info"
-                    perPage={perPage}
-                    onPerPageSelect={value => setPerPage(value)}
-                    className="pa-5"
-                    current={currentPage}
-                    onChange={page => setCurrentPage(page)}
-                    size="medium"
-                    rounded/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {mediumSize}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Large size pagination">
-                <Pagination
-                    itemsCount={itemsCount}
-                    color="info"
-                    perPage={perPage}
-                    current={currentPage}
-                    onChange={page => setCurrentPage(page)}
-                    onPerPageSelect={value => setPerPage(value)}
-                    className="pa-5"
-                    size="large"/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {largeSize}
+                        {usage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
             <BackTopBtn size="medium" dark setRef={parent}/>
-            <h2 ref={api}>API</h2>
+            <h2>API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>
         </div>
     )
 }
-
 export default PaginationPage;

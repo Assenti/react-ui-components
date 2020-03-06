@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Badge, Card, Table, Icon, Collapse, Select, Switch, Avatar } from '../components';
+import { Badge, Card, Table, Icon, Collapse, Select, Switch, Avatar, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import manImage from '../img/hipster.png';
@@ -152,7 +152,11 @@ const BadgePage = () => {
                         visible={badge}
                         parent={<Avatar img={manImage}/>}/>
                 </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code"
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
+                    iconSize={18} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter>

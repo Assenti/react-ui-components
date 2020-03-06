@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Preloader, Table, Collapse, Card } from '../components';
+import { Button, Preloader, Table, Collapse, Card, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -29,9 +29,9 @@ const items = [
     { 
         property: 'color', 
         description: 'Set preloader default ellipsis color', 
-        default: '', 
+        default: 'primary (#1678c2)', 
         type: 'string',
-        value: ''
+        value: 'hex | rgb '
     }
 ]
 
@@ -72,24 +72,28 @@ const PreloaderPage = () => {
             <Card outlined title="Preloader usage">
                 <p>Launch full page preloader and make all actions on screen disabled</p>
                 <div className="py-10">
-                    <Button name="Activate" color="info" onClick={handleClick}/>
+                    <Button name="Activate" color="primary" onClick={handleClick}/>
                 </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code"
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>}  
+                    iconSize={18} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
-            <Preloader visible={loading}/>
+            <Preloader
+                visible={loading}/>
             <h2>API</h2>
             <Table
                 bordered
-                headers={keys}
+                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                 items={items}
                 index={true}
                 itemTitles={keys}/>
         </div>
     )
 }
-
 export default PreloaderPage;

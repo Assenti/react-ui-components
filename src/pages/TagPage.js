@@ -1,5 +1,5 @@
 import React, { createRef, useState } from 'react';
-import { Tag, Card, Table, Collapse, BackTopBtn, Button, Select, Icon, Switch } from '../components';
+import { Tag, Card, Table, Collapse, BackTopBtn, Button, Select, Icon, Switch, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -105,7 +105,7 @@ const items = [
     }
 ]
 
-const tagColors =
+const usage =
 `// Usage examples
 import React, { useState } from 'react';
 import { Tag, Switch, Select, Icon } from '@assenti/react-ui-components';
@@ -291,9 +291,13 @@ const TagPage = () => {
                         className="ml-20" 
                         onClick={() => setVisible(true)}/> : ''}
                 </div>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code" 
+                    iconSize={18} 
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {tagColors}
+                        {usage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>

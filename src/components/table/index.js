@@ -12,25 +12,12 @@ const makeSortableHeaders = (headers) => {
 }
 
 const Table = (props) => {
-    let initialHeaders = () => {
-        if (props.controls && !props.checkbox) {
-            return [...props.headers, ''];
-        } else if (props.sortable) {
-            return makeSortableHeaders(props.headers)
-        } else if (props.sortable && props.checkbox) {
-            return makeSortableHeaders(props.headers)
-        } else {
-            return props.headers;
-        }
-    }
-
     const [selected, setSelected] = useState([]);
     const [currentPage, setCurrentPage] = useState(props.currentPage ? props.currentPage : 1);
     const [perPage, setPerPage] = useState(props.perPage ? props.perPage : 10);
     const [sortType, setSortType] = useState(props.sortable ? 'asc' : '');
     const [colIndex, setColIndex] = useState(0);
     const [search, setSearch] = useState('');
-    const [headers] = useState(initialHeaders());
 
     const tableContainerClass = () => {
         let result = '';
@@ -121,83 +108,53 @@ const Table = (props) => {
         if (props.index) return <th className="indexed">{props.indexSign ? props.indexSign : '#'}</th>
     }
 
-    const prepareHeaders = () => {
-        if (props.sortable && !props.checkbox) {
+    const isCheckbox = () => {
+        if (props.checkbox) {
             return (
-                <tr>
-                    {isIndexedTable()}
-                    {headers.map((item, index) =>
-                        <th key={index}>
-                            <div className="row align-center">
-                                {item.name} 
-                                <Icon 
-                                    className="ml-8 cursor-pointer" 
-                                    name={item.sort === 'desc' ? 'sort-descending' : 'sort-ascending'}
-                                    onClick={() => {
-                                        item.sort = item.sort === 'asc' ? 'desc' : 'asc'
-                                        handleColumnSort(index, item.sort)
-                                    }}
-                                    color={props.color && props.color !== 'default' ? '#fff' : ''}
-                                    size={16}/>
-                            </div>
-                        </th>
-                    )}
-                </tr>
-            )
-        } else if (props.sortable && props.checkbox) {
-            return (
-                <tr>
-                    {isIndexedTable()}
-                    <th style={{ maxWidth: 40, width: 40 }}>
-                        <Checkbox 
-                            color={props.color ? props.color : ''}
-                            onChange={() => props.checkbox ? onSelectAll() : {}} 
-                            checked={isAllChecked()}/>
-                    </th>
-                    {headers.map((item, index) => 
-                        <th key={index}>
-                            <div className="row align-center">
-                                {item.name} 
-                                <Icon 
-                                    className="ml-8" 
-                                    name={item.sort === 'desc' ? 'sort-descending' : 'sort-ascending'}
-                                    onClick={() => {
-                                        item.sort = item.sort === 'asc' ? 'desc' : 'asc'
-                                        handleColumnSort(index, item.sort)
-                                    }}
-                                    color={props.color && props.color !== 'default' ? '#fff' : ''}
-                                    size={16}/>
-                            </div>
-                        </th>
-                    )}
-                </tr>
-            )
-        } else if (!props.sortable && props.checkbox) {
-           return (
-                <tr>
-                    {isIndexedTable()}
-                    <th>
-                        <Checkbox 
-                            color={props.color ? props.color : ''}
-                            onChange={() => props.checkbox ? onSelectAll() : {}} 
-                            checked={isAllChecked()}/>
-                        </th>
-                    {headers.map((item, index) => 
-                        <th key={index}>{item}</th>
-                    )}
-                    <th></th>
-                </tr>
-           )
-        } else {
-            return (
-                <tr>
-                    {isIndexedTable()}
-                    {headers.map((item, index) => 
-                        <th key={index}>{item}</th>
-                    )}
-                </tr>
+                <th style={{ maxWidth: 40, width: 40 }}>
+                    <Checkbox 
+                        color={props.color ? props.color : ''}
+                        onChange={() => props.checkbox ? onSelectAll() : {}} 
+                        checked={isAllChecked()}/>
+                </th>
             )
         }
+    }
+
+    const isControls = () => {
+        if (props.controls) return <th></th>
+    };
+
+    const isSortable = (item, index) => {
+        if (props.sortable) {
+            return <Icon 
+                className="ml-8 cursor-pointer" 
+                name={item.sort === 'desc' ? 'sort-descending' : 'sort-ascending'}
+                onClick={() => {
+                    item.sort = item.sort === 'asc' ? 'desc' : 'asc'
+                    handleColumnSort(index, item.sort)
+                }}
+                color={props.color && props.color !== 'default' ? '#fff' : ''}
+                size={16}/>
+        }
+    }
+ 
+    const prepareHeaders = () => {
+        return (
+            <tr>
+                {isIndexedTable()}
+                {isCheckbox()}
+                {makeSortableHeaders(props.headers).map((item, index) => 
+                    <th key={index}>
+                        <div className="row align-center">
+                            {item.name} 
+                            {isSortable(item, index)}
+                        </div>
+                    </th>
+                )}
+                {isControls()}
+            </tr>
+        )
     }
 
     const getItemKey = () => props.itemTitles[colIndex];
@@ -213,6 +170,11 @@ const Table = (props) => {
                 return props.items
                         .sort((a, b) => compare(a, b, getItemKey(), sortType))
                         .filter(item => item[props.searchKey].toLowerCase().includes(search.toLowerCase()))
+            } else if (props.pagination && !props.sortable) {
+                return props.items
+                        .slice((perPage * currentPage) - perPage, perPage * currentPage)
+                        .sort((a, b) => compare(a, b, getItemKey(), sortType))
+                        .filter(item => item[props.searchKey].toLowerCase().includes(search.toLowerCase()))
             } else {
                 return props.items.filter(item => item[props.searchKey].toLowerCase().includes(search.toLowerCase()))
             }
@@ -223,6 +185,10 @@ const Table = (props) => {
                     .sort((a, b) => compare(a, b, getItemKey(), sortType))
             } else if (!props.pagination && props.sortable) {
                 return props.items.sort((a, b) => compare(a, b, getItemKey(), sortType))
+            } else if (props.pagination && !props.sortable) {
+                return props.items
+                        .slice((perPage * currentPage) - perPage, perPage * currentPage)
+                        .sort((a, b) => compare(a, b, getItemKey(), sortType))
             } else {
                 return props.items
             }
@@ -282,7 +248,7 @@ const Table = (props) => {
                 <div className="rui-table__placeholder"><Empty/></div> : ''}
             {props.loading ? 
                 <div className={props.loading ? 'rui-table__placeholder loading' : 'rui-table__placeholder'}>
-                    <Loading/>
+                    <Loading color="#1678c2"/>
                 </div> 
             : ''}
             {props.pagination ? 

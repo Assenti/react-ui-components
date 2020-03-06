@@ -6,6 +6,7 @@ const Radio = (props) => {
         let className = {
             name: 'rui-radio',
             color: props.color ? props.color : 'primary',
+            size: props.size && props.size !== 'default' ? props.size : '',
             disabled: props.disabled ? 'disabled' : '',
             className: props.className ? props.className : ''
         }
@@ -51,6 +52,7 @@ const RadioGroup = (props) => {
                     key={index}
                     color={props.color}
                     disabled={props.disabled}
+                    size={props.size}
                     label={props.labelName ? props.labelName : item} 
                     value={props.value} 
                     name={props.name}
@@ -59,5 +61,4 @@ const RadioGroup = (props) => {
         </div>
     )
 }
-
 export default RadioGroup;

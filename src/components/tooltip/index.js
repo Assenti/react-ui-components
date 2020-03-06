@@ -5,6 +5,7 @@ const Tooltip = (props) => {
         let result = '';
         let className = {
             name: 'rui-tooltip',
+            color: props.color && props.color !== 'default' ? props.color : '',
             position: props.position ? props.position : '',
             className: props.className ? props.className : ''
         }
@@ -21,5 +22,4 @@ const Tooltip = (props) => {
         </div>
     )
 }
-
 export default Tooltip;

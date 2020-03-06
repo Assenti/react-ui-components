@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { RadioGroup, Table, Card, Collapse, Switch, Select, Icon } from '../components';
+import { RadioGroup, Table, Card, Collapse, Switch, Select, Icon, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const citiesUS = ['Washington, D.C.', 'New York City', 'Chicago', 'Boston', 'San Francisco', 'Los Angeles'];
 const colors = ['primary', 'info', 'success', 'error'];
+const sizes = ['default', 'medium', 'large'];
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -37,6 +38,13 @@ const items = [
         value: 'primary | info | success | error'
     },
     { 
+        property: 'size', 
+        description: 'Set radio button size', 
+        default: '', 
+        type: 'string',
+        value: 'medium | large'
+    },
+    { 
         property: 'disabled',
         description: 'Make radio group disabled', 
         default: 'false',
@@ -65,12 +73,14 @@ import React, { useState } from 'react';
 import { RadioGroup, Switch, Select, Icon } from '@assenti/rui-components';
 const citiesUS = ['Washington, D.C.', 'New York City', 'Chicago', 'Boston', 'San Francisco', 'Los Angeles'];
 const colors = ['primary', 'info', 'success', 'error'];
+const sizes = ['default', 'medium', 'large'];
 
 function Example() {
     const [cityUS, setCityUS] = useState('');
     const [isDisabled, setIsDisabled] = useState(false);
     const [vertical, setVertical] = useState(true);
     const [color, setColor] = useState(colors[0]);
+    const [size, setSize] = useState(sizes[0]);
 
     return (
         <div>
@@ -82,6 +92,15 @@ function Example() {
                 color="primary"
                 value={color}
                 onChange={v => setColor(v)}/>
+            <br/>
+            <Select
+                items={sizes}
+                prefix={<Icon name="format-size"/>}
+                width={200}
+                label="Radio button size"
+                color="primary"
+                value={size}
+                onChange={v => setSize(v)}/>
             <br/>
             <Switch
                 check={vertical}
@@ -101,6 +120,7 @@ function Example() {
                 value={cityUS} 
                 vertical={vertical}
                 name="city"
+                size={size}
                 color={color}
                 disabled={isDisabled}
                 onChange={(value) => setCityUS(value)}
@@ -112,6 +132,7 @@ function Example() {
 const RadioPage = () => {
     const [cityUS, setCityUS] = useState('');
     const [color, setColor] = useState(colors[0]);
+    const [size, setSize] = useState(sizes[0]);
     const [isDisabled, setIsDisabled] = useState(false);
     const [vertical, setVertical] = useState(true);
 
@@ -127,6 +148,15 @@ const RadioPage = () => {
                     color="primary"
                     value={color}
                     onChange={v => setColor(v)}/>
+                <br/>
+                <Select
+                    items={sizes}
+                    prefix={<Icon name="format-size"/>}
+                    width={200}
+                    label="Radio button size"
+                    color="primary"
+                    value={size}
+                    onChange={v => setSize(v)}/>
                 <br/>
                 <Switch
                     check={vertical}
@@ -146,11 +176,16 @@ const RadioPage = () => {
                     value={cityUS} 
                     vertical={vertical}
                     name="city"
+                    size={size}
                     color={color}
                     disabled={isDisabled}
                     onChange={(value) => setCityUS(value)}
                     options={citiesUS}/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code" 
+                    iconSize={18} 
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter>

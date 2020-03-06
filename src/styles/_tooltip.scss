@@ -11,10 +11,199 @@
         }
     }
 
+    &.primary {
+        .rui-tooltip__text {
+            background-color: $primary;
+        }
+
+        &:not(.left):not(.right):not(.bottom) {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: $primary transparent transparent transparent;
+                }
+            }
+        }
+
+        &.right {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent $primary transparent transparent;
+                }
+            }
+        }
+    
+        &.bottom {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent transparent $primary transparent;
+                }
+            }
+        }
+    
+        &.left {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent transparent transparent $primary;
+                }
+            }
+        }
+    }
+
+    &.info {
+        .rui-tooltip__text {
+            background-color: $info;
+        }
+
+        &:not(.left):not(.right):not(.bottom) {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: $info transparent transparent transparent;
+                }
+            }
+        }
+
+        &.right {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent $info transparent transparent;
+                }
+            }
+        }
+    
+        &.bottom {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent transparent $info transparent;
+                }
+            }
+        }
+    
+        &.left {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent transparent transparent $info;
+                }
+            }
+        }
+    }
+
+    &.success {
+        .rui-tooltip__text {
+            background-color: $success;
+        }
+
+        &:not(.left):not(.right):not(.bottom) {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: $success transparent transparent transparent;
+                }
+            }
+        }
+
+        &.right {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent $success transparent transparent;
+                }
+            }
+        }
+    
+        &.bottom {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent transparent $success transparent;
+                }
+            }
+        }
+    
+        &.left {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent transparent transparent $success;
+                }
+            }
+        }
+    }
+
+    &.error {
+        .rui-tooltip__text {
+            background-color: $error;
+        }
+
+        &:not(.left):not(.right):not(.bottom) {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: $error transparent transparent transparent;
+                }
+            }
+        }
+
+        &.right {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent $error transparent transparent;
+                }
+            }
+        }
+    
+        &.bottom {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent transparent $error transparent;
+                }
+            }
+        }
+    
+        &.left {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent transparent transparent $error;
+                }
+            }
+        }
+    }
+
+    &:not(.primary):not(.info):not(.success):not(.error) {
+        .rui-tooltip__text {
+            background-color: rgba(black, .6);
+        }
+
+        &:not(.left):not(.right):not(.bottom) {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: rgba(black, .6) transparent transparent transparent;
+                }
+            }
+        }
+
+        &.right {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent rgba(black, .6) transparent transparent;
+                }
+            }
+        }
+    
+        &.bottom {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent transparent rgba(black, .6) transparent;
+                }
+            }
+        }
+    
+        &.left {
+            .rui-tooltip__text {
+                &::after {
+                    border-color: transparent transparent transparent rgba(black, .6);
+                }
+            }
+        }
+    }
+
     .rui-tooltip__text {
         visibility: hidden;
         white-space: nowrap;
-        background-color: rgba(black, .6);
         color: #fff;
         text-align: center;
         border-radius: $radius;
@@ -29,7 +218,6 @@
     &:not(.left):not(.right):not(.bottom) {
         .rui-tooltip__text {
             bottom: calc(100% + 5px);
-
             &::after {
                 content: " ";
                 position: absolute;
@@ -38,7 +226,6 @@
                 margin-left: -5px;
                 border-width: 5px;
                 border-style: solid;
-                border-color: rgba(black, .6) transparent transparent transparent;
             }
         }
     }
@@ -57,7 +244,6 @@
                 margin-top: -5px;
                 border-width: 5px;
                 border-style: solid;
-                border-color: transparent rgba(black, .6) transparent transparent;
             }
         }
     }
@@ -76,7 +262,6 @@
                 margin-left: -5px;
                 border-width: 5px;
                 border-style: solid;
-                border-color: transparent transparent rgba(black, .6) transparent;
             }
         }
     }
@@ -95,7 +280,6 @@
                 margin-top: -5px;
                 border-width: 5px;
                 border-style: solid;
-                border-color: transparent transparent transparent rgba(black, .6);
             }
         }
     }

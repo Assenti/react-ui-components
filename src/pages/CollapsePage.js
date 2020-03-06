@@ -1,5 +1,5 @@
 import React, { createRef } from 'react';
-import { Card, Collapse, Table, List, ListItem, Icon, Badge } from '../components'
+import { Card, Collapse, Table, List, ListItem, Icon, Badge, CopyToClipboard } from '../components'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -102,6 +102,13 @@ const items = [
         value: ''
     },
     { 
+        property: 'extra',
+        description: 'Set extra', 
+        default: '', 
+        type: 'any',
+        value: ''
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 
@@ -171,8 +178,9 @@ const CollapsePage = () => {
                 <Collapse 
                     icon="code" 
                     iconSize={18}
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
                     contentStyles={{ padding: 0 }}
-                    tooltip="Code">
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter> 

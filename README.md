@@ -44,11 +44,9 @@ import React from 'react';
 function App() {
   return (
     <div>
-      <div>
-        <Card outlined color="primary" title="Button">
-          <Button color="primary" name="Rocket" icon="rocket"/>
-        </Card>
-      </div>
+      <Card outlined color="primary" title="Button">
+        <Button color="primary" name="Rocket" icon="rocket"/>
+      </Card>
     </div>
   );
 }
@@ -66,7 +64,6 @@ export default App;
 - [ ] Alert
 - [ ] Notification
 - [ ] Snackbar
-- [ ] Breadcrumbs
 - [ ] Carousel
 - [ ] AutoComplete
 - [ ] Slider

@@ -1,5 +1,5 @@
 import React, { createRef, useState } from 'react';
-import { Card, List, ListItem, Table, Switch, Collapse, BackTopBtn, Select, Icon } from '../components';
+import { Card, List, ListItem, Table, Switch, Collapse, BackTopBtn, Select, Icon, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import manImage from '../img/man.png';
@@ -264,7 +264,11 @@ const CardPage = () => {
                         )}
                     </List>
                 </Card>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code" 
+                    iconSize={18}
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter>
@@ -273,7 +277,11 @@ const CardPage = () => {
             <br/>
             <Card outlined title="Card with image and hover">
                 {imageCards()}
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code"
+                    extra={<CopyToClipboard defaultText="Copy code" text={usageImage} className="mr-10"/>} 
+                    iconSize={18} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usageImage}
                     </SyntaxHighlighter>

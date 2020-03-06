@@ -90,8 +90,9 @@ const CopyToClipboardPage = () => {
                 <Collapse 
                     icon="code" 
                     iconSize={18}
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
                     contentStyles={{ padding: 0 }}
-                    tooltip="Code">
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter> 
@@ -107,5 +108,4 @@ const CopyToClipboardPage = () => {
         </div>
     )
 }
-
 export default CopyToClipboardPage;

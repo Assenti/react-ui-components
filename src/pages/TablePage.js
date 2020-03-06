@@ -1,16 +1,7 @@
 import React, { createRef, useState } from 'react';
-import { Table, Button, Tooltip, Card, BackTopBtn, Collapse, Select, Icon, Switch, ButtonGroup } from '../components';
+import { Table, Button, Tooltip, Card, BackTopBtn, Collapse, Select, Icon, Switch, ButtonGroup, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
-const items = [
-    { country: 'Kazakhstan', capital: 'Nur-Sultan', population: 1029556 }, 
-    { country: 'Russia', capital: 'Moscow', population: 12476000 }, 
-    { country: 'USA', capital: 'Washington, D.C.', population: 711571 }, 
-    { country: 'United Kingdom', capital: 'London', population: 8787892 }, 
-    { country: 'China', capital: 'Beijing', population: 21542000 },
-    { country: 'Germany', capital: 'Berlin', population: 3748000 }
-];
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const rows = [
@@ -177,73 +168,7 @@ const rows = [
     }
 ]
 
-const simpleUsage =
-`// Usage examples
-import React from 'react';
-import { Table } from '@assenti/rui-components';
-
-function Example() {
-    return (
-        <div>
-            <Table
-                bordered
-                stripped
-                noHover
-                tableTitle="Capitals population" 
-                headers={['Country', 'Capital', 'Capital population']}
-                items={items}
-                index
-                searchable
-                searchKey="capital"
-                indexSign="№"
-                footer={<div>I am a footer</div>}
-                itemTitles={['country', 'capital', 'population']}/> 
-        </div>
-    )
-}`
-
-const controlsUsage =
-`// Usage examples
-import React from 'react';
-import { Table, Button, Tooltip } from '@assenti/rui-components';
-
-function Example() {
-    return (
-        <div>
-            <Table
-                bordered
-                checkbox 
-                onSelect={(selected) => console.log(selected)}
-                selectKey="country"
-                headers={['Country', 'Capital', 'Capital population']}
-                items={items}
-                itemTitles={['country', 'capital', 'population']}
-                controls={(item) =>
-                    <div className="row justify-center align-center">
-                        <Tooltip tooltip="Edit">
-                            <Button
-                                small
-                                className="mr-10"
-                                color="light"
-                                icon="edit"
-                                onClick={() => console.log(item, 'edited')}>
-                            </Button>
-                        </Tooltip>
-                        <Tooltip tooltip="Delete">
-                            <Button
-                                small
-                                color="light"
-                                icon="delete"
-                                onClick={() => console.log(item, 'deleted')}>
-                            </Button> 
-                        </Tooltip>
-                    </div>
-                }/>
-        </div>
-    )
-}`
-
-const complexUsage =
+const usage =
 `// Usage examples
 import React, { useState } from 'react';
 import { Table, Switch, Icon, Select, ButtonGroup } from '@assenti/rui-components';
@@ -268,79 +193,167 @@ function Example() {
     const [footer, setFooter] = useState(true);
     const [bordered, setBordered] = useState(false);
     const [indexed, setIndexed] = useState(true);
+    const [searchable, setSearchable] = useState(false);
+    const [sortable, setSortable] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const [controls, setControls] = useState(false);
+    const [title, setTitle] = useState(false);
+    const [stripped, setStripped] = useState(true);
+    const [hover, setHover] = useState(true);
+    const [pagination, setPagination] = useState(true);
     const [textAlign, setTextAlign] = useState(textAligns[0]);
 
     return (
         <div>
-            <div className="py-10">
+            <div className="row align-bottom pt-10">
                 <Select
-                        items={colors}
-                        prefix={<Icon name="brush"/>}
-                        width={200}
-                        label="Table color theme"
-                        color="primary"
-                        value={color}
-                        onChange={v => setColor(v)}/>
-                </div>
-                <div className="row column">
-                    <Switch 
-                        color="primary" 
-                        check={grid}
-                        className="my-10"
-                        rightLabel="Grid"
-                        onChange={() => setGrid(!grid)}/>
-                    <Switch 
-                        color="primary" 
-                        check={checkbox}
-                        className="my-10"
-                        rightLabel="Checkbox"
-                        onChange={() => setCheckbox(!checkbox)}/>
-                    <Switch 
-                        color="primary" 
-                        check={footer}
-                        className="my-10"
-                        rightLabel="Footer"
-                        onChange={() => setFooter(!footer)}/>
-                    <Switch 
-                        color="primary" 
-                        check={bordered}
-                        className="my-10"
-                        rightLabel="Bordered"
-                        onChange={() => setBordered(!bordered)}/>
-                    <Switch 
-                        color="primary" 
-                        check={indexed}
-                        className="my-10"
-                        rightLabel="Set index"
-                        onChange={() => setIndexed(!indexed)}/>
-                    <ButtonGroup 
-                        default={0} 
-                        icon
-                        onChange={(item, index) => setTextAlign(textAligns[index])}
-                        className="my-10"
-                        options={icons} 
-                        color="secondary" 
-                        outlined/>
-                </div>
-                <Table
-                    noHover
-                    pagination
-                    paginationPosition="right"
-                    itemsTotal={goods.length}
-                    stripped
-                    grid={grid}
-                    index={indexed}
-                    sortable
-                    alignment={textAlign}
-                    checkbox={checkbox}
-                    selectKey="name"
-                    onSelect={(selected) => console.log(selected)}
-                    color={color}
-                    bordered={bordered}
-                    headers={['Name', 'Price', 'Count']}
-                    items={goods}
-                    footer={footer ? <div>Total count: <strong>{goods.length}</strong></div> : null}
-                    itemTitles={['name', 'price', 'count']}/>
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    label="Table color theme"
+                    color="primary"
+                    className="my-0"
+                    value={color}
+                    onChange={v => setColor(v)}/>
+                <ButtonGroup 
+                    default={0} 
+                    icon
+                    onChange={(item, index) => setTextAlign(textAligns[index])}
+                    className="ml-10"
+                    options={icons} 
+                    color="secondary" 
+                    outlined/>
+            </div>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={grid}
+                className="my-10"
+                rightLabel="Grid"
+                onChange={() => setGrid(!grid)}/>
+            <Switch 
+                color="primary" 
+                check={checkbox}
+                className="my-10"
+                rightLabel="Checkbox"
+                onChange={() => setCheckbox(!checkbox)}/>
+            <Switch 
+                color="primary" 
+                check={stripped}
+                className="my-10"
+                rightLabel="Stripped"
+                onChange={() => setStripped(!stripped)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={title}
+                className="my-10"
+                rightLabel="Table title"
+                onChange={() => setTitle(!title)}/>
+            <Switch 
+                color="primary" 
+                check={footer}
+                className="my-10"
+                rightLabel="Footer"
+                onChange={() => setFooter(!footer)}/>
+            <Switch 
+                color="primary" 
+                check={bordered}
+                className="my-10"
+                rightLabel="Bordered"
+                onChange={() => setBordered(!bordered)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={indexed}
+                className="my-10"
+                rightLabel="Set index"
+                onChange={() => setIndexed(!indexed)}/>
+            <Switch 
+                color="primary" 
+                check={searchable}
+                className="my-10"
+                rightLabel="Searchable"
+                onChange={() => setSearchable(!searchable)}/>
+            <Switch 
+                color="primary" 
+                check={controls}
+                className="my-10"
+                rightLabel="Controls"
+                onChange={() => setControls(!controls)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={hover}
+                className="my-10"
+                rightLabel="No Hover"
+                onChange={() => setHover(!hover)}/>
+            <Switch 
+                color="primary" 
+                check={sortable}
+                className="my-10"
+                rightLabel="Sortable"
+                onChange={() => setSortable(!sortable)}/>
+            <Switch 
+                color="primary" 
+                check={pagination}
+                className="my-10"
+                rightLabel="Pagination"
+                onChange={() => setPagination(!pagination)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={loading}
+                className="my-10"
+                rightLabel="Loading"
+                onChange={() => setLoading(!loading)}/>
+            <br/>
+            <Table
+                noHover={hover}
+                pagination={pagination}
+                paginationPosition="right"
+                itemsTotal={goods.length}
+                stripped={stripped}
+                grid={grid}
+                index={indexed}
+                sortable={sortable}
+                tableTitle={title ? 'Table title' : ''}
+                alignment={textAlign}
+                searchable={searchable}
+                searchKey="name"
+                selectKey="name"
+                checkbox={checkbox}
+                onSelect={(selected) => console.log(selected)}
+                color={color}
+                loading={loading}
+                bordered={bordered}
+                headers={['Name', 'Price', 'Count']}
+                items={goods}
+                footer={footer ? <div>Total count: <strong>{goods.length}</strong></div> : null}
+                itemTitles={['name', 'price', 'count']}
+                controls={(item) =>
+                    controls ? 
+                    <div className="row justify-center align-center">
+                        <Tooltip tooltip="Edit">
+                            <Button
+                                small
+                                color="light"
+                                className="mr-10"
+                                icon="edit"
+                                onClick={() => console.log(item, 'edited')}>
+                            </Button>
+                        </Tooltip>
+                        <Tooltip tooltip="Delete">
+                            <Button
+                                small
+                                color="light"
+                                icon="delete"
+                                onClick={() => console.log(item, 'deleted')}>
+                            </Button> 
+                        </Tooltip>
+                    </div> : null
+                }
+                />
         </div>
     )
 }`
@@ -367,6 +380,14 @@ const TablePage = () => {
     const [footer, setFooter] = useState(true);
     const [bordered, setBordered] = useState(false);
     const [indexed, setIndexed] = useState(true);
+    const [searchable, setSearchable] = useState(false);
+    const [sortable, setSortable] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const [controls, setControls] = useState(false);
+    const [title, setTitle] = useState(false);
+    const [stripped, setStripped] = useState(true);
+    const [hover, setHover] = useState(true);
+    const [pagination, setPagination] = useState(true);
     const [textAlign, setTextAlign] = useState(textAligns[0]);
 
     const goToApi = () => {
@@ -379,37 +400,135 @@ const TablePage = () => {
                 <div className="rui-page-title">Table Component</div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined title="Table with order index, no hover, stripped and footer">
+            <Card outlined title="Table usage">
+                <div className="row align-bottom pt-10">
+                    <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        label="Table color theme"
+                        color="primary"
+                        className="my-0"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <ButtonGroup 
+                        default={0} 
+                        icon
+                        onChange={(item, index) => setTextAlign(textAligns[index])}
+                        className="ml-10"
+                        options={icons} 
+                        color="secondary" 
+                        outlined/>
+                </div>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={grid}
+                    className="my-10"
+                    rightLabel="Grid"
+                    onChange={() => setGrid(!grid)}/>
+                <Switch 
+                    color="primary" 
+                    check={checkbox}
+                    className="my-10"
+                    rightLabel="Checkbox"
+                    onChange={() => setCheckbox(!checkbox)}/>
+                <Switch 
+                    color="primary" 
+                    check={stripped}
+                    className="my-10"
+                    rightLabel="Stripped"
+                    onChange={() => setStripped(!stripped)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={title}
+                    className="my-10"
+                    rightLabel="Table title"
+                    onChange={() => setTitle(!title)}/>
+                <Switch 
+                    color="primary" 
+                    check={footer}
+                    className="my-10"
+                    rightLabel="Footer"
+                    onChange={() => setFooter(!footer)}/>
+                <Switch 
+                    color="primary" 
+                    check={bordered}
+                    className="my-10"
+                    rightLabel="Bordered"
+                    onChange={() => setBordered(!bordered)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={indexed}
+                    className="my-10"
+                    rightLabel="Set index"
+                    onChange={() => setIndexed(!indexed)}/>
+                <Switch 
+                    color="primary" 
+                    check={searchable}
+                    className="my-10"
+                    rightLabel="Searchable"
+                    onChange={() => setSearchable(!searchable)}/>
+                <Switch 
+                    color="primary" 
+                    check={controls}
+                    className="my-10"
+                    rightLabel="Controls"
+                    onChange={() => setControls(!controls)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={hover}
+                    className="my-10"
+                    rightLabel="No Hover"
+                    onChange={() => setHover(!hover)}/>
+                <Switch 
+                    color="primary" 
+                    check={sortable}
+                    className="my-10"
+                    rightLabel="Sortable"
+                    onChange={() => setSortable(!sortable)}/>
+                <Switch 
+                    color="primary" 
+                    check={pagination}
+                    className="my-10"
+                    rightLabel="Pagination"
+                    onChange={() => setPagination(!pagination)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={loading}
+                    className="my-10"
+                    rightLabel="Loading"
+                    onChange={() => setLoading(!loading)}/>
+                <br/>
                 <Table
-                    bordered
-                    stripped
-                    noHover
-                    tableTitle="Capitals population" 
-                    headers={['Country', 'Capital', 'Capital population']}
-                    items={items}
-                    index
-                    searchable
-                    searchKey="capital"
-                    indexSign="№"
-                    footer={<div>I am a footer</div>}
-                    itemTitles={['country', 'capital', 'population']}/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {simpleUsage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Table with controls">
-                <Table
-                    bordered
-                    index 
+                    noHover={hover}
+                    pagination={pagination}
+                    paginationPosition="right"
+                    itemsTotal={goods.length}
+                    stripped={stripped}
+                    grid={grid}
+                    index={indexed}
+                    sortable={sortable}
+                    tableTitle={title ? 'Table title' : ''}
+                    alignment={textAlign}
+                    searchable={searchable}
+                    searchKey="name"
+                    selectKey="name"
+                    checkbox={checkbox}
                     onSelect={(selected) => console.log(selected)}
-                    selectKey="country"
-                    headers={['Country', 'Capital', 'Capital population']}
-                    items={items}
-                    itemTitles={['country', 'capital', 'population']}
+                    color={color}
+                    loading={loading}
+                    bordered={bordered}
+                    headers={['Name', 'Price', 'Count']}
+                    items={goods}
+                    footer={footer ? <div>Total count: <strong>{goods.length}</strong></div> : null}
+                    itemTitles={['name', 'price', 'count']}
                     controls={(item) =>
+                        controls ? 
                         <div className="row justify-center align-center">
                             <Tooltip tooltip="Edit">
                                 <Button
@@ -428,88 +547,16 @@ const TablePage = () => {
                                     onClick={() => console.log(item, 'deleted')}>
                                 </Button> 
                             </Tooltip>
-                        </div>
-                    }/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                        </div> : null
+                    }
+                    />
+                <Collapse 
+                    icon="code" 
+                    iconSize={18} 
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {controlsUsage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Sortable table with pagination, checkbox and grid prop">
-                <div className="py-10">
-                    <Select
-                        items={colors}
-                        prefix={<Icon name="brush"/>}
-                        width={200}
-                        label="Table color theme"
-                        color="primary"
-                        value={color}
-                        onChange={v => setColor(v)}/>
-                </div>
-                <div className="row column">
-                    <Switch 
-                        color="primary" 
-                        check={grid}
-                        className="my-10"
-                        rightLabel="Grid"
-                        onChange={() => setGrid(!grid)}/>
-                    <Switch 
-                        color="primary" 
-                        check={checkbox}
-                        className="my-10"
-                        rightLabel="Checkbox"
-                        onChange={() => setCheckbox(!checkbox)}/>
-                    <Switch 
-                        color="primary" 
-                        check={footer}
-                        className="my-10"
-                        rightLabel="Footer"
-                        onChange={() => setFooter(!footer)}/>
-                    <Switch 
-                        color="primary" 
-                        check={bordered}
-                        className="my-10"
-                        rightLabel="Bordered"
-                        onChange={() => setBordered(!bordered)}/>
-                    <Switch 
-                        color="primary" 
-                        check={indexed}
-                        className="my-10"
-                        rightLabel="Set index"
-                        onChange={() => setIndexed(!indexed)}/>
-                    <ButtonGroup 
-                        default={0} 
-                        icon
-                        onChange={(item, index) => setTextAlign(textAligns[index])}
-                        className="my-10"
-                        options={icons} 
-                        color="secondary" 
-                        outlined/>
-                </div>
-                <Table
-                    noHover
-                    pagination
-                    paginationPosition="right"
-                    itemsTotal={goods.length}
-                    stripped
-                    grid={grid}
-                    index={indexed}
-                    sortable
-                    alignment={textAlign}
-                    checkbox={checkbox}
-                    selectKey="name"
-                    onSelect={(selected) => console.log(selected)}
-                    color={color}
-                    bordered={bordered}
-                    headers={['Name', 'Price', 'Count']}
-                    items={goods}
-                    footer={footer ? <div>Total count: <strong>{goods.length}</strong></div> : null}
-                    itemTitles={['name', 'price', 'count']}/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {complexUsage}
+                        {usage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
@@ -524,5 +571,4 @@ const TablePage = () => {
         </div>
     )
 }
-
 export default TablePage;

@@ -2,6 +2,12 @@
     width: 100%;
     margin: 5px 0;
 
+    .rui-input-uploader__label {
+        font-size: .85rem;
+        color: $dark;
+        padding: 3px 0;
+    }
+
     .rui-input-uploader__container {
         width: 100%;
         position: relative;

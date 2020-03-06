@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dialog, Button, Card, Collapse, Table, Switch } from '../components';
+import { Dialog, Button, Card, Collapse, Table, Switch, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -206,7 +206,11 @@ const DialogPage = () => {
                     visible={dialog} 
                     title="Delete"
                     description="Are you sure?"/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code" 
+                    iconSize={18} 
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter>

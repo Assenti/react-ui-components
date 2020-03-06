@@ -1,0 +1,289 @@
+.rui-breadcrumbs {
+    display: flex;
+    align-items: center;
+
+    &.center {
+        justify-content: center;
+    }
+
+    &.right {
+        justify-content: flex-end;
+    }
+
+    &.primary {
+        .rui-breadcrumbs__item {
+            color: $primary;
+            span,
+            a {
+                color: $primary;
+                &:hover {
+                    color: lighten($primary, 5%);
+                    .rui-icon {
+                        svg {
+                            path {
+                                fill: lighten($primary, 5%);
+                            }
+                        }
+                    }
+                }
+            }
+
+            a {
+                .rui-icon {
+                    svg {
+                        path {
+                            fill: $primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.info {
+        .rui-breadcrumbs__item {
+            color: $info;
+            span,
+            a {
+                color: $info;
+
+                &:hover {
+                    color: lighten($info, 5%);
+
+                    .rui-icon {
+                        svg {
+                            path {
+                                fill: lighten($info, 5%);
+                            }
+                        }
+                    }
+                }
+            }
+
+            a {
+                .rui-icon {
+                    svg {
+                        path {
+                            fill: $info;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.success {
+        .rui-breadcrumbs__item {
+            color: $success;
+            span,
+            a {
+                color: $success;
+
+                &:hover {
+                    color: lighten($success, 5%);
+
+                    .rui-icon {
+                        svg {
+                            path {
+                                fill: lighten($success, 5%);
+                            }
+                        }
+                    }
+                }
+            }
+
+            a {
+                .rui-icon {
+                    svg {
+                        path {
+                            fill: $success;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.error {
+        .rui-breadcrumbs__item {
+            color: $error;
+            span,
+            a {
+                color: $error;
+
+                &:hover {
+                    color: lighten($error, 5%);
+
+                    .rui-icon {
+                        svg {
+                            path {
+                                fill: lighten($error, 5%);
+                            }
+                        }
+                    }
+                }
+            }
+
+            a {
+                .rui-icon {
+                    svg {
+                        path {
+                            fill: $success;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.dark {
+        .rui-breadcrumbs__item {
+            color: $dark;
+            a, span {
+                color: $dark;
+
+                &:hover {
+                    color: lighten($dark, 5%);
+
+                    .rui-icon {
+                        svg {
+                            path {
+                                fill: lighten($dark, 5%);
+                            }
+                        }
+                    }
+                }
+            }
+
+            a {
+                .rui-icon {
+                    svg {
+                        path {
+                            fill: $dark;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.secondary {
+        .rui-breadcrumbs__item {
+            color: lightgray;
+            span,
+            a {
+                color: lightgray;
+
+                &:hover {
+                    color: lighten(lightgray, 5%);
+
+                    .rui-icon {
+                        svg {
+                            path {
+                                fill: lighten(lightgray, 5%);
+                            }
+                        }
+                    }
+                }
+            }
+
+            a {
+                .rui-icon {
+                    svg {
+                        path {
+                            fill: lightgray;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &:not(.medium):not(.large) {
+        .rui-breadcrumbs__item {
+            a, span {
+                font-size: $defaultFont;
+            }
+
+            a {
+                .rui-icon {
+                    width: 15px !important;
+                    height: 15px !important;
+                    margin-right: 2px;
+                }
+            }
+        }
+    }
+
+    &.medium {
+        .rui-breadcrumbs__item {
+            a, span {
+                font-size: $mediumFont;
+            }
+
+            a {
+                .rui-icon {
+                    width: 17px !important;
+                    height: 17px !important;
+                    margin-right: 2px;
+                }
+            }
+        }
+    }
+
+    &.large {
+        .rui-breadcrumbs__item {
+            a, span {
+                font-size: $largeFont;
+            }
+
+            a {
+                .rui-icon {
+                    width: 20px !important;
+                    height: 20px !important;
+                    margin-right: 2px;
+                }
+            }
+        }
+    }
+
+    .rui-breadcrumbs__item {
+        padding: 5px 0;
+        display: inline-flex;
+
+        span {
+            padding: 0 8px;
+        }
+
+        &:last-child {
+            span {
+                display: none;
+            }
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+        }
+
+        &.active {
+            a {
+                font-weight: bold;
+            }
+        }
+
+        &:not(.active) {
+            a {
+                color: gray;
+
+                .rui-icon {
+                    svg {
+                        path {
+                            fill: gray;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

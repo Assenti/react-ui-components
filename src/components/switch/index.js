@@ -6,7 +6,8 @@ const Switch = (props) => {
         let result = '';
         let className = {
             btn: 'rui-switch-container',
-            vertical: props.position === 'vertical' ? 'vertical' : '',
+            size: props.size && props.size !== 'default' ? props.size : '',
+            vertical: props.vertical ? 'vertical' : '',
             className: props.className ? props.className : ''
         }
         
@@ -21,6 +22,7 @@ const Switch = (props) => {
         let className = {
             btn: 'rui-switch',
             active: props.check ? 'active' : 'disactive',
+            double: props.leftLabel || props.leftIcon ? 'double' : '',
             disabled: props.disabled ? 'disabled' : '',
             color: props.color ? props.color : ''
         }
@@ -44,5 +46,4 @@ const Switch = (props) => {
         </div>
     )
 }
-
 export default Switch;

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Drawer, List, ListItem, Button, Badge, Table, Card, Header, Collapse, Icon, Select, BackTopBtn } from '../components';
+import { Drawer, List, ListItem, Button, Badge, Table, Card, Header, Collapse, Icon, Select, BackTopBtn, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -263,8 +263,9 @@ const DrawerPage = () => {
                     icon="code"
                     className="mx-10" 
                     iconSize={18}
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
                     contentStyles={{ padding: 0 }}
-                    tooltip="Code">
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter> 
@@ -311,8 +312,9 @@ const DrawerPage = () => {
                 <Collapse 
                     icon="code"
                     iconSize={18}
+                    extra={<CopyToClipboard defaultText="Copy code" text={usagePositions} className="mr-10"/>} 
                     contentStyles={{ padding: 0 }}
-                    tooltip="Code">
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usagePositions}
                     </SyntaxHighlighter> 

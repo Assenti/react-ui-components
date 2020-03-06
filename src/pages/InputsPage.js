@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { InputField, Icon, Card, Button, Table, Collapse, BackTopBtn, TextareaField, Select, Switch } from '../components';
+import { InputField, Icon, Card, Button, Table, Collapse, BackTopBtn, TextareaField, Select, Switch, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const inputTypes = 
+const usage = 
 `// Usage examples
 import React, { useState } from 'react';
 import { InputField, Icon, Select, Switch, Button } from '@assenti/react-ui-components';
@@ -749,9 +749,13 @@ const InputsPage = () => {
                             onClick={() => console.log(search)}/>}
                     onEnter={() => console.log(search)}
                     onChange={e => setSearch(e.target.value)}/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code" 
+                    iconSize={18}
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {inputTypes}
+                        {usage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
@@ -776,7 +780,11 @@ const InputsPage = () => {
                     rows={4}
                     width={300}
                     onChange={e => setText(e.target.value)}/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code" 
+                    iconSize={18}
+                    extra={<CopyToClipboard defaultText="Copy code" text={textareaUsage} className="mr-10"/>} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {textareaUsage}
                     </SyntaxHighlighter>

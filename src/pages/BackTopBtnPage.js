@@ -1,5 +1,5 @@
 import React, { createRef } from 'react';
-import { BackTopBtn, Card, Table, Collapse, Icon, List, ListItem } from '../components';
+import { BackTopBtn, Card, Table, Collapse, Icon, List, ListItem, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -63,7 +63,7 @@ const items = [
     }
 ]
 
-const simpleList =
+const usage =
 `// Usage examples
 import React, { useRef } from 'react';
 import { BackTopBtn, List, ListItem, Icon } from '@assenti/rui-components';
@@ -150,9 +150,13 @@ const BackTopBtnPage = () => {
                             subTitle={item.cities[0]}/>
                     )}
                 </List>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code" 
+                    iconSize={18}
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>}  
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {simpleList}
+                        {usage}
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>

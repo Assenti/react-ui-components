@@ -24,20 +24,23 @@ const Collapse = (props) => {
         <div className={collapseClass()}>
             <div className="rui-collapse-trigger">
                 {props.title ? <span>{props.title}</span> : ''}
-                {props.tooltip ?
-                    <Tooltip tooltip={props.tooltip}>
+                <div className="row align-center">
+                    {props.extra}
+                    {props.tooltip ?
+                        <Tooltip tooltip={props.tooltip}>
+                            <Icon name={props.icon ? props.icon : 'chevron-down'}
+                                size={props.iconSize ? props.iconSize : ''}
+                                color={props.iconColor ? props.iconColor : 'gray'}
+                                className={visible ? 'reverse' : ''} 
+                                onClick={() => setVisible(!visible)}/>
+                        </Tooltip> : 
                         <Icon name={props.icon ? props.icon : 'chevron-down'}
                             size={props.iconSize ? props.iconSize : ''}
                             color={props.iconColor ? props.iconColor : 'gray'}
                             className={visible ? 'reverse' : ''} 
                             onClick={() => setVisible(!visible)}/>
-                    </Tooltip> : 
-                    <Icon name={props.icon ? props.icon : 'chevron-down'}
-                        size={props.iconSize ? props.iconSize : ''}
-                        color={props.iconColor ? props.iconColor : 'gray'}
-                        className={visible ? 'reverse' : ''} 
-                        onClick={() => setVisible(!visible)}/>
-                }
+                    }
+                </div>
             </div>
             <div style={{ 
                     height: visible ? 'auto' : 0,
@@ -49,5 +52,4 @@ const Collapse = (props) => {
         </div>
     )
 }
-
 export default Collapse;

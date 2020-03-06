@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button, Card, Collapse, Table, Icon, InputField, Checkbox } from '../components';
+import { Modal, Button, Card, Collapse, Table, Icon, InputField, Checkbox, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -330,7 +330,11 @@ const ModalPage = () => {
                         </div>
                     </div>
                 </Modal>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code" 
+                    iconSize={18}
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter>

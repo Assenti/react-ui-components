@@ -1,5 +1,5 @@
 import React, { useState, createRef } from 'react';
-import { Dropdown, Button, Switch, Card, Table, List, ListItem, Collapse, Header, Avatar, Icon } from '../components';
+import { Dropdown, Button, Switch, Card, Table, List, ListItem, Collapse, Header, Avatar, Icon, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import manImage from '../img/man_.png';
@@ -211,7 +211,11 @@ const DropdownPage = () => {
                             }
                             trigger={<Button dark={dark} light={!dark} icon="account"/>}/>
                     }/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code" 
+                    iconSize={18}
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tabs, Card, Switch, Select, Icon, Table, Collapse } from '../components';
+import { Tabs, Card, Switch, Select, Icon, Table, Collapse, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -295,7 +295,11 @@ const TabsPage = () => {
                     activeHighlightFill={fill}
                     onChange={(activeKey) => console.log('activeKey: ' + activeKey)} 
                     tabItems={[TabItemOne, TabItemTwo, TabItemThree]}/>
-                <Collapse icon="code" iconSize={18} tooltip="Code">
+                <Collapse 
+                    icon="code" 
+                    iconSize={18} 
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>}
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter>

@@ -52,6 +52,7 @@ export { default as Tabs } from './tabs';
 export { default as Rating } from './rating';
 export { default as FloatingBtn } from './floatingBtn';
 export { default as Avatar } from './avatar';
+export { default as Breadcrumbs } from './breadcrumbs';
 export { 
     convertToNum, 
     compare, 

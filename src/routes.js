@@ -34,6 +34,7 @@ const TabsPage = lazy(() => import('./pages/TabsPage'));
 const RatingPage = lazy(() => import('./pages/RatingPage'));
 const FloatingBtnPage = lazy(() => import('./pages/FloatingBtnPage'));
 const AvatarPage = lazy(() => import('./pages/AvatarPage'));
+const BreadcrumbsPage = lazy(() => import('./pages/BreadcrumbsPage'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
@@ -70,5 +71,6 @@ export const routes = [
     { path: '/tabs', name: 'Tabs', Component: TabsPage },
     { path: '/rating', name: 'Rating', Component: RatingPage },
     { path: '/floatingbtn', name: 'FloatingBtn', Component: FloatingBtnPage },
-    { path: '/avatar', name: 'Avatar', Component: AvatarPage }
+    { path: '/avatar', name: 'Avatar', Component: AvatarPage },
+    { path: '/breadcrumbs', name: 'Breadcrumbs', Component: BreadcrumbsPage }
 ]

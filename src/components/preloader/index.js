@@ -8,15 +8,14 @@ const Preloader = (props) => {
                 {
                     props.preloader ? props.preloader :
                     <div className="lds-ellipsis">
-                        <div style={{ backgroundColor: props.color ? props.color : '#42a5f5' }}></div>
-                        <div style={{ backgroundColor: props.color ? props.color : '#42a5f5' }}></div>
-                        <div style={{ backgroundColor: props.color ? props.color : '#42a5f5' }}></div>
-                        <div style={{ backgroundColor: props.color ? props.color : '#42a5f5' }}></div>
+                        <div style={{ backgroundColor: props.color ? props.color : '#1678c2' }}></div>
+                        <div style={{ backgroundColor: props.color ? props.color : '#1678c2' }}></div>
+                        <div style={{ backgroundColor: props.color ? props.color : '#1678c2' }}></div>
+                        <div style={{ backgroundColor: props.color ? props.color : '#1678c2' }}></div>
                     </div>
                 } 
             </div> : ''}
         </React.Fragment>
     )
 }
-
 export default Preloader;

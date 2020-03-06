@@ -147,6 +147,14 @@
             background-color: $primary;
             color: #fff;
         }
+
+        .rui-table__placeholder {        
+            &.loading {
+                path {
+                    fill: $primary;
+                }
+            }
+        }
     }
 
     &.info {
@@ -171,6 +179,14 @@
         td.indexed {
             background-color: $info;
             color: #fff;
+        }
+
+        .rui-table__placeholder {        
+            &.loading {
+                path {
+                    fill: $info;
+                }
+            }
         }
     }
 
@@ -197,6 +213,14 @@
             background-color: $success;
             color: #fff;
         }
+
+        .rui-table__placeholder {        
+            &.loading {
+                path {
+                    fill: $success;
+                }
+            }
+        }
     }
 
     &.error {
@@ -221,6 +245,14 @@
         td.indexed {
             background-color: $error;
             color: #fff;
+        }
+
+        .rui-table__placeholder {        
+            &.loading {
+                path {
+                    fill: $error;
+                }
+            }
         }
     }
 
@@ -247,6 +279,14 @@
             background-color: $dark;
             color: #fff;
         }
+
+        .rui-table__placeholder {        
+            &.loading {
+                path {
+                    fill: $dark;
+                }
+            }
+        }
     }
 }
 
@@ -264,7 +304,7 @@
 
     thead, tr {
         border-top-left-radius: $radius;
-        border-top-right-radius: $radius; 
+        border-top-right-radius: $radius;
         
         .icon {
             cursor: pointer;
@@ -273,6 +313,12 @@
         .icon:active {
             transform: scale(.97);
         }
+    }
+
+    th {
+        position: sticky;
+        top: 0;
+        z-index: 2;
     }
 
     th:first-child {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { InputMask, Card, Table, Collapse, Icon } from '../components';
+import { InputMask, Card, Table, Collapse, Icon, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { phoneMask, creditMask, creditIssueMask, iinMask } from '../components/utils';
@@ -204,8 +204,9 @@ const InputMaskPage = () => {
                 <Collapse 
                     icon="code" 
                     iconSize={18}
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
                     contentStyles={{ padding: 0 }}
-                    tooltip="Code">
+                    tooltip="Show/Hide Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
                         {usage}
                     </SyntaxHighlighter> 
@@ -221,5 +222,4 @@ const InputMaskPage = () => {
         </div>
     )
 }
-
 export default InputMaskPage;
