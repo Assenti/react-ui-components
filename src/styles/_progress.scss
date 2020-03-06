@@ -1,0 +1,288 @@
+.rui-progress__container {
+    display: inline-flex;
+    align-items: center;
+
+    &.circle {
+        position: relative;
+    }
+
+    .rui-progress__state {
+        margin-left: 5px;
+        width: 32px;
+        transition: all .3s ease-in-out;
+
+        &.circle {
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            top: calc(50% - 15px);
+            left: calc(50% - 25px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 0;
+            transform: rotate(0deg);
+        }
+    }
+
+    .rui-icon {
+        animation: rui-appear .3s ease-in;
+        transition: all .3s ease-in-out;
+    }
+
+    .rui-icon.circle {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 0;
+        transform: rotate(0deg);
+
+        svg {
+            stroke: transparent !important;
+        }
+    }
+
+    &.active:not(.disabled) {
+        .rui-progress {
+            .rui-progress__complete {
+                animation: rui-progress-active 1.5s ease-in-out infinite;
+            }
+        }
+
+        svg .circle {
+            animation: rui-progress-active 1.5s ease-in-out infinite;
+        }
+    }
+
+    .rui-progress {
+        background-color: $lightgray;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: inset 0 0 2px rgba($dark, .2);
+        
+        .rui-progress__complete {
+            height: 100%;
+            transition: all .3s ease-in-out;
+        }
+    }
+
+    &:not(.medium):not(.large) {
+        .rui-progress {
+            height: 8px;
+        }
+
+        .rui-progress__state {
+            font-size: $defaultFont;
+        }
+
+        .rui-progress__state.circle {
+            font-size: 1.1rem;
+
+            small {
+                font-size: .7rem;
+            }
+        }
+
+        .rui-icon.circle {
+            width: 28px !important;
+            height: 28px !important;
+            top: calc(50% - 14px);
+            left: calc(50% - 14px);
+    
+            svg {
+                width: 28px !important;
+                height: 28px !important;
+            }
+        }
+    }
+
+    &.medium {
+        .rui-progress {
+            height: 12px;
+        }
+
+        .rui-progress__state {
+            font-size: $mediumFont;
+        }
+
+        .rui-progress__state.circle {
+            font-size: 1.4rem;
+
+            small {
+                font-size: .9rem;
+            }
+        }
+
+        .rui-icon.circle {
+            width: 34px !important;
+            height: 34px !important;
+            top: calc(50% - 17px);
+            left: calc(50% - 17px);
+    
+            svg {
+                width: 34px !important;
+                height: 34px !important;
+            }
+        }
+    }
+
+    &.large {
+        .rui-progress {
+            height: 15px;
+        }
+
+        .rui-progress__state {
+            font-size: $largeFont;
+        }
+
+        .rui-progress__state.circle {
+            font-size: 1.8rem;
+
+            small {
+                font-size: 1rem;
+            }
+        }
+
+        .rui-icon.circle {
+            width: 42px !important;
+            height: 42px !important;
+            top: calc(50% - 21px);
+            left: calc(50% - 21px);
+    
+            svg {
+                width: 42px !important;
+                height: 42px !important;
+            }
+        }
+    }
+
+    &.primary:not(.disabled) {
+        .rui-progress__state {
+            color: $primary;
+        }
+
+        .rui-progress {
+            .rui-progress__complete {
+                background-color: $primary;
+            }
+        }
+
+        .circle {
+            stroke: $primary;
+        }
+    }
+
+    &.info:not(.disabled) {
+        .rui-progress__state {
+            color: $info;
+        }
+
+        .rui-progress {
+            .rui-progress__complete {
+                background-color: $info;
+            }
+        }
+
+        .circle {
+            stroke: $info;
+        }
+    }
+
+    &.success:not(.disabled) {
+        .rui-progress__state {
+            color: $success;
+        }
+
+        .rui-progress {
+            .rui-progress__complete {
+                background-color: $success;
+            }
+        }
+
+        .circle {
+            stroke: $success;
+        }
+    }
+
+    &.error:not(.disabled) {
+        .rui-progress__state {
+            color: $error;
+        }
+
+        .rui-progress {
+            .rui-progress__complete {
+                background-color: $error;
+            }
+        }
+
+        .circle {
+            stroke: $error;
+        }
+    }
+
+    &.dark:not(.disabled) {
+        .rui-progress__state {
+            color: $dark;
+        }
+
+        .rui-progress {
+            .rui-progress__complete {
+                background-color: $dark;
+            }
+        }
+
+        .circle {
+            stroke: $dark;
+        }
+    }
+
+    &.disabled {
+        .rui-progress__state {
+            color: lightgray;
+        }
+
+        .rui-progress {
+            .rui-progress__complete {
+                background-color: lightgray;
+            }
+        }
+
+        .circle {
+            stroke: lightgray;
+        }
+    }
+
+    .circle {
+        transition: all 0.3s ease-in-out;
+        transform-origin: 50% 50%;
+        fill: transparent;
+    }
+
+    .circle-remain {
+        transition: all 0.3s ease-in-out;
+        transform-origin: 50% 50%;
+        stroke: $lightgray;
+        fill: transparent;
+    }
+}
+
+@keyframes rui-appear {
+    0% { opacity: .7; transform: scale(.8);}
+    100% { opacity: 1;transform: scale(1);}
+}
+
+@-moz-keyframes rui-appear {
+    0% { opacity: .7; transform: scale(.9);}
+    100% { opacity: 1;transform: scale(1);}
+}
+
+@keyframes rui-progress-active {
+    0% { opacity: .5;}
+    100% { opacity: 1;}
+}
+
+@-moz-keyframes rui-progress-active {
+    0% { opacity: .65;}
+    100% { opacity: 1;}
+}

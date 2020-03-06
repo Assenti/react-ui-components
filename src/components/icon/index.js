@@ -89,7 +89,9 @@ import {
     Share,
     Phone,
     Bell,
-    Wrench
+    Wrench,
+    Minus,
+    CheckCircle
 } from './icons/index';
 
 const Icon = (props) => {
@@ -275,6 +277,10 @@ const Icon = (props) => {
                 return <Bell size={props.size} color={props.color}/>;
             case 'wrench':
                 return <Wrench size={props.size} color={props.color}/>;
+            case 'minus':
+                return <Minus size={props.size} color={props.color}/>;
+            case 'check-circle':
+                return <CheckCircle size={props.size} color={props.color}/>;
             default:
                 return '';
         }

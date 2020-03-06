@@ -67,7 +67,6 @@ export default App;
 - [ ] Carousel
 - [ ] AutoComplete
 - [ ] Slider
-- [ ] Progress
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable
 - [ ] TypeScript support (Declare types for all TS using)

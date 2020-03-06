@@ -93,9 +93,11 @@ export const DrawerContent = (props) => {
                         onClick={() => handleItemClick({ path: '/'})}
                         itemTitle="name"
                         hover
+                        noDivider
                         item="Getting started"/>
                     <ListItem
                         right
+                        noDivider
                         icon="language-css-3"
                         isActiveItem={'/helper' === window.location.pathname}
                         onClick={() => handleItemClick({ path: '/helper'})}
@@ -103,6 +105,7 @@ export const DrawerContent = (props) => {
                         hover
                         item="Helper CSS classes"/>
                     <ListItem
+                        noDivider
                         icon="toy-brick"
                         onClick={() => setList(!list)}
                         hover
@@ -114,7 +117,8 @@ export const DrawerContent = (props) => {
                                     size={20} 
                                     name={list ? 'chevron-up' : 'chevron-down'}/>}/>
                 </List>
-                {list ? <List className="pl-30" dark={props.dark}>
+                {list ? 
+                <List className="pl-30" dark={props.dark}>
                     {sortedRoutes().map((item, index) => 
                         <ListItem
                             key={index}
