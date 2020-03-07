@@ -101,7 +101,7 @@
     "ui"
   ],
   "files": [
-    "build/css",
+    "build/css/main.css",
     "lib"
   ],
   "main": "lib/index.js",

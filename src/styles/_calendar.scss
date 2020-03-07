@@ -1,0 +1,167 @@
+.rui-calendar {
+
+    .rui-calendar__body {
+        width: 100%;
+        border: 1px solid lightgray; 
+        border-radius: $radius; 
+        border-collapse: collapse;
+
+        th {
+            padding: 10px;
+        }
+    }
+
+    &.primary {
+        th {
+            color: $primary;
+        }
+
+        td:hover {
+            background-color: rgba($primary, .2);
+            transition: all .3s ease-in-out;
+            cursor: pointer;
+            color: $primary;
+        }
+
+        td.active {
+            font-weight: bold;
+            color: $primary;
+            text-decoration: underline;
+        }
+    }
+
+    &.info {
+        th {
+            color: $info;
+        }
+
+        td:hover {
+            background-color: rgba($info, .2);
+            transition: all .3s ease-in-out;
+            cursor: pointer;
+            color: $info;
+        }
+
+        td.active {
+            font-weight: bold;
+            color: $info;
+            text-decoration: underline;
+        }
+    }
+
+    &.success {
+        th {
+            color: $success;
+        }
+
+        td:hover {
+            background-color: rgba($success, .2);
+            transition: all .3s ease-in-out;
+            cursor: pointer;
+            color: $success;
+        }
+
+        td.active {
+            font-weight: bold;
+            color: $success;
+            text-decoration: underline;
+        }
+    }
+
+    &.error {
+        th {
+            color: $error;
+        }
+
+        td:hover {
+            background-color: rgba($error, .2);
+            transition: all .3s ease-in-out;
+            cursor: pointer;
+            color: $error;
+        }
+
+        td.active {
+            font-weight: bold;
+            color: $error;
+            text-decoration: underline;
+        }
+    }
+
+    &.dark {
+        th {
+            color: $dark;
+        }
+
+        td:hover {
+            background-color: rgba($dark, .2);
+            transition: all .3s ease-in-out;
+            cursor: pointer;
+            color: $dark;
+        }
+
+        td.active {
+            font-weight: bold;
+            color: $dark;
+            text-decoration: underline;
+        }
+    }
+
+    &:not(.medium):not(.large) {
+        th {
+            padding: 10px;
+            font-size: $defaultFont;
+            border: 1px solid lightgray;
+        }
+
+        td {
+            height: 40px;
+            width: 40px;
+            border: 1px solid lightgray;
+            text-align: center;
+            font-size: $defaultFont;
+        }
+    }
+
+    &.medium {
+        th {
+            padding: 10px;
+            font-size: $mediumFont;
+            border: 1px solid lightgray;
+        }
+
+        td {
+            height: 45px;
+            width: 45px;
+            border: 1px solid lightgray;
+            text-align: center;
+            font-size: $mediumFont;
+        }
+    }
+
+    &.large {
+        th {
+            padding: 10px;
+            font-size: $largeFont;
+            border: 1px solid lightgray;
+        }
+
+        td {
+            height: 55px;
+            width: 55px;
+            border: 1px solid lightgray;
+            text-align: center;
+            font-size: $largeFont;
+        }
+    }
+
+    .rui-calendar__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+    .rui-calendar__footer {
+
+    }
+}

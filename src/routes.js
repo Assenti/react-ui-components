@@ -36,6 +36,7 @@ const FloatingBtnPage = lazy(() => import('./pages/FloatingBtnPage'));
 const AvatarPage = lazy(() => import('./pages/AvatarPage'));
 const BreadcrumbsPage = lazy(() => import('./pages/BreadcrumbsPage'));
 const ProgressPage = lazy(() => import('./pages/ProgressPage'));
+const CalendarPage = lazy(() => import('./pages/CalendarPage'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
@@ -74,5 +75,6 @@ export const routes = [
     { path: '/floatingbtn', name: 'FloatingBtn', Component: FloatingBtnPage },
     { path: '/avatar', name: 'Avatar', Component: AvatarPage },
     { path: '/breadcrumbs', name: 'Breadcrumbs', Component: BreadcrumbsPage },
-    { path: '/progress', name: 'Progress', Component: ProgressPage }
+    { path: '/progress', name: 'Progress', Component: ProgressPage },
+    { path: '/calendar', name: 'Calendar', Component: CalendarPage },
 ]
