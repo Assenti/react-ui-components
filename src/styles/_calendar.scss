@@ -1,4 +1,20 @@
 .rui-calendar {
+    background-color: #fff;
+
+    &.dark {
+        background-color: $night;
+        th, td {
+            color: #fff;
+        }
+
+        td {
+            &.weekend,
+            &.weekend.holiday,
+            &.weekend.active {
+                background-color: gray !important;
+            }
+        }
+    }
 
     .rui-calendar__body {
         width: 100%;
@@ -8,63 +24,139 @@
 
         th {
             padding: 10px;
+            width: 14.285%;
+        }
+
+        td {
+            position: relative;
+
+            .rui-calendar__events {
+                position: absolute;
+                bottom: 2px;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+            .rui-calendar__event {
+                width: 9px;
+                height: 9px;
+                border-radius: 50%;
+                margin: 0 2px;
+            }
+
+            &.active,
+            &.active.dark {
+                text-decoration: underline;
+                color: transparent;
+    
+                &::after {
+                    position: absolute;
+                    content: attr(name);
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    top: calc(50% - 10px);
+                    left: calc(50% - 10px);
+                    height: 20px;
+                    width: 20px;
+                    border-radius: 50%;
+                    font-size: inherit;
+                    font-weight: bold;
+                    color: #fff;
+                }
+            }
+
+            &.holiday {
+                color: $error !important;
+            }
+
+            &.weekend,
+            &.weekend.holiday,
+            &.weekend.active {
+                background-color: $lightgray;
+            }
         }
     }
 
-    &.primary {
+    &.primary,
+    &.primary.dark {
         th {
             color: $primary;
         }
 
-        td:hover {
-            background-color: rgba($primary, .2);
-            transition: all .3s ease-in-out;
+        .rui-calendar__event {
+            background-color: $primary;
+        }
+
+        td:hover:not(.none) {
             cursor: pointer;
+            outline: 1px solid $primary;
+            outline-offset: -1px;
+        }
+
+        td:hover:not(.active):not(.none) {
             color: $primary;
         }
 
         td.active {
-            font-weight: bold;
-            color: $primary;
-            text-decoration: underline;
+            &::after {
+                background-color: $primary;
+            }
         }
     }
 
-    &.info {
+    &.info,
+    &.info.dark {
         th {
             color: $info;
         }
 
-        td:hover {
-            background-color: rgba($info, .2);
-            transition: all .3s ease-in-out;
+        td:hover:not(.none) {
             cursor: pointer;
+            outline: 1px solid $info;
+            outline-offset: -1px;
+        }
+
+        td:hover:not(.active):not(.none) {
             color: $info;
         }
 
         td.active {
-            font-weight: bold;
-            color: $info;
-            text-decoration: underline;
+            &::after {
+                background-color: $info;
+            }
+        }
+
+        .rui-calendar__event {
+            background-color: $info;
         }
     }
 
-    &.success {
+    &.success,
+    &.success.dark {
         th {
             color: $success;
         }
 
-        td:hover {
-            background-color: rgba($success, .2);
-            transition: all .3s ease-in-out;
+        td:hover:not(.none) {
             cursor: pointer;
+            outline: 1px solid $success;
+            outline-offset: -1px;
+        }
+
+        td:hover:not(.active):not(.none) {
             color: $success;
         }
 
         td.active {
-            font-weight: bold;
-            color: $success;
-            text-decoration: underline;
+            &::after {
+                background-color: $success;
+            }
+        }
+
+        .rui-calendar__event {
+            background-color: $success;
         }
     }
 
@@ -73,84 +165,107 @@
             color: $error;
         }
 
-        td:hover {
-            background-color: rgba($error, .2);
-            transition: all .3s ease-in-out;
+        td:hover:not(.none) {
             cursor: pointer;
+            outline: 1px solid $error;
+            outline-offset: -1px;
+        }
+
+        td:hover:not(.active):not(.none) {
             color: $error;
         }
 
         td.active {
-            font-weight: bold;
-            color: $error;
-            text-decoration: underline;
+            &::after {
+                background-color: $error;
+            }
+        }
+
+        .rui-calendar__event {
+            background-color: $error;
         }
     }
 
-    &.dark {
+    &.black {
         th {
             color: $dark;
         }
 
-        td:hover {
-            background-color: rgba($dark, .2);
-            transition: all .3s ease-in-out;
+        td:hover:not(.none) {
             cursor: pointer;
+            outline: 1px solid $dark;
+            outline-offset: -1px;
+        }
+
+        td:hover:not(.active):not(.none) {
             color: $dark;
         }
 
         td.active {
-            font-weight: bold;
-            color: $dark;
-            text-decoration: underline;
+            &::after {
+                background-color: $dark;
+            }
+        }
+
+        .rui-calendar__event {
+            background-color: $dark;
         }
     }
 
     &:not(.medium):not(.large) {
-        th {
-            padding: 10px;
-            font-size: $defaultFont;
-            border: 1px solid lightgray;
-        }
-
-        td {
-            height: 40px;
-            width: 40px;
-            border: 1px solid lightgray;
-            text-align: center;
-            font-size: $defaultFont;
+        .rui-calendar__body {
+            th {
+                padding: 10px;
+                min-width: 45px;
+                font-size: $defaultFont;
+                border: 1px solid lightgray;
+            }
+    
+            td {
+                height: 45px;
+                min-width: 45px;
+                border: 1px solid lightgray;
+                text-align: center;
+                font-size: $defaultFont;
+            }
         }
     }
 
     &.medium {
-        th {
-            padding: 10px;
-            font-size: $mediumFont;
-            border: 1px solid lightgray;
-        }
-
-        td {
-            height: 45px;
-            width: 45px;
-            border: 1px solid lightgray;
-            text-align: center;
-            font-size: $mediumFont;
+        .rui-calendar__body {
+            th {
+                padding: 10px;
+                min-width: 50px;
+                font-size: $mediumFont;
+                border: 1px solid lightgray;
+            }
+    
+            td {
+                height: 50px;
+                min-width: 50px;
+                border: 1px solid lightgray;
+                text-align: center;
+                font-size: $mediumFont;
+            }
         }
     }
 
     &.large {
-        th {
-            padding: 10px;
-            font-size: $largeFont;
-            border: 1px solid lightgray;
-        }
-
-        td {
-            height: 55px;
-            width: 55px;
-            border: 1px solid lightgray;
-            text-align: center;
-            font-size: $largeFont;
+        .rui-calendar__body {
+            th {
+                padding: 10px;
+                min-width: 55px;
+                font-size: $largeFont;
+                border: 1px solid lightgray;
+            }
+    
+            td {
+                height: 55px;
+                min-width: 55px;
+                border: 1px solid lightgray;
+                text-align: center;
+                font-size: $largeFont;
+            }
         }
     }
 

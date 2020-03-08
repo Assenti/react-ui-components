@@ -61,4 +61,5 @@ export {
     phoneMask, 
     creditMask,
     creditIssueMask,
-    iinMask } from './utils';
+    iinMask,
+    isTwoDatesEqual } from './utils';

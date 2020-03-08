@@ -111,3 +111,13 @@ export const dateMaskFormatter = (value, delimiter = '.') => {
         }
     } else return '';
 }
+
+export const isTwoDatesEqual = (date1, date2) => {
+    let day1 = new Date(date1).getDate();
+    let month1 = new Date(date1).getMonth();
+    let year1 = new Date(date1).getFullYear();
+    let day2 = new Date(date2).getDate();
+    let month2 = new Date(date2).getMonth();
+    let year2 = new Date(date2).getFullYear();
+    return day1 === day2 && month1 === month2 && year1 === year2;
+}

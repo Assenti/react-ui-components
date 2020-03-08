@@ -36,4 +36,5 @@ export { default as FloatingBtn } from './floatingBtn';
 export { default as Avatar } from './avatar';
 export { default as Breadcrumbs } from './breadcrumbs';
 export { default as Progress } from './progress';
+export { default as Calendar } from './calendar';
 export { convertToNum, compare, phoneMask, creditMask, creditIssueMask, iinMask } from './utils';

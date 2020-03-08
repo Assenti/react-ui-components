@@ -7,6 +7,11 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.4.3 `2020-03-08`
+
+- `NEW!` Calendar component added;
+- PopOver component updated;
+
 #### 0.4.2 `2020-03-07`
 
 - `NEW!` Progress component added;

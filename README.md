@@ -55,7 +55,6 @@ export default App;
 ```
 
 ### TODO
-- [ ] Calendar
 - [ ] Date picker
 - [ ] Time picker
 - [ ] Expansion List

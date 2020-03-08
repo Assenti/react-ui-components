@@ -47,13 +47,13 @@ const PopOver = (props) => {
                 classNames={getPosition()}
                 unmountOnExit>
                 <div className="rui-popover__content" ref={content}>
-                    <div className="rui-popover__content-header">
+                    {props.title ? <div className="rui-popover__content-header">
                         <span>{props.title}</span>
                         <Icon size={18} 
                             name="close" 
                             color={props.dark ? '#fff' : 'gray'} 
                             onClick={() => props.control ? props.onClose() : setVisible(false)}/>
-                    </div>
+                    </div> : ''}
                     <div className="rui-popover__content-body">{props.content}</div>
                 </div>
             </CSSTransition>

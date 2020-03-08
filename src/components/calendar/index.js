@@ -1,29 +1,28 @@
-import React, { useState } from 'react';
-import { Button, Select } from '../index';
+import React, { useState, useEffect } from 'react';
+import { Button, Select, PopOver, isTwoDatesEqual } from '../index';
 
 const monthesKz = ['Каңтар','Ақпан','Наурыз','Сәуір','Мамыр','Маусым','Шілде','Тамыз','Қыркүйек','Қазан','Қараша','Желтоқсан'];
 const monthesRu = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
 const monthesEn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const monthesFr = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
 const weekKz = ['Дүйсенбі','Сейсенбі','Сәрсенбі','Бейсенбі','Жұма','Сенбі','Жексенбі'];
 const weekRu = ['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'];
 const weekEn = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const weekFr = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
 
-const daysInMonth = (month, year) => {
-    return new Date(year, month, 0).getDate();
-}
+const daysInMonth = (month, year) => new Date(year, month, 0).getDate();
+const shortWeekName = (name) => name.slice(0,3);
 
-const shortWeekName = (name) => {
-    return name.slice(0,3);
-}
-
-const getCurrentMonth = (lang) => {
+const getCurrentMonth = (lang, monthIndex) => {
     switch (lang) {
         case 'ru':
-            return monthesRu[new Date().getMonth()];
+            return monthesRu[monthIndex];
         case 'kz':
-            return monthesKz[new Date().getMonth()];
+            return monthesKz[monthIndex];
+        case 'fr':
+            return monthesFr[monthIndex];
         default:
-            return monthesEn[new Date().getMonth()];
+            return monthesEn[monthIndex];
     }
 }
 
@@ -42,6 +41,12 @@ const getMonthIndex = (month, lang) => {
                 index++; 
             }
             break;
+        case 'fr':
+            for (const item of monthesFr) {
+                if (item === month) return index;
+                index++; 
+            }
+            break;
         default:
             for (const item of monthesEn) {
                 if (item === month) return index;
@@ -51,22 +56,59 @@ const getMonthIndex = (month, lang) => {
     }
 }
 
-const getCurrentWeekDay = (lang) => {
-    switch (lang) {
-        case 'ru':
-            return weekRu(new Date().getDay());
-        case 'kz':
-            return weekKz(new Date().getDay());
-        default:
-            return weekEn(new Date().getDay());
+const getCurrentWeek = (lang, fromSunday) => {
+    if (fromSunday) {
+        switch (lang) {
+            case 'ru':
+                let weekRuFromSunday = weekRu.map(item => item);
+                weekRuFromSunday.pop();
+                weekRuFromSunday.unshift('Воскресенье');
+                return weekRuFromSunday;
+            case 'kz':
+                let weekKzFromSunday = weekKz.map(item => item);
+                weekKzFromSunday.pop();
+                weekKzFromSunday.unshift('Жексенбі');
+                return weekKzFromSunday;
+            case 'fr':
+                let weekFrFromSunday = weekKz.map(item => item);
+                weekFrFromSunday.pop();
+                weekFrFromSunday.unshift('Dimanche');
+                return weekFrFromSunday;
+            default:
+                let weekEnFromSunday = weekEn.map(item => item);
+                weekEnFromSunday.pop();
+                weekEnFromSunday.unshift('Sunday')
+                return weekEnFromSunday;
+        }
+    } else {
+        switch (lang) {
+            case 'ru':
+                return weekRu;
+            case 'kz':
+                return weekKz;
+            case 'fr':
+                return weekFr;
+            default:
+                return weekEn;
+        }
     }
 }
 
-const years = () => {
+const years = (limit, onlyPast) => {
     let current = new Date().getFullYear();
     let years = [];
-    for (let i = 0; i < 25; i++) {
-        years.push(current - i)
+    
+    if (!onlyPast) {
+        for (let i = current + limit; i > current; i--) {
+            years.push(i);
+        }
+        for (let i = 0; i <= limit; i++) {
+            years.push(current - i)
+        }
+    } else {
+        for (let i = 0; i <= limit; i++) {
+            years.push(current - i)
+        }
     }
     return years;
 }
@@ -77,77 +119,114 @@ const monthes = (lang) => {
             return monthesRu;
         case 'kz':
             return monthesKz;
+        case 'fr':
+            return monthesFr;
         default:
             return monthesEn;
     }
 }
 
 const Calendar = (props) => {
-    const [month, setMonth] = useState(getCurrentMonth(props.locale));
+    const getInitialMonth = () => getCurrentMonth(props.locale, new Date().getMonth());
+    const [month, setMonth] = useState(getInitialMonth());
     const [year, setYear] = useState(new Date().getFullYear());
+    const today = new Date().getDate();
 
-    const currentDay = () => new Date().getDate();
-
-    const prepareWeekHeaders = () => {
-        switch (props.locale) {
-            case 'ru':
-                return weekRu;
-            case 'kz':
-                return weekKz;
-            default:
-                return weekEn;
+    const hasDateEvent = (chosenDate) => {
+        if (props.events) {
+            for (const item of props.events) {
+                if (isTwoDatesEqual(item.date, chosenDate)) return item;
+            }
         }
     }
 
-    const prepareMonth = () => {
-        let lang = props.locale ? props.locale : 'en';
-        let monthFirstDayInWeek = new Date(year, getMonthIndex(month), 1).getDay() + 1;
-        let days = [];
-        let weekOne = [];
-        let weekTwo = [];
-        let weekThree = [];
-        let weekFour = [];
-        let weekFive = [];
-        let weekSix = [];
-
-        for (let i = 0; i < daysInMonth(getMonthIndex(month)+1, year); i++) {
-            if (i < 7) weekOne.push(i+1);
-            else if (i >= 7 && i < 14) weekTwo.push(i+1);
-            else if (i >= 14 && i < 21) weekThree.push(i+1);
-            else if (i >= 21 && i < 28) weekFour.push(i+1);
-            else if (i >= 28 && i < 31) weekFive.push(i+1);
+    const isDateHoliday = (chosenDate) => {
+        if (props.holidays) {
+            for (const item of props.holidays) {
+                if (isTwoDatesEqual(item.date, chosenDate)) return true;
+            }
         }
+    }
 
+    const dateClass = (item) => {
+        let result = '';
+        if (!item) result = 'none';
+        if (!props.hideWeekend && item &&
+            (new Date(year, getMonthIndex(month, props.locale), item).getDay() === 6 || 
+            new Date(year, getMonthIndex(month, props.locale), item).getDay() === 0)) result += ' weekend';
+        if (item === today && !props.hideCurrentDay &&
+                !isDateHoliday(new Date(year, getMonthIndex(month, props.locale), item))) result += ' active';
+        else if (item === today && !props.hideCurrentDay && isDateHoliday(new Date(year, getMonthIndex(month, props.locale), item))) result += ' active holiday';
+        else if (item !== today && isDateHoliday(new Date(year, getMonthIndex(month, props.locale), item))) result += ' holiday';
+        return result ? result.trim() : null;
+    }
+
+    const prepareMonth = () => {
+        let monthFirstDayInWeek = new Date(year, getMonthIndex(month, props.locale), 1).getDay();
+
+        if (!props.weekStartsSunday) {
+            monthFirstDayInWeek = monthFirstDayInWeek - 1;
+            monthFirstDayInWeek = monthFirstDayInWeek === -1 ? 6 : monthFirstDayInWeek;
+        }
+        
+        let date = 1;
+        let rows = [];
+
+        for (let i = 0; i < 6; i++) {
+            let cells = [];
+            for (let j = 0; j < 7; j++) {
+                if (i === 0 && j < monthFirstDayInWeek) {
+                    cells.push('')
+                } else if (date > daysInMonth(getMonthIndex(month, props.locale)+1, year)) {
+                    break;
+                } else {
+                    cells.push(date);
+                    date++;
+                }
+            }
+            rows.push({ week: i, days: cells });
+        }
         return (
             <React.Fragment>
-                <tr>
-                    {weekOne.map((item, index) => 
-                        <td key={index} className={item === currentDay() ? 'active' : ''}>{item}</td>)}
-                </tr>
-                <tr>
-                    {weekTwo.map((item, index) => 
-                        <td key={index} className={item === currentDay() ? 'active' : ''}>{item}</td>)}
-                </tr>
-                <tr>
-                    {weekThree.map((item, index) => 
-                        <td key={index} className={item === currentDay() ? 'active' : ''}>{item}</td>)}
-                </tr>
-                <tr>
-                    {weekFour.map((item, index) => 
-                        <td key={index} className={item === currentDay() ? 'active' : ''}>{item}</td>)}
-                </tr>
-                <tr>
-                    {weekFive.map((item, index) => 
-                        <td key={index} className={item === currentDay() ? 'active' : ''}>{item}</td>)}
-                </tr>
+                {rows.map((item, iter) => 
+                    <tr key={iter}>
+                        {item.days.map((item, index) => 
+                            <td key={index}
+                                onClick={() => props.onDate && item ? 
+                                    props.onDate(new Date(year, getMonthIndex(month, props.locale), item)) : {}} 
+                                    className={dateClass(item)}
+                                    name={item}>
+                                    {item}
+                                    <div className="rui-calendar__events">
+                                        {hasDateEvent(new Date(year, getMonthIndex(month, props.locale), item)) &&
+                                            hasDateEvent(new Date(year, getMonthIndex(month, props.locale), item)).items.map((event, iter) =>
+                                                <PopOver
+                                                    key={iter}
+                                                    trigger={props.popOverTrigger ? props.popOverTrigger : 'hover'}
+                                                    dark={props.dark}
+                                                    title={event.title}
+                                                    content={event.event}>
+                                                        <div style={{ 
+                                                                backgroundColor: event.color 
+                                                            }}
+                                                        className="rui-calendar__event"></div>
+                                                </PopOver>
+                                            ) 
+                                        }
+                                    </div>
+                            </td>)}
+                    </tr>
+                )}
             </React.Fragment>
-        )
+        );
     }
 
     const componentClass = () => {
         let result = '';
         let className = {
             btn: 'rui-calendar',
+            dark: props.dark ? 'dark' : '',
+            size: props.size ? props.size : '',
             color: props.color && props.color !== 'default' ? props.color : 'primary',
             className: props.className ? props.className : ''
         }
@@ -157,31 +236,65 @@ const Calendar = (props) => {
         return result.trim();
     }
 
+    const handleNext = () => {
+        if (getMonthIndex(month, props.locale) < 11) {
+            setMonth(getCurrentMonth(props.locale, getMonthIndex(month, props.locale)+1))
+        } else {
+            setMonth(getCurrentMonth(props.locale, 0))
+            setYear(year + 1)
+        }
+    }
+
+    const handlePrev = () => {
+        if (getMonthIndex(month, props.locale) > 0) {
+            setMonth(getCurrentMonth(props.locale, getMonthIndex(month, props.locale)-1))
+        } else {
+            setMonth(getCurrentMonth(props.locale, 11))
+            setYear(year - 1)
+        }
+    }
+
+    useEffect(() => {
+        setMonth(getInitialMonth())
+    },[props.locale])
+
     return (
-        <div className={componentClass()}>
+        <div className={componentClass()} style={{ width: props.width }}>
             <div className="rui-calendar__header">
-                <Button icon="chevron-back" light/>
+                <Button 
+                    icon="chevron-back" 
+                    light={!props.dark} 
+                    dark={props.dark}
+                    size={props.size} 
+                    onClick={handlePrev}/>
                 <div className="rui-calendar__title">
                     <Select
-                        items={years()}
-                        width={100}
+                        items={years(props.limit ? props.limit : 15, props.onlyPast)}
+                        width={110}
                         color={props.color ? props.color : 'primary'}
                         value={year}
+                        size={props.size}
                         className="mr-5"
                         onChange={v => setYear(v)}/>
                     <Select
-                        items={monthes()}
-                        width={100}
+                        items={monthes(props.locale)}
+                        width={110}
+                        size={props.size}
                         color={props.color ? props.color : 'primary'}
                         value={month}
                         onChange={v => setMonth(v)}/>
                 </div>
-                <Button icon="chevron-next" light/>
+                <Button 
+                    icon="chevron-next" 
+                    light={!props.dark} 
+                    dark={props.dark} 
+                    size={props.size} 
+                    onClick={handleNext}/>
             </div>
             <table className="rui-calendar__body">
                 <thead>
                     <tr>
-                        {prepareWeekHeaders().map((item, index) =>
+                        {getCurrentWeek(props.locale, props.weekStartsSunday).map((item, index) =>
                             <th key={index}>{props.shortWeekName ? shortWeekName(item) : item}</th>
                         )}
                     </tr>
