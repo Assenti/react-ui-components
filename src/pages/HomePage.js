@@ -1,16 +1,16 @@
 import React, { useRef } from 'react';
-import { Tag, Card, BackTopBtn } from '../components';
+import { Tag, Card, BackTopBtn, CopyToClipboard, Icon } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const codeInstallation = 
+const codeInstallationNpm = 
 `# Install package from NPM
-% npm install @assenti/rui-components -S
+% npm install @assenti/rui-components -S`;
 
-               # or
+const codeInstallationYarn = 
+`# Install package from NPM
+% yarn add @assenti/rui-components`;
 
-% yarn add @assenti/rui-components
-`
 const stylesInstallation = 
 `// Import styles in index.js | index.ts
 import '@assenti/react-ui-components/build/css/main.css';`;
@@ -22,14 +22,12 @@ import { Card, Button } from '@assenti/react-ui-components';
 
 function App() {
     return (
-        <div>
-            <Card outlined color="primary" title="Button">
-                <Button color="primary" name="Rocket" icon="rocket"/>
-            </Card>
-        </div>
+        <Card outlined color="primary" title="Button">
+            <Button color="primary" name="Rocket" icon="rocket"/>
+        </Card>
     );
 } 
-export default App;`
+export default App;`;
 
 const HomePage = () => {
     const parent = useRef();
@@ -62,24 +60,55 @@ const HomePage = () => {
                     Create a lot of usefull and maximum reusable UI components for React apps
                 </h4>
             </div>
-            <Card outlined title="Install" className="mt-20">
-                <SyntaxHighlighter language="bash" style={prism}>
-                    {codeInstallation}
-                </SyntaxHighlighter>
-                <br/>
-                <SyntaxHighlighter language="js" style={prism}>
-                    {stylesInstallation}
-                </SyntaxHighlighter>
+            <Card outlined title={<div className="row align-center">
+                <Icon name="package-down" size={18} className="mr-5"/>Install</div>} 
+                className="mt-20">
+                <h4>npm</h4>
+                <div className="row">
+                    <SyntaxHighlighter className="col" language="bash" style={prism}>
+                        {codeInstallationNpm}
+                    </SyntaxHighlighter>
+                    <CopyToClipboard
+                        className="my-5 mx-10" 
+                        text="npm install @assenti/rui-components -S"/>
+                </div>
+                <h4>yarn</h4>
+                <div className="row full-width">
+                    <SyntaxHighlighter className="col" language="bash" style={prism}>
+                        {codeInstallationYarn}
+                    </SyntaxHighlighter>
+                    <CopyToClipboard
+                        className="my-5 mx-10" 
+                        text="yarn add @assenti/rui-components"/>
+                </div>
             </Card>
             <br/>
-            <Card outlined title="Usage (A-la-carte)" className="mt-20">
-                <SyntaxHighlighter language="jsx" style={prism}>
-                    {codeUsage}
-                </SyntaxHighlighter>
+            <Card outlined title={<div className="row align-center">
+                <Icon name="cog-outline" size={18} className="mr-5"/>Usage
+            </div>} className="mt-20">
+                <div className="row">
+                    <SyntaxHighlighter className="col" language="js" style={prism}>
+                        {stylesInstallation}
+                    </SyntaxHighlighter>
+                    <CopyToClipboard
+                        className="my-5 mx-10" 
+                        text="import '@assenti/react-ui-components/build/css/main.css';"/>
+                </div>
+                <br/>
+                <div className="row">
+                    <SyntaxHighlighter className="col" language="jsx" style={prism}>
+                        {codeUsage}
+                    </SyntaxHighlighter>
+                    <CopyToClipboard
+                        className="my-5 mx-10" 
+                        text={codeUsage}/>
+                </div>
             </Card>
             <br/>
             <Card outlined 
-                title="TypeScript" 
+                title={<div className="row align-center">
+                    <Icon name="language-ts" size={18} className="mr-5"/>TypeScript
+                </div>} 
                 className="mt-15">
                 <div className="py-20">
                     <div>TypeScript supported. Just install package to your react typescript app and use it.</div>

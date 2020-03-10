@@ -1,4 +1,4 @@
-import React, { createRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Card, List, ListItem, Table, Switch, Collapse, BackTopBtn, Select, Icon, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -163,8 +163,8 @@ function Example() {
 }`
 
 const CardPage = () => {
-    const api = createRef();
-    const parentRef = createRef();
+    const api = useRef();
+    const parentRef = useRef();
     const [dark, setDark] = useState(false);
     const [flat, setFlat] = useState(false);
     const [hover, setHover] = useState(false);
@@ -202,10 +202,10 @@ const CardPage = () => {
     return (
         <div className="rui-page" ref={parentRef}>
             <div className="row align-center space-between">
-                <div className="rui-page-title">Card Component</div>
+                <div className="rui-page-title">{'<Card/>'} Component</div>
                 <div className="rui-link fz-13 fw-bold" onClick={goToApi}>API</div>
             </div>
-            <Card outlined title="Card usage">
+            <Card outlined title="Usage">
                 <Switch 
                     color="primary" 
                     check={dark}

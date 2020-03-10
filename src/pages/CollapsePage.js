@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React, { useRef } from 'react';
 import { Card, Collapse, Table, List, ListItem, Icon, Badge, CopyToClipboard } from '../components'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -125,7 +125,7 @@ const names = [
 ];
 
 const CollapsePage = () => {
-    const api = createRef();
+    const api = useRef();
 
     const goToApi = () => {
         if (api.current) api.current.scrollIntoView({ behavoir: 'smooth', block: 'center' })
@@ -135,7 +135,7 @@ const CollapsePage = () => {
         <div className="rui-page">
             <div className="row align-center space-between">
                 <div className="row">
-                    <div className="rui-page-title">Collapse Component</div>
+                    <div className="rui-page-title">{'<Collapse/>'} Component</div>
                     <Badge 
                         color="error" 
                         value="WIP"
@@ -144,7 +144,7 @@ const CollapsePage = () => {
                 </div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined title="Collapse Component usage">
+            <Card outlined title="Usage">
                 <Collapse defaultState={true} border>
                     <p className="px-10 fz-9 fw-bold">Some Article</p>
                     <p className="pa-10">

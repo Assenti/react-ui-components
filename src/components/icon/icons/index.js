@@ -556,6 +556,24 @@ export const Alert = (props) => {
     )
 }
 
+export const Information = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize}  viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+        </svg>
+    )
+}
+
+export const AlertCirlce = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+        </svg>
+    )
+}
+
 export const CalendarStar = (props) => {
     return (
         <svg width={props.size ? props.size : defaultSize} 
@@ -786,6 +804,15 @@ export const CheckCircle = (props) => {
         <svg width={props.size ? props.size : defaultSize} 
             height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
             <path fill={props.color ? props.color : defaultColor} d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" />
+        </svg>
+    )
+}
+
+export const PackageDown = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M5.12,5L5.93,4H17.93L18.87,5M12,17.5L6.5,12H10V10H14V12H17.5L12,17.5M20.54,5.23L19.15,3.55C18.88,3.21 18.47,3 18,3H6C5.53,3 5.12,3.21 4.84,3.55L3.46,5.23C3.17,5.57 3,6 3,6.5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V6.5C21,6 20.83,5.57 20.54,5.23Z" />
         </svg>
     )
 }

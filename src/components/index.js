@@ -55,6 +55,7 @@ export { default as Avatar } from './avatar';
 export { default as Breadcrumbs } from './breadcrumbs';
 export { default as Progress } from './progress';
 export { default as Calendar } from './calendar';
+export { default as Alert } from './alert';
 export { 
     convertToNum, 
     compare, 

@@ -76,7 +76,7 @@ const BackTopBtn = (props) => {
 }
 BackTopBtn.propTypes = {
     setRef: PropTypes.any,
-    size: PropTypes.oneOf(['medium','large']),
+    size: PropTypes.oneOf([undefined,'','medium','large']),
     dark: PropTypes.bool,
     tooltip: PropTypes.string
 }

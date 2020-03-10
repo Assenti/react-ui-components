@@ -49,10 +49,10 @@ const Dropdown = (props) => {
 Dropdown.propTypes = {
     content: PropTypes.any,
     trigger: PropTypes.any,
-    width: PropTypes.number || PropTypes.string,
-    minWidth: PropTypes.number || PropTypes.string,
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    minWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     dark: PropTypes.bool,
-    position: PropTypes.oneOf(['centered','right']),
+    position: PropTypes.oneOf([undefined,'','centered','right']),
     leftOffset: PropTypes.number,
     rightOffset: PropTypes.number,
     closeManaged: PropTypes.bool,

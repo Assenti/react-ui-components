@@ -33,14 +33,14 @@ const Card = (props) => {
     )
 }
 Card.propTypes = {
-    width: PropTypes.number || PropTypes.string,
-    minWidth: PropTypes.number || PropTypes.string,
-    color: PropTypes.oneOf(['primary','info','success','error','gray']),
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    minWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    color: PropTypes.oneOf([undefined,'','primary','info','success','error','gray']),
     flat: PropTypes.bool,
     dark: PropTypes.bool,
     hover: PropTypes.bool,
     outlined: PropTypes.bool,
-    title: PropTypes.string,
+    title: PropTypes.any,
     header: PropTypes.any,
     img: PropTypes.string,
     footer: PropTypes.any,

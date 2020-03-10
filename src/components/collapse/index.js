@@ -57,7 +57,7 @@ Collapse.propTypes = {
     defaultState: PropTypes.bool,
     border: PropTypes.bool,
     title: PropTypes.string,
-    position: PropTypes.oneOf(['right']),
+    position: PropTypes.oneOf([undefined,'','right']),
     extra: PropTypes.any,
     tooltip: PropTypes.string,
     icon: PropTypes.string,

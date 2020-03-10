@@ -77,8 +77,8 @@ const CopyToClipboardPage = () => {
 
     return (
         <div className="rui-page">
-            <div className="rui-page-title">CopyToClipboard Component</div>
-            <Card outlined title="Collapse Component usage">
+            <div className="rui-page-title">{'<CopyToClipboard/>'} Component</div>
+            <Card outlined title="Usage">
                 <div className="row align-center">
                     <InputField 
                         color="info" 

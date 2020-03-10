@@ -302,8 +302,8 @@ const CalendarPage = () => {
 
     return (
         <div className="rui-page">
-            <div className="rui-page-title">Calendar Component</div>
-            <Card outlined title="Calendar usage">
+            <div className="rui-page-title">{'<Calendar/>'} Component</div>
+            <Card outlined title="Usage">
                 <Select
                     items={colors}
                     prefix={<Icon name="brush"/>}

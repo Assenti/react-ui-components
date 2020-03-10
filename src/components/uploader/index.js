@@ -79,8 +79,8 @@ const Uploader = (props) => {
 }
 Uploader.propTypes = {
     value: PropTypes.array,
-    borderType: PropTypes.oneOf(['rounded','smooth','tile']),
-    color: PropTypes.oneOf(['primary','info','success','error']),
+    borderType: PropTypes.oneOf([undefined,'','rounded','smooth','tile']),
+    color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
     light: PropTypes.bool,
     dark: PropTypes.bool,
     label: PropTypes.string,
@@ -92,7 +92,7 @@ Uploader.propTypes = {
     multiple: PropTypes.bool,
     onChange: PropTypes.func,
     placeholder: PropTypes.string,
-    width: PropTypes.number || PropTypes.string,
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
     onDelete: PropTypes.func,

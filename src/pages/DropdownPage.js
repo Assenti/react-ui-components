@@ -165,10 +165,10 @@ const DropdownPage = () => {
     return (
         <div className="rui-page">
             <div className="row align-center space-between">
-                <div className="rui-page-title">Dropdown Component</div>
+                <div className="rui-page-title">{'<Dropdown/>'} Component</div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined title="Dropdown usage">
+            <Card outlined title="Usage">
                 <Switch 
                     color="primary" 
                     check={dark}

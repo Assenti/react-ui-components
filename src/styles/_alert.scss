@@ -1,0 +1,107 @@
+.rui-alert {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: $radius;
+    font-size: $defaultFont;
+    border: 1px solid;
+
+    .rui-alert__text {
+        margin-top: 5px;
+        margin-left: 24px;
+    }
+
+    .rui-alert__close {
+        cursor: pointer;
+    }
+
+    .rui-alert__status {
+        font-size: $mediumFont !important;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+
+        .rui-icon {
+            margin-right: 5px;
+        }
+    }
+
+    &.info {
+        background-color: rgba($info, .2);
+        border-color: $info;
+        color: $info;
+
+        .rui-icon {
+            svg {
+                path {
+                    fill: $info;
+                }
+            }
+        }
+    }
+
+    &.success {
+        background-color: rgba($success, .2);
+        border-color: $success;
+        color: $success;
+
+        .rui-icon {
+            svg {
+                path {
+                    fill: $success;
+                }
+            }
+        }
+    }
+
+    &.error {
+        background-color: rgba($error, .2);
+        border-color: $error;
+        color: $error;
+
+        .rui-icon {
+            svg {
+                path {
+                    fill: $error;
+                }
+            }
+        }
+    }
+
+    &.warning {
+        background-color: rgba($warning, .2);
+        border-color: $warning;
+        color: $warning;
+
+        .rui-icon {
+            svg {
+                path {
+                    fill: $warning;
+                }
+            }
+        }
+    }
+}
+
+.rui-alert-enter {
+    opacity: 0;
+    transform: scale(.8);
+}
+
+.rui-alert-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.rui-alert-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.rui-alert-exit-active {
+    opacity: 0;
+    transform: scale(.8);
+    transition: opacity 300ms, transform 300ms;
+}

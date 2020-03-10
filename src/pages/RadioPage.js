@@ -138,7 +138,7 @@ const RadioPage = () => {
 
     return (
         <div className="rui-page">
-            <div className="rui-page-title">RadioGroup Component</div>
+            <div className="rui-page-title">{'<RadioGroup/>'} Component</div>
             <Card outlined title="Usage">
                 <Select
                     items={colors}

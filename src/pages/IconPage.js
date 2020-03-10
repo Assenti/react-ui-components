@@ -1,4 +1,4 @@
-import React, { createRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Table, Icon, Card, Collapse, Tooltip, InputField } from '../components';
 import { description } from '../../package.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -92,7 +92,10 @@ const icons = [
     'share',
     'phone',
     'bell',
-    'wrench'
+    'wrench',
+    'alert-circle',
+    'info',
+    'package-down'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
@@ -158,7 +161,7 @@ funcation Example() {
 `
 
 const IconPage = () => {
-    const api = createRef();
+    const api = useRef();
     const [search, setSearch] = useState('');
 
     const goToApi = () => {
@@ -176,7 +179,7 @@ const IconPage = () => {
     return (
         <div className="rui-page">
             <div className="row align-center space-between">
-                <div className="rui-page-title">Icon Component</div>
+                <div className="rui-page-title">{'<Icon/>'} Component</div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
             <p><strong>{description}</strong> use primarily

@@ -309,21 +309,21 @@ const Calendar = (props) => {
     )
 }
 Calendar.propTypes = {
-    locale: PropTypes.oneOf(['en','kz','ru','fr']),
+    locale: PropTypes.oneOf([undefined,'','en','kz','ru','fr']),
     events: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
     holidays: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
     onDate: PropTypes.func,
     hideWeekend: PropTypes.bool,
     hideCurrentDay: PropTypes.bool,
-    color: PropTypes.oneOf(['primary','info','success','error','dark']),
-    size: PropTypes.oneOf(['medium','large']),
+    color: PropTypes.oneOf([undefined,'','primary','info','success','error','dark']),
+    size: PropTypes.oneOf([undefined,'','medium','large']),
     limit: PropTypes.number,
     onlyPast: PropTypes.bool,
     weekStartsSunday: PropTypes.bool,
     shortWeekName: PropTypes.bool,
     dark: PropTypes.bool,
-    width: PropTypes.number || PropTypes.string,
-    popOverTrigger: PropTypes.oneOf(['hover','click']),
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    popOverTrigger: PropTypes.oneOf([undefined,'','hover','click']),
     className: PropTypes.string
 }
 Calendar.defaultProps = {

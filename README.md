@@ -1,6 +1,6 @@
 <p align="center">
   <h1 align="center">React UI Components</h1>
-  <p align="center">UI Components for web apps built on React</p>
+  <p align="center">UI Components for web apps built on <a href="https://reactjs.org/" target="_blank">React</a></p>
 </p>
 <p align="center">
   <a aria-label="NPM version" href="https://www.npmjs.com/package/@assenti/rui-components">
@@ -60,7 +60,6 @@ export default App;
 - [ ] Expansion List
 - [ ] Stepper
 - [ ] Dock
-- [ ] Alert
 - [ ] Notification
 - [ ] Carousel
 - [ ] AutoComplete

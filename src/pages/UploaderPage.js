@@ -232,10 +232,10 @@ const UploaderPage = () => {
     return (
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="rui-page-title">Uploader Components</div>
+                <div className="rui-page-title">{'<Uploader/>'} Component</div>
                 <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
             </div>
-            <Card outlined title="Uploader">
+            <Card outlined title="Usage">
                 <Select
                     items={sizes}
                     prefix={<Icon name="format-size"/>}

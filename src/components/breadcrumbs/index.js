@@ -38,16 +38,16 @@ const Breadcrumbs = (props) => {
     )
 }
 Breadcrumbs.propTypes = {
-    crumbs: PropTypes.arrayOf(PropTypes.object || PropTypes.string).isRequired,
+    crumbs: PropTypes.instanceOf(PropTypes.array).isRequired,
     icon: PropTypes.string,
     itemKey: PropTypes.string,
     urlKey: PropTypes.string,
     isActive: PropTypes.func,
     onChange: PropTypes.func,
     delimiter: PropTypes.string,
-    size: PropTypes.oneOf(['medium','large']),
-    color: PropTypes.oneOf(['primary','info','success','error','dark','secondary']),
-    position: PropTypes.oneOf(['center','right']),
+    size: PropTypes.oneOf([undefined,'','medium','large']),
+    color: PropTypes.oneOf([undefined,'','primary','info','success','error','dark','secondary']),
+    position: PropTypes.oneOf([undefined,'','center','right']),
     className: PropTypes.string
 }
 Breadcrumbs.defaultProps = {

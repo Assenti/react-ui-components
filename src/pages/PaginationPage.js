@@ -201,9 +201,9 @@ const PaginationPage = () => {
     return (
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="rui-page-title">Pagination Component</div>
+                <div className="rui-page-title">{'<Pagination/>'} Component</div>
             </div>
-            <Card outlined title="Pagination usage">
+            <Card outlined title="Usage">
                 <Select
                     items={colors}
                     prefix={<Icon name="brush"/>}

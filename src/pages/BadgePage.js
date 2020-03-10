@@ -112,7 +112,7 @@ const BadgePage = () => {
 
     return (
         <div className="rui-page">
-            <div className="rui-page-title">Badge Component</div>
+            <div className="rui-page-title">{'<Badge/>'} Component</div>
             <Card outlined title="Usage">
                 <Select
                     items={colors}

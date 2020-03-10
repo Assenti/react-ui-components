@@ -30,9 +30,9 @@ const Avatar = (props) => {
     )
 }
 Avatar.propTypes = {
-    color: PropTypes.oneOf(['secondary, primary, info, success, error']),
+    color: PropTypes.oneOf([undefined,'','secondary', 'primary', 'info', 'success', 'error']),
     size: PropTypes.number,
-    borderType: PropTypes.oneOf(['tile','rounded']),
+    borderType: PropTypes.oneOf([undefined,'','tile','rounded']),
     img: PropTypes.string,
     icon: PropTypes.string,
     className: PropTypes.string

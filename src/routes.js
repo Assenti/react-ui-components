@@ -37,6 +37,9 @@ const AvatarPage = lazy(() => import('./pages/AvatarPage'));
 const BreadcrumbsPage = lazy(() => import('./pages/BreadcrumbsPage'));
 const ProgressPage = lazy(() => import('./pages/ProgressPage'));
 const CalendarPage = lazy(() => import('./pages/CalendarPage'));
+const NotificationPage = lazy(() => import('./pages/NotificationPage'));
+const AlertPage = lazy(() => import('./pages/AlertPage'));
+const TextareaPage = lazy(() => import('./pages/TextareaPage'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
@@ -45,6 +48,7 @@ export const routes = [
     { path: '/dropdown', name: 'Dropdown', Component: DropdownPage },
     { path: '/list', name: 'List', Component: ListPage },
     { path: '/inputfield', name: 'InputField', Component: InputsPage },
+    { path: '/textareafield', name: 'TextareaField', Component: TextareaPage },
     { path: '/drawer', name: 'Drawer', Component: DrawerPage },
     { path: '/tooltip', name: 'Tooltip', Component: TooltipPage },
     { path: '/pagination', name: 'Pagination', Component: PaginationPage },
@@ -74,7 +78,9 @@ export const routes = [
     { path: '/rating', name: 'Rating', Component: RatingPage },
     { path: '/floatingbtn', name: 'FloatingBtn', Component: FloatingBtnPage },
     { path: '/avatar', name: 'Avatar', Component: AvatarPage },
+    { path: '/alert', name: 'Alert', Component: AlertPage },
     { path: '/breadcrumbs', name: 'Breadcrumbs', Component: BreadcrumbsPage },
     { path: '/progress', name: 'Progress', Component: ProgressPage },
     { path: '/calendar', name: 'Calendar', Component: CalendarPage },
+    // { path: '/notification', name: 'Notification', Component: NotificationPage },
 ]

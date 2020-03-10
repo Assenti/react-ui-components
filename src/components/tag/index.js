@@ -58,14 +58,14 @@ Tag.propTypes = {
     uppercase: PropTypes.bool,
     outlined: PropTypes.bool,
     lifted: PropTypes.bool,
-    color: PropTypes.oneOf(['primary, info, success, error, dark, yellow']),
-    borderType: PropTypes.oneOf(['tile','smooth','rounded']),
+    color: PropTypes.oneOf([undefined,'secondary','primary', 'info', 'success', 'error', 'dark', 'yellow']),
+    borderType: PropTypes.oneOf([undefined,'','tile','smooth','rounded']),
     setRef: PropTypes.any,
     small: PropTypes.bool,
-    value: PropTypes.string || PropTypes.number,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     iconLeft: PropTypes.string,
     iconRight: PropTypes.string,
-    width: PropTypes.string || PropTypes.number,
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     closable: PropTypes.bool,
     className: PropTypes.string
 }

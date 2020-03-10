@@ -133,7 +133,7 @@ Drawer.propTypes = {
     onResize: PropTypes.func,
     onClose: PropTypes.func,
     fullHeight: PropTypes.bool,
-    position: PropTypes.oneOf(['right, top, bottom']),
+    position: PropTypes.oneOf([undefined,'','right','top','bottom']),
     header: PropTypes.any,
     headerCentered: PropTypes.bool,
     dark: PropTypes.bool,

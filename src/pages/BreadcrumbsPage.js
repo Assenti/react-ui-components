@@ -180,8 +180,8 @@ const BreadcrumbsPage = () => {
 
     return (
         <div className="rui-page">
-            <div className="rui-page-title">Breadcrumbs Component</div>
-            <Card outlined title="Breadcrumbs usage">
+            <div className="rui-page-title">{'<Breadcrumbs/>'} Component</div>
+            <Card outlined title="Usage">
                 <Select
                     items={sizes}
                     prefix={<Icon name="format-size"/>}

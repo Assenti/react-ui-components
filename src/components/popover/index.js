@@ -67,13 +67,13 @@ const PopOver = (props) => {
 }
 PopOver.propTypes = {
     title: PropTypes.string,
-    content: PropTypes.string || PropTypes.number || PropTypes.node,
+    content: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
     control: PropTypes.bool,
     onClose: PropTypes.func,
-    trigger: PropTypes.oneOf(['hover','click']),
+    trigger: PropTypes.oneOf([undefined,'','hover','click']),
     dark: PropTypes.bool,
     noBlur: PropTypes.bool,
-    position: PropTypes.oneOf(['bottom','left','right']),
+    position: PropTypes.oneOf([undefined,'','bottom','left','right']),
     className: PropTypes.string
 }
 export default PopOver;

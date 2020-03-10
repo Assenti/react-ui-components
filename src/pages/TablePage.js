@@ -1,4 +1,4 @@
-import React, { createRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Table, Button, Tooltip, Card, BackTopBtn, Collapse, Select, Icon, Switch, ButtonGroup, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -372,8 +372,8 @@ const textAligns = ['left', 'center', 'right'];
 const icons = ['format-align-left', 'format-align-center', 'format-align-right'];
 
 const TablePage = () => {
-    const api = createRef();
-    const parent = createRef();
+    const api = useRef();
+    const parent = useRef();
     const [color, setColor] = useState(colors[0]);
     const [grid, setGrid] = useState(false);
     const [checkbox, setCheckbox] = useState(false);
@@ -397,10 +397,10 @@ const TablePage = () => {
     return (
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="rui-page-title">Table Component</div>
+                <div className="rui-page-title">{'<Table/>'} Component</div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined title="Table usage">
+            <Card outlined title="Usage">
                 <div className="row align-bottom pt-10">
                     <Select
                         items={colors}

@@ -128,7 +128,7 @@ const InputMaskPage = () => {
     return (
         <div className="rui-page">
             <div className="row align-center space-between">
-                <div className="rui-page-title">InputMask Component</div>
+                <div className="rui-page-title">{'<InputMask/>'} Component</div>
             </div>
             <Card outlined color="gray" title="Usage">
                 <div className="pa-5 fz-9">Kazakhstan phone mask: {phoneMask(kztPhone)}</div>

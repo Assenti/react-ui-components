@@ -92,7 +92,10 @@ import {
     Bell,
     Wrench,
     Minus,
-    CheckCircle
+    CheckCircle,
+    AlertCirlce,
+    Information,
+    PackageDown
 } from './icons/index';
 
 const Icon = (props) => {
@@ -282,6 +285,12 @@ const Icon = (props) => {
                 return <Minus size={props.size} color={props.color}/>;
             case 'check-circle':
                 return <CheckCircle size={props.size} color={props.color}/>;
+            case 'alert-circle':
+                return <AlertCirlce size={props.size} color={props.color}/>;
+            case 'info':
+                return <Information size={props.size} color={props.color}/>;
+            case 'package-down':
+                return <PackageDown size={props.size} color={props.color}/>;
             default:
                 return '';
         }

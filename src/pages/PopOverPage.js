@@ -170,9 +170,9 @@ const PopOverPage = () => {
     return (
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="rui-page-title">PopOver Component</div>
+                <div className="rui-page-title">{'<PopOver/>'} Component</div>
             </div>
-            <Card outlined title="PopOver usage">
+            <Card outlined title="Usage">
                 <Select
                     items={positions}
                     prefix={<Icon name="book-open"/>}

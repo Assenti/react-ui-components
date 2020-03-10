@@ -68,8 +68,8 @@ const PreloaderPage = () => {
 
     return (
         <div className="rui-page">
-            <div className="rui-page-title">Preloader Component</div>
-            <Card outlined title="Preloader usage">
+            <div className="rui-page-title">{'<Preloader/>'} Component</div>
+            <Card outlined title="Usage">
                 <p>Launch full page preloader and make all actions on screen disabled</p>
                 <div className="py-10">
                     <Button name="Activate" color="primary" onClick={handleClick}/>

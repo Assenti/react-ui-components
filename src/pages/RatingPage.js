@@ -153,8 +153,8 @@ const RatingPage = () => {
 
     return (
         <div className="rui-page" ref={parent}>
-            <div className="rui-page-title">Rating Component</div>
-            <Card outlined title="Rating usage">
+            <div className="rui-page-title">{'<Rating/>'} Component</div>
+            <Card outlined title="Usage">
                 <div className="row column">
                     <InputField
                         width={100} 

@@ -157,9 +157,9 @@ const ButtonGroupPage = () => {
     return (
         <div className="rui-page">
             <div className="row align-center space-between">
-                <div className="rui-page-title">ButtonGroup Component</div>
+                <div className="rui-page-title">{'<ButtonGroup/>'} Component</div>
             </div>
-            <Card outlined title="ButtonGroup usage">
+            <Card outlined title="Usage">
                 <Select
                     items={sizes}
                     prefix={<Icon name="format-size"/>}

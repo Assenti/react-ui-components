@@ -95,9 +95,9 @@ const TooltipPage = () => {
     return (
         <div className="rui-page">
             <div className="row align-center space-between">
-                <div className="rui-page-title">Tooltip Component</div>
+                <div className="rui-page-title">{'<Tooltip/>'} Component</div>
             </div>
-            <Card outlined title="Tooltips">
+            <Card outlined title="Usage">
                 <Select
                     items={colors}
                     prefix={<Icon name="brush"/>}

@@ -136,9 +136,9 @@ Pagination.propTypes = {
     onPerPageSelect: PropTypes.func,
     onChange: PropTypes.func,
     perPageText: PropTypes.string,
-    color: PropTypes.oneOf(['primary','info','success','error']),
+    color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
     rounded: PropTypes.bool,
-    size: PropTypes.oneOf(['medium','large']),
+    size: PropTypes.oneOf([undefined,'','medium','large']),
     className: PropTypes.string
 }
 Pagination.defaulfProps = {

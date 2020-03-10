@@ -96,16 +96,16 @@ const Tabs = (props) => {
 }
 Tabs.propTypes = {
     defaultTab: PropTypes.number,
-    tabs: PropTypes.arrayOf(PropTypes.string) || PropTypes.arrayOf(PropTypes.object),
+    tabs: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]),
     tabItems: PropTypes.arrayOf(PropTypes.node),
     tabTitleKey: PropTypes.string,
     tabIconKey: PropTypes.string,
     centered: PropTypes.bool,
-    position: PropTypes.oneOf(['left','bottom','right']),
-    size: PropTypes.oneOf(['medium','large']),
+    position: PropTypes.oneOf([undefined,'','left','bottom','right']),
+    size: PropTypes.oneOf([undefined,'','medium','large']),
     activeHighlightFill: PropTypes.bool,
     onChange: PropTypes.func,
-    color: PropTypes.oneOf(['primary','info','error','success','']),
+    color: PropTypes.oneOf([undefined,'','primary','info','error','success','']),
     className: PropTypes.string
 }
 export default Tabs;

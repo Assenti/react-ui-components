@@ -195,10 +195,10 @@ const TimelinePage = () => {
     return (
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="rui-page-title">Timeline Component</div>
+                <div className="rui-page-title">{'<Timeline/>'} Component</div>
                 <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
             </div>
-            <Card outlined title="Timeline component usage">
+            <Card outlined title="Usage">
                 <div className="row column py-10">
                     <Switch 
                         color="primary" 

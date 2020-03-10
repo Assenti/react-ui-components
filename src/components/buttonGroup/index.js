@@ -52,10 +52,10 @@ ButtonGroup.propTypes = {
     options: PropTypes.array.isRequired,
     lifted: PropTypes.bool,
     outlined: PropTypes.bool,
-    size: PropTypes.oneOf(['medium','large']),
+    size: PropTypes.oneOf([undefined,'','medium','large']),
     name: PropTypes.string,
     icon: PropTypes.string,
-    color: PropTypes.oneOf(['primary','info','success','error','secondary','black']),
+    color: PropTypes.oneOf([undefined,'','primary','info','success','error','secondary','black']),
     className: PropTypes.string
 }
 export default ButtonGroup;

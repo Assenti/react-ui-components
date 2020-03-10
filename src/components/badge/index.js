@@ -34,7 +34,7 @@ const Badge = (props) => {
 Badge.propTypes = {
     rounded: PropTypes.bool,
     icon: PropTypes.string,
-    color: PropTypes.oneOf(['primary','info','success','error','dark','secondary']),
+    color: PropTypes.oneOf([undefined,'','primary','info','success','error','dark','secondary']),
     value: PropTypes.string,
     visible: PropTypes.bool,
     parent: PropTypes.node

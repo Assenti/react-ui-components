@@ -329,10 +329,10 @@ const ButtonPage = () => {
     return (
         <div className="rui-page" ref={parentRef}>
             <div className="row align-center space-between">
-                <div className="rui-page-title">Button Component</div>
+                <div className="rui-page-title">{'<Button/>'} Component</div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined title="Button usage">
+            <Card outlined title="Usage">
                 <Select
                     items={sizes}
                     prefix={<Icon name="format-size"/>}

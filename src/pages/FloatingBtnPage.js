@@ -170,7 +170,7 @@ const FloatingBtnPage = () => {
 
     return (
         <div className="rui-page">
-            <div className="rui-page-title">FloatingBtn Component</div>
+            <div className="rui-page-title">{'<FloatingBtn/>'} Component</div>
             <Card outlined title="Usage">
                 <Select
                     items={colors}

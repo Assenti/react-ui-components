@@ -216,7 +216,7 @@ const DrawerPage = () => {
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
                 <div className="row">
-                    <div className="rui-page-title">Drawer Component</div>
+                    <div className="rui-page-title">{'<Drawer/>'} Component</div>
                     <Badge 
                         color="error" 
                         value="WIP"
@@ -225,7 +225,7 @@ const DrawerPage = () => {
                 </div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
             </div>
-            <Card outlined title="Drawer usage">
+            <Card outlined title="Usage">
                 <div className="rui-app relative pa-0" style={{ minHeight: 260 }}>
                     <Drawer
                         drawer={drawer}

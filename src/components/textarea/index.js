@@ -22,15 +22,13 @@ const TextareaField = (props) => {
         }
     }
 
-    const inputFieldClass = () => {
+    const componentClass = () => {
         let result = '';
         let className = {
             input: 'rui-input-field',
             whiteBackground: props.whiteBackground ? 'white-background' : '',
-            size: props.size ? props.size : '',
             borderType: props.borderType && props.borderType !== 'rounded' ? props.borderType : '',
             lifted: props.lifted ? 'lifted' : '',
-            uppercase: props.uppercase ? 'uppercase' : '',
             color: getInputColor(),
             disabled: props.disabled ? 'disabled' : '',
             className: props.className ? props.className : ''
@@ -74,11 +72,29 @@ const TextareaField = (props) => {
         }
 
         if (props.onChange) {
-            props.onChange(e) 
+            if (props.uppercase) {
+                e.target.value = e.target.value.toUpperCase()
+            } else props.onChange(e) 
             setIsChanged(true)
         }
         
         setRows(currentRows < maxRows ? currentRows : maxRows)
+    }
+
+    const getHintColor = () => {
+        if (props.hintColor) {
+            return `rui-input-field__hint ${props.hintColor}`
+        } else {
+            if (props.required) {
+                if (isChanged && !props.value) {
+                    return 'rui-input-field__hint error'
+                } else {
+                    return 'rui-input-field__hint'
+                }
+            } else {
+                return 'rui-input-field__hint'
+            }
+        }
     }
 
     useEffect(() => {
@@ -87,7 +103,7 @@ const TextareaField = (props) => {
     }, [props.value])
 
     return (
-        <div className={inputFieldClass()} style={{ width: props.width ? props.width : ''}}>
+        <div className={componentClass()} style={{ width: props.width ? props.width : ''}}>
             {props.label ? 
             <label className={focus ? 'active' : ''} 
                 onClick={() => input.current.focus()}>{props.required ? <span className="text-error">*</span> : ''} {props.label}</label> 
@@ -117,6 +133,8 @@ const TextareaField = (props) => {
                         className="rui-input-clear"/> : ''}
                 {props.suffix ? <span className="rui-input-suffix">{props.suffix}</span> : ''}
             </div>
+            {props.hint ? 
+                <div className={getHintColor()}>{props.hint}</div> : ''}
         </div>
     )
 }
@@ -127,15 +145,17 @@ TextareaField.propTypes = {
     required: PropTypes.bool,
     onKeyUp: PropTypes.func,
     placeholder: PropTypes.string,
+    label: PropTypes.string,
+    hint: PropTypes.string,
+    hintColor: PropTypes.oneOf([undefined,'','error','success']),
     readOnly: PropTypes.bool,
-    size: PropTypes.oneOf(['medium','larege']),
-    color: PropTypes.oneOf(['primary','info','success','error']),
-    borderType: PropTypes.oneOf(['tile','smooth']),
+    color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
+    borderType: PropTypes.oneOf([undefined,'','tile','smooth']),
     rows: PropTypes.number,
     maxRows: PropTypes.number,
-    width: PropTypes.number || PropTypes.string,
-    prefix: PropTypes.string || PropTypes.number || PropTypes.node,
-    suffix: PropTypes.string || PropTypes.number || PropTypes.node,
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    prefix: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
+    suffix: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
     autoFocus: PropTypes.bool,
     onClear: PropTypes.func,
     clearable: PropTypes.bool,

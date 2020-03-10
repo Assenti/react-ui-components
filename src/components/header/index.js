@@ -44,13 +44,13 @@ const Header = (props) => {
     )
 }
 Header.propTypes = {
-    height: PropTypes.number || PropTypes.string,
+    height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     dark: PropTypes.bool,
     light: PropTypes.bool,
     leftControl: PropTypes.bool,
     onLeftControl: PropTypes.func,
     title: PropTypes.string,
-    color: PropTypes.oneOf(['primary','info','success','error','secondary','black']),
+    color: PropTypes.oneOf([undefined,'','primary','info','success','error','secondary','black']),
     leftControlIcon: PropTypes.string,
     rightSide: PropTypes.any,
     sticky: PropTypes.bool,

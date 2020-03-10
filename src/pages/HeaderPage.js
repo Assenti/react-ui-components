@@ -163,9 +163,9 @@ const HeaderPage = () => {
     return (
         <div className="rui-page">
             <div className="row align-center space-between">
-                <div className="rui-page-title">Header Component</div>
+                <div className="rui-page-title">{'<Header/>'} Component</div>
             </div>
-            <Card outlined title="Header usage">
+            <Card outlined title="Usage">
                 <Select
                     items={colors}
                     prefix={<Icon name="brush"/>}

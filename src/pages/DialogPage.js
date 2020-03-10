@@ -174,8 +174,8 @@ const DialogPage = () => {
 
     return (
         <div className="rui-page">
-            <div className="rui-page-title">Dialog Component</div>
-            <Card outlined title="Modal usage">
+            <div className="rui-page-title">{'<Dialog/>'} Component</div>
+            <Card outlined title="Usage">
                 <Switch 
                     color="primary" 
                     check={dark}

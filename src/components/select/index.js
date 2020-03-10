@@ -259,21 +259,21 @@ const Select = (props) => {
     )
 }
 Select.propTypes = {
-    items: PropTypes.arrayOf(PropTypes.string) || PropTypes.arrayOf(PropTypes.object),
+    items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]),
     itemName: PropTypes.string,
     onChange: PropTypes.func,
     onSelect: PropTypes.func,
-    prefix: PropTypes.string || PropTypes.number || PropTypes.node,
+    prefix: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
     searchable: PropTypes.bool,
-    borderType: PropTypes.oneOf(['tile','rounded','smooth']),
+    borderType: PropTypes.oneOf([undefined,'','tile','rounded','smooth']),
     multiple: PropTypes.bool,
     placeholder: PropTypes.string,
-    size: PropTypes.oneOf(['medium','large']),
-    color: PropTypes.oneOf(['primary','info','success','error']),
+    size: PropTypes.oneOf([undefined,'','medium','large']),
+    color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
     dark: PropTypes.bool,
     tagColor: PropTypes.string,
     whiteBackground: PropTypes.bool,
-    width: PropTypes.string || PropTypes.number,
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     label: PropTypes.string,
     childrenKey: PropTypes.string,
     className: PropTypes.string

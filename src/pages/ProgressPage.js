@@ -207,8 +207,8 @@ const ProgressPage = () => {
 
     return (
         <div className="rui-page">
-            <div className="rui-page-title">Progress Component</div>
-            <Card outlined title="Progress usage">
+            <div className="rui-page-title">{'<Progress/>'} Component</div>
+            <Card outlined title="Usage">
                 <Select
                     items={colors}
                     prefix={<Icon name="brush"/>}

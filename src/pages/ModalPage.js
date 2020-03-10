@@ -228,8 +228,8 @@ const ModalPage = () => {
 
     return (
         <div className="rui-page">
-            <div className="rui-page-title">Modal Component</div>
-            <Card outlined title="Modal usage">
+            <div className="rui-page-title">{'<Modal/>'} Component</div>
+            <Card outlined title="Usage">
                 <Button
                     color="primary"
                     name="Default modal"

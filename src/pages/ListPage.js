@@ -387,7 +387,7 @@ const ListPage = () => {
     return (
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="rui-page-title">List, ListItem Components</div>
+                <div className="rui-page-title">{'<List/>, <ListItem/>'} Components</div>
                 <div className="row">
                     <div className="rui-link fz-13 fw-bold mr-10" onClick={() => goListApi()}>List API</div>
                     <div className="rui-link fz-13 fw-bold" onClick={() => goListItemApi()}>ListItem API</div>
@@ -396,7 +396,7 @@ const ListPage = () => {
             <Card 
                 outlined 
                 className="px-0"
-                title="List usage">
+                title="Usage">
                 <Select
                     items={sizes}
                     prefix={<Icon name="format-size"/>}

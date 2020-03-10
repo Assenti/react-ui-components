@@ -1,5 +1,5 @@
-import React, { useState, createRef } from 'react';
-import { Select, Table, Card, Collapse, Icon, BackTopBtn } from '../components';
+import React, { useState, useRef } from 'react';
+import { Select, Table, Card, Collapse, Icon, BackTopBtn, Switch, Badge } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -139,7 +139,7 @@ const countries = [
     { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'] }
 ]
 
-const simpleUsage = 
+const usage = 
 `// Usage examples
 import React, { useState } from 'react';
 import { Select } from '@assenti/react-ui-components';
@@ -187,102 +187,22 @@ function Example() {
     )
 }`
 
-const searchUsage = 
-`// Usage examples
-import React, { useState } from 'react';
-import { Select } from '@assenti/react-ui-components';
-
-const countries = [
-    { country: 'Kazakhstan', cities: [ 'Nur-Sultan', 'Almaty', 'Shymkent' ] }, 
-    { country: 'Russia', cities: ['Moscow', 'St. Petersburg', 'Krasnodar'] }, 
-    { country: 'USA', cities: ['Washington, D.C.', 'New York City', 'San Francisco'] }, 
-    { country: 'United Kingdom', cities: ['London', 'York', 'Manchester'] }, 
-    { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
-    { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
-    { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
-    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] },
-    { country: 'Japan', cities: ['Tokyo', 'Osaka', 'Kyoto'] },
-    { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'] }
-]
-
-function Example() {
-    const [country_, setCountry_] = useState('');
-    const [search, setSearch] = useState('');
-
-    return (
-        <div className="pa-20">
-            <Select
-                items={countries}
-                prefix={<Icon name="earth"/>}
-                itemTitle="country"
-                label="Select your favourite country"
-                width={250}
-                size="medium"
-                searchable
-                color="info"
-                placeholder="Countries"
-                value={country_}
-                onChange={value => setCountry_(value)}/>
-            <Select
-                items={countries}
-                prefix={<Icon name="earth"/>}
-                itemTitle="country"
-                label="Select your favourite country"
-                width={250}
-                searchable
-                rounded
-                className="ml-20"
-                color="info"
-                placeholder="Countries"
-                value={country_}
-                onChange={value => setCountry_(value)}/>
-        </div>
-    )
-}`
-
-const multipleUsage = 
-`// Usage examples
-import React from 'react';
-import { Select } from '@assenti/react-ui-components';
-
-const countries = [
-    { country: 'Kazakhstan', cities: [ 'Nur-Sultan', 'Almaty', 'Shymkent' ] }, 
-    { country: 'Russia', cities: ['Moscow', 'St. Petersburg', 'Krasnodar'] }, 
-    { country: 'USA', cities: ['Washington, D.C.', 'New York City', 'San Francisco'] }, 
-    { country: 'United Kingdom', cities: ['London', 'York', 'Manchester'] }, 
-    { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
-    { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
-    { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
-    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] },
-    { country: 'Japan', cities: ['Tokyo', 'Osaka', 'Kyoto'] },
-    { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'] }
-]
-
-function Example() {
-    return (
-        <div>
-            <Select
-                items={countries}
-                prefix={<Icon name="earth"/>}
-                itemTitle="country"
-                label="Select your favourite countries"
-                width={250}
-                childrenKey="cities"
-                multiple
-                whiteBackground
-                color="info"
-                placeholder="Countries"
-                onSelect={(value, selectedList) => console.log(value, selectedList)}/>
-        </div>
-    )
-}`
+const colors = ['primary', 'info', 'success', 'error'];
+const sizes = ['default', 'medium', 'large'];
 
 const SelectPage = () => {
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
-    const [country_, setCountry_] = useState('');
-    const parent = createRef();
-    const api = createRef();
+    const [color, setColor] = useState(colors[0]);
+    const [size, setSize] = useState(sizes[0]);
+    const [disabled, setDisabled] = useState(false);
+    const [searchable, setSearchable] = useState(false);
+    const [prefix, setPrefix] = useState(true);
+    const [multiple, setMultiple] = useState(false);
+    const [label, setLabel] = useState(true);
+    const [whiteBackground, setWhiteBackground] = useState(false);
+    const parent = useRef();
+    const api = useRef();
 
     const goToApi = () => {
         if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
@@ -291,30 +211,104 @@ const SelectPage = () => {
     return (
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="rui-page-title">
-                    Select Component
+                <div className="row">
+                    <div className="rui-page-title">{'<Select/>'} Component</div>
+                    <Badge 
+                        color="error" 
+                        value="WIP"
+                        className="ml-10"
+                        parent={<Icon name="wrench" size={20}/>}/>
                 </div>
                 <div className="rui-link fz-13 fw-bold mr-10" onClick={() => goToApi()}>API</div>
             </div>
-            <Card outlined title="Simple Selects">
+            <Card outlined title="Usage">
+            <Select
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    label="Switch color"
+                    color="primary"
+                    className="my-10"
+                    value={color}
+                    onChange={v => setColor(v)}/>
+                <br/>
+                <Select
+                    items={sizes}
+                    prefix={<Icon name="format-size"/>}
+                    width={200}
+                    label="Switch size"
+                    color="primary"
+                    className="my-10"
+                    value={size}
+                    onChange={v => setSize(v)}/>
+                <br/>
+                <Switch 
+                    check={searchable} 
+                    color="primary"
+                    rightLabel="Searchable" 
+                    className="my-10"
+                    onChange={() => setSearchable(!searchable)}/>
+                <Switch 
+                    check={disabled} 
+                    color="primary"
+                    rightLabel="Disabled" 
+                    className="my-10"
+                    onChange={() => setDisabled(!disabled)}/>
+                <br/>
+                <Switch 
+                    check={prefix} 
+                    color="primary"
+                    rightLabel="Prefix" 
+                    className="my-10"
+                    onChange={() => setPrefix(!prefix)}/>
+                <Switch 
+                    check={multiple} 
+                    color="primary"
+                    rightLabel="Multiple selection" 
+                    className="my-10"
+                    onChange={() => setMultiple(!multiple)}/>
+                <br/>
+                <Switch 
+                    check={whiteBackground} 
+                    color="primary"
+                    rightLabel="WhiteBackground" 
+                    className="my-10"
+                    onChange={() => setWhiteBackground(!whiteBackground)}/>
+                <Switch 
+                    check={label} 
+                    color="primary"
+                    rightLabel="Label" 
+                    className="my-10"
+                    onChange={() => setLabel(!label)}/>
+                <br/>
                 <Select
                     items={countries}
-                    prefix={<Icon name="earth"/>}
+                    prefix={prefix ? <Icon name="earth"/> : null}
                     itemTitle="country"
-                    label="Select your favourite country"
+                    label={label ? 'Select your favourite country' : null}
                     width={250}
-                    color="info"
+                    disabled={disabled}
+                    searchable={searchable}
+                    size={size}
+                    multiple={multiple}
+                    whiteBackground={whiteBackground}
+                    color={color}
+                    onSelect={(value, selectedList) => console.log(value, selectedList)}
                     placeholder="Countries"
                     value={country}
                     onChange={v => setCountry(v)}/>
+                <br/>
                 <Select
-                    className="ml-20"
-                    label="Select your favourite city"
+                    prefix={prefix ? <Icon name="earth"/> : null}
+                    label={label ? 'Select your favourite city of countries' : null}
                     items={countries}
                     itemTitle="country"
                     childrenKey="cities"
-                    color="primary"
+                    color={color}
+                    whiteBackground={whiteBackground}
                     width={250}
+                    searchable={searchable}
+                    size={size}
                     placeholder="Cities"
                     value={city}
                     onChange={v => setCity(v)}/>
@@ -324,68 +318,7 @@ const SelectPage = () => {
                     contentStyles={{ padding: 0 }}
                     tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>
-                        {simpleUsage}
-                    </SyntaxHighlighter> 
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Simple Select with searching">
-                <Select
-                    items={countries}
-                    prefix={<Icon name="earth"/>}
-                    itemTitle="country"
-                    label="Select your favourite country"
-                    width={250}
-                    size="medium"
-                    searchable
-                    color="info"
-                    placeholder="Countries"
-                    value={country_}
-                    onChange={value => setCountry_(value)}/>
-                <Select
-                    items={countries}
-                    prefix={<Icon name="earth"/>}
-                    itemTitle="country"
-                    label="Select your favourite country"
-                    width={250}
-                    searchable
-                    borderType="rounded"
-                    className="ml-20"
-                    color="info"
-                    placeholder="Countries"
-                    value={country_}
-                    onChange={value => setCountry_(value)}/>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18}
-                    contentStyles={{ padding: 0 }}
-                    tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {searchUsage}
-                    </SyntaxHighlighter> 
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Multiple selection">
-                <Select
-                    items={countries}
-                    prefix={<Icon name="earth"/>}
-                    itemTitle="country"
-                    label="Select your favourite countries"
-                    width={250}
-                    childrenKey="cities"
-                    multiple
-                    whiteBackground
-                    color="info"
-                    placeholder="Countries"
-                    onSelect={(value, selectedList) => console.log(value, selectedList)}/>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18}
-                    contentStyles={{ padding: 0 }}
-                    tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {multipleUsage}
+                        {usage}
                     </SyntaxHighlighter> 
                 </Collapse>
             </Card>
@@ -401,5 +334,4 @@ const SelectPage = () => {
         
     )
 }
-
 export default SelectPage;

@@ -180,8 +180,8 @@ const SwitchPage = () => {
 
     return (
         <div className="rui-page">
-            <div className="rui-page-title">Switch Component</div>
-            <Card outlined title="Simple switches">
+            <div className="rui-page-title">{'<Switch/>'} Component</div>
+            <Card outlined title="Usage">
                 <Select
                     items={colors}
                     prefix={<Icon name="brush"/>}

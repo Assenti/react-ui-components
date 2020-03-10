@@ -219,9 +219,9 @@ const TabsPage = () => {
     return (
         <div className="rui-page">
             <div className="row align-center">
-                <div className="rui-page-title">Tabs Component</div>
+                <div className="rui-page-title">{'<Tabs/>'} Component</div>
             </div>
-            <Card outlined title="Tabs usage">
+            <Card outlined title="Usage">
                 <div className="row column">
                     <Select
                         items={colors}

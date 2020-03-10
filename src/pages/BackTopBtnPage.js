@@ -134,11 +134,11 @@ const BackTopBtnPage = () => {
     return (
         <div className="rui-page" ref={blockref}>
             <div className="row align-center space-between">
-                <div className="rui-page-title">BackTopBtn Component</div>
+                <div className="rui-page-title">{'<BackTopBtn/>'} Component</div>
                 <div className="rui-link fz-13 fw-bold" onClick={goToApi}>API</div>
             </div>
             <div className="row align-center">Scroll down <Icon className="ml-5" name="arrow-down-bold" size={18}/></div>
-            <Card outlined title="BackTopBtn" className="mt-20">
+            <Card outlined title="Usage" className="mt-20">
                 <List header="Countries">
                     {countries.map((item, index) => 
                         <ListItem

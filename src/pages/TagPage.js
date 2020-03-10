@@ -1,4 +1,4 @@
-import React, { createRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Tag, Card, Table, Collapse, BackTopBtn, Button, Select, Icon, Switch, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -196,12 +196,12 @@ function Example() {
     )
 }`
 
-const colors = ['primary', 'info', 'success', 'error', 'dark', 'yellow'];
+const colors = ['primary', 'info', 'success', 'error', 'dark', 'yellow','secondary'];
 const borders = ['default', 'smooth', 'rounded', 'tile'];
 
 const TagPage = () => {
-    const parent = createRef();
-    const api = createRef();
+    const parent = useRef();
+    const api = useRef();
     const [visible, setVisible] = useState(true);
     const [outlined, setOutlined] = useState(false);
     const [small, setSmall] = useState(false);
@@ -218,7 +218,7 @@ const TagPage = () => {
     return (
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="rui-page-title">Tag Component</div>
+                <div className="rui-page-title">{'<Tag/>'} Component</div>
                 <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
             </div>
             <Card outlined title="Tag usage">
