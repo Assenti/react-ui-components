@@ -24,10 +24,22 @@ Create a lot of usefull and maximum reusable UI components
 ```bash
 # Install package from NPM
 % npm install @assenti/rui-components -S
-
-               #or
-
+```
+or
+```bash
+# Install package from NPM
 % yarn add @assenti/rui-components
+```
+
+## Peer dependencies
+React UI Components use react-transition-group package under the hood, so you should install it too
+```bash
+# Install package from NPM
+% npm install react-transition-group -S
+```
+```bash
+# Install @types/react-transition-group for TS
+% npm install @types/react-transition-group -D
 ```
 
 ## Usage
@@ -43,11 +55,9 @@ import React from 'react';
 
 function App() {
   return (
-    <div>
-      <Card outlined color="primary" title="Button">
-        <Button color="primary" name="Rocket" icon="rocket"/>
-      </Card>
-    </div>
+    <Card outlined color="primary" title="Button">
+      <Button color="primary" name="Rocket" icon="rocket"/>
+    </Card>
   );
 }
 

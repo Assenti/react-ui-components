@@ -11,6 +11,14 @@ const codeInstallationYarn =
 `# Install package from NPM
 % yarn add @assenti/rui-components`;
 
+const codeInstallationRTG = 
+`# Install package from NPM
+% npm install react-transition-group -S`;
+
+const codeInstallationRTGTypes = 
+`# Install package from NPM
+% npm install @types/react-transition-group -D`;
+
 const stylesInstallation = 
 `// Import styles in index.js | index.ts
 import '@assenti/react-ui-components/build/css/main.css';`;
@@ -80,6 +88,26 @@ const HomePage = () => {
                     <CopyToClipboard
                         className="my-5 mx-10" 
                         text="yarn add @assenti/rui-components"/>
+                </div>
+                <br/>
+                <h4>Peer dependencies</h4>
+                <div className="py-5">React UI Components use react-transition-group under the hood, so you should install it too</div>
+                <div className="row full-width">
+                    <SyntaxHighlighter className="col" language="bash" style={prism}>
+                        {codeInstallationRTG}
+                    </SyntaxHighlighter>
+                    <CopyToClipboard
+                        className="my-5 mx-10" 
+                        text="npm install react-transition-group -S"/>
+                </div>
+                <div className="py-5">For TypeScript project (additional)</div>
+                <div className="row full-width">
+                    <SyntaxHighlighter className="col" language="bash" style={prism}>
+                        {codeInstallationRTGTypes}
+                    </SyntaxHighlighter>
+                    <CopyToClipboard
+                        className="my-5 mx-10" 
+                        text="npm install @types/react-transition-group -D"/>
                 </div>
             </Card>
             <br/>
