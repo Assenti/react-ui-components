@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Tag, Card, Icon } from '../index';
 
 const Timeline = (props) => {
@@ -60,5 +61,18 @@ const Timeline = (props) => {
         </div>
     )
 }
-
+Timeline.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.object),
+    centered: PropTypes.bool,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    flatCard: PropTypes.bool,
+    icon: PropTypes.string,
+    color: PropTypes.oneOf(['primary, info, success, error, yellow, dark']),
+    data: PropTypes.node || PropTypes.string || PropTypes.number,
+    tagColor: PropTypes.oneOf(['primary, info, success, error, yellow, dark']),
+    tagOutlined: PropTypes.bool,
+    date: PropTypes.string,
+    className: PropTypes.string
+}
 export default Timeline;

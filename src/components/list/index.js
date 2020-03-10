@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const List = (props) => {
     const listClass = () => {
@@ -23,7 +24,9 @@ const List = (props) => {
         </div>
     )
 }
-
+List.propTypes = {
+    size: PropTypes.oneOf('medium','large'),
+    dark: PropTypes.bool,
+    header: PropTypes.node || PropTypes.string || PropTypes.number
+}
 export default List;
-
-

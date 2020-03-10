@@ -31,7 +31,7 @@ const items = [
         property: 'img', 
         description: 'Set avatar image',
         default: '', 
-        type: 'base64',
+        type: 'base64 | string',
         value: ''
     },
     { 

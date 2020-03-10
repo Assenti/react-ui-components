@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Checkbox = (props) => {
     const checkboxClass = () => {
@@ -46,5 +47,14 @@ const Checkbox = (props) => {
                     onClick={() => props.onChange ? props.onChange() : {}}>{props.label}</div> : ''}
         </div>
     )
+}
+Checkbox.propTypes = {
+    checked: PropTypes.bool,
+    onChange: PropTypes.func,
+    disabled: PropTypes.bool,
+    color: PropTypes.oneOf(['primary','info','success','error','secondary']),
+    size: PropTypes.oneOf(['medium','large']),
+    label: PropTypes.string,
+    className: PropTypes.string
 }
 export default Checkbox;

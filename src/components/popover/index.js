@@ -1,11 +1,12 @@
-import React, { useState, createRef } from 'react';
+import React, { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { Icon } from '../index';
 
 const PopOver = (props) => {
     const [visible, setVisible] = useState(false);
-    const popup = createRef();
-    const content = createRef();
+    const popup = useRef();
+    const content = useRef();
 
     const popoverClass = () => {
         let result = '';
@@ -64,5 +65,15 @@ const PopOver = (props) => {
         </div>
     )
 }
-
+PopOver.propTypes = {
+    title: PropTypes.string,
+    content: PropTypes.string || PropTypes.number || PropTypes.node,
+    control: PropTypes.bool,
+    onClose: PropTypes.func,
+    trigger: PropTypes.oneOf(['hover','click']),
+    dark: PropTypes.bool,
+    noBlur: PropTypes.bool,
+    position: PropTypes.oneOf(['bottom','left','right']),
+    className: PropTypes.string
+}
 export default PopOver;

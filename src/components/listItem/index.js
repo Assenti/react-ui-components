@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon, Checkbox, Avatar, Tooltip } from '../index';
 
 const ListItem = (props) => {
@@ -75,5 +76,26 @@ const ListItem = (props) => {
         </div>
     )
 }
-
+ListItem.propTypes = {
+    roundedActive: PropTypes.bool,
+    leftBorder: PropTypes.bool,
+    isActiveItem: PropTypes.func,
+    color: PropTypes.oneOf(['primary','info','success','error']),
+    hover: PropTypes.bool,
+    noDivider: PropTypes.bool,
+    checkbox: PropTypes.bool,
+    subTitle: PropTypes.string,
+    icon: PropTypes.string,
+    tooltip: PropTypes.string,
+    tooltipPosition: PropTypes.oneOf(['bottom','left','right']),
+    avatar: PropTypes.string,
+    avatarSize: PropTypes.number,
+    avatarBorderType: PropTypes.oneOf(['tile','rounded']),
+    controls: PropTypes.string || PropTypes.number || PropTypes.node,
+    render: PropTypes.node,
+    className: PropTypes.string
+}
+ListItem.defaultProps = {
+    color: 'primary'
+}
 export default ListItem;

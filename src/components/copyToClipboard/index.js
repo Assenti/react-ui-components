@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Icon, Tooltip } from '../index';
 
 const CopyToClipboard = (props) => {
@@ -23,5 +24,20 @@ const CopyToClipboard = (props) => {
         </Tooltip>           
     )
 }
-
+CopyToClipboard.propTypes = {
+    size: PropTypes.number,
+    color: PropTypes.string,
+    tooltip: PropTypes.string,
+    text: PropTypes.string,
+    copiedText: PropTypes.string,
+    defaultText: PropTypes.string,
+    className: PropTypes.string
+}
+CopyToClipboard.defaultProps = {
+    icon: 'content-copy',
+    color: 'gray',
+    size: 16,
+    copiedText: 'Copied to clipboard',
+    defaultText: 'Copy'
+}
 export default CopyToClipboard;

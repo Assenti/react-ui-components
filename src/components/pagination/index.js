@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Select } from '../index';
 import { ChevronBack, ChevronNext } from '../icon/icons/index';
 
@@ -127,4 +128,24 @@ const Pagination = (props) => {
     )
 }
 
+Pagination.propTypes = {
+    itemsCount: PropTypes.number,
+    perPage: PropTypes.number,
+    current: PropTypes.number,
+    perPageVariants: PropTypes.arrayOf(PropTypes.number),
+    onPerPageSelect: PropTypes.func,
+    onChange: PropTypes.func,
+    perPageText: PropTypes.string,
+    color: PropTypes.oneOf(['primary','info','success','error']),
+    rounded: PropTypes.bool,
+    size: PropTypes.oneOf(['medium','large']),
+    className: PropTypes.string
+}
+Pagination.defaulfProps = {
+    perPage: 10,
+    current: 1,
+    perPageVariants: [10, 20, 50, 100],
+    perPageText: 'page',
+    color: 'primary'
+}
 export default Pagination;

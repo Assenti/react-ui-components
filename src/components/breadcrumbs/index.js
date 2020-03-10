@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Icon from '../icon';
 
 const Breadcrumbs = (props) => {
@@ -35,5 +36,22 @@ const Breadcrumbs = (props) => {
             )}
         </div>
     )
+}
+Breadcrumbs.propTypes = {
+    crumbs: PropTypes.arrayOf(PropTypes.object || PropTypes.string).isRequired,
+    icon: PropTypes.string,
+    itemKey: PropTypes.string,
+    urlKey: PropTypes.string,
+    isActive: PropTypes.func,
+    onChange: PropTypes.func,
+    delimiter: PropTypes.string,
+    size: PropTypes.oneOf(['medium','large']),
+    color: PropTypes.oneOf(['primary','info','success','error','dark','secondary']),
+    position: PropTypes.oneOf(['center','right']),
+    className: PropTypes.string
+}
+Breadcrumbs.defaultProps = {
+    color: 'info',
+    delimiter: '/'
 }
 export default Breadcrumbs;

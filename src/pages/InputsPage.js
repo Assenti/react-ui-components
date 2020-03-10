@@ -250,7 +250,7 @@ const items = [
         property: 'value', 
         description: 'Input value', 
         default: '', 
-        type: 'string',
+        type: 'string | number',
         value: ''
     },
     { 
@@ -298,7 +298,7 @@ const items = [
     { 
         property: 'color', 
         description: 'Set color of input field from list', 
-        default: '', 
+        default: 'primary', 
         type: 'string',
         value: 'primary | info | success | error'
     },
@@ -334,14 +334,14 @@ const items = [
         property: 'prefix',
         description: 'Set prefix', 
         default: '', 
-        type: 'any',
+        type: 'string | number | React.Node',
         value: ''
     },
     { 
         property: 'suffix',
         description: 'Set suffix', 
         default: '', 
-        type: 'any',
+        type: 'string | number | React.Node',
         value: ''
     },
     { 
@@ -356,7 +356,7 @@ const items = [
         description: 'Set input type', 
         default: 'text', 
         type: 'string',
-        value: ''
+        value: 'text | password | number | email'
     },
     { 
         property: 'min',

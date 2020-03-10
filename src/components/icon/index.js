@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { 
     Delete,
     Search,
@@ -302,5 +303,16 @@ const Icon = (props) => {
         </i>
     )
 }
-
+Icon.propTypes = {
+    title: PropTypes.string,
+    size: PropTypes.number,
+    onMouseLeave: PropTypes.func,
+    onMouseOver: PropTypes.func,
+    onClick: PropTypes.func,
+    color: PropTypes.string
+}
+Icon.defaultProps = {
+    size: 24,
+    color: 'gray'
+}
 export default Icon;

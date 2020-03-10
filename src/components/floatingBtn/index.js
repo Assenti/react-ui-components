@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Tooltip } from '../index';
 
 const FloatingBtn = (props) => {
@@ -54,5 +55,22 @@ const FloatingBtn = (props) => {
         </div>
     )
 }
-
+FloatingBtn.propTypes = {
+    icon: PropTypes.string,
+    position: PropTypes.oneOf(['top-left','top-right','bottom-left']),
+    offsetX: PropTypes.number,
+    offsetY: PropTypes.number,
+    lifted: PropTypes.bool,
+    color: PropTypes.oneOf(['primary','info','success','error','secondary','black']),
+    size: PropTypes.oneOf(['medium','large']),
+    onClick: PropTypes.func,
+    dark: PropTypes.bool,
+    light: PropTypes.bool,
+    tooltip: PropTypes.string,
+    tooltipPosition: PropTypes.oneOf(['bottom','left','right'])
+}
+FloatingBtn.defaultProps = {
+    color: 'primary',
+    size: 'medium'
+}
 export default FloatingBtn;

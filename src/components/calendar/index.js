@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Button, Select, PopOver, isTwoDatesEqual } from '../index';
 
 const monthesKz = ['Каңтар','Ақпан','Наурыз','Сәуір','Мамыр','Маусым','Шілде','Тамыз','Қыркүйек','Қазан','Қараша','Желтоқсан'];
@@ -306,5 +307,30 @@ const Calendar = (props) => {
             <div className="rui-calendar__footer"></div>
         </div>
     )
+}
+Calendar.propTypes = {
+    locale: PropTypes.oneOf(['en','kz','ru','fr']),
+    events: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
+    holidays: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
+    onDate: PropTypes.func,
+    hideWeekend: PropTypes.bool,
+    hideCurrentDay: PropTypes.bool,
+    color: PropTypes.oneOf(['primary','info','success','error','dark']),
+    size: PropTypes.oneOf(['medium','large']),
+    limit: PropTypes.number,
+    onlyPast: PropTypes.bool,
+    weekStartsSunday: PropTypes.bool,
+    shortWeekName: PropTypes.bool,
+    dark: PropTypes.bool,
+    width: PropTypes.number || PropTypes.string,
+    popOverTrigger: PropTypes.oneOf(['hover','click']),
+    className: PropTypes.string
+}
+Calendar.defaultProps = {
+    locale: 'en',
+    color: 'primary',
+    limit: 15,
+    width: '100%',
+    popOverTrigger: 'hover'
 }
 export default Calendar;

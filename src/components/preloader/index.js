@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Preloader = (props) => {
     return (
@@ -17,5 +18,11 @@ const Preloader = (props) => {
             </div> : ''}
         </React.Fragment>
     )
+}
+Preloader.propTypes = {
+    visible: PropTypes.bool.isRequired,
+    preloader: PropTypes.node,
+    color: PropTypes.string,
+    backgroundColor: PropTypes.string
 }
 export default Preloader;

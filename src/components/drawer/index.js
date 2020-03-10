@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { Button, Tooltip } from '../index';
 
@@ -125,5 +126,17 @@ const Drawer = (props) => {
         </React.Fragment>
     )
 }
-
+Drawer.propTypes = {
+    drawer: PropTypes.bool,
+    collapsable: PropTypes.bool,
+    min: PropTypes.bool,
+    onResize: PropTypes.func,
+    onClose: PropTypes.func,
+    fullHeight: PropTypes.bool,
+    position: PropTypes.oneOf(['right, top, bottom']),
+    header: PropTypes.any,
+    headerCentered: PropTypes.bool,
+    dark: PropTypes.bool,
+    absolute: PropTypes.bool
+}
 export default Drawer;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from '../index';
 
 const Avatar = (props) => {
@@ -27,5 +28,17 @@ const Avatar = (props) => {
             ''}
         </div>
     )
+}
+Avatar.propTypes = {
+    color: PropTypes.oneOf(['secondary, primary, info, success, error']),
+    size: PropTypes.number,
+    borderType: PropTypes.oneOf(['tile','rounded']),
+    img: PropTypes.string,
+    icon: PropTypes.string,
+    className: PropTypes.string
+}
+Avatar.defaultProps = {
+    color: 'secondary',
+    size: 40
 }
 export default Avatar;

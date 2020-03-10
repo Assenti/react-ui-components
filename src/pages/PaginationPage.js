@@ -188,7 +188,6 @@ function Example() {
 
 const colors = ['primary', 'info', 'success', 'error'];
 const sizes = ['default', 'medium', 'large'];
-const positions = ['deafult', 'center', 'right'];
 
 const PaginationPage = () => {
     const [itemsCount] = useState(100);
@@ -196,10 +195,8 @@ const PaginationPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [color, setColor] = useState(colors[0]);
     const [size, setSize] = useState(sizes[0]);
-    const [position, setPosition] = useState(positions[0]);
     const [rounded, setRounded] = useState(false);
     const parent = useRef();
-
 
     return (
         <div className="rui-page" ref={parent}>

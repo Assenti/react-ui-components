@@ -331,5 +331,4 @@ const DrawerPage = () => {
         </div>
     )
 }
-
 export default DrawerPage;

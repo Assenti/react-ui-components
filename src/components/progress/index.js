@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from '../index';
 
 const Progress = (props) => {
@@ -139,5 +140,23 @@ const Progress = (props) => {
             }
         </div>
     )
+}
+Progress.propTypes = {
+    complete: PropTypes.number,
+    circle: PropTypes.bool,
+    active: PropTypes.bool,
+    color: PropTypes.oneOf(['primary','info','success','error','dark']),
+    disabled: PropTypes.bool,
+    size: PropTypes.oneOf(['medium','large']),
+    icon: PropTypes.string,
+    iconSize: PropTypes.number,
+    iconColor: PropTypes.string,
+    radius: PropTypes.number,
+    stroke: PropTypes.number,
+    hideState: PropTypes.bool,
+    className: PropTypes.string
+}
+Progress.defaultProps = {
+    color: 'primary'
 }
 export default Progress;

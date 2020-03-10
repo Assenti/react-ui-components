@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from '../index';
 
 const Badge = (props) => {
@@ -10,7 +11,6 @@ const Badge = (props) => {
             color: props.color ? props.color : 'secondary',
             className: props.className ? props.className : ''
         }
-        
         for (const key in className) {
             if (className[key]) result += className[key] + ' '
         }
@@ -31,5 +31,15 @@ const Badge = (props) => {
         </div>
     )
 }
-
+Badge.propTypes = {
+    rounded: PropTypes.bool,
+    icon: PropTypes.string,
+    color: PropTypes.oneOf(['primary','info','success','error','dark','secondary']),
+    value: PropTypes.string,
+    visible: PropTypes.bool,
+    parent: PropTypes.node
+}
+Badge.defaultProps = {
+    color: 'secondary'
+}
 export default Badge;

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from '../index';
 
 const TextareaField = (props) => {
@@ -119,5 +120,28 @@ const TextareaField = (props) => {
         </div>
     )
 }
-
+TextareaField.propTypes = {
+    whiteBackground: PropTypes.bool,
+    value: PropTypes.string,
+    onChange: PropTypes.func,
+    required: PropTypes.bool,
+    onKeyUp: PropTypes.func,
+    placeholder: PropTypes.string,
+    readOnly: PropTypes.bool,
+    size: PropTypes.oneOf(['medium','larege']),
+    color: PropTypes.oneOf(['primary','info','success','error']),
+    borderType: PropTypes.oneOf(['tile','smooth']),
+    rows: PropTypes.number,
+    maxRows: PropTypes.number,
+    width: PropTypes.number || PropTypes.string,
+    prefix: PropTypes.string || PropTypes.number || PropTypes.node,
+    suffix: PropTypes.string || PropTypes.number || PropTypes.node,
+    autoFocus: PropTypes.bool,
+    onClear: PropTypes.func,
+    clearable: PropTypes.bool,
+    onBlur: PropTypes.func,
+    disabled: PropTypes.bool,
+    onFocus: PropTypes.func,
+    lifted: PropTypes.bool
+}
 export default TextareaField; 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'; 
 import { Icon } from '../index';
 
 const Button = (props) => {
@@ -14,7 +15,6 @@ const Button = (props) => {
             light: props.light && !props.dark ? 'light' : '',
             dark: props.dark && !props.light ? 'dark' : '',
             icon: props.icon && !props.name ? 'icon' : '',
-            small: props.small ? 'small' : '',
             disabled: props.disabled || props.loading ? 'disabled' : '',
             size: props.size ? props.size : '',
             block: props.block ? 'block' : '',
@@ -44,8 +44,8 @@ const Button = (props) => {
             className={btnClass()} 
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>
             {props.loading ?
-                <Icon name="loading" color="gray" size={props.iconSize ? props.iconSize : ''}/> :
-                <React.Fragment>
+                <Icon name="loading" color="gray" size={20}/> :
+                <>
                     {props.icon && props.iconLeft ? 
                         (props.iconAllotted ? 
                             <div className="rui-btn__allotted-icon"><Icon size={20} name={props.icon}/></div> :
@@ -60,11 +60,35 @@ const Button = (props) => {
                             <Icon size={20} name={props.icon}/>    
                         ) : ''
                     }
-                </React.Fragment>
+                </>
             }
             
         </button>
     )
 }
 
+Button.propTypes = {
+    name: PropTypes.string,
+    onClick: PropTypes.func,
+    color: PropTypes.oneOf(['primary','info','success','error','black','secondary']),
+    dark: PropTypes.bool,
+    light: PropTypes.bool,
+    lifted: PropTypes.bool,
+    uppercase: PropTypes.bool,
+    loading: PropTypes.bool,
+    disabled: PropTypes.bool,
+    borderType: PropTypes.oneOf(['tile','rounded','smooth']),
+    icon: PropTypes.string,
+    size: PropTypes.oneOf(['medium','large']),
+    block: PropTypes.bool,
+    outlined: PropTypes.bool,
+    iconAllotted: PropTypes.bool,
+    iconLeft: PropTypes.bool,
+    type: PropTypes.string,
+    setRef: PropTypes.any,
+    className: PropTypes.string
+}
+Button.defaultProps = {
+    color: 'secondary'
+}
 export default Button;

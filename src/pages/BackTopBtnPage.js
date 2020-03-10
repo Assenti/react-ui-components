@@ -171,7 +171,4 @@ const BackTopBtnPage = () => {
         </div>
     )
 }
-
 export default BackTopBtnPage;
-
-

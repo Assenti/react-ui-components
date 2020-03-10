@@ -1,5 +1,6 @@
 import React, { useEffect, useState, createRef } from 'react'
 import { CSSTransition } from 'react-transition-group';
+import PropTypes from 'prop-types';
 import { Tooltip, Button } from '../index';
 
 const BackTopBtn = (props) => {
@@ -73,5 +74,10 @@ const BackTopBtn = (props) => {
         </div>
     )
 }
-
+BackTopBtn.propTypes = {
+    setRef: PropTypes.any,
+    size: PropTypes.oneOf(['medium','large']),
+    dark: PropTypes.bool,
+    tooltip: PropTypes.string
+}
 export default BackTopBtn;

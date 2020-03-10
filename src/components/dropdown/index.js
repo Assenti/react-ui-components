@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 
 const Dropdown = (props) => {
@@ -45,5 +46,21 @@ const Dropdown = (props) => {
         </div>
     )
 }
-
+Dropdown.propTypes = {
+    content: PropTypes.any,
+    trigger: PropTypes.any,
+    width: PropTypes.number || PropTypes.string,
+    minWidth: PropTypes.number || PropTypes.string,
+    dark: PropTypes.bool,
+    position: PropTypes.oneOf(['centered','right']),
+    leftOffset: PropTypes.number,
+    rightOffset: PropTypes.number,
+    closeManaged: PropTypes.bool,
+    visible: PropTypes.bool,
+    className: PropTypes.string
+}
+Dropdown.defaultProps = {
+    leftOffset: 0,
+    rightOffset: 0
+}
 export default Dropdown;

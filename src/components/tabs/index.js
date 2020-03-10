@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { Icon } from '../index';
 
@@ -93,5 +94,18 @@ const Tabs = (props) => {
         </div>
     )
 }
-
+Tabs.propTypes = {
+    defaultTab: PropTypes.number,
+    tabs: PropTypes.arrayOf(PropTypes.string) || PropTypes.arrayOf(PropTypes.object),
+    tabItems: PropTypes.arrayOf(PropTypes.node),
+    tabTitleKey: PropTypes.string,
+    tabIconKey: PropTypes.string,
+    centered: PropTypes.bool,
+    position: PropTypes.oneOf(['left','bottom','right']),
+    size: PropTypes.oneOf(['medium','large']),
+    activeHighlightFill: PropTypes.bool,
+    onChange: PropTypes.func,
+    color: PropTypes.oneOf(['primary','info','error','success','']),
+    className: PropTypes.string
+}
 export default Tabs;

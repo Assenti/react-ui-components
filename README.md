@@ -62,7 +62,6 @@ export default App;
 - [ ] Dock
 - [ ] Alert
 - [ ] Notification
-- [ ] Snackbar
 - [ ] Carousel
 - [ ] AutoComplete
 - [ ] Slider

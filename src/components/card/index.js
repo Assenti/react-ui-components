@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Card = (props) => {
     const cardClass = () => {
@@ -31,5 +32,21 @@ const Card = (props) => {
         </div>
     )
 }
-
+Card.propTypes = {
+    width: PropTypes.number || PropTypes.string,
+    minWidth: PropTypes.number || PropTypes.string,
+    color: PropTypes.oneOf(['primary','info','success','error','gray']),
+    flat: PropTypes.bool,
+    dark: PropTypes.bool,
+    hover: PropTypes.bool,
+    outlined: PropTypes.bool,
+    title: PropTypes.string,
+    header: PropTypes.any,
+    img: PropTypes.string,
+    footer: PropTypes.any,
+    className: PropTypes.string
+}
+Card.defaultProps = {
+    color: 'gray'
+}
 export default Card;

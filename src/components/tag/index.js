@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from '../index';
 import { CSSTransition } from 'react-transition-group';
 
@@ -17,7 +18,6 @@ const Tag = (props) => {
             outlined: props.outlined ? 'outlined' : '',
             className: props.className ? props.className : ''
         }
-        
         for (const key in className) {
             if (className[key]) result += className[key] + ' '
         }
@@ -53,5 +53,20 @@ const Tag = (props) => {
         </CSSTransition>
     )
 }
-
+Tag.propTypes = {
+    visible: PropTypes.bool,
+    uppercase: PropTypes.bool,
+    outlined: PropTypes.bool,
+    lifted: PropTypes.bool,
+    color: PropTypes.oneOf(['primary, info, success, error, dark, yellow']),
+    borderType: PropTypes.oneOf(['tile','smooth','rounded']),
+    setRef: PropTypes.any,
+    small: PropTypes.bool,
+    value: PropTypes.string || PropTypes.number,
+    iconLeft: PropTypes.string,
+    iconRight: PropTypes.string,
+    width: PropTypes.string || PropTypes.number,
+    closable: PropTypes.bool,
+    className: PropTypes.string
+}
 export default Tag;

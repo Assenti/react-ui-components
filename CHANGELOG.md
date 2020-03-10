@@ -7,6 +7,14 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.4.5 `2020-03-10`
+
+- PropTypes added;
+
+#### 0.4.4 `2020-03-09`
+
+- Working on package building;
+
 #### 0.4.3 `2020-03-08`
 
 - `NEW!` Calendar component added;

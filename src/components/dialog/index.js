@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { Button, Icon } from '../index';
 
@@ -72,5 +73,27 @@ const Dialog = (props) => {
             </div>
         </CSSTransition>
     )
+}
+Dialog.propTypes = {
+    dark: PropTypes.bool,
+    onConfirm: PropTypes.func,
+    onCancel: PropTypes.func.isRequired,
+    visible: PropTypes.bool.isRequired,
+    icon: PropTypes.string,
+    iconColor: PropTypes.string,
+    title: PropTypes.string,
+    titleColor: PropTypes.string,
+    description: PropTypes.any,
+    confirmOnly: PropTypes.bool,
+    cancelText: PropTypes.string,
+    cancelBtnColor: PropTypes.string,
+    confirmText: PropTypes.string,
+    confirmBtnColor: PropTypes.string
+}
+Dialog.defaultProps = {
+    cancelText: 'Cancel',
+    cancelBtnColor: 'secondary',
+    confirmText: 'Confirm',
+    confirmBtnColor: 'primary'
 }
 export default Dialog;

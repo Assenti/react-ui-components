@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Radio = (props) => {
     const radioClass = () => {
@@ -60,5 +61,16 @@ const RadioGroup = (props) => {
             )}
         </div>
     )
+}
+RadioGroup.propTypes = {
+    disabled: PropTypes.bool,
+    color: PropTypes.oneOf('primary','info','success','error'),
+    size: PropTypes.oneOf(['medium','large']),
+    value: PropTypes.string || PropTypes.number,
+    name: PropTypes.string.isRequired,
+    labelName: PropTypes.string,
+    onChange: PropTypes.func,
+    vertical: PropTypes.bool,
+    className: PropTypes.string
 }
 export default RadioGroup;

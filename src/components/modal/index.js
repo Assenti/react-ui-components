@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { Icon } from '../index';
 
@@ -74,5 +75,20 @@ const Modal = (props) => {
         </div>
     )
 }
-
+Modal.propTypes = {
+    visible: PropTypes.bool,
+    marginTop: PropTypes.number,
+    padding: PropTypes.string,
+    closable: PropTypes.bool,
+    closeIconColor: PropTypes.string,
+    fullscreenIconColor: PropTypes.string,
+    header: PropTypes.string || PropTypes.number || PropTypes.node,
+    footer: PropTypes.string || PropTypes.number || PropTypes.node,
+    headerReverse: PropTypes.bool,
+    centered: PropTypes.bool,
+    full: PropTypes.bool,
+    dark: PropTypes.bool,
+    onClose: PropTypes.func,
+    className: PropTypes.string
+}
 export default Modal;

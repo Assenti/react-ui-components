@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Tooltip = (props) => {
     const tooltipClass = () => {
@@ -21,5 +22,11 @@ const Tooltip = (props) => {
             {props.children}
         </div>
     )
+}
+Tooltip.propTypes = {
+    color: PropTypes.oneOf(['primary','info','success','error']),
+    position: PropTypes.oneOf(['bottom','left','right']),
+    tooltip: PropTypes.string,
+    className: PropTypes.string
 }
 export default Tooltip;

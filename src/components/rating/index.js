@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from '../index';
 
 const Rating = (props) => {
@@ -66,5 +67,19 @@ const Rating = (props) => {
             </div> : ''}
         </div>
     )
+}
+Rating.propTypes = {
+    hideRate: PropTypes.bool,
+    size: PropTypes.number,
+    rate: PropTypes.number,
+    count: PropTypes.number,
+    disabled: PropTypes.bool,
+    onChange: PropTypes.func,
+    text: PropTypes.string,
+    color: PropTypes.oneOf(['yellow, primary, info, success, error'])
+}
+Rating.defaultProps = {
+    color: 'yellow',
+    size: 24
 }
 export default Rating;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Empty, Loading } from '../icon/icons/index';
 import { Checkbox, Pagination, Icon, InputField } from '../index';
 import { compare } from '../utils';
@@ -45,7 +46,6 @@ const Table = (props) => {
             noHover: props.noHover ? 'no-hover' : '',
             stripped: props.stripped ? 'stripped' : ''
         }
-        
         for (const key in className) {
             if (className[key]) result += className[key] + ' '
         }
@@ -266,5 +266,34 @@ const Table = (props) => {
             }
         </div>
     )
+}
+Table.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.string) || PropTypes.arrayOf(PropTypes.number) || PropTypes.arrayOf(PropTypes.object),
+    itemsTotal: PropTypes.number,
+    headers: PropTypes.arrayOf(PropTypes.string),
+    color: PropTypes.oneOf(['primary','info','success','error']),
+    perPageVariants: PropTypes.arrayOf(PropTypes.number),
+    perPageText: PropTypes.string,
+    alignment: PropTypes.oneOf(['left','center','right']),
+    tableTitle: PropTypes.string,
+    searchable: PropTypes.bool,
+    searchKey: PropTypes.string,
+    pagination: PropTypes.bool,
+    searchPlaceholder: PropTypes.string,
+    paginationPosition: PropTypes.oneOf('left','right'),
+    paginationColor: PropTypes.oneOf(['primary, info, success, error']),
+    checkbox: PropTypes.bool,
+    selectKey: PropTypes.string,
+    onSelect: PropTypes.func,
+    sortable: PropTypes.bool,
+    size: PropTypes.oneOf('medium','large'),
+    indexSign: PropTypes.string,
+    stripped: PropTypes.bool,
+    bordered: PropTypes.bool,
+    grid: PropTypes.bool,
+    loading: PropTypes.bool,
+    noHover: PropTypes.bool,
+    footer: PropTypes.node || PropTypes.string || PropTypes.number,
+    className: PropTypes.string
 }
 export default Table;

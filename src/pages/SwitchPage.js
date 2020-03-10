@@ -96,7 +96,7 @@ const items = [
         value: ''
     },
     { 
-        property: 'disable', 
+        property: 'disabled', 
         description: 'Make switch disabled', 
         default: 'false', 
         type: 'boolean',

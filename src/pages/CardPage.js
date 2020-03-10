@@ -38,13 +38,6 @@ const items = [
         value: '100, "100%", "100px"'
     },
     { 
-        property: 'padding',
-        description: 'Set card padding', 
-        default: '15px', 
-        type: 'string | number',
-        value: ''
-    },
-    { 
         property: 'img',
         description: 'Set card image', 
         default: '', 
@@ -84,7 +77,7 @@ const items = [
         description: 'Set card borders color from colors list', 
         default: '', 
         type: 'string',
-        value: 'primary | info | success | error'
+        value: 'primary | info | success | error | gray'
     },
     { 
         property: 'title',
@@ -298,5 +291,4 @@ const CardPage = () => {
         </div>
     )
 }
-
 export default CardPage;

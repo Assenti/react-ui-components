@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Button } from '../index';
 
 const ButtonGroup = (props) => {
@@ -45,5 +46,16 @@ const ButtonGroup = (props) => {
         </div>
     )
 }
-
+ButtonGroup.propTypes = {
+    default: PropTypes.number,
+    onChange: PropTypes.func,
+    options: PropTypes.array.isRequired,
+    lifted: PropTypes.bool,
+    outlined: PropTypes.bool,
+    size: PropTypes.oneOf(['medium','large']),
+    name: PropTypes.string,
+    icon: PropTypes.string,
+    color: PropTypes.oneOf(['primary','info','success','error','secondary','black']),
+    className: PropTypes.string
+}
 export default ButtonGroup;

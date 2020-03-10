@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from '../index';
 
 const Uploader = (props) => {
@@ -11,7 +12,6 @@ const Uploader = (props) => {
             input: 'rui-input-uploader',
             className: props.className ? props.className : ''
         }
-        
         for (const key in className) {
             if (className[key]) result += className[key] + ' '
         }
@@ -65,7 +65,7 @@ const Uploader = (props) => {
                 {props.value && props.value.length > 0 ? <span>{props.value.length}</span> : ""}
             </div>
             {props.value && props.value.length > 0 ? 
-                <div className={props.rounded ? 'rui-input-uploader__items rounded' : 'rui-input-uploader__items'}>
+                <div className={props.borderType === 'rounded' ? 'rui-input-uploader__items rounded' : 'rui-input-uploader__items'}>
                     {props.value.map((item, index) => 
                         <div key={index} className="rui-input-uploader__item">
                             <span>{item.name}</span>
@@ -77,5 +77,25 @@ const Uploader = (props) => {
         </div>
     )
 }
-
+Uploader.propTypes = {
+    value: PropTypes.array,
+    borderType: PropTypes.oneOf(['rounded','smooth','tile']),
+    color: PropTypes.oneOf(['primary','info','success','error']),
+    light: PropTypes.bool,
+    dark: PropTypes.bool,
+    label: PropTypes.string,
+    lifted: PropTypes.bool,
+    disabled: PropTypes.bool,
+    required: PropTypes.bool,
+    title: PropTypes.string,
+    accept: PropTypes.string,
+    multiple: PropTypes.bool,
+    onChange: PropTypes.func,
+    placeholder: PropTypes.string,
+    width: PropTypes.number || PropTypes.string,
+    onBlur: PropTypes.func,
+    onFocus: PropTypes.func,
+    onDelete: PropTypes.func,
+    className: PropTypes.string
+}
 export default Uploader;

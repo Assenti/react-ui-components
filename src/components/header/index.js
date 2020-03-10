@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from '../index';
 
 const Header = (props) => {
@@ -25,7 +26,8 @@ const Header = (props) => {
                 height: props.height ? props.height : ''
             }}>
             <div className="rui-header__left-side">
-                {props.leftControl ? <div>
+                {props.leftControl ? 
+                <div>
                     <Button
                         dark={props.dark ? props.dark : false}
                         light={props.light || (!props.color && !props.dark) ? true : false}
@@ -41,5 +43,22 @@ const Header = (props) => {
         </div>
     )
 }
-
+Header.propTypes = {
+    height: PropTypes.number || PropTypes.string,
+    dark: PropTypes.bool,
+    light: PropTypes.bool,
+    leftControl: PropTypes.bool,
+    onLeftControl: PropTypes.func,
+    title: PropTypes.string,
+    color: PropTypes.oneOf(['primary','info','success','error','secondary','black']),
+    leftControlIcon: PropTypes.string,
+    rightSide: PropTypes.any,
+    sticky: PropTypes.bool,
+    smooth: PropTypes.bool,
+    className: PropTypes.string
+}
+Header.defaultProps = {
+    height: 50,
+    leftControlIcon: 'menu'
+}
 export default Header;

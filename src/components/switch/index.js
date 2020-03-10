@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from '../index';
 
 const Switch = (props) => {
@@ -45,5 +46,19 @@ const Switch = (props) => {
             {props.rightLabel && !props.rightIcon ? <div className="rui-switch-right-label">{props.rightLabel}</div> : ''}
         </div>
     )
+}
+Switch.propTypes = {
+    leftIcon: PropTypes.string,
+    leftIconColor: PropTypes.string,
+    rightIcon: PropTypes.string,
+    rightIconColor: PropTypes.string,
+    leftLabel: PropTypes.string,
+    rightLabel: PropTypes.string,
+    disabled: PropTypes.bool,
+    check: PropTypes.bool,
+    onChange: PropTypes.func,
+    vertical: PropTypes.bool,
+    color: PropTypes.oneOf(['primary','info','success','error']),
+    className: PropTypes.string
 }
 export default Switch;

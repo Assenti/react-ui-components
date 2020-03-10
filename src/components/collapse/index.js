@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Icon, Tooltip } from '../index';
 
 const Collapse = (props) => {
@@ -51,5 +52,16 @@ const Collapse = (props) => {
             </div>
         </div>
     )
+}
+Collapse.propTypes = {
+    defaultState: PropTypes.bool,
+    border: PropTypes.bool,
+    title: PropTypes.string,
+    position: PropTypes.oneOf(['right']),
+    extra: PropTypes.any,
+    tooltip: PropTypes.string,
+    icon: PropTypes.string,
+    iconSize: PropTypes.number,
+    iconColor: PropTypes.string
 }
 export default Collapse;

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from '../index';
 
 const InputField = (props) => {
@@ -165,5 +166,39 @@ const InputField = (props) => {
         </div>
     )
 }
-
+InputField.propTypes = {
+    onChange: PropTypes.func,
+    onKeyUp: PropTypes.func,
+    onEnter: PropTypes.func,
+    value: PropTypes.string.isRequired || PropTypes.number.isRequired,
+    type: PropTypes.oneOf(['text','password','number','email']),
+    required: PropTypes.bool,
+    readOnly: PropTypes.bool,
+    autoComplete: PropTypes.bool,
+    name: PropTypes.string,
+    clearable: PropTypes.bool,
+    onClear: PropTypes.func,
+    lifted: PropTypes.bool,
+    autoFocus: PropTypes.bool,
+    color: PropTypes.oneOf(['primary, info, success, error']),
+    disabled: PropTypes.bool,
+    borderType: PropTypes.oneOf(['tile, smooth, rounded']),
+    uppercase: PropTypes.bool,
+    size: PropTypes.oneOf(['medium','large']),
+    prefix: PropTypes.node || PropTypes.string || PropTypes.number,
+    suffix: PropTypes.node || PropTypes.string || PropTypes.number,
+    width: PropTypes.string || PropTypes.number,
+    min: PropTypes.number,
+    max: PropTypes.number,
+    maxLength: PropTypes.number,
+    minLength: PropTypes.number,
+    whiteBackground: PropTypes.bool,
+    label: PropTypes.string,
+    hint: PropTypes.string,
+    className: PropTypes.string
+}
+InputField.defaultProps = {
+    color: 'primary',
+    type: 'text'
+}
 export default InputField;

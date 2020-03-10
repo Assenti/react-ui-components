@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { InputField } from '../index';
 import { 
     phoneMaskFormatter, 
@@ -115,5 +116,26 @@ const InputMask = (props) => {
             value={getValue()}/>
     )
 }
-
+InputMask.propTypes = {
+    onChange: PropTypes.func,
+    value: PropTypes.string.isRequired,
+    mask: PropTypes.oneOf(['phone','card','card-issue','iin','date']).isRequired,
+    color: PropTypes.oneOf(['primary','info','success','error']),
+    size: PropTypes.oneOf(['medium','large']),
+    borderType: PropTypes.oneOf(['tile','rounded','smooth']),
+    disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
+    required: PropTypes.bool,
+    label: PropTypes.string,
+    hint: PropTypes.string,
+    prefix: PropTypes.node || PropTypes.string || PropTypes.number,
+    suffix: PropTypes.node || PropTypes.string || PropTypes.number,
+    width: PropTypes.string || PropTypes.number,
+    lifted: PropTypes.bool,
+    whiteBackground: PropTypes.bool,
+    className: PropTypes.string
+}
+InputMask.defaultProps = {
+    color: 'primary'
+}
 export default InputMask;
