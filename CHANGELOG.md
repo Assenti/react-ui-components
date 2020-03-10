@@ -7,9 +7,12 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
-#### 0.4.5 `2020-03-10`
+#### 0.4.5, 0.4.6, 0.4.7 `2020-03-10`
 
-- PropTypes added;
+- `NEW!` Alert component added;
+- `NEW!` PropTypes added;
+- `NEW!` New icons added;
+- Bugs fixing;
 
 #### 0.4.4 `2020-03-09`
 
