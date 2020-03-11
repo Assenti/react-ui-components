@@ -140,9 +140,6 @@ const HomePage = () => {
                 className="mt-15">
                 <div className="py-20">
                     <div>TypeScript supported. Just install package to your react typescript app and use it.</div>
-                    <div className="py-10 fz-9 text-dark">
-                        Warning: components types declaration in process... But it does not interfere with use.
-                    </div>
                 </div>
             </Card>
             <BackTopBtn setRef={parent} dark size="medium"/>
