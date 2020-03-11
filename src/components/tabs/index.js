@@ -96,8 +96,8 @@ const Tabs = (props) => {
 }
 Tabs.propTypes = {
     defaultTab: PropTypes.number,
-    tabs: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]),
-    tabItems: PropTypes.arrayOf(PropTypes.node),
+    tabs: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]).isRequired,
+    tabItems: PropTypes.arrayOf(PropTypes.node).isRequired,
     tabTitleKey: PropTypes.string,
     tabIconKey: PropTypes.string,
     centered: PropTypes.bool,

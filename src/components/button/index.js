@@ -84,7 +84,7 @@ Button.propTypes = {
     outlined: PropTypes.bool,
     iconAllotted: PropTypes.bool,
     iconLeft: PropTypes.bool,
-    type: PropTypes.string,
+    type: PropTypes.oneOf([undefined,'submit','reset']),
     setRef: PropTypes.any,
     className: PropTypes.string
 }

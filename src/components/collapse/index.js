@@ -62,6 +62,7 @@ Collapse.propTypes = {
     tooltip: PropTypes.string,
     icon: PropTypes.string,
     iconSize: PropTypes.number,
-    iconColor: PropTypes.string
+    iconColor: PropTypes.string,
+    className: PropTypes.string
 }
 export default Collapse;

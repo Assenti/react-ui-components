@@ -28,7 +28,7 @@ CopyToClipboard.propTypes = {
     size: PropTypes.number,
     color: PropTypes.string,
     tooltip: PropTypes.string,
-    text: PropTypes.string,
+    text: PropTypes.string.isRequired,
     copiedText: PropTypes.string,
     defaultText: PropTypes.string,
     className: PropTypes.string

@@ -318,7 +318,8 @@ Icon.propTypes = {
     onMouseLeave: PropTypes.func,
     onMouseOver: PropTypes.func,
     onClick: PropTypes.func,
-    color: PropTypes.string
+    color: PropTypes.string,
+    className: PropTypes.string
 }
 Icon.defaultProps = {
     size: 24,

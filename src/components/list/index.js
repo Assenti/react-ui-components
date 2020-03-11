@@ -27,6 +27,7 @@ const List = (props) => {
 List.propTypes = {
     size: PropTypes.oneOf([undefined,'','medium','large']),
     dark: PropTypes.bool,
-    header: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number])
+    header: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
+    className: PropTypes.string
 }
 export default List;

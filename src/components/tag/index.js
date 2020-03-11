@@ -62,7 +62,7 @@ Tag.propTypes = {
     borderType: PropTypes.oneOf([undefined,'','tile','smooth','rounded']),
     setRef: PropTypes.any,
     small: PropTypes.bool,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     iconLeft: PropTypes.string,
     iconRight: PropTypes.string,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

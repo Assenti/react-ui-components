@@ -49,7 +49,7 @@ const Checkbox = (props) => {
     )
 }
 Checkbox.propTypes = {
-    checked: PropTypes.bool,
+    checked: PropTypes.bool.isRequired,
     onChange: PropTypes.func,
     disabled: PropTypes.bool,
     color: PropTypes.oneOf([undefined,'','primary','info','success','error','secondary']),

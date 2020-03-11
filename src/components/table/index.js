@@ -268,7 +268,7 @@ const Table = (props) => {
     )
 }
 Table.propTypes = {
-    items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.number), PropTypes.arrayOf(PropTypes.object)]),
+    items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.number), PropTypes.arrayOf(PropTypes.object)]).isRequired,
     itemsTotal: PropTypes.number,
     headers: PropTypes.arrayOf(PropTypes.string),
     color: PropTypes.oneOf([undefined,'','primary','info','success','error']),

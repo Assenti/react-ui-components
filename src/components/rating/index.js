@@ -76,7 +76,8 @@ Rating.propTypes = {
     disabled: PropTypes.bool,
     onChange: PropTypes.func,
     text: PropTypes.string,
-    color: PropTypes.oneOf([undefined,'','yellow', 'primary', 'info', 'success', 'error'])
+    color: PropTypes.oneOf([undefined,'','yellow', 'primary', 'info', 'success', 'error']),
+    className: PropTypes.string
 }
 Rating.defaultProps = {
     color: 'yellow',

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { Icon } from '../index';
 
 const Alert = (props) => {
-    const [visible, setVisible] = useState(false);
     const componentClass = () => {
         let result = '';
         let className = {
@@ -58,7 +57,8 @@ Alert.propTypes = {
     message: PropTypes.string.isRequired,
     text: PropTypes.string,
     visible: PropTypes.bool.isRequired,
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+    className: PropTypes.string
 }
 Alert.defaultProps = {
     status: 'info'

@@ -63,10 +63,11 @@ const RadioGroup = (props) => {
     )
 }
 RadioGroup.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.string),
     disabled: PropTypes.bool,
-    color: PropTypes.oneOf(undefined,'','primary','info','success','error'),
+    color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
     size: PropTypes.oneOf([undefined,'','medium','large']),
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     name: PropTypes.string.isRequired,
     labelName: PropTypes.string,
     onChange: PropTypes.func,

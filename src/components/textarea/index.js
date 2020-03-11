@@ -140,7 +140,7 @@ const TextareaField = (props) => {
 }
 TextareaField.propTypes = {
     whiteBackground: PropTypes.bool,
-    value: PropTypes.string,
+    value: PropTypes.string.isRequired,
     onChange: PropTypes.func,
     required: PropTypes.bool,
     onKeyUp: PropTypes.func,
@@ -162,6 +162,7 @@ TextareaField.propTypes = {
     onBlur: PropTypes.func,
     disabled: PropTypes.bool,
     onFocus: PropTypes.func,
-    lifted: PropTypes.bool
+    lifted: PropTypes.bool,
+    className: PropTypes.string
 }
 export default TextareaField; 

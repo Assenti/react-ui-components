@@ -55,7 +55,7 @@ Switch.propTypes = {
     leftLabel: PropTypes.string,
     rightLabel: PropTypes.string,
     disabled: PropTypes.bool,
-    check: PropTypes.bool,
+    check: PropTypes.bool.isRequired,
     onChange: PropTypes.func,
     vertical: PropTypes.bool,
     color: PropTypes.oneOf([undefined,'','primary','info','success','error']),

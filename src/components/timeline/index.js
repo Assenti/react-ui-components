@@ -62,7 +62,7 @@ const Timeline = (props) => {
     )
 }
 Timeline.propTypes = {
-    items: PropTypes.arrayOf(PropTypes.object),
+    items: PropTypes.arrayOf(PropTypes.object).isRequired,
     centered: PropTypes.bool,
     title: PropTypes.string,
     subtitle: PropTypes.string,

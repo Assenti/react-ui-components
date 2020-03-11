@@ -142,7 +142,7 @@ const Progress = (props) => {
     )
 }
 Progress.propTypes = {
-    complete: PropTypes.number,
+    complete: PropTypes.number.isRequired,
     circle: PropTypes.bool,
     active: PropTypes.bool,
     color: PropTypes.oneOf([undefined,'','primary','info','success','error','dark']),

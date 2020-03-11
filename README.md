@@ -14,13 +14,13 @@
   </a>
 </p>
 
-## 🔹 Main Goal
+## Main Goal
 Create a lot of usefull and maximum reusable UI components
 
-## 🏠 Homepage
+## Homepage
 [React UI Components](https://r-ui-components.netlify.com/)
 
-## 📦 Install
+## Install
 ```bash
 # Install package from NPM
 % npm install @assenti/rui-components -S
@@ -31,7 +31,7 @@ or
 % yarn add @assenti/rui-components
 ```
 
-## 📦 Peer dependencies
+## Peer dependencies
 React UI Components use react-transition-group package under the hood, so you should install it too
 ```bash
 # Install package from NPM
@@ -42,7 +42,7 @@ React UI Components use react-transition-group package under the hood, so you sh
 % npm install @types/react-transition-group -D
 ```
 
-## ⚙️ Usage
+## Usage
 index.js / index.ts
 ```jsx
 // Import styles in index.js / index.ts
@@ -76,9 +76,8 @@ export default App;
 - [ ] Slider
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable
-- [ ] TypeScript support (Declare types for all TS using)
 
-## 🕕 Changelog
+## Changelog
 You can track changelog [here](/CHANGELOG.md)
 
 Project start date: Jan 6th 2020

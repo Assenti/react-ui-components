@@ -37,7 +37,8 @@ Badge.propTypes = {
     color: PropTypes.oneOf([undefined,'','primary','info','success','error','dark','secondary']),
     value: PropTypes.string,
     visible: PropTypes.bool,
-    parent: PropTypes.node
+    parent: PropTypes.node,
+    className: PropTypes.string
 }
 Badge.defaultProps = {
     color: 'secondary'
