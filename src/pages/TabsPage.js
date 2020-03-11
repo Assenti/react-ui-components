@@ -76,6 +76,13 @@ const rows = [
         value: 'medium | large'
     },
     { 
+        property: 'contentPadding', 
+        description: 'Set Tabs content padding', 
+        default: '15px', 
+        type: 'string',
+        value: ''
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 
@@ -222,64 +229,64 @@ const TabsPage = () => {
                 <div className="rui-page-title">{'<Tabs/>'} Component</div>
             </div>
             <Card outlined title="Usage">
-                <div className="row column">
-                    <Select
-                        items={colors}
-                        prefix={<Icon name="brush"/>}
-                        width={200}
-                        label="Tabs color"
-                        color="primary"
-                        className="my-5"
-                        value={color}
-                        onChange={v => setColor(v)}/>
-                    <Select
-                        items={sizes}
-                        prefix={<Icon name="format-size"/>}
-                        width={200}
-                        label="Tabs size"
-                        color="primary"
-                        className="my-5"
-                        value={size}
-                        onChange={v => setSize(v)}/>
-                    <Select
-                        items={positions}
-                        prefix={<Icon name="book-open"/>}
-                        width={200}
-                        label="Tabs position"
-                        color="primary"
-                        className="my-5"
-                        value={position}
-                        onChange={v => setPosition(v)}/>
-                </div>
-                <div className="row column">
-                    <Switch 
-                        color="primary" 
-                        check={icon}
-                        rightLabel="Icon"
-                        className="my-5" 
-                        onChange={() => setIcon(!icon)}/>
-                    <Switch 
-                        color="primary" 
-                        check={fill}
-                        rightLabel="Active highlight fill"
-                        className="my-5" 
-                        onChange={() => setFill(!fill)}/>
-                    <Switch 
-                        color="primary" 
-                        check={centered}
-                        className="my-5" 
-                        rightLabel="Tabs items centered"
-                        onChange={() => setCentered(!centered)}/>
-                    <Switch 
-                        color="primary" 
-                        check={stretch}
-                        rightLabel="Stretch Tabs items"
-                        className="my-5" 
-                        onChange={() => setStretch(!stretch)}/>
-                </div>
+                <Select
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    label="Tabs color"
+                    color="primary"
+                    className="my-5"
+                    value={color}
+                    onChange={v => setColor(v)}/>
+                <br/>
+                <Select
+                    items={sizes}
+                    prefix={<Icon name="format-size"/>}
+                    width={200}
+                    label="Tabs size"
+                    color="primary"
+                    className="my-5"
+                    value={size}
+                    onChange={v => setSize(v)}/>
+                <br/>
+                <Select
+                    items={positions}
+                    prefix={<Icon name="book-open"/>}
+                    width={200}
+                    label="Tabs position"
+                    color="primary"
+                    className="my-5"
+                    value={position}
+                    onChange={v => setPosition(v)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={icon}
+                    rightLabel="Icon"
+                    className="my-10" 
+                    onChange={() => setIcon(!icon)}/>
+                <Switch 
+                    color="primary" 
+                    check={fill}
+                    rightLabel="Active highlight fill"
+                    className="my-10" 
+                    onChange={() => setFill(!fill)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={centered}
+                    className="my-10" 
+                    rightLabel="Tabs items centered"
+                    onChange={() => setCentered(!centered)}/>
+                <Switch 
+                    color="primary" 
+                    check={stretch}
+                    rightLabel="Stretch Tabs items"
+                    className="my-10" 
+                    onChange={() => setStretch(!stretch)}/>
                 <br/>
                 <Tabs 
-                    defaultTab={1}
+                    defaultTab={0}
                     position={position}
                     color={color}
                     size={size}

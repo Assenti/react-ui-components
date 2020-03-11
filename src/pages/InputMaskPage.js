@@ -80,8 +80,7 @@ function Example() {
                     prefix={<Icon name="card-account-details"/>}/>
         </div>
     )
-}
-`
+}`
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
@@ -89,7 +88,14 @@ const items = [
         description: 'Set mask type', 
         default: '', 
         type: 'string',
-        value: 'phone | card | card-issue | iin'
+        value: 'phone | card | card-issue | iin | date | time'
+    },
+    { 
+        property: 'onChange',
+        description: 'Invokes on input value change (return (value, rawValue))', 
+        default: '', 
+        type: 'function',
+        value: ''
     },
     { 
         property: 'code',
@@ -102,6 +108,13 @@ const items = [
         property: 'dateDelimiter',
         description: 'Set date delimiter (has effect with mask="date")', 
         default: '.', 
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'timeDelimiter',
+        description: 'Set date delimiter (has effect with mask="date")', 
+        default: ':', 
         type: 'string',
         value: ''
     },

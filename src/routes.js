@@ -40,6 +40,7 @@ const CalendarPage = lazy(() => import('./pages/CalendarPage'));
 const NotificationPage = lazy(() => import('./pages/NotificationPage'));
 const AlertPage = lazy(() => import('./pages/AlertPage'));
 const TextareaPage = lazy(() => import('./pages/TextareaPage'));
+const TimePickerPage = lazy(() => import('./pages/TimePickerPage'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
@@ -82,5 +83,6 @@ export const routes = [
     { path: '/breadcrumbs', name: 'Breadcrumbs', Component: BreadcrumbsPage },
     { path: '/progress', name: 'Progress', Component: ProgressPage },
     { path: '/calendar', name: 'Calendar', Component: CalendarPage },
+    { path: '/timepicker', name: 'TimePicker', Component: TimePickerPage },
     // { path: '/notification', name: 'Notification', Component: NotificationPage },
 ]

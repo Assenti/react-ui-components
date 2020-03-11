@@ -662,13 +662,13 @@
 
         &.medium {
             .rui-tabs__tab {
-                font-size: $mediumFont;
+                font-size: $mediumFont !important;
             }
         }
 
         &.large {
             .rui-tabs__tab {
-                font-size: $largeFont;
+                font-size: $largeFont !important;
             }
         }
     }

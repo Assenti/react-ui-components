@@ -9,7 +9,6 @@ export const DrawerContent = (props) => {
     const [list, setList] = useState(true);
 
     const handleItemClick = (item) => {
-        console.log(history)
         history.push(item.path)
     }
 

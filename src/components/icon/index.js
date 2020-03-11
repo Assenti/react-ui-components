@@ -95,7 +95,8 @@ import {
     CheckCircle,
     AlertCirlce,
     Information,
-    PackageDown
+    PackageDown,
+    ClockOutline
 } from './icons/index';
 
 const Icon = (props) => {
@@ -291,6 +292,8 @@ const Icon = (props) => {
                 return <Information size={props.size} color={props.color}/>;
             case 'package-down':
                 return <PackageDown size={props.size} color={props.color}/>;
+            case 'clock-outline':
+                return <ClockOutline size={props.size} color={props.color}/>;
             default:
                 return '';
         }
@@ -313,6 +316,7 @@ const Icon = (props) => {
     )
 }
 Icon.propTypes = {
+    name: PropTypes.string.isRequired,
     title: PropTypes.string,
     size: PropTypes.number,
     onMouseLeave: PropTypes.func,

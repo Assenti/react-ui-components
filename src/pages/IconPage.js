@@ -95,7 +95,8 @@ const icons = [
     'wrench',
     'alert-circle',
     'info',
-    'package-down'
+    'package-down',
+    'clock-outline'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];

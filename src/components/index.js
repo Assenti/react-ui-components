@@ -56,6 +56,7 @@ export { default as Breadcrumbs } from './breadcrumbs';
 export { default as Progress } from './progress';
 export { default as Calendar } from './calendar';
 export { default as Alert } from './alert';
+export { default as TimePicker } from './timePicker';
 export { 
     convertToNum, 
     compare, 

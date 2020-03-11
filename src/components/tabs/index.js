@@ -85,7 +85,8 @@ const Tabs = (props) => {
                             </div>
                 )}
             </div>
-            <div className="rui-tabs__content">
+            <div className="rui-tabs__content"
+                style={{ padding: props.contentPadding }}>
                 <TabItem 
                     active={active}>
                     {props.tabItems[active]}
@@ -97,15 +98,20 @@ const Tabs = (props) => {
 Tabs.propTypes = {
     defaultTab: PropTypes.number,
     tabs: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]).isRequired,
-    tabItems: PropTypes.arrayOf(PropTypes.node).isRequired,
+    tabItems: PropTypes.arrayOf(PropTypes.any).isRequired,
     tabTitleKey: PropTypes.string,
     tabIconKey: PropTypes.string,
     centered: PropTypes.bool,
-    position: PropTypes.oneOf([undefined,'','left','bottom','right']),
-    size: PropTypes.oneOf([undefined,'','medium','large']),
+    contentPadding: PropTypes.string,
+    position: PropTypes.oneOf([undefined,'left','bottom','right']),
+    size: PropTypes.oneOf([undefined,'medium','large']),
     activeHighlightFill: PropTypes.bool,
     onChange: PropTypes.func,
-    color: PropTypes.oneOf([undefined,'','primary','info','error','success','']),
+    color: PropTypes.oneOf([undefined,'primary','info','error','success','']),
     className: PropTypes.string
+}
+Tabs.defaultProps = {
+    contentPadding: '15px',
+    color: 'primary'
 }
 export default Tabs;

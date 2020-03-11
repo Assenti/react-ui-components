@@ -1,0 +1,26 @@
+.rui-timepicker {
+
+
+    .rui-timepicker__content {
+        display: flex;
+        padding: 3px 0;
+        
+
+        .rui-list {
+            overflow-y: auto;
+            max-height: 200px;
+
+            &::-webkit-scrollbar {
+                width: 3.5px;
+                height: 3.5px;
+                background-color: $lightgray;
+                border-radius: $radius;
+            }
+            
+            &::-webkit-scrollbar-thumb {
+              background-color: lightgray;
+              outline: 1px solid #fff;
+            }
+        }
+    }
+}

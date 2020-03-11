@@ -7,9 +7,13 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
-#### 0.4.8 `2020-03-11`
+#### 0.4.8, 0.4.9 `2020-03-11`
 
+- `NEW!` TimePicker component added;
 - `NEW!` Types declared for components list (TS support);
+- CopyToClipboard component updated;
+- Tabs component updated;
+- InputMask component updated;
 - Bugs fixing;
 
 #### 0.4.5, 0.4.6, 0.4.7 `2020-03-10`

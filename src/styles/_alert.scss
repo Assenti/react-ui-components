@@ -28,7 +28,7 @@
     }
 
     &.info {
-        background-color: rgba($info, .2);
+        background-color: rgba($info, .1);
         border-color: $info;
         color: $info;
 
@@ -42,7 +42,7 @@
     }
 
     &.success {
-        background-color: rgba($success, .2);
+        background-color: rgba($success, .1);
         border-color: $success;
         color: $success;
 
@@ -56,7 +56,7 @@
     }
 
     &.error {
-        background-color: rgba($error, .2);
+        background-color: rgba($error, .1);
         border-color: $error;
         color: $error;
 
@@ -70,7 +70,7 @@
     }
 
     &.warning {
-        background-color: rgba($warning, .2);
+        background-color: rgba($warning, .1);
         border-color: $warning;
         color: $warning;
 

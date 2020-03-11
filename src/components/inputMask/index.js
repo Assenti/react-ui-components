@@ -6,7 +6,8 @@ import {
     cardMaskFormatter, 
     cardIssueMaskFormatter, 
     iinMaskFormatter,
-    dateMaskFormatter } from '../utils';
+    dateMaskFormatter, 
+    timeMaskFormatter} from '../utils';
 
 const InputMask = (props) => {
     const [preValue, setPreValue] = useState('');
@@ -63,6 +64,16 @@ const InputMask = (props) => {
                     dateMaskFormatter(preValue.slice(0, preValue.length - 1), props.dateDelimiter)
                 }
                 break;
+            case 'time':
+                if (e.key.match(/^[0-9]+$/)) {
+                    let concatenatedValue = preValue + e.key;                    
+                    setPreValue(concatenatedValue.length <=8 ? concatenatedValue : preValue)
+                    timeMaskFormatter(concatenatedValue, props.dateDelimiter)
+                } else if (e.key === 'Backspace' && preValue) {
+                    setPreValue(preValue.slice(0, preValue.length - 1))
+                    timeMaskFormatter(preValue.slice(0, preValue.length - 1), props.dateDelimiter)
+                }
+                break;
             default:
                 break;
         }
@@ -85,6 +96,9 @@ const InputMask = (props) => {
             case 'date':
                 props.onChange(dateMaskFormatter(preValue, props.dateDelimiter), preValue);
                 break;
+            case 'time':
+                props.onChange(timeMaskFormatter(preValue, props.timeDelimiter), preValue);
+                break;
             default:
                 break;
         }
@@ -102,6 +116,8 @@ const InputMask = (props) => {
                 return iinMaskFormatter(preValue);
             case 'date':
                 return dateMaskFormatter(preValue, props.dateDelimiter);
+            case 'time':
+                return timeMaskFormatter(preValue, props.timeDelimiter);
             default:
                 return '';
         }
@@ -119,7 +135,9 @@ const InputMask = (props) => {
 InputMask.propTypes = {
     onChange: PropTypes.func,
     value: PropTypes.string.isRequired,
-    mask: PropTypes.oneOf([undefined,'','phone','card','card-issue','iin','date']).isRequired,
+    dateDelimiter: PropTypes.string,
+    timeDelimiter: PropTypes.string,
+    mask: PropTypes.oneOf([undefined,'','phone','card','card-issue','iin','date','time']).isRequired,
     color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
     size: PropTypes.oneOf([undefined,'','medium','large']),
     borderType: PropTypes.oneOf([undefined,'','tile','rounded','smooth']),

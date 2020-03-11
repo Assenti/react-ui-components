@@ -6,15 +6,28 @@ const CopyToClipboard = (props) => {
     const [tooltip, setTooltip] = useState(props.defaultText ? props.defaultText : 'Copy');
 
     const handleClick = () => {
-        navigator.clipboard.writeText(props.text)
+        copyToClipboard(props.text);
         setTooltip(`${props.copiedText ? props.copiedText : 'Copied to clipboard'}`)
         setTimeout(() => {
             setTooltip(props.defaultText ? props.defaultText : 'Copy')
         }, 700);
     }
 
+    const copyToClipboard = (text) => {
+        const el = document.createElement('textarea');
+        el.value = (text);
+        el.setAttribute('readonly', '');
+        el.style.position = 'absolute';
+        el.style.left = '-9999px';
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+    }
+
     return (
         <Tooltip tooltip={tooltip}>
+            {/* <input ref={input}/> */}
             <Icon
                 className={props.className ? `cursor-pointer ${props.className}` : 'cursor-pointer'}
                 size={props.size ? props.size : 16}

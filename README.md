@@ -66,7 +66,6 @@ export default App;
 
 ### TODO
 - [ ] Date picker
-- [ ] Time picker
 - [ ] Expansion List
 - [ ] Stepper
 - [ ] Dock

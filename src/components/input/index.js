@@ -184,7 +184,7 @@ InputField.propTypes = {
     disabled: PropTypes.bool,
     borderType: PropTypes.oneOf([undefined,'','tile','smooth','rounded']),
     uppercase: PropTypes.bool,
-    size: PropTypes.oneOf([undefined,'','medium','large']),
+    size: PropTypes.oneOf([undefined,'','default','medium','large']),
     prefix: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
     suffix: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -195,6 +195,7 @@ InputField.propTypes = {
     whiteBackground: PropTypes.bool,
     label: PropTypes.string,
     hint: PropTypes.string,
+    hintColor: PropTypes.oneOf(['success','error']),
     className: PropTypes.string
 }
 InputField.defaultProps = {

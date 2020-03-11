@@ -112,6 +112,27 @@ export const dateMaskFormatter = (value, delimiter = '.') => {
     } else return '';
 }
 
+export const timeMaskFormatter = (value, delimiter = ':', withSeconds) => {
+    if (value) {
+        if (withSeconds) {
+            if (value.length <= 2) {
+                return `${value}`;
+            } else if (value.length > 2 && value.length <= 4) {
+                return `${value.slice(0,2)}${delimiter}${value.slice(2,value.length)}`;
+            } else {
+                return `${value.slice(0,2)}${delimiter}${value.slice(2,4)}${delimiter}${value.slice(4,6)}`;
+            }
+        } else {
+            if (value.length <= 2) {
+                return `${value}`;
+            } else {
+                return `${value.slice(0,2)}${delimiter}${value.slice(2,4)}`;
+            }
+        }
+        
+    } else return '';
+}
+
 export const isTwoDatesEqual = (date1, date2) => {
     let day1 = new Date(date1).getDate();
     let month1 = new Date(date1).getMonth();
