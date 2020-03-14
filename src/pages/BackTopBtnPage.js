@@ -2,6 +2,7 @@ import React, { createRef } from 'react';
 import { BackTopBtn, Card, Table, Collapse, Icon, List, ListItem, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { countries } from '../data/countries';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -105,19 +106,6 @@ function Example() {
         </div>
     )
 }`
-
-const countries = [
-    { country: 'Kazakhstan', cities: [ 'Nur-Sultan', 'Almaty', 'Shymkent' ] }, 
-    { country: 'Russia', cities: ['Moscow', 'St. Petersburg', 'Krasnodar'] }, 
-    { country: 'USA', cities: ['Washington, D.C.', 'New York City', 'San Francisco'] }, 
-    { country: 'United Kingdom', cities: ['London', 'York', 'Manchester'] }, 
-    { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
-    { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
-    { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
-    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] },
-    { country: 'Japan', cities: ['Tokyo', 'Osaka', 'Kyoto'] },
-    { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'] }
-]
 
 const BackTopBtnPage = () => {
     const blockref = createRef();

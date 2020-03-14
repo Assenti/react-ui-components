@@ -1,6 +1,42 @@
+.rui-select {
+    &.max-height {
+        .rui-dropdown__content {
+            overflow-y: auto;
+            &::-webkit-scrollbar {
+                width: 3.5px;
+                height: 3.5px;
+                background-color: $lightgray;
+                border-radius: $radius;
+            }
+            
+            &::-webkit-scrollbar-thumb {
+              background-color: lightgray;
+              outline: 1px solid #fff;
+            }
+        }
+    }
+
+    .rui-select__list {
+        position: relative;
+    }
+}
+
 .rui-select__menu {
     outline: none;
     padding: 10px 0;
+
+    .rui-list-item {
+        .rui-select__next-icon {
+            margin-right: 0 !important;
+            svg {
+                width: 20px;
+                height: 20px;
+                path {
+                    fill: gray;
+                }
+            }
+        }
+    }
 
     .rui-list-item.active {
         border-right: 1px !important;
@@ -18,20 +54,16 @@
     }
 
     .rui-select__submenu {
-        padding: 10px 0;
         position: absolute;
-        top: 0;
+        top: -10px;
         left: calc(100% + .4px);
         width: 100%;
-        box-shadow: 2px 1px 4px rgba(0, 0, 0, .1);
+        box-shadow: 2px 1px 2px rgba(lightgray, .1);
         border-radius: $radius;
-    
-        &.light {
+
+        .rui-select__submenu-list:not(.dark) {
             background-color: #fff;
-        }
-    
-        &.dark {
-            background-color: $night;
+            padding: 10px 0;
         }
     }
 }
@@ -64,19 +96,109 @@
         justify-content: space-between;
         background-color: $lightgray;
 
-        &:focus,
-        &:hover {
-            border-color: $info;
-            background-color: #fff;
+        &.tile {
+            border-radius: 0;
+        }
+    
+        &.rounded {
+            border-radius: 60px;
+        }
+    
+        &.smooth {
+            border-radius: $radius * 2.3;
         }
 
-        &:hover {
-            transition: all .2s ease-in-out;
+        &.primary {
+            &:focus,
+            &:hover {
+                border-color: $primary;
+                background-color: #fff;
+            }
 
-            i {
-                svg {
-                    path {
-                        fill: $info;
+            &:focus {
+                box-shadow: 0 0 3px 1px rgba($primary, .3);
+            }
+
+            &:hover {
+                transition: all .2s ease-in-out;
+
+                i {
+                    svg {
+                        path {
+                            fill: $primary;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.info {
+            &:focus,
+            &:hover {
+                border-color: $info;
+                background-color: #fff;
+            }
+
+            &:focus {
+                box-shadow: 0 0 3px 1px rgba($info, .3);
+            }
+
+            &:hover {
+                transition: all .2s ease-in-out;
+
+                i {
+                    svg {
+                        path {
+                            fill: $info;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.error {
+            &:focus,
+            &:hover {
+                border-color: $error;
+                background-color: #fff;
+            }
+
+            &:focus {
+                box-shadow: 0 0 3px 1px rgba($error, .3);
+            }
+
+            &:hover {
+                transition: all .2s ease-in-out;
+
+                i {
+                    svg {
+                        path {
+                            fill: $error;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.success {
+            &:focus,
+            &:hover {
+                border-color: $success;
+                background-color: #fff;
+            }
+
+            &:focus {
+                box-shadow: 0 0 3px 1px rgba($success, .3);
+            }
+
+            &:hover {
+                transition: all .2s ease-in-out;
+
+                i {
+                    svg {
+                        path {
+                            fill: $success;
+                        }
                     }
                 }
             }
@@ -89,19 +211,6 @@
                 }
             }
         }
-
-        // .rui-tag {
-        //     border-color: lightgray;
-        //     background-color: #fff;
-
-        //     i {
-        //         svg {
-        //             path {
-        //                 fill: gray !important;
-        //             }
-        //         }
-        //     }
-        // }
 
         .rui-select__multiple-placeholder {
             height: 100%;

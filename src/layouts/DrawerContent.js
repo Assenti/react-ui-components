@@ -10,6 +10,7 @@ export const DrawerContent = (props) => {
 
     const handleItemClick = (item) => {
         history.push(item.path)
+        setSearch('')
     }
 
     const searchedItems = () => {
@@ -61,10 +62,7 @@ export const DrawerContent = (props) => {
                                         <ListItem
                                             key={index}
                                             hover
-                                            onClick={() => {
-                                                handleItemClick(item)
-                                                setSearch('')
-                                            }}
+                                            onClick={() => handleItemClick(item)}
                                             item={item.name}/>
                                     )}
                                 </List>

@@ -37,7 +37,8 @@ const Dropdown = (props) => {
                         right: props.rightOffset && !props.legtOffset ? props.rightOffset : '',
                         left: props.legtOffset && !props.rightOffset ? props.legtOffset : ''
                     }}>
-                    <div className="rui-dropdown__content" 
+                    <div className="rui-dropdown__content"
+                        style={{ maxHeight: props.contentMaxHeight }} 
                         onClick={() => props.closeManaged ? {} : setVisible(false)}>
                             {props.content}
                     </div>
@@ -57,6 +58,7 @@ Dropdown.propTypes = {
     rightOffset: PropTypes.number,
     closeManaged: PropTypes.bool,
     visible: PropTypes.bool,
+    contentMaxHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     className: PropTypes.string
 }
 Dropdown.defaultProps = {

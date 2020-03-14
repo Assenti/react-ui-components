@@ -47,16 +47,18 @@
     "js/43.chunk.js": "/js/43.chunk.js",
     "js/44.chunk.js": "/js/44.chunk.js",
     "js/45.chunk.js": "/js/45.chunk.js",
+    "js/46.chunk.js": "/js/46.chunk.js",
     "index.html": "/index.html",
     "js/3.chunk.js.LICENSE.txt": "/js/3.chunk.js.LICENSE.txt",
-    "precache-manifest.2228b3e6612c0a75fa310db986f97847.js": "/precache-manifest.2228b3e6612c0a75fa310db986f97847.js",
+    "precache-manifest.539278e2918d14fd5bdd5239db2b91bc.js": "/precache-manifest.539278e2918d14fd5bdd5239db2b91bc.js",
     "service-worker.js": "/service-worker.js",
     "static/media/girl.png": "/static/media/girl.465a6768.png",
     "static/media/girl_.png": "/static/media/girl_.f2dc0133.png",
     "static/media/hipster.png": "/static/media/hipster.4ca6ae2f.png",
     "static/media/man.png": "/static/media/man.e941ef11.png",
     "static/media/man_.png": "/static/media/man_.1a05fb23.png",
-    "static/media/old.png": "/static/media/old.21fd9a1f.png"
+    "static/media/old.png": "/static/media/old.21fd9a1f.png",
+    "static/media/world.png": "/static/media/world.136490c6.png"
   },
   "entrypoints": [
     "js/runtime-main.js",

@@ -7,6 +7,13 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.4.10 `2020-03-14`
+
+- `NEW!` AutoComplete component added;
+- Tag component updated;
+- Select component updated;
+- Dropdown component updated;
+
 #### 0.4.8, 0.4.9 `2020-03-11`
 
 - `NEW!` TimePicker component added;

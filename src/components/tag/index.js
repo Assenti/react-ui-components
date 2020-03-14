@@ -24,6 +24,13 @@ const Tag = (props) => {
         return result.trim();
     }
 
+    const handleClose = () => {
+        if (props.onClose) {
+            props.onClose()
+            if (!props.onClick) setVisible(false)
+        }
+    }
+
     useEffect(() => {
         if (props.closable) setVisible(props.visible)
     }, [props.visible])
@@ -35,7 +42,8 @@ const Tag = (props) => {
             classNames="rui-tag"
             unmountOnExit>
             <div className={tagClass()}
-                ref={props.setRef} 
+                ref={props.setRef}
+                onClick={props.onClick ? props.onClick : {}} 
                 style={{ width: props.width ? props.width : ''}}>
                 {props.iconLeft ? <Icon name={props.iconLeft}/> : ''}
                 {props.value}
@@ -45,10 +53,7 @@ const Tag = (props) => {
                         className="rui-tag__close" 
                         name="close"
                         color="gray" 
-                        onClick={() => {
-                            props.onClose()
-                            setVisible(false)
-                        }}/> : ''}
+                        onClick={handleClose}/> : ''}
             </div>
         </CSSTransition>
     )
@@ -66,6 +71,8 @@ Tag.propTypes = {
     iconLeft: PropTypes.string,
     iconRight: PropTypes.string,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    onClose: PropTypes.func,
+    onClick: PropTypes.func,
     closable: PropTypes.bool,
     className: PropTypes.string
 }

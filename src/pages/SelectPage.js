@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { Select, Table, Card, Collapse, Icon, BackTopBtn, Switch, Badge } from '../components';
+import { Select, Table, Card, Collapse, Icon, BackTopBtn, Switch, Badge, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { countries } from '../data/countries';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const rows = [
@@ -13,8 +14,15 @@ const rows = [
         value: ''
     },
     { 
-        property: 'itemName', 
+        property: 'itemKey', 
         description: 'Set if you pass items as array of objects', 
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'childrenKey', 
+        description: 'Set if you pass items with children array (pass the key of item that has children array)', 
         default: '', 
         type: 'string',
         value: ''
@@ -27,15 +35,15 @@ const rows = [
         value: ''
     },
     { 
-        property: 'childrenKey', 
-        description: 'Set if you pass items with children array (pass the key of item that has children array)', 
-        default: '', 
-        type: 'string',
-        value: ''
-    },
-    { 
         property: 'searchable', 
         description: 'Enable searching field in select menu (has effect only with one level list)', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'returnObject', 
+        description: 'Returns item object on select change (used when items passed as array of objects, works only with one level items)', 
         default: 'false', 
         type: 'boolean',
         value: 'true | false'
@@ -50,9 +58,16 @@ const rows = [
     { 
         property: 'width', 
         description: 'Set select width', 
-        default: 'auto', 
+        default: '', 
         type: 'string | number',
-        value: '100px | 100% | 100'
+        value: ''
+    },
+    { 
+        property: 'maxHeight', 
+        description: 'Set select list max height', 
+        default: '', 
+        type: 'string | number',
+        value: ''
     },
     { 
         property: 'label', 
@@ -104,6 +119,13 @@ const rows = [
         value: 'primary | info | success | error | black'
     },
     { 
+        property: 'tagOutlined', 
+        description: 'Set Tag outlined prop',
+        default: '', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'prefix', 
         description: 'Set prefix',
         default: '', 
@@ -126,23 +148,13 @@ const rows = [
     }
 ]
 
-const countries = [
-    { country: 'Kazakhstan', cities: [ 'Nur-Sultan', 'Almaty', 'Shymkent' ] }, 
-    { country: 'Russia', cities: ['Moscow', 'St. Petersburg', 'Krasnodar'] }, 
-    { country: 'USA', cities: ['Washington, D.C.', 'New York City', 'San Francisco'] }, 
-    { country: 'United Kingdom', cities: ['London', 'York', 'Manchester'] }, 
-    { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
-    { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
-    { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
-    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] },
-    { country: 'Japan', cities: ['Tokyo', 'Osaka', 'Kyoto'] },
-    { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'] }
-]
-
 const usage = 
 `// Usage examples
 import React, { useState } from 'react';
-import { Select } from '@assenti/react-ui-components';
+import { Select, Icon, Switch } from '@assenti/react-ui-components';
+const colors = ['primary', 'info', 'success', 'error'];
+const sizes = ['default', 'medium', 'large'];
+const borders = ['default', 'tile', 'rounded', 'smooth'];
 
 const countries = [
     { country: 'Kazakhstan', cities: [ 'Nur-Sultan', 'Almaty', 'Shymkent' ] }, 
@@ -159,48 +171,139 @@ const countries = [
 function Example() {
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
+    const [color, setColor] = useState(colors[0]);
+    const [size, setSize] = useState(sizes[0]);
+    const [border, setBorder] = useState(borders[0]);
+    const [disabled, setDisabled] = useState(false);
+    const [maxHeight, setMaxHeight] = useState(false);
 
     return (
-        <div className="pa-20">
+        <>
+            <Select
+                items={colors}
+                prefix={<Icon name="brush"/>}
+                width={200}
+                label="Color"
+                color="primary"
+                className="my-5"
+                value={color}
+                onChange={v => setColor(v)}/>
+            <br/>
+            <Select
+                items={sizes}
+                prefix={<Icon name="format-size"/>}
+                width={200}
+                label="Size"
+                color="primary"
+                className="my-5"
+                value={size}
+                onChange={v => setSize(v)}/>
+            <br/>
+            <Select
+                items={borders}
+                prefix={<Icon name="shape"/>}
+                width={200}
+                label="Border type"
+                color="primary"
+                className="my-5"
+                value={border}
+                onChange={v => setBorder(v)}/>
+            <br/>
+            <Switch 
+                check={maxHeight} 
+                color="primary"
+                rightLabel="Set max height" 
+                className="my-10"
+                onChange={() => setMaxHeight(!maxHeight)}/>
+            <Switch 
+                check={disabled} 
+                color="primary"
+                rightLabel="Disabled" 
+                className="my-10"
+                onChange={() => setDisabled(!disabled)}/>
+            <br/>
             <Select
                 items={countries}
                 prefix={<Icon name="earth"/>}
-                itemTitle="country"
-                label="Select your favourite country"
+                itemKey="country"
+                label="One level items select"
                 width={250}
-                color="info"
+                maxHeight={maxHeight ? 200 : null}
+                disabled={disabled}
+                size={size}
+                borderType={border}
+                clearable
+                onClear={() => setCountry('')}
+                color={color}
                 placeholder="Countries"
                 value={country}
-                onChange={v => setCountry(v)}/>
+                onChange={value => setCountry(value)}/>
+            <br/>
             <Select
-                className="ml-20"
-                label="Select your favourite city"
+                prefix={<Icon name="earth"/>}
+                label="Two level items select"
                 items={countries}
-                itemTitle="country"
+                itemKey="country"
                 childrenKey="cities"
-                color="primary"
+                color={color}
+                borderType={border}
                 width={250}
+                size={size}
                 placeholder="Cities"
                 value={city}
-                onChange={v => setCity(v)}/>
-        </div>
+                onChange={value => {
+                    setCity(value)
+                    console.log(value)
+                }}/>
+            <br/>
+            <Select
+                prefix={<Icon name="earth"/>}
+                label="One level items searchable select"
+                items={countries}
+                itemKey="country"
+                color={color}
+                maxHeight={maxHeight ? 200 : null}
+                width={250}
+                borderType={border}
+                searchable
+                size={size}
+                placeholder="Countries"
+                value={country}
+                onChange={value => setCountry(value)}/>
+            <br/>
+            <Select
+                prefix={<Icon name="earth"/>}
+                label="One level items with multiple select"
+                items={countries}
+                itemKey="country"
+                color={color}
+                maxHeight={maxHeight ? 200 : null}
+                width={250}
+                multiple
+                size={size}
+                borderType={border}
+                placeholder="Countries"
+                value={city}
+                tagOutlined
+                onSelect={(selectedItem, selectedItems) => 
+                    console.log(selectedItem, selectedItems)}
+                onChange={value => setCity(value)}/>
+        </>
     )
 }`
 
 const colors = ['primary', 'info', 'success', 'error'];
 const sizes = ['default', 'medium', 'large'];
+const borders = ['default', 'tile', 'rounded', 'smooth'];
 
 const SelectPage = () => {
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
     const [color, setColor] = useState(colors[0]);
     const [size, setSize] = useState(sizes[0]);
+    const [border, setBorder] = useState(borders[0]);
     const [disabled, setDisabled] = useState(false);
-    const [searchable, setSearchable] = useState(false);
-    const [prefix, setPrefix] = useState(true);
-    const [multiple, setMultiple] = useState(false);
-    const [label, setLabel] = useState(true);
-    const [whiteBackground, setWhiteBackground] = useState(false);
+    const [maxHeight, setMaxHeight] = useState(false);
     const parent = useRef();
     const api = useRef();
 
@@ -211,24 +314,17 @@ const SelectPage = () => {
     return (
         <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
-                <div className="row">
-                    <div className="rui-page-title">{'<Select/>'} Component</div>
-                    <Badge 
-                        color="error" 
-                        value="WIP"
-                        className="ml-10"
-                        parent={<Icon name="wrench" size={20}/>}/>
-                </div>
+                <div className="rui-page-title">{'<Select/>'} Component</div>
                 <div className="rui-link fz-13 fw-bold mr-10" onClick={() => goToApi()}>API</div>
             </div>
             <Card outlined title="Usage">
-            <Select
+                <Select
                     items={colors}
                     prefix={<Icon name="brush"/>}
                     width={200}
-                    label="Switch color"
+                    label="Color"
                     color="primary"
-                    className="my-10"
+                    className="my-5"
                     value={color}
                     onChange={v => setColor(v)}/>
                 <br/>
@@ -236,18 +332,28 @@ const SelectPage = () => {
                     items={sizes}
                     prefix={<Icon name="format-size"/>}
                     width={200}
-                    label="Switch size"
+                    label="Size"
                     color="primary"
-                    className="my-10"
+                    className="my-5"
                     value={size}
                     onChange={v => setSize(v)}/>
                 <br/>
-                <Switch 
-                    check={searchable} 
+                <Select
+                    items={borders}
+                    prefix={<Icon name="shape"/>}
+                    width={200}
+                    label="Border type"
                     color="primary"
-                    rightLabel="Searchable" 
+                    className="my-5"
+                    value={border}
+                    onChange={v => setBorder(v)}/>
+                <br/>
+                 <Switch 
+                    check={maxHeight} 
+                    color="primary"
+                    rightLabel="Set max height" 
                     className="my-10"
-                    onChange={() => setSearchable(!searchable)}/>
+                    onChange={() => setMaxHeight(!maxHeight)}/>
                 <Switch 
                     check={disabled} 
                     color="primary"
@@ -255,66 +361,76 @@ const SelectPage = () => {
                     className="my-10"
                     onChange={() => setDisabled(!disabled)}/>
                 <br/>
-                <Switch 
-                    check={prefix} 
-                    color="primary"
-                    rightLabel="Prefix" 
-                    className="my-10"
-                    onChange={() => setPrefix(!prefix)}/>
-                <Switch 
-                    check={multiple} 
-                    color="primary"
-                    rightLabel="Multiple selection" 
-                    className="my-10"
-                    onChange={() => setMultiple(!multiple)}/>
-                <br/>
-                <Switch 
-                    check={whiteBackground} 
-                    color="primary"
-                    rightLabel="WhiteBackground" 
-                    className="my-10"
-                    onChange={() => setWhiteBackground(!whiteBackground)}/>
-                <Switch 
-                    check={label} 
-                    color="primary"
-                    rightLabel="Label" 
-                    className="my-10"
-                    onChange={() => setLabel(!label)}/>
-                <br/>
                 <Select
                     items={countries}
-                    prefix={prefix ? <Icon name="earth"/> : null}
-                    itemTitle="country"
-                    label={label ? 'Select your favourite country' : null}
+                    prefix={<Icon name="earth"/>}
+                    itemKey="country"
+                    label="One level items select"
                     width={250}
+                    maxHeight={maxHeight ? 200 : null}
                     disabled={disabled}
-                    searchable={searchable}
                     size={size}
-                    multiple={multiple}
-                    whiteBackground={whiteBackground}
+                    borderType={border}
+                    clearable
+                    onClear={() => setCountry('')}
                     color={color}
-                    onSelect={(value, selectedList) => console.log(value, selectedList)}
                     placeholder="Countries"
                     value={country}
-                    onChange={v => setCountry(v)}/>
+                    onChange={value => setCountry(value)}/>
                 <br/>
                 <Select
-                    prefix={prefix ? <Icon name="earth"/> : null}
-                    label={label ? 'Select your favourite city of countries' : null}
+                    prefix={<Icon name="earth"/>}
+                    label="Two level items select"
                     items={countries}
-                    itemTitle="country"
+                    itemKey="country"
                     childrenKey="cities"
                     color={color}
-                    whiteBackground={whiteBackground}
+                    borderType={border}
                     width={250}
-                    searchable={searchable}
                     size={size}
                     placeholder="Cities"
                     value={city}
-                    onChange={v => setCity(v)}/>
+                    onChange={value => {
+                        setCity(value)
+                        console.log(value)
+                    }}/>
+                <br/>
+                <Select
+                    prefix={<Icon name="earth"/>}
+                    label="One level items searchable select"
+                    items={countries}
+                    itemKey="country"
+                    color={color}
+                    maxHeight={maxHeight ? 200 : null}
+                    width={250}
+                    borderType={border}
+                    searchable
+                    size={size}
+                    placeholder="Countries"
+                    value={country}
+                    onChange={value => setCountry(value)}/>
+                <br/>
+                <Select
+                    prefix={<Icon name="earth"/>}
+                    label="One level items with multiple select"
+                    items={countries}
+                    itemKey="country"
+                    color={color}
+                    maxHeight={maxHeight ? 200 : null}
+                    width={250}
+                    multiple
+                    size={size}
+                    borderType={border}
+                    placeholder="Countries"
+                    value={city}
+                    tagOutlined
+                    onSelect={(selectedItem, selectedItems) => 
+                        console.log(selectedItem, selectedItems)}
+                    onChange={value => setCity(value)}/>
                 <Collapse 
                     icon="code" 
                     iconSize={18}
+                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>}
                     contentStyles={{ padding: 0 }}
                     tooltip="Code">
                     <SyntaxHighlighter language="jsx" style={prism}>

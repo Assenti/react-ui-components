@@ -35,6 +35,13 @@ const items = [
         value: ''
     },
     { 
+        property: 'contentMaxHeight', 
+        description: 'Set Dropdown content max height', 
+        default: '', 
+        type: 'string | number',
+        value: ''
+    },
+    { 
         property: 'position', 
         description: 'Set Dropdown content position',
         default: 'left', 

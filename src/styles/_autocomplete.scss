@@ -1,0 +1,58 @@
+.rui-autocomplete {
+    &.max-height {
+        .rui-dropdown__content {
+            overflow-y: auto;
+            &::-webkit-scrollbar {
+                width: 3.5px;
+                height: 3.5px;
+                background-color: $lightgray;
+                border-radius: $radius;
+            }
+            
+            &::-webkit-scrollbar-thumb {
+              background-color: lightgray;
+              outline: 1px solid #fff;
+            }
+        }
+    }
+
+    &.primary {
+        .rui-autocomplete__loading {
+            svg {
+                path {
+                    fill: $primary;
+                }
+            }
+        }
+    }
+
+    &.info {
+        .rui-autocomplete__loading {
+            svg {
+                path {
+                    fill: $info;
+                }
+            }
+        }
+    }
+
+    &.success {
+        .rui-autocomplete__loading {
+            svg {
+                path {
+                    fill: $success;
+                }
+            }
+        }
+    }
+
+    &.error {
+        .rui-autocomplete__loading {
+            svg {
+                path {
+                    fill: $error;
+                }
+            }
+        }
+    }
+}
