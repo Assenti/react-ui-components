@@ -27,7 +27,6 @@ const CopyToClipboard = (props) => {
 
     return (
         <Tooltip tooltip={tooltip}>
-            {/* <input ref={input}/> */}
             <Icon
                 className={props.className ? `cursor-pointer ${props.className}` : 'cursor-pointer'}
                 size={props.size ? props.size : 16}
@@ -40,7 +39,6 @@ const CopyToClipboard = (props) => {
 CopyToClipboard.propTypes = {
     size: PropTypes.number,
     color: PropTypes.string,
-    tooltip: PropTypes.string,
     text: PropTypes.string.isRequired,
     copiedText: PropTypes.string,
     defaultText: PropTypes.string,

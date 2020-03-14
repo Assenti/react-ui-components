@@ -1,5 +1,5 @@
 import React, { createRef } from 'react';
-import { Card, Table, BackTopBtn, List, ListItem } from '../components';
+import { Card, Table, BackTopBtn, List, ListItem, CopyToClipboard } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -141,7 +141,6 @@ const colors = [
         description: 'Set {color} to background'
     }
 ]
-
 const fonts = [
     { class: 'fz-5', description: 'Set font-size: 0.5rem' },
     { class: 'fz-6', description: 'Set font-size: 0.6rem' },
@@ -162,6 +161,11 @@ const fonts = [
     { class: 'fw-normal', description: 'Set font-weight: normal' },
     { class: 'fw-bold', description: 'Set font-weight: 600' },
     { class: 'fw-thin', description: 'Set font-weight: thin' }
+]
+const textStyles = [
+    { class: 'text-left', description: 'Set text alignment on left' },
+    { class: 'text-center', description: 'Set text alignment on center' },
+    { class: 'text-right', description: 'Set text alignment on right' }
 ]
 
 const presetColors = [
@@ -184,10 +188,10 @@ import React from 'react';
 
 function Example() {
     return (
-        <div>
+        <>
             <div className="text-primary">Text</div>
             <div className="bg-primary">Background</div>
-        </div>
+        </>
     )
 }`
 
@@ -199,7 +203,7 @@ const HelperPage = () => {
             <div className="row align-center space-between">
                 <div className="rui-page-title">Helper CSS classes</div>
             </div>
-            <Card outlined color="primary" title="Margins & Paddings">
+            <Card outlined title="Margins & Paddings">
                 <h4>Margins</h4>
                 <Table
                     bordered
@@ -217,7 +221,7 @@ const HelperPage = () => {
                     itemTitles={['class', 'description', 'example']}/>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Font size and weight">
+            <Card outlined title="Font size and weight">
                 <Table
                     bordered
                     headers={['Class', 'Description']}
@@ -226,7 +230,16 @@ const HelperPage = () => {
                     itemTitles={['class', 'description']}/>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Flex box">
+            <Card outlined title="Text alignment">
+                <Table
+                    bordered
+                    headers={['Class', 'Description']}
+                    items={textStyles}
+                    index={true}
+                    itemTitles={['class', 'description']}/>
+            </Card>
+            <br/>
+            <Card outlined title="Flex box">
                 <Table
                     bordered
                     headers={['Class', 'Description']}
@@ -235,19 +248,25 @@ const HelperPage = () => {
                     itemTitles={['class', 'description']}/>
             </Card>
             <br/>
-            <Card outlined color="primary" title="Set color">
+            <Card outlined title="Set color">
                 <List size="medium">
                     {presetColors.map((item, index) =>
                         <ListItem  
                             key={index}
+                            noDivider
                             render={
                                 <div className="row align-center space-between">
                                     <div 
-                                        style={{ width: 100, height: 30 }}
+                                        style={{ width: 100, height: 30, border: '1px solid lightgray' }}
                                         className={`bg-${item.name} border row align-center justify-center fz-9`}>
-                                        {item.value}
                                     </div>
-                                    <span className="ml-10">{item.name}</span>
+                                    <div className="ml-10 row align-center">
+                                        <span>{item.name} (HEX: {item.value})</span>
+                                        <CopyToClipboard 
+                                            text={item.value}
+                                            className="ml-5" 
+                                            defaultText="Copy HEX"/>
+                                    </div>
                                 </div>
                             }
                             />
@@ -270,5 +289,4 @@ const HelperPage = () => {
         </div>
     )
 }
-
 export default HelperPage;
