@@ -6,8 +6,9 @@ const Checkbox = (props) => {
         let result = '';
         let className = {
             checkbox: 'rui-checkbox',
+            fill: props.fill ? 'fill' : '',
             size: props.size ? props.size : '',
-            color: props.color ? props.color : '',
+            color: props.color ? props.color : 'primary',
             disabled: props.disabled ? 'disabled' : ''
         }
 
@@ -44,7 +45,7 @@ const Checkbox = (props) => {
                 <span></span>
             </label>
             {props.label ? <div className={checkboxLabelClass()} 
-                    onClick={() => props.onChange ? props.onChange() : {}}>{props.label}</div> : ''}
+                    onClick={() => props.onChange && !props.disabled ? props.onChange() : {}}>{props.label}</div> : ''}
         </div>
     )
 }
@@ -53,7 +54,7 @@ Checkbox.propTypes = {
     onChange: PropTypes.func,
     disabled: PropTypes.bool,
     color: PropTypes.oneOf([undefined,'','primary','info','success','error','secondary']),
-    size: PropTypes.oneOf([undefined,'','medium','large']),
+    size: PropTypes.oneOf([undefined,'','default','medium','large']),
     label: PropTypes.string,
     className: PropTypes.string
 }

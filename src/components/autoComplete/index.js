@@ -25,8 +25,12 @@ const AutoComplete = (props) => {
         (lower ? item.toLowerCase() : item);
 
     const filtered = () => {
-        return props.items.filter(item => 
-            getItem(item, true).includes(props.value.toLowerCase()));
+        if (props.value) {
+            return props.items.filter(item => 
+                getItem(item, true).includes(props.value.toLowerCase()));
+        } else {
+            return []
+        }
     }
 
     const handleItemClick = (item) => {

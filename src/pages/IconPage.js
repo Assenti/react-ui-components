@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Table, Icon, Card, Collapse, Tooltip, InputField } from '../components';
+import { Table, Icon, Card, Collapse, Tooltip, InputField, BackTopBtn } from '../components';
 import { description } from '../../package.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -96,7 +96,9 @@ const icons = [
     'alert-circle',
     'info',
     'package-down',
-    'clock-outline'
+    'clock-outline',
+    'wifi',
+    'cart'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
@@ -113,6 +115,13 @@ const items = [
         description: 'Handle click event', 
         default: '', 
         type: 'function',
+        value: ''
+    },
+    { 
+        property: 'custom', 
+        description: 'Set custom icon', 
+        default: '', 
+        type: 'ReactNode',
         value: ''
     },
     { 
@@ -145,24 +154,46 @@ const items = [
     }
 ]
 
-    const usage = 
+const usage = 
 `// Usage examples
 import React from 'react';
 import { Icon } from '@assenti/rui-components';
 
 funcation Example() {
     return (
-        <div>
+        <>
             <Icon name="search" size={20} color="red"/>
             <Icon name="home" size={20} color="#1976d2"/>
             <Icon name="account" size={20} color="#rgb(0,0,5)"/>
-        </div>
+        </>
     )
-}
-`
+}`
+
+const customIconUsage = 
+`// Usage examples
+import React from 'react';
+import { Icon } from '@assenti/rui-components';
+
+funcation Example() {
+
+    const CustomIconSvg = () => {
+        return (
+            <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
+                <path fill="gray" d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z" />
+            </svg>
+        )
+    }
+
+    return (
+        <>
+            <Icon custom={<CustomIconSvg/>}/>
+        </>
+    )
+}`
 
 const IconPage = () => {
     const api = useRef();
+    const parent = useRef();
     const [search, setSearch] = useState('');
 
     const goToApi = () => {
@@ -177,8 +208,16 @@ const IconPage = () => {
         }
     }
 
+    const CustomIconSvg = () => {
+        return (
+            <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
+                <path fill="gray" d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z" />
+            </svg>
+        )
+    }
+
     return (
-        <div className="rui-page">
+        <div className="rui-page" ref={parent}>
             <div className="row align-center space-between">
                 <div className="rui-page-title">{'<Icon/>'} Component</div>
                 <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
@@ -214,7 +253,19 @@ const IconPage = () => {
                     </SyntaxHighlighter>
                 </Collapse>
             </Card>
+            <br/>
+            <Card outlined title="Custom icon">
+                <div className="pa-10">
+                    <Tooltip tooltip="I am custom svg icon" position="right">
+                        <Icon custom={<CustomIconSvg/>}/>
+                    </Tooltip>
+                </div>
+                <SyntaxHighlighter language="jsx" style={prism}>
+                    {customIconUsage}
+                </SyntaxHighlighter>
+            </Card>
             <h2 ref={api}>API</h2>
+            <BackTopBtn setRef={parent} dark size="medium"/>
             <Table
                 bordered
                 headers={['Property', 'Description', 'Default', 'Type', 'Value']}

@@ -244,7 +244,7 @@ const items2 = [
         property: 'item', 
         description: 'Set list item', 
         default: '', 
-        type: 'string',
+        type: 'string | number | object',
         value: ''
     },
     { 

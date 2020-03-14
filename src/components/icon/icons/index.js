@@ -825,3 +825,21 @@ export const ClockOutline = (props) => {
         </svg>
     )
 }
+
+export const WiFi = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M12,21L15.6,16.2C14.6,15.45 13.35,15 12,15C10.65,15 9.4,15.45 8.4,16.2L12,21M12,3C7.95,3 4.21,4.34 1.2,6.6L3,9C5.5,7.12 8.62,6 12,6C15.38,6 18.5,7.12 21,9L22.8,6.6C19.79,4.34 16.05,3 12,3M12,9C9.3,9 6.81,9.89 4.8,11.4L6.6,13.8C8.1,12.67 9.97,12 12,12C14.03,12 15.9,12.67 17.4,13.8L19.2,11.4C17.19,9.89 14.7,9 12,9Z" />
+        </svg>
+    )
+}
+
+export const Cart = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" />
+        </svg>
+    )
+}

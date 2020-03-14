@@ -96,227 +96,235 @@ import {
     AlertCirlce,
     Information,
     PackageDown,
-    ClockOutline
+    ClockOutline,
+    WiFi,
+    Cart
 } from './icons/index';
 
 const Icon = (props) => {
+    const { custom, name, className, title, size, color } = props;
     const Icon = () => {
-        switch (props.name) {
+        switch (name) {
             case 'delete':
-                return <Delete size={props.size} color={props.color}/>;
+                return <Delete {...props}/>;
             case 'search':
-                return <Search size={props.size} color={props.color}/>;
+                return <Search {...props}/>;
             case 'home':
-                return <Home size={props.size} color={props.color}/>;
+                return <Home {...props}/>;
             case 'edit':
-                return <Edit size={props.size} color={props.color}/>;
+                return <Edit {...props}/>;
             case 'github':
-                return <Github size={props.size} color={props.color}/>;
+                return <Github {...props}/>;
             case 'close':
-                return <Close size={props.size} color={props.color}/>;
+                return <Close {...props}/>;
             case 'chevron-double-right':
-                return <ChevronDoubleRight size={props.size} color={props.color}/>;
+                return <ChevronDoubleRight {...props}/>;
             case 'chevron-double-left':
-                return <ChevronDoubleLeft size={props.size} color={props.color}/>; 
+                return <ChevronDoubleLeft {...props}/>; 
             case 'code':
-                return <Code size={props.size} color={props.color}/>; 
+                return <Code {...props}/>; 
             case 'chip':
-                return <Chip size={props.size} color={props.color}/>; 
+                return <Chip {...props}/>; 
             case 'account':
-                return <Account size={props.size} color={props.color}/>; 
+                return <Account {...props}/>; 
             case 'person':
-                return <Person size={props.size} color={props.color}/>; 
+                return <Person {...props}/>; 
             case 'chevron-down':
-                return <ChevronDown size={props.size} color={props.color}/>; 
+                return <ChevronDown {...props}/>; 
             case 'chevron-next':
-                return <ChevronNext size={props.size} color={props.color}/>;
+                return <ChevronNext {...props}/>;
             case 'chevron-back':
-                return <ChevronBack size={props.size} color={props.color}/>;    
+                return <ChevronBack {...props}/>;    
             case 'sun':
-                return <Sun size={props.size} color={props.color}/>;    
+                return <Sun {...props}/>;    
             case 'moon':
-                return <Moon size={props.size} color={props.color}/>; 
+                return <Moon {...props}/>; 
             case 'star':
-                return <Star size={props.size} color={props.color}/>;    
+                return <Star {...props}/>;    
             case 'star-outline':
-                return <StarOutline size={props.size} color={props.color}/>;   
+                return <StarOutline {...props}/>;   
             case 'smartphone':
-                return <Smartphone size={props.size} color={props.color}/>; 
+                return <Smartphone {...props}/>; 
             case 'hammer':
-                return <Hammer size={props.size} color={props.color}/>;  
+                return <Hammer {...props}/>;  
             case 'city':
-                return <City size={props.size} color={props.color}/>;   
+                return <City {...props}/>;   
             case 'empty':
-                return <Empty size={props.size} color={props.color}/>;
+                return <Empty {...props}/>;
             case 'download':
-                return <Download size={props.size} color={props.color}/>;  
+                return <Download {...props}/>;  
             case 'menu':
-                return <Menu size={props.size} color={props.color}/>;
+                return <Menu {...props}/>;
             case 'loading':
-                return <Loading size={props.size} color={props.color}/>;
+                return <Loading {...props}/>;
             case 'shield-account':
-                return <ShieldAccount size={props.size} color={props.color}/>;    
+                return <ShieldAccount {...props}/>;    
             case 'react':
-                return <ReactLogo size={props.size} color={props.color}/>;
+                return <ReactLogo {...props}/>;
             case 'file-outline':
-                return <FileOutline size={props.size} color={props.color}/>;
+                return <FileOutline {...props}/>;
             case 'email':
-                return <Email size={props.size} color={props.color}/>;
+                return <Email {...props}/>;
             case 'rocket':
-                return <Rocket size={props.size} color={props.color}/>;
+                return <Rocket {...props}/>;
             case 'key':
-                return <Key size={props.size} color={props.color}/>;
+                return <Key {...props}/>;
             case 'exit-to-app':
-                return <ExitToApp size={props.size} color={props.color}/>;
+                return <ExitToApp {...props}/>;
             case 'arrow-up-bold':
-                return <ArrowUpBold size={props.size} color={props.color}/>;
+                return <ArrowUpBold {...props}/>;
             case 'format-align-center':
-                return <FormatAlignCenter size={props.size} color={props.color}/>;
+                return <FormatAlignCenter {...props}/>;
             case 'format-align-left':
-                return <FormatAlignLeft size={props.size} color={props.color}/>;
+                return <FormatAlignLeft {...props}/>;
             case 'format-align-right':
-                return <FormatAlignRight size={props.size} color={props.color}/>;
+                return <FormatAlignRight {...props}/>;
             case 'brush':
-                return <Brush size={props.size} color={props.color}/>;
+                return <Brush {...props}/>;
             case 'lock':
-                return <Lock size={props.size} color={props.color}/>;
+                return <Lock {...props}/>;
             case 'filter':
-                return <Filter size={props.size} color={props.color}/>;
+                return <Filter {...props}/>;
             case 'sort-ascending':
-                return <SortAscending size={props.size} color={props.color}/>;
+                return <SortAscending {...props}/>;
             case 'sort-descending':
-                return <SortDescending size={props.size} color={props.color}/>;
+                return <SortDescending {...props}/>;
             case 'content-copy':
-                return <ContentCopy size={props.size} color={props.color}/>;
+                return <ContentCopy {...props}/>;
             case 'toy-brick':
-                return <ToyBrick size={props.size} color={props.color}/>;
+                return <ToyBrick {...props}/>;
             case 'chevron-up':
-                return <ChevronUp size={props.size} color={props.color}/>;
+                return <ChevronUp {...props}/>;
             case 'help-circle-outline':
-                return <HelpCircleOutline size={props.size} color={props.color}/>;
+                return <HelpCircleOutline {...props}/>;
             case 'dots-vertical':
-                return <DotsVertical size={props.size} color={props.color}/>;
+                return <DotsVertical {...props}/>;
             case 'dots-horizontal':
-                return <DotsHorizontal size={props.size} color={props.color}/>;
+                return <DotsHorizontal {...props}/>;
             case 'language-css-3':
-                return <LanguageCss3 size={props.size} color={props.color}/>;
+                return <LanguageCss3 {...props}/>;
             case 'earth':
-                return <Earth size={props.size} color={props.color}/>;
+                return <Earth {...props}/>;
             case 'check':
-                return <Check size={props.size} color={props.color}/>;
+                return <Check {...props}/>;
             case 'eye':
-                return <Eye size={props.size} color={props.color}/>;
+                return <Eye {...props}/>;
             case 'eye-off':
-                return <EyeOff size={props.size} color={props.color}/>;
+                return <EyeOff {...props}/>;
             case 'tenge':
-                return <Tenge size={props.size} color={props.color}/>;
+                return <Tenge {...props}/>;
             case 'currency-usd':
-                return <CurrencyUsd size={props.size} color={props.color}/>;
+                return <CurrencyUsd {...props}/>;
             case 'credit-card':
-                return <CreditCard size={props.size} color={props.color}/>;
+                return <CreditCard {...props}/>;
             case 'qrcode':
-                return <QrCode size={props.size} color={props.color}/>;
+                return <QrCode {...props}/>;
             case 'calendar-month':
-                return <CalendarMonth size={props.size} color={props.color}/>;
+                return <CalendarMonth {...props}/>;
             case 'card-account-details':
-                return <CardAccountDetails size={props.size} color={props.color}/>;
+                return <CardAccountDetails {...props}/>;
             case 'translate':
-                return <Translate size={props.size} color={props.color}/>;
+                return <Translate {...props}/>;
             case 'arrow-down-bold':
-                return <ArrowDownBold size={props.size} color={props.color}/>;
+                return <ArrowDownBold {...props}/>;
             case 'fullscreen':
-                return <Fullscreen size={props.size} color={props.color}/>;
+                return <Fullscreen {...props}/>;
             case 'fullscreen-exit':
-                return <FullscreenExit size={props.size} color={props.color}/>;
+                return <FullscreenExit {...props}/>;
             case 'alert':
-                return <Alert size={props.size} color={props.color}/>;
+                return <Alert {...props}/>;
             case 'calendar-star':
-                return <CalendarStar size={props.size} color={props.color}/>;
+                return <CalendarStar {...props}/>;
             case 'shape':
-                return <Shape size={props.size} color={props.color}/>;
+                return <Shape {...props}/>;
             case 'format-size':
-                return <FormatSize size={props.size} color={props.color}/>;
+                return <FormatSize {...props}/>;
             case 'book-open':
-                return <BookOpen size={props.size} color={props.color}/>;
+                return <BookOpen {...props}/>;
             case 'cog-outline':
-                return <CogOutline size={props.size} color={props.color}/>;
+                return <CogOutline {...props}/>;
             case 'target':
-                return <Target size={props.size} color={props.color}/>;
+                return <Target {...props}/>;
             case 'map':
-                return <Map size={props.size} color={props.color}/>;
+                return <Map {...props}/>;
             case 'map-marker':
-                return <MapMarker size={props.size} color={props.color}/>;
+                return <MapMarker {...props}/>;
             case 'language-js':
-                return <LanguageJS size={props.size} color={props.color}/>;
+                return <LanguageJS {...props}/>;
             case 'language-ts':
-                return <LanguageTS size={props.size} color={props.color}/>;
+                return <LanguageTS {...props}/>;
             case 'language-go':
-                return <LanguageGo size={props.size} color={props.color}/>;
+                return <LanguageGo {...props}/>;
             case 'gitlab':
-                return <Gitlab size={props.size} color={props.color}/>;
+                return <Gitlab {...props}/>;
             case 'linkedin':
-                return <LinkedIn size={props.size} color={props.color}/>;
+                return <LinkedIn {...props}/>;
             case 'facebook':
-                return <Facebook size={props.size} color={props.color}/>;
+                return <Facebook {...props}/>;
             case 'facebook-workplace':
-                return <FacebookWorkplace size={props.size} color={props.color}/>;
+                return <FacebookWorkplace {...props}/>;
             case 'instagram':
-                return <Instagram size={props.size} color={props.color}/>;
+                return <Instagram {...props}/>;
             case 'whatsapp':
-                return <WhatsApp size={props.size} color={props.color}/>;
+                return <WhatsApp {...props}/>;
             case 'telegram':
-                return <Telegram size={props.size} color={props.color}/>;
+                return <Telegram {...props}/>;
             case 'flag':
-                return <Flag size={props.size} color={props.color}/>;
+                return <Flag {...props}/>;
             case 'star-half-full':
-                return <StarHalfFull size={props.size} color={props.color}/>;
+                return <StarHalfFull {...props}/>;
             case 'plus':
-                return <Plus size={props.size} color={props.color}/>;
+                return <Plus {...props}/>;
             case 'account-plus':
-                return <AccountPlus size={props.size} color={props.color}/>;
+                return <AccountPlus {...props}/>;
             case 'share':
-                return <Share size={props.size} color={props.color}/>;
+                return <Share {...props}/>;
             case 'phone':
-                return <Phone size={props.size} color={props.color}/>;
+                return <Phone {...props}/>;
             case 'bell':
-                return <Bell size={props.size} color={props.color}/>;
+                return <Bell {...props}/>;
             case 'wrench':
-                return <Wrench size={props.size} color={props.color}/>;
+                return <Wrench {...props}/>;
             case 'minus':
-                return <Minus size={props.size} color={props.color}/>;
+                return <Minus {...props}/>;
             case 'check-circle':
-                return <CheckCircle size={props.size} color={props.color}/>;
+                return <CheckCircle {...props}/>;
             case 'alert-circle':
-                return <AlertCirlce size={props.size} color={props.color}/>;
+                return <AlertCirlce {...props}/>;
             case 'info':
-                return <Information size={props.size} color={props.color}/>;
+                return <Information {...props}/>;
             case 'package-down':
-                return <PackageDown size={props.size} color={props.color}/>;
+                return <PackageDown {...props}/>;
             case 'clock-outline':
-                return <ClockOutline size={props.size} color={props.color}/>;
+                return <ClockOutline {...props}/>;
+            case 'wifi':
+                return <WiFi {...props}/>;
+            case 'cart':
+                return <Cart {...props}/>;
             default:
                 return '';
         }
     }
 
     const iconClass = () => {
-        if (props.className) return `rui-icon ${props.className}`
+        if (className) return `rui-icon ${className}`
         else return 'rui-icon'
     }
 
     return (
-        <i title={props.title}
-            style={{ width: props.size ? props.size : 24, height: props.size ? props.size : 24 }}
+        <i title={title}
+            style={{ width: size ? size : 24, height: size ? size : 24 }}
             className={iconClass()}
             onMouseOver={e => props.onMouseOver ? props.onMouseOver(e) : {}}
             onMouseLeave={e => props.onMouseOver ? props.onMouseLeave(e) : {}} 
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>
-            <Icon/>
+            {custom ? custom : <Icon size={size} color={color}/>}
         </i>
     )
 }
 Icon.propTypes = {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    custom: PropTypes.node,
     title: PropTypes.string,
     size: PropTypes.number,
     onMouseLeave: PropTypes.func,

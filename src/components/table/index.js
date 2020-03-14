@@ -129,7 +129,7 @@ const Table = (props) => {
         if (props.sortable) {
             return <Icon 
                 className="ml-8 cursor-pointer" 
-                name={item.sort === 'desc' ? 'sort-descending' : 'sort-ascending'}
+                name={sortType === 'desc' ? 'sort-descending' : 'sort-ascending'}
                 onClick={() => {
                     item.sort = item.sort === 'asc' ? 'desc' : 'asc'
                     handleColumnSort(index, item.sort)
@@ -217,19 +217,19 @@ const Table = (props) => {
                 <tbody>
                     {getItems().map((item, index) => 
                         <tr key={index}>
-                            {props.index ? <td className="indexed">{index + 1}</td> : <React.Fragment/>}
+                            {props.index ? <td className="indexed">{index + 1}</td> : null}
                             {props.checkbox ? <td>
                                 <Checkbox
                                     checked={isSelected(item)} 
                                     color={props.color ? props.color : ''} 
                                     onChange={() => onSelect(item)}/>
-                            </td> : <React.Fragment/>}
+                            </td> : null}
                             {props.itemTitles.map((title, iter) => 
                                 <td key={iter}>{item[title]}</td>
                             )}
                             {props.controls ? <td>
                                 {props.controls(item)}
-                            </td> : <React.Fragment/>}
+                            </td> : null}
                         </tr>
                     )}
                 </tbody>
@@ -271,7 +271,7 @@ Table.propTypes = {
     items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.number), PropTypes.arrayOf(PropTypes.object)]).isRequired,
     itemsTotal: PropTypes.number,
     headers: PropTypes.arrayOf(PropTypes.string),
-    color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
+    color: PropTypes.oneOf([undefined,'','default','primary','info','success','error']),
     perPageVariants: PropTypes.arrayOf(PropTypes.number),
     perPageText: PropTypes.string,
     alignment: PropTypes.oneOf([undefined,'','left','center','right']),

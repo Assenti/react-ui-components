@@ -26,10 +26,10 @@
 
         & > span:after {
             left: 3.5px;
-            top: -1px;
+            top: 0px;
             width: 4px;
             height: 10px;
-            border-width: 0 2.5px 2.5px 0;
+            border-width: 0 2.3px 2.3px 0;
         }
     }
 
@@ -43,11 +43,11 @@
         }
 
         & > span:after {
-            left: 3.5px;
+            left: 4px;
             top: -1px;
             width: 5px;
             height: 12px;
-            border-width: 0 3px 3px 0;
+            border-width: 0 2.3px 2.3px 0;
         }
     }
 
@@ -61,11 +61,11 @@
         }
 
         & > span:after {
-            left: 5px;
-            top: -2px;
-            width: 6px;
+            left: 5.5px;
+            top: -1px;
+            width: 5px;
             height: 15px;
-            border-width: 0 3px 3px 0;
+            border-width: 0 2.5px 2.5px 0;
         }
     }
 
@@ -84,7 +84,6 @@
     input:disabled ~ span {
         cursor: not-allowed;
         transform: none;
-        background-color: $light;
     }
 
     & input:checked ~ span {
@@ -99,14 +98,12 @@
         position: absolute;
         top: 0;
         left: 0;
-        background-color: $lightgray;
         border: 1px solid gray;
-        border-radius: 2px;
+        border-radius: $radius;
     }
 
-    & > span:active {
+    &:not(.disabled) > span:active {
         transform: scale(.98);
-        box-shadow: 0 0 5px rgba(black, .3);
     }
 
     & > span:after {
@@ -132,7 +129,53 @@
         }
     }
 
+    &.secondary {
+        &.fill {
+            span {
+                background-color: rgba(gray, .1);
+            }
+
+            & > span:after {
+                border-color: #fff;
+            }
+
+            & > input:checked ~ span {
+                background-color: gray;
+            }
+        }
+
+        & > span:after {
+            border-color: gray;
+        }
+        
+        & > span {
+            border-color: gray;
+        }
+
+        .rui-checkbox-label {
+            color: gray;
+        }
+
+        &:not(.disabled) > span:active {
+            box-shadow: 0 0 5px rgba(gray, .3);
+        }
+    }
+
     &.info {
+        &.fill {
+            span {
+                background-color: rgba($info, .1);
+            }
+
+            & > span:after {
+                border-color: #fff;
+            }
+
+            & > input:checked ~ span {
+                background-color: $info;
+            }
+        }
+
         & > span:after {
             border-color: $info;
         }
@@ -144,9 +187,27 @@
         .rui-checkbox-label {
             color: $info;
         }
+
+        &:not(.disabled) > span:active {
+            box-shadow: 0 0 5px rgba($info, .3);
+        }
     }
 
     &.primary {
+        &.fill {
+            span {
+                background-color: rgba($primary, .1);
+            }
+
+            & > span:after {
+                border-color: #fff;
+            }
+
+            & > input:checked ~ span {
+                background-color: $primary;
+            }
+        }
+
         & > span:after {
             border-color: $primary;
         }
@@ -158,9 +219,27 @@
         .rui-checkbox-label {
             color: $primary;
         }
+
+        &:not(.disabled) > span:active {
+            box-shadow: 0 0 5px rgba($primary, .3);
+        }
     }
 
     &.success {
+        &.fill {
+            span {
+                background-color: rgba($success, .1);
+            }
+
+            & > span:after {
+                border-color: #fff;
+            }
+
+            & > input:checked ~ span {
+                background-color: $success;
+            }
+        }
+
         & > span:after {
             border-color: $success;
         }
@@ -172,9 +251,27 @@
         .rui-checkbox-label {
             color: $success;
         }
+
+        &:not(.disabled) > span:active {
+            box-shadow: 0 0 5px rgba($success, .3);
+        }
     }
 
     &.error {
+        &.fill {
+            span {
+                background-color: rgba($error, .1);
+            }
+
+            & > span:after {
+                border-color: #fff;
+            }
+
+            & > input:checked ~ span {
+                background-color: $error;
+            }
+        }
+
         & > span:after {
             border-color: $error;
         }
@@ -185,6 +282,34 @@
 
         .rui-checkbox-label {
             color: $error;
+        }
+
+        &:not(.disabled) > span:active {
+            box-shadow: 0 0 5px rgba($error, .3);
+        }
+    }
+
+    &.disabled {
+        &.fill {
+            span {
+                background-color: lightgray;
+            }
+
+            & > span:after {
+                border-color: #fff;
+            }
+        }
+
+        & > span:after {
+            border-color: lightgray;
+        }
+
+        & > span {
+            border-color: lightgray;
+        }
+
+        .rui-checkbox-label {
+            color: lightgray;
         }
     }
 }
@@ -197,7 +322,12 @@
     -moz-user-select: none;
 
     &.disabled {
-        color: lightgray;
+        color: lightgray !important;
+        cursor: not-allowed;
+    }
+
+    &.secondary {
+        color: gray;
     }
 
     &.info {

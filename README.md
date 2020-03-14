@@ -71,7 +71,6 @@ export default App;
 - [ ] Dock
 - [ ] Notification
 - [ ] Carousel
-- [ ] AutoComplete
 - [ ] Slider
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable

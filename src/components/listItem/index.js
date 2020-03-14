@@ -84,7 +84,7 @@ ListItem.propTypes = {
     hover: PropTypes.bool,
     noDivider: PropTypes.bool,
     checkbox: PropTypes.bool,
-    item: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    item: PropTypes.oneOfType([PropTypes.string,PropTypes.number, PropTypes.object]),
     onClick: PropTypes.func,
     subTitle: PropTypes.string,
     icon: PropTypes.string,

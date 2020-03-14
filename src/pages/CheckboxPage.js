@@ -34,6 +34,13 @@ const items = [
         value: 'primary | info | success | error'
     },
     { 
+        property: 'fill', 
+        description: 'Fill checkbox background', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'size', 
         description: 'Set checkbox size', 
         default: '', 
@@ -114,6 +121,8 @@ const sizes = ['default', 'medium', 'large'];
 const CheckboxPage = () => {
     const [check, setCheck] = useState(true);
     const [label, setLabel] = useState(false);
+    const [fill, setFill] = useState(false);
+    const [disabled, setDisabled] = useState(false);
     const [color, setColor] = useState(colors[1]);
     const [size, setSize] = useState(sizes[0]);
 
@@ -145,12 +154,26 @@ const CheckboxPage = () => {
                     rightLabel="Label"
                     className="my-10"
                     onChange={() => setLabel(!label)}/>
+                <Switch 
+                    color="primary" 
+                    check={fill}
+                    rightLabel="Fill"
+                    className="my-10"
+                    onChange={() => setFill(!fill)}/>
+                <Switch 
+                    color="primary" 
+                    check={disabled}
+                    rightLabel="Disabled"
+                    className="my-10"
+                    onChange={() => setDisabled(!disabled)}/>
                 <br/>
-                <div className="pa-10">
+                <div className="py-10">
                     <Checkbox
                         checked={check}
                         color={color}
                         size={size}
+                        fill={fill}
+                        disabled={disabled}
                         label={label ? 'Checkbox' : null} 
                         onChange={() => setCheck(!check)}/>
                 </div>

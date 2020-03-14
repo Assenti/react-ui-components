@@ -54,7 +54,7 @@ ButtonGroup.propTypes = {
     outlined: PropTypes.bool,
     size: PropTypes.oneOf([undefined,'','medium','large']),
     name: PropTypes.string,
-    icon: PropTypes.string,
+    icon: PropTypes.bool,
     color: PropTypes.oneOf([undefined,'','primary','info','success','error','secondary','black']),
     className: PropTypes.string
 }

@@ -290,7 +290,7 @@ const Select = (props) => {
     )
 }
 Select.propTypes = {
-    items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]).isRequired,
+    items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string),PropTypes.arrayOf(PropTypes.number),PropTypes.arrayOf(PropTypes.object)]).isRequired,
     itemKey: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     onChange: PropTypes.func,
@@ -299,11 +299,11 @@ Select.propTypes = {
     prefix: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
     searchable: PropTypes.bool,
     searchPlaceholder: PropTypes.string,
-    borderType: PropTypes.oneOf([undefined,'default','tile','rounded','smooth']),
+    borderType: PropTypes.oneOf([undefined,'default','','tile','rounded','smooth']),
     multiple: PropTypes.bool,
     placeholder: PropTypes.string,
-    size: PropTypes.oneOf([undefined,'default','medium','large']),
-    color: PropTypes.oneOf([undefined,'default','primary','info','success','error']),
+    size: PropTypes.oneOf([undefined,'default','','medium','large']),
+    color: PropTypes.oneOf([undefined,'default','','primary','info','success','error']),
     dark: PropTypes.bool,
     tagColor: PropTypes.string,
     tagOutlined: PropTypes.bool,
