@@ -42,7 +42,7 @@ function Example() {
                 width={250} 
                 size={size}
                 reverse={reverse}
-                defaultOpens={[1]}
+                defaultOpens={[0]}
                 itemContent={(item, index) =>
                     <List
                         key={index}
