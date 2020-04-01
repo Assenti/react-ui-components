@@ -7,6 +7,10 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.4.12 `2020-04-01`
+
+- `NEW!` ExpansionList component added;
+
 #### 0.4.10, 0.4.11 `2020-03-14`
 
 - `NEW!` AutoComplete component added;
