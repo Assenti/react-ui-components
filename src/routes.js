@@ -42,6 +42,7 @@ const AlertPage = lazy(() => import('./pages/AlertPage'));
 const TextareaPage = lazy(() => import('./pages/TextareaPage'));
 const TimePickerPage = lazy(() => import('./pages/TimePickerPage'));
 const AutoCompletePage = lazy(() => import('./pages/AutoCompletePage'));
+const ExpansionListPage = lazy(() => import('./pages/ExpansionList'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
@@ -86,5 +87,6 @@ export const routes = [
     { path: '/calendar', name: 'Calendar', Component: CalendarPage },
     { path: '/timepicker', name: 'TimePicker', Component: TimePickerPage },
     { path: '/autocomplete', name: 'AutoComplete', Component: AutoCompletePage },
+    { path: '/expansionlist', name: 'ExpansionList', Component: ExpansionListPage },
     // { path: '/notification', name: 'Notification', Component: NotificationPage },
 ]

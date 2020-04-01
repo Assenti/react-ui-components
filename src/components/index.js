@@ -58,6 +58,7 @@ export { default as Calendar } from './calendar';
 export { default as Alert } from './alert';
 export { default as TimePicker } from './timePicker';
 export { default as AutoComplete } from './autoComplete';
+export { default as ExpansionList } from './expansionList';
 export { 
     convertToNum, 
     compare, 
