@@ -17,6 +17,7 @@ const icons = [
     'code',
     'chip',
     'account',
+    'users',
     'person',
     'shield-account',
     'chevron-down',
@@ -98,7 +99,10 @@ const icons = [
     'package-down',
     'clock-outline',
     'wifi',
-    'cart'
+    'cart',
+    'chart-ppf',
+    'airplane',
+    'cancel'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];

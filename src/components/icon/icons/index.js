@@ -843,3 +843,39 @@ export const Cart = (props) => {
         </svg>
     )
 }
+
+export const ChartPpf = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M5 6V8C8.2 8 11.36 9.18 13.57 11.15C15.64 13 16.83 15.5 17 18H18.97A14 12.5 0 0 0 5 6M22 21H2V3H4V19H22Z" />
+        </svg>
+    )
+}
+
+export const Users = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M16 17V19H2V17S2 13 9 13 16 17 16 17M12.5 7.5A3.5 3.5 0 1 0 9 11A3.5 3.5 0 0 0 12.5 7.5M15.94 13A5.32 5.32 0 0 1 18 17V19H22V17S22 13.37 15.94 13M15 4A3.39 3.39 0 0 0 13.07 4.59A5 5 0 0 1 13.07 10.41A3.39 3.39 0 0 0 15 11A3.5 3.5 0 0 0 15 4Z" />
+        </svg>
+    )
+}
+
+export const Airplane = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" />
+        </svg>
+    )
+}
+
+export const Cancel = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12C4,13.85 4.63,15.55 5.68,16.91L16.91,5.68C15.55,4.63 13.85,4 12,4M12,20A8,8 0 0,0 20,12C20,10.15 19.37,8.45 18.32,7.09L7.09,18.32C8.45,19.37 10.15,20 12,20Z" />
+        </svg>
+    )
+}

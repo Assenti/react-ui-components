@@ -43,6 +43,9 @@ const TextareaPage = lazy(() => import('./pages/TextareaPage'));
 const TimePickerPage = lazy(() => import('./pages/TimePickerPage'));
 const AutoCompletePage = lazy(() => import('./pages/AutoCompletePage'));
 const ExpansionListPage = lazy(() => import('./pages/ExpansionList'));
+const DockPage = lazy(() => import('./pages/DockPage'));
+const DividerPage = lazy(() => import('./pages/DividerPage'));
+const SliderPage = lazy(() => import('./pages/SliderPage'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
@@ -88,5 +91,8 @@ export const routes = [
     { path: '/timepicker', name: 'TimePicker', Component: TimePickerPage },
     { path: '/autocomplete', name: 'AutoComplete', Component: AutoCompletePage },
     { path: '/expansionlist', name: 'ExpansionList', Component: ExpansionListPage },
+    { path: '/dock', name: 'Dock', Component: DockPage },
+    { path: '/divider', name: 'Divider', Component: DividerPage },
+    { path: '/slider', name: 'Slider', Component: SliderPage },
     // { path: '/notification', name: 'Notification', Component: NotificationPage },
 ]

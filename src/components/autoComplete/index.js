@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes, { array } from 'prop-types';
+import PropTypes from 'prop-types';
 import { Dropdown, InputField, List, ListItem, Icon } from '../index';
 
 const AutoComplete = (props) => {
     const [visible, setVisible] = useState(false);
+    const [search, setSearch] = useState('');
 
     const componentClass = () => {
         let result = '';
@@ -25,25 +26,26 @@ const AutoComplete = (props) => {
         (lower ? item.toLowerCase() : item);
 
     const filtered = () => {
-        if (props.value) {
+        if (search) {
             return props.items.filter(item => 
-                getItem(item, true).includes(props.value.toLowerCase()));
+                getItem(item, true).includes(search.toLowerCase()));
         } else {
             return []
         }
     }
 
     const handleItemClick = (item) => {
-        if (props.onChange) {
-            props.onChange(item)
-            setTimeout(() => {
-                setVisible(false)
-            })
-        }
+        setSearch(item)
+        setTimeout(() => {
+            setVisible(false)
+        })
     }
 
     const handleClear = () => {
-        if (props.onClear) props.onClear()
+        if (props.onClear) {
+            props.onClear()
+            setSearch('')
+        }
         setVisible(false)
     }
 
@@ -56,10 +58,12 @@ const AutoComplete = (props) => {
     }
 
     return (
-        <div className={componentClass()}>
+        <div className={componentClass()} style={{ width: props.width ? props.width : ''}}>
             <Dropdown
                 visible={visible}
+                width={props.width ? props.width : ''}
                 closeManaged
+                dark={props.dark}
                 contentMaxHeight={props.maxHeight}
                 content={
                     <>
@@ -73,17 +77,20 @@ const AutoComplete = (props) => {
                                     avatarBorderType={props.avatarBorderType}
                                     icon={props.iconKey ? item[props.iconKey] : null}
                                     hover={props.hover === false ? false : true}
-                                    onClick={() => 
-                                        handleItemClick(getItem(item))}
+                                    onClick={() => {
+                                        handleItemClick(getItem(item))
+                                        if (props.onItemClick) props.onItemClick(item)
+                                    }}
                                     item={getItem(item)}/>
                             )}
                         </List>
-                        {props.footer}
+                        {props.footer(filtered().length)}
                     </>
                 }
                 trigger={<InputField
                             color={props.color}
-                            width={props.width}
+                            dark={props.dark}
+                            width={props.width ? props.width : ''}
                             disabled={props.disabled || props.loading}
                             required={props.required}
                             readOnly={props.readOnly}
@@ -93,12 +100,12 @@ const AutoComplete = (props) => {
                             whiteBackground={props.whiteBackground}
                             prefix={props.prefix}
                             suffix={handleSuffix()}
-                            value={props.value}
+                            value={search}
                             clearable={props.clearable}
                             onClear={handleClear}
                             onFocus={() => !props.disabled ? setVisible(true) : {}}
                             onBlur={() => setVisible(false)}
-                            onChange={e => props.onChange ? props.onChange(e.target.value) : {}}
+                            onChange={e => setSearch(e.target.value)}
                             placeholder={props.placeholder}
                             label={props.label}
                             hintColor={props.hintColor}/>}/>
@@ -113,12 +120,11 @@ AutoComplete.propTypes = {
     avatarKey: PropTypes.string,
     avatarSize: PropTypes.number,
     avatarBorderType: PropTypes.oneOf([undefined,'rounded']),
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
+    onItemClick: PropTypes.func,
     maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     hover: PropTypes.bool,
     listHeader: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
-    footer: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
+    footer: PropTypes.func,
     color: PropTypes.oneOf(['primary','info','success','error']),
     size: PropTypes.oneOf([undefined,'default','medium','large']),
     borderType: PropTypes.oneOf([undefined,'default','tile','rounded','smooth']),

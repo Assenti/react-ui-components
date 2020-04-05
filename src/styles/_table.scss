@@ -262,28 +262,39 @@
             color: #fff;
         }
 
+        .rui-table {
+            tr {
+                background-color: $night;
+                color: #fff;
+            }
+        }
+
         .rui-table.stripped {
-            tbody > tr:nth-child(even) {
-                background-color: rgba($dark, .1);
+            tr {
+                background-color: $night;
+                color: #fff;
+            }
+            
+            tr:nth-child(even) {
+                background-color: rgba(lightgray, .1);
             }
         }
 
         .rui-table__placeholder.loading {
             path {
-                fill: $dark;
+                fill: #ccc;
             }
         }
 
-        th.indexed,
-        td.indexed {
-            background-color: $dark;
+        td.indexed:not(:first-child),
+        td:not(:first-child) {
             color: #fff;
         }
 
         .rui-table__placeholder {        
             &.loading {
                 path {
-                    fill: $dark;
+                    fill: #fff;
                 }
             }
         }
@@ -329,6 +340,10 @@
         border-top-right-radius: $radius;
     }
 
+    thead {
+        background-color: lightgray;
+    }
+
     tr, th, td {
         border-bottom: 1px solid lightgray;
         border-left: none;
@@ -336,6 +351,7 @@
         border-collapse: collapse;
         font-weight: normal;
         padding: 0 10px;
+        color: #000;
     }
 
     th.indexed,
@@ -402,13 +418,6 @@
         }
     }
 
-    &.dark {
-        th {
-            background-color: $dark;
-            color: #fff;
-        }
-    }
-
     th {
         padding: 0 10px;
         font-size: .85rem;
@@ -420,8 +429,33 @@
         -moz-user-select: none;
     }
 
-    &:not(.no-hover) tr:hover {
+    &:not(.no-hover):not(.dark) tr:hover {
         background-color: $lightgray;
+        transition: all .2s ease-in-out;
+    }
+
+    &.primary:not(.no-hover) tr:hover {
+        background-color: rgba($primary, .1);
+        transition: all .2s ease-in-out;
+    }
+
+    &.info:not(.no-hover) tr:hover {
+        background-color: rgba($info, .1);
+        transition: all .2s ease-in-out;
+    }
+
+    &.success:not(.no-hover) tr:hover {
+        background-color: rgba($success, .1);
+        transition: all .2s ease-in-out;
+    }
+
+    &.error:not(.no-hover) tr:hover {
+        background-color: rgba($error, .1);
+        transition: all .2s ease-in-out;
+    }
+
+    &.dark:not(.no-hover) tr:hover {
+        background-color: rgba(lightgray, .2);
         transition: all .2s ease-in-out;
     }
 

@@ -3,7 +3,54 @@
     width: 100%;
     display: inline-block;
 
-    &.white-background {
+    &.dark {
+        .rui-input-container {
+            background-color: $night;
+
+            input,
+            textarea {
+                color: #fff;
+            }
+        }
+
+        .rui-input-container:hover {
+            background-color: transparent;
+            transition: all .2s ease-in-out;
+        }
+
+        .rui-input-container.focus {
+            background-color: transparent;
+        }
+
+        & > label {
+            color: #fff;
+        }
+
+        .rui-input-field__hint {
+            color: #fff;
+        }
+    }
+
+    &:not(.dark) {
+        .rui-input-container:hover {
+            background-color: #fff;
+            transition: all .2s ease-in-out;
+        }
+
+        .rui-input-container.focus {
+            background-color: #fff;
+        }
+
+        & > label {
+            color: $dark;
+        }
+
+        .rui-input-field__hint {
+            color: $dark;
+        }
+    }
+
+    &.white-background:not(.dark) {
         .rui-input-container {
             background-color: #fff;
         }
@@ -72,7 +119,6 @@
     .rui-input-field__hint {
         padding: 3px 0;
         font-size: .8rem;
-        color: $dark;
 
         &.error {
             color: $error;
@@ -152,7 +198,6 @@
 
         .rui-input-container:hover {
             border-color: $primary;
-            background-color: #fff;
             transition: all .2s ease-in-out;
 
             i {
@@ -167,7 +212,6 @@
 
         .rui-input-container.focus {
             border-color: $primary;
-            background-color: #fff;
             box-shadow: 0 0 3px 1px rgba($primary, .3);
             transition: all .2s ease-in-out;
 
@@ -191,7 +235,6 @@
 
         .rui-input-container:hover {
             border-color: $info;
-            background-color: #fff;
             transition: all .2s ease-in-out;
 
             i {
@@ -207,7 +250,6 @@
         .rui-input-container.focus {
             border-color: $info;
             box-shadow: 0 0 3px 1px rgba($info, .3);
-            background-color: #fff;
             transition: all .2s ease-in-out;
 
             svg:first-child,
@@ -231,7 +273,6 @@
 
         .rui-input-container:hover {
             border-color: $error;
-            background-color: #fff;
             transition: all .2s ease-in-out;
 
             i {
@@ -246,7 +287,6 @@
 
         .rui-input-container.focus {
             border-color: $error;
-            background-color: #fff;
             box-shadow: 0 0 3px 1px rgba($error, .3);
             transition: all .2s ease-in-out;
 
@@ -271,7 +311,6 @@
 
         .rui-input-container:hover {
             border-color: $success;
-            background-color: #fff;
             transition: all .2s ease-in-out;
 
             i {
@@ -287,7 +326,6 @@
         .rui-input-container.focus {
             border-color: $success;
             box-shadow: 0 0 3px 1px rgba($success, .3);
-            background-color: #fff;
             transition: all .2s ease-in-out;
 
             svg:first-child,

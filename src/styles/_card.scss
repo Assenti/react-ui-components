@@ -5,12 +5,24 @@
     margin: 5px 0;
 
     &.dark {
-        background-color: $night;
         border-color: $night;
-        box-shadow: 0 0 5px rgba(black, .6);
+        box-shadow: 0 0 5px rgba(lightgray, .3);
 
         .rui-card-header {
             color: #fff;
+        }
+
+        .rui-card-title {
+            background-color: $night;
+            color: #fff;
+        }
+
+        &.gray.outlined {
+            border-color: gray;
+
+            .rui-card-title {
+                color: #fff;
+            }
         }
     }
 
@@ -48,6 +60,20 @@
         border-radius: $radius;
     }
 
+    &.outlined:not(.dark) {
+        .rui-card-title {
+            background-color: #fff;
+        }
+
+        &.gray {
+            border-color: gray;
+    
+            .rui-card-title {
+                color: gray;
+            }
+        }
+    }
+
     &.outlined {
         position: relative;
         margin-top: 15px;
@@ -58,7 +84,6 @@
             left: 15px;
             font-size: 1rem;
             padding: 3px 5px;
-            background-color: #fff;
             font-weight: 600;
             border-radius: 30px;
         }
@@ -92,14 +117,6 @@
     
             .rui-card-title {
                 color: $error;
-            }
-        }
-    
-        &.gray {
-            border-color: gray;
-    
-            .rui-card-title {
-                color: gray;
             }
         }
     }

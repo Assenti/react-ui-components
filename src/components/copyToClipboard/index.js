@@ -25,12 +25,21 @@ const CopyToClipboard = (props) => {
         document.body.removeChild(el);
     }
 
+    const getColor = () => {
+        if (props.color) {
+            return props.color;
+        } else {
+            if (props.dark) return '#fff';
+            else return '';
+        }
+    }
+
     return (
         <Tooltip tooltip={tooltip}>
             <Icon
                 className={props.className ? `cursor-pointer ${props.className}` : 'cursor-pointer'}
                 size={props.size ? props.size : 16}
-                color={props.color ? props.color : 'gray'}
+                color={getColor()}
                 name={props.icon ? props.icon : 'content-copy'} 
                 onClick={handleClick}/> 
         </Tooltip>           
@@ -39,16 +48,10 @@ const CopyToClipboard = (props) => {
 CopyToClipboard.propTypes = {
     size: PropTypes.number,
     color: PropTypes.string,
+    dark: PropTypes.bool,
     text: PropTypes.string.isRequired,
     copiedText: PropTypes.string,
     defaultText: PropTypes.string,
     className: PropTypes.string
-}
-CopyToClipboard.defaultProps = {
-    icon: 'content-copy',
-    color: 'gray',
-    size: 16,
-    copiedText: 'Copied to clipboard',
-    defaultText: 'Copy'
 }
 export default CopyToClipboard;

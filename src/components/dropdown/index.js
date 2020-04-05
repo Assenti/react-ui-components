@@ -28,7 +28,7 @@ const Dropdown = (props) => {
             <CSSTransition
                 in={props.closeManaged ? props.visible : visible}
                 timeout={300}
-                classNames="dropdown"
+                classNames="rui-dropdown"
                 unmountOnExit>
                 <div className="rui-dropdown" 
                     style={{ 

@@ -172,7 +172,7 @@ function Example() {
     const [type, setType] = useState('');
 
     return (
-        <div>
+        <>
             <Select
                 items={sizes}
                 prefix={<Icon name="format-size"/>}
@@ -295,7 +295,7 @@ function Example() {
                     name={iconOnly ? null : 'Button'}
                     />
             </div>
-        </div>
+        </>
     )
 }`
 

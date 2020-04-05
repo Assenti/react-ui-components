@@ -67,9 +67,9 @@ export default App;
 ### TODO
 - [ ] Date picker
 - [ ] Stepper
-- [ ] Dock
 - [ ] Notification
 - [ ] Carousel
+- [ ] Range
 - [ ] Slider
 - [ ] Dark & Light Mode
 - [ ] Define theme colors and make them customizable

@@ -30,6 +30,7 @@ const InputField = (props) => {
             borderType: props.borderType ? props.borderType : '',
             color: getInputColor(),
             disabled: props.disabled ? 'disabled' : '',
+            dark: props.dark ? 'dark' : '',
             className: props.className ? props.className : ''
         }
         
@@ -195,6 +196,7 @@ InputField.propTypes = {
     maxLength: PropTypes.number,
     minLength: PropTypes.number,
     whiteBackground: PropTypes.bool,
+    dark: PropTypes.bool,
     label: PropTypes.string,
     hint: PropTypes.string,
     hintColor: PropTypes.oneOf(['success','error']),

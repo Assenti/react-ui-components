@@ -1,0 +1,37 @@
+.rui-divider {
+    margin: 10px 0;
+    border-top: 1px solid transparent;
+
+    &.dark {
+        border-color: #fff !important;
+    }
+
+    &.vertical {
+        border-left: 1px solid transparent;
+        border-top: none;
+        margin: 0 10px;
+        display: block;
+        align-self: stretch;
+        min-height: 100%;
+    }
+
+    &.secondary:not(.dark) {
+        border-color: lightgray !important; 
+    }
+
+    &.primary:not(.dark) {
+        border-color: $primary;
+    }
+
+    &.info:not(.dark) {
+        border-color: $info;
+    }
+
+    &.error:not(.dark) {
+        border-color: $error;
+    }
+
+    &.success:not(.dark) {
+        border-color: $success;
+    }
+}

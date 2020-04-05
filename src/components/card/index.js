@@ -9,7 +9,7 @@ const Card = (props) => {
             flat: props.flat ? 'flat' : '',
             dark: props.dark ? 'dark' : '',
             hover: props.hover ? 'hover' : '',
-            outlined: props.outlined && !props.dark ? 'outlined' : '',
+            outlined: props.outlined ? 'outlined' : '',
             color: props.color ? props.color : 'gray',
             className: props.className ? props.className : ''
         }

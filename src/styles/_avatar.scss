@@ -6,6 +6,10 @@
     padding: 4px;
     overflow: hidden;
 
+    &.transparent {
+        background-color: transparent !important;
+    }
+
     &.secondary {
         background-color: $lightgray;
     }

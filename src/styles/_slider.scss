@@ -1,0 +1,97 @@
+.rui-slider {
+    position: relative !important;
+
+    &:not(.vertical) {
+        display: flex;
+        overflow-x: hidden;
+        overflow-y: visible;
+        padding: 0 5px;
+
+        .rui-slider-items {
+            display: flex;
+            transition: all .5s ease-in-out;
+            
+            .rui-slider-item {
+                padding: 0 5px;
+    
+                // .rui-tooltip {
+                //     z-index: 99999;
+                //     position: static !important;
+                // }
+            }
+        }
+
+        .rui-slider-prev-btn,
+        .rui-slider-next-btn {
+            position: absolute;
+            z-index: 1;
+            top: calc(50% - 15px);
+            margin: 0 !important;
+            background-color: rgba(lightgray, .3) !important;
+
+            &:hover:not(.disabled) {
+                svg {
+                    path {
+                        opacity: .7;
+                        transition: all .2s ease-in-out;
+                    }
+                }
+            }
+        }
+
+        .rui-slider-prev-btn {
+            left: 0;
+        }
+
+        .rui-slider-next-btn {
+            right: 0;
+        }
+    }
+
+    &.vertical {
+        display: inline-block;
+        overflow-x: visible;
+        overflow-y: hidden;
+        padding: 5px 0;
+
+        .rui-slider-items {
+            display: block;
+            transition: all .5s ease-in-out;
+            
+            .rui-slider-item {
+                padding: 5px 0;
+    
+                // .rui-tooltip {
+                //     z-index: 99999;
+                //     position: static !important;
+                // }
+            }
+        }
+
+        .rui-slider-prev-btn,
+        .rui-slider-next-btn {
+            position: absolute;
+            z-index: 1;
+            left: calc(50% - 15px);
+            margin: 0 !important;
+            background-color: rgba(lightgray, .3) !important;
+
+            &:hover:not(.disabled) {
+                svg {
+                    path {
+                        opacity: .7;
+                        transition: all .2s ease-in-out;
+                    }
+                }
+            }
+        }
+
+        .rui-slider-prev-btn {
+            top: 0;
+        }
+
+        .rui-slider-next-btn {
+            bottom: 0;
+        }
+    }
+}

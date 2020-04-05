@@ -31,13 +31,13 @@ const Collapse = (props) => {
                         <Tooltip tooltip={props.tooltip}>
                             <Icon name={props.icon ? props.icon : 'chevron-down'}
                                 size={props.iconSize ? props.iconSize : ''}
-                                color={props.iconColor ? props.iconColor : 'gray'}
+                                color={props.iconColor ? props.iconColor : (props.dark ? '#fff' : '')}
                                 className={visible ? 'reverse' : ''} 
                                 onClick={() => setVisible(!visible)}/>
                         </Tooltip> : 
                         <Icon name={props.icon ? props.icon : 'chevron-down'}
                             size={props.iconSize ? props.iconSize : ''}
-                            color={props.iconColor ? props.iconColor : 'gray'}
+                            color={props.iconColor ? props.iconColor : (props.dark ? '#fff' : '')}
                             className={visible ? 'reverse' : ''} 
                             onClick={() => setVisible(!visible)}/>
                     }

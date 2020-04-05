@@ -98,7 +98,11 @@ import {
     PackageDown,
     ClockOutline,
     WiFi,
-    Cart
+    Cart,
+    ChartPpf,
+    Users,
+    Airplane,
+    Cancel
 } from './icons/index';
 
 const Icon = (props) => {
@@ -301,6 +305,14 @@ const Icon = (props) => {
                 return <WiFi {...props}/>;
             case 'cart':
                 return <Cart {...props}/>;
+            case 'chart-ppf':
+                return <ChartPpf {...props}/>;
+            case 'users':
+                return <Users {...props}/>;
+            case 'airplane':
+                return <Airplane {...props}/>;
+            case 'cancel':
+                return <Cancel {...props}/>;
             default:
                 return '';
         }

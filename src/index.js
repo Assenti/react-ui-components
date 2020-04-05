@@ -30,7 +30,8 @@ import { routes } from './routes';
 import { Content } from './layouts/Content';
 import { DrawerContent } from './layouts/DrawerContent';
 import { description } from '../package.json';
-import { Preloader } from './components';
+import { Preloader, themes } from './components';
+import { ThemeContext } from './components';
 
 const defineDarkDefinition = () => {
     let value = localStorage.getItem('dark')
@@ -52,33 +53,41 @@ const App = () => {
     }, [])
     
     return (
-        <div className="rui-app">
-            <Router>
-                <DrawerContent
-                    dark={dark}
-                    drawer={drawer}
-                    onSwitch={() => handleSwitchDark()}
-                    onClose={() => setDrawer(false)} 
-                    items={routes}/>
-                <Switch>
-                    {routes.map(({path, Component}, index) => 
-                        <Route key={index} exact path={path}>
-                            <Content 
-                                dark={dark} 
-                                onSwitch={() => handleSwitchDark()} 
-                                onDrawerToggle={() => setDrawer(!drawer)}>
-                                <Suspense fallback={<Preloader visible/>}>
-                                    <Component />
-                                </Suspense>
-                            </Content>
-                        </Route>
-                    )}
-                    <Route path="*">
-                        <Redirect to="/"/>
-                    </Route>
-                </Switch>
-            </Router>
-        </div>
+        <ThemeContext.Provider value={dark}>
+            <div className={dark ? 'rui-app dark' : 'rui-app'}>
+                <Router>
+                    <ThemeContext.Consumer>
+                        {theme => (
+                            <>
+                                <DrawerContent
+                                    dark={theme}
+                                    drawer={drawer}
+                                    onSwitch={() => handleSwitchDark()}
+                                    onClose={() => setDrawer(false)} 
+                                    items={routes}/>
+                                <Switch>
+                                    {routes.map(({path, Component}, index) => 
+                                        <Route key={index} exact path={path}>
+                                            <Content 
+                                                dark={theme} 
+                                                onSwitch={() => handleSwitchDark()} 
+                                                onDrawerToggle={() => setDrawer(!drawer)}>
+                                                <Suspense fallback={<Preloader visible/>}>
+                                                    <Component />
+                                                </Suspense>
+                                            </Content>
+                                        </Route>
+                                    )}
+                                    <Route path="*">
+                                        <Redirect to="/"/>
+                                    </Route>
+                                </Switch>
+                            </>
+                        )}
+                    </ThemeContext.Consumer>
+                </Router>
+            </div>
+        </ThemeContext.Provider>
     );
 }
 

@@ -26,6 +26,7 @@ const Table = (props) => {
             name: 'rui-table__container',
             bordered: props.bordered ? 'bordered' : '',
             grid: props.grid ? 'grid' : '',
+            dark: props.dark ? 'dark' : '',
             color: props.color && props.color !== 'default' ? props.color : '',
             paginationPosition: props.paginationPosition ? props.paginationPosition : '',
             className: props.className ? props.className : ''
@@ -42,6 +43,7 @@ const Table = (props) => {
             name: 'rui-table',
             alignment: props.alignment && props.alignment !== 'left' ? props.alignment : '',
             headerColor: props.color ? props.color : '',
+            dark: props.dark ? 'dark' : '',
             empty: props.items.length === 0 ? 'empty' : '',
             noHover: props.noHover ? 'no-hover' : '',
             stripped: props.stripped ? 'stripped' : ''
@@ -292,6 +294,7 @@ Table.propTypes = {
     bordered: PropTypes.bool,
     grid: PropTypes.bool,
     loading: PropTypes.bool,
+    dark: PropTypes.bool,
     noHover: PropTypes.bool,
     footer: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
     className: PropTypes.string

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { List, ListItem, Icon, Drawer, InputField, Dropdown, Switch } from '../components';
+import { List, ListItem, Icon, Drawer, InputField, Dropdown, Switch, ThemeContext, AutoComplete } from '../components';
 import { compare } from '../components';
 
 export const DrawerContent = (props) => {
@@ -34,113 +34,104 @@ export const DrawerContent = (props) => {
                             .filter(item => item.path !== '/' && 
                                             item.path !== '/colors' &&
                                             item.path !== '/helper')
-        // filtered.unshift({ path: '/colors', name: 'Colors', Component: HomePage, icon: 'brush' })
         return filtered;
     }
     
     return (
-        <React.Fragment>
-            <Drawer
-                drawer={props.drawer}
-                fullHeight
-                dark={props.dark}
-                onClose={() => props.onClose()}
-                headerCentered
-                header={<Icon 
-                    name="react" 
-                    size={30}
-                    className="rotating" 
-                    color="#61dafb"/>}>
-                <div className="row py-5 justify-center sticky" style={{ top: 40 }}>
-                    <Dropdown
-                        className="full-width mx-10"
-                        content={
-                            <React.Fragment>
-                                <div className="fz-8 text-info pa-15">Let's find your component</div>
-                                <List dark={props.dark}>
-                                    {searchedItems().map((item, index) => 
-                                        <ListItem
-                                            key={index}
-                                            hover
-                                            onClick={() => handleItemClick(item)}
-                                            item={item.name}/>
-                                    )}
-                                </List>
-                                {searchedItems().length > 0 ?
-                                    <div className="fz-8 text-dark pa-15 text-right">
-                                        {searchedItems().length} results</div> : ''
-                                }
-                            </React.Fragment>
-                        }
-                        trigger={<InputField
-                                    color="info"
-                                    width="100%"
-                                    whiteBackground
-                                    onKeyUp={handleKeyUp}
-                                    prefix={<Icon name="search"/>}
-                                    value={search}
-                                    className="full-width"
-                                    onChange={e => setSearch(e.target.value)}
-                                    placeholder="Search components"/>}/>
-                </div>
-                <List size="medium" dark={props.dark}>
-                    <ListItem
-                        right
-                        icon="rocket"
-                        isActiveItem={'/' === window.location.pathname}
-                        onClick={() => handleItemClick({ path: '/'})}
-                        itemTitle="name"
-                        hover
-                        noDivider
-                        item="Getting started"/>
-                    <ListItem
-                        right
-                        noDivider
-                        icon="language-css-3"
-                        isActiveItem={'/helper' === window.location.pathname}
-                        onClick={() => handleItemClick({ path: '/helper'})}
-                        itemTitle="name"
-                        hover
-                        item="Helper CSS classes"/>
-                    <ListItem
-                        noDivider
-                        icon="toy-brick"
-                        onClick={() => setList(!list)}
-                        hover
-                        item={<span>Components 
-                            <small className="fw-bold ml-10 text-info">{sortedRoutes().length}</small>
-                        </span>}
-                        controls={<Icon 
-                                    onClick={() => setList(!list)}
-                                    size={20} 
-                                    name={list ? 'chevron-up' : 'chevron-down'}/>}/>
-                </List>
-                {list ? 
-                <List className="pl-30" dark={props.dark}>
-                    {sortedRoutes().map((item, index) => 
+        <ThemeContext.Consumer>
+            {theme => (
+                <Drawer
+                    drawer={props.drawer}
+                    fullHeight
+                    dark={theme}
+                    onClose={() => props.onClose()}
+                    headerCentered
+                    header={<Icon 
+                        name="react" 
+                        size={30}
+                        className="rotating" 
+                        color="#61dafb"/>}>
+                    <div className="row py-5 mx-5 justify-center sticky" 
+                        style={{ top: 40, width: 'calc(100% - 10px)' }}>
+                        <AutoComplete
+                            width="100%"
+                            items={sortedRoutes()}
+                            onItemClick={item => handleItemClick(item)}
+                            itemKey="name"
+                            dark={theme}
+                            prefix={<Icon name="search"/>}
+                            whiteBackground
+                            borderType="rounded"
+                            placeholder="Search components"
+                            listHeader={
+                                <div className="fz-9 text-info py-10">
+                                    Let's find your component
+                                </div>}
+                            footer={(filteredLength) => 
+                                <div className="text-right fz-8 px-10 py-15">
+                                    {filteredLength} results
+                                </div>}/>
+                    </div>
+                    <List size="medium" dark={theme}>
                         <ListItem
-                            key={index}
+                            right
+                            icon="rocket"
+                            isActiveItem={'/' === window.location.pathname}
+                            onClick={() => handleItemClick({ path: '/'})}
+                            itemTitle="name"
+                            hover
+                            noDivider
+                            item="Getting started"/>
+                        <ListItem
                             right
                             noDivider
-                            icon={item.icon ? item.icon : ''}
-                            roundedActive
-                            isActiveItem={item.path === window.location.pathname}
-                            onClick={() => handleItemClick(item)}
-                            className="no-select"
+                            icon="language-css-3"
+                            isActiveItem={'/helper' === window.location.pathname}
+                            onClick={() => handleItemClick({ path: '/helper'})}
+                            itemTitle="name"
                             hover
-                            item={item.name}/>
-                    )}
-                </List> : ''}
-                <div className="row justify-center pt-15 mt-10" style={{ borderTop: '1px solid lightgray'}}>
-                    <Switch color="primary" 
-                        check={props.dark}
-                        leftIcon="sun"
-                        leftIconColor={props.dark ? '#fff' : ''}
-                        rightIconColor={props.dark ? '#fff' : ''}
-                        rightIcon="moon" 
-                        onChange={() => props.onSwitch()}/>
-                </div>
-            </Drawer>
-        </React.Fragment>
+                            item="Helper CSS classes"/>
+                        <ListItem
+                            noDivider
+                            icon="toy-brick"
+                            onClick={() => setList(!list)}
+                            hover
+                            item={<span>Components 
+                                <small className="fw-bold ml-10 text-info">{sortedRoutes().length}</small>
+                            </span>}
+                            controls={<Icon 
+                                        onClick={() => setList(!list)}
+                                        size={20} 
+                                        name={list ? 'chevron-up' : 'chevron-down'}/>}/>
+                    </List>
+                    {list ? 
+                    <List className="pl-30" dark={theme}>
+                        {sortedRoutes().map((item, index) => 
+                            <ListItem
+                                key={index}
+                                right
+                                noDivider
+                                icon={item.icon ? item.icon : ''}
+                                roundedActive
+                                isActiveItem={item.path === window.location.pathname}
+                                onClick={() => handleItemClick(item)}
+                                className="no-select"
+                                hover
+                                item={item.name}/>
+                        )}
+                    </List> : ''}
+                    <div className="row justify-center pt-15 mt-10" 
+                        style={{ borderTop: '1px solid lightgray'}}>
+                        <Switch color="primary" 
+                            check={theme}
+                            leftIcon="sun"
+                            leftIconColor={props.dark ? '#fff' : ''}
+                            rightIconColor={props.dark ? '#fff' : ''}
+                            rightIcon="moon" 
+                            onChange={() => props.onSwitch()}/>
+                    </div>
+                </Drawer>
+            )}
+        </ThemeContext.Consumer>
     )
 }

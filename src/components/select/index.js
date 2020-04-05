@@ -175,12 +175,14 @@ const Select = (props) => {
             closeManaged
             contentMaxHeight={props.maxHeight}
             visible={menu}
+            dark={props.dark}
             content={
                 <div tabIndex={-1} 
                     className="rui-select__menu" 
                     onBlur={handleCloseOnBlur}>
                     {props.searchable && !props.childrenKey ? 
                     <InputField
+                        dark={props.dark}
                         color={props.color ? props.color : 'primary'}
                         prefix={<Icon name="search"/>}
                         value={search}
@@ -236,6 +238,7 @@ const Select = (props) => {
             trigger={
                 !props.multiple ? 
                 <InputField
+                    dark={props.dark}
                     label={props.label ? props.label : ''}
                     color={props.color ? props.color : 'primary'}
                     suffix={<Icon
