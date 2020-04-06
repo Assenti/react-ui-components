@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AutoComplete, Card, Select, Collapse, CopyToClipboard, Switch, Table, Icon, RadioGroup, ThemeContext, themes } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { coy, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { countries } from '../data/countries';
 import wordlImage from '../img/world.png';
 
@@ -385,7 +385,7 @@ const AutoCompletePage = () => {
                                         className="mr-10"/>}>
                                 <SyntaxHighlighter 
                                     language="jsx" 
-                                    style={prism}>
+                                    style={theme ? tomorrow : coy}>
                                     {usage}
                                 </SyntaxHighlighter> 
                             </Collapse>

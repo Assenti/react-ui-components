@@ -1,10 +1,15 @@
 .rui-collapse {
     margin: 5px 0;
 
-    &.bordered {
+    &.bordered:not(.dark) {
         border: 1px solid lightgray;
         border-radius: $radius;
         background-color: $lightgray;
+    }
+
+    &.bordered.dark {
+        border: 1px solid gray;
+        border-radius: $radius;
     }
 
     &.titled {

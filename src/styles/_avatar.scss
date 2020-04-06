@@ -10,7 +10,11 @@
         background-color: transparent !important;
     }
 
-    &.secondary {
+    &.dark {
+        background-color: $night;
+    }
+
+    &.secondary:not(.dark) {
         background-color: $lightgray;
     }
 

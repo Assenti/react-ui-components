@@ -8,8 +8,9 @@ const Breadcrumbs = (props) => {
         let className = {
             name: 'rui-breadcrumbs',
             size: props.size ? props.size : '',
+            dark: props.dark ? 'dark' : '',
             color: props.color ? props.color : 'info',
-            position: props.position && props.position !== 'default' ? props.position : '',
+            position: props.position ? props.position : '',
             className: props.className ? props.className : ''
         }
         for (const key in className) {
@@ -38,20 +39,17 @@ const Breadcrumbs = (props) => {
     )
 }
 Breadcrumbs.propTypes = {
-    crumbs: PropTypes.instanceOf(PropTypes.array).isRequired,
+    crumbs: PropTypes.array.isRequired,
     icon: PropTypes.string,
     itemKey: PropTypes.string,
     urlKey: PropTypes.string,
     isActive: PropTypes.func,
     onChange: PropTypes.func,
     delimiter: PropTypes.string,
-    size: PropTypes.oneOf([undefined,'','medium','large']),
-    color: PropTypes.oneOf([undefined,'','primary','info','success','error','dark','secondary']),
-    position: PropTypes.oneOf([undefined,'','center','right']),
+    dark: PropTypes.bool,
+    size: PropTypes.oneOf([undefined,'','default','medium','large']),
+    color: PropTypes.oneOf([undefined,'','default','primary','info','success','error','dark','secondary']),
+    position: PropTypes.oneOf([undefined,'','default','center','right']),
     className: PropTypes.string
-}
-Breadcrumbs.defaultProps = {
-    color: 'info',
-    delimiter: '/'
 }
 export default Breadcrumbs;

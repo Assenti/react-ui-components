@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { Dialog, Button, Card, Collapse, Table, Switch, CopyToClipboard } from '../components';
+import { Dialog, Button, Card, Collapse, Table, Switch, CopyToClipboard, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Button, Dialog, Switch } from '@assenti/rui-components';
+import { Button, Dialog } from '@assenti/rui-components';
 
 function Example() {
     const [dialog, setDialog] = useState(false);
-    const [dark, setDark] = useState(false);
-    const [confirmOnly, setConfirmOnly] = useState(false);
 
     const actionImitation = async () => {
         return new Promise(async (resolve) => {
@@ -22,21 +20,7 @@ function Example() {
     }
 
     return (
-        <div>
-            <Switch 
-                color="primary" 
-                check={dark}
-                rightLabel="Dark"
-                className="my-10"
-                onChange={() => setDark(!dark)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={confirmOnly}
-                rightLabel="Confirm only"
-                className="my-10"
-                onChange={() => setConfirmOnly(!confirmOnly)}/>
-            <br/>
+        <>
             <Button
                 color="error"
                 name="Delete account"
@@ -45,15 +29,12 @@ function Example() {
                 onCancel={() => setDialog(false)}
                 onConfirm={actionImitation}
                 icon="alert"
-                dark={dark}
-                confirmOnly={confirmOnly}
-                confirmText={confirmOnly ? 'OK' : ''}
                 iconColor="red"
                 titleColor="red" 
                 visible={dialog} 
                 title="Delete"
                 description="Are you sure?"/>
-        </div>
+        </>
     )
 }`
 
@@ -161,7 +142,6 @@ const items = [
 
 const DialogPage = () => {
     const [dialog, setDialog] = useState(false);
-    const [dark, setDark] = useState(false);
     const [confirmOnly, setConfirmOnly] = useState(false);
 
     const actionImitation = async () => {
@@ -173,57 +153,63 @@ const DialogPage = () => {
     }
 
     return (
-        <div className="rui-page">
-            <div className="rui-page-title">{'<Dialog/>'} Component</div>
-            <Card outlined title="Usage">
-                <Switch 
-                    color="primary" 
-                    check={dark}
-                    rightLabel="Dark"
-                    className="my-10"
-                    onChange={() => setDark(!dark)}/>
-                <br/>
-                <Switch 
-                    color="primary" 
-                    check={confirmOnly}
-                    rightLabel="Confirm only"
-                    className="my-10"
-                    onChange={() => setConfirmOnly(!confirmOnly)}/>
-                <br/>
-                <Button
-                    color="error"
-                    name="Delete account"
-                    onClick={() => setDialog(true)}/>
-                <Dialog
-                    onCancel={() => setDialog(false)}
-                    onConfirm={actionImitation}
-                    icon="alert"
-                    dark={dark}
-                    confirmOnly={confirmOnly}
-                    confirmText={confirmOnly ? 'OK' : ''}
-                    iconColor="red"
-                    titleColor="red" 
-                    visible={dialog} 
-                    title="Delete"
-                    description="Are you sure?"/>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18} 
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <h2>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index={true}
-                itemTitles={keys}/>
-        </div>
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page">
+                    <div className="rui-page-title">{'<Dialog/>'} Component</div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <Switch 
+                            color="primary" 
+                            check={confirmOnly}
+                            rightLabel="Confirm only"
+                            className="my-10"
+                            onChange={() => setConfirmOnly(!confirmOnly)}/>
+                        <br/>
+                        <Divider/>
+                        <Button
+                            color="error"
+                            name="Delete account"
+                            onClick={() => setDialog(true)}/>
+                        <Dialog
+                            onCancel={() => setDialog(false)}
+                            onConfirm={actionImitation}
+                            icon="alert"
+                            dark={theme}
+                            confirmOnly={confirmOnly}
+                            confirmText={confirmOnly ? 'OK' : ''}
+                            iconColor="red"
+                            titleColor="red" 
+                            visible={dialog} 
+                            title="Delete"
+                            description="Are you sure?"/>
+                        <Collapse 
+                            icon="code" 
+                            dark={theme}
+                            iconSize={18} 
+                            extra={<CopyToClipboard 
+                                defaultText="Copy code" 
+                                text={usage} 
+                                dark={theme}
+                                className="mr-10"/>} 
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <h2>API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index={true}
+                        itemTitles={keys}/>
+                </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default DialogPage;

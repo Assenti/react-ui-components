@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Card, Collapse, InputField, Table, CopyToClipboard } from '../components';
+import { Card, Collapse, InputField, Table, CopyToClipboard, ThemeContext } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -76,36 +76,52 @@ const CopyToClipboardPage = () => {
     const [text, setText] = useState('Some text');
 
     return (
-        <div className="rui-page">
-            <div className="rui-page-title">{'<CopyToClipboard/>'} Component</div>
-            <Card outlined title="Usage">
-                <div className="row align-center">
-                    <InputField 
-                        color="info" 
-                        onChange={e => setText(e.target.value)} 
-                        value={text} 
-                        width={200}/>
-                    <CopyToClipboard text={text} className="ml-10"/>
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page">
+                    <div className="rui-page-title">{'<CopyToClipboard/>'} Component</div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <div className="row align-center">
+                            <InputField
+                                dark={theme} 
+                                color="info" 
+                                onChange={e => setText(e.target.value)} 
+                                value={text} 
+                                width={200}/>
+                            <CopyToClipboard 
+                                text={text}
+                                dark={theme} 
+                                className="ml-10"/>
+                        </div>
+                        <Collapse
+                            dark={theme} 
+                            icon="code" 
+                            iconSize={18}
+                            extra={<CopyToClipboard 
+                                defaultText="Copy code" 
+                                text={usage} 
+                                dark={theme}
+                                className="mr-10"/>} 
+                            contentStyles={{ padding: 0 }}
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter> 
+                        </Collapse>
+                    </Card>
+                    <h2>API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Descriprion', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index={true}
+                        itemTitles={keys}/>
                 </div>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18}
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
-                    contentStyles={{ padding: 0 }}
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter> 
-                </Collapse>
-            </Card>
-            <h2>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Descriprion', 'Default', 'Type', 'Value']}
-                items={items}
-                index={true}
-                itemTitles={keys}/>
-        </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default CopyToClipboardPage;

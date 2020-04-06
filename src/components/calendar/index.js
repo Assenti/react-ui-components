@@ -188,7 +188,7 @@ const Calendar = (props) => {
             rows.push({ week: i, days: cells });
         }
         return (
-            <React.Fragment>
+            <>
                 {rows.map((item, iter) => 
                     <tr key={iter}>
                         {item.days.map((item, index) => 
@@ -218,7 +218,7 @@ const Calendar = (props) => {
                             </td>)}
                     </tr>
                 )}
-            </React.Fragment>
+            </>
         );
     }
 
@@ -274,6 +274,7 @@ const Calendar = (props) => {
                         width={110}
                         color={props.color ? props.color : 'primary'}
                         value={year}
+                        dark={props.dark}
                         size={props.size}
                         className="mr-5"
                         onChange={v => setYear(v)}/>
@@ -281,6 +282,7 @@ const Calendar = (props) => {
                         items={monthes(props.locale)}
                         width={110}
                         size={props.size}
+                        dark={props.dark}
                         color={props.color ? props.color : 'primary'}
                         value={month}
                         onChange={v => setMonth(v)}/>
@@ -310,13 +312,13 @@ const Calendar = (props) => {
 }
 Calendar.propTypes = {
     locale: PropTypes.oneOf([undefined,'','en','kz','ru','fr']),
-    events: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
-    holidays: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
+    events: PropTypes.array,
+    holidays: PropTypes.array,
     onDate: PropTypes.func,
     hideWeekend: PropTypes.bool,
     hideCurrentDay: PropTypes.bool,
-    color: PropTypes.oneOf([undefined,'','primary','info','success','error','dark']),
-    size: PropTypes.oneOf([undefined,'','medium','large']),
+    color: PropTypes.oneOf([undefined,'','default','primary','info','success','error','dark']),
+    size: PropTypes.oneOf([undefined,'','default','medium','large']),
     limit: PropTypes.number,
     onlyPast: PropTypes.bool,
     weekStartsSunday: PropTypes.bool,
@@ -325,12 +327,5 @@ Calendar.propTypes = {
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     popOverTrigger: PropTypes.oneOf([undefined,'','hover','click']),
     className: PropTypes.string
-}
-Calendar.defaultProps = {
-    locale: 'en',
-    color: 'primary',
-    limit: 15,
-    width: '100%',
-    popOverTrigger: 'hover'
 }
 export default Calendar;

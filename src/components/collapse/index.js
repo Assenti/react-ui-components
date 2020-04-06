@@ -11,6 +11,7 @@ const Collapse = (props) => {
             name: 'rui-collapse',
             border: props.border ? 'bordered' : '',
             title: props.title ? 'titled' : '',
+            dark: props.dark ? 'dark' : '',
             position: !props.title ? (props.position ? props.position : 'right') : '',
             className: props.className ? props.className : ''
         }
@@ -63,6 +64,7 @@ Collapse.propTypes = {
     icon: PropTypes.string,
     iconSize: PropTypes.number,
     iconColor: PropTypes.string,
+    dark: PropTypes.bool,
     className: PropTypes.string
 }
 export default Collapse;

@@ -18,7 +18,6 @@ const CollapsePage = lazy(() => import('./pages/CollapsePage'));
 const ButtonGroupPage = lazy(() => import('./pages/ButtonGroupPage'));
 const BadgePage = lazy(() => import('./pages/BadgePage'));
 const PopOverPage = lazy(() => import('./pages/PopOverPage'));
-const ColorsPage = lazy(() => import('./pages/ColorsPage'));
 const HeaderPage = lazy(() => import('./pages/HeaderPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
 const HelperPage = lazy(() => import('./pages/HelperPage'));
@@ -72,7 +71,6 @@ export const routes = [
     { path: '/backtopbtn', name: 'BackTopBtn', Component: BackTopBtnPage },
     { path: '/collapse', name: 'Collapse', Component: CollapsePage },
     { path: '/buttonGroup', name: 'ButtonGroup', Component: ButtonGroupPage },
-    { path: '/colors', name: 'Colors', Component: ColorsPage },
     { path: '/popover', name: 'PopOver', Component: PopOverPage },
     { path: '/header', name: 'Header', Component: HeaderPage },
     { path: '/helper', name: 'Helper CSS classes', Component: HelperPage },

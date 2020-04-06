@@ -7,6 +7,7 @@ const Avatar = (props) => {
         let result = '';
         let className = {
             name: 'rui-avatar',
+            dark: props.dark ? 'dark' : '',
             transparent: props.transparent ? 'transparent' : '',
             color: props.color ? props.color : 'secondary',
             borderType: props.borderType ? props.borderType : '', 
@@ -26,7 +27,10 @@ const Avatar = (props) => {
             }}>
             {props.img && !props.icon ? <img src={props.img} alt=""/> : null}
             {props.icon && !props.img ? 
-                <Icon name={props.icon} size={props.iconSize} color={props.iconColor}/> : null}
+                <Icon 
+                    name={props.icon} 
+                    size={props.iconSize} 
+                    color={props.iconColor ? props.iconColor : (props.dark ? '#fff' : '')}/> : null}
         </div>
     )
 }
@@ -39,10 +43,7 @@ Avatar.propTypes = {
     iconSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     iconColor: PropTypes.string,
     transparent: PropTypes.bool,
+    dark: PropTypes.bool,
     className: PropTypes.string
-}
-Avatar.defaultProps = {
-    color: 'secondary',
-    size: 40
 }
 export default Avatar;

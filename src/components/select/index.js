@@ -295,7 +295,7 @@ const Select = (props) => {
 Select.propTypes = {
     items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string),PropTypes.arrayOf(PropTypes.number),PropTypes.arrayOf(PropTypes.object)]).isRequired,
     itemKey: PropTypes.string,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.number]).isRequired,
     onChange: PropTypes.func,
     onSelect: PropTypes.func,
     returnObject: PropTypes.bool,
@@ -316,8 +316,5 @@ Select.propTypes = {
     label: PropTypes.string,
     childrenKey: PropTypes.string,
     className: PropTypes.string
-}
-Select.defaultProps = {
-    color: 'primary'
 }
 export default Select;

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Card, Collapse, Table, CopyToClipboard, Dock, Button, Select, Icon, Switch, ThemeContext } from '../components';
+import { Card, Collapse, Table, CopyToClipboard, Dock, Button, Select, Icon, Switch, ThemeContext, Divider } from '../components';
 import manImage from '../img/man.png';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const dockItems = [
     { title: 'WhatsApp', icon: 'whatsapp', iconColor: '#25D366' },
@@ -88,7 +88,7 @@ const items = [
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Dock, Select, Switch, Button, Icon } from '@assenti/react-ui-components';
+import { Dock, Button } from '@assenti/react-ui-components';
 const positions = ['top','bottom','left','right'];
 const dockItems = [
     { title: 'WhatsApp', icon: 'whatsapp', iconColor: '#25D366' },
@@ -105,36 +105,9 @@ const dockItems = [
 
 function Example() {
     const [dock, setDock] = useState(false);
-    const [dark, setDark] = useState(false);
-    const [tile, setTile] = useState(false);
-    const [position, setPosition] = useState('top');
 
     return (
         <>
-            <Select
-                items={positions}
-                prefix={<Icon name="chart-ppf"/>}
-                width={200}
-                label="Position"
-                color="primary"
-                className="my-10"
-                value={position}
-                onChange={v => setPosition(v)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={tile}
-                rightLabel="Tile borders type"
-                className="my-10"
-                onChange={() => setTile(!tile)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={dark}
-                rightLabel="Dark"
-                className="my-10"
-                onChange={() => setDark(!dark)}/>
-            <br/>
             <Button 
                 name="Switch Dock" 
                 color="primary"
@@ -142,14 +115,11 @@ function Example() {
             <Dock 
                 items={dockItems}
                 length={500}
-                tile={tile}
                 onItemClick={item => {
                     console.log(item)
                     setDock(false)
                 }}
-                dark={dark}
-                visible={dock} 
-                position={position}/>
+                visible={dock}/>
         </>
     )
 }`
@@ -167,7 +137,7 @@ const DockPage = () => {
             <ThemeContext.Consumer>
                 {theme => (
                     <>
-                        <Card title="Usage" outlined dark={theme}>
+                        <Card header={<h4>Usage</h4>} dark={theme}>
                             <Select
                                 items={positions}
                                 prefix={<Icon name="chart-ppf"/>}
@@ -186,6 +156,7 @@ const DockPage = () => {
                                 className="my-10"
                                 onChange={() => setTile(!tile)}/>
                             <br/>
+                            <Divider/>
                             <Button 
                                 name="Switch Dock" 
                                 color="primary"
@@ -211,7 +182,9 @@ const DockPage = () => {
                                     dark={theme} 
                                     className="mr-10"/>} 
                             tooltip="Show/Hide Code">
-                            <SyntaxHighlighter language="jsx" style={prism}>
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
                                 {usage}
                             </SyntaxHighlighter>
                         </Collapse>

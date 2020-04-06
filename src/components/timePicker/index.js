@@ -88,6 +88,7 @@ const TimePicker = (props) => {
         <div className={`rui-timepicker ${props.className}`}>
             <Dropdown
                 closeManaged
+                dark={props.dark}
                 visible={visible}
                 trigger={
                     <InputField
@@ -96,6 +97,7 @@ const TimePicker = (props) => {
                         width={props.width}
                         label={props.label}
                         hint={props.hint}
+                        dark={props.dark}
                         hintColor={props.hintColor}
                         clearable={props.clearable}
                         onClear={handleClear}
@@ -149,6 +151,7 @@ TimePicker.propTypes = {
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
     label: PropTypes.string,
+    dark: PropTypes.bool,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     hint: PropTypes.string,
     hintColor: PropTypes.oneOf(['success','error']),

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Collapse, Table, CopyToClipboard, Card, Select, Icon, Switch, ThemeContext } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism, darcula, coy, okaidia, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { coy, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 const statuses = ['info', 'success', 'error', 'warning'];
 
 const keys = ['property', 'description', 'default', 'type', 'value'];

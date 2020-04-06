@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { Button, Table, Card, Switch, BackTopBtn, Collapse, RadioGroup, Select, Icon, CopyToClipboard } from '../components';
+import { Button, Table, Card, Switch, BackTopBtn, Collapse, RadioGroup, Select, Icon, CopyToClipboard, ThemeContext, themes } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -327,152 +327,162 @@ const ButtonPage = () => {
     }
 
     return (
-        <div className="rui-page" ref={parentRef}>
-            <div className="row align-center space-between">
-                <div className="rui-page-title">{'<Button/>'} Component</div>
-                <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
-            </div>
-            <Card outlined title="Usage">
-                <Select
-                    items={sizes}
-                    prefix={<Icon name="format-size"/>}
-                    width={200}
-                    label="Button size"
-                    color="primary"
-                    className="pl-10"
-                    value={size}
-                    onChange={v => setSize(v)}/>
-                <br/>
-                <Select
-                    items={borders}
-                    prefix={<Icon name="shape"/>}
-                    width={200}
-                    label="Button border type"
-                    color="primary"
-                    className="pl-10"
-                    value={border}
-                    onChange={v => setBorder(v)}/>
-                <br/>
-                <Select
-                    items={colors}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    label="Button color"
-                    color="primary"
-                    className="pl-10"
-                    value={color}
-                    onChange={v => setColor(v)}/>
-                <br/>
-                <Switch 
-                    color="primary" 
-                    check={outlined}
-                    rightLabel="Outlined"
-                    className="pl-10 my-10"
-                    onChange={() => setOutlined(!outlined)}/>
-                <Switch 
-                    check={uppercase} 
-                    color="primary"
-                    rightLabel="Uppercase" 
-                    className="pl-10 my-10"
-                    onChange={() => setUppercase(!uppercase)}/>
-                <br/>
-                <Switch 
-                    check={loading} 
-                    color="primary"
-                    rightLabel="Loading" 
-                    className="pl-10 my-10"
-                    onChange={() => setLoading(!loading)}/>
-                <Switch 
-                    check={disabled} 
-                    color="primary"
-                    rightLabel="Disabled" 
-                    className="pl-10 my-10"
-                    onChange={() => setDisabled(!disabled)}/>
-                <br/>
-                <Switch 
-                    check={block} 
-                    color="primary"
-                    rightLabel="Block" 
-                    className="pl-10 my-10"
-                    onChange={() => setBlock(!block)}/>
-                <Switch 
-                    check={lifted} 
-                    color="primary"
-                    rightLabel="Lifted" 
-                    className="pl-10 my-10"
-                    onChange={() => setLifted(!lifted)}/>
-                <br/>
-                <Switch 
-                    check={icon} 
-                    color="primary"
-                    rightLabel="With icon" 
-                    className="pl-10 my-10"
-                    onChange={() => setIcon(!icon)}/>
-                <Switch 
-                    check={iconLeft} 
-                    color="primary"
-                    rightLabel="Left icon" 
-                    className="pl-10 my-10"
-                    onChange={() => setIconLeft(!iconLeft)}/>
-                <Switch 
-                    check={iconAllotted} 
-                    color="primary"
-                    rightLabel="Allotted icon" 
-                    className="pl-10 my-10"
-                    onChange={() => setIconAllotted(!iconAllotted)}/>
-                <br/>
-                <Switch 
-                    check={iconOnly} 
-                    color="primary"
-                    rightLabel="Icon button" 
-                    className="pl-10 my-10"
-                    onChange={() => setIconOnly(!iconOnly)}/>
-                <br/>
-                <RadioGroup
-                    options={types} 
-                    value={type}
-                    name="type"
-                    className="pl-10 mt-10" 
-                    onChange={(value) => setType(value)}/>
-                <br/>
-                <div className="pa-10">
-                    <Button
-                        color={color}
-                        size={size}
-                        icon={icon || iconOnly ? 'search' : ''}
-                        iconAllotted={iconAllotted}
-                        iconLeft={iconLeft}
-                        outlined={outlined}
-                        borderType={border}
-                        loading={loading}
-                        disabled={disabled}
-                        block={block}
-                        lifted={lifted}
-                        dark={type === 'dark' ? true : false}
-                        light={type === 'light' ? true : false}
-                        uppercase={uppercase}
-                        name={iconOnly ? null : 'Button'}
-                        />
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page" ref={parentRef}>
+                    <div className="row align-center space-between">
+                        <div className="rui-page-title">{'<Button/>'} Component</div>
+                        <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
+                    </div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <Select
+                            items={sizes}
+                            dark={theme}
+                            prefix={<Icon name="format-size"/>}
+                            width={200}
+                            label="Button size"
+                            color="primary"
+                            className="pl-10"
+                            value={size}
+                            onChange={v => setSize(v)}/>
+                        <br/>
+                        <Select
+                            items={borders}
+                            prefix={<Icon name="shape"/>}
+                            width={200}
+                            dark={theme}
+                            label="Button border type"
+                            color="primary"
+                            className="pl-10"
+                            value={border}
+                            onChange={v => setBorder(v)}/>
+                        <br/>
+                        <Select
+                            items={colors}
+                            prefix={<Icon name="brush"/>}
+                            width={200}
+                            dark={theme}
+                            label="Button color"
+                            color="primary"
+                            className="pl-10"
+                            value={color}
+                            onChange={v => setColor(v)}/>
+                        <br/>
+                        <Switch 
+                            color="primary" 
+                            check={outlined}
+                            rightLabel="Outlined"
+                            className="pl-10 my-10"
+                            onChange={() => setOutlined(!outlined)}/>
+                        <Switch 
+                            check={uppercase} 
+                            color="primary"
+                            rightLabel="Uppercase" 
+                            className="pl-10 my-10"
+                            onChange={() => setUppercase(!uppercase)}/>
+                        <br/>
+                        <Switch 
+                            check={loading} 
+                            color="primary"
+                            rightLabel="Loading" 
+                            className="pl-10 my-10"
+                            onChange={() => setLoading(!loading)}/>
+                        <Switch 
+                            check={disabled} 
+                            color="primary"
+                            rightLabel="Disabled" 
+                            className="pl-10 my-10"
+                            onChange={() => setDisabled(!disabled)}/>
+                        <br/>
+                        <Switch 
+                            check={block} 
+                            color="primary"
+                            rightLabel="Block" 
+                            className="pl-10 my-10"
+                            onChange={() => setBlock(!block)}/>
+                        <Switch 
+                            check={lifted} 
+                            color="primary"
+                            rightLabel="Lifted" 
+                            className="pl-10 my-10"
+                            onChange={() => setLifted(!lifted)}/>
+                        <br/>
+                        <Switch 
+                            check={icon} 
+                            color="primary"
+                            rightLabel="With icon" 
+                            className="pl-10 my-10"
+                            onChange={() => setIcon(!icon)}/>
+                        <Switch 
+                            check={iconLeft} 
+                            color="primary"
+                            rightLabel="Left icon" 
+                            className="pl-10 my-10"
+                            onChange={() => setIconLeft(!iconLeft)}/>
+                        <Switch 
+                            check={iconAllotted} 
+                            color="primary"
+                            rightLabel="Allotted icon" 
+                            className="pl-10 my-10"
+                            onChange={() => setIconAllotted(!iconAllotted)}/>
+                        <br/>
+                        <Switch 
+                            check={iconOnly} 
+                            color="primary"
+                            rightLabel="Icon button" 
+                            className="pl-10 my-10"
+                            onChange={() => setIconOnly(!iconOnly)}/>
+                        <br/>
+                        <RadioGroup
+                            options={types} 
+                            value={type}
+                            name="type"
+                            className="pl-10 mt-10" 
+                            onChange={(value) => setType(value)}/>
+                        <br/>
+                        <div className="pa-10">
+                            <Button
+                                color={color}
+                                size={size}
+                                icon={icon || iconOnly ? 'search' : ''}
+                                iconAllotted={iconAllotted}
+                                iconLeft={iconLeft}
+                                outlined={outlined}
+                                borderType={border}
+                                loading={loading}
+                                disabled={disabled}
+                                block={block}
+                                lifted={lifted}
+                                dark={type === 'dark' ? true : false}
+                                light={type === 'light' ? true : false}
+                                uppercase={uppercase}
+                                name={iconOnly ? null : 'Button'}
+                                />
+                        </div>
+                        <Collapse 
+                            icon="code" 
+                            iconSize={18}
+                            extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <BackTopBtn tooltip="Up" setRef={parentRef} dark size="medium"/>
+                    <h2 ref={api}>API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index={true}
+                        itemTitles={keys}/>
                 </div>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18}
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <BackTopBtn tooltip="Up" setRef={parentRef} dark size="medium"/>
-            <h2 ref={api}>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index={true}
-                itemTitles={keys}/>
-        </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default ButtonPage;

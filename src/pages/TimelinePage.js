@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { Timeline, Table, BackTopBtn, Card, Collapse, Switch, Select, Icon, CopyToClipboard } from '../components';
+import { Timeline, Table, BackTopBtn, Card, Collapse, Switch, Select, Icon, CopyToClipboard, ThemeContext } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const rows = [
@@ -193,75 +193,89 @@ const TimelinePage = () => {
     }
 
     return (
-        <div className="rui-page" ref={parent}>
-            <div className="row align-center space-between">
-                <div className="rui-page-title">{'<Timeline/>'} Component</div>
-                <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
-            </div>
-            <Card outlined title="Usage">
-                <div className="row column py-10">
-                    <Switch 
-                        color="primary" 
-                        check={icon}
-                        rightLabel="Icon"
-                        className="my-10" 
-                        onChange={() => setIcon(!icon)}/>
-                    <Switch 
-                        color="primary" 
-                        check={tagOutlined}
-                        className="my-10"
-                        rightLabel="Tag outlined" 
-                        onChange={() => setTagOutlined(!tagOutlined)}/>
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page" ref={parent}>
+                    <div className="row align-center space-between">
+                        <div className="rui-page-title">{'<Timeline/>'} Component</div>
+                        <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
+                    </div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <div className="row column py-10">
+                            <Switch 
+                                color="primary" 
+                                check={icon}
+                                rightLabel="Icon"
+                                className="my-10" 
+                                onChange={() => setIcon(!icon)}/>
+                            <Switch 
+                                color="primary" 
+                                check={tagOutlined}
+                                className="my-10"
+                                rightLabel="Tag outlined" 
+                                onChange={() => setTagOutlined(!tagOutlined)}/>
+                        </div>
+                        <div className="pb-20">
+                            <Select
+                                items={colors}
+                                prefix={<Icon name="brush"/>}
+                                width={200}
+                                label="Timeline color"
+                                color="primary"
+                                className="mr-10"
+                                dark={theme}
+                                value={color}
+                                onChange={v => setColor(v)}/>
+                            <Select
+                                items={colors}
+                                prefix={<Icon name="brush"/>}
+                                width={200}
+                                color="primary"
+                                label="Tag color"
+                                value={tagColor}
+                                dark={theme}
+                                onChange={v => setTagColor(v)}/>
+                        </div>
+                        <Timeline 
+                            items={items} 
+                            date="date"
+                            centered
+                            color={color}
+                            tagOutlined={tagOutlined}
+                            tagColor={tagColor}
+                            flatCard
+                            icon={icon ? 'star' : ''}
+                            title="title"
+                            subtitle="subtitle"/>
+                        <Collapse 
+                            icon="code" 
+                            iconSize={18}
+                            dark={theme} 
+                            extra={<CopyToClipboard 
+                                defaultText="Copy code" 
+                                text={usage} 
+                                dark={theme}
+                                className="mr-10"/>} 
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <h2 ref={api}>API</h2>
+                    <BackTopBtn setRef={parent} dark size="medium"/>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={rows}
+                        index={true}
+                        itemTitles={keys}/>
                 </div>
-                <div className="pb-20">
-                    <Select
-                        items={colors}
-                        prefix={<Icon name="brush"/>}
-                        width={200}
-                        label="Timeline color"
-                        color="primary"
-                        className="mr-10"
-                        value={color}
-                        onChange={v => setColor(v)}/>
-                    <Select
-                        items={colors}
-                        prefix={<Icon name="brush"/>}
-                        width={200}
-                        color="primary"
-                        label="Tag color"
-                        value={tagColor}
-                        onChange={v => setTagColor(v)}/>
-                </div>
-                <Timeline 
-                    items={items} 
-                    date="date"
-                    centered
-                    color={color}
-                    tagOutlined={tagOutlined}
-                    tagColor={tagColor}
-                    flatCard
-                    icon={icon ? 'star' : ''}
-                    title="title"
-                    subtitle="subtitle"/>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18} 
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <h2 ref={api}>API</h2>
-            <BackTopBtn setRef={parent} dark size="medium"/>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={rows}
-                index={true}
-                itemTitles={keys}/>
-        </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default TimelinePage;

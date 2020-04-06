@@ -1,4 +1,16 @@
 .rui-expansion-list {
+    &:not(.dark) {
+        .rui-expansion-list-item-content {
+            background-color: #fafafa;
+        }
+    }
+
+    &.dark {
+        .rui-expansion-list-item-content {
+            background-color: gray;
+        }
+    }
+
     &:not(.medium):not(.large) {
         .rui-expansion-list-item-title {
             height: $defaultSize;

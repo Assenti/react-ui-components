@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import { Tag, Card, BackTopBtn, CopyToClipboard, Icon, ThemeContext, themes } from '../components';
+import { Tag, Card, BackTopBtn, CopyToClipboard, Icon, ThemeContext, themes, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const codeInstallationNpm = 
 `# Install package from NPM
@@ -30,7 +30,7 @@ import { Card, Button } from '@assenti/react-ui-components';
 
 function App() {
     return (
-        <Card outlined color="primary" title="Button">
+        <Card color="primary" header={<h4>React UI Components</h4>}>
             <Button color="primary" name="Rocket" icon="rocket"/>
         </Card>
     );
@@ -69,42 +69,57 @@ const HomePage = () => {
                         <h4 className="py-10">
                             Create a lot of usefull and maximum reusable UI components for React apps
                         </h4>
+                        <p>Inspired by Material Design, Semantic UI, Mac Design</p>
                     </div>
                     <Card dark={theme} header={<h4 className="row align-center">
                         <Icon name="package-down" color={theme ? '#fff' : ''} className="mr-5"/>Install</h4>} 
                         className="mt-20">
                         <h4>npm</h4>
                         <div className="row">
-                            <SyntaxHighlighter className="col" language="bash" style={prism}>
+                            <SyntaxHighlighter 
+                                className="col" 
+                                language="bash" 
+                                style={theme ? tomorrow : coy}>
                                 {codeInstallationNpm}
                             </SyntaxHighlighter>
                             <CopyToClipboard
                                 className="my-5 mx-10" 
                                 text="npm install @assenti/rui-components -S"/>
                         </div>
+                        <Divider/>
                         <h4>yarn</h4>
                         <div className="row full-width">
-                            <SyntaxHighlighter className="col" language="bash" style={prism}>
+                            <SyntaxHighlighter 
+                                className="col" 
+                                language="bash" 
+                                style={theme ? tomorrow : coy}>
                                 {codeInstallationYarn}
                             </SyntaxHighlighter>
                             <CopyToClipboard
                                 className="my-5 mx-10" 
                                 text="yarn add @assenti/rui-components"/>
                         </div>
-                        <br/>
+                        <Divider/>
                         <h4>Peer dependencies</h4>
                         <div className="py-5">React UI Components use react-transition-group under the hood, so you should install it too</div>
                         <div className="row full-width">
-                            <SyntaxHighlighter className="col" language="bash" style={prism}>
+                            <SyntaxHighlighter 
+                                className="col" 
+                                language="bash" 
+                                style={theme ? tomorrow : coy}>
                                 {codeInstallationRTG}
                             </SyntaxHighlighter>
                             <CopyToClipboard
                                 className="my-5 mx-10" 
                                 text="npm install react-transition-group -S"/>
                         </div>
+                        <br/>
                         <div className="py-5">For TypeScript project (additional)</div>
                         <div className="row full-width">
-                            <SyntaxHighlighter className="col" language="bash" style={prism}>
+                            <SyntaxHighlighter 
+                                className="col" 
+                                language="bash" 
+                                style={theme ? tomorrow : coy}>
                                 {codeInstallationRTGTypes}
                             </SyntaxHighlighter>
                             <CopyToClipboard
@@ -117,7 +132,10 @@ const HomePage = () => {
                         <Icon name="cog-outline" color={theme ? '#fff' : ''} className="mr-5"/>Usage
                     </h4>} className="mt-20">
                         <div className="row">
-                            <SyntaxHighlighter className="col" language="js" style={prism}>
+                            <SyntaxHighlighter 
+                                className="col" 
+                                language="js" 
+                                style={theme ? tomorrow : coy}>
                                 {stylesInstallation}
                             </SyntaxHighlighter>
                             <CopyToClipboard
@@ -126,7 +144,10 @@ const HomePage = () => {
                         </div>
                         <br/>
                         <div className="row">
-                            <SyntaxHighlighter className="col" language="jsx" style={prism}>
+                            <SyntaxHighlighter 
+                                className="col" 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
                                 {codeUsage}
                             </SyntaxHighlighter>
                             <CopyToClipboard

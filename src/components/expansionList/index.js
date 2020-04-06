@@ -25,6 +25,7 @@ const ExpansionList = (props) => {
         let className = {
             name: 'rui-expansion-list',
             size: props.size ? props.size : '',
+            dark: props.dark ? 'dark' : '',
             reverse: props.reverse ? 'reverse' : '',
             className: props.className ? props.className : ''
         }
@@ -103,6 +104,7 @@ const ExpansionList = (props) => {
                         <div>{props.titleKey ? item[props.titleKey] : item}</div>
                         <Icon
                             onClick={() => handleClick(item, index)}
+                            color={props.dark ? '#fff' : ''}
                             name={getName(item, index)}
                             />
                     </div>
@@ -125,6 +127,7 @@ ExpansionList.propTypes = {
     onItemClick: PropTypes.func,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     itemContent: PropTypes.func,
+    dark: PropTypes.bool,
     className: PropTypes.string
 }
 export default ExpansionList;

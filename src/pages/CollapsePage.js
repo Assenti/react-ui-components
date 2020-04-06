@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import { Card, Collapse, Table, List, ListItem, Icon, Badge, CopyToClipboard } from '../components'
+import { Card, Collapse, Table, List, ListItem, Icon, Badge, CopyToClipboard, ThemeContext } from '../components'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const usage = 
 `// Usage examples
@@ -109,6 +109,13 @@ const items = [
         value: ''
     },
     { 
+        property: 'dark',
+        description: 'Set dark mode', 
+        default: '', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 
@@ -132,68 +139,81 @@ const CollapsePage = () => {
     }
 
     return (
-        <div className="rui-page">
-            <div className="row align-center space-between">
-                <div className="row">
-                    <div className="rui-page-title">{'<Collapse/>'} Component</div>
-                    <Badge 
-                        color="error" 
-                        value="WIP"
-                        className="ml-10"
-                        parent={<Icon name="wrench" size={20}/>}/>
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page">
+                    <div className="row align-center space-between">
+                        <div className="row">
+                            <div className="rui-page-title">{'<Collapse/>'} Component</div>
+                            <Badge 
+                                color="error" 
+                                value="WIP"
+                                className="ml-10"
+                                parent={<Icon name="wrench" size={20}/>}/>
+                        </div>
+                        <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
+                    </div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <Collapse dark={theme} defaultState border>
+                            <p className="px-10 fz-9 fw-bold">Some Article</p>
+                            <p className="pa-10">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                        </Collapse>
+                        <br/>
+                        <Collapse 
+                            title={<span className="mx-10 fz-10 fw-bold">Marvel Avengers</span>}
+                            defaultState 
+                            border 
+                            dark={theme}
+                            tooltip="Expand/Collapse">
+                            <List 
+                                size="medium"
+                                hover>
+                                {names.map((item, index) => 
+                                    <ListItem 
+                                        key={index} 
+                                        item={item.hero}
+                                        icon={item.icon}
+                                        hover/>
+                                )}
+                            </List>
+                        </Collapse>
+                        <br/>
+                        <Collapse 
+                            icon="code" 
+                            iconSize={18}
+                            dark={theme}
+                            extra={<CopyToClipboard 
+                                defaultText="Copy code" 
+                                text={usage} 
+                                dark={theme}
+                                className="mr-10"/>} 
+                            contentStyles={{ padding: 0 }}
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter> 
+                        </Collapse>
+                    </Card>
+                    <h2 ref={api}>API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index={true}
+                        itemTitles={keys}/>
                 </div>
-                <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
-            </div>
-            <Card outlined title="Usage">
-                <Collapse defaultState={true} border>
-                    <p className="px-10 fz-9 fw-bold">Some Article</p>
-                    <p className="pa-10">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </Collapse>
-                <br/>
-                <Collapse 
-                    title={<span className="mx-10 fz-10 fw-bold">Marvel Avengers</span>}
-                    defaultState={true} 
-                    border 
-                    tooltip="Expand/Collapse">
-                    <List 
-                        size="medium"
-                        hover>
-                        {names.map((item, index) => 
-                            <ListItem 
-                                key={index} 
-                                item={item.hero}
-                                icon={item.icon}
-                                hover/>
-                        )}
-                    </List>
-                </Collapse>
-                <br/>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18}
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
-                    contentStyles={{ padding: 0 }}
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter> 
-                </Collapse>
-            </Card>
-            <h2 ref={api}>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index={true}
-                itemTitles={keys}/>
-        </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 

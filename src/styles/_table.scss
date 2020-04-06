@@ -256,6 +256,14 @@
         }
     }
 
+    &:not(.dark) {
+        .rui-table {
+            thead {
+                background-color: lightgray;
+            }
+        }
+    }
+
     &.dark {
         .rui-table__footer {
             background-color: $dark;
@@ -266,6 +274,10 @@
             tr {
                 // background-color: $night;
                 color: #fff;
+            }
+
+            thead {
+                background-color: gray;
             }
         }
 
@@ -338,10 +350,6 @@
 
     th:last-child {
         border-top-right-radius: $radius;
-    }
-
-    thead {
-        background-color: lightgray;
     }
 
     tr, th, td {

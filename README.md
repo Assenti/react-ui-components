@@ -55,7 +55,7 @@ import React from 'react';
 
 function App() {
   return (
-    <Card outlined color="primary" title="Button">
+    <Card color="primary" header={<h4>React UI Components</h4>}>
       <Button color="primary" name="Rocket" icon="rocket"/>
     </Card>
   );
@@ -70,9 +70,6 @@ export default App;
 - [ ] Notification
 - [ ] Carousel
 - [ ] Range
-- [ ] Slider
-- [ ] Dark & Light Mode
-- [ ] Define theme colors and make them customizable
 
 ## Changelog
 You can track changelog [here](/CHANGELOG.md)

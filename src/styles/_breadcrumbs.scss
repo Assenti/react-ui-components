@@ -10,6 +10,14 @@
         justify-content: flex-end;
     }
 
+    &.dark {
+        .rui-breadcrumbs__item {
+            a:not(:hover) {
+                color: #fff !important;
+            }
+        }
+    }
+
     &.primary {
         .rui-breadcrumbs__item {
             color: $primary;

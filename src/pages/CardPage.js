@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { Card, List, ListItem, Table, Switch, Collapse, BackTopBtn, Select, Icon, CopyToClipboard } from '../components';
+import { Card, List, ListItem, Table, Switch, Collapse, BackTopBtn, Select, Icon, CopyToClipboard, ThemeContext, themes, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import manImage from '../img/man.png';
 import manImage2 from '../img/hipster.png';
 import girlImage from '../img/girl.png';
@@ -165,13 +165,12 @@ function Example() {
 const CardPage = () => {
     const api = useRef();
     const parentRef = useRef();
-    const [dark, setDark] = useState(false);
     const [flat, setFlat] = useState(false);
     const [hover, setHover] = useState(false);
     const [outlined, setOutlined] = useState(false);
     const [color, setColor] = useState(colors[0]);
 
-    const imageCards = () => {
+    const imageCards = (dark) => {
         let cards = [
             {img: manImage, name: 'John Doe'},
             {img: manImage2, name: 'John Smith'},
@@ -184,6 +183,7 @@ const CardPage = () => {
                     <Card 
                         key={index}
                         hover
+                        dark={dark}
                         className="ma-5"
                         width={200} 
                         img={item.img}
@@ -200,95 +200,109 @@ const CardPage = () => {
     }
 
     return (
-        <div className="rui-page" ref={parentRef}>
-            <div className="row align-center space-between">
-                <div className="rui-page-title">{'<Card/>'} Component</div>
-                <div className="rui-link fz-13 fw-bold" onClick={goToApi}>API</div>
-            </div>
-            <Card outlined title="Usage">
-                <Switch 
-                    color="primary" 
-                    check={dark}
-                    disabled={outlined}
-                    rightLabel="Dark"
-                    className="my-10"
-                    onChange={() => setDark(!dark)}/>
-                <Switch 
-                    color="primary" 
-                    check={flat}
-                    rightLabel="Flat"
-                    className="my-10"
-                    onChange={() => setFlat(!flat)}/>
-                <Switch 
-                    color="primary" 
-                    check={hover}
-                    rightLabel="Hover"
-                    className="my-10"
-                    onChange={() => setHover(!hover)}/>
-                <Switch 
-                    color="primary" 
-                    check={outlined}
-                    rightLabel="Outlined"
-                    className="my-10"
-                    onChange={() => setOutlined(!outlined)}/>
-                <br/>
-                <Select
-                    items={colors}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    label="Outline color"
-                    color="primary"
-                    value={color}
-                    onChange={v => setColor(v)}/>
-                <Card
-                    dark={dark}
-                    flat={flat} 
-                    hover={hover}
-                    outlined={outlined}
-                    title={outlined ? 'Card props' : ''}
-                    color={color}
-                    header="Marvel heroes">
-                    <List dark={dark}>
-                        {itemsComplexInitial.map((item, index) => 
-                            <ListItem 
-                                key={index}
-                                item={item.name}
-                                hover/>
-                        )}
-                    </List>
-                </Card>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18}
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Card with image and hover">
-                {imageCards()}
-                <Collapse 
-                    icon="code"
-                    extra={<CopyToClipboard defaultText="Copy code" text={usageImage} className="mr-10"/>} 
-                    iconSize={18} 
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usageImage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <BackTopBtn dark setRef={parentRef} size="medium"/>
-            <h2 ref={api}>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index
-                itemTitles={keys}/>
-        </div>
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page" ref={parentRef}>
+                    <div className="row align-center space-between">
+                        <div className="rui-page-title">{'<Card/>'} Component</div>
+                        <div className="rui-link fz-13 fw-bold" onClick={goToApi}>API</div>
+                    </div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <Switch 
+                            color="primary" 
+                            check={flat}
+                            rightLabel="Flat"
+                            className="my-10"
+                            onChange={() => setFlat(!flat)}/>
+                        <Switch 
+                            color="primary" 
+                            check={hover}
+                            rightLabel="Hover"
+                            className="my-10"
+                            onChange={() => setHover(!hover)}/>
+                        <Switch 
+                            color="primary" 
+                            check={outlined}
+                            rightLabel="Outlined"
+                            className="my-10"
+                            onChange={() => setOutlined(!outlined)}/>
+                        <br/>
+                        <Select
+                            items={colors}
+                            prefix={<Icon name="brush"/>}
+                            width={200}
+                            dark={theme}
+                            label="Outline color"
+                            color="primary"
+                            value={color}
+                            onChange={v => setColor(v)}/>
+                        <Divider className="my-20"/>
+                        <Card
+                            dark={theme}
+                            flat={flat} 
+                            hover={hover}
+                            outlined={outlined}
+                            title={outlined ? 'Card props' : ''}
+                            color={color}
+                            header="Marvel heroes">
+                            <List dark={theme}>
+                                {itemsComplexInitial.map((item, index) => 
+                                    <ListItem 
+                                        key={index}
+                                        item={item.name}
+                                        hover/>
+                                )}
+                            </List>
+                        </Card>
+                        <Collapse 
+                            icon="code" 
+                            iconSize={18}
+                            dark={theme}
+                            extra={<CopyToClipboard 
+                                defaultText="Copy code" 
+                                text={usage} 
+                                dark={theme}
+                                className="mr-10"/>} 
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <br/>
+                    <Card dark={theme} header={<h4>Card with image and hover</h4>}>
+                        {imageCards(theme)}
+                        <Collapse 
+                            icon="code"
+                            dark={theme}
+                            extra={<CopyToClipboard 
+                                defaultText="Copy code" 
+                                text={usageImage} 
+                                dark={theme}
+                                className="mr-10"/>} 
+                            iconSize={18} 
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usageImage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <BackTopBtn dark setRef={parentRef} size="medium"/>
+                    <h2 ref={api}>API</h2>
+                    <Table
+                        dark={theme}
+                        bordered
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index
+                        itemTitles={keys}/>
+                </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default CardPage;
