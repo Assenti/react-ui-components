@@ -46,6 +46,7 @@ const ExpansionListPage = lazy(() => import('./pages/ExpansionList'));
 const DockPage = lazy(() => import('./pages/DockPage'));
 const DividerPage = lazy(() => import('./pages/DividerPage'));
 const SliderPage = lazy(() => import('./pages/SliderPage'));
+const FooterPage = lazy(() => import('./pages/FooterPage'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
@@ -94,5 +95,6 @@ export const routes = [
     { path: '/dock', name: 'Dock', Component: DockPage },
     { path: '/divider', name: 'Divider', Component: DividerPage },
     { path: '/slider', name: 'Slider', Component: SliderPage },
+    { path: '/footer', name: 'Footer', Component: FooterPage },
     // { path: '/notification', name: 'Notification', Component: NotificationPage },
 ]

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Alert, Collapse, Table, CopyToClipboard, Card, Select, Icon, Switch } from '../components';
+import { Alert, Collapse, Table, CopyToClipboard, Card, Select, Icon, Switch, ThemeContext } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { prism, darcula, coy, okaidia, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 const statuses = ['info', 'success', 'error', 'warning'];
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
@@ -100,52 +100,63 @@ const AlertPage = () => {
     const text = 'Alert description text';
 
     return (
-        <div className="rui-page">
-            <div className="rui-page-title">{'<Alert/>'} Component</div>
-            <Card outlined title="Usage">
-                <Select
-                    items={statuses}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    label="Alert status"
-                    color="primary"
-                    className="my-10"
-                    value={status}
-                    onChange={v => setStatus(v)}/>
-                <br/>
-                <Switch
-                    color="primary"
-                    check={visible}
-                    leftLabel="Close"
-                    className="mt-10 mb-20"
-                    rightLabel="Open"
-                    onChange={() => setVisible(!visible)}
-                    />
-                <br/>
-                <Alert
-                    visible={visible} 
-                    message={message} 
-                    text={text}
-                    onClose={() => setVisible(false)}
-                    status={status}/>
-                <Collapse
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>}  
-                    icon="code" 
-                    iconSize={18} 
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <h2>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index
-                itemTitles={keys}/>
-        </div>
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page">
+                    <div className="rui-page-title">{'<Alert/>'} Component</div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <Select
+                            items={statuses}
+                            prefix={<Icon name="brush"/>}
+                            width={200}
+                            dark={theme}
+                            label="Alert status"
+                            color="primary"
+                            className="my-10"
+                            value={status}
+                            onChange={v => setStatus(v)}/>
+                        <br/>
+                        <Switch
+                            color="primary"
+                            check={visible}
+                            leftLabel="Close"
+                            className="mt-10 mb-20"
+                            rightLabel="Open"
+                            onChange={() => setVisible(!visible)}
+                            />
+                        <br/>
+                        <Alert
+                            visible={visible} 
+                            message={message} 
+                            text={text}
+                            onClose={() => setVisible(false)}
+                            status={status}/>
+                        <Collapse
+                            extra={<CopyToClipboard 
+                                defaultText="Copy code" 
+                                text={usage} 
+                                dark={theme}
+                                className="mr-10"/>}  
+                            icon="code" 
+                            dark={theme}
+                            iconSize={18} 
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <h2>API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index
+                        itemTitles={keys}/>
+                </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default AlertPage;

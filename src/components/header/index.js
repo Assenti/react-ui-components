@@ -57,8 +57,4 @@ Header.propTypes = {
     smooth: PropTypes.bool,
     className: PropTypes.string
 }
-Header.defaultProps = {
-    height: 50,
-    leftControlIcon: 'menu'
-}
 export default Header;

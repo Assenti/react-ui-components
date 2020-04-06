@@ -1,0 +1,59 @@
+.rui-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px;
+
+    &.centered {
+        justify-content: center;
+    }
+
+    &.smooth {
+        border-radius: $radius * 1.5;
+    }
+
+    &:not(.dark) {
+        background-color: $lightgray;
+    }
+
+    &.dark {
+        background-color: $night;
+        color: white;
+        a {
+            color: #fff;
+        }
+    }
+
+    &.primary {
+        background-color: $primary;
+        color: white;
+        a {
+            color: #fff;
+        }
+    }
+
+    &.info {
+        background-color: $info;
+        color: white;
+        a {
+            color: #fff;
+        }
+    }
+
+    &.success {
+        background-color: $success;
+        color: white;
+        a {
+            color: #fff;
+        }
+    }
+
+    &.error {
+        background-color: $error;
+        color: white;
+        a {
+            color: #fff;
+        }
+    }
+}
