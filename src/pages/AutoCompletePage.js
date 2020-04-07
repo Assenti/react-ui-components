@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AutoComplete, Card, Select, Collapse, CopyToClipboard, Switch, Table, Icon, RadioGroup, ThemeContext, themes } from '../components';
+import { AutoComplete, Card, Select, Collapse, CopyToClipboard, Switch, Table, Icon, RadioGroup, ThemeContext, themes, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { countries } from '../data/countries';
@@ -340,7 +340,7 @@ const AutoCompletePage = () => {
                                 name="type"
                                 className="mt-10" 
                                 onChange={(value) => setType(value)}/>
-                            <br/>
+                            <Divider/>
                             <AutoComplete
                                 items={countries}
                                 width={250}
@@ -353,6 +353,7 @@ const AutoCompletePage = () => {
                                 avatarSize={24}
                                 borderType={border}
                                 color={color}
+                                size={size}
                                 loading={loading}
                                 label={label ? 'Countries' : null}
                                 placeholder="Choose your favourive country"

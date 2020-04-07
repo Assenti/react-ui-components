@@ -55,6 +55,16 @@
         }
     }
 
+    &.dark {
+        .rui-progress {
+            background-color: #ccc;
+        }
+
+        .circle-remain {
+            stroke: #ccc;
+        }
+    }
+
     .rui-progress {
         background-color: $lightgray;
         border-radius: 30px;
@@ -218,22 +228,6 @@
 
         .circle {
             stroke: $error;
-        }
-    }
-
-    &.dark:not(.disabled) {
-        .rui-progress__state {
-            color: $dark;
-        }
-
-        .rui-progress {
-            .rui-progress__complete {
-                background-color: $dark;
-            }
-        }
-
-        .circle {
-            stroke: $dark;
         }
     }
 

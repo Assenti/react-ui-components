@@ -127,6 +127,7 @@ const InputMask = (props) => {
         <InputField 
             {...props}
             type="text"
+            dark={props.dark}
             onKeyDown={handleKeyDown}
             onChange={handleChange}
             value={getValue()}/>
@@ -150,10 +151,8 @@ InputMask.propTypes = {
     suffix: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     lifted: PropTypes.bool,
+    dark: PropTypes.bool,
     whiteBackground: PropTypes.bool,
     className: PropTypes.string
-}
-InputMask.defaultProps = {
-    color: 'primary'
 }
 export default InputMask;

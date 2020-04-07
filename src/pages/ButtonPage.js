@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Button, Table, Card, Switch, BackTopBtn, Collapse, RadioGroup, Select, Icon, CopyToClipboard, ThemeContext, themes } from '../components';
+import { Button, Table, Card, Switch, BackTopBtn, Collapse, RadioGroup, Select, Icon, CopyToClipboard, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -440,6 +440,7 @@ const ButtonPage = () => {
                             className="pl-10 mt-10" 
                             onChange={(value) => setType(value)}/>
                         <br/>
+                        <Divider/>
                         <div className="pa-10">
                             <Button
                                 color={color}

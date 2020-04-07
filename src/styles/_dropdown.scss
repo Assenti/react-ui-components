@@ -23,7 +23,7 @@
     &.dark {
         .rui-dropdown {
             background-color: $night;
-            box-shadow: 0 1px 5px rgba(lightgray, .3);
+            box-shadow: 0 1px 3px rgba(lightgray, .3);
             color: #fff;
         }
 
@@ -46,7 +46,7 @@
     top: 100%;
     min-width: 100%;
     border-radius: $radius;
-    z-index: 5;
+    z-index: 3;
 }
   
 .rui-dropdown-enter {

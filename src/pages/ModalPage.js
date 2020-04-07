@@ -1,45 +1,70 @@
 import React, { useState } from 'react';
-import { Modal, Button, Card, Collapse, Table, Icon, InputField, Checkbox, CopyToClipboard } from '../components';
+import { Modal, Button, Card, Collapse, Table, Icon, InputField, Checkbox, CopyToClipboard, ThemeContext, Switch, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Button, Modal, Checkbox, InputField } from '@assenti/rui-components';
+import { Button, Modal, Checkbox, InputField, Switch } from '@assenti/rui-components';
 
 function Example() {
     const [modal, setModal] = useState(false);
-    const [modalDark, setModalDark] = useState(false);
-    const [modalReverse, setModalReverse] = useState(false);
+    const [reversed, setReversed] = useState(false);
+    const [closable, setClosable] = useState(false);
+    const [centered, setCentered] = useState(false);
+    const [fullScreen, setFullScreen] = useState(false);
 
     return (
-        <div>
+        <>
+            <Switch 
+                color="primary" 
+                check={reversed}
+                rightLabel="Reversed header"
+                className="pl-10 my-10"
+                onChange={() => setReversed(!reversed)}/>
+            <Switch 
+                color="primary" 
+                check={closable}
+                rightLabel="Close on background"
+                className="pl-10 my-10"
+                onChange={() => setClosable(!closable)}/>
+            <br/>
+            <Switch 
+                color="primary" 
+                check={centered}
+                rightLabel="Centered"
+                className="pl-10 my-10"
+                onChange={() => setCentered(!centered)}/>
+            <Switch 
+                color="primary" 
+                check={fullScreen}
+                rightLabel="With full screen option"
+                className="pl-10 my-10"
+                onChange={() => setFullScreen(!fullScreen)}/>
+            <Divider/>
+            <br/>
             <Button
                 color="primary"
-                name="Default modal"
+                name="Open Modal"
                 onClick={() => setModal(true)}/>
-            <Button
-                color="primary"
-                name="Reversed header modal"
-                onClick={() => setModalReverse(true)}/>
-            <Button
-                color="black"
-                name="Dark centered modal"
-                onClick={() => setModalDark(true)}/>
             <Modal
-                closable
-                toggleFullscreen
+                closable={closable}
+                dark={theme}
+                centered={centered}
+                toggleFullscreen={fullScreen}
                 onClose={() => setModal(false)} 
                 visible={modal} 
                 header={<div>Sign in</div>}>
                 <div className="pa-10">
                     <InputField
                         className="my-15 mx-0"
+                        dark={theme}
                         prefix={<Icon name="account" />} 
                         placeholder="Login"/>
                     <InputField
                         className="my-15 mx-0"
+                        dark={theme}
                         prefix={<Icon name="key" />} 
                         placeholder="Password"
                         type="password"/>
@@ -56,66 +81,7 @@ function Example() {
                     </div>
                 </div>
             </Modal>
-            <Modal
-                closable
-                toggleFullscreen
-                headerReverse
-                onClose={() => setModalReverse(false)} 
-                visible={modalReverse} 
-                header={<div>Sign in</div>}>
-                <div className="pa-10">
-                    <InputField
-                        className="my-15 mx-0"
-                        prefix={<Icon name="account" />} 
-                        placeholder="Login"/>
-                    <InputField
-                        className="my-15 mx-0"
-                        prefix={<Icon name="key" />} 
-                        placeholder="Password"
-                        type="password"/>
-                    <Checkbox
-                        className="my-15 mx-0" 
-                        color="primary" 
-                        label="Remember me?"/>
-                    <Button 
-                        className="my-15 mx-0"
-                        color="primary" 
-                        name="Sign in" block/>
-                    <div className="fz-9 rui-link text-center py-10">
-                        Dont't have an account?
-                    </div>
-                </div>
-            </Modal>
-            <Modal
-                dark
-                centered
-                onClose={() => setModalDark(false)} 
-                visible={modalDark} 
-                header="Sign in">
-                <div className="pa-10">
-                    <InputField
-                        className="my-15 mx-0"
-                        prefix={<Icon name="account" />} 
-                        placeholder="Login"/>
-                    <InputField
-                        className="my-15 mx-0"
-                        prefix={<Icon name="key" />} 
-                        placeholder="Password"
-                        type="password"/>
-                    <Checkbox
-                        className="my-15 mx-0" 
-                        color="primary" 
-                        label="Remember me?"/>
-                    <Button 
-                        className="my-15 mx-0"
-                        color="primary" 
-                        name="Sign in" block/>
-                    <div className="fz-9 rui-link text-center py-10">
-                        Dont't have an account?
-                    </div>
-                </div>
-            </Modal>
-        </div>
+        </>
     )
 }`
 
@@ -223,131 +189,109 @@ const items = [
 
 const ModalPage = () => {
     const [modal, setModal] = useState(false);
-    const [modalDark, setModalDark] = useState(false);
-    const [modalReverse, setModalReverse] = useState(false);
+    const [reversed, setReversed] = useState(false);
+    const [closable, setClosable] = useState(false);
+    const [centered, setCentered] = useState(false);
+    const [fullScreen, setFullScreen] = useState(false);
 
     return (
-        <div className="rui-page">
-            <div className="rui-page-title">{'<Modal/>'} Component</div>
-            <Card outlined title="Usage">
-                <Button
-                    color="primary"
-                    name="Default modal"
-                    onClick={() => setModal(true)}/>
-                <Button
-                    color="primary"
-                    name="Reversed header modal"
-                    onClick={() => setModalReverse(true)}/>
-                <Button
-                    color="black"
-                    name="Dark centered modal"
-                    onClick={() => setModalDark(true)}/>
-                <Modal
-                    closable
-                    toggleFullscreen
-                    onClose={() => setModal(false)} 
-                    visible={modal} 
-                    header={<div>Sign in</div>}>
-                    <div className="pa-10">
-                        <InputField
-                            className="my-15 mx-0"
-                            prefix={<Icon name="account" />} 
-                            placeholder="Login"/>
-                        <InputField
-                            className="my-15 mx-0"
-                            prefix={<Icon name="key" />} 
-                            placeholder="Password"
-                            type="password"/>
-                        <Checkbox
-                            className="my-15 mx-0" 
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page">
+                    <div className="rui-page-title">{'<Modal/>'} Component</div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <Switch 
                             color="primary" 
-                            label="Remember me?"/>
-                        <Button 
-                            className="my-15 mx-0"
+                            check={reversed}
+                            rightLabel="Reversed header"
+                            className="pl-10 my-10"
+                            onChange={() => setReversed(!reversed)}/>
+                        <Switch 
                             color="primary" 
-                            name="Sign in" block/>
-                        <div className="fz-9 rui-link text-center py-10">
-                            Dont't have an account?
-                        </div>
-                    </div>
-                </Modal>
-                <Modal
-                    closable
-                    toggleFullscreen
-                    headerReverse
-                    onClose={() => setModalReverse(false)} 
-                    visible={modalReverse} 
-                    header={<div>Sign in</div>}>
-                    <div className="pa-10">
-                        <InputField
-                            className="my-15 mx-0"
-                            prefix={<Icon name="account" />} 
-                            placeholder="Login"/>
-                        <InputField
-                            className="my-15 mx-0"
-                            prefix={<Icon name="key" />} 
-                            placeholder="Password"
-                            type="password"/>
-                        <Checkbox
-                            className="my-15 mx-0" 
+                            check={closable}
+                            rightLabel="Close on background"
+                            className="pl-10 my-10"
+                            onChange={() => setClosable(!closable)}/>
+                        <br/>
+                        <Switch 
                             color="primary" 
-                            label="Remember me?"/>
-                        <Button 
-                            className="my-15 mx-0"
+                            check={centered}
+                            rightLabel="Centered"
+                            className="pl-10 my-10"
+                            onChange={() => setCentered(!centered)}/>
+                        <Switch 
                             color="primary" 
-                            name="Sign in" block/>
-                        <div className="fz-9 rui-link text-center py-10">
-                            Dont't have an account?
-                        </div>
-                    </div>
-                </Modal>
-                <Modal
-                    dark
-                    centered
-                    onClose={() => setModalDark(false)} 
-                    visible={modalDark} 
-                    header="Sign in">
-                    <div className="pa-10">
-                        <InputField
-                            className="my-15 mx-0"
-                            prefix={<Icon name="account" />} 
-                            placeholder="Login"/>
-                        <InputField
-                            className="my-15 mx-0"
-                            prefix={<Icon name="key" />} 
-                            placeholder="Password"
-                            type="password"/>
-                        <Checkbox
-                            className="my-15 mx-0" 
-                            color="primary" 
-                            label="Remember me?"/>
-                        <Button 
-                            className="my-15 mx-0"
-                            color="primary" 
-                            name="Sign in" block/>
-                        <div className="fz-9 rui-link text-center py-10">
-                            Dont't have an account?
-                        </div>
-                    </div>
-                </Modal>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18}
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <h2>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index={true}
-                itemTitles={keys}/>
-        </div>
+                            check={fullScreen}
+                            rightLabel="With full screen option"
+                            className="pl-10 my-10"
+                            onChange={() => setFullScreen(!fullScreen)}/>
+                        <Divider/>
+                        <br/>
+                        <Button
+                            color="primary"
+                            name="Open Modal"
+                            onClick={() => setModal(true)}/>
+                        <Modal
+                            closable={closable}
+                            dark={theme}
+                            centered={centered}
+                            toggleFullscreen={fullScreen}
+                            onClose={() => setModal(false)} 
+                            visible={modal} 
+                            header={<div>Sign in</div>}>
+                            <div className="pa-10">
+                                <InputField
+                                    className="my-15 mx-0"
+                                    dark={theme}
+                                    prefix={<Icon name="account" />} 
+                                    placeholder="Login"/>
+                                <InputField
+                                    className="my-15 mx-0"
+                                    dark={theme}
+                                    prefix={<Icon name="key" />} 
+                                    placeholder="Password"
+                                    type="password"/>
+                                <Checkbox
+                                    className="my-15 mx-0" 
+                                    color="primary" 
+                                    label="Remember me?"/>
+                                <Button 
+                                    className="my-15 mx-0"
+                                    color="primary" 
+                                    name="Sign in" block/>
+                                <div className="fz-9 rui-link text-center py-10">
+                                    Dont't have an account?
+                                </div>
+                            </div>
+                        </Modal>
+                        <Collapse 
+                            icon="code" 
+                            iconSize={18}
+                            dark={theme}
+                            extra={<CopyToClipboard 
+                                defaultText="Copy code" 
+                                dark={theme}
+                                text={usage} 
+                                className="mr-10"/>} 
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <h2>API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index={true}
+                        itemTitles={keys}/>
+                </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 

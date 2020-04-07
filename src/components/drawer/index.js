@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { Button, Tooltip } from '../index';
 
+const xsBreakpoint = 529;
+
 const Drawer = (props) => {
-    const [isXs, setIsXs] = useState(false);
+    const [width, setWidth] = useState('');
 
     const drawerClass = () => {
         let result = '';
@@ -33,18 +35,16 @@ const Drawer = (props) => {
 
     const handleCloseXs = (e) => {
         e.preventDefault();
-        if (isXs || props.absolute) {
+        if (width < xsBreakpoint || props.absolute) {
             props.onClose()
         }
     }
 
     useEffect(() => {
+        setWidth(window.innerWidth);
+
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 529) {
-                setIsXs(false)
-            } else {
-                setIsXs(true)
-            }
+            setWidth(window.innerWidth);
         })
 
         return(() => {
@@ -55,8 +55,8 @@ const Drawer = (props) => {
     const drawerOverlayClass = () => props.drawer ? 'rui-drawer__overlay' : 'rui-drawer__overlay none';
 
     return (
-        <React.Fragment>
-            {isXs || props.absolute ?
+        <>
+            {width < xsBreakpoint || props.absolute ?
             <CSSTransition
                 in={props.drawer}
                 timeout={100}
@@ -123,7 +123,7 @@ const Drawer = (props) => {
                 </CSSTransition>
             </CSSTransition>
             }
-        </React.Fragment>
+        </>
     )
 }
 Drawer.propTypes = {
@@ -133,7 +133,7 @@ Drawer.propTypes = {
     onResize: PropTypes.func,
     onClose: PropTypes.func,
     fullHeight: PropTypes.bool,
-    position: PropTypes.oneOf([undefined,'','right','top','bottom']),
+    position: PropTypes.oneOf([undefined,'','default','right','top','bottom']),
     header: PropTypes.any,
     headerCentered: PropTypes.bool,
     dark: PropTypes.bool,

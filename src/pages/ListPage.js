@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { List, ListItem, Button, Table, Card, Collapse, BackTopBtn, Select, Icon, Switch, RadioGroup, phoneMask, CopyToClipboard } from '../components';
+import { List, ListItem, Button, Table, Card, Collapse, BackTopBtn, Select, Icon, Switch, RadioGroup, phoneMask, CopyToClipboard, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import manImage from '../img/man.png';
 import manImage2 from '../img/hipster.png';
 import manImage3 from '../img/man_.png';
@@ -385,174 +385,196 @@ const ListPage = () => {
     }
     
     return (
-        <div className="rui-page" ref={parent}>
-            <div className="row align-center space-between">
-                <div className="rui-page-title">{'<List/>, <ListItem/>'} Components</div>
-                <div className="row">
-                    <div className="rui-link fz-13 fw-bold mr-10" onClick={() => goListApi()}>List API</div>
-                    <div className="rui-link fz-13 fw-bold" onClick={() => goListItemApi()}>ListItem API</div>
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page" ref={parent}>
+                    <div className="row align-center space-between">
+                        <div className="rui-page-title">{'<List/>, <ListItem/>'} Components</div>
+                        <div className="row">
+                            <div className="rui-link fz-13 fw-bold mr-10" onClick={() => goListApi()}>List API</div>
+                            <div className="rui-link fz-13 fw-bold" onClick={() => goListItemApi()}>ListItem API</div>
+                        </div>
+                    </div>
+                    <Card 
+                        dark={theme} 
+                        header={<h4>Usage</h4>}>
+                        <Select
+                            items={sizes}
+                            prefix={<Icon name="format-size"/>}
+                            width={200}
+                            dark={theme}
+                            label="List size"
+                            color="primary"
+                            className="pl-10"
+                            value={size}
+                            onChange={v => setSize(v)}/>
+                        <br/>
+                        <Select
+                            items={borders}
+                            prefix={<Icon name="shape"/>}
+                            width={200}
+                            dark={theme}
+                            label="Avatar border type"
+                            color="primary"
+                            className="pl-10"
+                            value={border}
+                            onChange={v => setBorder(v)}/>
+                        <br/>
+                        <Select
+                            items={colors}
+                            prefix={<Icon name="brush"/>}
+                            width={200}
+                            dark={theme}
+                            label="Active item color"
+                            color="primary"
+                            className="pl-10"
+                            value={color}
+                            onChange={v => setColor(v)}/>
+                        <br/>
+                        <Switch 
+                            color="primary" 
+                            check={dark}
+                            rightLabel="Dark"
+                            className="pl-10 my-10"
+                            onChange={() => setDark(!dark)}/>
+                        <Switch 
+                            color="primary" 
+                            check={hover}
+                            rightLabel="Hover"
+                            className="pl-10 my-10"
+                            onChange={() => setHover(!hover)}/>
+                        <Switch 
+                            color="primary" 
+                            check={divider}
+                            rightLabel="Hide dividers"
+                            className="pl-10 my-10"
+                            onChange={() => setDivider(!divider)}/>
+                        <br/>
+                        <RadioGroup
+                            options={types} 
+                            value={type}
+                            name="type"
+                            className="pl-10 mt-10" 
+                            onChange={(value) => setType(value)}/>
+                        <br/>
+                        <Switch 
+                            color="primary" 
+                            check={subtitle}
+                            rightLabel="Subtitle"
+                            className="pl-10 my-10"
+                            onChange={() => setSubtitle(!subtitle)}/>
+                        <br/>
+                        <Switch 
+                            color="primary" 
+                            check={rounded}
+                            rightLabel="Rounded active item"
+                            className="pl-10 my-10"
+                            onChange={() => setRounded(!rounded)}/>
+                        <Switch 
+                            color="primary" 
+                            check={left}
+                            rightLabel="Active item left border"
+                            className="pl-10 my-10"
+                            onChange={() => setLeft(!left)}/>
+                        <br/>
+                        <Switch 
+                            color="primary" 
+                            check={checkbox}
+                            rightLabel="Checkbox"
+                            className="pl-10 my-10"
+                            onChange={() => setCheckbox(!checkbox)}/>
+                        <Switch 
+                            color="primary" 
+                            check={controls}
+                            rightLabel="Controls"
+                            className="pl-10 my-10"
+                            onChange={() => setControls(!controls)}/>
+                        <Divider/>
+                        <br/>
+                        <Card
+                            className="ma-10" 
+                            dark={theme} 
+                            width={400}>
+                            <List
+                                size={size}
+                                dark={theme} 
+                                header={
+                                    <div className="row align-center space-between">
+                                        Selected persons: {selected.length}
+                                        {selected.length > 0 ? <Button className="ma-0" light icon="share" size={18}/> : ''}
+                                    </div>
+                                }>
+                                {names.map((item, index) => 
+                                    <ListItem
+                                        isActiveItem={isSelected(item.hero)}
+                                        onClick={() => selectOne(item.hero)}
+                                        key={index} 
+                                        hover={hover}
+                                        item={item.name}
+                                        color={color}
+                                        noDivider={divider}
+                                        roundedActive={rounded}
+                                        leftBorder={left}
+                                        subTitle={subtitle ? item.hero : null}
+                                        icon={type === 'icon' ? item.icon : null}
+                                        avatar={type === 'image' ? item.img : null}
+                                        avatarBorderType={border}
+                                        checkbox={checkbox}
+                                        controls={controls ?
+                                            <div className="row align-center fz-9">
+                                                <Icon 
+                                                    name="smartphone" 
+                                                    size={16} 
+                                                    className="mr-5" 
+                                                    color={theme ? 'lightgray' : ''}/>
+                                                {phoneMask(item.phone)}
+                                                <Button color="light" 
+                                                    className="ml-10" 
+                                                    dark={theme}
+                                                    icon="edit"
+                                                    iconSize={16}/>
+                                            </div> : null}/>
+                                )}
+                            </List>
+                        </Card>
+                        <Collapse 
+                            className="px-15" 
+                            icon="code" 
+                            dark={theme}
+                            extra={<CopyToClipboard 
+                                defaultText="Copy code" 
+                                text={usage} 
+                                dark={theme}
+                                className="mr-10"/>}
+                            iconSize={18} 
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <h2 ref={listApi}>List API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index
+                        itemTitles={keys}/>
+                    <h2 ref={listItemApi}>ListItem API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items2}
+                        index
+                        itemTitles={keys}/>
+                    <BackTopBtn setRef={parent} dark size="medium"/>
                 </div>
-            </div>
-            <Card 
-                outlined 
-                className="px-0"
-                title="Usage">
-                <Select
-                    items={sizes}
-                    prefix={<Icon name="format-size"/>}
-                    width={200}
-                    label="List size"
-                    color="primary"
-                    className="pl-10"
-                    value={size}
-                    onChange={v => setSize(v)}/>
-                <br/>
-                <Select
-                    items={borders}
-                    prefix={<Icon name="shape"/>}
-                    width={200}
-                    label="Avatar border type"
-                    color="primary"
-                    className="pl-10"
-                    value={border}
-                    onChange={v => setBorder(v)}/>
-                <br/>
-                <Select
-                    items={colors}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    label="Active item color"
-                    color="primary"
-                    className="pl-10"
-                    value={color}
-                    onChange={v => setColor(v)}/>
-                <br/>
-                <Switch 
-                    color="primary" 
-                    check={dark}
-                    rightLabel="Dark"
-                    className="pl-10 my-10"
-                    onChange={() => setDark(!dark)}/>
-                <Switch 
-                    color="primary" 
-                    check={hover}
-                    rightLabel="Hover"
-                    className="pl-10 my-10"
-                    onChange={() => setHover(!hover)}/>
-                <Switch 
-                    color="primary" 
-                    check={divider}
-                    rightLabel="Hide dividers"
-                    className="pl-10 my-10"
-                    onChange={() => setDivider(!divider)}/>
-                <br/>
-                <RadioGroup
-                    options={types} 
-                    value={type}
-                    name="type"
-                    className="pl-10 mt-10" 
-                    onChange={(value) => setType(value)}/>
-                <br/>
-                <Switch 
-                    color="primary" 
-                    check={subtitle}
-                    rightLabel="Subtitle"
-                    className="pl-10 my-10"
-                    onChange={() => setSubtitle(!subtitle)}/>
-                <br/>
-                <Switch 
-                    color="primary" 
-                    check={rounded}
-                    rightLabel="Rounded active item"
-                    className="pl-10 my-10"
-                    onChange={() => setRounded(!rounded)}/>
-                <Switch 
-                    color="primary" 
-                    check={left}
-                    rightLabel="Active item left border"
-                    className="pl-10 my-10"
-                    onChange={() => setLeft(!left)}/>
-                <br/>
-                <Switch 
-                    color="primary" 
-                    check={checkbox}
-                    rightLabel="Checkbox"
-                    className="pl-10 my-10"
-                    onChange={() => setCheckbox(!checkbox)}/>
-                <Switch 
-                    color="primary" 
-                    check={controls}
-                    rightLabel="Controls"
-                    className="pl-10 my-10"
-                    onChange={() => setControls(!controls)}/>
-                <Card
-                    className="ma-10" 
-                    dark={dark} 
-                    width={400}>
-                    <List
-                        size={size}
-                        dark={dark} 
-                        header={
-                            <div className="row align-center space-between">
-                                Selected persons: {selected.length}
-                                {selected.length > 0 ? <Button className="ma-0" light icon="share" size={18}/> : ''}
-                            </div>
-                        }>
-                        {names.map((item, index) => 
-                            <ListItem
-                                isActiveItem={isSelected(item.hero)}
-                                onClick={() => selectOne(item.hero)}
-                                key={index} 
-                                hover={hover}
-                                item={item.name}
-                                color={color}
-                                noDivider={divider}
-                                roundedActive={rounded}
-                                leftBorder={left}
-                                subTitle={subtitle ? item.hero : null}
-                                icon={type === 'icon' ? item.icon : null}
-                                avatar={type === 'image' ? item.img : null}
-                                avatarBorderType={border}
-                                checkbox={checkbox}
-                                controls={controls ?
-                                    <div className="row align-center fz-9 text-dark">
-                                        <Icon name="smartphone" size={16} className="mr-5"/>
-                                        {phoneMask(item.phone)}
-                                        <Button color="light" 
-                                            className="ml-10" 
-                                            icon="edit"
-                                            iconSize={16}/>
-                                    </div> : null}/>
-                        )}
-                    </List>
-                </Card>
-                <Collapse 
-                    className="px-15" 
-                    icon="code" 
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>}
-                    iconSize={18} 
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <h2 ref={listApi}>List API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index
-                itemTitles={keys}/>
-            <h2 ref={listItemApi}>ListItem API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items2}
-                index
-                itemTitles={keys}/>
-            <BackTopBtn setRef={parent} dark size="medium"/>
-        </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default ListPage;

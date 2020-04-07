@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Checkbox, Table, Collapse, Card, Select, Icon, Switch, CopyToClipboard, ThemeContext } from '../components';
+import { Checkbox, Table, Collapse, Card, Select, Icon, Switch, CopyToClipboard, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -136,7 +136,7 @@ const CheckboxPage = () => {
                             rightLabel="Disabled"
                             className="my-10"
                             onChange={() => setDisabled(!disabled)}/>
-                        <br/>
+                        <Divider/>
                         <div className="py-10">
                             <Checkbox
                                 checked={check}

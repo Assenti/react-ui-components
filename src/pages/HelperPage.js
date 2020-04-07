@@ -1,7 +1,7 @@
 import React, { createRef } from 'react';
-import { Card, Table, BackTopBtn, List, ListItem, CopyToClipboard } from '../components';
+import { Card, Table, BackTopBtn, List, ListItem, CopyToClipboard, ThemeContext } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const margins = [
     { 
@@ -167,7 +167,6 @@ const textStyles = [
     { class: 'text-center', description: 'Set text alignment on center' },
     { class: 'text-right', description: 'Set text alignment on right' }
 ]
-
 const presetColors = [
     { name: 'primary', value: '#1678c2' },
     { name: 'info', value: '#42a5f5' },
@@ -199,94 +198,104 @@ const HelperPage = () => {
     const parent = createRef();
 
     return (
-        <div className="rui-page" ref={parent}>
-            <div className="row align-center space-between">
-                <div className="rui-page-title">Helper CSS classes</div>
-            </div>
-            <Card outlined title="Margins & Paddings">
-                <h4>Margins</h4>
-                <Table
-                    bordered
-                    headers={['Class', 'Description', 'Example']}
-                    items={margins}
-                    index={true}
-                    itemTitles={['class', 'description', 'example']}/>
-                <br/>
-                <h4>Paddings</h4>
-                <Table
-                    bordered
-                    headers={['Class', 'Description', 'Example']}
-                    items={paddings}
-                    index={true}
-                    itemTitles={['class', 'description', 'example']}/>
-            </Card>
-            <br/>
-            <Card outlined title="Font size and weight">
-                <Table
-                    bordered
-                    headers={['Class', 'Description']}
-                    items={fonts}
-                    index={true}
-                    itemTitles={['class', 'description']}/>
-            </Card>
-            <br/>
-            <Card outlined title="Text alignment">
-                <Table
-                    bordered
-                    headers={['Class', 'Description']}
-                    items={textStyles}
-                    index={true}
-                    itemTitles={['class', 'description']}/>
-            </Card>
-            <br/>
-            <Card outlined title="Flex box">
-                <Table
-                    bordered
-                    headers={['Class', 'Description']}
-                    items={flexbox}
-                    index={true}
-                    itemTitles={['class', 'description']}/>
-            </Card>
-            <br/>
-            <Card outlined title="Set color">
-                <List size="medium">
-                    {presetColors.map((item, index) =>
-                        <ListItem  
-                            key={index}
-                            noDivider
-                            render={
-                                <div className="row align-center space-between">
-                                    <div 
-                                        style={{ width: 100, height: 30, border: '1px solid lightgray' }}
-                                        className={`bg-${item.name} border row align-center justify-center fz-9`}>
-                                    </div>
-                                    <div className="ml-10 row align-center">
-                                        <span>{item.name} (HEX: {item.value})</span>
-                                        <CopyToClipboard 
-                                            text={item.value}
-                                            className="ml-5" 
-                                            defaultText="Copy HEX"/>
-                                    </div>
-                                </div>
-                            }
-                            />
-                    )}
-                </List>
-                <div className="py-10">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter> 
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page" ref={parent}>
+                    <div className="row align-center space-between">
+                        <div className="rui-page-title">Helper CSS classes</div>
+                    </div>
+                    <Card dark={theme} header={<h4>Margins & Paddings</h4>}>
+                        <h4>Margins</h4>
+                        <Table
+                            bordered
+                            dark={theme}
+                            headers={['Class', 'Description', 'Example']}
+                            items={margins}
+                            index={true}
+                            itemTitles={['class', 'description', 'example']}/>
+                        <br/>
+                        <h4>Paddings</h4>
+                        <Table
+                            bordered
+                            dark={theme}
+                            headers={['Class', 'Description', 'Example']}
+                            items={paddings}
+                            index={true}
+                            itemTitles={['class', 'description', 'example']}/>
+                    </Card>
+                    <br/>
+                    <Card dark={theme} header={<h4>Font size and weight</h4>}>
+                        <Table
+                            bordered
+                            dark={theme}
+                            headers={['Class', 'Description']}
+                            items={fonts}
+                            index={true}
+                            itemTitles={['class', 'description']}/>
+                    </Card>
+                    <br/>
+                    <Card dark={theme} header={<h4>Text alignment</h4>}>
+                        <Table
+                            bordered
+                            dark={theme}
+                            headers={['Class', 'Description']}
+                            items={textStyles}
+                            index={true}
+                            itemTitles={['class', 'description']}/>
+                    </Card>
+                    <br/>
+                    <Card dark={theme} header={<h4>Flex box</h4>}>
+                        <Table
+                            bordered
+                            dark={theme}
+                            headers={['Class', 'Description']}
+                            items={flexbox}
+                            index={true}
+                            itemTitles={['class', 'description']}/>
+                    </Card>
+                    <br/>
+                    <Card dark={theme} title="Set color">
+                        <List size="medium" dark={theme}>
+                            {presetColors.map((item, index) =>
+                                <ListItem  
+                                    key={index}
+                                    noDivider
+                                    render={
+                                        <div className="row align-center space-between">
+                                            <div 
+                                                style={{ width: 100, height: 30, border: '1px solid lightgray' }}
+                                                className={`bg-${item.name} border row align-center justify-center fz-9`}>
+                                            </div>
+                                            <div className="ml-10 row align-center">
+                                                <span>{item.name} (HEX: {item.value})</span>
+                                                <CopyToClipboard 
+                                                    text={item.value}
+                                                    className="ml-5" 
+                                                    defaultText="Copy HEX"/>
+                                            </div>
+                                        </div>
+                                    }
+                                    />
+                            )}
+                        </List>
+                        <div className="py-10">
+                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter> 
+                        </div>
+                        <Table
+                            dark={theme}
+                            className="mt-10"
+                            bordered
+                            headers={['Class', 'Description']}
+                            items={colors}
+                            index={true}
+                            itemTitles={['class', 'description']}/>
+                    </Card>
+                    <BackTopBtn setRef={parent} size="medium" dark/>
                 </div>
-                <Table
-                    className="mt-10"
-                    bordered
-                    headers={['Class', 'Description']}
-                    items={colors}
-                    index={true}
-                    itemTitles={['class', 'description']}/>
-            </Card>
-            <BackTopBtn setRef={parent} size="medium" dark/>
-        </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default HelperPage;

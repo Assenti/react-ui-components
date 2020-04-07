@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Preloader, Table, Collapse, Card, CopyToClipboard } from '../components';
+import { Button, Preloader, Table, Collapse, Card, CopyToClipboard, ThemeContext } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -67,33 +67,45 @@ const PreloaderPage = () => {
     }
 
     return (
-        <div className="rui-page">
-            <div className="rui-page-title">{'<Preloader/>'} Component</div>
-            <Card outlined title="Usage">
-                <p>Launch full page preloader and make all actions on screen disabled</p>
-                <div className="py-10">
-                    <Button name="Activate" color="primary" onClick={handleClick}/>
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page">
+                    <div className="rui-page-title">{'<Preloader/>'} Component</div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <p>Launch full page preloader and make all actions on screen disabled</p>
+                        <div className="py-10">
+                            <Button name="Activate" color="primary" onClick={handleClick}/>
+                        </div>
+                        <Collapse 
+                            dark={theme}
+                            icon="code"
+                            extra={<CopyToClipboard 
+                                defaultText="Copy code" 
+                                text={usage} 
+                                dark={theme}
+                                className="mr-10"/>}  
+                            iconSize={18} 
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <Preloader
+                        visible={loading}/>
+                    <h2>API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index={true}
+                        itemTitles={keys}/>
                 </div>
-                <Collapse 
-                    icon="code"
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>}  
-                    iconSize={18} 
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <Preloader
-                visible={loading}/>
-            <h2>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index={true}
-                itemTitles={keys}/>
-        </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default PreloaderPage;

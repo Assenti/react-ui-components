@@ -6,7 +6,7 @@
 
     &.dark {
         border-color: $night;
-        box-shadow: 0 0 5px rgba(lightgray, .3);
+        box-shadow: 0 0 3px rgba(lightgray, .3);
 
         .rui-card-header {
             color: #fff;
@@ -24,6 +24,13 @@
                 color: #fff;
             }
         }
+
+        &.hover {
+            &:hover {
+                box-shadow: 0 1px 10px rgba(lightgray, .3) !important;
+                transition: all .3s ease-in-out;
+            }
+        }
     }
 
     &.flat {
@@ -37,7 +44,7 @@
     }
 
     &:not(.flat):not(.outlined):not(.dark) {
-        box-shadow: 0 1px 5px rgba(black, .3);
+        box-shadow: 0 1px 5px rgba($dark, .3);
     }
 
     &.hover {

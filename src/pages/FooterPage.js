@@ -92,6 +92,7 @@ const colors = ['default', 'primary', 'info', 'success', 'error'];
 const FooterPage = () => {
     const [color, setColor] = useState(colors[0]);
     const [smooth, setSmooth] = useState(false);
+    const [fixed, setFixed] = useState(false);
 
     const getYears = () => {
         if (new Date().getFullYear() === 2020) return new Date().getFullYear();
@@ -122,9 +123,16 @@ const FooterPage = () => {
                             rightLabel="Smooth borders"
                             className="my-10"
                             onChange={() => setSmooth(!smooth)}/>
+                        <Switch 
+                            color="primary" 
+                            check={fixed}
+                            rightLabel="Fixed"
+                            className="my-10"
+                            onChange={() => setFixed(!fixed)}/>
                         <Divider/>
                         <br/>
                         <Footer
+                            fixed={fixed}
                             color={!theme ? color : null}
                             smooth={smooth}
                             dark={theme}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Card, Table, Collapse, Progress, Select, Icon, Button, Tooltip, Switch, CopyToClipboard } from '../components';
+import { Card, Table, Collapse, Progress, Select, Icon, Button, Tooltip, Switch, CopyToClipboard, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -206,110 +206,127 @@ const ProgressPage = () => {
     const [active, setActive] = useState(false);
 
     return (
-        <div className="rui-page">
-            <div className="rui-page-title">{'<Progress/>'} Component</div>
-            <Card outlined title="Usage">
-                <Select
-                    items={colors}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    label="Radio button color"
-                    color="primary"
-                    value={color}
-                    onChange={v => setColor(v)}/>
-                <br/>
-                <Select
-                    items={sizes}
-                    prefix={<Icon name="format-size"/>}
-                    width={200}
-                    label="Radio button size"
-                    color="primary"
-                    value={size}
-                    onChange={v => setSize(v)}/>
-                <br/>
-                <Switch
-                    check={hideState}
-                    rightLabel="Hide state"
-                    color="primary"
-                    className="my-10"
-                    onChange={() => setHideState(!hideState)}/>
-                <Switch
-                    check={disabled}
-                    rightLabel="Disabled"
-                    color="primary"
-                    className="my-10"
-                    onChange={() => setDisabled(!disabled)}/>
-                <Switch
-                    check={active}
-                    rightLabel="Active"
-                    color="primary"
-                    className="my-10"
-                    onChange={() => setActive(!active)}/>
-                <br/>
-                <div className="row align-center my-10">
-                    <Tooltip 
-                        tooltip="Reduce progress" 
-                        color="error"
-                        className="mr-20">
-                        <Button 
-                            icon="minus" 
-                            color="error"
-                            disabled={complete === 0}
-                            onClick={() => {
-                                if (complete > 0) setComplete(complete - 10)
-                            }}/>
-                    </Tooltip>
-                    <Progress
-                        color={color}
-                        size={size}
-                        active={active}
-                        icon={complete === 100 ? 'check-circle' : null}
-                        iconColor="#1aaa55" 
-                        hideState={hideState}
-                        disabled={disabled}
-                        complete={complete}/>
-                    <Tooltip 
-                        tooltip="Add progress" 
-                        color="primary"
-                        className="ml-20">
-                        <Button 
-                            icon="plus" 
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page">
+                    <div className="rui-page-title">{'<Progress/>'} Component</div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <Select
+                            items={colors}
+                            dark={theme}
+                            prefix={<Icon name="brush"/>}
+                            width={200}
+                            label="Radio button color"
                             color="primary"
-                            disabled={complete === 100}
-                            onClick={() => {
-                                if (complete < 100) setComplete(complete + 10)
-                            }}/>
-                    </Tooltip>
+                            value={color}
+                            onChange={v => setColor(v)}/>
+                        <br/>
+                        <Select
+                            items={sizes}
+                            prefix={<Icon name="format-size"/>}
+                            width={200}
+                            dark={theme}
+                            label="Radio button size"
+                            color="primary"
+                            value={size}
+                            onChange={v => setSize(v)}/>
+                        <br/>
+                        <Switch
+                            check={hideState}
+                            rightLabel="Hide state"
+                            color="primary"
+                            className="my-10"
+                            onChange={() => setHideState(!hideState)}/>
+                        <Switch
+                            check={disabled}
+                            rightLabel="Disabled"
+                            color="primary"
+                            className="my-10"
+                            onChange={() => setDisabled(!disabled)}/>
+                        <Switch
+                            check={active}
+                            rightLabel="Active"
+                            color="primary"
+                            className="my-10"
+                            onChange={() => setActive(!active)}/>
+                        <Divider/>
+                        <br/>
+                        <div className="row align-center my-10">
+                            <Tooltip 
+                                tooltip="Reduce progress" 
+                                color="error"
+                                className="mr-20">
+                                <Button 
+                                    icon="minus" 
+                                    color="error"
+                                    disabled={complete === 0}
+                                    onClick={() => {
+                                        if (complete > 0) setComplete(complete - 10)
+                                    }}/>
+                            </Tooltip>
+                            <Progress
+                                color={color}
+                                size={size}
+                                active={active}
+                                dark={theme}
+                                icon={complete === 100 ? 'check-circle' : null}
+                                iconColor="#1aaa55" 
+                                hideState={hideState}
+                                disabled={disabled}
+                                complete={complete}/>
+                            <Tooltip 
+                                tooltip="Add progress" 
+                                color="primary"
+                                className="ml-20">
+                                <Button 
+                                    icon="plus" 
+                                    color="primary"
+                                    disabled={complete === 100}
+                                    onClick={() => {
+                                        if (complete < 100) setComplete(complete + 10)
+                                    }}/>
+                            </Tooltip>
+                        </div>
+                        <Progress
+                            circle
+                            className="my-10"
+                            color={color}
+                            dark={theme}
+                            size={size}
+                            active={active}
+                            icon={complete === 100 ? 'check-circle' : null}
+                            iconColor="#1aaa55"
+                            hideState={hideState}
+                            disabled={disabled}
+                            complete={complete}/>
+                        <Collapse 
+                            icon="code" 
+                            iconSize={18} 
+                            dark={theme}
+                            extra={<CopyToClipboard 
+                                defaultText="Copy code" 
+                                dark={theme}
+                                text={usage} 
+                                className="mr-10"/>} 
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <h2>API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index={true}
+                        itemTitles={keys}/>
                 </div>
-                <Progress
-                    circle
-                    className="my-10"
-                    color={color}
-                    size={size}
-                    active={active}
-                    icon={complete === 100 ? 'check-circle' : null}
-                    iconColor="#1aaa55"
-                    hideState={hideState}
-                    disabled={disabled}
-                    complete={complete}/>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18} 
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <h2>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index={true}
-                itemTitles={keys}/>
-        </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default ProgressPage;

@@ -9,6 +9,7 @@ const Progress = (props) => {
             name: 'rui-progress__container',
             circle: props.circle ? 'circle' : '',
             active: props.active ? 'active' : '',
+            dark: props.dark ? 'dark' : '',
             color: props.color ? props.color : 'primary',
             size: props.size && props.size !== 'default' ? props.size : '',
             disabled: props.disabled ? 'disabled' : '',
@@ -108,7 +109,7 @@ const Progress = (props) => {
     return (
         <div className={componentClass()}>
             {!props.circle ?
-                <React.Fragment>
+                <>
                     <div className="rui-progress" style={{ width: props.width ? props.width : 250 }}>
                         <div className="rui-progress__complete" style={{ width: `${getCompletion()}%` }}></div>
                     </div>
@@ -123,8 +124,8 @@ const Progress = (props) => {
                             name={props.icon} 
                             color={colorParams()} 
                             size={sizeParams().iconSize}/> : ''}
-                </React.Fragment> :
-                <React.Fragment>
+                </> :
+                <>
                     <Circle/>
                     {!props.hideState && !props.icon ? 
                         <div className="rui-progress__state circle">
@@ -136,7 +137,7 @@ const Progress = (props) => {
                             className="circle" 
                             name={props.icon} 
                             color={colorParams()}/> : ''}
-                </React.Fragment> 
+                </> 
             }
         </div>
     )
@@ -145,18 +146,16 @@ Progress.propTypes = {
     complete: PropTypes.number.isRequired,
     circle: PropTypes.bool,
     active: PropTypes.bool,
-    color: PropTypes.oneOf([undefined,'','primary','info','success','error','dark']),
+    color: PropTypes.oneOf([undefined,'','default','primary','info','success','error']),
     disabled: PropTypes.bool,
-    size: PropTypes.oneOf([undefined,'','medium','large']),
+    size: PropTypes.oneOf([undefined,'','default','medium','large']),
     icon: PropTypes.string,
     iconSize: PropTypes.number,
     iconColor: PropTypes.string,
     radius: PropTypes.number,
     stroke: PropTypes.number,
+    dark: PropTypes.bool,
     hideState: PropTypes.bool,
     className: PropTypes.string
-}
-Progress.defaultProps = {
-    color: 'primary'
 }
 export default Progress;

@@ -1,31 +1,14 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { List, ListItem, Icon, Drawer, InputField, Dropdown, Switch, ThemeContext, AutoComplete } from '../components';
+import { List, ListItem, Icon, Drawer, Switch, ThemeContext, AutoComplete } from '../components';
 import { compare } from '../components';
 
 export const DrawerContent = (props) => {
     const history = useHistory();
-    const [search, setSearch] = useState('');
     const [list, setList] = useState(true);
 
     const handleItemClick = (item) => {
         history.push(item.path)
-        setSearch('')
-    }
-
-    const searchedItems = () => {
-        if (search) {
-            return props.items
-                .filter(item => item.name.toLowerCase().includes(search.toLowerCase()) && 
-                    (item.path !== '/' &&
-                    item.path !== '/helper'))
-        } else {
-            return []
-        }
-    }
-
-    const handleKeyUp = (e) => {
-        if (e.key === 'Escape') setSearch('')
     }
 
     const sortedRoutes = () => {
@@ -51,8 +34,10 @@ export const DrawerContent = (props) => {
                         size={30}
                         className="rotating" 
                         color="#61dafb"/>}>
-                    <div className="row py-5 mx-5 justify-center sticky" 
-                        style={{ top: 40, width: 'calc(100% - 10px)' }}>
+                    <div className={theme ? 
+                        'row py-5 px-5 justify-center sticky bg-night' : 
+                        'row py-5 px-5 justify-center sticky bg-lightgray'} 
+                        style={{ top: 40 }}>
                         <AutoComplete
                             width="100%"
                             items={sortedRoutes()}

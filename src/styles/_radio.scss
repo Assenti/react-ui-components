@@ -31,10 +31,37 @@
     }
 
     &.disabled {
+        color: gray;
         cursor: not-allowed;
         color: gray !important;
         user-select: none;
         -moz-user-select: none;
+
+        .rui-radio-checkmark {
+            background-color: transparent;
+            border: 1px solid gray;
+        }
+
+        .rui-radio-checkmark:after {
+            background-color: gray;
+        }
+
+        input:checked ~ .rui-radio-checkmark {
+            background-color: transparent;
+        }
+
+        &:hover {
+            color: darken(gray, 10%);
+        }
+
+        input[type=radio]:checked + label:before,
+        input[type=radio]:checked + label span.sg-icon-target:before {
+            color: #fff;
+        }
+
+        input:focus {
+            box-shadow: 0 0 3px 1px rgba(gray, .3);
+        }
     }
 
     .rui-radio-checkmark {
@@ -43,7 +70,6 @@
         left: 0;
         height: 14px;
         width: 14px;
-        background-color: #eee;
         border-radius: 50%;
     }
 
@@ -63,14 +89,22 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: #fff;
     }
 
     &.primary:not(.disabled) {
         color: $primary;
 
-        input:checked ~ .rui-radio-checkmark {
+        .rui-radio-checkmark {
+            background-color: transparent;
+            border: 1px solid $primary;
+        }
+
+        .rui-radio-checkmark:after {
             background-color: $primary;
+        }
+
+        input:checked ~ .rui-radio-checkmark {
+            background-color: transparent;
         }
 
         &:hover {
@@ -79,7 +113,7 @@
 
         input[type=radio]:checked + label:before,
         input[type=radio]:checked + label span.sg-icon-target:before {
-            color: $primary; 
+            color: #fff;
         }
 
         input:focus {
@@ -90,36 +124,90 @@
     &.info:not(.disabled) {
         color: $info;
 
-        input:checked ~ .rui-radio-checkmark {
+        .rui-radio-checkmark {
+            background-color: transparent;
+            border: 1px solid $info;
+        }
+
+        .rui-radio-checkmark:after {
             background-color: $info;
+        }
+
+        input:checked ~ .rui-radio-checkmark {
+            background-color: transparent;
         }
 
         &:hover {
             color: darken($info, 10%);
+        }
+
+        input[type=radio]:checked + label:before,
+        input[type=radio]:checked + label span.sg-icon-target:before {
+            color: #fff;
+        }
+
+        input:focus {
+            box-shadow: 0 0 3px 1px rgba($info, .3);
         }
     }
 
     &.success:not(.disabled) {
         color: $success;
 
-        input:checked ~ .rui-radio-checkmark {
+        .rui-radio-checkmark {
+            background-color: transparent;
+            border: 1px solid $success;
+        }
+
+        .rui-radio-checkmark:after {
             background-color: $success;
+        }
+
+        input:checked ~ .rui-radio-checkmark {
+            background-color: transparent;
         }
 
         &:hover {
             color: darken($success, 10%);
+        }
+
+        input[type=radio]:checked + label:before,
+        input[type=radio]:checked + label span.sg-icon-target:before {
+            color: #fff;
+        }
+
+        input:focus {
+            box-shadow: 0 0 3px 1px rgba($success, .3);
         }
     }
 
     &.error:not(.disabled) {
         color: $error;
 
-        input:checked ~ .rui-radio-checkmark {
+        .rui-radio-checkmark {
+            background-color: transparent;
+            border: 1px solid $error;
+        }
+
+        .rui-radio-checkmark:after {
             background-color: $error;
+        }
+
+        input:checked ~ .rui-radio-checkmark {
+            background-color: transparent;
         }
 
         &:hover {
             color: darken($error, 10%);
+        }
+
+        input[type=radio]:checked + label:before,
+        input[type=radio]:checked + label span.sg-icon-target:before {
+            color: #fff;
+        }
+
+        input:focus {
+            box-shadow: 0 0 3px 1px rgba($error, .3);
         }
     }
 

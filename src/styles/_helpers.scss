@@ -98,10 +98,17 @@
     border-radius: $radius * 2;
 }
 
-.hoverable:hover {
-    background-color: $lightgray;
-    transition: all .2s ease-in-out;
-    border-radius: $radius;
+.hoverable {
+
+    &:hover {
+        background-color: $lightgray;
+        transition: all .2s ease-in-out;
+        border-radius: $radius;
+    }
+
+    &.dark:hover {
+        background-color: gray;
+    }
 }
 
 .relative {
@@ -115,7 +122,6 @@
 .sticky {
     position: sticky;
     top: 0;
-    transition: all .5s ease-in;
 }
 
 .tile {

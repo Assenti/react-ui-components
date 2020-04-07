@@ -158,6 +158,7 @@ const InputField = (props) => {
                     (props.type === 'password' ? 
                     <Icon 
                         className="rui-input-clear"
+                        color={props.dark ? 'lightgray' : ''}
                         name={isPassword ? 'eye' : 'eye-off'} 
                         onClick={handlePassTypeChange}/> : '')
                 }
@@ -183,7 +184,7 @@ InputField.propTypes = {
     onClear: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
     lifted: PropTypes.bool,
     autoFocus: PropTypes.bool,
-    color: PropTypes.oneOf([undefined,'primary','info','success', 'error']),
+    color: PropTypes.oneOf([undefined,'','default','primary','info','success', 'error']),
     disabled: PropTypes.bool,
     borderType: PropTypes.oneOf([undefined,'','default','tile','smooth','rounded']),
     uppercase: PropTypes.bool,
@@ -201,9 +202,5 @@ InputField.propTypes = {
     hint: PropTypes.string,
     hintColor: PropTypes.oneOf(['success','error']),
     className: PropTypes.string
-}
-InputField.defaultProps = {
-    color: 'primary',
-    type: 'text'
 }
 export default InputField;

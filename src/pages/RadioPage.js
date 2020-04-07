@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { RadioGroup, Table, Card, Collapse, Switch, Select, Icon, CopyToClipboard } from '../components';
+import { RadioGroup, Table, Card, Collapse, Switch, Select, Icon, CopyToClipboard, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const citiesUS = ['Washington, D.C.', 'New York City', 'Chicago', 'Boston', 'San Francisco', 'Los Angeles'];
 const colors = ['primary', 'info', 'success', 'error'];
@@ -137,68 +137,83 @@ const RadioPage = () => {
     const [vertical, setVertical] = useState(true);
 
     return (
-        <div className="rui-page">
-            <div className="rui-page-title">{'<RadioGroup/>'} Component</div>
-            <Card outlined title="Usage">
-                <Select
-                    items={colors}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    label="Radio button color"
-                    color="primary"
-                    value={color}
-                    onChange={v => setColor(v)}/>
-                <br/>
-                <Select
-                    items={sizes}
-                    prefix={<Icon name="format-size"/>}
-                    width={200}
-                    label="Radio button size"
-                    color="primary"
-                    value={size}
-                    onChange={v => setSize(v)}/>
-                <br/>
-                <Switch
-                    check={vertical}
-                    rightLabel="Vertical"
-                    color="primary"
-                    className="my-10"
-                    onChange={() => setVertical(!vertical)}/>
-                <br/>
-                <Switch
-                    check={isDisabled}
-                    rightLabel="Disabled"
-                    color="primary"
-                    className="my-10"
-                    onChange={() => setIsDisabled(!isDisabled)}/>
-                <br/>
-                <RadioGroup 
-                    value={cityUS} 
-                    vertical={vertical}
-                    name="city"
-                    size={size}
-                    color={color}
-                    disabled={isDisabled}
-                    onChange={(value) => setCityUS(value)}
-                    options={citiesUS}/>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18} 
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <h2>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index={true}
-                itemTitles={keys}/>
-        </div>
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page">
+                    <div className="rui-page-title">{'<RadioGroup/>'} Component</div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <Select
+                            items={colors}
+                            prefix={<Icon name="brush"/>}
+                            width={200}
+                            dark={theme}
+                            label="Radio button color"
+                            color="primary"
+                            value={color}
+                            onChange={v => setColor(v)}/>
+                        <br/>
+                        <Select
+                            items={sizes}
+                            prefix={<Icon name="format-size"/>}
+                            width={200}
+                            dark={theme}
+                            label="Radio button size"
+                            color="primary"
+                            value={size}
+                            onChange={v => setSize(v)}/>
+                        <br/>
+                        <Switch
+                            check={vertical}
+                            rightLabel="Vertical"
+                            color="primary"
+                            className="my-10"
+                            onChange={() => setVertical(!vertical)}/>
+                        <br/>
+                        <Switch
+                            check={isDisabled}
+                            rightLabel="Disabled"
+                            color="primary"
+                            className="my-10"
+                            onChange={() => setIsDisabled(!isDisabled)}/>
+                        <br/>
+                        <Divider/>
+                        <RadioGroup 
+                            value={cityUS} 
+                            vertical={vertical}
+                            name="city"
+                            size={size}
+                            color={color}
+                            disabled={isDisabled}
+                            onChange={(value) => setCityUS(value)}
+                            options={citiesUS}/>
+                        <Collapse 
+                            icon="code" 
+                            iconSize={18} 
+                            dark={theme}
+                            extra={<CopyToClipboard 
+                                defaultText="Copy code" 
+                                dark={theme}
+                                text={usage} 
+                                className="mr-10"/>} 
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <h2>API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index={true}
+                        itemTitles={keys}/>
+                </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default RadioPage;

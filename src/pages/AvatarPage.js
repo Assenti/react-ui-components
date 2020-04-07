@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Avatar, Table, Collapse, Select, Icon, RadioGroup, CopyToClipboard, ThemeContext } from '../components';
+import { Card, Avatar, Table, Collapse, Select, Icon, RadioGroup, CopyToClipboard, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import manImage from '../img/man.png';
@@ -115,6 +115,7 @@ const AvatarPage = () => {
                             name="type"
                             className="pl-10 mt-10" 
                             onChange={(value) => setType(value)}/>
+                        <Divider/>
                         <div className="pa-10">
                             <Avatar
                                 color={color}

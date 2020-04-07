@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Card, Table, Collapse, Select, Icon, Switch, InputField, CopyToClipboard, ThemeContext, themes } from '../components';
+import { Calendar, Card, Table, Collapse, Select, Icon, Switch, InputField, CopyToClipboard, ThemeContext, themes, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -383,6 +383,7 @@ const CalendarPage = () => {
                             rightLabel="Hide weekend highlight"
                             className="my-10"
                             onChange={() => setHideWeekend(!hideWeekend)}/>
+                        <Divider/>
                         <br/>
                         <Calendar
                             width={full ? null : 400}

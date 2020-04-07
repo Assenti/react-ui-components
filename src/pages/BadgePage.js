@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Badge, Card, Table, Icon, Collapse, Select, Switch, Avatar, CopyToClipboard, ThemeContext } from '../components';
+import { Badge, Card, Table, Icon, Collapse, Select, Switch, Avatar, CopyToClipboard, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import manImage from '../img/hipster.png';
@@ -138,6 +138,7 @@ const BadgePage = () => {
                             rightLabel="Rounded"
                             className="my-10"
                             onChange={() => setRounded(!rounded)}/>
+                        <Divider/>
                         <br/>
                         <div className="row align-center py-10">
                             <Badge 

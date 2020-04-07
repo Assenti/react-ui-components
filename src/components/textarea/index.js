@@ -29,6 +29,7 @@ const TextareaField = (props) => {
             whiteBackground: props.whiteBackground ? 'white-background' : '',
             borderType: props.borderType && props.borderType !== 'rounded' ? props.borderType : '',
             lifted: props.lifted ? 'lifted' : '',
+            dark: props.dark ? 'dark' : '',
             color: getInputColor(),
             disabled: props.disabled ? 'disabled' : '',
             className: props.className ? props.className : ''
@@ -160,6 +161,7 @@ TextareaField.propTypes = {
     onClear: PropTypes.func,
     clearable: PropTypes.bool,
     onBlur: PropTypes.func,
+    dark: PropTypes.bool,
     disabled: PropTypes.bool,
     onFocus: PropTypes.func,
     lifted: PropTypes.bool,

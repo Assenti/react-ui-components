@@ -8,6 +8,72 @@
         padding: 3px 0;
     }
 
+    &.dark {
+        .rui-input-uploader__container {
+            background-color: transparent;
+
+            i {
+                margin: 0 5px;
+                svg {
+                    path {
+                        fill: lightgray;
+                    }
+                }
+            }
+
+            span {
+                font-size: .9rem;
+                color: lightgray;
+            }
+        }
+
+        .rui-input-uploader__item {
+            & > span {
+                color: #fff;
+            }
+    
+            &:last-child {
+                border-bottom: none;
+            }
+    
+            &:hover {
+                background-color: gray;
+            }
+        }
+    }
+
+    &:not(.dark) {
+        .rui-input-uploader__container {
+            &:hover:not(.disabled) {
+                background-color: #fff;
+            }
+
+            i {
+                margin: 0 5px;
+                svg {
+                    path {
+                        fill: gray;
+                    }
+                }
+            }
+
+            span {
+                font-size: .9rem;
+                color: gray;
+            }
+        }
+
+        .rui-input-uploader__item {
+            & > span {
+                color: $dark;
+            }
+    
+            &:hover {
+                background-color: $lightgray;
+            }
+        }
+    }
+
     .rui-input-uploader__container {
         width: 100%;
         position: relative;
@@ -15,10 +81,6 @@
         align-items: center;
         border: 1px solid lightgray;
         background-color: $lightgray;
-
-        &:hover:not(.disabled) {
-            background-color: #fff;
-        }
 
         &.lifted {
             box-shadow: 0 1px 3px rgba(black, .2);
@@ -137,20 +199,6 @@
             }
         }
 
-        i {
-            margin: 0 5px;
-            svg {
-                path {
-                    fill: gray;
-                }
-            }
-        }
-
-        span {
-            font-size: .9rem;
-            color: gray;
-        }
-
         label {
             display: block;
             width: calc(100% - 50px);
@@ -199,11 +247,9 @@
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid lightgray;
-        
 
         & > span {
             width: calc(100% - 30px);
-            color: $dark;
             font-size: .9rem;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -216,7 +262,6 @@
         }
 
         &:hover {
-            background-color: $lightgray;
             transition: all .2s ease-in-out;
         }
 

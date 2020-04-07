@@ -11,6 +11,18 @@
             textarea {
                 color: #fff;
             }
+
+            .rui-input-clear {
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    min-width: 20px;
+    
+                    path {
+                        fill: lightgray !important;
+                    }
+                }
+            }
         }
 
         .rui-input-container:hover {
@@ -29,6 +41,14 @@
         .rui-input-field__hint {
             color: #fff;
         }
+
+        i {
+            svg {
+                path {
+                    fill: lightgray;
+                }
+            }
+        }            
     }
 
     &:not(.dark) {

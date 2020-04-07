@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Timeline, Table, BackTopBtn, Card, Collapse, Switch, Select, Icon, CopyToClipboard, ThemeContext } from '../components';
+import { Timeline, Table, BackTopBtn, Card, Collapse, Switch, Select, Icon, CopyToClipboard, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -201,7 +201,7 @@ const TimelinePage = () => {
                         <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
                     </div>
                     <Card dark={theme} header={<h4>Usage</h4>}>
-                        <div className="row column py-10">
+                        <div className="row column pb-5">
                             <Switch 
                                 color="primary" 
                                 check={icon}
@@ -215,7 +215,7 @@ const TimelinePage = () => {
                                 rightLabel="Tag outlined" 
                                 onChange={() => setTagOutlined(!tagOutlined)}/>
                         </div>
-                        <div className="pb-20">
+                        <div>
                             <Select
                                 items={colors}
                                 prefix={<Icon name="brush"/>}
@@ -236,6 +236,7 @@ const TimelinePage = () => {
                                 dark={theme}
                                 onChange={v => setTagColor(v)}/>
                         </div>
+                        <Divider/>
                         <Timeline 
                             items={items} 
                             date="date"

@@ -19,6 +19,72 @@
     .rui-select__list {
         position: relative;
     }
+
+    &.dark {
+        .rui-select__multiple {
+            .rui-select__multiple-items {
+                background-color: transparent;
+        
+                i {
+                    svg {
+                        path {
+                            fill: lightgray;
+                        }
+                    }
+                }
+            }
+    
+            label {
+                color: #fff;
+            }
+        }
+    }
+
+    &:not(.dark) {
+        .rui-select__multiple {
+            .rui-select__multiple-items {
+                &.primary {
+                    &:focus,
+                    &:hover {
+                        background-color: #fff;
+                    }
+                }
+        
+                &.info {
+                    &:focus,
+                    &:hover {
+                        background-color: #fff;
+                    }
+                }
+        
+                &.error {
+                    &:focus,
+                    &:hover {
+                        background-color: #fff;
+                    }
+                }
+        
+                &.success {
+                    &:focus,
+                    &:hover {
+                        background-color: #fff;
+                    }
+                }
+        
+                i {
+                    svg {
+                        path {
+                            fill: gray;
+                        }
+                    }
+                }
+            }
+    
+            label {
+                color: #fff;
+            }
+        }
+    }
 }
 
 .rui-select__menu {
@@ -112,7 +178,6 @@
             &:focus,
             &:hover {
                 border-color: $primary;
-                background-color: #fff;
             }
 
             &:focus {
@@ -136,7 +201,6 @@
             &:focus,
             &:hover {
                 border-color: $info;
-                background-color: #fff;
             }
 
             &:focus {
@@ -160,7 +224,6 @@
             &:focus,
             &:hover {
                 border-color: $error;
-                background-color: #fff;
             }
 
             &:focus {
@@ -184,7 +247,6 @@
             &:focus,
             &:hover {
                 border-color: $success;
-                background-color: #fff;
             }
 
             &:focus {
@@ -200,14 +262,6 @@
                             fill: $success;
                         }
                     }
-                }
-            }
-        }
-
-        i {
-            svg {
-                path {
-                    fill: gray;
                 }
             }
         }

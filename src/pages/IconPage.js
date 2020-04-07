@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
-import { Table, Icon, Card, Collapse, Tooltip, InputField, BackTopBtn } from '../components';
+import { Table, Icon, Card, Collapse, Tooltip, InputField, BackTopBtn, ThemeContext } from '../components';
 import { description } from '../../package.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const icons = [
     'delete', 
@@ -220,63 +220,83 @@ const IconPage = () => {
         )
     }
 
+    const getIconClass = (dark) => {
+        if (dark) {
+            return 'row-inline text-center column justify-center align-center pa-5 ma-10 hoverable dark';
+        } else {
+            return 'row-inline text-center column justify-center align-center pa-5 ma-10 hoverable';
+        }
+    }
+
     return (
-        <div className="rui-page" ref={parent}>
-            <div className="row align-center space-between">
-                <div className="rui-page-title">{'<Icon/>'} Component</div>
-                <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
-            </div>
-            <p><strong>{description}</strong> use primarily
-                <a href="https://materialdesignicons.com/"
-                    target="blank_"
-                    className="ml-5">Material Design Icons</a>
-            </p>
-            <br/>
-            <Card outlined color="gray" title="Icons collection">
-                <div className="pa-10">
-                    <InputField 
-                        value={search}
-                        prefix={<Icon name="search"/>}
-                        placeholder="Search icons"
-                        color="primary"
-                        onChange={e => setSearch(e.target.value)}/>
-                </div>
-                {filteredIcons().map((item, index) => 
-                    <div key={index} 
-                        style={{ width: 35, height: 35 }}
-                        className="row-inline text-center column justify-center align-center pa-5 ma-10 hoverable">
-                        <Tooltip tooltip={item}>
-                            <Icon name={item}/>
-                        </Tooltip>
-                        {/* <div className="mt-5 fz-8">{item}</div> */}
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page" ref={parent}>
+                    <div className="row align-center space-between">
+                        <div className="rui-page-title">{'<Icon/>'} Component</div>
+                        <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
                     </div>
-                )}
-                <Collapse icon="code" iconSize={18} tooltip="Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <br/>
-            <Card outlined title="Custom icon">
-                <div className="pa-10">
-                    <Tooltip tooltip="I am custom svg icon" position="right">
-                        <Icon custom={<CustomIconSvg/>}/>
-                    </Tooltip>
+                    <p><strong>{description}</strong> use primarily
+                        <a href="https://materialdesignicons.com/"
+                            target="blank_"
+                            className="ml-5">Material Design Icons</a>
+                    </p>
+                    <br/>
+                    <Card dark={theme} color="gray" header={<h4>Icons collection</h4>}>
+                        <div className="pa-10">
+                            <InputField 
+                                value={search}
+                                dark={theme}
+                                prefix={<Icon name="search"/>}
+                                placeholder="Search icons"
+                                color="primary"
+                                onChange={e => setSearch(e.target.value)}/>
+                        </div>
+                        {filteredIcons().map((item, index) => 
+                            <div key={index} 
+                                style={{ width: 35, height: 35 }}
+                                className={getIconClass(theme)}>
+                                <Tooltip tooltip={item}>
+                                    <Icon name={item} color={theme ? 'lightgray' : ''}/>
+                                </Tooltip>
+                            </div>
+                        )}
+                        <Collapse 
+                            icon="code"
+                            dark={theme} 
+                            iconSize={18} 
+                            tooltip="Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <br/>
+                    <Card dark={theme} header={<h4>Custom icon</h4>}>
+                        <div className="pa-10">
+                            <Tooltip tooltip="I am custom svg icon" position="right">
+                                <Icon custom={<CustomIconSvg/>}/>
+                            </Tooltip>
+                        </div>
+                        <SyntaxHighlighter language="jsx" 
+                            style={theme ? tomorrow : coy}>
+                            {customIconUsage}
+                        </SyntaxHighlighter>
+                    </Card>
+                    <h2 ref={api}>API</h2>
+                    <BackTopBtn setRef={parent} dark size="medium"/>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index={true}
+                        itemTitles={keys}/>
                 </div>
-                <SyntaxHighlighter language="jsx" style={prism}>
-                    {customIconUsage}
-                </SyntaxHighlighter>
-            </Card>
-            <h2 ref={api}>API</h2>
-            <BackTopBtn setRef={parent} dark size="medium"/>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index={true}
-                itemTitles={keys}/>
-        </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 

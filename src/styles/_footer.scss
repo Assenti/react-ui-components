@@ -5,6 +5,14 @@
     width: 100%;
     padding: 15px;
 
+    &.fixed {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        border-top: 1px solid lightgray;
+    }
+
     &.centered {
         justify-content: center;
     }

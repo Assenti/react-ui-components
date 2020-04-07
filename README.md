@@ -70,6 +70,7 @@ export default App;
 - [ ] Notification
 - [ ] Carousel
 - [ ] Range
+- [ ] Make components adaptive for mobile devices
 
 ## Changelog
 You can track changelog [here](/CHANGELOG.md)

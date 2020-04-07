@@ -68,6 +68,7 @@ const AutoComplete = (props) => {
                 content={
                     <>
                         <List dark={props.dark}
+                            size={props.size}
                             header={props.listHeader}>
                             {filtered().map((item, index) => 
                                 <ListItem
@@ -101,6 +102,7 @@ const AutoComplete = (props) => {
                             prefix={props.prefix}
                             suffix={handleSuffix()}
                             value={search}
+                            size={props.size}
                             clearable={props.clearable}
                             onClear={handleClear}
                             onFocus={() => !props.disabled ? setVisible(true) : {}}

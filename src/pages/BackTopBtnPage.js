@@ -129,7 +129,7 @@ const BackTopBtnPage = () => {
                     </div>
                     <div className="row align-center">Scroll down <Icon className="ml-5" name="arrow-down-bold" size={18}/></div>
                     <Card dark={theme} header={<h4>Usage</h4>} className="mt-20">
-                        <List header="Countries">
+                        <List header="Countries" dark={theme}>
                             {countries.map((item, index) => 
                                 <ListItem
                                     key={index}

@@ -1,7 +1,7 @@
 import React, { useState, createRef } from 'react';
-import { Uploader, Card, Table, Collapse, BackTopBtn, CopyToClipboard, Select, Icon, Switch } from '../components';
+import { Uploader, Card, Table, Collapse, BackTopBtn, CopyToClipboard, Select, Icon, Switch, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const usage =
 `// Usage examples
@@ -230,101 +230,112 @@ const UploaderPage = () => {
     }
 
     return (
-        <div className="rui-page" ref={parent}>
-            <div className="row align-center space-between">
-                <div className="rui-page-title">{'<Uploader/>'} Component</div>
-                <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
-            </div>
-            <Card outlined title="Usage">
-                <Select
-                    items={sizes}
-                    prefix={<Icon name="format-size"/>}
-                    width={200}
-                    label="InputField size"
-                    color="primary"
-                    className="ml-5"
-                    value={size}
-                    onChange={v => setSize(v)}/>
-                <br/>
-                <Select
-                    items={colors}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    label="InputField color"
-                    color="primary"
-                    className="ml-5"
-                    value={color}
-                    onChange={v => setColor(v)}/>
-                <br/>
-                <Select
-                    items={borders}
-                    prefix={<Icon name="shape"/>}
-                    width={200}
-                    label="InputField border type"
-                    color="primary"
-                    className="ml-5"
-                    value={border}
-                    onChange={v => setBorder(v)}/>
-                <br/>
-                <Switch 
-                    color="primary" 
-                    check={disabled}
-                    rightLabel="Disabled"
-                    className="my-10 ml-5"
-                    onChange={() => setDisabled(!disabled)}/>
-                <Switch 
-                    color="primary" 
-                    check={lifted}
-                    rightLabel="Lifted"
-                    className="my-10 ml-5"
-                    onChange={() => setLifted(!lifted)}/>
-                <br/>
-                <Switch 
-                    color="primary" 
-                    check={multiple}
-                    rightLabel="Multiple"
-                    className="my-10 ml-5"
-                    onChange={() => setMultiple(!multiple)}/>
-                <Switch 
-                    color="primary" 
-                    check={label}
-                    rightLabel="Label"
-                    className="my-10 ml-5"
-                    onChange={() => setLabel(!label)}/>
-                <br/>
-                <Uploader
-                    placeholder="File upload"
-                    label={label ? 'Upload your file(-s)' : null}
-                    value={files}
-                    title="Сhoose a file(-s) please"
-                    color={color}
-                    disabled={disabled}
-                    borderType={border}
-                    multiple={multiple}
-                    lifted={lifted}
-                    size={size}
-                    onDelete={handleFileDelete}
-                    width={300}
-                    onChange={files => setFiles(files)}/>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18} 
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>}
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <BackTopBtn setRef={parent} dark size="medium"/>
-            <h2 ref={api}>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={rows}
-                index={true}
-                itemTitles={keys}/>
-        </div>
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page" ref={parent}>
+                    <div className="row align-center space-between">
+                        <div className="rui-page-title">{'<Uploader/>'} Component</div>
+                        <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
+                    </div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <Select
+                            items={sizes}
+                            dark={theme}
+                            prefix={<Icon name="format-size"/>}
+                            width={200}
+                            label="Size"
+                            color="primary"
+                            className="ml-5"
+                            value={size}
+                            onChange={v => setSize(v)}/>
+                        <br/>
+                        <Select
+                            items={colors}
+                            dark={theme}
+                            prefix={<Icon name="brush"/>}
+                            width={200}
+                            label="Color"
+                            color="primary"
+                            className="ml-5"
+                            value={color}
+                            onChange={v => setColor(v)}/>
+                        <br/>
+                        <Select
+                            items={borders}
+                            dark={theme}
+                            prefix={<Icon name="shape"/>}
+                            width={200}
+                            label="Border type"
+                            color="primary"
+                            className="ml-5"
+                            value={border}
+                            onChange={v => setBorder(v)}/>
+                        <br/>
+                        <Switch 
+                            color="primary" 
+                            check={disabled}
+                            rightLabel="Disabled"
+                            className="my-10 ml-5"
+                            onChange={() => setDisabled(!disabled)}/>
+                        <Switch 
+                            color="primary" 
+                            check={lifted}
+                            rightLabel="Lifted"
+                            className="my-10 ml-5"
+                            onChange={() => setLifted(!lifted)}/>
+                        <br/>
+                        <Switch 
+                            color="primary" 
+                            check={multiple}
+                            rightLabel="Multiple"
+                            className="my-10 ml-5"
+                            onChange={() => setMultiple(!multiple)}/>
+                        <Switch 
+                            color="primary" 
+                            check={label}
+                            rightLabel="Label"
+                            className="my-10 ml-5"
+                            onChange={() => setLabel(!label)}/>
+                        <Divider/>
+                        <br/>
+                        <Uploader
+                            placeholder="File upload"
+                            label={label ? 'Upload your file(-s)' : null}
+                            value={files}
+                            dark={theme}
+                            title="Сhoose a file(-s) please"
+                            color={color}
+                            disabled={disabled}
+                            borderType={border}
+                            multiple={multiple}
+                            lifted={lifted}
+                            size={size}
+                            onDelete={handleFileDelete}
+                            width={300}
+                            onChange={files => setFiles(files)}/>
+                        <Collapse 
+                            icon="code" 
+                            iconSize={18} 
+                            dark={theme}
+                            extra={<CopyToClipboard dark={theme} defaultText="Copy code" text={usage} className="mr-10"/>}
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <BackTopBtn setRef={parent} dark size="medium"/>
+                    <h2 ref={api}>API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={rows}
+                        index={true}
+                        itemTitles={keys}/>
+                </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default UploaderPage;

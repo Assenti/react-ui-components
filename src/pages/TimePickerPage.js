@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TimePicker, Card, Select, Icon, Switch, Table, Collapse, CopyToClipboard, ThemeContext } from '../components';
+import { TimePicker, Card, Select, Icon, Switch, Table, Collapse, CopyToClipboard, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -168,6 +168,7 @@ const TimePickerPage = () => {
                             className="my-10"
                             rightLabel="No seconds"
                             />
+                        <Divider/>
                         <TimePicker
                             color={color}
                             size={size}

@@ -62,8 +62,6 @@
     }
 
     &.dark {
-        background-color: $night;
-
         .rui-list-header {
             color: #fff;
         }
@@ -142,6 +140,10 @@
                 border-top-left-radius: 30px;
                 border-bottom-left-radius: 30px;
             }
+        }
+
+        .rui-list-subtitle {
+            color: lightgray;
         }
     }
 
@@ -310,6 +312,7 @@
     font-size: .8rem;
     color: gray;
     padding: 5px 0;
+    margin-bottom: 5px;
 
     .tag {
         margin: 0 !important;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch, ExpansionList, Table, Card, Collapse, Icon, Select, CopyToClipboard, List, ListItem, ThemeContext } from '../components';
+import { Switch, ExpansionList, Table, Card, Collapse, Icon, Select, CopyToClipboard, List, ListItem, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { countries } from '../data/countries';
@@ -174,6 +174,7 @@ const ExpansionListPage = () => {
                             rightLabel="Reverse" 
                             className="my-10"
                             onChange={() => setReverse(!reverse)}/>
+                        <Divider/>
                         <ExpansionList
                             width={250} 
                             size={size}

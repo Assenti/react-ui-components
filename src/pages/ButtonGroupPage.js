@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ButtonGroup, Card, Table, Collapse, Select, Icon, Switch, CopyToClipboard, ThemeContext, themes } from '../components';
+import { ButtonGroup, Card, Table, Collapse, Select, Icon, Switch, CopyToClipboard, ThemeContext, themes, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -203,6 +203,7 @@ const ButtonGroupPage = () => {
                             rightLabel="Lifted"
                             className="pl-10 my-10"
                             onChange={() => setLifted(!lifted)}/>
+                        <Divider/>
                         <br/>
                         <div className="pa-10">
                             <ButtonGroup 

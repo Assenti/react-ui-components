@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Switch, Table, Card, Collapse, CopyToClipboard, Select, Icon, RadioGroup } from '../components';
+import { Switch, Table, Card, Collapse, CopyToClipboard, Select, Icon, RadioGroup, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const usage =
 `// Usage examples
@@ -179,81 +179,88 @@ const SwitchPage = () => {
     const [size, setSize] = useState(sizes[0]);
 
     return (
-        <div className="rui-page">
-            <div className="rui-page-title">{'<Switch/>'} Component</div>
-            <Card outlined title="Usage">
-                <Select
-                    items={colors}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    label="Switch color"
-                    color="primary"
-                    className="my-10"
-                    value={color}
-                    onChange={v => setColor(v)}/>
-                <br/>
-                <Select
-                    items={sizes}
-                    prefix={<Icon name="format-size"/>}
-                    width={200}
-                    label="Switch size"
-                    color="primary"
-                    className="my-10"
-                    value={size}
-                    onChange={v => setSize(v)}/>
-                <br/>
-                <Switch 
-                    check={disabled} 
-                    color="primary"
-                    rightLabel="Disabled" 
-                    className="my-10"
-                    onChange={() => setDisabled(!disabled)}/>
-                <br/>
-                <Switch 
-                    check={vertical} 
-                    color="primary"
-                    rightLabel="Vertical" 
-                    className="my-10"
-                    onChange={() => setVertical(!vertical)}/>
-                <br/>
-                <RadioGroup
-                    options={types} 
-                    value={type}
-                    name="type"
-                    className="my-10" 
-                    onChange={(value) => setType(value)}/>
-                <br/>
-                <div className="py-10">
-                    <Switch 
-                        check={check} 
-                        color={color}
-                        size={size}
-                        leftLabel={type === 'label' ? 'Left label' : ''}
-                        rightLabel={type === 'label' ? 'Right label' : ''} 
-                        leftIcon={type === 'icon' ? 'moon' : ''}
-                        rightIcon={type === 'icon' ? 'sun' : ''} 
-                        disabled={disabled}
-                        vertical={vertical} 
-                        onChange={() => setCheck(!check)}/>
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page">
+                    <div className="rui-page-title">{'<Switch/>'} Component</div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <Select
+                            items={colors}
+                            prefix={<Icon name="brush"/>}
+                            width={200}
+                            dark={theme}
+                            label="Switch color"
+                            color="primary"
+                            value={color}
+                            onChange={v => setColor(v)}/>
+                        <br/>
+                        <Select
+                            items={sizes}
+                            dark={theme}
+                            prefix={<Icon name="format-size"/>}
+                            width={200}
+                            label="Switch size"
+                            color="primary"
+                            className="my-10"
+                            value={size}
+                            onChange={v => setSize(v)}/>
+                        <br/>
+                        <Switch 
+                            check={disabled} 
+                            color="primary"
+                            rightLabel="Disabled" 
+                            className="my-10"
+                            onChange={() => setDisabled(!disabled)}/>
+                        <br/>
+                        <Switch 
+                            check={vertical} 
+                            color="primary"
+                            rightLabel="Vertical" 
+                            className="my-10"
+                            onChange={() => setVertical(!vertical)}/>
+                        <br/>
+                        <RadioGroup
+                            options={types} 
+                            value={type}
+                            name="type"
+                            className="my-10" 
+                            onChange={(value) => setType(value)}/>
+                        <Divider/>
+                        <div className="py-10">
+                            <Switch 
+                                check={check} 
+                                color={color}
+                                size={size}
+                                leftLabel={type === 'label' ? 'Left label' : ''}
+                                rightLabel={type === 'label' ? 'Right label' : ''} 
+                                leftIcon={type === 'icon' ? 'moon' : ''}
+                                rightIcon={type === 'icon' ? 'sun' : ''} 
+                                disabled={disabled}
+                                vertical={vertical} 
+                                onChange={() => setCheck(!check)}/>
+                        </div>
+                        <Collapse 
+                            icon="code" 
+                            dark={theme}
+                            iconSize={18} 
+                            extra={<CopyToClipboard dark={theme} defaultText="Copy code" text={usage} className="mr-10"/>} 
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <h2>API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index={true}
+                        itemTitles={keys}/>
                 </div>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18} 
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <h2>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index={true}
-                itemTitles={keys}/>
-        </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default SwitchPage;

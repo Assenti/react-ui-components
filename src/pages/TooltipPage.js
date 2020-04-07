@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tooltip, Button, Card, Table, Collapse, CopyToClipboard, Select, Icon, ThemeContext } from '../components';
+import { Tooltip, Button, Card, Table, Collapse, CopyToClipboard, Select, Icon, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -74,6 +74,7 @@ const TooltipPage = () => {
                             value={color}
                             onChange={v => setColor(v)}/>
                         <br/>
+                        <Divider/>
                         <div className="row align-center py-20">
                             <Tooltip 
                                 tooltip="Top position"

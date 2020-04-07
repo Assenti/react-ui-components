@@ -258,6 +258,7 @@ const Table = (props) => {
                     onChange={page => setCurrentPage(page)}
                     perPageVariants={props.perPageVariants}
                     perPage={perPage}
+                    dark={props.dark}
                     perPageText={props.perPageText}
                     onPerPageSelect={value => setPerPage(value)}
                     itemsCount={props.itemsTotal ? props.itemsTotal : 0}
@@ -288,7 +289,7 @@ Table.propTypes = {
     selectKey: PropTypes.string,
     onSelect: PropTypes.func,
     sortable: PropTypes.bool,
-    size: PropTypes.oneOf([undefined,'','medium','large']),
+    size: PropTypes.oneOf([undefined,'','default','medium','large']),
     indexSign: PropTypes.string,
     stripped: PropTypes.bool,
     bordered: PropTypes.bool,

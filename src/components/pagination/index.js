@@ -18,6 +18,7 @@ const Pagination = (props) => {
             btn: 'rui-pagination',
             size: props.size ? props.size : '',
             rounded: props.rounded ? 'rounded' : '',
+            dark: props.dark ? 'dark' : '',
             color: props.color ? props.color : 'primary',
             className: props.className ? props.className : ''
         }
@@ -91,7 +92,6 @@ const Pagination = (props) => {
                 onClick={handleOnPrev}>
                 <ChevronBack />
             </div>
-
             {activePages.map((item, index) => {
                 return (
                     <div key={index} 
@@ -105,16 +105,15 @@ const Pagination = (props) => {
                     </div>
                 )
             })}
-
             <div className={isNextAvailable() ? 'rui-pagination-item' : 'rui-pagination-item disabled'} 
                 onClick={handleOnNext}>
-                <ChevronNext />
+                <ChevronNext/>
             </div>
-
             <div className="rui-pagination-per-page">
                 <Select
                     minWidth={getSize()}
                     size={props.size}
+                    dark={props.dark}
                     width={props.size === 'large' ? 110 : 100}
                     rounded={props.rounded}
                     color={props.color}
@@ -138,14 +137,8 @@ Pagination.propTypes = {
     perPageText: PropTypes.string,
     color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
     rounded: PropTypes.bool,
+    dark: PropTypes.bool,
     size: PropTypes.oneOf([undefined,'','medium','large']),
     className: PropTypes.string
-}
-Pagination.defaulfProps = {
-    perPage: 10,
-    current: 1,
-    perPageVariants: [10, 20, 50, 100],
-    perPageText: 'page',
-    color: 'primary'
 }
 export default Pagination;

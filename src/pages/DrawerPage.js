@@ -29,6 +29,7 @@ function Example() {
                             key={index}
                             isActiveItem={name === page}
                             noDivider
+                            onClick={() => setPage(name)}
                             item={drawerMin ? '' : name}
                             icon={icon}
                             tooltip={name}
@@ -74,7 +75,7 @@ function Example() {
             <div className="pa-10" style={{ width: 200 }}>
                 <Select
                     items={positions}
-                    prefix={<Icon name="book-open"/>}
+                    prefix={<Icon name="chart-ppf"/>}
                     color="primary"
                     className="my-0"
                     value={position}
@@ -234,17 +235,18 @@ const DrawerPage = () => {
                                 min={drawerMin}
                                 dark={theme}
                                 onClose={() => setDrawer(false)}
-                                header={drawerMin ? <Icon name="react" /> : 'Drawer'}
+                                header={drawerMin ? <Icon name="react" color="#61dafb"/> : 'Drawer'}
                                 collapsable
                                 headerCentered
                                 onResize={() => setDrawerMin(!drawerMin)}>
-                                <List size="medium">
+                                <List size="medium" dark={theme}>
                                     {stack.map(({name, icon}, index) => 
                                         <ListItem
                                             key={index}
                                             isActiveItem={name === page}
                                             noDivider
                                             hover
+                                            onClick={() => setPage(name)}
                                             item={drawerMin ? '' : name}
                                             icon={icon}
                                             tooltip={name}
@@ -288,7 +290,7 @@ const DrawerPage = () => {
                             <div className="pa-10" style={{ width: 200 }}>
                                 <Select
                                     items={positions}
-                                    prefix={<Icon name="book-open"/>}
+                                    prefix={<Icon name="chart-ppf"/>}
                                     color="primary"
                                     dark={theme}
                                     className="my-0"
@@ -307,8 +309,8 @@ const DrawerPage = () => {
                                 dark={theme}
                                 position={position}
                                 onClose={() => setVisible(false)}
-                                header={<div className="row align-center"><Icon name="react" className="mr-5"/> Drawer Header</div>}>
-                                <List size="medium">
+                                header={<div className="row align-center"><Icon name="react" className="mr-5" color="#61dafb"/> Drawer Header</div>}>
+                                <List size="medium" dark={theme}>
                                     {stack.map((item, index) => 
                                     <ListItem 
                                         key={index}

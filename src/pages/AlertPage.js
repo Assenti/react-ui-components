@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Collapse, Table, CopyToClipboard, Card, Select, Icon, Switch, ThemeContext } from '../components';
+import { Alert, Collapse, Table, CopyToClipboard, Card, Select, Icon, Switch, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 const statuses = ['info', 'success', 'error', 'warning'];
@@ -112,7 +112,7 @@ const AlertPage = () => {
                             dark={theme}
                             label="Alert status"
                             color="primary"
-                            className="my-10"
+                            className="mb-10"
                             value={status}
                             onChange={v => setStatus(v)}/>
                         <br/>
@@ -124,6 +124,7 @@ const AlertPage = () => {
                             rightLabel="Open"
                             onChange={() => setVisible(!visible)}
                             />
+                        <Divider/>
                         <br/>
                         <Alert
                             visible={visible} 

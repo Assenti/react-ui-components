@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { FloatingBtn, Card, Table, Collapse, Dialog, Select, Icon, Switch, CopyToClipboard } from '../components';
+import { FloatingBtn, Card, Table, Collapse, Dialog, Select, Icon, Switch, CopyToClipboard, ThemeContext, themes, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import manImage from '../img/man.png';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
@@ -169,77 +169,94 @@ const FloatingBtnPage = () => {
     const [position, setPosition] = useState(positions[3]);
 
     return (
-        <div className="rui-page">
-            <div className="rui-page-title">{'<FloatingBtn/>'} Component</div>
-            <Card outlined title="Usage">
-                <Select
-                    items={colors}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    label="Color theme"
-                    color="primary"
-                    value={color}
-                    onChange={v => setColor(v)}/>
-                <br/>
-                <Select
-                    items={positions}
-                    prefix={<Icon name="book-open"/>}
-                    width={200}
-                    label="Position"
-                    color="primary"
-                    value={position}
-                    onChange={v => setPosition(v)}/>
-                 <br/>
-                 <Switch 
-                    color="primary" 
-                    check={tooltip}
-                    rightLabel="Tooltip"
-                    className="my-10"
-                    onChange={() => setTooltip(!tooltip)}/>
-                <br/>
-                <Card 
-                    className="relative"
-                    width={200} 
-                    img={manImage}
-                    footer={<h4 className="text-center">John Doe</h4>}>
-                    <FloatingBtn 
-                        icon="plus"
-                        size="large"
-                        tooltip={tooltip ? 'Add Friend' : null}
-                        color={color}
-                        position={position} 
-                        onClick={() => setDialog(true)}/>
-                </Card>
-                <Dialog 
-                    visible={dialog}
-                    icon="account-plus"
-                    iconColor="#1678c2"
-                    titleColor="#1678c2" 
-                    onCancel={() => setDialog(false)}
-                    cancelText="Nope"
-                    onConfirm={() => setDialog(false)}
-                    confirmText="Yeap"
-                    title="New friend"
-                    description="Add John to your friends list?"/>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18}
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>}
-                    contentStyles={{ padding: 0 }}
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter> 
-                </Collapse>
-            </Card>
-            <h2>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index
-                itemTitles={keys}/>
-        </div>
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page">
+                    <div className="rui-page-title">{'<FloatingBtn/>'} Component</div>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
+                        <Select
+                            items={colors}
+                            dark={theme}
+                            prefix={<Icon name="brush"/>}
+                            width={200}
+                            label="Color theme"
+                            color="primary"
+                            value={color}
+                            onChange={v => setColor(v)}/>
+                        <br/>
+                        <Select
+                            items={positions}
+                            dark={theme}
+                            prefix={<Icon name="book-open"/>}
+                            width={200}
+                            label="Position"
+                            color="primary"
+                            value={position}
+                            onChange={v => setPosition(v)}/>
+                        <br/>
+                        <Switch 
+                            color="primary" 
+                            check={tooltip}
+                            rightLabel="Tooltip"
+                            className="my-10"
+                            onChange={() => setTooltip(!tooltip)}/>
+                        <Divider/>
+                        <br/>
+                        <Card 
+                            className="relative"
+                            width={200}
+                            dark={theme} 
+                            img={manImage}
+                            footer={<h4 className="text-center">John Doe</h4>}>
+                            <FloatingBtn 
+                                icon="plus"
+                                size="large"
+                                tooltip={tooltip ? 'Add Friend' : null}
+                                color={color}
+                                position={position} 
+                                onClick={() => setDialog(true)}/>
+                        </Card>
+                        <Dialog 
+                            visible={dialog}
+                            dark={theme}
+                            icon="account-plus"
+                            iconColor="#1678c2"
+                            titleColor="#1678c2" 
+                            onCancel={() => setDialog(false)}
+                            cancelText="Nope"
+                            onConfirm={() => setDialog(false)}
+                            confirmText="Yeap"
+                            title="New friend"
+                            description="Add John to your friends list?"/>
+                        <Collapse 
+                            icon="code" 
+                            dark={theme}
+                            iconSize={18}
+                            extra={<CopyToClipboard 
+                                defaultText="Copy code"
+                                dark={theme} 
+                                text={usage} 
+                                className="mr-10"/>}
+                            contentStyles={{ padding: 0 }}
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter> 
+                        </Collapse>
+                    </Card>
+                    <h2>API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index
+                        itemTitles={keys}/>
+                </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default FloatingBtnPage;

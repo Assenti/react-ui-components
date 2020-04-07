@@ -10,6 +10,7 @@ const Uploader = (props) => {
         let result = '';
         let className = {
             input: 'rui-input-uploader',
+            dark: props.dark ? 'dark' : '',
             className: props.className ? props.className : ''
         }
         for (const key in className) {

@@ -35,7 +35,7 @@ const ListItem = (props) => {
             tabIndex={props.tabIndex} 
             className={itemClass()}>
             {!props.render ?
-                <React.Fragment>
+                <>
                     <div className="rui-list-item__left-side">
                         <div className="row align-center">
                             {props.avatar && !props.icon ? 
@@ -70,7 +70,7 @@ const ListItem = (props) => {
                         {props.controls}
                     </div>
                     {props.children}
-                </React.Fragment>  :
+                </>  :
                 props.render
             }
         </div>

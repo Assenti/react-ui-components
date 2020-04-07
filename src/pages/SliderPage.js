@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Card, Table, Avatar, Slider, Collapse, CopyToClipboard, Divider, Switch } from '../components'
+import { Card, Table, Avatar, Slider, Collapse, CopyToClipboard, Divider, Switch, ThemeContext } from '../components'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import manImage from '../img/man.png';
 import manImage2 from '../img/hipster.png';
 import manImage3 from '../img/old.png';
@@ -40,6 +40,13 @@ const items = [
         default: '', 
         type: 'string | number',
         value: ''
+    },
+    { 
+        property: 'dark',
+        description: 'Set dark mode', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
     },
     { 
         property: 'className',
@@ -152,54 +159,64 @@ const SliderPage = () => {
     const [vertical, setVertical] = useState(true);
 
     return (
-        <div className="rui-page">
-            <div className="rui-page-title">{'<Slider/>'} Component</div>
-            <Card title="Usage" outlined>
-                <Slider 
-                    items={cards}
-                    render={(item, index) => 
-                        <Card
-                            hover
-                            width={120} 
-                            img={item}
-                            footer={<h4 className="text-center">Person</h4>}/>
-                    }/>
-                <Divider/>
-                <Switch 
-                    color="primary" 
-                    check={vertical}
-                    rightLabel="Vertical"
-                    className="my-10"
-                    onChange={() => setVertical(!vertical)}/>
-                <br/>
-                <Slider 
-                    items={avatars}
-                    vertical={vertical}
-                    length={300}
-                    render={(item, index) => 
-                    <Avatar 
-                        icon={item.icon} 
-                        iconColor={item.iconColor}
-                        iconSize={item.iconSize}
-                        size={item.size}/>}/>
-                <Collapse 
-                    icon="code" 
-                    iconSize={18}
-                    extra={<CopyToClipboard defaultText="Copy code" text={usage} className="mr-10"/>} 
-                    tooltip="Show/Hide Code">
-                    <SyntaxHighlighter language="jsx" style={prism}>
-                        {usage}
-                    </SyntaxHighlighter>
-                </Collapse>
-            </Card>
-            <h2>API</h2>
-            <Table
-                bordered
-                headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                items={items}
-                index={true}
-                itemTitles={keys}/>
-        </div>
+        <ThemeContext.Consumer>
+            {theme => (
+                <div className="rui-page">
+                    <div className="rui-page-title">{'<Slider/>'} Component</div>
+                    <Card header={<h4>Usage</h4>} dark={theme}>
+                        <Slider 
+                            items={cards}
+                            dark={theme}
+                            render={(item, index) => 
+                                <Card
+                                    hover
+                                    width={120} 
+                                    dark={theme}
+                                    img={item}
+                                    footer={<h4 className="text-center">Person</h4>}/>
+                            }/>
+                        <Divider/>
+                        <Switch 
+                            color="primary" 
+                            check={vertical}
+                            rightLabel="Vertical"
+                            className="my-10"
+                            onChange={() => setVertical(!vertical)}/>
+                        <br/>
+                        <Slider 
+                            items={avatars}
+                            vertical={vertical}
+                            length={300}
+                            dark={theme}
+                            render={(item, index) => 
+                            <Avatar 
+                                icon={item.icon} 
+                                dark={theme}
+                                iconColor={item.iconColor}
+                                iconSize={item.iconSize}
+                                size={item.size}/>}/>
+                        <Collapse 
+                            icon="code" 
+                            iconSize={18}
+                            dark={theme}
+                            extra={<CopyToClipboard dark={theme} defaultText="Copy code" text={usage} className="mr-10"/>} 
+                            tooltip="Show/Hide Code">
+                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
+                                {usage}
+                            </SyntaxHighlighter>
+                        </Collapse>
+                    </Card>
+                    <h2>API</h2>
+                    <Table
+                        bordered
+                        dark={theme}
+                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                        items={items}
+                        index={true}
+                        itemTitles={keys}/>
+                </div>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 

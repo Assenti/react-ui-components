@@ -81,3 +81,11 @@
     }
 }
 
+
+@media (max-width: #{$xs}) {
+    .rui-header {
+        .rui-header__title {
+            font-size: $mediumFont;
+        }
+    }
+}
