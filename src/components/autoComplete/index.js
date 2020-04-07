@@ -116,20 +116,20 @@ const AutoComplete = (props) => {
 }
 
 AutoComplete.propTypes = {
-    items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string),PropTypes.arrayOf(PropTypes.object)]).isRequired,
+    items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]).isRequired,
     iconKey: PropTypes.string,
     itemKey: PropTypes.string,
     avatarKey: PropTypes.string,
     avatarSize: PropTypes.number,
-    avatarBorderType: PropTypes.oneOf([undefined,'rounded']),
+    avatarBorderType: PropTypes.oneOf([undefined, 'rounded']),
     onItemClick: PropTypes.func,
     maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     hover: PropTypes.bool,
     listHeader: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
     footer: PropTypes.func,
-    color: PropTypes.oneOf(['primary','info','success','error']),
-    size: PropTypes.oneOf([undefined,'default','medium','large']),
-    borderType: PropTypes.oneOf([undefined,'default','tile','rounded','smooth']),
+    color: PropTypes.oneOf(['primary', 'info', 'success', 'error']),
+    size: PropTypes.oneOf([undefined, 'default', 'medium', 'large']),
+    borderType: PropTypes.oneOf([undefined, 'default', 'tile', 'rounded', 'smooth']),
     label: PropTypes.string,
     placeholder: PropTypes.string,
     prefix: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
@@ -138,10 +138,12 @@ AutoComplete.propTypes = {
     uppercase: PropTypes.bool,
     lifted: PropTypes.bool,
     disabled: PropTypes.bool,
+    clearable: PropTypes.bool,
+    onClear: PropTypes.func,
     required: PropTypes.bool,
     readOnly: PropTypes.bool,
     loading: PropTypes.bool,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     className: PropTypes.string
-}
+};
 export default AutoComplete;

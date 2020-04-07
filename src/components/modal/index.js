@@ -85,6 +85,7 @@ Modal.propTypes = {
     header: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
     footer: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
     headerReverse: PropTypes.bool,
+    toggleFullscreen: PropTypes.bool,
     centered: PropTypes.bool,
     full: PropTypes.bool,
     dark: PropTypes.bool,

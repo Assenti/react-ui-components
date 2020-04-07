@@ -129,7 +129,7 @@ const Pagination = (props) => {
 
 Pagination.propTypes = {
     itemsCount: PropTypes.number,
-    perPage: PropTypes.number,
+    perPage: PropTypes.number.isRequired,
     current: PropTypes.number,
     perPageVariants: PropTypes.arrayOf(PropTypes.number),
     onPerPageSelect: PropTypes.func,

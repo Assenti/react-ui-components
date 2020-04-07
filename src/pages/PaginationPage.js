@@ -94,102 +94,61 @@ const items = [
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Pagination, InputField } from '@assenti/rui-components';
+import { Pagination, Select, Icon, Switch } from '@assenti/rui-components';
+const colors = ['primary', 'info', 'success', 'error'];
+const sizes = ['default', 'medium', 'large'];
 
 function Example() {
-    const [itemsCount, setItemsCount] = useState(100);
+    const [itemsCount] = useState(100);
     const [perPage, setPerPage] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
+    const [color, setColor] = useState(colors[0]);
+    const [size, setSize] = useState(sizes[0]);
+    const [rounded, setRounded] = useState(false);
+    const parent = useRef();
 
     return (
-        <div>
-            <Pagination
-                itemsCount={itemsCount}
+        <>
+            <Select
+                items={colors}
+                prefix={<Icon name="brush"/>}
+                width={200}
+                dark={theme}
+                label="Pagination color"
                 color="primary"
+                className="my-10"
+                value={color}
+                onChange={v => setColor(v)}/>
+            <br/>
+            <Select
+                items={sizes}
+                prefix={<Icon name="format-size"/>}
+                width={200}
+                dark={theme}
+                label="Pagination size"
+                color="primary"
+                className="my-10"
+                value={size}
+                onChange={v => setSize(v)}/>
+            <br/>
+            <Switch 
+                check={rounded} 
+                color="primary"
+                rightLabel="Rounded" 
+                className="my-10"
+                onChange={() => setRounded(!rounded)}/>
+            <Pagination
+                itemsCount={itemsCount}
+                color={color}
+                size={size}
                 perPage={perPage}
+                dark={theme}
                 current={currentPage}
                 onChange={page => setCurrentPage(page)}
                 onPerPageSelect={value => setPerPage(value)}
                 className="pa-5"
-                pageText="module"/>
-            <Pagination
-                itemsCount={itemsCount}
-                color="info"
-                current={currentPage}
-                onChange={page => setCurrentPage(page)}
-                className="pa-5"
-                perPage={perPage}
-                onPerPageSelect={value => setPerPage(value)}/>
-            <Pagination
-                itemsCount={itemsCount}
-                color="success"
-                className="pa-5"
-                current={currentPage}
-                onChange={page => setCurrentPage(page)}
-                perPage={perPage}
-                onPerPageSelect={value => setPerPage(value)}/>
-            <Pagination
-                itemsCount={itemsCount}
-                color="error"
-                perPage={perPage}
-                onPerPageSelect={value => setPerPage(value)}
-                className="pa-5"
-                current={currentPage}
-                onChange={page => setCurrentPage(page)}/>
-        </div>
-    )
-}
-`
-
-const mediumSize =
-`// Usage examples
-import React, { useState } from 'react';
-import { Pagination } from '@assenti/rui-components';
-
-function Example() {
-    const [itemsCount, setItemsCount] = useState(100);
-    const [perPage, setPerPage] = useState(10);
-    const [currentPage, setCurrentPage] = useState(1);
-
-    return (
-        <div>
-            <Pagination
-                itemsCount={itemsCount}
-                color="info"
-                perPage={perPage}
-                onPerPageSelect={value => setPerPage(value)}
-                className="pa-5"
-                current={currentPage}
-                onChange={page => setCurrentPage(page)}
-                size="medium"
-                rounded/>
-        </div>
-    )
-}
-`
-
-const largeSize =
-`// Usage examples
-import React, { useState } from 'react';
-import { Pagination } from '@assenti/rui-components';
-
-function Example() {
-    const [itemsCount, setItemsCount] = useState(100);
-    const [perPage, setPerPage] = useState(10);
-    const [currentPage, setCurrentPage] = useState(1);
-
-    return (
-        <div>
-            <Pagination
-                itemsCount={itemsCount}
-                color="info"
-                perPage={perPage}
-                current={currentPage}
-                onChange={page => setCurrentPage(page)}
-                onPerPageSelect={value => setPerPage(value)}
-                className="pa-5"
-                size="large"/>
-        </div>
+                rounded={rounded}/>
+        </>
     )
 }`
 

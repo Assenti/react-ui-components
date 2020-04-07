@@ -53,7 +53,7 @@ const Alert = (props) => {
     )
 }
 Alert.propTypes = {
-    status: PropTypes.oneOf([undefined,'info','success','error','warning']).isRequired,
+    status: PropTypes.oneOf([undefined,'info','success','error','warning']),
     message: PropTypes.string.isRequired,
     text: PropTypes.string,
     visible: PropTypes.bool.isRequired,
