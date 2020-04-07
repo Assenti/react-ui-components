@@ -7,6 +7,18 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.5.0 `2020-04-07`
+
+- `NEW!` Dock component added;
+- `NEW!` Divider component added;
+- `NEW!` Slider component added;
+- `NEW!` Footer component added;
+- `NEW!` Dark theme added to all components;
+- `NEW!` New icons added;
+- Drawer component updated;
+- RadioGroup component updated;
+- AutoComplete component updated;
+
 #### 0.4.12 `2020-04-01`
 
 - `NEW!` ExpansionList component added;
