@@ -46,11 +46,11 @@ React UI Components use react-transition-group package under the hood, so you sh
 index.js / index.ts
 ```jsx
 // Import styles in index.js / index.ts
-import '@assenti/react-ui-components/build/css/main.css';
+import '@assenti/rui-components/build/css/main.css';
 ```
 App.js / App.tsx
 ```jsx
-import { Card, Button } from '@assenti/react-ui-components';
+import { Card, Button } from '@assenti/rui-components';
 import React from 'react';
 
 function App() {
@@ -70,6 +70,8 @@ export default App;
 - [ ] Notification
 - [ ] Carousel
 - [ ] Range
+- [ ] Skeleton
+- [ ] TransferLists
 - [ ] Make components adaptive for mobile devices
 
 ## Changelog

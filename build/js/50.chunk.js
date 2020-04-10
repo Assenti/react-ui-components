@@ -1,1 +1,0 @@
-(this["webpackJsonp@assenti/rui-components"]=this["webpackJsonp@assenti/rui-components"]||[]).push([[50],{320:function(e,t,a){"use strict";a.r(t);var i=a(0),n=a.n(i);t.default=function(){return n.a.createElement("div",{className:"rui-page"},n.a.createElement("div",{className:"rui-page-title"},"Notification"))}}}]);

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Tag, Card, BackTopBtn, CopyToClipboard, Icon, ThemeContext, themes, Divider } from '../components';
+import { Tag, Card, BackTopBtn, CopyToClipboard, Icon, ThemeContext, Divider } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -21,12 +21,12 @@ const codeInstallationRTGTypes =
 
 const stylesInstallation = 
 `// Import styles in index.js | index.ts
-import '@assenti/react-ui-components/build/css/main.css';`;
+import '@assenti/rui-components/build/css/main.css';`;
 
 const codeUsage = 
 `// Usage example
 import React from 'react';
-import { Card, Button } from '@assenti/react-ui-components';
+import { Card, Button } from '@assenti/rui-components';
 
 function App() {
     return (
@@ -140,7 +140,7 @@ const HomePage = () => {
                             </SyntaxHighlighter>
                             <CopyToClipboard
                                 className="my-5 mx-10" 
-                                text="import '@assenti/react-ui-components/build/css/main.css';"/>
+                                text="import '@assenti/rui-components/build/css/main.css';"/>
                         </div>
                         <br/>
                         <div className="row">

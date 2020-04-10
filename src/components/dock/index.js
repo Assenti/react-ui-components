@@ -81,7 +81,7 @@ const Dock = (props) => {
     )
 }
 Dock.propTypes = {
-    position: PropTypes.string,
+    position: PropTypes.oneOf(['top','bottom','left','right']).isRequired,
     items: PropTypes.array.isRequired,
     lenght: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     itemSize: PropTypes.number,
