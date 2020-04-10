@@ -41,6 +41,13 @@ const items = [
         value: 'true | false'
     },
     { 
+        property: 'elevated', 
+        description: 'Elevate header', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'leftControl', 
         description: 'Set control button on left side', 
         default: 'false', 
@@ -108,6 +115,7 @@ const HeaderPage = () => {
     const [smooth, setSmooth] = useState(false);
     const [leftControl, setLeftControl] = useState(true);
     const [rightSide, setRightSide] = useState(false);
+    const [elevated, setElevated] = useState(false);
 
     return (
         <ThemeContext.Consumer>
@@ -121,6 +129,7 @@ const HeaderPage = () => {
                             color={!dark ? color : null}
                             smooth={smooth}
                             dark={theme}
+                            elevated={elevated}
                             title="Header" 
                             leftControl={leftControl}
                             rightSide={rightSide ?
@@ -160,6 +169,13 @@ const HeaderPage = () => {
                             rightLabel="Left control"
                             className="my-10"
                             onChange={() => setLeftControl(!leftControl)}/>
+                        <br/>
+                        <Switch 
+                            color="primary" 
+                            check={elevated}
+                            rightLabel="Elevated"
+                            className="my-10"
+                            onChange={() => setElevated(!elevated)}/>
                         <Collapse 
                             icon="code" 
                             iconSize={18}

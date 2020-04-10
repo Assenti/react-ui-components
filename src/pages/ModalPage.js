@@ -235,6 +235,7 @@ const ModalPage = () => {
                             closable={closable}
                             dark={theme}
                             centered={centered}
+                            headerReverse={reversed}
                             toggleFullscreen={fullScreen}
                             onClose={() => setModal(false)} 
                             visible={modal} 
@@ -254,6 +255,7 @@ const ModalPage = () => {
                                 <Checkbox
                                     className="my-15 mx-0" 
                                     color="primary" 
+                                    checked={reversed}
                                     label="Remember me?"/>
                                 <Button 
                                     className="my-15 mx-0"

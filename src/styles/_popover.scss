@@ -5,6 +5,10 @@
     outline: none;
 
     &.dark {
+        .rui-popover__content {
+            box-shadow: 0 1px 3px rgba(gray, .2);
+        }
+
         &:not(.bottom):not(.left):not(.right) {
             .rui-popover__content {
                 &::after {
@@ -58,7 +62,6 @@
     &.bottom {
         .rui-popover__content {
             top: calc(100% + 8px);
-            box-shadow: 0 1px 15px rgba($dark, .4);
     
             &::after {
                 bottom: 100%;
@@ -75,7 +78,6 @@
 
         .rui-popover__content {
             right: calc(100% + 8px);
-            box-shadow: 0 1px 15px rgba($dark, .4);
     
             &::after {
                 top: 50%;
@@ -92,7 +94,6 @@
 
         .rui-popover__content {
             left: calc(100% + 8px);
-            box-shadow: 0 1px 15px rgba($dark, .4);
     
             &::after {
                 top: 50%;
@@ -109,6 +110,10 @@
     }
 
     &:not(.dark) {
+        .rui-popover__content {
+            box-shadow: 0 1px 10px rgba(gray, .3);
+        }
+        
         .rui-popover__content {
             background-color: #fff;
             color: black;
@@ -155,7 +160,6 @@
         display: inline-block;
         min-width: 150px;
         max-width: 300px;
-        box-shadow: 0 1px 15px rgba($dark, .4);
         border-radius: $radius;
         position: absolute;
         font-size: $defaultFont;
@@ -211,7 +215,6 @@
     &.bottom {
         .rui-popover__content {
             top: calc(100% + 8px);
-            box-shadow: 0 1px 15px rgba($dark, .4);
     
             &::after {
                 bottom: 100%;
@@ -227,7 +230,6 @@
 
         .rui-popover__content {
             right: calc(100% + 8px);
-            box-shadow: 0 1px 15px rgba($dark, .4);
     
             &::after {
                 top: 50%;
@@ -243,7 +245,6 @@
 
         .rui-popover__content {
             left: calc(100% + 8px);
-            box-shadow: 0 1px 15px rgba($dark, .4);
     
             &::after {
                 top: 50%;

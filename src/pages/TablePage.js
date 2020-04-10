@@ -570,6 +570,8 @@ const TablePage = () => {
                     <BackTopBtn size="medium" dark setRef={parent}/>
                     <Table
                         bordered
+                        searchable
+                        searchKey="property"
                         dark={theme}
                         headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                         items={rows}

@@ -395,6 +395,8 @@ const AutoCompletePage = () => {
                         <Table
                             bordered
                             dark={theme}
+                            searchable
+                            searchKey="property"
                             headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                             items={rows}
                             index

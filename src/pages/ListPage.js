@@ -192,7 +192,6 @@ const names = [
     { name: 'Tony Stark', hero: 'Iron man', phone: '1234567890', icon: 'shield-account', img: manImage3, check: false, active: false }, 
     { name: 'Bruce Benner', hero: 'Hulk', phone: '1234567890', icon: 'shield-account', img: manImage4, check: false, active: false }
 ];
-const types = ['image', 'icon', 'none'];
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -343,6 +342,7 @@ const items2 = [
 const sizes = ['default', 'medium', 'large'];
 const colors = ['primary', 'info', 'success', 'error'];
 const borders = ['default', 'rounded', 'tile'];
+const types = ['image', 'icon', 'none'];
 
 const ListPage = () => {
     const [selected, setSelected] = useState([]);
@@ -360,7 +360,7 @@ const ListPage = () => {
     const listApi = useRef();
     const listItemApi = useRef();
     const parent = useRef();
-    const [type, setType] = useState('');
+    const [type, setType] = useState(types[2]);
 
     const goListApi = () => {
         if (listApi.current) listApi.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -528,9 +528,10 @@ const ListPage = () => {
                                                     className="mr-5" 
                                                     color={theme ? 'lightgray' : ''}/>
                                                 {phoneMask(item.phone)}
-                                                <Button color="light" 
+                                                <Button 
                                                     className="ml-10" 
                                                     dark={theme}
+                                                    light={!theme}
                                                     icon="edit"
                                                     iconSize={16}/>
                                             </div> : null}/>

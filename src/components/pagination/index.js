@@ -138,7 +138,7 @@ Pagination.propTypes = {
     color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
     rounded: PropTypes.bool,
     dark: PropTypes.bool,
-    size: PropTypes.oneOf([undefined,'','medium','large']),
+    size: PropTypes.oneOf([undefined,'','default','medium','large']),
     className: PropTypes.string
 }
 export default Pagination;

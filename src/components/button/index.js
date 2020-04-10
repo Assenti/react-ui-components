@@ -70,7 +70,7 @@ const Button = (props) => {
 Button.propTypes = {
     name: PropTypes.string,
     onClick: PropTypes.func,
-    color: PropTypes.oneOf([undefined,'','primary','info','success','error','black','secondary']),
+    color: PropTypes.oneOf([undefined,'','default','primary','info','success','error','black','secondary']),
     dark: PropTypes.bool,
     light: PropTypes.bool,
     lifted: PropTypes.bool,

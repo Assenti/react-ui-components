@@ -57,12 +57,12 @@ const Collapse = (props) => {
 Collapse.propTypes = {
     defaultState: PropTypes.bool,
     border: PropTypes.bool,
-    title: PropTypes.string,
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     position: PropTypes.oneOf([undefined,'','right']),
     extra: PropTypes.any,
     tooltip: PropTypes.string,
     icon: PropTypes.string,
-    iconSize: PropTypes.number,
+    iconSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     iconColor: PropTypes.string,
     dark: PropTypes.bool,
     className: PropTypes.string

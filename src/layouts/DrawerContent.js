@@ -27,6 +27,7 @@ export const DrawerContent = (props) => {
                     drawer={props.drawer}
                     fullHeight
                     dark={theme}
+                    elevated
                     onClose={() => props.onClose()}
                     headerCentered
                     header={<Icon 
@@ -105,7 +106,7 @@ export const DrawerContent = (props) => {
                                 item={item.name}/>
                         )}
                     </List> : ''}
-                    <div className="row justify-center pt-15 mt-10" 
+                    <div className="row justify-center py-15" 
                         style={{ borderTop: '1px solid lightgray'}}>
                         <Switch color="primary" 
                             check={theme}

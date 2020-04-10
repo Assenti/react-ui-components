@@ -6,6 +6,14 @@
     width: 100%;
     height: 100%;
     z-index: 9999;
+
+    &.hide-overlay {
+        background-color: transparent;
+    }
+
+    &.none {
+        display: none;
+    }
 }
 
 .rui-drawer {
@@ -17,7 +25,7 @@
     flex-direction: column;
     justify-content: space-between;
 
-    &:not(.right):not(.top):not(.bottom) {
+    &.left {
         top: 0;
         left: 0;
     }
@@ -48,7 +56,7 @@
         font-weight: 600;
         position: sticky;
         top: 0;
-        z-index: 10;
+        z-index: 1;
         padding: 0 10px;
     
         &.centered {
@@ -84,6 +92,10 @@
     &.dark {
         background-color: $night;
 
+        &.elevated {
+            box-shadow: 1px 1px 3px rgba(lightgray, .2);
+        }
+
         .rui-drawer-header {
             color: #fff;
             background-color: $night;
@@ -94,6 +106,10 @@
         .rui-drawer-header {
             color: $dark;
             background-color: $lightgray;
+        }
+
+        &.elevated {
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
         }
     }
 
@@ -126,8 +142,6 @@
     .rui-drawer-content {
         height: 100%;
         padding-bottom: 20px;
-        overflow-x: visible !important;
-        overflow-y: auto;
 
         &::-webkit-scrollbar {
             width: 3.5px;
@@ -145,6 +159,10 @@
         .rui-list,
         .rui-list-item {
             overflow-x: visible !important;
+        }
+
+        .rui-list-item:first-child {
+            margin-top: 0;
         }
     }
 
@@ -167,23 +185,117 @@
     justify-content: center;
     height: 40px;
 }
-    
-.drawer-enter {
+
+.rui-drawer__overlay-enter {
+    opacity: 0;
+}
+
+.rui-drawer__overlay-enter-active {
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+}
+
+.rui-drawer__overlay-exit {
+    opacity: 0;
+}
+
+.rui-drawer__overlay-exit-active {
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+}
+
+.rui-drawer-enter {
     width: 0;
 }
 
-.drawer-enter-active {
-    animation: drawerOpening 300ms ease-out;
-    -moz-animation: drawerOpening 300ms ease-out;
+.rui-drawer-enter-active {
+    animation: drawerOpening 300ms ease-in;
+    -moz-animation: drawerOpening 300ms ease-in;
 }
 
-.drawer-exit {
+.rui-drawer-exit {
     width: 0;
 }
 
-.drawer-exit-active {
+.rui-drawer-exit-active {
     animation: drawerClosing 300ms ease-out;
     -moz-animation: drawerClosing 300ms ease-out;
+}
+
+// Right side
+.rui-drawer-right-enter {
+    transform: translateX(100%);
+    transition: transform .3s;
+}
+
+.rui-drawer-right-enter-active {
+    transform: translateX(0%);
+}
+
+.rui-drawer-right-exit {
+    transform: translateX(0%);
+}
+
+.rui-drawer-right-exit-active {
+    transform: translateX(100%);
+    transition: transform .3s;
+}
+
+// Left side
+.rui-drawer-left-enter {
+    transform: translateX(-100%);
+    transition: transform .3s;
+}
+
+.rui-drawer-left-enter-active {
+    transform: translateX(0%);
+}
+
+.rui-drawer-left-exit {
+    transform: translateX(0%);
+}
+
+.rui-drawer-left-exit-active {
+    transform: translateX(-100%);
+    transition: transform .3s;
+}
+
+// Top side
+.rui-drawer-top-enter {
+    transform: translateY(-100%);
+    transition: transform .3s;
+}
+
+.rui-drawer-top-enter-active {
+    transform: translateY(0%);
+}
+
+.rui-drawer-top-exit {
+    transform: translateY(0%);
+}
+
+.rui-drawer-top-exit-active {
+    transform: translateY(-100%);
+    transition: transform .3s;
+}
+
+// Bottom side
+.rui-drawer-bottom-enter {
+    transform: translateY(100%);
+    transition: transform .3s;
+}
+
+.rui-drawer-bottom-enter-active {
+    transform: translateY(0%);
+}
+
+.rui-drawer-bottom-exit {
+    transform: translateY(0%);
+}
+
+.rui-drawer-bottom-exit-active {
+    transform: translateY(100%);
+    transition: transform .3s;
 }
 
 .expand-enter {
@@ -202,24 +314,6 @@
 .expand-exit-active {
     animation: expanding 300ms ease-out;
     -moz-animation: expanding 300ms ease-out;
-}
-
-.drawer-background-enter {
-    opacity: 0;
-}
-
-.drawer-background-enter-active {
-    opacity: 1;
-    transition: all 100ms;
-}
-
-.drawer-background-exit {
-    opacity: 1;
-}
-
-.drawer-background-exit-active {
-    opacity: 0;
-    transition: all 100ms;
 }
   
 @keyframes expanding {
@@ -242,6 +336,8 @@
     100% { width: 50px; min-width: 50px; }
 }
 
+
+// Horizontal
 @keyframes drawerOpening {
     0% { width: 0; min-width: 0;}
     100% { width: 280px; min-width: 280px;}

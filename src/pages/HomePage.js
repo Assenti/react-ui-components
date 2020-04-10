@@ -127,7 +127,6 @@ const HomePage = () => {
                                 text="npm install @types/react-transition-group -D"/>
                         </div>
                     </Card>
-                    <br/>
                     <Card dark={theme} header={<h4 className="row align-center">
                         <Icon name="cog-outline" color={theme ? '#fff' : ''} className="mr-5"/>Usage
                     </h4>} className="mt-20">
@@ -155,7 +154,6 @@ const HomePage = () => {
                                 text={codeUsage}/>
                         </div>
                     </Card>
-                    <br/>
                     <Card dark={theme} 
                         header={<h4 className="row align-center">
                             <Icon name="language-ts" color={theme ? '#fff' : ''} className="mr-5"/>TypeScript

@@ -157,6 +157,7 @@ const avatars = [
 
 const SliderPage = () => {
     const [vertical, setVertical] = useState(true);
+    const [slidable, setSlidable] = useState(false);
 
     return (
         <ThemeContext.Consumer>
@@ -167,6 +168,7 @@ const SliderPage = () => {
                         <Slider 
                             items={cards}
                             dark={theme}
+                            slidable={slidable}
                             render={(item, index) => 
                                 <Card
                                     hover
@@ -182,10 +184,17 @@ const SliderPage = () => {
                             rightLabel="Vertical"
                             className="my-10"
                             onChange={() => setVertical(!vertical)}/>
+                        <Switch 
+                            color="primary" 
+                            check={slidable}
+                            rightLabel="Slidable"
+                            className="my-10"
+                            onChange={() => setSlidable(!slidable)}/>
                         <br/>
                         <Slider 
                             items={avatars}
                             vertical={vertical}
+                            slidable={slidable}
                             length={300}
                             dark={theme}
                             render={(item, index) => 

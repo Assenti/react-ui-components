@@ -11,6 +11,7 @@ const Header = (props) => {
             color: props.color && props.color !== 'default' ? props.color : '',
             sticky: props.sticky ? 'sticky' : '',
             smooth: props.smooth ? 'smooth' : '',
+            elevated: props.elevated ? 'elevated' : '',
             className: props.className ? props.className : ''
         }
         
@@ -49,12 +50,13 @@ Header.propTypes = {
     light: PropTypes.bool,
     leftControl: PropTypes.bool,
     onLeftControl: PropTypes.func,
-    title: PropTypes.string,
-    color: PropTypes.oneOf([undefined,'','primary','info','success','error','secondary','black']),
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    color: PropTypes.oneOf([undefined,'','default','primary','info','success','error','secondary','black']),
     leftControlIcon: PropTypes.string,
     rightSide: PropTypes.any,
     sticky: PropTypes.bool,
     smooth: PropTypes.bool,
+    elevated: PropTypes.bool,
     className: PropTypes.string
 }
 export default Header;

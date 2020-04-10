@@ -266,7 +266,6 @@
         }
 
         .rui-table__footer {
-            // background-color: $dark;
             color: #000;
         }
     }
@@ -296,7 +295,6 @@
 
         .rui-table.stripped {
             tr {
-                // background-color: $night;
                 color: #fff;
             }
             
@@ -354,7 +352,6 @@
     th {
         position: sticky;
         top: 0;
-        // z-index: 2;
     }
 
     th:first-child {
@@ -363,6 +360,10 @@
 
     th:last-child {
         border-top-right-radius: $radius;
+    }
+
+    th.bordered {
+        border-top: 1px solid lightgray;
     }
 
     tr, th, td {
@@ -511,7 +512,6 @@
         opacity: 0;
         position: absolute;
         right: 0;
-        // z-index: 3;
         cursor: pointer;
     }
 

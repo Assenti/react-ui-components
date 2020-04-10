@@ -107,7 +107,7 @@ const Table = (props) => {
     }
 
     const isIndexedTable = () => {
-        if (props.index) return <th className="indexed">{props.indexSign ? props.indexSign : '#'}</th>
+        if (props.index) return <th className={props.searchable ? 'indexed bordered' : 'indexed'}>{props.indexSign ? props.indexSign : '#'}</th>
     }
 
     const isCheckbox = () => {
@@ -147,7 +147,7 @@ const Table = (props) => {
                 {isIndexedTable()}
                 {isCheckbox()}
                 {makeSortableHeaders(props.headers).map((item, index) => 
-                    <th key={index}>
+                    <th key={index} className={props.searchable ? 'bordered' : ''}>
                         <div className="row align-center">
                             {item.name} 
                             {isSortable(item, index)}
@@ -210,6 +210,7 @@ const Table = (props) => {
                         color={props.color ? props.color : 'primary'}
                         prefix={<Icon name="search"/>}
                         value={search}
+                        dark={props.dark}
                         onKeyUp={handleKeyUp}
                         placeholder={props.searchPlaceholder ? props.searchPlaceholder : 'Search'}
                         onChange={e => setSearch(e.target.value)}/> : ''}

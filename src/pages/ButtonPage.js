@@ -320,7 +320,7 @@ const ButtonPage = () => {
     const [size, setSize] = useState(sizes[0]);
     const [border, setBorder] = useState(borders[0]);
     const [color, setColor] = useState(colors[0]);
-    const [type, setType] = useState('');
+    const [type, setType] = useState(types[2]);
 
     const goToApi = () => {
         if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -477,6 +477,8 @@ const ButtonPage = () => {
                     <Table
                         bordered
                         dark={theme}
+                        searchable
+                        searchKey="property"
                         headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                         items={items}
                         index={true}

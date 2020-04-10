@@ -57,7 +57,7 @@ const FloatingBtn = (props) => {
 }
 FloatingBtn.propTypes = {
     icon: PropTypes.string,
-    position: PropTypes.oneOf([undefined,'','top-left','top-right','bottom-left']),
+    position: PropTypes.oneOf([undefined,'bottom-right','top-left','top-right','bottom-left']),
     offsetX: PropTypes.number,
     offsetY: PropTypes.number,
     lifted: PropTypes.bool,

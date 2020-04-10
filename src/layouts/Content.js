@@ -12,6 +12,7 @@ export const Content = (props) => {
                 leftControl
                 sticky
                 dark={props.dark}
+                elevated
                 onLeftControl={() => props.onDrawerToggle()} 
                 title={description}
                 rightSide={

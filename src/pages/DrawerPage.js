@@ -1,34 +1,100 @@
-import React, { useState, useRef } from 'react';
-import { Drawer, List, ListItem, Button, Badge, Table, Card, Header, Collapse, Icon, Select, BackTopBtn, CopyToClipboard, ThemeContext } from '../components';
+import React, { useState } from 'react';
+import { Drawer, List, ListItem, Button, Table, Card, Collapse, Icon, Select, CopyToClipboard, ThemeContext, Divider, Switch } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Drawer, List, ListItem, Header, Icon } from '@assenti/react-ui-components';
+import { Drawer, List, ListItem, Icon, Switch, Select } from '@assenti/react-ui-components';
+
+const stack = [
+    { name: 'JavaScript', icon: 'language-js' }, 
+    { name: 'TypeScript', icon: 'language-ts' },
+    { name: 'React', icon: 'react' },
+    { name: 'React Router', icon: 'react' },
+    { name: 'React Redux', icon: 'react' }
+]
 
 function Example() {
     const [drawer, setDrawer] = useState(true);
     const [drawerMin, setDrawerMin] = useState(false);
-    const [page, setPage] = useState(stack[0].name)
+    const [absolute, setAbsolute] = useState(false);
+    const [hideOverlay, setHideOverlay] = useState(false);
+    const [collapsable, setCollapsable] = useState(false);
+    const [elevated, setElevated] = useState(false);
+    const [page, setPage] = useState(stack[0].name);
+    const [position, setPosition] = useState(positions[0]);
 
     return (
-        <div className="app" style={{ minHeight: 260 }}>
+        <Switch 
+            color="primary" 
+            check={absolute}
+            rightLabel="Drawer absolute"
+            className="my-10"
+            onChange={() => setAbsolute(!absolute)}/>
+        <br/>
+        <Select
+            items={positions}
+            disabled={!absolute}
+            label="Drawer position in absolute mode"
+            width={200}
+            prefix={<Icon name="chart-ppf"/>}
+            color="primary"
+            className="my-0"
+            dark={theme}
+            value={position}
+            onChange={handleChange}/>
+        <br/>
+        <Switch 
+            color="primary" 
+            check={hideOverlay}
+            rightLabel="Hide overlay in absolute mode"
+            className="my-10"
+            onChange={() => setHideOverlay(!hideOverlay)}/>
+        <br/>
+        <Switch 
+            color="primary" 
+            check={collapsable}
+            rightLabel="Collapsable"
+            className="my-10"
+            onChange={() => setCollapsable(!collapsable)}/>
+        <br/>
+        <Switch 
+            color="primary" 
+            check={elevated}
+            rightLabel="Elevated"
+            className="my-10"
+            onChange={() => setElevated(!elevated)}/>
+        <br/>
+        <Button 
+            name="Toggle drawer"
+            color="primary"
+            onClick={() => setDrawer(!drawer)}/>
+        <br/>
+        <Divider/>
+        <br/>
+        <div className="rui-app relative pa-0" 
+            style={{ height: 400, overflow: 'hidden' }}>
             <Drawer
                 drawer={drawer}
-                min={drawerMin}
+                position={position}
+                absolute={absolute}
+                hideOverlay={hideOverlay}
                 onClose={() => setDrawer(false)}
-                header={drawerMin ? <Icon name="react" /> : 'Drawer'}
-                collapsable
+                header={drawerMin ? <Icon name="react" color="#61dafb"/> : 'Drawer'}
+                min={absolute ? false : drawerMin}
+                collapsable={collapsable}
                 headerCentered
+                elevated={elevated}
                 onResize={() => setDrawerMin(!drawerMin)}>
-                <List size="medium">
+                <List size="medium" dark={theme}>
                     {stack.map(({name, icon}, index) => 
                         <ListItem
                             key={index}
                             isActiveItem={name === page}
                             noDivider
+                            hover
                             onClick={() => setPage(name)}
                             item={drawerMin ? '' : name}
                             icon={icon}
@@ -37,11 +103,7 @@ function Example() {
                     )}
                 </List>
             </Drawer>
-            <div className="page">
-                <Header 
-                    title="Header" 
-                    leftControl
-                    onLeftControl={() => setDrawer(!drawer)}/>
+            <div className="rui-page">
                 <div className="pa-20 fz-12">
                     {page} Page
                 </div>
@@ -50,67 +112,7 @@ function Example() {
     )
 )`
 
-const usagePositions =
-`// Usage examples
-import React, { useState } from 'react';
-import { Drawer, List, ListItem, Header, Icon } from '@assenti/react-ui-components';
-const positions = ['default', 'top', 'bottom', 'right'];
-const stack = [
-    { name: 'JavaScript', icon: 'code' }, 
-    { name: 'TypeScript', icon: 'code' },
-    { name: 'React', icon: 'code' },
-    { name: 'React Router', icon: 'code' },
-    { name: 'React Redux', icon: 'code' }
-]
-
-function Example() {
-    const [drawer, setDrawer] = useState(true);
-    const [drawerMin, setDrawerMin] = useState(false);
-    const [page, setPage] = useState(stack[0].name);
-    const [position, setPosition] = useState(positions[0]);
-    const [visible, setVisible] = useState(false);
-
-    return (
-        <div className="rui-app relative overflow-y pa-0" style={{ minHeight: 400 }}>
-            <div className="pa-10" style={{ width: 200 }}>
-                <Select
-                    items={positions}
-                    prefix={<Icon name="chart-ppf"/>}
-                    color="primary"
-                    className="my-0"
-                    value={position}
-                    onChange={v => setPosition(v)}/>
-                <Button 
-                    name="Toggle drawer"
-                    color="primary"
-                    block
-                    className="my-10 mx-0"
-                    onClick={() => setVisible(!visible)}/>
-            </div>
-            <Drawer
-                drawer={visible}
-                absolute
-                position={position}
-                onClose={() => setVisible(false)}
-                header={<div className="row align-center"><Icon name="react" className="mr-5"/> Drawer Header</div>}>
-                <List size="medium">
-                    {stack.map((item, index) => 
-                    <ListItem 
-                        key={index}
-                        noDivider
-                        icon={item.icon} 
-                        isActiveItem={item.name === page}
-                        onClick={() => setPage(item.name)}   
-                        item={item.name}
-                        hover/>
-                    )}
-                </List>
-            </Drawer>
-        </div>
-    )
-)`
-
-const positions = ['default', 'top', 'bottom', 'right'];
+const positions = ['left', 'top', 'bottom', 'right'];
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
@@ -184,6 +186,13 @@ const items = [
         value: 'true | false'
     },
     { 
+        property: 'elevated', 
+        description: 'Elevate Drawer', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'absolute', 
         description: 'Set drawer position to absolute', 
         default: 'false', 
@@ -201,43 +210,94 @@ const stack = [
 ]
 
 const DrawerPage = () => {
-    const parent = useRef();
-    const api = useRef();
     const [drawer, setDrawer] = useState(true);
     const [drawerMin, setDrawerMin] = useState(false);
+    const [absolute, setAbsolute] = useState(false);
+    const [hideOverlay, setHideOverlay] = useState(false);
+    const [collapsable, setCollapsable] = useState(false);
+    const [elevated, setElevated] = useState(false);
     const [page, setPage] = useState(stack[0].name);
     const [position, setPosition] = useState(positions[0]);
-    const [visible, setVisible] = useState(false);
 
-    const goToApi = () => {
-        if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const handleChange = (value) => {
+        if (value !== 'left') {
+            setAbsolute(true)
+        } else {
+            setAbsolute(false)
+        }
+        setPosition(value)
     }
 
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page" ref={parent}>
+                <div className="rui-page">
                     <div className="row align-center space-between">
-                        <div className="row">
-                            <div className="rui-page-title">{'<Drawer/>'} Component</div>
-                            <Badge 
-                                color="error" 
-                                value="WIP"
-                                className="ml-10"
-                                parent={<Icon name="wrench" size={20}/>}/>
-                        </div>
-                        <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
+                        <div className="rui-page-title">{'<Drawer/>'} Component</div>
+                        <div className="rui-link fz-13 fw-bold">API</div>
                     </div>
                     <Card dark={theme} header={<h4>Usage</h4>}>
-                        <div className="rui-app relative pa-0" style={{ minHeight: 260 }}>
+                        <Switch 
+                            color="primary" 
+                            check={absolute}
+                            rightLabel="Drawer absolute"
+                            className="my-10"
+                            onChange={() => setAbsolute(!absolute)}/>
+                        <br/>
+                        <Select
+                            items={positions}
+                            disabled={!absolute}
+                            label="Drawer position in absolute mode"
+                            width={200}
+                            prefix={<Icon name="chart-ppf"/>}
+                            color="primary"
+                            className="my-0"
+                            dark={theme}
+                            value={position}
+                            onChange={handleChange}/>
+                        <br/>
+                        <Switch 
+                            color="primary" 
+                            check={hideOverlay}
+                            rightLabel="Hide overlay in absolute mode"
+                            className="my-10"
+                            onChange={() => setHideOverlay(!hideOverlay)}/>
+                        <br/>
+                        <Switch 
+                            color="primary" 
+                            check={collapsable}
+                            rightLabel="Collapsable"
+                            className="my-10"
+                            onChange={() => setCollapsable(!collapsable)}/>
+                        <br/>
+                        <Switch 
+                            color="primary" 
+                            check={elevated}
+                            rightLabel="Elevated"
+                            className="my-10"
+                            onChange={() => setElevated(!elevated)}/>
+                        <br/>
+                        <Button 
+                            name="Toggle drawer"
+                            color="primary"
+                            onClick={() => setDrawer(!drawer)}/>
+                        <br/>
+                        <Divider/>
+                        <br/>
+                        <div className="rui-app relative pa-0" 
+                            style={{ height: 400, overflow: 'hidden' }}>
                             <Drawer
                                 drawer={drawer}
-                                min={drawerMin}
+                                position={position}
+                                absolute={absolute}
                                 dark={theme}
+                                hideOverlay={hideOverlay}
                                 onClose={() => setDrawer(false)}
                                 header={drawerMin ? <Icon name="react" color="#61dafb"/> : 'Drawer'}
-                                collapsable
+                                min={absolute ? false : drawerMin}
+                                collapsable={collapsable}
                                 headerCentered
+                                elevated={elevated}
                                 onResize={() => setDrawerMin(!drawerMin)}>
                                 <List size="medium" dark={theme}>
                                     {stack.map(({name, icon}, index) => 
@@ -255,11 +315,6 @@ const DrawerPage = () => {
                                 </List>
                             </Drawer>
                             <div className="rui-page">
-                                <Header 
-                                    title="Header" 
-                                    dark={theme}
-                                    leftControl
-                                    onLeftControl={() => setDrawer(!drawer)}/>
                                 <div className="pa-20 fz-12">
                                     {page} Page
                                 </div>
@@ -284,64 +339,7 @@ const DrawerPage = () => {
                             </SyntaxHighlighter> 
                         </Collapse>
                     </Card>
-                    <br/>
-                    <Card dark={theme} header={<h4>Drawer positions</h4>}>
-                        <div className="rui-app relative overflow-y pa-0" style={{ minHeight: 400 }}>
-                            <div className="pa-10" style={{ width: 200 }}>
-                                <Select
-                                    items={positions}
-                                    prefix={<Icon name="chart-ppf"/>}
-                                    color="primary"
-                                    dark={theme}
-                                    className="my-0"
-                                    value={position}
-                                    onChange={v => setPosition(v)}/>
-                                <Button 
-                                    name="Toggle drawer"
-                                    color="primary"
-                                    block
-                                    className="my-10 mx-0"
-                                    onClick={() => setVisible(!visible)}/>
-                            </div>
-                            <Drawer
-                                drawer={visible}
-                                absolute
-                                dark={theme}
-                                position={position}
-                                onClose={() => setVisible(false)}
-                                header={<div className="row align-center"><Icon name="react" className="mr-5" color="#61dafb"/> Drawer Header</div>}>
-                                <List size="medium" dark={theme}>
-                                    {stack.map((item, index) => 
-                                    <ListItem 
-                                        key={index}
-                                        noDivider
-                                        icon={item.icon} 
-                                        isActiveItem={item.name === page}
-                                        onClick={() => setPage(item.name)}   
-                                        item={item.name}
-                                        hover/>
-                                    )}
-                                </List>
-                            </Drawer>
-                        </div>
-                        <Collapse 
-                            icon="code"
-                            dark={theme}
-                            iconSize={18}
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usagePositions} 
-                                dark={theme}
-                                className="mr-10"/>} 
-                            contentStyles={{ padding: 0 }}
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
-                                {usagePositions}
-                            </SyntaxHighlighter> 
-                        </Collapse>
-                    </Card>
-                    <h2 ref={api}>API</h2>
-                    <BackTopBtn setRef={parent} size="medium" dark/>
+                    <h2>API</h2>
                     <Table
                         bordered
                         dark={theme}

@@ -35,7 +35,7 @@ Badge.propTypes = {
     rounded: PropTypes.bool,
     icon: PropTypes.string,
     color: PropTypes.oneOf([undefined,'','primary','info','success','error','dark','secondary']),
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     visible: PropTypes.bool,
     parent: PropTypes.node,
     className: PropTypes.string

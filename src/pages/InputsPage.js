@@ -602,6 +602,8 @@ const InputsPage = () => {
                     <h2 ref={api}>InputField API</h2>
                     <Table
                         bordered
+                        searchable
+                        searchKey="property"
                         dark={theme}
                         headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                         items={items}

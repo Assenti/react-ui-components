@@ -151,7 +151,7 @@ TextareaField.propTypes = {
     hintColor: PropTypes.oneOf([undefined,'','error','success']),
     readOnly: PropTypes.bool,
     color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
-    borderType: PropTypes.oneOf([undefined,'','tile','smooth']),
+    borderType: PropTypes.oneOf([undefined,'','default','tile','smooth']),
     rows: PropTypes.number,
     maxRows: PropTypes.number,
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

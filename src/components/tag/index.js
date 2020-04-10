@@ -25,7 +25,7 @@ const Tag = (props) => {
     }
 
     const handleClose = () => {
-        if (props.onClose) {
+        if (props.onClose && !props.disabled) {
             props.onClose()
             if (!props.onClick) setVisible(false)
         }
@@ -40,10 +40,11 @@ const Tag = (props) => {
             in={visible}
             timeout={300}
             classNames="rui-tag"
+            mountOnEnter
             unmountOnExit>
             <div className={tagClass()}
                 ref={props.setRef}
-                onClick={props.onClick ? props.onClick : {}} 
+                onClick={props.onClick && !props.disabled ? props.onClick : null} 
                 style={{ width: props.width ? props.width : ''}}>
                 {props.iconLeft ? <Icon name={props.iconLeft}/> : ''}
                 {props.value}
@@ -64,7 +65,7 @@ Tag.propTypes = {
     outlined: PropTypes.bool,
     lifted: PropTypes.bool,
     color: PropTypes.oneOf([undefined,'secondary','primary', 'info', 'success', 'error', 'dark', 'yellow']),
-    borderType: PropTypes.oneOf([undefined,'','tile','smooth','rounded']),
+    borderType: PropTypes.oneOf([undefined,'','default','tile','smooth','rounded']),
     setRef: PropTypes.any,
     small: PropTypes.bool,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -72,8 +73,9 @@ Tag.propTypes = {
     iconRight: PropTypes.string,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onClose: PropTypes.func,
-    onClick: PropTypes.func,
+    onClick: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
     closable: PropTypes.bool,
+    disabled: PropTypes.bool,
     className: PropTypes.string
 }
 export default Tag;

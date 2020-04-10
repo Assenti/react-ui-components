@@ -13,6 +13,7 @@ const Slider = (props) => {
         let result = '';
         let className = {
             name: 'rui-slider',
+            slidable: props.slidable ? 'slidable' : '',
             vertical: props.vertical ? 'vertical' : '',
             className: props.className ? props.className : ''
         }
@@ -56,12 +57,12 @@ const Slider = (props) => {
         <div className={className()} 
             style={getSliderLength()}
             ref={slider}>
-            <Button
+            {!props.slidable ? <Button
                 onClick={handlePrev}
                 disabled={move === 0}
                 dark={props.dark}
                 className="rui-slider-prev-btn"
-                icon={props.vertical ? 'chevron-up' : 'chevron-back'}/>
+                icon={props.vertical ? 'chevron-up' : 'chevron-back'}/> : null}
             <div className="rui-slider-items" 
                 style={{ transform: props.vertical ? `translateY(${move}px)` : `translateX(${move}px)` }}
                 ref={childItems}>
@@ -75,12 +76,12 @@ const Slider = (props) => {
                     </div> 
                 )}
             </div>
-            <Button
+            {!props.slidable ? <Button
                 onClick={handleNext}
                 disabled={remainder <= 0}
                 dark={props.dark}
                 className="rui-slider-next-btn"
-                icon={props.vertical ? 'chevron-down' : 'chevron-next'}/>
+                icon={props.vertical ? 'chevron-down' : 'chevron-next'}/> : null}
         </div>
     )
 }
@@ -89,6 +90,7 @@ Slider.propTypes = {
     render: PropTypes.func.isRequired,
     length: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onItemClick: PropTypes.func,
+    slidable: PropTypes.bool,
     dark: PropTypes.bool,
     className: PropTypes.string
 }

@@ -7,14 +7,17 @@ const xsBreakpoint = 529;
 
 const Drawer = (props) => {
     const [width, setWidth] = useState('');
+    const [overlay, setOverlay] = useState(false);
 
     const drawerClass = () => {
         let result = '';
         let className = {
             name: 'rui-drawer',
             collapsable: props.collapsable ? 'collapsable' : '',
-            position: props.position && props.position !== 'default' ? props.position : '',
+            hideOverlay: props.hideOverlay ? 'hide-overlay' : '',
+            position: props.position ? props.position : 'left',
             smooth: props.smooth ? 'smooth' : '',
+            elevated: props.elevated ? 'elevated' : '',
             min: props.min ? 'min' : '',
             absolute: props.absolute ? 'absolute' : '',
             fullHeight: props.fullHeight ? 'full-height' : '',
@@ -26,10 +29,26 @@ const Drawer = (props) => {
         return result.trim();
     }
 
+    const drawerOverlayClass = () => {
+        let result = '';
+        let className = {
+            name: 'rui-drawer__overlay',
+            none: props.drawer ? '' : 'none',
+            hideOverlay: props.hideOverlay ? 'hide-overlay' : ''
+        }
+        for (const key in className) {
+            if (className[key]) result += className[key] + ' '
+        }
+        return result.trim();
+    }   
+
     const handleClose = (e) => {
         e.preventDefault();
         if (e.currentTarget === e.target) {
             if (props.onClose) props.onClose()
+            setTimeout(() => {
+                setOverlay(false)
+            }, 300)
         } 
     }
 
@@ -45,28 +64,26 @@ const Drawer = (props) => {
 
         window.addEventListener('resize', () => {
             setWidth(window.innerWidth);
-        })
+        }, true)
 
         return(() => {
-            window.removeEventListener('resize', {},  false);
+            window.removeEventListener('resize', {}, true);
         })
-    }, [])
-
-    const drawerOverlayClass = () => props.drawer ? 'rui-drawer__overlay' : 'rui-drawer__overlay none';
+    }, [props.drawer, props.absolute])
 
     return (
         <>
-            {width < xsBreakpoint || props.absolute ?
+            {(width < xsBreakpoint || props.absolute) ?
             <CSSTransition
                 in={props.drawer}
-                timeout={100}
-                classNames="drawer-background"
-                unmountOnExit>
-                <div className={drawerOverlayClass()} onClick={handleClose}>
+                classNames="rui-drawer__overlay"
+                timeout={{ enter: 600, exit: 400 }}>
+                <div className={drawerOverlayClass()} 
+                    onClick={handleClose}>
                     <CSSTransition
                         in={props.drawer}
-                        timeout={300}
-                        classNames="drawer"
+                        timeout={{ enter: 300, exit: 200 }}
+                        classNames={`rui-drawer-${props.position ? props.position : 'left'}`}
                         unmountOnExit>
                         <CSSTransition
                             in={props.min}
@@ -93,11 +110,12 @@ const Drawer = (props) => {
                         </CSSTransition>
                     </CSSTransition>
                 </div>
-            </CSSTransition> :
+            </CSSTransition>
+            :
             <CSSTransition
                 in={props.drawer}
-                timeout={300}
-                classNames="drawer"
+                timeout={{ enter: 300, exit: 200 }}
+                classNames="rui-drawer"
                 unmountOnExit>
                 <CSSTransition
                     in={props.min}
@@ -110,7 +128,9 @@ const Drawer = (props) => {
                                             {props.header}</div> : ''}
                                 {props.children}
                             </div>
-                            {props.collapsable ? <div className="rui-drawer-footer">
+                            {props.collapsable && 
+                            (props.position !== 'top' && props.position !== 'bottom') ? 
+                            <div className="rui-drawer-footer">
                                 <Tooltip tooltip={props.min ? 'Expand' : 'Collapse'}>
                                     <Button
                                         dark={props.dark}
@@ -118,7 +138,7 @@ const Drawer = (props) => {
                                         icon={props.min ? 'chevron-double-right' : 'chevron-double-left'}
                                         onClick={() => props.onResize()}/>
                                 </Tooltip>
-                            </div> : ''}
+                            </div> : null}
                         </div>
                 </CSSTransition>
             </CSSTransition>
@@ -133,10 +153,11 @@ Drawer.propTypes = {
     onResize: PropTypes.func,
     onClose: PropTypes.func,
     fullHeight: PropTypes.bool,
-    position: PropTypes.oneOf([undefined,'','default','right','top','bottom']),
+    position: PropTypes.oneOf([undefined,'','left','right','top','bottom']),
     header: PropTypes.any,
     headerCentered: PropTypes.bool,
     dark: PropTypes.bool,
+    elevated: PropTypes.bool,
     absolute: PropTypes.bool
 }
 export default Drawer;

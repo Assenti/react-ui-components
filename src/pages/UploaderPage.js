@@ -198,6 +198,13 @@ const rows = [
         value: ''
     },
     { 
+        property: 'dark',
+        description: 'Set dark mode', 
+        default: '', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 

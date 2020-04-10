@@ -3,21 +3,9 @@ import PropTypes from 'prop-types';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { Icon } from '../index';
 
-const TabItem = (props) => {
-    return (
-        <SwitchTransition>
-            <CSSTransition
-                key={props.active}
-                addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
-                classNames="tabs">
-                {props.children}
-            </CSSTransition>
-        </SwitchTransition>
-    )
-}
-
 const Tabs = (props) => {
     const [active, setActive] = useState(props.defaultTab ? props.defaultTab : 0);
+    const [activeClass, setActiveClass] = useState('rui-tabs-next');
 
     const tabsClass = () => {
         let result = '';
@@ -85,12 +73,16 @@ const Tabs = (props) => {
                             </div>
                 )}
             </div>
-            <div className="rui-tabs__content"
-                style={{ padding: props.contentPadding }}>
-                <TabItem 
-                    active={active}>
-                    {props.tabItems[active]}
-                </TabItem>
+            <div className="rui-tabs__content" style={{ padding: props.contentPadding }}>
+                <SwitchTransition mode="out-in">
+                    <CSSTransition
+                        key={active}
+                        addEndListener={(node, done) => {
+                            node.addEventListener("transitionend", done, false)}}
+                        classNames={activeClass}>
+                        {props.tabItems[active]}
+                    </CSSTransition>
+                </SwitchTransition>
             </div>
         </div>
     )
@@ -103,15 +95,11 @@ Tabs.propTypes = {
     tabIconKey: PropTypes.string,
     centered: PropTypes.bool,
     contentPadding: PropTypes.string,
-    position: PropTypes.oneOf([undefined,'left','bottom','right']),
-    size: PropTypes.oneOf([undefined,'medium','large']),
+    position: PropTypes.oneOf([undefined,'default','left','bottom','right']),
+    size: PropTypes.oneOf([undefined,'default','medium','large']),
     activeHighlightFill: PropTypes.bool,
     onChange: PropTypes.func,
     color: PropTypes.oneOf([undefined,'primary','info','error','success','']),
     className: PropTypes.string
-}
-Tabs.defaultProps = {
-    contentPadding: '15px',
-    color: 'primary'
 }
 export default Tabs;

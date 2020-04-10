@@ -153,6 +153,7 @@
         .rui-input-container {
             input {
                 height: $defaultSize;
+                max-height: $defaultSize - 2px;
                 padding: 0 8px;
                 font-size: $defaultFont;
             }
@@ -176,6 +177,7 @@
             input,
             textarea {
                 height: $mediumSize;
+                max-height: $mediumSize - 2px;
                 padding: 8px;
                 font-size: $mediumFont;
             }
@@ -194,6 +196,7 @@
             input,
             textarea {
                 height: $largeSize;
+                max-height: $largeSize - 2px;
                 padding: 10px;
                 font-size: $largeFont;
             }

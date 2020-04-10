@@ -684,24 +684,49 @@
     100% { transform: translateX(0) }
 }
 
-.tabs-enter {
+// Next slide
+.rui-tabs-next-enter {
     opacity: 0;
-    transform: translateX(-10%);
+    transform: translateX(-100%);
+    transition: opacity 500ms, transform 500ms;
 }
 
-.tabs-enter-active {
+.rui-tabs-next-enter-active {
     opacity: 1;
-    transform: translateX(0);
-    transition: opacity 300ms, transform 300ms;
+    transform: translateX(0%);
 }
 
-.tabs-exit {
+.rui-tabs-next-exit {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0%);
 }
 
-.tabs-exit-active {
+.rui-tabs-next-exit-active {
     opacity: 0;
-    transform: translateX(-10%);
-    transition: opacity 300ms, transform 300ms;
+    transform: translateX(100%);
+    transition: opacity 500ms, transform 500ms;
 }
+
+// Prev slide
+.rui-tabs-prev-enter {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 500ms, transform 500ms;
+}
+
+.rui-tabs-prev-enter-active {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.rui-tabs-prev-exit {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.rui-tabs-prev-exit-active {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 500ms, transform 500ms;
+}
+

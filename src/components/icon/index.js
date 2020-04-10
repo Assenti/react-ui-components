@@ -338,7 +338,7 @@ Icon.propTypes = {
     name: PropTypes.string,
     custom: PropTypes.node,
     title: PropTypes.string,
-    size: PropTypes.number,
+    size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onMouseLeave: PropTypes.func,
     onMouseOver: PropTypes.func,
     onClick: PropTypes.func,

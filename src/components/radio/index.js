@@ -23,7 +23,7 @@ const Radio = (props) => {
                 type="radio" 
                 name={props.name} 
                 value={props.value}
-                // defaultChecked={props.value}
+                checked={props.value}
                 disabled={props.disabled} 
                 onChange={e => props.onChange(e)}/>
                 <span className="rui-radio-checkmark"></span>
@@ -46,6 +46,13 @@ const RadioGroup = (props) => {
         return result.trim();
     }
 
+    const isChecked = () => {
+        for (let i = 0; i < props.options.length; i++) {
+            if (props.options[i] === props.value) return i;
+        }
+        return -1;
+    }
+
     return (
         <div className={radioGroupClass()}>
             {props.options.map((item, index) => 
@@ -55,7 +62,7 @@ const RadioGroup = (props) => {
                     disabled={props.disabled}
                     size={props.size}
                     label={props.labelName ? props.labelName : item} 
-                    value={props.value} 
+                    value={isChecked() === index ? props.value : ''} 
                     name={props.name}
                     onChange={() => props.onChange(item)}/>
             )}
@@ -66,7 +73,7 @@ RadioGroup.propTypes = {
     options: PropTypes.arrayOf(PropTypes.string),
     disabled: PropTypes.bool,
     color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
-    size: PropTypes.oneOf([undefined,'','medium','large']),
+    size: PropTypes.oneOf([undefined,'','default','medium','large']),
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     name: PropTypes.string.isRequired,
     labelName: PropTypes.string,

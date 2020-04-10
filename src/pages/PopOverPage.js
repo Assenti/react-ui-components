@@ -86,7 +86,6 @@ const positions = ['left', 'top', 'bottom', 'right'];
 function Example() {
     const [visible, setVisible] = useState(false);
     const [trigger, setTrigger] = useState(false);
-    const [dark, setDark] = useState(false);
     const [control, setControl] = useState(false);
     const [position, setPosition] = useState(positions[0]);
 
@@ -94,7 +93,7 @@ function Example() {
         <div>
             <Select
                 items={positions}
-                prefix={<Icon name="book-open"/>}
+                prefix={<Icon name="chart-ppf"/>}
                 width={200}
                 label="PopOver position"
                 color="primary"
@@ -111,13 +110,6 @@ function Example() {
                 onChange={() => setTrigger(!trigger)}/>
             <br/>
             <Switch 
-                check={dark} 
-                color="primary"
-                rightLabel="Dark" 
-                className="my-10"
-                onChange={() => setDark(!dark)}/>
-            <br/>
-            <Switch 
                 check={control} 
                 color="primary"
                 rightLabel="Control state" 
@@ -126,7 +118,6 @@ function Example() {
             <div className="row justify-center py-30">
                 <PopOver 
                     title="Quit"
-                    dark={dark}
                     trigger={trigger ? 'click' : 'hover'}
                     position={position}
                     control={control}
@@ -162,7 +153,6 @@ const positions = ['left', 'top', 'bottom', 'right'];
 const PopOverPage = () => {
     const [visible, setVisible] = useState(false);
     const [trigger, setTrigger] = useState(false);
-    const [dark, setDark] = useState(false);
     const [control, setControl] = useState(false);
     const [position, setPosition] = useState(positions[1]);
     const parent = useRef();
@@ -178,7 +168,7 @@ const PopOverPage = () => {
                         <Select
                             items={positions}
                             dark={theme}
-                            prefix={<Icon name="book-open"/>}
+                            prefix={<Icon name="chart-ppf"/>}
                             width={200}
                             label="PopOver position"
                             color="primary"
@@ -193,13 +183,6 @@ const PopOverPage = () => {
                             rightLabel="Click" 
                             className="my-10"
                             onChange={() => setTrigger(!trigger)}/>
-                        <br/>
-                        <Switch 
-                            check={dark} 
-                            color="primary"
-                            rightLabel="Dark" 
-                            className="my-10"
-                            onChange={() => setDark(!dark)}/>
                         <br/>
                         <Switch 
                             check={control} 

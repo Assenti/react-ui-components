@@ -187,7 +187,7 @@ const FloatingBtnPage = () => {
                         <Select
                             items={positions}
                             dark={theme}
-                            prefix={<Icon name="book-open"/>}
+                            prefix={<Icon name="chart-ppf"/>}
                             width={200}
                             label="Position"
                             color="primary"

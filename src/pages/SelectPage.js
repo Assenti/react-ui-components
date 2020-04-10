@@ -133,6 +133,13 @@ const rows = [
         value: ''
     },
     { 
+        property: 'dark',
+        description: 'Set dark mode', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'whiteBackground',
         description: 'Set input background color to white', 
         default: 'false', 
@@ -390,6 +397,7 @@ const SelectPage = () => {
                             items={countries}
                             itemKey="country"
                             childrenKey="cities"
+                            disabled={disabled}
                             color={color}
                             dark={theme}
                             borderType={border}
@@ -409,6 +417,7 @@ const SelectPage = () => {
                             itemKey="country"
                             color={color}
                             dark={theme}
+                            disabled={disabled}
                             maxHeight={maxHeight ? 200 : null}
                             width={250}
                             borderType={border}
@@ -427,6 +436,7 @@ const SelectPage = () => {
                             dark={theme}
                             maxHeight={maxHeight ? 200 : null}
                             width={250}
+                            disabled={disabled}
                             multiple
                             size={size}
                             borderType={border}
@@ -457,6 +467,8 @@ const SelectPage = () => {
                     <BackTopBtn setRef={parent} dark size="medium"/>
                     <h2 ref={api}>API</h2>
                     <Table
+                        searchable
+                        searchKey="property"
                         bordered
                         dark={theme}
                         headers={['Property', 'Description', 'Default', 'Type', 'Value']}

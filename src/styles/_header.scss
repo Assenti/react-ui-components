@@ -12,6 +12,12 @@
         z-index: 1000;
     }
 
+    &:not(.dark) {
+        &.elevated {
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+        }
+    }
+
     &.smooth {
         border-radius: $radius * 1.5;
     }
@@ -22,6 +28,10 @@
 
     &.dark {
         background-color: $night;
+
+        &.elevated {
+            box-shadow: 1px 1px 3px rgba(lightgray, .2);
+        }
 
         .rui-header__title {
             color: white;

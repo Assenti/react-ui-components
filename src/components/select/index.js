@@ -121,6 +121,7 @@ const Select = (props) => {
         let className = {
             name: 'rui-select__multiple-items',
             size: props.size && props.size !== 'default' ? props.size : '',
+            disabled: props.disabled ? 'disabled' : '',
             color: props.color ? props.color : 'primary',
             border: props.borderType && props.borderType !== 'default' ? props.borderType : ''
         }
@@ -258,7 +259,7 @@ const Select = (props) => {
                     width={props.width}
                     placeholder={props.placeholder}/> : 
                     <div style={{ width: props.width ? props.width : 100 }} 
-                        className="rui-select__multiple">
+                        className={props.disabled ? 'rui-select__multiple disabled' : 'rui-select__multiple'}>
                         {props.label ? 
                             <label
                                 className={focus ? `text-${props.color ? props.color : 'primary'}` : ''} 
@@ -276,6 +277,7 @@ const Select = (props) => {
                                         <Tag 
                                             key={index} 
                                             small
+                                            disabled={props.disabled}
                                             value={item}
                                             outlined={props.tagOutlined} 
                                             color={props.tagColor}
@@ -308,6 +310,7 @@ Select.propTypes = {
     size: PropTypes.oneOf([undefined,'default','','medium','large']),
     color: PropTypes.oneOf([undefined,'default','','primary','info','success','error']),
     dark: PropTypes.bool,
+    disabled: PropTypes.bool,
     tagColor: PropTypes.string,
     tagOutlined: PropTypes.bool,
     whiteBackground: PropTypes.bool,

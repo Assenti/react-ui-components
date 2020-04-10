@@ -24,7 +24,7 @@ const Tooltip = (props) => {
     )
 }
 Tooltip.propTypes = {
-    color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
+    color: PropTypes.oneOf([undefined,'','default','primary','info','success','error']),
     position: PropTypes.oneOf([undefined,'','top','bottom','left','right']),
     tooltip: PropTypes.string.isRequired,
     className: PropTypes.string

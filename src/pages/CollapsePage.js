@@ -143,14 +143,7 @@ const CollapsePage = () => {
             {theme => (
                 <div className="rui-page">
                     <div className="row align-center space-between">
-                        <div className="row">
-                            <div className="rui-page-title">{'<Collapse/>'} Component</div>
-                            <Badge 
-                                color="error" 
-                                value="WIP"
-                                className="ml-10"
-                                parent={<Icon name="wrench" size={20}/>}/>
-                        </div>
+                        <div className="rui-page-title">{'<Collapse/>'} Component</div>
                         <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
                     </div>
                     <Card dark={theme} header={<h4>Usage</h4>}>

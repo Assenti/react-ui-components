@@ -190,7 +190,7 @@ const DropdownPage = () => {
                                             <List dark={theme}>
                                                 {modules.map((item, index) =>
                                                     <ListItem 
-                                                        keys={index}
+                                                        key={index}
                                                         hover
                                                         noDivider 
                                                         item={item.name} 
