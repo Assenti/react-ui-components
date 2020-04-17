@@ -18,7 +18,7 @@
 Create a lot of usefull and maximum reusable UI components
 
 ## Homepage
-[React UI Components](https://r-ui-components.netlify.com/)
+[React UI Components](https://r-ui-components.netlify.app)
 
 ## Install
 ```bash

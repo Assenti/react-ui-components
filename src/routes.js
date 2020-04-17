@@ -95,6 +95,6 @@ export const routes = [
     { path: '/divider', name: 'Divider', Component: DividerPage },
     { path: '/slider', name: 'Slider', Component: SliderPage },
     { path: '/footer', name: 'Footer', Component: FooterPage },
-    { path: '/datepicker', name: 'DatePicker', Component: DatePickerPage },
+    { path: '/datepicker', name: 'DatePicker', Component: DatePickerPage, new: true },
     // { path: '/notification', name: 'Notification', Component: NotificationPage },
 ]

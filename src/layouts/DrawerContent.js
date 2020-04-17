@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { List, ListItem, Icon, Drawer, Switch, ThemeContext, AutoComplete } from '../components';
+import { List, ListItem, Icon, Drawer, Switch, ThemeContext, AutoComplete, Tag } from '../components';
 import { compare } from '../components';
 
 export const DrawerContent = (props) => {
@@ -104,7 +104,8 @@ export const DrawerContent = (props) => {
                                 onClick={() => handleItemClick(item)}
                                 className="no-select"
                                 hover
-                                item={item.name}/>
+                                item={item.name}
+                                controls={item.new ? <Tag value="NEW" small borderType="rounded"/> : null}/>
                         )}
                     </List> : ''}
                     <div className="row justify-center py-15" 
