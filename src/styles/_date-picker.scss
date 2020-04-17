@@ -1,0 +1,140 @@
+.rui-date-picker {
+    .rui-date-picker__content {
+        outline: none;
+
+        .rui-btn.block {
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 10px;
+        }
+    }
+
+    .rui-dropdown__content {
+        padding-top: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 10px;
+    }
+
+    .rui-calendar {
+        max-width: 100%;
+        width: 100%;
+
+        .rui-dropdown__content {
+            padding-top: 0;
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 0;
+        }
+
+        .rui-calendar__header {
+            padding-left: 0;
+            padding-right: 0;
+
+            .rui-btn {
+                margin: 0;
+            }
+        }
+
+        .rui-calendar__title {
+            display: flex;
+            flex-direction: row-reverse;
+
+            .rui-input-field,
+            .rui-select:not(.rui-year) {
+                width: 100% !important;
+                margin-right: 0 !important;
+            }
+
+            .rui-select.rui-year {
+                width: 70px !important;
+                min-width: 70px;
+                margin-right: 0 !important;
+            }
+        }
+
+        .rui-calendar__body {
+            max-width: 100%;
+            border: none; 
+    
+            th {
+                font-weight: normal;
+            }
+    
+            td {
+                position: relative;
+    
+                .rui-calendar__events {
+                    position: absolute;
+                    bottom: 2px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                }
+    
+                .rui-calendar__event {
+                    width: 9px;
+                    height: 9px;
+                    border-radius: 50%;
+                    margin: 0 2px;
+                }
+    
+                &.active,
+                &.active.dark {
+                    text-decoration: underline;
+                    color: transparent;
+        
+                    &::after {
+                        position: absolute;
+                        content: attr(name);
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        top: calc(50% - 10px);
+                        left: calc(50% - 10px);
+                        height: 20px;
+                        width: 20px;
+                        border-radius: 50%;
+                        font-size: inherit;
+                        font-weight: bold;
+                        color: #fff;
+                    }
+                }
+    
+                &.holiday {
+                    color: $error !important;
+                }
+    
+                &.weekend,
+                &.weekend.holiday,
+                &.weekend.active {
+                    background-color: $lightgray;
+                }
+            }
+        }
+    
+        &:not(.medium):not(.large) {
+            .rui-calendar__body {
+                th {
+                    padding: 10px 0;
+                    min-width: 14.285%;
+                    max-width: 14.285%;
+                    border: none;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    font-size: .8rem;
+                }
+        
+                td {
+                    height: 25px;
+                    min-width: 14.285%;
+                    max-width: 14.285%;
+                    border: none;
+                    text-align: center;
+                    font-size: $defaultFont;
+                }
+            }
+        }
+    }
+}

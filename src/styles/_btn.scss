@@ -420,7 +420,7 @@
         color: $dark;
 
         &:not(:disabled):hover {
-            background-color: rgba(lightgray, .4);
+            background-color: rgba(#ccc, .3);
         }
 
         path {

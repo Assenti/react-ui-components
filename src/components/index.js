@@ -63,6 +63,7 @@ export { default as Dock } from './dock';
 export { default as Divider } from './divider';
 export { default as Slider } from './slider';
 export { default as Footer } from './footer';
+export { default as DatePicker } from './datePicker';
 export { ThemeContext, themes } from './theme-provider';
 export { 
     convertToNum, 

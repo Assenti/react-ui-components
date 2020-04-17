@@ -36,11 +36,12 @@ export const DrawerContent = (props) => {
                         className="rotating" 
                         color="#61dafb"/>}>
                     <div className={theme ? 
-                        'row py-5 px-5 justify-center sticky bg-night' : 
-                        'row py-5 px-5 justify-center sticky bg-lightgray'} 
+                        'row px-5 justify-center sticky bg-night' : 
+                        'row px-5 justify-center sticky bg-lightgray'} 
                         style={{ top: 40 }}>
                         <AutoComplete
                             width="100%"
+                            size="medium"
                             items={sortedRoutes()}
                             onItemClick={item => handleItemClick(item)}
                             itemKey="name"
@@ -91,7 +92,7 @@ export const DrawerContent = (props) => {
                                         name={list ? 'chevron-up' : 'chevron-down'}/>}/>
                     </List>
                     {list ? 
-                    <List className="pl-30" dark={theme}>
+                    <List size="medium" className="pl-35" dark={theme}>
                         {sortedRoutes().map((item, index) => 
                             <ListItem
                                 key={index}

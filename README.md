@@ -65,7 +65,6 @@ export default App;
 ```
 
 ### TODO
-- [ ] Date picker
 - [ ] Stepper
 - [ ] Notification
 - [ ] Carousel

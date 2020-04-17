@@ -30,7 +30,7 @@ import { routes } from './routes';
 import { Content } from './layouts/Content';
 import { DrawerContent } from './layouts/DrawerContent';
 import { description } from '../package.json';
-import { Preloader, themes } from './components';
+import { Preloader } from './components';
 import { ThemeContext } from './components';
 
 const defineDarkDefinition = () => {

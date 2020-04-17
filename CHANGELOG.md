@@ -7,6 +7,11 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.5.3 `2020-04-17`
+
+- `NEW!` DatePicker component added;
+- Calendar component updated;
+
 #### 0.5.2 `2020-04-11`
 - RadioGroup component updated;
 - Drawer component updated;

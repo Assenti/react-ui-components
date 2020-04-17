@@ -34,6 +34,13 @@ const items = [
         value: ''
     },
     { 
+        property: 'active', 
+        description: 'Chosen date value (original Date value)', 
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
         property: 'hideWeekend',
         description: 'If flag is set, weekend highlighting disabled', 
         default: 'false', 
@@ -46,6 +53,27 @@ const items = [
         default: 'false', 
         type: 'boolean',
         value: 'true | false'
+    },
+    { 
+        property: 'disabledDates',
+        description: 'Pass array of dates that not available for pick', 
+        default: '', 
+        type: 'Date[]',
+        value: ''
+    },
+    { 
+        property: 'minDate',
+        description: 'Set minimum endable date for pick', 
+        default: '', 
+        type: 'Date',
+        value: ''
+    },
+    { 
+        property: 'maxDate',
+        description: 'Set maximum endable date for pick', 
+        default: '', 
+        type: 'Date',
+        value: ''
     },
     { 
         property: 'color', 
@@ -191,6 +219,7 @@ function Example() {
     const [full, setFull] = useState(false);
     const [hideWeekend, setHideWeekend] = useState(false);
     const [hideCurrentDay, setHideCurrentDay] = useState(false);
+    const [date, setDate] = useState('');
 
     return (
         <div>
@@ -198,6 +227,7 @@ function Example() {
                 items={colors}
                 prefix={<Icon name="brush"/>}
                 width={200}
+                dark={theme}
                 label="Calendar color"
                 color="primary"
                 value={color}
@@ -206,6 +236,7 @@ function Example() {
                 items={sizes}
                 prefix={<Icon name="format-size"/>}
                 width={200}
+                dark={theme}
                 label="Calendar size"
                 color="primary"
                 className="ml-10"
@@ -216,6 +247,7 @@ function Example() {
                 items={locales}
                 prefix={<Icon name="translate"/>}
                 width={200}
+                dark={theme}
                 label="Locale"
                 color="primary"
                 value={locale}
@@ -224,6 +256,7 @@ function Example() {
                 width={200}
                 className="ml-10 my-0"
                 value={limit}
+                dark={theme}
                 label="Years limit"
                 onChange={e => setLimit(e.target.value)}
                 prefix={<Icon name="calendar-month"/>}
@@ -244,12 +277,6 @@ function Example() {
             <br/>
             <Switch 
                 color="primary" 
-                check={dark}
-                rightLabel="Dark"
-                className="my-10"
-                onChange={() => setDark(!dark)}/>
-            <Switch 
-                color="primary" 
                 check={full}
                 rightLabel="Full width"
                 className="my-10"
@@ -267,19 +294,25 @@ function Example() {
                 rightLabel="Hide weekend highlight"
                 className="my-10"
                 onChange={() => setHideWeekend(!hideWeekend)}/>
+            <Divider/>
             <br/>
             <Calendar
                 width={full ? null : 400}
-                className="my-10"
                 shortWeekName
+                active={date}
+                disabledDates={[new Date(2020,3,19), new Date(2020,3,20)]}
+                maxDate={new Date()}
                 hideWeekend={hideWeekend}
                 hideCurrentDay={hideCurrentDay}
-                onDate={(date) => console.log(date)}
+                onDate={(date) => {
+                    console.log(date)
+                    setDate(date)
+                }}
                 events={events}
                 holidays={holidays}
                 weekStartsSunday={weekStartsSunday}
                 size={size}
-                dark={dark}
+                dark={theme}
                 limit={limit} 
                 onlyPast={onlyPast}
                 locale={locale}
@@ -295,10 +328,10 @@ const CalendarPage = () => {
     const [limit, setLimit] = useState(15);
     const [onlyPast, setOnlyPast] = useState(true);
     const [weekStartsSunday, setWeekStartsSunday] = useState(false);
-    const [dark, setDark] = useState(false);
     const [full, setFull] = useState(false);
     const [hideWeekend, setHideWeekend] = useState(false);
     const [hideCurrentDay, setHideCurrentDay] = useState(false);
+    const [date, setDate] = useState('');
 
     return (
         <ThemeContext.Consumer>
@@ -360,12 +393,6 @@ const CalendarPage = () => {
                         <br/>
                         <Switch 
                             color="primary" 
-                            check={dark}
-                            rightLabel="Dark"
-                            className="my-10"
-                            onChange={() => setDark(!dark)}/>
-                        <Switch 
-                            color="primary" 
                             check={full}
                             rightLabel="Full width"
                             className="my-10"
@@ -387,11 +414,16 @@ const CalendarPage = () => {
                         <br/>
                         <Calendar
                             width={full ? null : 400}
-                            className="my-10"
                             shortWeekName
+                            active={date}
+                            disabledDates={[new Date(2020,3,19), new Date(2020,3,20)]}
+                            maxDate={new Date()}
                             hideWeekend={hideWeekend}
                             hideCurrentDay={hideCurrentDay}
-                            onDate={(date) => console.log(date)}
+                            onDate={(date) => {
+                                console.log(date)
+                                setDate(date)
+                            }}
                             events={events}
                             holidays={holidays}
                             weekStartsSunday={weekStartsSunday}

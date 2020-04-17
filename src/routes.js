@@ -46,6 +46,7 @@ const DockPage = lazy(() => import('./pages/DockPage'));
 const DividerPage = lazy(() => import('./pages/DividerPage'));
 const SliderPage = lazy(() => import('./pages/SliderPage'));
 const FooterPage = lazy(() => import('./pages/FooterPage'));
+const DatePickerPage = lazy(() => import('./pages/DatePickerPage'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
@@ -94,5 +95,6 @@ export const routes = [
     { path: '/divider', name: 'Divider', Component: DividerPage },
     { path: '/slider', name: 'Slider', Component: SliderPage },
     { path: '/footer', name: 'Footer', Component: FooterPage },
+    { path: '/datepicker', name: 'DatePicker', Component: DatePickerPage },
     // { path: '/notification', name: 'Notification', Component: NotificationPage },
 ]

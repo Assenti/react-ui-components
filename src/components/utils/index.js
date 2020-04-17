@@ -16,6 +16,21 @@ export const compare = (a, b, key, sortType) => {
     }
 }
 
+export const dateMask = (date) => {
+    if (date) {
+        let day = date.getDate()
+        let month = date.getMonth()
+        let year = date.getFullYear()
+
+        let handledDay = day.toString().length < 2 ? `0${day}` : day;
+        let handledMonth = month.toString().length < 2 ? `0${month + 1}` : month + 1;
+
+        return `${handledDay}.${handledMonth}.${year}`;
+    } else {
+        return '';
+    }
+}
+
 export const phoneMask = (phone, code = '+7') => {
     if (phone) {
         return `${code} (${phone.slice(0,3)}) ${phone.slice(3,6)}-${phone.slice(6,8)}-${phone.slice(8,10)}`;
