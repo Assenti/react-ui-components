@@ -414,14 +414,7 @@ const TablePage = () => {
                                 className="my-0"
                                 value={color}
                                 onChange={v => setColor(v)}/>
-                            <ButtonGroup 
-                                default={0} 
-                                icon
-                                onChange={(item, index) => setTextAlign(textAligns[index])}
-                                className="ml-10"
-                                options={icons} 
-                                color="secondary" 
-                                outlined/>
+                            
                         </div>
                         <br/>
                         <Switch 
@@ -506,6 +499,14 @@ const TablePage = () => {
                             className="my-10"
                             rightLabel="Loading"
                             onChange={() => setLoading(!loading)}/>
+                        <div className="row justify-end">
+                            <ButtonGroup 
+                                default={0} 
+                                icon
+                                onChange={(item, index) => setTextAlign(textAligns[index])}
+                                className="ml-10"
+                                options={icons}/>
+                        </div>
                         <Divider/>
                         <br/>
                         <Table
@@ -568,15 +569,16 @@ const TablePage = () => {
                     </Card>
                     <h2 ref={api}>API</h2>
                     <BackTopBtn size="medium" dark setRef={parent}/>
-                    <Table
-                        bordered
-                        searchable
-                        searchKey="property"
-                        dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={rows}
-                        index={true}
-                        itemTitles={keys}/>
+                    <Card className="pa-0">
+                        <Table
+                            searchable
+                            searchKey="property"
+                            dark={theme}
+                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                            items={rows}
+                            index={true}
+                            itemTitles={keys}/>
+                    </Card>
                 </div>
             )}
         </ThemeContext.Consumer>

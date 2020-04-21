@@ -23,6 +23,7 @@ const Avatar = (props) => {
         <div className={componentClass()} 
             style={{
                 width: props.size ? props.size : 40,
+                minWidth: props.size ? props.size : 40,
                 height: props.size ? props.size : 40
             }}>
             {props.img && !props.icon ? <img src={props.img} alt=""/> : null}

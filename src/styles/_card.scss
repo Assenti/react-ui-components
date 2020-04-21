@@ -1,8 +1,7 @@
 .rui-card {
     border: 1px solid transparent;
-    border-radius: $radius * 2;
+    border-radius: $radius * 1.5;
     padding: 15px;
-    margin: 5px 0;
 
     &.dark {
         border-color: $night;
@@ -44,7 +43,8 @@
     }
 
     &:not(.flat):not(.outlined):not(.dark) {
-        box-shadow: 0 1px 5px rgba($dark, .3);
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);
+        border-color: rgba(0,40,100,.12);
     }
 
     &.hover {

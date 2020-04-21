@@ -10,7 +10,7 @@ const Card = (props) => {
             dark: props.dark ? 'dark' : '',
             hover: props.hover ? 'hover' : '',
             outlined: props.outlined ? 'outlined' : '',
-            color: props.color ? props.color : 'gray',
+            color: props.color ? props.color : '',
             className: props.className ? props.className : ''
         }
 
@@ -23,7 +23,11 @@ const Card = (props) => {
     return (
         <div className={cardClass()}
             ref={props.setRef} 
-            style={{ width: props.width ? props.width : '', minWidth: props.minWidth ? props.minWidth : '' }}>
+            style={{ 
+                width: props.width ? props.width : '', 
+                minWidth: props.minWidth ? props.minWidth : '',
+                padding: props.padding ? props.padding : '' 
+            }}>
             {props.title && props.outlined ? <div className="rui-card-title">{props.title}</div> : ''}
             {props.header ? <div className="rui-card-header">{props.header}</div> : ''}
             {props.img ? <img src={props.img} alt=""/> : ''}
@@ -44,9 +48,7 @@ Card.propTypes = {
     header: PropTypes.any,
     img: PropTypes.string,
     footer: PropTypes.any,
+    padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     className: PropTypes.string
-}
-Card.defaultProps = {
-    color: 'gray'
 }
 export default Card;

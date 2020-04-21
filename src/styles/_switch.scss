@@ -85,10 +85,6 @@
             cursor: pointer;
         }
     
-        &:active:not(.disabled) {
-            box-shadow: 0 2px 5px rgba(black, .3);
-        }
-    
         & > span {
             width: 21px;
             height: 21px;

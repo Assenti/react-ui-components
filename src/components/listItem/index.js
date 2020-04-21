@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Icon, Checkbox, Avatar, Tooltip } from '../index';
 
 const ListItem = (props) => {
-    const itemClass = () => {
+    const className = () => {
         let result = '';
         let className = {
             item: 'rui-list-item',
@@ -33,11 +33,12 @@ const ListItem = (props) => {
     return (
         <div onClick={handleClick}
             tabIndex={props.tabIndex} 
-            className={itemClass()}>
+            className={className()}
+            style={{ width: props.width ? props.width : ''}}>
             {!props.render ?
                 <>
                     <div className="rui-list-item__left-side">
-                        <div className="row align-center">
+                        <div>
                             {props.avatar && !props.icon ? 
                                 <Avatar
                                     className="mr-10" 
@@ -84,6 +85,7 @@ ListItem.propTypes = {
     hover: PropTypes.bool,
     noDivider: PropTypes.bool,
     checkbox: PropTypes.bool,
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     item: PropTypes.oneOfType([PropTypes.string,PropTypes.number, PropTypes.object]),
     onClick: PropTypes.func,
     subTitle: PropTypes.string,
@@ -96,8 +98,5 @@ ListItem.propTypes = {
     controls: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
     render: PropTypes.node,
     className: PropTypes.string
-}
-ListItem.defaultProps = {
-    color: 'primary'
 }
 export default ListItem;

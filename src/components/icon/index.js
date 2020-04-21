@@ -102,7 +102,9 @@ import {
     ChartPpf,
     Users,
     Airplane,
-    Cancel
+    Cancel,
+    Grid,
+    ViewList
 } from './icons/index';
 
 const Icon = (props) => {
@@ -313,6 +315,10 @@ const Icon = (props) => {
                 return <Airplane {...props}/>;
             case 'cancel':
                 return <Cancel {...props}/>;
+            case 'grid':
+                return <Grid {...props}/>;
+            case 'view-list':
+                return <ViewList {...props}/>;
             default:
                 return '';
         }
@@ -344,9 +350,5 @@ Icon.propTypes = {
     onClick: PropTypes.func,
     color: PropTypes.string,
     className: PropTypes.string
-}
-Icon.defaultProps = {
-    size: 24,
-    color: 'gray'
 }
 export default Icon;

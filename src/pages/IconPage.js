@@ -102,7 +102,9 @@ const icons = [
     'cart',
     'chart-ppf',
     'airplane',
-    'cancel'
+    'cancel',
+    'grid',
+    'view-list'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];

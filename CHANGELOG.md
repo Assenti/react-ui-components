@@ -7,6 +7,12 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.5.4 `2020-04-21`
+
+- Card component added;
+- List, ListItem component updated;
+- `NEW!` New icons added;
+
 #### 0.5.3 `2020-04-17`
 
 - `NEW!` DatePicker component added;

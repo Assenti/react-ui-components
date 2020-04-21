@@ -14,7 +14,8 @@ const Tag = (props) => {
             uppercase: props.uppercase ? 'uppercase' : '',
             borderType: props.borderType ? (props.borderType === 'default' ? '' : props.borderType) : '',
             color: props.color ? props.color : 'primary',
-            small: props.small ? 'small' : '',
+            small: props.small && !props.tiny ? 'small' : '',
+            tiny: props.tiny ? 'tiny' : '',
             outlined: props.outlined ? 'outlined' : '',
             className: props.className ? props.className : ''
         }

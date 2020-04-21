@@ -42,7 +42,14 @@ const items = [
     },
     { 
         property: 'small', 
-        description: 'Set tag size',
+        description: 'Set small tag size',
+        default: '', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'tiny', 
+        description: 'Set tiny tag size',
         default: '', 
         type: 'boolean',
         value: 'true | false'
@@ -309,13 +316,14 @@ const TagPage = () => {
                     </Card>
                     <h2 ref={api}>API</h2>
                     <BackTopBtn setRef={parent} dark size="medium"/>
-                    <Table
-                        bordered
-                        dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
+                    <Card className="pa-0">
+                        <Table
+                            dark={theme}
+                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                            items={items}
+                            index={true}
+                            itemTitles={keys}/>
+                    </Card>
                 </div>
             )}
         </ThemeContext.Consumer>

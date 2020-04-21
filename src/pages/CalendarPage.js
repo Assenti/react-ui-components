@@ -451,13 +451,16 @@ const CalendarPage = () => {
                         </Collapse>
                     </Card>
                     <h2>API</h2>
-                    <Table
-                        bordered
-                        dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
+                    <Card className="pa-0">
+                        <Table
+                            dark={theme}
+                            searchable
+                            searchKey="property"
+                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                            items={items}
+                            index={true}
+                            itemTitles={keys}/>
+                    </Card>
                 </div>
             )}
         </ThemeContext.Consumer>

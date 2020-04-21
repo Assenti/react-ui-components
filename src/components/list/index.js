@@ -6,9 +6,9 @@ const List = (props) => {
         let result = '';
         let className = {
             list: 'rui-list',
+            grid: props.grid ? 'grid' : '',
             size: props.size ? props.size : '',
-            dark: props.dark ? 'dark' : '',
-            className: props.className ? props.className : ''
+            dark: props.dark ? 'dark' : ''
         }
         
         for (const key in className) {
@@ -18,15 +18,18 @@ const List = (props) => {
     }
 
     return (
-        <div className={listClass()}>
+        <div className={`rui-list-container ${props.className ? props.className : ''}`}>
             {props.header ? <div className="rui-list-header">{props.header}</div> : ''}
-            {props.children}
+            <div className={listClass()}>
+                {props.children}
+            </div>
         </div>
     )
 }
 List.propTypes = {
     size: PropTypes.oneOf([undefined,'','default','medium','large']),
     dark: PropTypes.bool,
+    grid: PropTypes.bool,
     header: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
     className: PropTypes.string
 }

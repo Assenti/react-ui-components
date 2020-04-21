@@ -151,7 +151,7 @@ const ExpansionListPage = () => {
                             <div className="rui-page-title">{'<ExpansionList/>'} Component</div>
                         </div>
                     </div>
-                    <Card dark header={<h4>Usage</h4>}>
+                    <Card dark={theme} header={<h4>Usage</h4>}>
                         <Select
                             items={sizes}
                             prefix={<Icon name="format-size"/>}
@@ -215,13 +215,14 @@ const ExpansionListPage = () => {
                         </Collapse>
                     </Card>
                     <h2>API</h2>
-                    <Table
-                        bordered
-                        dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
+                    <Card className="pa-0">
+                        <Table
+                            dark={theme}
+                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                            items={items}
+                            index={true}
+                            itemTitles={keys}/>
+                    </Card>
                 </div>
             )}
         </ThemeContext.Consumer>

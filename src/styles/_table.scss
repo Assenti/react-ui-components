@@ -352,6 +352,9 @@
     th {
         position: sticky;
         top: 0;
+        color: gray;
+        text-transform: uppercase;
+        font-weight: bold;
     }
 
     th:first-child {
@@ -371,9 +374,12 @@
         border-left: none;
         border-right: none;
         border-collapse: collapse;
-        font-weight: normal;
         padding: 0 10px;
+    }
+
+    td {
         color: #000;
+        font-weight: normal;
     }
 
     th.indexed,

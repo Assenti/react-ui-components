@@ -126,7 +126,9 @@ function Example() {
                     {names.map((item, index) => 
                         <ListItem 
                             key={index}
+                            icon={item.icon}
                             item={item.name}
+                            subTitle={item.hero}
                             hover/>
                     )}
                 </List>
@@ -144,7 +146,7 @@ let cards = [1,2,3];
 
 function Example() {
     return (
-        <div className="row space-around">
+        <div className="row wrap">
             {cards.map((item, index) => 
                 <Card 
                     key={index}
@@ -178,7 +180,7 @@ const CardPage = () => {
             {img: girlImage2, name: 'Jane Smith'}     
         ];
         return (
-            <div className="row wrap space-around">
+            <div className="row wrap">
                 {cards.map((item, index) => 
                     <Card 
                         key={index}
@@ -249,7 +251,9 @@ const CardPage = () => {
                                 {itemsComplexInitial.map((item, index) => 
                                     <ListItem 
                                         key={index}
+                                        icon={item.icon}
                                         item={item.name}
+                                        subTitle={item.hero}
                                         hover/>
                                 )}
                             </List>
@@ -293,13 +297,14 @@ const CardPage = () => {
                     </Card>
                     <BackTopBtn dark setRef={parentRef} size="medium"/>
                     <h2 ref={api}>API</h2>
-                    <Table
-                        dark={theme}
-                        bordered
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index
-                        itemTitles={keys}/>
+                    <Card className="pa-0">
+                        <Table
+                            dark={theme}
+                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                            items={items}
+                            index
+                            itemTitles={keys}/>
+                    </Card>
                 </div>
             )}
         </ThemeContext.Consumer>

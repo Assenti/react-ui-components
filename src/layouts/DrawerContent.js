@@ -105,7 +105,7 @@ export const DrawerContent = (props) => {
                                 className="no-select"
                                 hover
                                 item={item.name}
-                                controls={item.new ? <Tag value="NEW" small borderType="rounded"/> : null}/>
+                                controls={item.updated ? <Tag value="updated" borderType="rounded" tiny/> : null}/>
                         )}
                     </List> : ''}
                     <div className="row justify-center py-15" 

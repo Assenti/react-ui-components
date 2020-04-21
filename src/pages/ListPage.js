@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { List, ListItem, Button, Table, Card, Collapse, BackTopBtn, Select, Icon, Switch, RadioGroup, phoneMask, CopyToClipboard, ThemeContext, Divider } from '../components';
+import { List, ListItem, Button, Table, Card, Collapse, BackTopBtn, Select, Icon, Switch, RadioGroup, phoneMask, CopyToClipboard, ThemeContext, Divider, ButtonGroup } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import manImage from '../img/man.png';
 import manImage2 from '../img/hipster.png';
 import manImage3 from '../img/man_.png';
 import manImage4 from '../img/old.png';
+import girlImage from '../img/girl.png';
 
 const usage =
 `// Usage examples
@@ -15,12 +16,15 @@ const names = [
     { name: 'Steve Rogers', hero: 'Captain America', phone: '1234567890', icon: 'shield-account', img: manImage, check: false, active: false }, 
     { name: 'Peter Parker', hero: 'Spider man', phone: '1234567890', icon: 'shield-account', img: manImage2, check: false, active: true }, 
     { name: 'Tony Stark', hero: 'Iron man', phone: '1234567890', icon: 'shield-account', img: manImage3, check: false, active: false }, 
-    { name: 'Bruce Benner', hero: 'Hulk', phone: '1234567890', icon: 'shield-account', img: manImage4, check: false, active: false }
+    { name: 'Bruce Benner', hero: 'Hulk', phone: '1234567890', icon: 'shield-account', img: manImage4, check: false, active: false },
+    { name: 'Natasha Romanoff', hero: 'Black Widow', phone: '1234567890', icon: 'shield-account', img: girlImage, check: false, active: false },
+    { name: 'Stephen Strange', hero: 'Doctor Strange', phone: '1234567890', icon: 'shield-account', img: manImage4, check: false, active: false },
 ];
 const types = ['image', 'icon', 'none'];
 const sizes = ['default', 'medium', 'large'];
 const colors = ['primary', 'info', 'success', 'error'];
 const borders = ['default', 'rounded', 'tile'];
+const icons = ['view-list', 'grid'];
 
 function Example() {
     const [selected, setSelected] = useState([]);
@@ -35,7 +39,8 @@ function Example() {
     const [left, setLeft] = useState(false);
     const [checkbox, setCheckbox] = useState(false);
     const [controls, setControls] = useState(true);
-    const [type, setType] = useState('');
+    const [type, setType] = useState(types[0]);
+    const [view, setView] = useState('view-list');
 
     const selectOne = (item) => {
         if (isSelected(item)) {
@@ -52,137 +57,163 @@ function Example() {
     }
 
     return (
-        <div>
-            <Select
-                items={sizes}
-                prefix={<Icon name="format-size"/>}
-                width={200}
-                label="List size"
-                color="primary"
-                className="pl-10"
-                value={size}
-                onChange={v => setSize(v)}/>
-            <br/>
-            <Select
-                items={borders}
-                prefix={<Icon name="shape"/>}
-                width={200}
-                label="Avatar border type"
-                color="primary"
-                className="pl-10"
-                value={border}
-                onChange={v => setBorder(v)}/>
-            <br/>
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                label="Active item color"
-                color="primary"
-                className="pl-10"
-                value={color}
-                onChange={v => setColor(v)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={dark}
-                rightLabel="Dark"
-                className="pl-10 my-10"
-                onChange={() => setDark(!dark)}/>
-            <Switch 
-                color="primary" 
-                check={hover}
-                rightLabel="Hover"
-                className="pl-10 my-10"
-                onChange={() => setHover(!hover)}/>
-            <Switch 
-                color="primary" 
-                check={divider}
-                rightLabel="Hide dividers"
-                className="pl-10 my-10"
-                onChange={() => setDivider(!divider)}/>
-            <br/>
-            <RadioGroup
-                options={types} 
-                value={type}
-                name="type"
-                className="pl-10 mt-10" 
-                onChange={(value) => setType(value)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={subtitle}
-                rightLabel="Subtitle"
-                className="pl-10 my-10"
-                onChange={() => setSubtitle(!subtitle)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={rounded}
-                rightLabel="Rounded active item"
-                className="pl-10 my-10"
-                onChange={() => setRounded(!rounded)}/>
-            <Switch 
-                color="primary" 
-                check={left}
-                rightLabel="Active item left border"
-                className="pl-10 my-10"
-                onChange={() => setLeft(!left)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={checkbox}
-                rightLabel="Checkbox"
-                className="pl-10 my-10"
-                onChange={() => setCheckbox(!checkbox)}/>
-            <Switch 
-                color="primary" 
-                check={controls}
-                rightLabel="Controls"
-                className="pl-10 my-10"
-                onChange={() => setControls(!controls)}/>
-            <Card
-                className="ma-10" 
-                dark={dark} 
-                width={400}>
-                <List
-                    size={size}
-                    dark={dark} 
-                    header={
-                        <div className="row align-center space-between">
-                            Selected persons: {selected.length}
-                            {selected.length > 0 ? <Button className="ma-0" light icon="share" size={18}/> : ''}
-                        </div>
-                    }>
-                    {names.map((item, index) => 
-                        <ListItem
-                            isActiveItem={isSelected(item.hero)}
-                            onClick={() => selectOne(item.hero)}
-                            key={index} 
-                            hover={hover}
-                            item={item.name}
-                            color={color}
-                            noDivider={divider}
-                            roundedActive={rounded}
-                            leftBorder={left}
-                            subTitle={subtitle ? item.hero : null}
-                            icon={type === 'icon' ? item.icon : null}
-                            avatar={type === 'image' ? item.img : null}
-                            avatarBorderType={border}
-                            checkbox={checkbox}
-                            controls={controls ?
-                                <div className="row align-center fz-9 text-dark">
-                                    <Icon name="smartphone" size={16} className="mr-5"/>
-                                    {phoneMask(item.phone)}
-                                    <Button color="light" 
-                                        className="ml-10" 
-                                        icon="edit"
-                                        iconSize={16}/>
-                                </div> : null}/>
-                    )}
-                </List>
-            </Card>
-        </div>
+        <>
+            <Card 
+                dark={theme} 
+                header={<h4>Usage</h4>}>
+                <Select
+                    items={sizes}
+                    prefix={<Icon name="format-size"/>}
+                    width={200}
+                    dark={theme}
+                    label="List size"
+                    color="primary"
+                    value={size}
+                    onChange={v => setSize(v)}/>
+                <br/>
+                <Select
+                    items={borders}
+                    prefix={<Icon name="shape"/>}
+                    width={200}
+                    dark={theme}
+                    label="Avatar border type"
+                    color="primary"
+                    value={border}
+                    onChange={v => setBorder(v)}/>
+                <br/>
+                <Select
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    dark={theme}
+                    label="Active item color"
+                    color="primary"
+                    value={color}
+                    onChange={v => setColor(v)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={hover}
+                    rightLabel="Hover"
+                    className="my-10"
+                    onChange={() => setHover(!hover)}/>
+                <Switch 
+                    color="primary" 
+                    check={divider}
+                    rightLabel="Hide dividers"
+                    className="my-10"
+                    onChange={() => setDivider(!divider)}/>
+                <br/>
+                <RadioGroup
+                    options={types} 
+                    value={type}
+                    name="type"
+                    className="mt-10" 
+                    onChange={(value) => setType(value)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={subtitle}
+                    rightLabel="Subtitle"
+                    className="my-10"
+                    onChange={() => setSubtitle(!subtitle)}/>
+                <Switch 
+                    color="primary" 
+                    check={header}
+                    rightLabel="Header"
+                    className="my-10"
+                    onChange={() => setHeader(!header)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={rounded}
+                    rightLabel="Rounded active item"
+                    className="my-10"
+                    onChange={() => setRounded(!rounded)}/>
+                <Switch 
+                    color="primary" 
+                    check={left}
+                    rightLabel="Active item left border"
+                    className="my-10"
+                    onChange={() => setLeft(!left)}/>
+                <br/>
+                <Switch 
+                    color="primary" 
+                    check={checkbox}
+                    rightLabel="Checkbox"
+                    className="my-10"
+                    onChange={() => setCheckbox(!checkbox)}/>
+                <Switch 
+                    color="primary" 
+                    check={controls}
+                    rightLabel="Controls"
+                    className="my-10"
+                    onChange={() => setControls(!controls)}/>
+                <br/>
+                <div className="row justify-end">
+                    <ButtonGroup 
+                        default={0} 
+                        options={icons} 
+                        icon
+                        onChange={v => setView(v)}
+                        dark={theme}/>
+                </div>
+                <Divider/>
+                <br/>
+                <Card
+                    className="pa-0" 
+                    dark={theme}>
+                    <List
+                        grid={view === 'grid' ? true : false}
+                        size={size}
+                        dark={theme} 
+                        header={header ?
+                            <div className="row align-center space-between">
+                                Selected persons: {selected.length}
+                                {selected.length > 0 ? <Button className="ma-0" light icon="share" size={18}/> : ''}
+                            </div> : null
+                        }>
+                        {names.map((item, index) => 
+                            <ListItem
+                                isActiveItem={isSelected(item.hero)}
+                                onClick={() => checkbox ? selectOne(item.hero) : {}}
+                                key={index} 
+                                hover={hover}
+                                width={view === 'grid' ? '25%' : ''}
+                                item={item.name}
+                                color={color}
+                                noDivider={divider}
+                                roundedActive={rounded}
+                                leftBorder={left}
+                                subTitle={subtitle ? item.hero : null}
+                                icon={type === 'icon' ? item.icon : null}
+                                avatar={type === 'image' ? item.img : null}
+                                avatarBorderType={border}
+                                checkbox={checkbox}
+                                controls={controls ?
+                                    <div className="row align-center justify-end fz-9">
+                                        <div className="row align-center justify-end">
+                                            <Icon 
+                                                name="smartphone" 
+                                                size={16} 
+                                                className="mr-5" 
+                                                color={theme ? 'lightgray' : ''}/>
+                                            {phoneMask(item.phone)}
+                                        </div>
+                                        {view === 'grid' ? 
+                                            null :
+                                            <Button 
+                                                className="ml-10" 
+                                                dark={theme}
+                                                light={!theme}
+                                                icon="edit"
+                                                iconSize={16}/>
+                                        }
+                                    </div> : null}/>
+                        )}
+                    </List>
+                </Card>
+        </>
     )
 }`
 
@@ -190,7 +221,9 @@ const names = [
     { name: 'Steve Rogers', hero: 'Captain America', phone: '1234567890', icon: 'shield-account', img: manImage, check: false, active: false }, 
     { name: 'Peter Parker', hero: 'Spider man', phone: '1234567890', icon: 'shield-account', img: manImage2, check: false, active: true }, 
     { name: 'Tony Stark', hero: 'Iron man', phone: '1234567890', icon: 'shield-account', img: manImage3, check: false, active: false }, 
-    { name: 'Bruce Benner', hero: 'Hulk', phone: '1234567890', icon: 'shield-account', img: manImage4, check: false, active: false }
+    { name: 'Bruce Benner', hero: 'Hulk', phone: '1234567890', icon: 'shield-account', img: manImage4, check: false, active: false },
+    { name: 'Natasha Romanoff', hero: 'Black Widow', phone: '1234567890', icon: 'shield-account', img: girlImage, check: false, active: false },
+    { name: 'Stephen Strange', hero: 'Doctor Strange', phone: '1234567890', icon: 'shield-account', img: manImage4, check: false, active: false },
 ];
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
@@ -208,6 +241,13 @@ const items = [
         default: '', 
         type: 'string',
         value: 'medium | large'
+    },
+    { 
+        property: 'grid',
+        description: 'Set grid view', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
     },
     { 
         property: 'dark',
@@ -343,24 +383,26 @@ const sizes = ['default', 'medium', 'large'];
 const colors = ['primary', 'info', 'success', 'error'];
 const borders = ['default', 'rounded', 'tile'];
 const types = ['image', 'icon', 'none'];
+const icons = ['view-list', 'grid'];
 
 const ListPage = () => {
     const [selected, setSelected] = useState([]);
     const [size, setSize] = useState(sizes[0]);
     const [border, setBorder] = useState(borders[1]);
     const [color, setColor] = useState(colors[0]);
-    const [dark, setDark] = useState(false);
+    const [header, setHeader] = useState(true);
     const [rounded, setRounded] = useState(false);
     const [divider, setDivider] = useState(false);
-    const [hover, setHover] = useState(false);
-    const [subtitle, setSubtitle] = useState(false);
+    const [hover, setHover] = useState(true);
+    const [subtitle, setSubtitle] = useState(true);
     const [left, setLeft] = useState(false);
     const [checkbox, setCheckbox] = useState(false);
     const [controls, setControls] = useState(true);
     const listApi = useRef();
     const listItemApi = useRef();
     const parent = useRef();
-    const [type, setType] = useState(types[2]);
+    const [type, setType] = useState(types[0]);
+    const [view, setView] = useState('view-list');
 
     const goListApi = () => {
         if (listApi.current) listApi.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -405,7 +447,6 @@ const ListPage = () => {
                             dark={theme}
                             label="List size"
                             color="primary"
-                            className="pl-10"
                             value={size}
                             onChange={v => setSize(v)}/>
                         <br/>
@@ -416,7 +457,6 @@ const ListPage = () => {
                             dark={theme}
                             label="Avatar border type"
                             color="primary"
-                            className="pl-10"
                             value={border}
                             onChange={v => setBorder(v)}/>
                         <br/>
@@ -427,89 +467,98 @@ const ListPage = () => {
                             dark={theme}
                             label="Active item color"
                             color="primary"
-                            className="pl-10"
                             value={color}
                             onChange={v => setColor(v)}/>
                         <br/>
                         <Switch 
                             color="primary" 
-                            check={dark}
-                            rightLabel="Dark"
-                            className="pl-10 my-10"
-                            onChange={() => setDark(!dark)}/>
-                        <Switch 
-                            color="primary" 
                             check={hover}
                             rightLabel="Hover"
-                            className="pl-10 my-10"
+                            className="my-10"
                             onChange={() => setHover(!hover)}/>
                         <Switch 
                             color="primary" 
                             check={divider}
                             rightLabel="Hide dividers"
-                            className="pl-10 my-10"
+                            className="my-10"
                             onChange={() => setDivider(!divider)}/>
                         <br/>
                         <RadioGroup
                             options={types} 
                             value={type}
                             name="type"
-                            className="pl-10 mt-10" 
+                            className="mt-10" 
                             onChange={(value) => setType(value)}/>
                         <br/>
                         <Switch 
                             color="primary" 
                             check={subtitle}
                             rightLabel="Subtitle"
-                            className="pl-10 my-10"
+                            className="my-10"
                             onChange={() => setSubtitle(!subtitle)}/>
+                        <Switch 
+                            color="primary" 
+                            check={header}
+                            rightLabel="Header"
+                            className="my-10"
+                            onChange={() => setHeader(!header)}/>
                         <br/>
                         <Switch 
                             color="primary" 
                             check={rounded}
                             rightLabel="Rounded active item"
-                            className="pl-10 my-10"
+                            className="my-10"
                             onChange={() => setRounded(!rounded)}/>
                         <Switch 
                             color="primary" 
                             check={left}
                             rightLabel="Active item left border"
-                            className="pl-10 my-10"
+                            className="my-10"
                             onChange={() => setLeft(!left)}/>
                         <br/>
                         <Switch 
                             color="primary" 
                             check={checkbox}
                             rightLabel="Checkbox"
-                            className="pl-10 my-10"
+                            className="my-10"
                             onChange={() => setCheckbox(!checkbox)}/>
                         <Switch 
                             color="primary" 
                             check={controls}
                             rightLabel="Controls"
-                            className="pl-10 my-10"
+                            className="my-10"
                             onChange={() => setControls(!controls)}/>
+                        <br/>
+                        <div className="row justify-end">
+                            <ButtonGroup 
+                                default={0} 
+                                options={icons} 
+                                icon
+                                onChange={v => setView(v)}
+                                dark={theme}/>
+                        </div>
                         <Divider/>
                         <br/>
                         <Card
-                            className="ma-10" 
-                            dark={theme} 
-                            width={400}>
+                            className="pa-0" 
+                            dark={theme}>
                             <List
+                                grid={view === 'grid' ? true : false}
                                 size={size}
                                 dark={theme} 
-                                header={
+                                header={header ?
                                     <div className="row align-center space-between">
                                         Selected persons: {selected.length}
                                         {selected.length > 0 ? <Button className="ma-0" light icon="share" size={18}/> : ''}
-                                    </div>
+                                    </div> : null
                                 }>
                                 {names.map((item, index) => 
                                     <ListItem
                                         isActiveItem={isSelected(item.hero)}
-                                        onClick={() => selectOne(item.hero)}
+                                        onClick={() => checkbox ? selectOne(item.hero) : {}}
                                         key={index} 
                                         hover={hover}
+                                        width={view === 'grid' ? '25%' : ''}
                                         item={item.name}
                                         color={color}
                                         noDivider={divider}
@@ -521,19 +570,24 @@ const ListPage = () => {
                                         avatarBorderType={border}
                                         checkbox={checkbox}
                                         controls={controls ?
-                                            <div className="row align-center fz-9">
-                                                <Icon 
-                                                    name="smartphone" 
-                                                    size={16} 
-                                                    className="mr-5" 
-                                                    color={theme ? 'lightgray' : ''}/>
-                                                {phoneMask(item.phone)}
-                                                <Button 
-                                                    className="ml-10" 
-                                                    dark={theme}
-                                                    light={!theme}
-                                                    icon="edit"
-                                                    iconSize={16}/>
+                                            <div className="row align-center justify-end fz-9">
+                                                <div className="row align-center justify-end">
+                                                    <Icon 
+                                                        name="smartphone" 
+                                                        size={16} 
+                                                        className="mr-5" 
+                                                        color={theme ? 'lightgray' : ''}/>
+                                                    {phoneMask(item.phone)}
+                                                </div>
+                                                {view === 'grid' ? 
+                                                    null :
+                                                    <Button 
+                                                        className="ml-10" 
+                                                        dark={theme}
+                                                        light={!theme}
+                                                        icon="edit"
+                                                        iconSize={16}/>
+                                                }
                                             </div> : null}/>
                                 )}
                             </List>
@@ -557,21 +611,23 @@ const ListPage = () => {
                         </Collapse>
                     </Card>
                     <h2 ref={listApi}>List API</h2>
-                    <Table
-                        bordered
-                        dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index
-                        itemTitles={keys}/>
+                    <Card className="pa-0">
+                        <Table
+                            dark={theme}
+                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                            items={items}
+                            index
+                            itemTitles={keys}/>
+                    </Card>
                     <h2 ref={listItemApi}>ListItem API</h2>
-                    <Table
-                        bordered
-                        dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items2}
-                        index
-                        itemTitles={keys}/>
+                    <Card className="pa-0">
+                        <Table
+                            dark={theme}
+                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                            items={items2}
+                            index
+                            itemTitles={keys}/>
+                    </Card>
                     <BackTopBtn setRef={parent} dark size="medium"/>
                 </div>
             )}

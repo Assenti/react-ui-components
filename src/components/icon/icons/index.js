@@ -879,3 +879,21 @@ export const Cancel = (props) => {
         </svg>
     )
 }
+
+export const Grid = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M3,11H11V3H3M3,21H11V13H3M13,21H21V13H13M13,3V11H21V3" />
+        </svg>
+    )
+}
+
+export const ViewList = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M9,5V9H21V5M9,19H21V15H9M9,14H21V10H9M4,9H8V5H4M4,19H8V15H4M4,14H8V10H4V14Z" />
+        </svg>
+    )
+}

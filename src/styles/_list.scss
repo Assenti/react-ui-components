@@ -1,4 +1,42 @@
 .rui-list {
+    &.grid {
+        display: flex;
+        flex-wrap: wrap;
+
+        .rui-list-item {
+            display: block;
+            margin-top: -1px;
+
+            &.divider {
+                border-right: 1px solid lightgray;
+                border-top: 1px solid lightgray;
+            }
+
+            .rui-list-item__right-side {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+
+        &:not(.medium):not(.large) {
+            .rui-list-item {
+                padding: 10px;
+            }
+        }
+    
+        &.medium {
+            .rui-list-item {
+                padding: 10px;
+            }
+        }
+    
+        &.large {
+            .rui-list-item {
+                padding: 10px;
+            }
+        }
+    }
+
     &:not(.medium):not(.large) {
         .rui-list-item {
             padding: 0 10px;
@@ -352,7 +390,7 @@
     }
 
     &:last-child {
-        border-bottom: none;
+        // border-bottom: none;
     }
 
     &.hover:hover {
@@ -366,10 +404,23 @@
 .rui-list-item__right-side {
     display: flex;
     align-items: center;
+
+    & > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
 }
 
 .rui-list-item__left-side {
     display: block;
+
+    & > div {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
 
     .checkbox {
         margin-right: 10px;
