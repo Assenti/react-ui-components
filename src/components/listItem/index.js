@@ -39,13 +39,7 @@ const ListItem = (props) => {
                 <>
                     <div className="rui-list-item__left-side">
                         <div>
-                            {props.avatar && !props.icon ? 
-                                <Avatar
-                                    className="mr-10" 
-                                    img={props.avatar}
-                                    size={props.avatarSize} 
-                                    borderType={props.avatarBorderType}/> : ''
-                            }
+                            {props.avatar && !props.icon ? props.avatar : ''}
                             {props.icon && !props.avatar ? 
                                 (props.tooltip ? 
                                 <Tooltip tooltip={props.tooltip} position={props.tooltipPosition}>
@@ -92,9 +86,7 @@ ListItem.propTypes = {
     icon: PropTypes.string,
     tooltip: PropTypes.string,
     tooltipPosition: PropTypes.oneOf([undefined,'','bottom','left','right']),
-    avatar: PropTypes.string,
-    avatarSize: PropTypes.number,
-    avatarBorderType: PropTypes.oneOf([undefined,'','tile','rounded']),
+    avatar: PropTypes.node,
     controls: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
     render: PropTypes.node,
     className: PropTypes.string

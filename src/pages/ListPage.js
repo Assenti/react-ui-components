@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { List, ListItem, Button, Table, Card, Collapse, BackTopBtn, Select, Icon, Switch, RadioGroup, phoneMask, CopyToClipboard, ThemeContext, Divider, ButtonGroup } from '../components';
+import { List, ListItem, Button, Table, Card, Collapse, BackTopBtn, Select, Icon, Switch, RadioGroup, phoneMask, CopyToClipboard, ThemeContext, Divider, ButtonGroup, Avatar } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import manImage from '../img/man.png';
@@ -168,51 +168,57 @@ function Example() {
                         size={size}
                         dark={theme} 
                         header={header ?
-                            <div className="row align-center space-between">
-                                Selected persons: {selected.length}
-                                {selected.length > 0 ? <Button className="ma-0" light icon="share" size={18}/> : ''}
-                            </div> : null
+                        <div className="row align-center space-between">
+                            Selected persons: {selected.length}
+                            {selected.length > 0 ? <Button className="ma-0" light icon="share" size={18}/> : ''}
+                        </div> : null
                         }>
-                        {names.map((item, index) => 
-                            <ListItem
-                                isActiveItem={isSelected(item.hero)}
-                                onClick={() => checkbox ? selectOne(item.hero) : {}}
-                                key={index} 
-                                hover={hover}
-                                width={view === 'grid' ? '25%' : ''}
-                                item={item.name}
-                                color={color}
-                                noDivider={divider}
-                                roundedActive={rounded}
-                                leftBorder={left}
-                                subTitle={subtitle ? item.hero : null}
-                                icon={type === 'icon' ? item.icon : null}
-                                avatar={type === 'image' ? item.img : null}
-                                avatarBorderType={border}
-                                checkbox={checkbox}
-                                controls={controls ?
-                                    <div className="row align-center justify-end fz-9">
-                                        <div className="row align-center justify-end">
-                                            <Icon 
-                                                name="smartphone" 
-                                                size={16} 
-                                                className="mr-5" 
-                                                color={theme ? 'lightgray' : ''}/>
-                                            {phoneMask(item.phone)}
-                                        </div>
-                                        {view === 'grid' ? 
-                                            null :
-                                            <Button 
-                                                className="ml-10" 
-                                                dark={theme}
-                                                light={!theme}
-                                                icon="edit"
-                                                iconSize={16}/>
-                                        }
-                                    </div> : null}/>
-                        )}
-                    </List>
-                </Card>
+                    {names.map((item, index) => 
+                        <ListItem
+                            isActiveItem={isSelected(item.hero)}
+                            onClick={() => checkbox ? selectOne(item.hero) : {}}
+                            key={index} 
+                            hover={hover}
+                            width={view === 'grid' ? '25%' : ''}
+                            item={item.name}
+                            color={color}
+                            noDivider={divider}
+                            roundedActive={rounded}
+                            leftBorder={left}
+                            subTitle={subtitle ? item.hero : null}
+                            icon={type === 'icon' ? item.icon : null}
+                            avatar={type === 'image' ? 
+                                <Avatar
+                                    className="mr-10" 
+                                    img={item.img}
+                                    width={40} 
+                                    height={40}
+                                    borderType="rounded"/> 
+                            : null}
+                            checkbox={checkbox}
+                            controls={controls ?
+                                <div className="row align-center justify-end fz-9">
+                                    <div className="row align-center justify-end">
+                                        <Icon 
+                                            name="smartphone" 
+                                            size={16} 
+                                            className="mr-5" 
+                                            color={theme ? 'lightgray' : ''}/>
+                                        {phoneMask(item.phone)}
+                                    </div>
+                                    {view === 'grid' ? 
+                                        null :
+                                        <Button 
+                                            className="ml-10" 
+                                            dark={theme}
+                                            light={!theme}
+                                            icon="edit"
+                                            iconSize={16}/>
+                                    }
+                                </div> : null}/>
+                    )}
+                </List>
+            </Card>
         </>
     )
 }`
@@ -369,6 +375,13 @@ const items2 = [
         default: 'false', 
         type: 'boolean',
         value: 'true | false'
+    },
+    { 
+        property: 'avatar',
+        description: 'Avatar slot', 
+        default: '', 
+        type: 'ReactNode',
+        value: ''
     },
     { 
         property: 'className',
@@ -566,8 +579,14 @@ const ListPage = () => {
                                         leftBorder={left}
                                         subTitle={subtitle ? item.hero : null}
                                         icon={type === 'icon' ? item.icon : null}
-                                        avatar={type === 'image' ? item.img : null}
-                                        avatarBorderType={border}
+                                        avatar={type === 'image' ? 
+                                            <Avatar
+                                                className="mr-10" 
+                                                img={item.img}
+                                                width={40} 
+                                                height={40}
+                                                borderType="rounded"/> 
+                                        : null}
                                         checkbox={checkbox}
                                         controls={controls ?
                                             <div className="row align-center justify-end fz-9">
@@ -623,6 +642,8 @@ const ListPage = () => {
                     <Card className="pa-0">
                         <Table
                             dark={theme}
+                            searchKey="property"
+                            searchable
                             headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                             items={items2}
                             index

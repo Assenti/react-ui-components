@@ -5,66 +5,50 @@
     border-radius: $radius;
     padding: 4px;
     overflow: hidden;
+    border: 1px solid $linegray;
 
     &.transparent {
         background-color: transparent !important;
-    }
-
-    &.dark {
-        background-color: $night;
-    }
-
-    &.secondary:not(.dark) {
-        background-color: $lightgray;
-    }
-
-    &.primary {
-        background-color: $primary;
-        svg {
-            path {
-                fill: #fff;
-            }
-        }
-    }
-
-    &.info {
-        background-color: $info;
-        svg {
-            path {
-                fill: #fff;
-            }
-        }
-    }
-
-    &.success {
-        background-color: $success;
-        svg {
-            path {
-                fill: #fff;
-            }
-        }
-    }
-
-    &.error {
-        background-color: $error;
-        svg {
-            path {
-                fill: #fff;
-            }
-        }
     }
 
     &.rounded {
         border-radius: 50%;
     }
 
+    &.smooth {
+        border-radius: 12px;
+    }
+
     &.tile {
         border-radius: 0;
     }
 
-    img,
+    &.lifted {
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);
+    }
+
+    &.dark {
+        background-color: $night;
+    }
+
+    &:not(.dark) {
+        background-color: $lightgray;
+    }
+
+    img {
+        width: 99%;
+    }
+
     .rui-icon {
         width: 95%;
         height: 95%;
+    }
+
+    span {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 3.2rem;
+        font-weight: bold;
+        color: gray;
     }
 }

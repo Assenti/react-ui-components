@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Card, Avatar, Switch, Table, Collapse, Select, Icon, RadioGroup, CopyToClipboard, ThemeContext, Divider } from '../components';
+import { Card, AvatarUploader, Table, Collapse, Select, Icon, CopyToClipboard, ThemeContext, Divider, Switch } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import manImage from '../img/man.png';
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -21,53 +20,53 @@ const items = [
         value: ''
     },
     { 
-        property: 'borderType', 
-        description: 'Set avatar border type',
-        default: '', 
-        type: 'string',
-        value: 'rounded | tile'
-    },
-    { 
-        property: 'img', 
-        description: 'Set avatar image',
-        default: '', 
-        type: 'base64 | string',
-        value: ''
-    },
-    { 
-        property: 'icon', 
-        description: 'Set avatar icon',
+        property: 'avatar', 
+        description: 'Pass avatar state value',
         default: '', 
         type: 'string',
         value: ''
     },
     { 
-        property: 'iconSize', 
-        description: 'Set icon size',
+        property: 'onChange', 
+        description: 'Invokes on image uploading',
         default: '', 
-        type: 'string | number',
+        type: 'function',
         value: ''
     },
     { 
-        property: 'iconColor', 
-        description: 'Set icon color',
-        default: 'gray', 
+        property: 'onClear', 
+        description: 'Invokes on delete button click',
+        default: '', 
+        type: 'function',
+        value: ''
+    },
+    { 
+        property: 'label', 
+        description: 'Set label text',
+        default: 'Upload avatar', 
         type: 'string',
         value: ''
     },
     { 
-        property: 'initials', 
-        description: 'Set avatar initials',
+        property: 'title', 
+        description: 'Set title',
+        default: 'Choose file', 
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'accept', 
+        description: 'Set accepted MIME types for files',
         default: '', 
         type: 'string',
         value: ''
     },
     { 
-        property: 'initialsFontSize', 
-        description: 'Set avatar initials font size',
+        property: 'placeholderImage', 
+        description: 'Set custom placeholder',
         default: '', 
-        type: 'string | number',
-        value: ''
+        type: 'ReactNode',
+        value: '<svg/> or <img/>'
     },
     { 
         property: 'lifted', 
@@ -91,35 +90,60 @@ const items = [
         value: ''
     }
 ]
-const borders = ['default', 'smooth','rounded', 'tile'];
-const types = ['image', 'icon', 'initials'];
+const borders = ['default', 'smooth', 'rounded', 'tile'];
 const usage =
 `// Usage example
-import React from 'react';
-import { Avatar } from '../components';
+import React, { useState } from 'react';
+import { AvatarUploader, Switch, Select, Icon, Divider } from '../components';
 import manImage from '/path/to/man.png';
 
 function Example() {
+    const [border, setBorder] = useState(borders[1]);
+    const [avatar, setAvatar] = useState('');
+    const [lifted, setLifted] = useState(false);
+
     return (
         <>
-            <Avatar
-                size={60}
-                borderType="rounded" 
-                img={manImage}/>
+            <Select
+                dark={theme}
+                items={borders}
+                prefix={<Icon name="shape"/>}
+                width={200}
+                label="Border type"
+                color="primary"
+                value={border}
+                onChange={v => setBorder(v)}/>
+            <br/>
+            <Switch
+                color="primary"
+                check={lifted}
+                className="mt-10 mb-20"
+                rightLabel="Lifted"
+                onChange={() => setLifted(!lifted)}/>
+            <Divider/>
+            <br/>
+            <AvatarUploader
+                lifted={lifted}
+                borderType={border}
+                width={140}
+                height={170}
+                avatar={avatar}
+                onChange={a => setAvatar(a)}
+                onClear={() => setAvatar('')}/>
         </>
     )
 }`
 
-const AvatarPage = () => {
-    const [type, setType] = useState(types[0]);
+const AvatarUploaderPage = () => {
     const [border, setBorder] = useState(borders[1]);
+    const [avatar, setAvatar] = useState('');
     const [lifted, setLifted] = useState(false);
 
     return (
         <ThemeContext.Consumer>
             {theme => (
                 <div className="rui-page">
-                    <div className="rui-page-title">{`<Avatar/>`} Component</div>
+                    <div className="rui-page-title">{`<AvatarUploader/>`} Component</div>
                     <Card dark={theme} header={<h4>Usage</h4>}>
                         <Select
                             dark={theme}
@@ -137,26 +161,15 @@ const AvatarPage = () => {
                             className="mt-10 mb-20"
                             rightLabel="Lifted"
                             onChange={() => setLifted(!lifted)}/>
-                        <br/>
-                        <RadioGroup
-                            options={types} 
-                            value={type}
-                            name="type"
-                            className="mt-10" 
-                            onChange={(value) => setType(value)}/>
                         <Divider/>
-                        <div className="pa-10">
-                            <Avatar
-                                height={100}
-                                dark={theme}
-                                lifted={lifted}
-                                borderType={border} 
-                                iconSize="90%"
-                                img={type === 'image' ? manImage : null}
-                                icon={type === 'icon' ? 'account' : null}
-                                initials={type === 'initials' ? 'AS' : null}
-                                />
-                        </div>
+                        <br/>
+                        <AvatarUploader
+                            dark={theme}
+                            lifted={lifted}
+                            borderType={border}
+                            avatar={avatar}
+                            onChange={a => setAvatar(a)}
+                            onClear={() => setAvatar('')}/>
                         <Collapse
                             extra={<CopyToClipboard 
                                 defaultText="Copy code" 
@@ -167,7 +180,9 @@ const AvatarPage = () => {
                             dark={theme}
                             iconSize={18} 
                             tooltip="Show/Hide Code">
-                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
                                 {usage}
                             </SyntaxHighlighter>
                         </Collapse>
@@ -185,4 +200,4 @@ const AvatarPage = () => {
         </ThemeContext.Consumer>
     )
 }
-export default AvatarPage;
+export default AvatarUploaderPage;

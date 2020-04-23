@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+const AvatarUploaderPage = lazy(() => import('./pages/AvatarUploaderPage'));
 const DialogPage = lazy(() => import('./pages/DialogPage'));
 const InputMaskPage = lazy(() => import('./pages/InputMaskPage'));
 const ButtonPage = lazy(() => import('./pages/ButtonPage'));
@@ -83,7 +84,7 @@ export const routes = [
     { path: '/tabs', name: 'Tabs', Component: TabsPage },
     { path: '/rating', name: 'Rating', Component: RatingPage },
     { path: '/floatingbtn', name: 'FloatingBtn', Component: FloatingBtnPage },
-    { path: '/avatar', name: 'Avatar', Component: AvatarPage },
+    { path: '/avatar', name: 'Avatar', Component: AvatarPage, updated: true },
     { path: '/alert', name: 'Alert', Component: AlertPage },
     { path: '/breadcrumbs', name: 'Breadcrumbs', Component: BreadcrumbsPage },
     { path: '/progress', name: 'Progress', Component: ProgressPage },
@@ -96,5 +97,6 @@ export const routes = [
     { path: '/slider', name: 'Slider', Component: SliderPage },
     { path: '/footer', name: 'Footer', Component: FooterPage },
     { path: '/datepicker', name: 'DatePicker', Component: DatePickerPage, new: true },
+    { path: '/avataruploader', name: 'AvatarUploader', Component: AvatarUploaderPage, new: true },
     // { path: '/notification', name: 'Notification', Component: NotificationPage },
 ]

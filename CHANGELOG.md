@@ -7,9 +7,15 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.5.5 `2020-04-23`
+
+- `NEW!` AvatarUploader component added;
+- Avatar component updated;
+- ListItem component updated;
+
 #### 0.5.4 `2020-04-21`
 
-- Card component added;
+- Card component updated;
 - List, ListItem component updated;
 - `NEW!` New icons added;
 

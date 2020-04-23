@@ -415,13 +415,16 @@ const TextareaPage = () => {
                     </Card>
                     <BackTopBtn setRef={parent} dark size="medium"/>
                     <h2 ref={api}>TextareaField API</h2>
-                    <Table
-                        dark={theme}
-                        bordered
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={itemsTextarea}
-                        index={true}
-                        itemTitles={keys}/>
+                    <Card>
+                        <Table
+                            dark={theme}
+                            searchable
+                            searchKey="property"
+                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                            items={itemsTextarea}
+                            index={true}
+                            itemTitles={keys}/>
+                    </Card>
                 </div>
             )}
         </ThemeContext.Consumer>

@@ -8,8 +8,8 @@ const Avatar = (props) => {
         let className = {
             name: 'rui-avatar',
             dark: props.dark ? 'dark' : '',
+            lifted: props.lifted ? 'lifted' : '',
             transparent: props.transparent ? 'transparent' : '',
-            color: props.color ? props.color : 'secondary',
             borderType: props.borderType ? props.borderType : '', 
             className: props.className ? props.className : ''
         }
@@ -22,12 +22,13 @@ const Avatar = (props) => {
     return (
         <div className={componentClass()} 
             style={{
-                width: props.size ? props.size : 40,
-                minWidth: props.size ? props.size : 40,
-                height: props.size ? props.size : 40
+                width: props.width ? props.width : 100,
+                minWidth: props.width ? props.width : 100,
+                height: props.height ? props.height : 120
             }}>
-            {props.img && !props.icon ? <img src={props.img} alt=""/> : null}
-            {props.icon && !props.img ? 
+            {props.img && !props.icon && !props.initials ? <img src={props.img} alt=""/> : null}
+            {props.initials && !props.icon && !props.img ? <span style={{ fontSize: props.fontSize }}>{props.initials}</span> : null}
+            {props.icon && !props.img && !props.initials ? 
                 <Icon 
                     name={props.icon} 
                     size={props.iconSize} 
@@ -36,11 +37,14 @@ const Avatar = (props) => {
     )
 }
 Avatar.propTypes = {
-    color: PropTypes.oneOf([undefined,'','secondary', 'primary', 'info', 'success', 'error']),
-    size: PropTypes.number,
-    borderType: PropTypes.oneOf([undefined,'','tile','rounded']),
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    borderType: PropTypes.oneOf([undefined,'','default','smooth','tile','rounded']),
     img: PropTypes.string,
     icon: PropTypes.string,
+    lifted: PropTypes.bool,
+    initials: PropTypes.string,
+    initialsFontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     iconSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     iconColor: PropTypes.string,
     transparent: PropTypes.bool,

@@ -42,6 +42,7 @@ export const DrawerContent = (props) => {
                         <AutoComplete
                             width="100%"
                             size="medium"
+                            maxHeight="calc(100vh - 200px)"
                             items={sortedRoutes()}
                             onItemClick={item => handleItemClick(item)}
                             itemKey="name"
@@ -105,7 +106,9 @@ export const DrawerContent = (props) => {
                                 className="no-select"
                                 hover
                                 item={item.name}
-                                controls={item.updated ? <Tag value="updated" borderType="rounded" tiny/> : null}/>
+                                controls={item.updated ? 
+                                    <Tag value="updated" borderType="rounded" tiny/> 
+                                        : (item.new ? <Tag value="new" borderType="rounded" tiny/> : null)}/>
                         )}
                     </List> : ''}
                     <div className="row justify-center py-15" 

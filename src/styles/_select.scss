@@ -18,6 +18,10 @@
 
     .rui-select__list {
         position: relative;
+
+        .rui-list-item:last-child {
+            border-bottom: none;
+        }
     }
 
     &.dark {

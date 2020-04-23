@@ -169,12 +169,38 @@
     &:not(.collapsable) {
         .rui-drawer-content {
             max-height: 100%;
+            overflow-y: auto;
+            
+            &::-webkit-scrollbar {
+                width: 3.5px;
+                height: 3.5px;
+                background-color: $lightgray;
+                border-radius: $radius;
+            }
+            
+            &::-webkit-scrollbar-thumb {
+              background-color: lightgray;
+              outline: 1px solid #fff;
+            }
         }
     }
 
     &.collapsable {
         .rui-drawer-content {
             max-height: calc(100% - 40px);
+            overflow-y: auto;
+
+            &::-webkit-scrollbar {
+                width: 3.5px;
+                height: 3.5px;
+                background-color: $lightgray;
+                border-radius: $radius;
+            }
+            
+            &::-webkit-scrollbar-thumb {
+              background-color: lightgray;
+              outline: 1px solid #fff;
+            }
         }
     }
 }

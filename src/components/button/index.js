@@ -88,7 +88,4 @@ Button.propTypes = {
     setRef: PropTypes.any,
     className: PropTypes.string
 }
-Button.defaultProps = {
-    color: 'secondary'
-}
 export default Button;
