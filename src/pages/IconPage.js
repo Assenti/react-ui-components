@@ -104,7 +104,10 @@ const icons = [
     'airplane',
     'cancel',
     'grid',
-    'view-list'
+    'view-list',
+    'checklist',
+    'arrow-up',
+    'arrow-down'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
@@ -289,13 +292,14 @@ const IconPage = () => {
                     </Card>
                     <h2 ref={api}>API</h2>
                     <BackTopBtn setRef={parent} dark size="medium"/>
-                    <Table
-                        bordered
-                        dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
+                    <Card className="pa-0">
+                        <Table
+                            dark={theme}
+                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                            items={items}
+                            index={true}
+                            itemTitles={keys}/>
+                    </Card>
                 </div>
             )}
         </ThemeContext.Consumer>

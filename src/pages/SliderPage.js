@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Table, Avatar, Slider, Collapse, CopyToClipboard, Divider, Switch, ThemeContext } from '../components'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Card, Avatar, Slider, Divider, Switch, ThemeContext } from '../components'
 import manImage from '../img/man.png';
 import manImage2 from '../img/hipster.png';
 import manImage3 from '../img/old.png';
@@ -10,8 +8,8 @@ import girlImage from '../img/girl.png';
 import girlImage2 from '../img/girl_.png';
 import girlImage3 from '../img/woman.png';
 import girlImage4 from '../img/girl__.png';
+import Page from '../layouts/Page';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'items', 
@@ -118,11 +116,14 @@ function Example() {
                 vertical={vertical}
                 length={300}
                 render={(item, index) => 
-                <Avatar 
+                <Avatar
+                    key={index}
                     icon={item.icon} 
+                    dark={theme}
                     iconColor={item.iconColor}
                     iconSize={item.iconSize}
-                    size={item.size}/>}/>
+                    width={item.size}
+                    height={item.size}/>}/>
         </>
     )
 }`
@@ -162,68 +163,52 @@ const SliderPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="rui-page-title">{'<Slider/>'} Component</div>
-                    <Card header={<h4>Usage</h4>} dark={theme}>
-                        <Slider 
-                            items={cards}
-                            dark={theme}
-                            slidable={slidable}
-                            render={(item, index) => 
-                                <Card
-                                    hover
-                                    width={120} 
-                                    dark={theme}
-                                    img={item}
-                                    footer={<h4 className="text-center">Person</h4>}/>
-                            }/>
-                        <Divider/>
-                        <Switch 
-                            color="primary" 
-                            check={vertical}
-                            rightLabel="Vertical"
-                            className="my-10"
-                            onChange={() => setVertical(!vertical)}/>
-                        <Switch 
-                            color="primary" 
-                            check={slidable}
-                            rightLabel="Slidable"
-                            className="my-10"
-                            onChange={() => setSlidable(!slidable)}/>
-                        <br/>
-                        <Slider 
-                            items={avatars}
-                            vertical={vertical}
-                            slidable={slidable}
-                            length={300}
-                            dark={theme}
-                            render={(item, index) => 
-                            <Avatar 
-                                icon={item.icon} 
-                                dark={theme}
-                                iconColor={item.iconColor}
-                                iconSize={item.iconSize}
-                                size={item.size}/>}/>
-                        <Collapse 
-                            icon="code" 
-                            iconSize={18}
-                            dark={theme}
-                            extra={<CopyToClipboard dark={theme} defaultText="Copy code" text={usage} className="mr-10"/>} 
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <h2>API</h2>
-                    <Table
-                        bordered
+                <Page
+                    usage={usage}
+                    apiDescItems={items}
+                    componentName="<Slider/>">
+                    <Slider 
+                        items={cards}
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
-                </div>
+                        slidable={slidable}
+                        render={(item, index) => 
+                            <Card
+                                hover
+                                width={120} 
+                                dark={theme}
+                                img={item}
+                                footer={<h4 className="text-center">Person</h4>}/>
+                        }/>
+                    <Divider/>
+                    <Switch 
+                        color="primary" 
+                        check={vertical}
+                        rightLabel="Vertical"
+                        className="my-10"
+                        onChange={() => setVertical(!vertical)}/>
+                    <Switch 
+                        color="primary" 
+                        check={slidable}
+                        rightLabel="Slidable"
+                        className="my-10"
+                        onChange={() => setSlidable(!slidable)}/>
+                    <br/>
+                    <Slider 
+                        items={avatars}
+                        vertical={vertical}
+                        slidable={slidable}
+                        length={300}
+                        dark={theme}
+                        render={(item, index) => 
+                        <Avatar
+                            key={index}
+                            icon={item.icon} 
+                            dark={theme}
+                            iconColor={item.iconColor}
+                            iconSize={item.iconSize}
+                            width={item.size}
+                            height={item.size}/>}/>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

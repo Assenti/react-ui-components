@@ -1,10 +1,8 @@
-import React, { createRef } from 'react';
-import { BackTopBtn, Card, Table, Collapse, Icon, List, ListItem, CopyToClipboard, ThemeContext } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import React from 'react';
+import { List, ListItem, ThemeContext } from '../components';
 import { countries } from '../data/countries';
+import Page from '../layouts/Page';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'setRef', 
@@ -108,65 +106,31 @@ function Example() {
 }`
 
 const BackTopBtnPage = () => {
-    const blockref = createRef();
-    const api = createRef();
     const rows = []
     for (let i = 0; i < 20; i++) {
         rows.push(i)
     }
 
-    const goToApi = () => {
-        if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page" ref={blockref}>
-                    <div className="row align-center space-between">
-                        <div className="rui-page-title">{'<BackTopBtn/>'} Component</div>
-                        <div className="rui-link fz-13 fw-bold" onClick={goToApi}>API</div>
-                    </div>
-                    <div className="row align-center">Scroll down <Icon className="ml-5" name="arrow-down-bold" size={18}/></div>
-                    <Card dark={theme} header={<h4>Usage</h4>} className="mt-20">
-                        <List header="Countries" dark={theme}>
-                            {countries.map((item, index) => 
-                                <ListItem
-                                    key={index}
-                                    hover
-                                    noDivider
-                                    icon="flag" 
-                                    item={item.country}
-                                    subTitle={item.cities[0]}/>
-                            )}
-                        </List>
-                        <Collapse 
-                            icon="code"
-                            dark={theme} 
-                            iconSize={18}
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage}
-                                dark={theme} 
-                                className="mr-10"/>}  
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <BackTopBtn dark setRef={blockref} size="medium" tooltip="Up"/>
-                    <h2 ref={api}>API</h2>
-                    <Table
-                        bordered
-                        dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
-                </div>
+                <Page
+                    usage={usage}
+                    componentName="<BackTopBtn/>"
+                    backTopBtn
+                    apiDescItems={items}>
+                    <List header="Countries" dark={theme}>
+                        {countries.map((item, index) => 
+                            <ListItem
+                                key={index}
+                                hover
+                                noDivider
+                                icon="flag" 
+                                item={item.country}
+                                subTitle={item.cities[0]}/>
+                        )}
+                    </List>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

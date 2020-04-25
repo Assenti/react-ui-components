@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Checkbox, Avatar, Tooltip } from '../index';
+import { Icon, Checkbox, Tooltip } from '../index';
 
 const ListItem = (props) => {
     const className = () => {
@@ -55,7 +55,10 @@ const ListItem = (props) => {
                                         className="mr-10" 
                                         checked={props.isActiveItem}
                                         onChange={handleClick}/> : ''}
-                                    <span onClick={handleClick}>{props.item}</span>
+                                    {props.href ?
+                                        <a href={props.href} rel="noopener noreferrer" target="_blank">{props.item}</a> :
+                                        <span onClick={handleClick}>{props.item}</span>
+                                    }
                                 </div>
                                 {props.subTitle ? <div className="rui-list-subtitle">{props.subTitle}</div> : ''}
                             </div>
@@ -82,6 +85,7 @@ ListItem.propTypes = {
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     item: PropTypes.oneOfType([PropTypes.string,PropTypes.number, PropTypes.object]),
     onClick: PropTypes.func,
+    href: PropTypes.string,
     subTitle: PropTypes.string,
     icon: PropTypes.string,
     tooltip: PropTypes.string,

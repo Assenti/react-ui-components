@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { Card, Avatar, Switch, Table, Collapse, Select, Icon, RadioGroup, CopyToClipboard, ThemeContext, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { coy, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Avatar, Switch, Select, Icon, RadioGroup, ThemeContext, Divider } from '../components';
 import manImage from '../img/man.png';
+import Page from '../layouts/Page';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'width', 
@@ -95,17 +93,53 @@ const borders = ['default', 'smooth','rounded', 'tile'];
 const types = ['image', 'icon', 'initials'];
 const usage =
 `// Usage example
-import React from 'react';
-import { Avatar } from '../components';
+import React, { useState } from 'react';
+import { Avatar, Select, Switch, Icon, RadioGroup, Divider } from '../components';
 import manImage from '/path/to/man.png';
 
 function Example() {
+    const [type, setType] = useState(types[0]);
+    const [border, setBorder] = useState(borders[1]);
+    const [lifted, setLifted] = useState(false);
+
     return (
         <>
-            <Avatar
-                size={60}
-                borderType="rounded" 
-                img={manImage}/>
+            <Select
+                dark={theme}
+                items={borders}
+                prefix={<Icon name="shape"/>}
+                width={200}
+                label="Border type"
+                color="primary"
+                value={border}
+                onChange={v => setBorder(v)}/>
+            <br/>
+            <Switch
+                color="primary"
+                check={lifted}
+                className="mt-10 mb-20"
+                rightLabel="Lifted"
+                onChange={() => setLifted(!lifted)}/>
+            <br/>
+            <RadioGroup
+                options={types} 
+                value={type}
+                name="type"
+                className="mt-10" 
+                onChange={(value) => setType(value)}/>
+            <Divider/>
+            <div className="pa-10">
+                <Avatar
+                    height={100}
+                    dark={theme}
+                    lifted={lifted}
+                    borderType={border} 
+                    iconSize="90%"
+                    img={type === 'image' ? manImage : null}
+                    icon={type === 'icon' ? 'account' : null}
+                    initials={type === 'initials' ? 'AS' : null}
+                    />
+            </div>
         </>
     )
 }`
@@ -118,69 +152,47 @@ const AvatarPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="rui-page-title">{`<Avatar/>`} Component</div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            dark={theme}
-                            items={borders}
-                            prefix={<Icon name="shape"/>}
-                            width={200}
-                            label="Border type"
-                            color="primary"
-                            value={border}
-                            onChange={v => setBorder(v)}/>
-                        <br/>
-                        <Switch
-                            color="primary"
-                            check={lifted}
-                            className="mt-10 mb-20"
-                            rightLabel="Lifted"
-                            onChange={() => setLifted(!lifted)}/>
-                        <br/>
-                        <RadioGroup
-                            options={types} 
-                            value={type}
-                            name="type"
-                            className="mt-10" 
-                            onChange={(value) => setType(value)}/>
-                        <Divider/>
-                        <div className="pa-10">
-                            <Avatar
-                                height={100}
-                                dark={theme}
-                                lifted={lifted}
-                                borderType={border} 
-                                iconSize="90%"
-                                img={type === 'image' ? manImage : null}
-                                icon={type === 'icon' ? 'account' : null}
-                                initials={type === 'initials' ? 'AS' : null}
-                                />
-                        </div>
-                        <Collapse
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage} 
-                                dark={theme}
-                                className="mr-10"/>}  
-                            icon="code" 
-                            dark={theme}
-                            iconSize={18} 
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <h2>API</h2>
-                    <Table
-                        bordered
+                <Page
+                    apiDescItems={items}
+                    usage={usage}
+                    componentName="<Avatar/>">
+                    <Select
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index
-                        itemTitles={keys}/>
-                </div>
+                        items={borders}
+                        prefix={<Icon name="shape"/>}
+                        width={200}
+                        label="Border type"
+                        color="primary"
+                        value={border}
+                        onChange={v => setBorder(v)}/>
+                    <br/>
+                    <Switch
+                        color="primary"
+                        check={lifted}
+                        className="mt-10 mb-20"
+                        rightLabel="Lifted"
+                        onChange={() => setLifted(!lifted)}/>
+                    <br/>
+                    <RadioGroup
+                        options={types} 
+                        value={type}
+                        name="type"
+                        className="mt-10" 
+                        onChange={(value) => setType(value)}/>
+                    <Divider/>
+                    <div className="pa-10">
+                        <Avatar
+                            height={100}
+                            dark={theme}
+                            lifted={lifted}
+                            borderType={border} 
+                            iconSize="90%"
+                            img={type === 'image' ? manImage : null}
+                            icon={type === 'icon' ? 'account' : null}
+                            initials={type === 'initials' ? 'AS' : null}
+                            />
+                    </div>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

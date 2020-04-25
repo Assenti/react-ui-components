@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Checkbox, Table, Collapse, Card, Select, Icon, Switch, CopyToClipboard, ThemeContext, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Checkbox, Select, Icon, Switch, ThemeContext, Divider } from '../components';
+import Page from '../layouts/Page';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'checked', 
@@ -95,84 +93,60 @@ const CheckboxPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="rui-page-title">{'<Checkbox/>'} Component</div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            items={colors}
-                            dark={theme}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            label="Checkbox color"
-                            color="primary"
-                            value={color}
-                            onChange={v => setColor(v)}/>
-                        <br/>
-                        <Select
-                            items={sizes}
-                            prefix={<Icon name="format-size"/>}
-                            width={200}
-                            dark={theme}
-                            label="Checkbox size"
-                            color="primary"
-                            value={size}
-                            onChange={v => setSize(v)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={label}
-                            rightLabel="Label"
-                            className="my-10"
-                            onChange={() => setLabel(!label)}/>
-                        <Switch 
-                            color="primary" 
-                            check={fill}
-                            rightLabel="Fill"
-                            className="my-10"
-                            onChange={() => setFill(!fill)}/>
-                        <Switch 
-                            color="primary" 
-                            check={disabled}
-                            rightLabel="Disabled"
-                            className="my-10"
-                            onChange={() => setDisabled(!disabled)}/>
-                        <Divider/>
-                        <div className="py-10">
-                            <Checkbox
-                                checked={check}
-                                color={color}
-                                size={size}
-                                fill={fill}
-                                disabled={disabled}
-                                label={label ? 'Checkbox' : null} 
-                                onChange={() => setCheck(!check)}/>
-                        </div>
-                        <Collapse 
-                            icon="code" 
-                            iconSize={18}
-                            dark={theme}
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage} 
-                                dark={theme}
-                                className="mr-10"/>}  
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <h2>API</h2>
-                    <Table
-                        bordered
+                <Page
+                    usage={usage}
+                    apiDescItems={items}
+                    componentName="<Checkbox/>">
+                    <Select
+                        items={colors}
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index
-                        itemTitles={keys}/>
-                </div>
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        label="Checkbox color"
+                        color="primary"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <Select
+                        items={sizes}
+                        prefix={<Icon name="format-size"/>}
+                        width={200}
+                        dark={theme}
+                        label="Checkbox size"
+                        color="primary"
+                        value={size}
+                        onChange={v => setSize(v)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={label}
+                        rightLabel="Label"
+                        className="my-10"
+                        onChange={() => setLabel(!label)}/>
+                    <Switch 
+                        color="primary" 
+                        check={fill}
+                        rightLabel="Fill"
+                        className="my-10"
+                        onChange={() => setFill(!fill)}/>
+                    <Switch 
+                        color="primary" 
+                        check={disabled}
+                        rightLabel="Disabled"
+                        className="my-10"
+                        onChange={() => setDisabled(!disabled)}/>
+                    <Divider/>
+                    <div className="py-10">
+                        <Checkbox
+                            checked={check}
+                            color={color}
+                            size={size}
+                            fill={fill}
+                            disabled={disabled}
+                            label={label ? 'Checkbox' : null} 
+                            onChange={() => setCheck(!check)}/>
+                    </div>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

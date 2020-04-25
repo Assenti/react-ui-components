@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Breadcrumbs, Card, Select, Icon, Switch, Table, Collapse, CopyToClipboard, ThemeContext, themes, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Breadcrumbs, Select, Icon, Switch, ThemeContext, Divider } from '../components';
+import Page from '../layouts/Page';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'crumbs', 
@@ -136,90 +134,67 @@ const BreadcrumbsPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="rui-page-title">{'<Breadcrumbs/>'} Component</div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            items={sizes}
-                            dark={theme}
-                            prefix={<Icon name="format-size"/>}
-                            width={200}
-                            label="Breadcrumbs size"
-                            color="primary"
-                            className="my-5"
-                            value={size}
-                            onChange={v => setSize(v)}/>
-                        <br/>
-                        <Select
-                            items={colors}
-                            dark={theme}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            label="Breadcrumbs color"
-                            color="primary"
-                            className="my-5"
-                            value={color}
-                            onChange={v => setColor(v)}/>
-                        <br/>
-                        <Select
-                            items={positions}
-                            prefix={<Icon name="chart-ppf"/>}
-                            width={200}
-                            dark={theme}
-                            label="Breadcrumbs position"
-                            color="primary"
-                            className="my-5"
-                            value={position}
-                            onChange={v => setPosition(v)}/>
-                        <br/>
-                        <Switch 
-                            check={icon} 
-                            color="primary"
-                            rightLabel="Icon" 
-                            className="my-10"
-                            onChange={() => setIcon(!icon)}/>
-                        <Divider className="my-20"/>
-                        <div style={{ minHeight: 300 }}>
-                            <div className="pa-10">
-                                <Breadcrumbs
-                                    size={size}
-                                    dark={theme}
-                                    color={color}
-                                    position={position}
-                                    itemKey="item"
-                                    urlKey="url"
-                                    icon={icon ? 'icon' : null}
-                                    onChange={(item, index) => setActive(index)}
-                                    isActive={(item, index) => index === active} 
-                                    crumbs={crumbs}/>
-                            </div>
-                            <h1 className="pa-10">{crumbs[active].item}</h1>
-                        </div>
-                        <Collapse 
-                            icon="code"
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage} 
-                                dark={theme}
-                                className="mr-10"/>} 
-                            iconSize={18} 
-                            dark={theme}
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter language="jsx" 
-                            style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <h2>API</h2>
-                    <Table
-                        bordered
+                <Page
+                    usage={usage}
+                    componentName="<Breadcrumbs/>"
+                    apiDescItems={items}>
+                    <Select
+                        items={sizes}
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
-                </div>
+                        prefix={<Icon name="format-size"/>}
+                        width={200}
+                        label="Breadcrumbs size"
+                        color="primary"
+                        className="my-5"
+                        value={size}
+                        onChange={v => setSize(v)}/>
+                    <br/>
+                    <Select
+                        items={colors}
+                        dark={theme}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        label="Breadcrumbs color"
+                        color="primary"
+                        className="my-5"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <Select
+                        items={positions}
+                        prefix={<Icon name="chart-ppf"/>}
+                        width={200}
+                        dark={theme}
+                        label="Breadcrumbs position"
+                        color="primary"
+                        className="my-5"
+                        value={position}
+                        onChange={v => setPosition(v)}/>
+                    <br/>
+                    <Switch 
+                        check={icon} 
+                        color="primary"
+                        rightLabel="Icon" 
+                        className="my-10"
+                        onChange={() => setIcon(!icon)}/>
+                    <Divider className="my-20"/>
+                    <div style={{ minHeight: 300 }}>
+                        <div className="pa-10">
+                            <Breadcrumbs
+                                size={size}
+                                dark={theme}
+                                color={color}
+                                position={position}
+                                itemKey="item"
+                                urlKey="url"
+                                icon={icon ? 'icon' : null}
+                                onChange={(item, index) => setActive(index)}
+                                isActive={(item, index) => index === active} 
+                                crumbs={crumbs}/>
+                        </div>
+                        <h1 className="pa-10">{crumbs[active].item}</h1>
+                    </div>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

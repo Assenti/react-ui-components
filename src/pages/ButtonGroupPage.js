@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { ButtonGroup, Card, Table, Collapse, Select, Icon, Switch, CopyToClipboard, ThemeContext, themes, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { ButtonGroup, Select, Icon, Switch, ThemeContext, Divider } from '../components';
+import Page from '../layouts/Page';
 
 const usage = 
 `// Usage examples
@@ -76,7 +75,6 @@ function Example() {
     )
 }`
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'options',
@@ -157,93 +155,66 @@ const ButtonGroupPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="row align-center space-between">
-                        <div className="rui-page-title">{'<ButtonGroup/>'} Component</div>
-                    </div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            items={sizes}
-                            dark={theme}
-                            prefix={<Icon name="format-size"/>}
-                            width={200}
-                            label="Button size"
-                            color="primary"
-                            className="ml-10"
-                            value={size}
-                            onChange={v => setSize(v)}/>
-                        <br/>
-                        <Select
-                            items={colors}
-                            dark={theme}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            label="Button color"
-                            color="primary"
-                            className="ml-10"
-                            value={color}
-                            onChange={v => setColor(v)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={outlined}
-                            rightLabel="Outlined"
-                            className="pl-10 my-10"
-                            onChange={() => setOutlined(!outlined)}/>
-                        <Switch 
-                            color="primary" 
-                            check={icon}
-                            rightLabel="Icon"
-                            className="pl-10 my-10"
-                            onChange={() => setIcon(!icon)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={lifted}
-                            rightLabel="Lifted"
-                            className="pl-10 my-10"
-                            onChange={() => setLifted(!lifted)}/>
-                        <Divider/>
-                        <br/>
-                        <div className="pa-10">
-                            <ButtonGroup 
-                                default={0} 
-                                options={icon ? icons : langs} 
-                                color={color}
-                                size={size}
-                                icon={icon}
-                                lifted={lifted}
-                                dark={theme}
-                                outlined={outlined}
-                                className="mr-10"/>
-                        </div>
-                        <Collapse 
-                            icon="code" 
-                            dark={theme}
-                            iconSize={18}
-                            extra={<CopyToClipboard 
-                                    dark={theme} 
-                                    defaultText="Copy code" 
-                                    text={usage} 
-                                    className="mr-10"/>}
-                            contentStyles={{ padding: 0 }}
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter> 
-                        </Collapse>
-                    </Card>
-                    <h2>API</h2>
-                    <Table
-                        bordered
+                <Page
+                    usage={usage}
+                    apiDescItems={items}
+                    componentName="<ButtonGroup/>">
+                    <Select
+                        items={sizes}
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
-                </div>
+                        prefix={<Icon name="format-size"/>}
+                        width={200}
+                        label="Button size"
+                        color="primary"
+                        className="ml-10"
+                        value={size}
+                        onChange={v => setSize(v)}/>
+                    <br/>
+                    <Select
+                        items={colors}
+                        dark={theme}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        label="Button color"
+                        color="primary"
+                        className="ml-10"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={outlined}
+                        rightLabel="Outlined"
+                        className="pl-10 my-10"
+                        onChange={() => setOutlined(!outlined)}/>
+                    <Switch 
+                        color="primary" 
+                        check={icon}
+                        rightLabel="Icon"
+                        className="pl-10 my-10"
+                        onChange={() => setIcon(!icon)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={lifted}
+                        rightLabel="Lifted"
+                        className="pl-10 my-10"
+                        onChange={() => setLifted(!lifted)}/>
+                    <Divider/>
+                    <br/>
+                    <div className="pa-10">
+                        <ButtonGroup 
+                            default={0} 
+                            options={icon ? icons : langs} 
+                            color={color}
+                            size={size}
+                            icon={icon}
+                            lifted={lifted}
+                            dark={theme}
+                            outlined={outlined}
+                            className="mr-10"/>
+                    </div>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

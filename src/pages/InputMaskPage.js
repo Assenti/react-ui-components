@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { InputMask, Card, Table, Collapse, Icon, CopyToClipboard, ThemeContext, themes } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { InputMask, Icon, ThemeContext } from '../components';
 import { phoneMask, creditMask, creditIssueMask, iinMask } from '../components/utils';
+import Page from '../layouts/Page';
 
 const usage = 
 `// Usage examples
@@ -81,7 +80,6 @@ function Example() {
         </div>
     )
 }`
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'mask',
@@ -141,113 +139,86 @@ const InputMaskPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="row align-center space-between">
-                        <div className="rui-page-title">{'<InputMask/>'} Component</div>
-                    </div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <div className="pa-5 fz-9">Kazakhstan phone mask: {phoneMask(kztPhone)}</div>
+                <Page
+                    usage={usage}
+                    apiDescItems={items}
+                    componentName="<InputMask/>">
+                    <div className="pa-5 fz-9">Kazakhstan phone mask: {phoneMask(kztPhone)}</div>
+                    <InputMask 
+                        width={250}
+                        size="medium"
+                        value={phone}
+                        mask="phone"
+                        dark={theme}
+                        code="+7"
+                        placeholder="+7 (___) ___-__-__"
+                        onChange={(value, rowValue) => {
+                            console.log(value)
+                            console.log(rowValue)
+                            setPhone(rowValue)
+                        }}
+                        prefix={<Icon name="smartphone"/>}/>
+                    <br/>
+                    <div className="pa-5 fz-9">Credit card mask: {creditMask(cardForm)}, Credit card issue date: {creditIssueMask(cardIssueForm)}</div>
+                    <div className="row">
                         <InputMask 
                             width={250}
                             size="medium"
-                            value={phone}
-                            mask="phone"
+                            value={card}
                             dark={theme}
-                            code="+7"
-                            placeholder="+7 (___) ___-__-__"
+                            mask="card"
+                            placeholder="____-____-____-____"
                             onChange={(value, rowValue) => {
                                 console.log(value)
                                 console.log(rowValue)
-                                setPhone(rowValue)
+                                setCard(rowValue)
                             }}
-                            prefix={<Icon name="smartphone"/>}/>
-                        <br/>
-                        <div className="pa-5 fz-9">Credit card mask: {creditMask(cardForm)}, Credit card issue date: {creditIssueMask(cardIssueForm)}</div>
-                        <div className="row">
-                            <InputMask 
-                                width={250}
-                                size="medium"
-                                value={card}
-                                dark={theme}
-                                mask="card"
-                                placeholder="____-____-____-____"
-                                onChange={(value, rowValue) => {
-                                    console.log(value)
-                                    console.log(rowValue)
-                                    setCard(rowValue)
-                                }}
-                                prefix={<Icon name="credit-card"/>}/>
-                            <InputMask 
-                                width={90}
-                                size="medium"
-                                value={cardIssue}
-                                dark={theme}
-                                mask="card-issue"
-                                placeholder="__ / __"
-                                onChange={(value, rowValue) => {
-                                    console.log(value)
-                                    console.log(rowValue)
-                                    setCardIssue(rowValue)
-                                }}
-                                prefix={<Icon name="calendar-month"/>}/>
-                        </div>
-                        <br/>
-                        <div className="pa-5 fz-9">Kazakhstan IIN/BIN: {iinMask(iinForm)}</div>
+                            prefix={<Icon name="credit-card"/>}/>
                         <InputMask 
-                            width={250}
+                            width={90}
                             size="medium"
-                            value={iin}
+                            value={cardIssue}
                             dark={theme}
-                            mask="iin"
-                            placeholder="___ ___ ___ ___"
+                            mask="card-issue"
+                            placeholder="__ / __"
                             onChange={(value, rowValue) => {
                                 console.log(value)
                                 console.log(rowValue)
-                                setIin(rowValue)
-                            }}
-                            prefix={<Icon name="card-account-details"/>}/>
-                        <br/>
-                        <div className="pa-5 fz-9">Date (DD.MM.YYYY or MM/DD/YYYY)</div>
-                        <InputMask 
-                            width={250}
-                            size="medium"
-                            value={date}
-                            mask="date"
-                            dark={theme}
-                            placeholder="DD.MM.YYYY"
-                            onChange={(value, rowValue) => {
-                                console.log(value)
-                                console.log(rowValue)
-                                setDate(rowValue)
+                                setCardIssue(rowValue)
                             }}
                             prefix={<Icon name="calendar-month"/>}/>
-                        <Collapse 
-                            icon="code" 
-                            dark={theme}
-                            iconSize={18}
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage} 
-                                dark={theme}
-                                className="mr-10"/>} 
-                            contentStyles={{ padding: 0 }}
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter> 
-                        </Collapse>
-                    </Card>
-                    <h2>API</h2>
-                    <Table
+                    </div>
+                    <br/>
+                    <div className="pa-5 fz-9">Kazakhstan IIN/BIN: {iinMask(iinForm)}</div>
+                    <InputMask 
+                        width={250}
+                        size="medium"
+                        value={iin}
                         dark={theme}
-                        bordered
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
-                </div>
+                        mask="iin"
+                        placeholder="___ ___ ___ ___"
+                        onChange={(value, rowValue) => {
+                            console.log(value)
+                            console.log(rowValue)
+                            setIin(rowValue)
+                        }}
+                        prefix={<Icon name="card-account-details"/>}/>
+                    <br/>
+                    <div className="pa-5 fz-9">Date (DD.MM.YYYY or MM/DD/YYYY)</div>
+                    <InputMask 
+                        width={250}
+                        size="medium"
+                        value={date}
+                        mask="date"
+                        dark={theme}
+                        placeholder="DD.MM.YYYY"
+                        onChange={(value, rowValue) => {
+                            console.log(value)
+                            console.log(rowValue)
+                            setDate(rowValue)
+                        }}
+                        prefix={<Icon name="calendar-month"/>}/>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

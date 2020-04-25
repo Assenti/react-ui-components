@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Switch, ExpansionList, Table, Card, Collapse, Icon, Select, CopyToClipboard, List, ListItem, ThemeContext, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Switch, ExpansionList, Icon, Select, List, ListItem, ThemeContext, Divider } from '../components';
 import { countries } from '../data/countries';
+import Page from '../layouts/Page';
 
 const usage =
 `// Usage examples
@@ -62,7 +61,6 @@ function Example() {
     )
 )`
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'items', 
@@ -145,85 +143,54 @@ const ExpansionListPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="row align-center space-between">
-                        <div className="row">
-                            <div className="rui-page-title">{'<ExpansionList/>'} Component</div>
-                        </div>
-                    </div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            items={sizes}
-                            prefix={<Icon name="format-size"/>}
-                            width={200}
-                            label="Size"
-                            dark={theme}
-                            color="primary"
-                            value={size}
-                            onChange={v => setSize(v)}/>
-                        <br/>
-                        <Switch 
-                            check={accordion} 
-                            color="primary"
-                            rightLabel="Accordion" 
-                            className="my-10"
-                            onChange={() => setAccordioin(!accordion)}/>
-                        <Switch 
-                            check={reverse} 
-                            color="primary"
-                            rightLabel="Reverse" 
-                            className="my-10"
-                            onChange={() => setReverse(!reverse)}/>
-                        <Divider/>
-                        <ExpansionList
-                            width={250} 
-                            size={size}
-                            reverse={reverse}
-                            dark={theme}
-                            defaultOpens={[0]}
-                            itemContent={(item, index) =>
-                                <List
-                                    key={index}>
-                                    {item.cities.map((subItem, iter) => 
-                                        <ListItem
-                                            key={iter} 
-                                            hover
-                                            item={subItem}/>
-                                    )}
-                                </List>
-                            }
-                            accordion={accordion}
-                            titleKey="country"
-                            items={countries}/>
-                        <Collapse 
-                            icon="code"
-                            dark={theme}
-                            className="mx-10" 
-                            iconSize={18}
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage} 
-                                dark={theme}
-                                className="mr-10"/>} 
-                            contentStyles={{ padding: 0 }}
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter> 
-                        </Collapse>
-                    </Card>
-                    <h2>API</h2>
-                    <Card className="pa-0">
-                        <Table
-                            dark={theme}
-                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                            items={items}
-                            index={true}
-                            itemTitles={keys}/>
-                    </Card>
-                </div>
+                <Page
+                    usage={usage}
+                    apiDescItems={items}
+                    componentName="<ExpansionList/>">
+                    <Select
+                        items={sizes}
+                        prefix={<Icon name="format-size"/>}
+                        width={200}
+                        label="Size"
+                        dark={theme}
+                        color="primary"
+                        value={size}
+                        onChange={v => setSize(v)}/>
+                    <br/>
+                    <Switch 
+                        check={accordion} 
+                        color="primary"
+                        rightLabel="Accordion" 
+                        className="my-10"
+                        onChange={() => setAccordioin(!accordion)}/>
+                    <Switch 
+                        check={reverse} 
+                        color="primary"
+                        rightLabel="Reverse" 
+                        className="my-10"
+                        onChange={() => setReverse(!reverse)}/>
+                    <Divider/>
+                    <ExpansionList
+                        width={250} 
+                        size={size}
+                        reverse={reverse}
+                        dark={theme}
+                        defaultOpens={[0]}
+                        itemContent={(item, index) =>
+                            <List
+                                key={index}>
+                                {item.cities.map((subItem, iter) => 
+                                    <ListItem
+                                        key={iter} 
+                                        hover
+                                        item={subItem}/>
+                                )}
+                            </List>
+                        }
+                        accordion={accordion}
+                        titleKey="country"
+                        items={countries}/>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

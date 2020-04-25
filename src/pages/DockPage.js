@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Card, Collapse, Table, CopyToClipboard, Dock, Button, Select, Icon, Switch, ThemeContext, Divider } from '../components';
+import { Dock, Button, Select, Icon, Switch, ThemeContext, Divider } from '../components';
 import manImage from '../img/man.png';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import Page from '../layouts/Page';
 
 const dockItems = [
     { title: 'WhatsApp', icon: 'whatsapp', iconColor: '#25D366' },
@@ -18,7 +17,6 @@ const dockItems = [
 ]
 
 const positions = ['top','bottom','left','right'];
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'onItemClick', 
@@ -130,77 +128,51 @@ const DockPage = () => {
     const [position, setPosition] = useState('top');
 
     return (
-        <div className="rui-page">
-            <div className="rui-page-title">{'<Dock/>'} Component</div>
-            <p>Inspired by macOS Dock toolbar</p>
-            <br/>
-            <ThemeContext.Consumer>
-                {theme => (
-                    <>
-                        <Card header={<h4>Usage</h4>} dark={theme}>
-                            <Select
-                                items={positions}
-                                prefix={<Icon name="chart-ppf"/>}
-                                width={200}
-                                dark={theme}
-                                label="Position"
-                                color="primary"
-                                className="my-10"
-                                value={position}
-                                onChange={v => setPosition(v)}/>
-                            <br/>
-                            <Switch 
-                                color="primary" 
-                                check={tile}
-                                rightLabel="Tile borders type"
-                                className="my-10"
-                                onChange={() => setTile(!tile)}/>
-                            <br/>
-                            <Divider/>
-                            <Button 
-                                name="Switch Dock" 
-                                color="primary"
-                                onClick={() => setDock(!dock)}/>
-                            <Dock 
-                                items={dockItems}
-                                length={500}
-                                tile={tile}
-                                dark={theme}
-                                onItemClick={item => {
-                                    console.log(item)
-                                    setDock(false)
-                                }}
-                                visible={dock} 
-                                position={position}/>
-                        <Collapse 
-                            icon="code"
-                            dark={theme} 
-                            iconSize={18}
-                            extra={<CopyToClipboard 
-                                    defaultText="Copy code" 
-                                    text={usage}
-                                    dark={theme} 
-                                    className="mr-10"/>} 
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <h2>API</h2>
-                    <Table
-                        bordered
+        <ThemeContext.Consumer>
+            {theme => (
+                <Page
+                    usage={usage}
+                    componentName="<Dock/>"
+                    apiDescItems={items}>
+                    <p>Inspired by macOS Dock toolbar</p>
+                    <br/>
+                    <Select
+                        items={positions}
+                        prefix={<Icon name="chart-ppf"/>}
+                        width={200}
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
-                </>
-                )}
-            </ThemeContext.Consumer>
-        </div>
+                        label="Position"
+                        color="primary"
+                        className="my-10"
+                        value={position}
+                        onChange={v => setPosition(v)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={tile}
+                        rightLabel="Tile borders type"
+                        className="my-10"
+                        onChange={() => setTile(!tile)}/>
+                    <br/>
+                    <Divider/>
+                    <Button 
+                        name="Switch Dock" 
+                        color="primary"
+                        onClick={() => setDock(!dock)}/>
+                    <Dock 
+                        items={dockItems}
+                        length={500}
+                        tile={tile}
+                        dark={theme}
+                        onItemClick={item => {
+                            console.log(item)
+                            setDock(false)
+                        }}
+                        visible={dock} 
+                        position={position}/>
+                </Page>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 

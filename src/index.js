@@ -25,13 +25,11 @@ SOFTWARE.
 import React, { useEffect, useState, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch as RouterSwitch, Route, Redirect } from 'react-router-dom';
 import { routes } from './routes';
-import { Content } from './layouts/Content';
 import { DrawerContent } from './layouts/DrawerContent';
-import { description } from '../package.json';
-import { Preloader } from './components';
-import { ThemeContext } from './components';
+import { Preloader, Header, ThemeContext, Tooltip, Button, Switch, Icon } from './components';
+import { version, description } from '../package.json';
 
 const defineDarkDefinition = () => {
     let value = localStorage.getItem('dark')
@@ -54,37 +52,68 @@ const App = () => {
     
     return (
         <ThemeContext.Provider value={dark}>
+            <Header
+                leftControl
+                dark={dark}
+                lifted
+                sticky
+                onLeftControl={() => setDrawer(!drawer)} 
+                title={description}
+                rightSide={
+                <div className="row align-center">
+                    <Switch color="primary" 
+                        check={dark}
+                        leftIcon="sun"
+                        leftIconColor={dark ? '#fff' : ''}
+                        rightIconColor={dark ? '#fff' : ''}
+                        className="mr-10"
+                        rightIcon="moon" 
+                        onChange={() => setDark(!dark)}/>
+                    <div className="mr-15">
+                        <Tooltip tooltip="Current version" position="left">
+                            <a href="https://github.com/Assenti/react-ui-components/blob/master/CHANGELOG.md" 
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                className="fw-bold">
+                                <small>v{version}</small>
+                            </a>
+                        </Tooltip>
+                    </div>
+                    <Tooltip tooltip="Visit Github repo" position="left">
+                        <Button 
+                            icon="github"
+                            light={!dark}
+                            dark={dark} 
+                            onClick={e => { 
+                            e.preventDefault()
+                            window.open('https://github.com/Assenti/react-ui-components', '_blank')}}/>
+                    </Tooltip>
+                </div>
+            }/>
             <div className={dark ? 'rui-app dark' : 'rui-app'}>
+                <DrawerContent
+                    dark={dark}
+                    drawer={drawer}
+                    onSwitch={handleSwitchDark}
+                    onClose={() => setDrawer(false)} 
+                    items={routes}/>
                 <Router>
-                    <ThemeContext.Consumer>
-                        {theme => (
-                            <>
-                                <DrawerContent
-                                    dark={theme}
-                                    drawer={drawer}
-                                    onSwitch={() => handleSwitchDark()}
-                                    onClose={() => setDrawer(false)} 
-                                    items={routes}/>
-                                <Switch>
-                                    {routes.map(({path, Component}, index) => 
-                                        <Route key={index} exact path={path}>
-                                            <Content 
-                                                dark={theme} 
-                                                onSwitch={() => handleSwitchDark()} 
-                                                onDrawerToggle={() => setDrawer(!drawer)}>
-                                                <Suspense fallback={<Preloader visible/>}>
-                                                    <Component />
-                                                </Suspense>
-                                            </Content>
-                                        </Route>
-                                    )}
-                                    <Route path="*">
-                                        <Redirect to="/"/>
-                                    </Route>
-                                </Switch>
-                            </>
+                    <RouterSwitch>
+                        {routes.map(({path, Component}, index) => 
+                            <Route key={index} exact path={path}>
+                                <Suspense fallback={<Preloader visible/>}>
+                                    <div className="rui-content">
+                                        <div className="rui-content-inner">
+                                            <Component />
+                                        </div>
+                                    </div>
+                                </Suspense>
+                            </Route>
                         )}
-                    </ThemeContext.Consumer>
+                        <Route path="*">
+                            <Redirect to="/"/>
+                        </Route>
+                    </RouterSwitch>
                 </Router>
             </div>
         </ThemeContext.Provider>

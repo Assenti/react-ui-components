@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Calendar, Card, Table, Collapse, Select, Icon, Switch, InputField, CopyToClipboard, ThemeContext, themes, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Calendar, Select, Icon, Switch, InputField, ThemeContext, Divider } from '../components';
+import Page from '../layouts/Page';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'locale', 
@@ -336,132 +334,106 @@ const CalendarPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="rui-page-title">{'<Calendar/>'} Component</div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            items={colors}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            dark={theme}
-                            label="Calendar color"
-                            color="primary"
-                            value={color}
-                            onChange={v => setColor(v)}/>
-                        <Select
-                            items={sizes}
-                            prefix={<Icon name="format-size"/>}
-                            width={200}
-                            dark={theme}
-                            label="Calendar size"
-                            color="primary"
-                            className="ml-10"
-                            value={size}
-                            onChange={v => setSize(v)}/>
-                        <br/>
-                        <Select
-                            items={locales}
-                            prefix={<Icon name="translate"/>}
-                            width={200}
-                            dark={theme}
-                            label="Locale"
-                            color="primary"
-                            value={locale}
-                            onChange={v => setLocale(v)}/>
-                        <InputField
-                            width={200}
-                            className="ml-10 my-0"
-                            value={limit}
-                            dark={theme}
-                            label="Years limit"
-                            onChange={e => setLimit(e.target.value)}
-                            prefix={<Icon name="calendar-month"/>}
-                            />
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={onlyPast}
-                            rightLabel="Show only past years"
-                            className="my-10"
-                            onChange={() => setOnlyPast(!onlyPast)}/>
-                        <Switch 
-                            color="primary" 
-                            check={weekStartsSunday}
-                            rightLabel="Week starts from Sunday"
-                            className="my-10"
-                            onChange={() => setWeekStartsSunday(!weekStartsSunday)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={full}
-                            rightLabel="Full width"
-                            className="my-10"
-                            onChange={() => setFull(!full)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={hideCurrentDay}
-                            rightLabel="Hide current day highlight"
-                            className="my-10"
-                            onChange={() => setHideCurrentDay(!hideCurrentDay)}/>
-                        <Switch 
-                            color="primary" 
-                            check={hideWeekend}
-                            rightLabel="Hide weekend highlight"
-                            className="my-10"
-                            onChange={() => setHideWeekend(!hideWeekend)}/>
-                        <Divider/>
-                        <br/>
-                        <Calendar
-                            width={full ? null : 400}
-                            shortWeekName
-                            active={date}
-                            disabledDates={[new Date(2020,3,19), new Date(2020,3,20)]}
-                            maxDate={new Date()}
-                            hideWeekend={hideWeekend}
-                            hideCurrentDay={hideCurrentDay}
-                            onDate={(date) => {
-                                console.log(date)
-                                setDate(date)
-                            }}
-                            events={events}
-                            holidays={holidays}
-                            weekStartsSunday={weekStartsSunday}
-                            size={size}
-                            dark={theme}
-                            limit={limit} 
-                            onlyPast={onlyPast}
-                            locale={locale}
-                            color={color}/>
-                        <Collapse 
-                            icon="code" 
-                            iconSize={18}
-                            dark={theme}
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage} 
-                                dark={theme}
-                                className="mr-10"/>} 
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <h2>API</h2>
-                    <Card className="pa-0">
-                        <Table
-                            dark={theme}
-                            searchable
-                            searchKey="property"
-                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                            items={items}
-                            index={true}
-                            itemTitles={keys}/>
-                    </Card>
-                </div>
+                <Page
+                    usage={usage}
+                    componentName="<Calendar/>"
+                    apiSearchable
+                    apiDescItems={items}>
+                    <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        dark={theme}
+                        label="Calendar color"
+                        color="primary"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <Select
+                        items={sizes}
+                        prefix={<Icon name="format-size"/>}
+                        width={200}
+                        dark={theme}
+                        label="Calendar size"
+                        color="primary"
+                        className="ml-10"
+                        value={size}
+                        onChange={v => setSize(v)}/>
+                    <br/>
+                    <Select
+                        items={locales}
+                        prefix={<Icon name="translate"/>}
+                        width={200}
+                        dark={theme}
+                        label="Locale"
+                        color="primary"
+                        value={locale}
+                        onChange={v => setLocale(v)}/>
+                    <InputField
+                        width={200}
+                        className="ml-10 my-0"
+                        value={limit}
+                        dark={theme}
+                        label="Years limit"
+                        onChange={e => setLimit(e.target.value)}
+                        prefix={<Icon name="calendar-month"/>}
+                        />
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={onlyPast}
+                        rightLabel="Show only past years"
+                        className="my-10"
+                        onChange={() => setOnlyPast(!onlyPast)}/>
+                    <Switch 
+                        color="primary" 
+                        check={weekStartsSunday}
+                        rightLabel="Week starts from Sunday"
+                        className="my-10"
+                        onChange={() => setWeekStartsSunday(!weekStartsSunday)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={full}
+                        rightLabel="Full width"
+                        className="my-10"
+                        onChange={() => setFull(!full)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={hideCurrentDay}
+                        rightLabel="Hide current day highlight"
+                        className="my-10"
+                        onChange={() => setHideCurrentDay(!hideCurrentDay)}/>
+                    <Switch 
+                        color="primary" 
+                        check={hideWeekend}
+                        rightLabel="Hide weekend highlight"
+                        className="my-10"
+                        onChange={() => setHideWeekend(!hideWeekend)}/>
+                    <Divider/>
+                    <br/>
+                    <Calendar
+                        width={full ? null : 400}
+                        shortWeekName
+                        active={date}
+                        disabledDates={[new Date(2020,3,19), new Date(2020,3,20)]}
+                        maxDate={new Date()}
+                        hideWeekend={hideWeekend}
+                        hideCurrentDay={hideCurrentDay}
+                        onDate={(date) => {
+                            console.log(date)
+                            setDate(date)
+                        }}
+                        events={events}
+                        holidays={holidays}
+                        weekStartsSunday={weekStartsSunday}
+                        size={size}
+                        dark={theme}
+                        limit={limit} 
+                        onlyPast={onlyPast}
+                        locale={locale}
+                        color={color}/>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

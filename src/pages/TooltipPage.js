@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Tooltip, Button, Card, Table, Collapse, CopyToClipboard, Select, Icon, ThemeContext, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Tooltip, Button, Select, Icon, ThemeContext, Divider } from '../components';
+import Page from '../layouts/Page';
 
 const usage = 
 `// Usage examples
@@ -19,7 +18,6 @@ function Example() {
         </>
     )
 }`
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'tooltip',
@@ -58,77 +56,51 @@ const TooltipPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="row align-center space-between">
-                        <div className="rui-page-title">{'<Tooltip/>'} Component</div>
-                    </div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            items={colors}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            dark={theme}
-                            label="Tooltip color"
-                            color="primary"
-                            className="my-10"
-                            value={color}
-                            onChange={v => setColor(v)}/>
-                        <br/>
-                        <Divider/>
-                        <div className="row align-center py-20">
-                            <Tooltip 
-                                tooltip="Top position"
-                                color={color} 
-                                className="mr-20">
-                                <Button icon="search" color="info"/>
-                            </Tooltip>
-                            <Tooltip 
-                                tooltip="Bottom position" 
-                                position="bottom"
-                                color={color}  
-                                className="mr-20">
-                                <Button color="info" name="Button" onAction={() =>{}}/>
-                            </Tooltip>
-                            <Tooltip 
-                                tooltip="Left position"
-                                color={color}  
-                                position="left" 
-                                className="mr-20">
-                                <Button icon="menu" dark={theme} light={!theme}/>
-                            </Tooltip>
-                            <Tooltip 
-                                tooltip="Right position"
-                                color={color}  
-                                position="right">
-                                <Button icon="rocket" color="error"/>
-                            </Tooltip>
-                        </div>
-                        <br/>
-                        <Collapse 
-                            icon="code" 
-                            iconSize={18}
-                            dark={theme}
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage}
-                                dark={theme} 
-                                className="mr-10"/>} 
-                            contentStyles={{ padding: 0 }}
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter> 
-                        </Collapse>
-                    </Card>
-                    <h2 id="tooltip-api">API</h2>
-                    <Table
-                        bordered
+                <Page
+                    usage={usage}
+                    componentName="<Tooltip/>"
+                    apiDescItems={items}>
+                    <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
                         dark={theme}
-                        headers={keys}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
-                </div>
+                        label="Tooltip color"
+                        color="primary"
+                        className="my-10"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <Divider/>
+                    <div className="row align-center py-20">
+                        <Tooltip 
+                            tooltip="Top position"
+                            color={color} 
+                            className="mr-20">
+                            <Button icon="search" color="info"/>
+                        </Tooltip>
+                        <Tooltip 
+                            tooltip="Bottom position" 
+                            position="bottom"
+                            color={color}  
+                            className="mr-20">
+                            <Button color="info" name="Button" onAction={() =>{}}/>
+                        </Tooltip>
+                        <Tooltip 
+                            tooltip="Left position"
+                            color={color}  
+                            position="left" 
+                            className="mr-20">
+                            <Button icon="menu" dark={theme} light={!theme}/>
+                        </Tooltip>
+                        <Tooltip 
+                            tooltip="Right position"
+                            color={color}  
+                            position="right">
+                            <Button icon="rocket" color="error"/>
+                        </Tooltip>
+                    </div>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

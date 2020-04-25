@@ -65,6 +65,8 @@ export { default as Slider } from './slider';
 export { default as Footer } from './footer';
 export { default as DatePicker } from './datePicker';
 export { default as AvatarUploader } from './avatarUploader';
+export { default as Carousel } from './carousel';
+export { default as Statistics } from './statistics';
 export { ThemeContext, themes } from './theme-provider';
 export { 
     convertToNum, 
@@ -74,4 +76,5 @@ export {
     creditMask,
     creditIssueMask,
     iinMask,
-    isTwoDatesEqual } from './utils';
+    isTwoDatesEqual,
+    toFinancial } from './utils';

@@ -157,3 +157,16 @@ export const isTwoDatesEqual = (date1, date2) => {
     let year2 = new Date(date2).getFullYear();
     return day1 === day2 && month1 === month2 && year1 === year2;
 }
+
+export const toFinancial = (number) => {
+    if (number) {
+        let stringified = Math.abs(number).toString();
+        let result = '';
+        if (stringified.length < 4) return number;
+        else if (stringified.length > 3 && stringified.length < 7) result = `${stringified.slice(0,3)} ${stringified.slice(3,6)}`;
+        else if (stringified.length > 6 && stringified.length < 10) result = `${stringified.slice(0,3)} ${stringified.slice(3,6)} ${stringified.slice(6,9)}`;
+        else if (stringified.length > 9 && stringified.length < 12) result = `${stringified.slice(0,3)} ${stringified.slice(3,6)} ${stringified.slice(6,9)} ${stringified.slice(9,12)}`;
+        else if (stringified.length > 12 && stringified.length < 15) result = `${stringified.slice(0,3)} ${stringified.slice(3,6)} ${stringified.slice(6,9)} ${stringified.slice(9,12)} ${stringified.slice(12,15)}`;
+        return number < 0 ? `- ${result}` : result;
+    } else return '';
+}

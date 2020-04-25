@@ -1,7 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { InputField, Icon, Card, Button, Table, Collapse, BackTopBtn, Select, Switch, CopyToClipboard, ThemeContext, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import React, { useState } from 'react';
+import { InputField, Icon, Button, Select, Switch, ThemeContext, Divider } from '../components';
+import Page from '../layouts/Page';
 
 const usage = 
 `// Usage examples
@@ -190,7 +189,6 @@ function Example() {
     )
 }`
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'onChange', 
@@ -401,215 +399,187 @@ const InputsPage = () => {
     const [white, setWhite] = useState(false);
     const [lifted, setLifted] = useState(false);
     const [uppercase, setUppercase] = useState(false);
-    const api = useRef();
-    const parent = useRef();
-
-    const goToApi = () => {
-        if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    }
 
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page" ref={parent}>
-                    <div className="row align-center space-between">
-                        <div className="rui-page-title">{'<InputField/>'} Component</div>
-                        <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
-                    </div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            items={sizes}
-                            dark={theme}
-                            prefix={<Icon name="format-size"/>}
-                            width={200}
-                            label="InputField size"
-                            color="primary"
-                            className="ml-5"
-                            value={size}
-                            onChange={v => setSize(v)}/>
-                        <br/>
-                        <Select
-                            items={colors}
-                            dark={theme}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            label="InputField color"
-                            color="primary"
-                            className="ml-5"
-                            value={color}
-                            onChange={v => setColor(v)}/>
-                        <br/>
-                        <Select
-                            items={borders}
-                            dark={theme}
-                            prefix={<Icon name="shape"/>}
-                            width={200}
-                            label="InputField border type"
-                            color="primary"
-                            className="ml-5"
-                            value={border}
-                            onChange={v => setBorder(v)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={required}
-                            rightLabel="Required"
-                            className="my-10 ml-5"
-                            onChange={() => setRequired(!required)}/>
-                        <Switch 
-                            color="primary" 
-                            check={label}
-                            rightLabel="Label"
-                            className="my-10 ml-5"
-                            onChange={() => setLabel(!label)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={hint}
-                            rightLabel="Hint"
-                            className="my-10 ml-5"
-                            onChange={() => setHint(!hint)}/>
-                        <Switch 
-                            color="primary" 
-                            check={white}
-                            rightLabel="White background"
-                            className="my-10 ml-5"
-                            onChange={() => setWhite(!white)}/>
-                        <br/>
-                        <Switch 
-                            check={uppercase} 
-                            color="primary"
-                            rightLabel="Uppercase" 
-                            className="my-10 ml-5"
-                            onChange={() => setUppercase(!uppercase)}/>
-                        <Switch 
-                            check={lifted} 
-                            color="primary"
-                            rightLabel="Lifted" 
-                            className="my-10 ml-5"
-                            onChange={() => setLifted(!lifted)}/>
-                        <Divider/>
-                        <br/>
-                        <InputField
-                            label={label ? 'Login' : ''}
-                            dark={theme}
-                            placeholder="Input your login" 
-                            value={login}
-                            autoComplete
-                            hint={hint ? 'I am a hint' : null}
-                            borderType={border}
-                            name="login"
-                            color={color}
-                            lifted={lifted}
-                            uppercase={uppercase}
-                            whiteBackground={white}
-                            width={300}
-                            required={required}
-                            size={size}
-                            onChange={e => setLogin(e.target.value)}/>
-                        <br/>
-                        <InputField
-                            label={label ? 'Password' : ''}
-                            placeholder="Input your password" 
-                            value={password}
-                            dark={theme}
-                            borderType={border}
-                            type="password"
-                            hint={hint ? 'I am a hint' : null}
-                            color={color}
-                            required={required}
-                            width={300}
-                            lifted={lifted}
-                            uppercase={uppercase}
-                            size={size}
-                            whiteBackground={white}
-                            onChange={e => setPassword(e.target.value)}/>
-                        <br/>
-                        <InputField
-                            label={label ? 'Amount' : ''}
-                            placeholder="Input amount" 
-                            value={amount}
-                            type="number"
-                            dark={theme}
-                            min={0}
-                            required={required}
-                            lifted={lifted}
-                            uppercase={uppercase}
-                            borderType={border}
-                            hint={hint ? 'I am a hint' : null}
-                            color={color}
-                            prefix={<Icon name="tenge"/>}
-                            width={300}
-                            whiteBackground={white}
-                            size={size}
-                            onChange={e => setAmount(e.target.value)}/>
-                        <br/>
-                        <InputField
-                            label={label ? 'Login' : ''}
-                            placeholder="Input your login" 
-                            value={second}
-                            required={required}
-                            borderType={border}
-                            lifted={lifted}
-                            dark={theme}
-                            uppercase={uppercase}
-                            hint={hint ? 'I am a hint' : null}
-                            clearable
-                            whiteBackground={white}
-                            autoFocus
-                            onClear={() => setSecond('')} 
-                            prefix={<Icon name="account"/>}
-                            color={color}
-                            width={300}
-                            size={size}
-                            onChange={e => setSecond(e.target.value)}/>
-                        <br/>
-                        <InputField
-                            placeholder="Search..." 
-                            value={search}
-                            hint={hint ? 'I am a hint' : null}
-                            color={color}
-                            width={300}
-                            label={label ? 'Search' : ''}
-                            size={size}
-                            lifted={lifted}
-                            uppercase={uppercase}
-                            dark={theme}
-                            whiteBackground={white}
-                            required={required}
-                            borderType={border}
-                            prefix={<Icon name="search"/>}
-                            suffix={
-                                <Button 
-                                    name="Search" 
-                                    color="primary"
-                                    size={size} 
-                                    onClick={() => console.log(search)}/>}
-                            onEnter={() => console.log(search)}
-                            onChange={e => setSearch(e.target.value)}/>
-                        <Collapse 
-                            icon="code" 
-                            dark={theme}
-                            iconSize={18}
-                            extra={<CopyToClipboard dark={theme} defaultText="Copy code" text={usage} className="mr-10"/>} 
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <BackTopBtn setRef={parent} dark size="medium"/>
-                    <h2 ref={api}>InputField API</h2>
-                    <Table
-                        bordered
-                        searchable
-                        searchKey="property"
+                <Page
+                    usage={usage}
+                    componentName="<InputField/>"
+                    apiDescItems={items}
+                    apiSearchable
+                    backTopBtn>
+                    <Select
+                        items={sizes}
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
-                </div>
+                        prefix={<Icon name="format-size"/>}
+                        width={200}
+                        label="InputField size"
+                        color="primary"
+                        className="ml-5"
+                        value={size}
+                        onChange={v => setSize(v)}/>
+                    <br/>
+                    <Select
+                        items={colors}
+                        dark={theme}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        label="InputField color"
+                        color="primary"
+                        className="ml-5"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <Select
+                        items={borders}
+                        dark={theme}
+                        prefix={<Icon name="shape"/>}
+                        width={200}
+                        label="InputField border type"
+                        color="primary"
+                        className="ml-5"
+                        value={border}
+                        onChange={v => setBorder(v)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={required}
+                        rightLabel="Required"
+                        className="my-10 ml-5"
+                        onChange={() => setRequired(!required)}/>
+                    <Switch 
+                        color="primary" 
+                        check={label}
+                        rightLabel="Label"
+                        className="my-10 ml-5"
+                        onChange={() => setLabel(!label)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={hint}
+                        rightLabel="Hint"
+                        className="my-10 ml-5"
+                        onChange={() => setHint(!hint)}/>
+                    <Switch 
+                        color="primary" 
+                        check={white}
+                        rightLabel="White background"
+                        className="my-10 ml-5"
+                        onChange={() => setWhite(!white)}/>
+                    <br/>
+                    <Switch 
+                        check={uppercase} 
+                        color="primary"
+                        rightLabel="Uppercase" 
+                        className="my-10 ml-5"
+                        onChange={() => setUppercase(!uppercase)}/>
+                    <Switch 
+                        check={lifted} 
+                        color="primary"
+                        rightLabel="Lifted" 
+                        className="my-10 ml-5"
+                        onChange={() => setLifted(!lifted)}/>
+                    <Divider/>
+                    <br/>
+                    <InputField
+                        label={label ? 'Login' : ''}
+                        dark={theme}
+                        placeholder="Input your login" 
+                        value={login}
+                        autoComplete
+                        hint={hint ? 'I am a hint' : null}
+                        borderType={border}
+                        name="login"
+                        color={color}
+                        lifted={lifted}
+                        uppercase={uppercase}
+                        whiteBackground={white}
+                        width={300}
+                        required={required}
+                        size={size}
+                        onChange={e => setLogin(e.target.value)}/>
+                    <br/>
+                    <InputField
+                        label={label ? 'Password' : ''}
+                        placeholder="Input your password" 
+                        value={password}
+                        dark={theme}
+                        borderType={border}
+                        type="password"
+                        hint={hint ? 'I am a hint' : null}
+                        color={color}
+                        required={required}
+                        width={300}
+                        lifted={lifted}
+                        uppercase={uppercase}
+                        size={size}
+                        whiteBackground={white}
+                        onChange={e => setPassword(e.target.value)}/>
+                    <br/>
+                    <InputField
+                        label={label ? 'Amount' : ''}
+                        placeholder="Input amount" 
+                        value={amount}
+                        type="number"
+                        dark={theme}
+                        min={0}
+                        required={required}
+                        lifted={lifted}
+                        uppercase={uppercase}
+                        borderType={border}
+                        hint={hint ? 'I am a hint' : null}
+                        color={color}
+                        prefix={<Icon name="tenge"/>}
+                        width={300}
+                        whiteBackground={white}
+                        size={size}
+                        onChange={e => setAmount(e.target.value)}/>
+                    <br/>
+                    <InputField
+                        label={label ? 'Login' : ''}
+                        placeholder="Input your login" 
+                        value={second}
+                        required={required}
+                        borderType={border}
+                        lifted={lifted}
+                        dark={theme}
+                        uppercase={uppercase}
+                        hint={hint ? 'I am a hint' : null}
+                        clearable
+                        whiteBackground={white}
+                        autoFocus
+                        onClear={() => setSecond('')} 
+                        prefix={<Icon name="account"/>}
+                        color={color}
+                        width={300}
+                        size={size}
+                        onChange={e => setSecond(e.target.value)}/>
+                    <br/>
+                    <InputField
+                        placeholder="Search..." 
+                        value={search}
+                        hint={hint ? 'I am a hint' : null}
+                        color={color}
+                        width={300}
+                        label={label ? 'Search' : ''}
+                        size={size}
+                        lifted={lifted}
+                        uppercase={uppercase}
+                        dark={theme}
+                        whiteBackground={white}
+                        required={required}
+                        borderType={border}
+                        prefix={<Icon name="search"/>}
+                        suffix={
+                            <Button 
+                                name="Search" 
+                                color="primary"
+                                size={size} 
+                                onClick={() => console.log(search)}/>}
+                        onEnter={() => console.log(search)}
+                        onChange={e => setSearch(e.target.value)}/>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

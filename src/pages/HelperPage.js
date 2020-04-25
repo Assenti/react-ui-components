@@ -283,14 +283,14 @@ const HelperPage = () => {
                                 {usage}
                             </SyntaxHighlighter> 
                         </div>
-                        <Table
-                            dark={theme}
-                            className="mt-10"
-                            bordered
-                            headers={['Class', 'Description']}
-                            items={colors}
-                            index={true}
-                            itemTitles={['class', 'description']}/>
+                        <Card className="pa-0">
+                            <Table
+                                dark={theme}
+                                headers={['Class', 'Description']}
+                                items={colors}
+                                index={true}
+                                itemTitles={['class', 'description']}/>
+                        </Card>
                     </Card>
                     <BackTopBtn setRef={parent} size="medium" dark/>
                 </div>

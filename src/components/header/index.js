@@ -11,7 +11,7 @@ const Header = (props) => {
             color: props.color && props.color !== 'default' ? props.color : '',
             sticky: props.sticky ? 'sticky' : '',
             smooth: props.smooth ? 'smooth' : '',
-            elevated: props.elevated ? 'elevated' : '',
+            lifted: props.lifted ? 'lifted' : '',
             className: props.className ? props.className : ''
         }
         
@@ -56,7 +56,7 @@ Header.propTypes = {
     rightSide: PropTypes.any,
     sticky: PropTypes.bool,
     smooth: PropTypes.bool,
-    elevated: PropTypes.bool,
+    lifted: PropTypes.bool,
     className: PropTypes.string
 }
 export default Header;

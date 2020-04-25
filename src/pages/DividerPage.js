@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { Card, Collapse, Table, CopyToClipboard, Select, Icon, Avatar, Divider, ThemeContext } from '../components';
+import { Select, Icon, Avatar, Divider, ThemeContext } from '../components';
 import manImage from '../img/man.png';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import Page from '../layouts/Page';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'color', 
@@ -43,14 +41,30 @@ import React, { useState } from 'react';
 import { Divider } from '@assenti/react-ui-components';
 
 function Example() {
+    const [color, setColor] = useState(colors[4]);
+
     return (
         <>
-            <div className="row align-center">
-                <Avatar img={manImage}/>
-                <Divider vertical/>
-                <strong className="text-primary">John Doe</strong>
+            <Select
+                items={colors}
+                prefix={<Icon name="brush"/>}
+                width={200}
+                dark={theme}
+                label="Color"
+                color="primary"
+                value={color}
+                className="mb-20"
+                onChange={v => setColor(v)}/>
+            <br/>
+            <div className="row">
+                <Avatar img={manImage} dark={theme} height={100}/>
+                <Divider vertical color={color}/>
+                <div>
+                    <h2 className="text-primary">John Doe</h2>
+                    <p className="text-dark">jdoe@awesome.mail</p>
+                </div>
             </div>
-            <Divider/>
+            <Divider color={color}/>
             <p>Age: 33</p>
             <p>Birth date: 1987/1/1</p>
             <p>Address: 13, Friday str., NYC</p>
@@ -64,55 +78,34 @@ const DividerPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="rui-page-title">{'<Divider/>'} Component</div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            items={colors}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            dark={theme}
-                            label="Color"
-                            color="primary"
-                            value={color}
-                            className="mb-20"
-                            onChange={v => setColor(v)}/>
-                        <br/>
-                        <div className="row align-center">
-                            <Avatar img={manImage} dark={theme}/>
-                            <Divider vertical />
-                            <strong className="text-primary">John Doe</strong>
-                        </div>
-                        <Divider color={color}/>
-                        <p>Age: 33</p>
-                        <p>Birth date: 1987/1/1</p>
-                        <p>Address: 13, Friday str., NYC</p>
-                        <Collapse 
-                            icon="code" 
-                            dark={theme}
-                            iconSize={18}
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage} 
-                                dark={theme}
-                                className="mr-10"/>} 
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <h2>API</h2>
-                    <Table
-                        bordered
+                <Page
+                    usage={usage}
+                    apiDescItems={items}
+                    componentName="<Divider/>">
+                    <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
-                </div>
+                        label="Color"
+                        color="primary"
+                        value={color}
+                        className="mb-20"
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <div className="row">
+                        <Avatar img={manImage} dark={theme} height={100}/>
+                        <Divider vertical color={color}/>
+                        <div>
+                            <h2 className="text-primary">John Doe</h2>
+                            <p className="text-dark">jdoe@awesome.mail</p>
+                        </div>
+                    </div>
+                    <Divider color={color}/>
+                    <p>Age: 33</p>
+                    <p>Birth date: 1987/1/1</p>
+                    <p>Address: 13, Friday str., NYC</p>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

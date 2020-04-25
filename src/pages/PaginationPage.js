@@ -1,9 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { Pagination, Table, Card, Collapse, BackTopBtn, CopyToClipboard, Select, Icon, Switch, ThemeContext, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Pagination, Select, Icon, Switch, ThemeContext, Divider } from '../components';
+import Page from '../layouts/Page';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'itemsCount', 
@@ -167,72 +165,51 @@ const PaginationPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page" ref={parent}>
-                    <div className="row align-center space-between">
-                        <div className="rui-page-title">{'<Pagination/>'} Component</div>
-                    </div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            items={colors}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            dark={theme}
-                            label="Pagination color"
-                            color="primary"
-                            className="my-10"
-                            value={color}
-                            onChange={v => setColor(v)}/>
-                        <br/>
-                        <Select
-                            items={sizes}
-                            prefix={<Icon name="format-size"/>}
-                            width={200}
-                            dark={theme}
-                            label="Pagination size"
-                            color="primary"
-                            className="my-10"
-                            value={size}
-                            onChange={v => setSize(v)}/>
-                        <br/>
-                        <Switch 
-                            check={rounded} 
-                            color="primary"
-                            rightLabel="Rounded" 
-                            className="my-10"
-                            onChange={() => setRounded(!rounded)}/>
-                        <Divider/>
-                        <Pagination
-                            itemsCount={itemsCount}
-                            color={color}
-                            size={size}
-                            perPage={perPage}
-                            dark={theme}
-                            current={currentPage}
-                            onChange={page => setCurrentPage(page)}
-                            onPerPageSelect={value => setPerPage(value)}
-                            className="pa-5"
-                            rounded={rounded}/>
-                        <Collapse 
-                            icon="code" 
-                            iconSize={18}
-                            dark={theme}
-                            extra={<CopyToClipboard dark={theme} defaultText="Copy code" text={usage} className="mr-10"/>}  
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <BackTopBtn size="medium" dark setRef={parent}/>
-                    <h2>API</h2>
-                    <Table
-                        bordered
+                <Page
+                    usage={usage}
+                    componentName="<Pagination/>"
+                    apiDescItems={items}>
+                    <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
-                </div>
+                        label="Pagination color"
+                        color="primary"
+                        className="my-10"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <Select
+                        items={sizes}
+                        prefix={<Icon name="format-size"/>}
+                        width={200}
+                        dark={theme}
+                        label="Pagination size"
+                        color="primary"
+                        className="my-10"
+                        value={size}
+                        onChange={v => setSize(v)}/>
+                    <br/>
+                    <Switch 
+                        check={rounded} 
+                        color="primary"
+                        rightLabel="Rounded" 
+                        className="my-10"
+                        onChange={() => setRounded(!rounded)}/>
+                    <Divider/>
+                    <Pagination
+                        itemsCount={itemsCount}
+                        color={color}
+                        size={size}
+                        perPage={perPage}
+                        dark={theme}
+                        current={currentPage}
+                        onChange={page => setCurrentPage(page)}
+                        onPerPageSelect={value => setPerPage(value)}
+                        className="pa-5"
+                        rounded={rounded}/>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

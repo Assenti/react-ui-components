@@ -1,7 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { Icon, Card, Table, Collapse, BackTopBtn, TextareaField, Select, Switch, CopyToClipboard, ThemeContext, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import React, { useState } from 'react';
+import { Icon, TextareaField, Select, Switch, ThemeContext, Divider } from '../components';
+import Page from '../layouts/Page';
 
 const usage =
 `// Usage examples
@@ -116,7 +115,6 @@ function Example() {
     )
 }`
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const itemsTextarea = [
     { 
         property: 'onChange', 
@@ -295,137 +293,107 @@ const TextareaPage = () => {
     const [uppercase, setUppercase] = useState(false);
     const [prefix, setPrefix] = useState(false);
     const [placeholder, setPlaceholder] = useState(true);
-    const api = useRef();
-    const parent = useRef();
-
-    const goToApi = () => {
-        if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    }
-
+    
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page" ref={parent}>
-                    <div className="row align-center space-between">
-                        <div className="rui-page-title">{'<TextareaField/>'} Component</div>
-                        <div onClick={() => goToApi()} className="rui-link fz-13 fw-bold mr-10">API</div>
-                    </div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            items={colors}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            dark={theme}
-                            label="Color"
-                            color="primary"
-                            className="ml-5"
-                            value={color}
-                            onChange={v => setColor(v)}/>
-                        <br/>
-                        <Select
-                            items={borders}
-                            prefix={<Icon name="shape"/>}
-                            width={200}
-                            dark={theme}
-                            label="Border type"
-                            color="primary"
-                            className="ml-5"
-                            value={border}
-                            onChange={v => setBorder(v)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={required}
-                            rightLabel="Required"
-                            className="my-10 ml-5"
-                            onChange={() => setRequired(!required)}/>
-                        <Switch 
-                            color="primary" 
-                            check={label}
-                            rightLabel="Label"
-                            className="my-10 ml-5"
-                            onChange={() => setLabel(!label)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={hint}
-                            rightLabel="Hint"
-                            className="my-10 ml-5"
-                            onChange={() => setHint(!hint)}/>
-                        <Switch 
-                            color="primary" 
-                            check={white}
-                            rightLabel="White background"
-                            className="my-10 ml-5"
-                            onChange={() => setWhite(!white)}/>
-                        <br/>
-                        <Switch 
-                            check={uppercase} 
-                            color="primary"
-                            rightLabel="Uppercase" 
-                            className="my-10 ml-5"
-                            onChange={() => setUppercase(!uppercase)}/>
-                        <Switch 
-                            check={lifted} 
-                            color="primary"
-                            rightLabel="Lifted" 
-                            className="my-10 ml-5"
-                            onChange={() => setLifted(!lifted)}/>
-                        <br/>
-                        <Switch 
-                            check={prefix} 
-                            color="primary"
-                            rightLabel="Prefix" 
-                            className="my-10 ml-5"
-                            onChange={() => setPrefix(!prefix)}/>
-                        <Switch 
-                            check={placeholder} 
-                            color="primary"
-                            rightLabel="Placeholder" 
-                            className="my-10 ml-5"
-                            onChange={() => setPlaceholder(!placeholder)}/>
-                        <Divider/>
-                        <br/>
-                        <TextareaField
-                            prefix={prefix ? <Icon name="edit"/> : null}
-                            label={label ? 'Textarea field' : null}
-                            placeholder={placeholder ? 'Textarea field' : null} 
-                            hint={hint ? 'I am a hint' : null}
-                            value={text}
-                            dark={theme}
-                            lifted={lifted}
-                            whiteBackground={white}
-                            required={required}
-                            maxRows={20}
-                            borderType={border}
-                            color={color}
-                            rows={4}
-                            width={300}
-                            onChange={e => setText(e.target.value)}/>
-                        <Collapse 
-                            icon="code" 
-                            iconSize={18}
-                            dark={theme}
-                            extra={<CopyToClipboard dark={theme} defaultText="Copy code" text={usage} className="mr-10"/>} 
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <BackTopBtn setRef={parent} dark size="medium"/>
-                    <h2 ref={api}>TextareaField API</h2>
-                    <Card>
-                        <Table
-                            dark={theme}
-                            searchable
-                            searchKey="property"
-                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                            items={itemsTextarea}
-                            index={true}
-                            itemTitles={keys}/>
-                    </Card>
-                </div>
+                <Page
+                    usage={usage}
+                    apiSearchable
+                    componentName="<TextareaField/>"
+                    apiDescItems={itemsTextarea}>
+                    <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        dark={theme}
+                        label="Color"
+                        color="primary"
+                        className="ml-5"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <Select
+                        items={borders}
+                        prefix={<Icon name="shape"/>}
+                        width={200}
+                        dark={theme}
+                        label="Border type"
+                        color="primary"
+                        className="ml-5"
+                        value={border}
+                        onChange={v => setBorder(v)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={required}
+                        rightLabel="Required"
+                        className="my-10 ml-5"
+                        onChange={() => setRequired(!required)}/>
+                    <Switch 
+                        color="primary" 
+                        check={label}
+                        rightLabel="Label"
+                        className="my-10 ml-5"
+                        onChange={() => setLabel(!label)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={hint}
+                        rightLabel="Hint"
+                        className="my-10 ml-5"
+                        onChange={() => setHint(!hint)}/>
+                    <Switch 
+                        color="primary" 
+                        check={white}
+                        rightLabel="White background"
+                        className="my-10 ml-5"
+                        onChange={() => setWhite(!white)}/>
+                    <br/>
+                    <Switch 
+                        check={uppercase} 
+                        color="primary"
+                        rightLabel="Uppercase" 
+                        className="my-10 ml-5"
+                        onChange={() => setUppercase(!uppercase)}/>
+                    <Switch 
+                        check={lifted} 
+                        color="primary"
+                        rightLabel="Lifted" 
+                        className="my-10 ml-5"
+                        onChange={() => setLifted(!lifted)}/>
+                    <br/>
+                    <Switch 
+                        check={prefix} 
+                        color="primary"
+                        rightLabel="Prefix" 
+                        className="my-10 ml-5"
+                        onChange={() => setPrefix(!prefix)}/>
+                    <Switch 
+                        check={placeholder} 
+                        color="primary"
+                        rightLabel="Placeholder" 
+                        className="my-10 ml-5"
+                        onChange={() => setPlaceholder(!placeholder)}/>
+                    <Divider/>
+                    <br/>
+                    <TextareaField
+                        prefix={prefix ? <Icon name="edit"/> : null}
+                        label={label ? 'Textarea field' : null}
+                        placeholder={placeholder ? 'Textarea field' : null} 
+                        hint={hint ? 'I am a hint' : null}
+                        value={text}
+                        dark={theme}
+                        lifted={lifted}
+                        whiteBackground={white}
+                        required={required}
+                        maxRows={20}
+                        borderType={border}
+                        color={color}
+                        rows={4}
+                        width={300}
+                        onChange={e => setText(e.target.value)}/>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

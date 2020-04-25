@@ -7,6 +7,13 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.6.0 `2020-04-25`
+
+- `NEW!` Carousel component added;
+- `NEW!` Statistics component added;
+- Drawer component updated;
+- `NEW!` New icons added;
+
 #### 0.5.5 `2020-04-23`
 
 - `NEW!` AvatarUploader component added;

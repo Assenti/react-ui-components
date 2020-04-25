@@ -30,7 +30,7 @@ import { Card, Button } from '@assenti/rui-components';
 
 function App() {
     return (
-        <Card color="primary" header={<h4>React UI Components</h4>}>
+        <Card header={<h4>React UI Components</h4>}>
             <Button color="primary" name="Rocket" icon="rocket"/>
         </Card>
     );

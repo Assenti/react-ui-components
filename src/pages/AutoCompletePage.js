@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { AutoComplete, Card, Select, Collapse, CopyToClipboard, Switch, Table, Icon, RadioGroup, ThemeContext, themes, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { coy, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { AutoComplete, Select, Switch, Icon, RadioGroup, ThemeContext, Divider } from '../components';
+import Page from '../layouts/Page';
 import { countries } from '../data/countries';
 import wordlImage from '../img/world.png';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const rows = [
     { 
         property: 'items', 
@@ -236,175 +234,146 @@ const AutoCompletePage = () => {
     const [whiteBackground, setWhiteBackground] = useState(false);
 
     return (
-        <div className="rui-page">
-            <div className="rui-page-title">{'<AutoComplete/>'} Component</div>
-            <ThemeContext.Consumer>
-                {theme => (
-                    <>
-                        <Card header={<h4>Usage</h4>} dark={theme}>
-                            <Select
-                                items={colors}
-                                dark={theme}
-                                prefix={<Icon name="brush"/>}
-                                width={200}
-                                label="Color"
-                                color="primary"
-                                className="my-5"
-                                value={color}
-                                onChange={v => setColor(v)}/>
-                            <br/>
-                            <Select
-                                items={sizes}
-                                prefix={<Icon name="format-size"/>}
-                                width={200}
-                                dark={theme}
-                                label="Size"
-                                color="primary"
-                                className="my-5"
-                                value={size}
-                                onChange={v => setSize(v)}/>
-                            <br/>
-                            <Select
-                                items={borders}
-                                prefix={<Icon name="shape"/>}
-                                width={200}
-                                dark={theme}
-                                label="Border type"
-                                color="primary"
-                                className="my-5"
-                                value={border}
-                                onChange={v => setBorder(v)}/>
-                            <br/>
-                            <Switch 
-                                check={disabled} 
-                                color="primary"
-                                rightLabel="Disabled" 
-                                className="my-10"
-                                onChange={() => setDisabled(!disabled)}/>
-                            <Switch 
-                                check={loading} 
-                                color="primary"
-                                rightLabel="Loading" 
-                                className="my-10"
-                                onChange={() => setLoading(!loading)}/>
-                            <br/>
-                            <Switch 
-                                check={prefix} 
-                                color="primary"
-                                rightLabel="Prefix" 
-                                className="my-10"
-                                onChange={() => setPrefix(!prefix)}/>
-                            <Switch 
-                                check={suffix} 
-                                color="primary"
-                                rightLabel="Suffix" 
-                                className="my-10"
-                                onChange={() => setSuffix(!suffix)}/>
-                            <Switch 
-                                check={label} 
-                                color="primary"
-                                rightLabel="Label" 
-                                className="my-10"
-                                onChange={() => setLabel(!label)}/>
-                            
-                            <br/>
-                            <Switch 
-                                check={listHeader} 
-                                color="primary"
-                                rightLabel="List header" 
-                                className="my-10"
-                                onChange={() => setListHeader(!listHeader)}/>
-                            <Switch 
-                                check={footer} 
-                                color="primary"
-                                rightLabel="List footer" 
-                                className="my-10"
-                                onChange={() => setFooter(!footer)}/>
-                            <br/>
-                            <Switch 
-                                check={whiteBackground} 
-                                color="primary"
-                                rightLabel="WhiteBackground" 
-                                className="my-10"
-                                onChange={() => setWhiteBackground(!whiteBackground)}/>
-                            <Switch 
-                                check={maxHeight} 
-                                color="primary"
-                                rightLabel="Set max height" 
-                                className="my-10"
-                                onChange={() => setMaxHeight(!maxHeight)}/>
-                            <br/>
-                            <RadioGroup
-                                options={types} 
-                                value={type}
-                                name="type"
-                                className="mt-10" 
-                                onChange={(value) => setType(value)}/>
-                            <Divider/>
-                            <AutoComplete
-                                items={countries}
-                                width={250}
-                                dark={theme}
-                                maxHeight={maxHeight ? 200 : null}
-                                itemKey="country"
-                                iconKey={type === 'icon' ? 'icon' : null}
-                                avatarKey={type === 'image' ? wordlImage : null}
-                                avatarBorderType="rounded"
-                                avatarSize={24}
-                                borderType={border}
-                                color={color}
-                                size={size}
-                                loading={loading}
-                                label={label ? 'Countries' : null}
-                                placeholder="Choose your favourive country"
-                                onItemClick={item => setCountry(item.country)}
-                                clearable
-                                onClear={() => setCountry('')}
-                                className="my-10"
-                                listHeader={listHeader ? <div className="fz-9 text-info py-10">
-                                    Start typing your favourite country
-                                </div> : null}
-                                footer={(filteredLength) => 
-                                    <div className="text-right fz-8 text-info px-10 py-15">
-                                        {filteredLength} results
-                                    </div>}
-                                disabled={disabled}
-                                whiteBackground={whiteBackground}
-                                prefix={prefix ? <Icon name="earth"/> : null}
-                                suffix={suffix ? <Icon name="chevron-down"/> : null}/>
-                            <Collapse 
-                                icon="code" 
-                                iconSize={18}
-                                contentStyles={{ padding: 0 }}
-                                tooltip="Code"
-                                dark={theme}
-                                extra={
-                                    <CopyToClipboard 
-                                        defaultText="Copy code" 
-                                        text={usage}
-                                        dark={theme}
-                                        className="mr-10"/>}>
-                                <SyntaxHighlighter 
-                                    language="jsx" 
-                                    style={theme ? tomorrow : coy}>
-                                    {usage}
-                                </SyntaxHighlighter> 
-                            </Collapse>
-                        </Card>
-                        <h2>API</h2>
-                        <Table
-                            bordered
-                            dark={theme}
-                            searchable
-                            searchKey="property"
-                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                            items={rows}
-                            index
-                            itemTitles={keys}/>
-                    </>
-                )}
-            </ThemeContext.Consumer>
-        </div>
+        <ThemeContext.Consumer>
+            {theme => (
+                <Page
+                    usage={usage}
+                    apiDescItems={rows}
+                    apiSearchable
+                    componentName="<AutoComplete/>">
+                    <Select
+                        items={colors}
+                        dark={theme}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        label="Color"
+                        color="primary"
+                        className="my-5"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <Select
+                        items={sizes}
+                        prefix={<Icon name="format-size"/>}
+                        width={200}
+                        dark={theme}
+                        label="Size"
+                        color="primary"
+                        className="my-5"
+                        value={size}
+                        onChange={v => setSize(v)}/>
+                    <br/>
+                    <Select
+                        items={borders}
+                        prefix={<Icon name="shape"/>}
+                        width={200}
+                        dark={theme}
+                        label="Border type"
+                        color="primary"
+                        className="my-5"
+                        value={border}
+                        onChange={v => setBorder(v)}/>
+                    <br/>
+                    <Switch 
+                        check={disabled} 
+                        color="primary"
+                        rightLabel="Disabled" 
+                        className="my-10"
+                        onChange={() => setDisabled(!disabled)}/>
+                    <Switch 
+                        check={loading} 
+                        color="primary"
+                        rightLabel="Loading" 
+                        className="my-10"
+                        onChange={() => setLoading(!loading)}/>
+                    <br/>
+                    <Switch 
+                        check={prefix} 
+                        color="primary"
+                        rightLabel="Prefix" 
+                        className="my-10"
+                        onChange={() => setPrefix(!prefix)}/>
+                    <Switch 
+                        check={suffix} 
+                        color="primary"
+                        rightLabel="Suffix" 
+                        className="my-10"
+                        onChange={() => setSuffix(!suffix)}/>
+                    <Switch 
+                        check={label} 
+                        color="primary"
+                        rightLabel="Label" 
+                        className="my-10"
+                        onChange={() => setLabel(!label)}/>
+                    
+                    <br/>
+                    <Switch 
+                        check={listHeader} 
+                        color="primary"
+                        rightLabel="List header" 
+                        className="my-10"
+                        onChange={() => setListHeader(!listHeader)}/>
+                    <Switch 
+                        check={footer} 
+                        color="primary"
+                        rightLabel="List footer" 
+                        className="my-10"
+                        onChange={() => setFooter(!footer)}/>
+                    <br/>
+                    <Switch 
+                        check={whiteBackground} 
+                        color="primary"
+                        rightLabel="WhiteBackground" 
+                        className="my-10"
+                        onChange={() => setWhiteBackground(!whiteBackground)}/>
+                    <Switch 
+                        check={maxHeight} 
+                        color="primary"
+                        rightLabel="Set max height" 
+                        className="my-10"
+                        onChange={() => setMaxHeight(!maxHeight)}/>
+                    <br/>
+                    <RadioGroup
+                        options={types} 
+                        value={type}
+                        name="type"
+                        className="mt-10" 
+                        onChange={(value) => setType(value)}/>
+                    <Divider/>
+                    <AutoComplete
+                        items={countries}
+                        width={250}
+                        dark={theme}
+                        maxHeight={maxHeight ? 200 : null}
+                        itemKey="country"
+                        iconKey={type === 'icon' ? 'icon' : null}
+                        avatarKey={type === 'image' ? wordlImage : null}
+                        avatarBorderType="rounded"
+                        avatarSize={24}
+                        borderType={border}
+                        color={color}
+                        size={size}
+                        loading={loading}
+                        label={label ? 'Countries' : null}
+                        placeholder="Choose your favourive country"
+                        onItemClick={item => setCountry(item.country)}
+                        clearable
+                        onClear={() => setCountry('')}
+                        className="my-10"
+                        listHeader={listHeader ? <div className="fz-9 text-info py-10">
+                            Start typing your favourite country
+                        </div> : null}
+                        footer={(filteredLength) => 
+                            <div className="text-right fz-8 text-info px-10 py-15">
+                                {filteredLength} results
+                            </div>}
+                        disabled={disabled}
+                        whiteBackground={whiteBackground}
+                        prefix={prefix ? <Icon name="earth"/> : null}
+                        suffix={suffix ? <Icon name="chevron-down"/> : null}/>
+                </Page>
+            )}
+        </ThemeContext.Consumer>
     )
 }
 export default AutoCompletePage;

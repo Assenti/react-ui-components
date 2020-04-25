@@ -104,7 +104,11 @@ import {
     Airplane,
     Cancel,
     Grid,
-    ViewList
+    ViewList,
+    CheckList,
+    AccountGroup,
+    ArrowUp,
+    ArrowDown
 } from './icons/index';
 
 const Icon = (props) => {
@@ -319,6 +323,14 @@ const Icon = (props) => {
                 return <Grid {...props}/>;
             case 'view-list':
                 return <ViewList {...props}/>;
+            case 'checklist':
+                return <CheckList {...props}/>;
+            case 'account-group':
+                return <AccountGroup {...props}/>;
+            case 'arrow-up':
+                return <ArrowUp {...props}/>;
+            case 'arrow-down':
+                return <ArrowDown {...props}/>;
             default:
                 return '';
         }

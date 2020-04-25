@@ -1,10 +1,8 @@
-import React, { useState, createRef } from 'react';
-import { Dropdown, Button, Switch, Card, Table, List, ListItem, Collapse, Header, Avatar, Icon, CopyToClipboard, ThemeContext } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import React from 'react';
+import { Dropdown, Button, List, ListItem, Header, Avatar, Icon, ThemeContext } from '../components';
 import manImage from '../img/man_.png';
+import Page from '../layouts/Page';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'content', 
@@ -151,83 +149,49 @@ function Example() {
 }`
 
 const DropdownPage = () => {
-    const api = createRef();
-    const goToApi = () => {
-        if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    }
-
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="row align-center space-between">
-                        <div className="rui-page-title">{'<Dropdown/>'} Component</div>
-                        <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
-                    </div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <br/>
-                        <Header 
-                            dark={theme}
-                            smooth 
-                            title={
-                                <div className="row align-center">
-                                    <Icon name="react" color="#61dafb" className="mr-5"/>Header</div>
-                                } 
-                            rightSide={
-                                <Dropdown
-                                    dark={theme}
-                                    width={200}
-                                    position="right"
-                                    content={
-                                        <div className="pa-10">
-                                            <div className="text-center">
-                                                <Avatar img={manImage} size={80} dark={theme}/>
-                                                <div 
-                                                    className="text-center fw-bold fz-9 py-10" 
-                                                    style={{ color: theme ? '#fff' : '#000', 
-                                                    borderBottom: '1px solid lightgray'}}>John Doe</div>
-                                            </div>
-                                            <List dark={theme}>
-                                                {modules.map((item, index) =>
-                                                    <ListItem 
-                                                        key={index}
-                                                        hover
-                                                        noDivider 
-                                                        item={item.name} 
-                                                        icon={item.icon}/>
-                                                )}
-                                            </List>
-                                        </div>
-                                    }
-                                    trigger={<Button dark={theme} light={!theme} icon="account"/>}/>
-                            }/>
-                        <br/>
-                        <Collapse 
-                            icon="code" 
-                            dark={theme}
-                            iconSize={18}
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage} 
-                                dark={theme}
-                                className="mr-10"/>} 
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <h2 ref={api}>API</h2>
-                    <Table
-                        bordered
+                <Page
+                    usage={usage}
+                    componentName="<Dropdown/>"
+                    apiDescItems={items}>
+                    <Header 
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
-                </div>
+                        smooth 
+                        title={
+                            <div className="row align-center">
+                                <Icon name="react" color="#61dafb" className="mr-5"/>Header</div>
+                            } 
+                        rightSide={
+                            <Dropdown
+                                dark={theme}
+                                width={200}
+                                position="right"
+                                content={
+                                    <div className="pa-10">
+                                        <div className="text-center">
+                                            <Avatar img={manImage} size={80} dark={theme}/>
+                                            <div 
+                                                className="text-center fw-bold fz-9 py-10" 
+                                                style={{ color: theme ? '#fff' : '#000', 
+                                                borderBottom: '1px solid lightgray'}}>John Doe</div>
+                                        </div>
+                                        <List dark={theme}>
+                                            {modules.map((item, index) =>
+                                                <ListItem 
+                                                    key={index}
+                                                    hover
+                                                    noDivider 
+                                                    item={item.name} 
+                                                    icon={item.icon}/>
+                                            )}
+                                        </List>
+                                    </div>
+                                }
+                                trigger={<Button dark={theme} light={!theme} icon="account"/>}/>
+                        }/>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

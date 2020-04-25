@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Card, AvatarUploader, Table, Collapse, Select, Icon, CopyToClipboard, ThemeContext, Divider, Switch } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { coy, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { AvatarUploader, Select, Icon, ThemeContext, Divider, Switch } from '../components';
+import Page from '../layouts/Page';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'width', 
@@ -135,67 +133,43 @@ function Example() {
 }`
 
 const AvatarUploaderPage = () => {
-    const [border, setBorder] = useState(borders[1]);
+    const [border, setBorder] = useState(borders[0]);
     const [avatar, setAvatar] = useState('');
     const [lifted, setLifted] = useState(false);
 
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="rui-page-title">{`<AvatarUploader/>`} Component</div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            dark={theme}
-                            items={borders}
-                            prefix={<Icon name="shape"/>}
-                            width={200}
-                            label="Border type"
-                            color="primary"
-                            value={border}
-                            onChange={v => setBorder(v)}/>
-                        <br/>
-                        <Switch
-                            color="primary"
-                            check={lifted}
-                            className="mt-10 mb-20"
-                            rightLabel="Lifted"
-                            onChange={() => setLifted(!lifted)}/>
-                        <Divider/>
-                        <br/>
-                        <AvatarUploader
-                            dark={theme}
-                            lifted={lifted}
-                            borderType={border}
-                            avatar={avatar}
-                            onChange={a => setAvatar(a)}
-                            onClear={() => setAvatar('')}/>
-                        <Collapse
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage} 
-                                dark={theme}
-                                className="mr-10"/>}  
-                            icon="code" 
-                            dark={theme}
-                            iconSize={18} 
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <h2>API</h2>
-                    <Table
-                        bordered
+                <Page
+                    apiDescItems={items}
+                    componentName="<AvatarUploader/>"
+                    usage={usage}>
+                    <Select
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index
-                        itemTitles={keys}/>
-                </div>
+                        items={borders}
+                        prefix={<Icon name="shape"/>}
+                        width={200}
+                        label="Border type"
+                        color="primary"
+                        value={border}
+                        onChange={v => setBorder(v)}/>
+                    <br/>
+                    <Switch
+                        color="primary"
+                        check={lifted}
+                        className="mt-10 mb-20"
+                        rightLabel="Lifted"
+                        onChange={() => setLifted(!lifted)}/>
+                    <Divider/>
+                    <br/>
+                    <AvatarUploader
+                        dark={theme}
+                        lifted={lifted}
+                        borderType={border}
+                        avatar={avatar}
+                        onChange={a => setAvatar(a)}
+                        onClear={() => setAvatar('')}/>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

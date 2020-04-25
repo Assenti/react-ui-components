@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Dialog, Button, Card, Collapse, Table, Switch, CopyToClipboard, ThemeContext, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Dialog, Button, Switch, ThemeContext, Divider } from '../components';
+import Page from '../layouts/Page';
 
 const usage =
 `// Usage examples
@@ -38,7 +37,6 @@ function Example() {
     )
 }`
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'visible', 
@@ -155,59 +153,35 @@ const DialogPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="rui-page-title">{'<Dialog/>'} Component</div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Switch 
-                            color="primary" 
-                            check={confirmOnly}
-                            rightLabel="Confirm only"
-                            className="my-10"
-                            onChange={() => setConfirmOnly(!confirmOnly)}/>
-                        <br/>
-                        <Divider/>
-                        <Button
-                            color="error"
-                            name="Delete account"
-                            onClick={() => setDialog(true)}/>
-                        <Dialog
-                            onCancel={() => setDialog(false)}
-                            onConfirm={actionImitation}
-                            icon="alert"
-                            dark={theme}
-                            confirmOnly={confirmOnly}
-                            confirmText={confirmOnly ? 'OK' : ''}
-                            iconColor="red"
-                            titleColor="red" 
-                            visible={dialog} 
-                            title="Delete"
-                            description="Are you sure?"/>
-                        <Collapse 
-                            icon="code" 
-                            dark={theme}
-                            iconSize={18} 
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage} 
-                                dark={theme}
-                                className="mr-10"/>} 
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
-                    </Card>
-                    <h2>API</h2>
-                    <Table
-                        bordered
+                <Page
+                    usage={usage}
+                    apiDescItems={items}
+                    componentName="<Dialog/>">
+                    <Switch 
+                        color="primary" 
+                        check={confirmOnly}
+                        rightLabel="Confirm only"
+                        className="my-10"
+                        onChange={() => setConfirmOnly(!confirmOnly)}/>
+                    <br/>
+                    <Divider/>
+                    <Button
+                        color="error"
+                        name="Delete account"
+                        onClick={() => setDialog(true)}/>
+                    <Dialog
+                        onCancel={() => setDialog(false)}
+                        onConfirm={actionImitation}
+                        icon="alert"
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index={true}
-                        itemTitles={keys}/>
-                </div>
+                        confirmOnly={confirmOnly}
+                        confirmText={confirmOnly ? 'OK' : ''}
+                        iconColor="red"
+                        titleColor="red" 
+                        visible={dialog} 
+                        title="Delete"
+                        description="Are you sure?"/>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

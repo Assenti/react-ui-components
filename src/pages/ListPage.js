@@ -300,6 +300,13 @@ const items2 = [
         value: ''
     },
     { 
+        property: 'href', 
+        description: 'Set list item title as a tag with href', 
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
         property: 'tooltip', 
         description: 'Set tooltip', 
         default: '', 

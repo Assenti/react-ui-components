@@ -5,16 +5,18 @@
     height: 50px;
     width: 100%;
     padding: 0 15px;
-    top: 0;
+    position: static;
 
     &.sticky {
         position: sticky;
         z-index: 1000;
+        top: 0;
     }
 
     &:not(.dark) {
-        &.elevated {
-            box-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+        &.lifted {
+            box-shadow: 1px 1px 3px rgba(lightgray, .2);
+            border-bottom: 1px solid rgba(0,40,100,.12);
         }
     }
 
@@ -29,7 +31,7 @@
     &.dark {
         background-color: $night;
 
-        &.elevated {
+        &.lifted {
             box-shadow: 1px 1px 3px rgba(lightgray, .2);
         }
 

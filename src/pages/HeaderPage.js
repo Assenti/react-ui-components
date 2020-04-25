@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Header, Card, Table, Button, Collapse, Select, Icon, Switch, CopyToClipboard, ThemeContext, themes, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Header, Button, Select, Icon, Switch, ThemeContext, Divider } from '../components';
+import Page from '../layouts/Page';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'title',
@@ -41,7 +39,7 @@ const items = [
         value: 'true | false'
     },
     { 
-        property: 'elevated', 
+        property: 'lifted', 
         description: 'Elevate header', 
         default: 'false', 
         type: 'boolean',
@@ -111,7 +109,6 @@ const colors = ['default', 'primary', 'info', 'success', 'error', 'black'];
 
 const HeaderPage = () => {
     const [color, setColor] = useState(colors[0]);
-    const [dark, setDark] = useState(false);
     const [smooth, setSmooth] = useState(false);
     const [leftControl, setLeftControl] = useState(true);
     const [rightSide, setRightSide] = useState(false);
@@ -120,89 +117,62 @@ const HeaderPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="row align-center space-between">
-                        <div className="rui-page-title">{'<Header/>'} Component</div>
-                    </div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Header
-                            color={!dark ? color : null}
-                            smooth={smooth}
-                            dark={theme}
-                            elevated={elevated}
-                            title="Header" 
-                            leftControl={leftControl}
-                            rightSide={rightSide ?
-                                <Button 
-                                    dark={theme || (color && color !== 'default')}
-                                    light={color === 'default' && !theme}
-                                    icon="account"/> : null}/>
-                        <br/>
-                        <Divider/>
-                        <Select
-                            items={colors}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            dark={theme}
-                            label="Color theme"
-                            color="primary"
-                            value={color}
-                            onChange={v => setColor(v)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={smooth}
-                            rightLabel="Smooth borders"
-                            className="my-10"
-                            onChange={() => setSmooth(!smooth)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={rightSide}
-                            rightLabel="Right side"
-                            className="my-10"
-                            onChange={() => setRightSide(!rightSide)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={leftControl}
-                            rightLabel="Left control"
-                            className="my-10"
-                            onChange={() => setLeftControl(!leftControl)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={elevated}
-                            rightLabel="Elevated"
-                            className="my-10"
-                            onChange={() => setElevated(!elevated)}/>
-                        <Collapse 
-                            icon="code" 
-                            iconSize={18}
-                            dark={theme}
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage} 
-                                dark={theme}
-                                className="mr-10"/>} 
-                            contentStyles={{ padding: 0 }}
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter> 
-                        </Collapse>
-                    </Card>
-                    <h2>API</h2>
-                    <Table
-                        bordered
+                <Page
+                    usage={usage}
+                    componentName="<Header/>"
+                    apiDescItems={items}>
+                    <Header
+                        color={!theme ? color : null}
+                        smooth={smooth}
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={items}
-                        index
-                        itemTitles={keys}/>
-                </div>
+                        lifted={elevated}
+                        title="Header" 
+                        leftControl={leftControl}
+                        rightSide={rightSide ?
+                            <Button 
+                                dark={theme || (color && color !== 'default')}
+                                light={color === 'default' && !theme}
+                                icon="account"/> : null}/>
+                    <br/>
+                    <Divider/>
+                    <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        dark={theme}
+                        label="Color theme"
+                        color="primary"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={smooth}
+                        rightLabel="Smooth borders"
+                        className="my-10"
+                        onChange={() => setSmooth(!smooth)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={rightSide}
+                        rightLabel="Right side"
+                        className="my-10"
+                        onChange={() => setRightSide(!rightSide)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={leftControl}
+                        rightLabel="Left control"
+                        className="my-10"
+                        onChange={() => setLeftControl(!leftControl)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={elevated}
+                        rightLabel="Lifted"
+                        className="my-10"
+                        onChange={() => setElevated(!elevated)}/>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

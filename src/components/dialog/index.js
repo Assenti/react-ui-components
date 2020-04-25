@@ -90,10 +90,4 @@ Dialog.propTypes = {
     confirmText: PropTypes.string,
     confirmBtnColor: PropTypes.string
 }
-Dialog.defaultProps = {
-    cancelText: 'Cancel',
-    cancelBtnColor: 'secondary',
-    confirmText: 'Confirm',
-    confirmBtnColor: 'primary'
-}
 export default Dialog;

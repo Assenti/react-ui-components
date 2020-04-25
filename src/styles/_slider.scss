@@ -122,7 +122,12 @@
             z-index: 1;
             top: calc(50% - 15px);
             margin: 0 !important;
-            background-color: rgba(lightgray, .3) !important;
+
+            svg {
+                path {
+                    fill: #fff;
+                }
+            }
 
             &:hover:not(.disabled) {
                 svg {

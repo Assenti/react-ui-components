@@ -1,4 +1,6 @@
 import { lazy } from 'react';
+const StatisticsPage = lazy(() => import('./pages/StatisticsPage'));
+const CarouselPage = lazy(() => import('./pages/CarouselPage'));
 const AvatarUploaderPage = lazy(() => import('./pages/AvatarUploaderPage'));
 const DialogPage = lazy(() => import('./pages/DialogPage'));
 const InputMaskPage = lazy(() => import('./pages/InputMaskPage'));
@@ -57,7 +59,7 @@ export const routes = [
     { path: '/list', name: 'List', Component: ListPage, updated: true },
     { path: '/inputfield', name: 'InputField', Component: InputsPage },
     { path: '/textareafield', name: 'TextareaField', Component: TextareaPage },
-    { path: '/drawer', name: 'Drawer', Component: DrawerPage },
+    { path: '/drawer', name: 'Drawer', Component: DrawerPage, updated: true },
     { path: '/tooltip', name: 'Tooltip', Component: TooltipPage },
     { path: '/pagination', name: 'Pagination', Component: PaginationPage },
     { path: '/select', name: 'Select', Component: SelectPage },
@@ -74,7 +76,7 @@ export const routes = [
     { path: '/collapse', name: 'Collapse', Component: CollapsePage },
     { path: '/buttonGroup', name: 'ButtonGroup', Component: ButtonGroupPage },
     { path: '/popover', name: 'PopOver', Component: PopOverPage },
-    { path: '/header', name: 'Header', Component: HeaderPage },
+    { path: '/header', name: 'Header', Component: HeaderPage, updated: true },
     { path: '/helper', name: 'Helper CSS classes', Component: HelperPage },
     { path: '/copytoclipboard', name: 'CopyToClipboard', Component: CopyToClipboardPage },
     { path: '/uploader', name: 'Uploader', Component: UploaderPage },
@@ -98,5 +100,7 @@ export const routes = [
     { path: '/footer', name: 'Footer', Component: FooterPage },
     { path: '/datepicker', name: 'DatePicker', Component: DatePickerPage, new: true },
     { path: '/avataruploader', name: 'AvatarUploader', Component: AvatarUploaderPage, new: true },
+    { path: '/carousel', name: 'Carousel', Component: CarouselPage, new: true },
+    { path: '/statistics', name: 'Statistics', Component: StatisticsPage, new: true },
     // { path: '/notification', name: 'Notification', Component: NotificationPage },
 ]

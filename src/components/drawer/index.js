@@ -17,7 +17,7 @@ const Drawer = (props) => {
             hideOverlay: props.hideOverlay ? 'hide-overlay' : '',
             position: props.position ? props.position : 'left',
             smooth: props.smooth ? 'smooth' : '',
-            elevated: props.elevated ? 'elevated' : '',
+            lifted: props.lifted ? 'lifted' : '',
             min: props.min ? 'min' : '',
             absolute: props.absolute ? 'absolute' : '',
             fullHeight: props.fullHeight ? 'full-height' : '',
@@ -89,12 +89,9 @@ const Drawer = (props) => {
                             in={props.min}
                             timeout={300}
                             classNames="expand">
-                                <div className={drawerClass()}>
+                                <div className={drawerClass()}
+                                    >
                                     <div className="rui-drawer-content" onClick={handleCloseXs}>
-                                        {props.header ? 
-                                        <div className={props.headerCentered ? 
-                                                'rui-drawer-header centered' : 'rui-drawer-header'}>
-                                                    {props.header}</div> : ''}
                                         {props.children}
                                     </div>
                                     {props.collapsable ? <div className="rui-drawer-footer">
@@ -121,7 +118,11 @@ const Drawer = (props) => {
                     in={props.min}
                     timeout={300}
                     classNames="expand">
-                        <div className={drawerClass()}>
+                        <div className={drawerClass()}
+                            style={{
+                                height: props.height ? props.height : '',
+                                maxHeight: props.height ? props.height : ''
+                            }}>
                             <div className="rui-drawer-content">
                                 {props.header ? <div className={props.headerCentered ? 
                                         'rui-drawer-header centered' : 'rui-drawer-header'}>
@@ -152,12 +153,11 @@ Drawer.propTypes = {
     min: PropTypes.bool,
     onResize: PropTypes.func,
     onClose: PropTypes.func,
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     fullHeight: PropTypes.bool,
     position: PropTypes.oneOf([undefined,'','left','right','top','bottom']),
-    header: PropTypes.any,
-    headerCentered: PropTypes.bool,
     dark: PropTypes.bool,
-    elevated: PropTypes.bool,
+    lifted: PropTypes.bool,
     absolute: PropTypes.bool
 }
 export default Drawer;

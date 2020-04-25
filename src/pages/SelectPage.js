@@ -1,10 +1,8 @@
-import React, { useState, useRef } from 'react';
-import { Select, Table, Card, Collapse, Icon, BackTopBtn, Switch, Badge, CopyToClipboard, ThemeContext, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import React, { useState } from 'react';
+import { Select, Icon, Switch, ThemeContext, Divider } from '../components';
 import { countries } from '../data/countries';
+import Page from '../layouts/Page';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const rows = [
     { 
         property: 'items', 
@@ -311,171 +309,136 @@ const SelectPage = () => {
     const [border, setBorder] = useState(borders[0]);
     const [disabled, setDisabled] = useState(false);
     const [maxHeight, setMaxHeight] = useState(false);
-    const parent = useRef();
-    const api = useRef();
-
-    const goToApi = () => {
-        if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    }
 
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page" ref={parent}>
-                    <div className="row align-center space-between">
-                        <div className="rui-page-title">{'<Select/>'} Component</div>
-                        <div className="rui-link fz-13 fw-bold mr-10" onClick={() => goToApi()}>API</div>
-                    </div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            items={colors}
-                            dark={theme}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            label="Color"
-                            color="primary"
-                            className="my-5"
-                            value={color}
-                            onChange={v => setColor(v)}/>
-                        <br/>
-                        <Select
-                            items={sizes}
-                            dark={theme}
-                            prefix={<Icon name="format-size"/>}
-                            width={200}
-                            label="Size"
-                            color="primary"
-                            className="my-5"
-                            value={size}
-                            onChange={v => setSize(v)}/>
-                        <br/>
-                        <Select
-                            items={borders}
-                            dark={theme}
-                            prefix={<Icon name="shape"/>}
-                            width={200}
-                            label="Border type"
-                            color="primary"
-                            className="my-5"
-                            value={border}
-                            onChange={v => setBorder(v)}/>
-                        <br/>
-                        <Switch 
-                            check={maxHeight} 
-                            color="primary"
-                            rightLabel="Set max height" 
-                            className="my-10"
-                            onChange={() => setMaxHeight(!maxHeight)}/>
-                        <Switch 
-                            check={disabled} 
-                            color="primary"
-                            rightLabel="Disabled" 
-                            className="my-10"
-                            onChange={() => setDisabled(!disabled)}/>
-                        <Divider/>
-                        <Select
-                            items={countries}
-                            prefix={<Icon name="earth"/>}
-                            itemKey="country"
-                            label="One level items select"
-                            width={250}
-                            dark={theme}
-                            maxHeight={maxHeight ? 200 : null}
-                            disabled={disabled}
-                            size={size}
-                            borderType={border}
-                            clearable
-                            onClear={() => setCountry('')}
-                            color={color}
-                            placeholder="Countries"
-                            value={country}
-                            onChange={value => setCountry(value)}/>
-                        <br/>
-                        <Select
-                            prefix={<Icon name="earth"/>}
-                            label="Two level items select"
-                            items={countries}
-                            itemKey="country"
-                            childrenKey="cities"
-                            disabled={disabled}
-                            color={color}
-                            dark={theme}
-                            borderType={border}
-                            width={250}
-                            size={size}
-                            placeholder="Cities"
-                            value={city}
-                            onChange={value => {
-                                setCity(value)
-                                console.log(value)
-                            }}/>
-                        <br/>
-                        <Select
-                            prefix={<Icon name="earth"/>}
-                            label="One level items searchable select"
-                            items={countries}
-                            itemKey="country"
-                            color={color}
-                            dark={theme}
-                            disabled={disabled}
-                            maxHeight={maxHeight ? 200 : null}
-                            width={250}
-                            borderType={border}
-                            searchable
-                            size={size}
-                            placeholder="Countries"
-                            value={country}
-                            onChange={value => setCountry(value)}/>
-                        <br/>
-                        <Select
-                            prefix={<Icon name="earth"/>}
-                            label="One level items with multiple select"
-                            items={countries}
-                            itemKey="country"
-                            color={color}
-                            dark={theme}
-                            maxHeight={maxHeight ? 200 : null}
-                            width={250}
-                            disabled={disabled}
-                            multiple
-                            size={size}
-                            borderType={border}
-                            placeholder="Countries"
-                            value={city}
-                            tagOutlined
-                            onSelect={(selectedItem, selectedItems) => 
-                                console.log(selectedItem, selectedItems)}
-                            onChange={value => setCity(value)}/>
-                        <Collapse 
-                            icon="code" 
-                            iconSize={18}
-                            dark={theme}
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage} 
-                                dark={theme}
-                                className="mr-10"/>}
-                            contentStyles={{ padding: 0 }}
-                            tooltip="Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter> 
-                        </Collapse>
-                    </Card>
-                    <BackTopBtn setRef={parent} dark size="medium"/>
-                    <h2 ref={api}>API</h2>
-                    <Table
-                        searchable
-                        searchKey="property"
-                        bordered
+                <Page
+                    usage={usage}
+                    backTopBtn
+                    apiSearchable
+                    componentName="<Select/>"
+                    apiDescItems={rows}>
+                    <Select
+                        items={colors}
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={rows}
-                        index={true}
-                        itemTitles={keys}/>
-                </div>
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        label="Color"
+                        color="primary"
+                        className="my-5"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <Select
+                        items={sizes}
+                        dark={theme}
+                        prefix={<Icon name="format-size"/>}
+                        width={200}
+                        label="Size"
+                        color="primary"
+                        className="my-5"
+                        value={size}
+                        onChange={v => setSize(v)}/>
+                    <br/>
+                    <Select
+                        items={borders}
+                        dark={theme}
+                        prefix={<Icon name="shape"/>}
+                        width={200}
+                        label="Border type"
+                        color="primary"
+                        className="my-5"
+                        value={border}
+                        onChange={v => setBorder(v)}/>
+                    <br/>
+                    <Switch 
+                        check={maxHeight} 
+                        color="primary"
+                        rightLabel="Set max height" 
+                        className="my-10"
+                        onChange={() => setMaxHeight(!maxHeight)}/>
+                    <Switch 
+                        check={disabled} 
+                        color="primary"
+                        rightLabel="Disabled" 
+                        className="my-10"
+                        onChange={() => setDisabled(!disabled)}/>
+                    <Divider/>
+                    <Select
+                        items={countries}
+                        prefix={<Icon name="earth"/>}
+                        itemKey="country"
+                        label="One level items select"
+                        width={250}
+                        dark={theme}
+                        maxHeight={maxHeight ? 200 : null}
+                        disabled={disabled}
+                        size={size}
+                        borderType={border}
+                        clearable
+                        onClear={() => setCountry('')}
+                        color={color}
+                        placeholder="Countries"
+                        value={country}
+                        onChange={value => setCountry(value)}/>
+                    <br/>
+                    <Select
+                        prefix={<Icon name="earth"/>}
+                        label="Two level items select"
+                        items={countries}
+                        itemKey="country"
+                        childrenKey="cities"
+                        disabled={disabled}
+                        color={color}
+                        dark={theme}
+                        borderType={border}
+                        width={250}
+                        size={size}
+                        placeholder="Cities"
+                        value={city}
+                        onChange={value => {
+                            setCity(value)
+                            console.log(value)
+                        }}/>
+                    <br/>
+                    <Select
+                        prefix={<Icon name="earth"/>}
+                        label="One level items searchable select"
+                        items={countries}
+                        itemKey="country"
+                        color={color}
+                        dark={theme}
+                        disabled={disabled}
+                        maxHeight={maxHeight ? 200 : null}
+                        width={250}
+                        borderType={border}
+                        searchable
+                        size={size}
+                        placeholder="Countries"
+                        value={country}
+                        onChange={value => setCountry(value)}/>
+                    <br/>
+                    <Select
+                        prefix={<Icon name="earth"/>}
+                        label="One level items with multiple select"
+                        items={countries}
+                        itemKey="country"
+                        color={color}
+                        dark={theme}
+                        maxHeight={maxHeight ? 200 : null}
+                        width={250}
+                        disabled={disabled}
+                        multiple
+                        size={size}
+                        borderType={border}
+                        placeholder="Countries"
+                        value={city}
+                        tagOutlined
+                        onSelect={(selectedItem, selectedItems) => 
+                            console.log(selectedItem, selectedItems)}
+                        onChange={value => setCity(value)}/>
+                </Page>
             )}
         </ThemeContext.Consumer>
         

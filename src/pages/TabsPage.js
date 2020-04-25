@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Tabs, Card, Switch, Select, Icon, Table, Collapse, CopyToClipboard, ThemeContext, Divider } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Tabs, Switch, Select, Icon, ThemeContext, Divider } from '../components';
+import Page from '../layouts/Page';
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const rows = [
     { 
         property: 'tabs', 
@@ -226,112 +224,89 @@ const TabsPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page">
-                    <div className="row align-center">
-                        <div className="rui-page-title">{'<Tabs/>'} Component</div>
-                    </div>
-                    <Card dark={theme} header={<h4>Usage</h4>}>
-                        <Select
-                            items={colors}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            dark={theme}
-                            label="Tabs color"
-                            color="primary"
-                            className="my-5"
-                            value={color}
-                            onChange={v => setColor(v)}/>
-                        <br/>
-                        <Select
-                            items={sizes}
-                            dark={theme}
-                            prefix={<Icon name="format-size"/>}
-                            width={200}
-                            label="Tabs size"
-                            color="primary"
-                            className="my-5"
-                            value={size}
-                            onChange={v => setSize(v)}/>
-                        <br/>
-                        <Select
-                            items={positions}
-                            prefix={<Icon name="chart-ppf"/>}
-                            width={200}
-                            dark={theme}
-                            label="Tabs position"
-                            color="primary"
-                            className="my-5"
-                            value={position}
-                            onChange={v => setPosition(v)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={icon}
-                            rightLabel="Icon"
-                            className="my-10" 
-                            onChange={() => setIcon(!icon)}/>
-                        <Switch 
-                            color="primary" 
-                            check={fill}
-                            rightLabel="Active highlight fill"
-                            className="my-10" 
-                            onChange={() => setFill(!fill)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={centered}
-                            className="my-10" 
-                            rightLabel="Tabs items centered"
-                            onChange={() => setCentered(!centered)}/>
-                        <Switch 
-                            color="primary" 
-                            check={stretch}
-                            rightLabel="Stretch Tabs items"
-                            className="my-10" 
-                            onChange={() => setStretch(!stretch)}/>
-                        <Divider/>
-                        <br/>
-                        <Tabs 
-                            defaultTab={0}
-                            position={position}
-                            color={color}
-                            size={size}
-                            centered={centered}
-                            stretch={stretch}
-                            tabs={[
-                                { name: 'Home', icon: 'home' }, 
-                                { name: 'Account', icon: 'account' }, 
-                                { name: 'Settings', icon: 'cog-outline' }
-                            ]}
-                            tabTitleKey="name"
-                            tabIconKey={icon ? 'icon' : ''}
-                            activeHighlightFill={fill}
-                            onChange={(activeKey) => console.log('activeKey: ' + activeKey)} 
-                            tabItems={[TabItemOne, TabItemTwo, TabItemThree]}/>
-                        <Collapse 
-                            icon="code" 
-                            dark={theme}
-                            iconSize={18} 
-                            extra={<CopyToClipboard 
-                                dark={theme}
-                                defaultText="Copy code" 
-                                text={usage} 
-                                className="mr-10"/>}
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>                    
-                    </Card>
-                    <h2>API</h2>
-                    <Table
-                        bordered
+                <Page
+                    usage={usage}
+                    apiDescItems={rows}
+                    componentName="<Tabs/>"
+                    >
+                    <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
                         dark={theme}
-                        headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                        items={rows}
-                        index={true}
-                        itemTitles={keys}/>
-                </div>
+                        label="Tabs color"
+                        color="primary"
+                        className="my-5"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <Select
+                        items={sizes}
+                        dark={theme}
+                        prefix={<Icon name="format-size"/>}
+                        width={200}
+                        label="Tabs size"
+                        color="primary"
+                        className="my-5"
+                        value={size}
+                        onChange={v => setSize(v)}/>
+                    <br/>
+                    <Select
+                        items={positions}
+                        prefix={<Icon name="chart-ppf"/>}
+                        width={200}
+                        dark={theme}
+                        label="Tabs position"
+                        color="primary"
+                        className="my-5"
+                        value={position}
+                        onChange={v => setPosition(v)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={icon}
+                        rightLabel="Icon"
+                        className="my-10" 
+                        onChange={() => setIcon(!icon)}/>
+                    <Switch 
+                        color="primary" 
+                        check={fill}
+                        rightLabel="Active highlight fill"
+                        className="my-10" 
+                        onChange={() => setFill(!fill)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={centered}
+                        className="my-10" 
+                        rightLabel="Tabs items centered"
+                        onChange={() => setCentered(!centered)}/>
+                    <Switch 
+                        color="primary" 
+                        check={stretch}
+                        rightLabel="Stretch Tabs items"
+                        className="my-10" 
+                        onChange={() => setStretch(!stretch)}/>
+                    <Divider/>
+                    <br/>
+                    <Tabs 
+                        defaultTab={0}
+                        position={position}
+                        color={color}
+                        size={size}
+                        centered={centered}
+                        stretch={stretch}
+                        tabs={[
+                            { name: 'Home', icon: 'home' }, 
+                            { name: 'Account', icon: 'account' }, 
+                            { name: 'Settings', icon: 'cog-outline' }
+                        ]}
+                        tabTitleKey="name"
+                        tabIconKey={icon ? 'icon' : ''}
+                        activeHighlightFill={fill}
+                        onChange={(activeKey) => console.log('activeKey: ' + activeKey)} 
+                        tabItems={[TabItemOne, TabItemTwo, TabItemThree]}/>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )
