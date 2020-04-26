@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { Pagination, Select, Icon, Switch, ThemeContext, Divider } from '../components';
+import React, { useState } from 'react';
+import { Pagination, Select, Icon, Switch, ThemeContext, Divider, InputField } from '../components';
 import Page from '../layouts/Page';
 
 const items = [
@@ -60,8 +60,15 @@ const items = [
         value: 'primary | info | success | error'
     },
     { 
-        property: 'rounded', 
-        description: 'Make border radius rounded',
+        property: 'borderType', 
+        description: 'Set border radius',
+        default: '', 
+        type: 'string',
+        value: 'default | tile | rounded'
+    },
+    { 
+        property: 'dense', 
+        description: 'Set pagination items density',
         default: 'false', 
         type: 'boolean',
         value: 'true | false'
@@ -92,49 +99,71 @@ const items = [
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Pagination, Select, Icon, Switch } from '@assenti/rui-components';
+import { Pagination, Select, Icon, Switch, Divider, InputField } from '@assenti/rui-components';
 const colors = ['primary', 'info', 'success', 'error'];
 const sizes = ['default', 'medium', 'large'];
+const borders = ['default','tile','rounded'];
 
 function Example() {
-    const [itemsCount] = useState(100);
     const [perPage, setPerPage] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
     const [color, setColor] = useState(colors[0]);
-    const [size, setSize] = useState(sizes[0]);
-    const [rounded, setRounded] = useState(false);
-    const parent = useRef();
+    const [size, setSize] = useState(sizes[1]);
+    const [dense, setDense] = useState(true);
+    const [itemsCount, setItemsCount] = useState(500);
+    const [border, setBorder] = useState(borders[1]);
 
     return (
         <>
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                dark={theme}
-                label="Pagination color"
-                color="primary"
-                className="my-10"
-                value={color}
-                onChange={v => setColor(v)}/>
+            <div className="row">
+                <InputField
+                    label="Items count"
+                    width={200}
+                    type="number"
+                    className="mr-10"
+                    value={itemsCount}
+                    onChange={e => setItemsCount(parseInt(e.target.value))}
+                    />
+                <Select
+                    items={colors}
+                    prefix={<Icon name="brush"/>}
+                    width={200}
+                    dark={theme}
+                    label="Color"
+                    color="primary"
+                    value={color}
+                    onChange={v => setColor(v)}/>
+            </div>
             <br/>
-            <Select
-                items={sizes}
-                prefix={<Icon name="format-size"/>}
-                width={200}
-                dark={theme}
-                label="Pagination size"
-                color="primary"
-                className="my-10"
-                value={size}
-                onChange={v => setSize(v)}/>
+            <div className="row">
+                <Select
+                    items={sizes}
+                    prefix={<Icon name="format-size"/>}
+                    width={200}
+                    dark={theme}
+                    label="Size"
+                    color="primary"
+                    className="mr-10"
+                    value={size}
+                    onChange={v => setSize(v)}/>
+                <Select
+                    items={borders}
+                    prefix={<Icon name="shape"/>}
+                    width={200}
+                    dark={theme}
+                    label="Border type"
+                    color="primary"
+                    value={border}
+                    onChange={v => setBorder(v)}/>
+            </div>
             <br/>
             <Switch 
-                check={rounded} 
+                check={dense} 
                 color="primary"
-                rightLabel="Rounded" 
+                rightLabel="Dense" 
                 className="my-10"
-                onChange={() => setRounded(!rounded)}/>
+                onChange={() => setDense(!dense)}/>
+            <Divider/>
             <Pagination
                 itemsCount={itemsCount}
                 color={color}
@@ -145,22 +174,24 @@ function Example() {
                 onChange={page => setCurrentPage(page)}
                 onPerPageSelect={value => setPerPage(value)}
                 className="pa-5"
-                rounded={rounded}/>
+                dense={dense}
+                borderType={border}/>
         </>
     )
 }`
 
 const colors = ['primary', 'info', 'success', 'error'];
 const sizes = ['default', 'medium', 'large'];
+const borders = ['default','tile','rounded'];
 
 const PaginationPage = () => {
-    const [itemsCount] = useState(100);
     const [perPage, setPerPage] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
     const [color, setColor] = useState(colors[0]);
-    const [size, setSize] = useState(sizes[0]);
-    const [rounded, setRounded] = useState(false);
-    const parent = useRef();
+    const [size, setSize] = useState(sizes[1]);
+    const [dense, setDense] = useState(true);
+    const [itemsCount, setItemsCount] = useState(500);
+    const [border, setBorder] = useState(borders[1]);
 
     return (
         <ThemeContext.Consumer>
@@ -169,34 +200,54 @@ const PaginationPage = () => {
                     usage={usage}
                     componentName="<Pagination/>"
                     apiDescItems={items}>
-                    <Select
-                        items={colors}
-                        prefix={<Icon name="brush"/>}
-                        width={200}
-                        dark={theme}
-                        label="Pagination color"
-                        color="primary"
-                        className="my-10"
-                        value={color}
-                        onChange={v => setColor(v)}/>
+                    <div className="row">
+                        <InputField
+                            label="Items count"
+                            width={200}
+                            type="number"
+                            className="mr-10"
+                            value={itemsCount}
+                            onChange={e => setItemsCount(parseInt(e.target.value))}
+                            />
+                        <Select
+                            items={colors}
+                            prefix={<Icon name="brush"/>}
+                            width={200}
+                            dark={theme}
+                            label="Color"
+                            color="primary"
+                            value={color}
+                            onChange={v => setColor(v)}/>
+                    </div>
                     <br/>
-                    <Select
-                        items={sizes}
-                        prefix={<Icon name="format-size"/>}
-                        width={200}
-                        dark={theme}
-                        label="Pagination size"
-                        color="primary"
-                        className="my-10"
-                        value={size}
-                        onChange={v => setSize(v)}/>
+                    <div className="row">
+                        <Select
+                            items={sizes}
+                            prefix={<Icon name="format-size"/>}
+                            width={200}
+                            dark={theme}
+                            label="Size"
+                            color="primary"
+                            className="mr-10"
+                            value={size}
+                            onChange={v => setSize(v)}/>
+                        <Select
+                            items={borders}
+                            prefix={<Icon name="shape"/>}
+                            width={200}
+                            dark={theme}
+                            label="Border type"
+                            color="primary"
+                            value={border}
+                            onChange={v => setBorder(v)}/>
+                    </div>
                     <br/>
                     <Switch 
-                        check={rounded} 
+                        check={dense} 
                         color="primary"
-                        rightLabel="Rounded" 
+                        rightLabel="Dense" 
                         className="my-10"
-                        onChange={() => setRounded(!rounded)}/>
+                        onChange={() => setDense(!dense)}/>
                     <Divider/>
                     <Pagination
                         itemsCount={itemsCount}
@@ -208,7 +259,8 @@ const PaginationPage = () => {
                         onChange={page => setCurrentPage(page)}
                         onPerPageSelect={value => setPerPage(value)}
                         className="pa-5"
-                        rounded={rounded}/>
+                        dense={dense}
+                        borderType={border}/>
                 </Page>
             )}
         </ThemeContext.Consumer>

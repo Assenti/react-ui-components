@@ -19,7 +19,7 @@ const Drawer = (props) => {
             smooth: props.smooth ? 'smooth' : '',
             lifted: props.lifted ? 'lifted' : '',
             min: props.min ? 'min' : '',
-            absolute: props.absolute ? 'absolute' : '',
+            absolute: props.absolute || width < xsBreakpoint ? 'absolute' : '',
             fullHeight: props.fullHeight ? 'full-height' : '',
             dark: props.dark && !props.light ? 'dark' : ''
         }
@@ -59,16 +59,16 @@ const Drawer = (props) => {
         }
     }
 
+    const handleResize = () => {
+        setWidth(window.innerWidth);
+    }
+
     useEffect(() => {
         setWidth(window.innerWidth);
 
-        window.addEventListener('resize', () => {
-            setWidth(window.innerWidth);
-        }, true)
+        window.addEventListener('resize', handleResize, true)
 
-        return(() => {
-            window.removeEventListener('resize', {}, true);
-        })
+        return(() => window.removeEventListener('resize', handleResize, true))
     }, [props.drawer, props.absolute])
 
     return (

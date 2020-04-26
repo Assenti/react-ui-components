@@ -210,6 +210,7 @@ const Table = (props) => {
                         color={props.color ? props.color : 'primary'}
                         prefix={<Icon name="search"/>}
                         value={search}
+                        className="ma-5"
                         dark={props.dark}
                         onKeyUp={handleKeyUp}
                         placeholder={props.searchPlaceholder ? props.searchPlaceholder : 'Search'}

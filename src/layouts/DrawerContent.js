@@ -44,7 +44,7 @@ export const DrawerContent = (props) => {
                     <AutoComplete
                         width="100%"
                         size="medium"
-                        className="px-5 py-5"
+                        className="px-5 py-5 sticky"
                         maxHeight="calc(100vh - 200px)"
                         items={sortedRoutes()}
                         onItemClick={item => handleItemClick(item)}

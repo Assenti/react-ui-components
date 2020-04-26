@@ -70,6 +70,7 @@ export default App;
 - [ ] Range
 - [ ] Skeleton
 - [ ] TransferLists
+- [ ] Dashboard Layout
 - [ ] Make components adaptive for mobile devices
 
 ## Changelog

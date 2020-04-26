@@ -7,10 +7,9 @@
     padding: 10px 15px;
     border-radius: $radius;
     border: 1px solid $lightgray;
-    box-shadow: 0 1px 40px rgba(black, .4);
+    box-shadow: 0 1px 20px rgba($dark, .4);
     background-color: $light;
     z-index: 1000;
-    // outline: none;
 
     &.dark {
         background-color: $night;
@@ -30,7 +29,6 @@
         display: flex;
         align-items: center;
     }
-
 
     .rui-dialog__description {
         font-size: .85rem;

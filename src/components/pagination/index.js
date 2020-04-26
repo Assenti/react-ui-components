@@ -3,22 +3,26 @@ import PropTypes from 'prop-types';
 import { Select } from '../index';
 import { ChevronBack, ChevronNext } from '../icon/icons/index';
 
-const generateMockArr = (length) => {
+const generateMockArr = (pages, perPage) => {
+    let length = Math.ceil(pages/perPage);
+    if (pages * 2 < perPage) length = 2;
+    
     let arr = []
     for (let i = 0; i < length; i++) {
         arr.push(i)
     }
-    return arr
+    return arr;
 }
 
 const Pagination = (props) => {
-    const paginationClass = () => {
+    const className = () => {
         let result = '';
         let className = {
             btn: 'rui-pagination',
             size: props.size ? props.size : '',
-            rounded: props.rounded ? 'rounded' : '',
+            borderType: props.borderType ? props.borderType : '',
             dark: props.dark ? 'dark' : '',
+            dense: props.dense ? 'dense' : '',
             color: props.color ? props.color : 'primary',
             className: props.className ? props.className : ''
         }
@@ -28,99 +32,122 @@ const Pagination = (props) => {
         }
         return result.trim();
     }
-
-    const getLimit = () => Math.ceil(props.itemsCount/props.perPage) >= 5 ? 5 : Math.ceil(props.itemsCount/props.perPage);
-    const [currentPage, setCurrentPage] = useState(props.current ? props.current : 1);
-    const [allPages, setAllPages] = useState(generateMockArr(Math.ceil(props.itemsCount/props.perPage)));
-    const [activePages, setActivePages] = useState(allPages.slice(0, getLimit()))
+    const { itemsCount, perPage, onChange, onPerPageSelect } = props;
+    const getLimit = () => Math.ceil(itemsCount/perPage) >= 5 ? 5 : Math.ceil(itemsCount/perPage);
+    const [page, setPage] = useState(props.current ? props.current : 1);
+    const [activePages, setActivePages] = useState(generateMockArr(itemsCount, perPage).slice(0, getLimit()));
 
     const isPrevAvailable = () => {
-        return currentPage === 1 ? false : true
+        return page === 1 ? false : true
     }
 
     const isNextAvailable = () => {
-        if (currentPage === props.itemsCount || 
+        if (page === itemsCount || 
             props.itemsCount === 0 || 
-            currentPage === Math.ceil(props.itemsCount/props.perPage)) return false 
+            page === Math.ceil(itemsCount/perPage)) return false 
         else return true
     }
 
     const handleOnNext = () => {
         if (isNextAvailable()) {
-            if (currentPage % getLimit() === 0 && currentPage < allPages.length) {
-                setActivePages(allPages.slice(currentPage, currentPage + getLimit()))
-                setCurrentPage(currentPage + 1)
-                if (props.onChange) props.onChange(currentPage + 1)
-            } else if (currentPage < allPages.length) {
-                setCurrentPage(currentPage + 1)
-                if (props.onChange) props.onChange(currentPage + 1)
+            if (page % getLimit() === 0 && page < generateMockArr(itemsCount, perPage).length) {
+                setActivePages(generateMockArr(itemsCount, perPage).slice(page, page + getLimit()))
+                setPage(page + 1)
+                if (onChange) onChange(page + 1)
+            } else if (page < generateMockArr(itemsCount, perPage).length) {
+                setPage(page + 1)
+                if (onChange) onChange(page + 1)
             }
         }
     }
 
     const handleOnPrev = () => {
         if (isPrevAvailable()) {
-            if(currentPage > 1 && (currentPage - 1) % getLimit() === 0){
-                setActivePages(allPages.slice((currentPage-1) - getLimit(), currentPage-1))
-                setCurrentPage(currentPage - 1)
-                if (props.onChange) props.onChange(currentPage - 1)
-            } else if (currentPage > 1) {
-                setCurrentPage(currentPage - 1)
-                if (props.onChange) props.onChange(currentPage - 1)
+            if (page > 1 && (page - 1) % getLimit() === 0) {
+                setActivePages(generateMockArr(itemsCount, perPage).slice((page - 1) - getLimit(), (page - 1)))
+                setPage(page - 1)
+                if (onChange) onChange(page - 1)
+            } else if (page > 1) {
+                setPage(page - 1)
+                if (onChange) onChange(page - 1)
             }
         }
     }
 
-    const handlePerPageSelect = (value) => {
-        if (props.onPerPageSelect) props.onPerPageSelect(value)
-        setAllPages(generateMockArr(Math.ceil(props.itemsCount/value)))
+    const handleOnStart = () => {
+        setActivePages(generateMockArr(itemsCount, perPage).slice(0, getLimit()))
+        setPage(1)
+        if (onChange) onChange(1)
     }
 
-    const getSize = () => {
-        if (props.size === 'medium') return 100
-        else if (props.size === 'large') return 100
-        else return 100
+    const handleOnEnd = () => {
+        setActivePages(generateMockArr(itemsCount, perPage).slice(generateMockArr(itemsCount, perPage).length - 5, generateMockArr(itemsCount, perPage).length))
+        setPage(generateMockArr(itemsCount, perPage).length)
+        if (onChange) onChange(generateMockArr(itemsCount, perPage).length)
+    }
+
+    const handlePerPageSelect = (value) => {
+        if (onPerPageSelect) onPerPageSelect(value)
     }
 
     useEffect(() => {
-        setActivePages(allPages.slice(0, getLimit()))
-    }, [props.perPage, props.itemsCount])
+        setActivePages(generateMockArr(itemsCount, perPage).slice(0, getLimit()))
+    }, [perPage, itemsCount])
 
     return (
-        <div className={paginationClass()}>
+        <div className={className()}>
             <div className={isPrevAvailable() ? 'rui-pagination-item' : 'rui-pagination-item disabled'} 
                 onClick={handleOnPrev}>
-                <ChevronBack />
+                <ChevronBack/>
             </div>
+            {activePages[0] > 4 ?
+                <>
+                    <div className="rui-pagination-item"
+                        onClick={handleOnStart}>
+                        1
+                    </div> 
+                    <div className="rui-pagination-item disabled">...</div> 
+                </>
+            : null}
             {activePages.map((item, index) => {
                 return (
                     <div key={index} 
-                        className={(item + 1) === currentPage ? 
+                        className={(item + 1) === page ? 
                             'rui-pagination-item active' : 'rui-pagination-item'}
                         onClick={() => {
-                            setCurrentPage(item + 1)
+                            setPage(item + 1)
                             if (props.onChange) props.onChange(item + 1)
                         }}>
                         {item + 1}
                     </div>
                 )
             })}
-            <div className={isNextAvailable() ? 'rui-pagination-item' : 'rui-pagination-item disabled'} 
+            {generateMockArr(itemsCount, perPage).length > 5
+                && activePages[activePages.length - 1] !== generateMockArr(itemsCount, perPage)[generateMockArr(itemsCount, perPage).length-1] ?
+                <>
+                    <div className="rui-pagination-item disabled">...</div> 
+                    <div className="rui-pagination-item"
+                        onClick={handleOnEnd}>
+                        {generateMockArr(itemsCount, perPage).length}
+                    </div> 
+                </>
+            : null}
+            <div className={isNextAvailable() ? 
+                'rui-pagination-item' : 
+                'rui-pagination-item disabled'} 
                 onClick={handleOnNext}>
                 <ChevronNext/>
             </div>
             <div className="rui-pagination-per-page">
                 <Select
-                    minWidth={getSize()}
                     size={props.size}
                     dark={props.dark}
-                    width={props.size === 'large' ? 110 : 100}
                     rounded={props.rounded}
                     color={props.color}
-                    value={`${props.perPage} / ${props.perPageText ? props.perPageText : 'page'}`}
+                    borderType={props.borderType}
+                    value={`${perPage} / ${props.perPageText ? props.perPageText : 'page'}`}
                     items={props.perPageVariants ? props.perPageVariants : [10, 20, 50, 100]}
-                    normalTitle={true}
-                    selectedItem={`${props.perPage} / ${props.perPageText ? props.perPageText : 'page'}`}
+                    selectedItem={`${perPage} / ${props.perPageText ? props.perPageText : 'page'}`}
                     onChange={handlePerPageSelect}/>
             </div>
         </div>
@@ -136,8 +163,9 @@ Pagination.propTypes = {
     onChange: PropTypes.func,
     perPageText: PropTypes.string,
     color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
-    rounded: PropTypes.bool,
+    borderType: PropTypes.oneOf(['default','tile','rounded']),
     dark: PropTypes.bool,
+    dense: PropTypes.bool,
     size: PropTypes.oneOf([undefined,'','default','medium','large']),
     className: PropTypes.string
 }

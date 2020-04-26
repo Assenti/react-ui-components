@@ -7,6 +7,10 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.6.1 `2020-04-26`
+
+- Pagination component updated;
+
 #### 0.6.0 `2020-04-25`
 
 - `NEW!` Carousel component added;

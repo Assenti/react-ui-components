@@ -40,7 +40,7 @@ const Dropdown = (props) => {
                     <div className="rui-dropdown__content"
                         style={{ maxHeight: props.contentMaxHeight }} 
                         onClick={() => props.closeManaged ? {} : setVisible(false)}>
-                            {props.content}
+                        {props.content}
                     </div>
                 </div>
             </CSSTransition>

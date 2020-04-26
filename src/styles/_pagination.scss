@@ -30,9 +30,13 @@
         border-radius: 50%;
     }
 
+    &.tile > .rui-pagination-item {
+        border-radius: 0;
+    }
+
     &:not(.medium):not(.large) > .rui-pagination-item {
         height: $defaultSize;
-        width: $defaultSize;
+        min-width: $defaultSize;
         font-size: .9rem;
 
         & > svg {
@@ -43,7 +47,7 @@
 
     &.medium > .rui-pagination-item {
         height: $mediumSize;
-        width: $mediumSize;
+        min-width: $mediumSize;
         font-size: 1rem;
 
         & > svg {
@@ -54,7 +58,7 @@
 
     &.large > .rui-pagination-item {
         height: $largeSize;
-        width: $largeSize;
+        min-width: $largeSize;
         font-size: 1.1rem;
 
         & > svg {
@@ -139,14 +143,26 @@
         }
     }
 
+    &.dense {
+        .rui-pagination-item {
+            margin: 0;
+        }
+    }
+
+    &:not(.dense) {
+        .rui-pagination-item {
+            margin: 0 1px;
+        }
+    }
+
     .rui-pagination-item {
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: $lightgray;
         border: 1px solid lightgray;
+        padding: 0 2px;
         cursor: pointer;
-        margin: 0 1px;
         user-select: none;
         -moz-user-select: none;
         border-radius: $radius;
@@ -159,7 +175,7 @@
         }
     
         &:active:not(.disabled) {
-            box-shadow: 0 2px 5px rgba(black, .3);
+            box-shadow: 0 1px 5px rgba($dark, .3);
         }
 
         path {
@@ -167,9 +183,7 @@
         }
     
         &.disabled {
-            background-color: transparent;
-            border-color: transparent;
-            color: $dark;
+            opacity: .7;
             cursor: not-allowed;
 
             path {
@@ -191,5 +205,12 @@
     & > span {
         margin-right: 5px;
         font-size: .9rem;
+    }
+
+    .rui-dropdown,
+    .rui-dropdown-container > div,
+    .rui-input-field {
+        min-width: 120px;
+        width: 120px;
     }
 }

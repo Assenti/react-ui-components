@@ -61,7 +61,7 @@ export const routes = [
     { path: '/textareafield', name: 'TextareaField', Component: TextareaPage },
     { path: '/drawer', name: 'Drawer', Component: DrawerPage, updated: true },
     { path: '/tooltip', name: 'Tooltip', Component: TooltipPage },
-    { path: '/pagination', name: 'Pagination', Component: PaginationPage },
+    { path: '/pagination', name: 'Pagination', Component: PaginationPage, updated: true },
     { path: '/select', name: 'Select', Component: SelectPage },
     { path: '/table', name: 'Table', Component: TablePage, updated: true },
     { path: '/modal', name: 'Modal', Component: ModalPage },
