@@ -107,7 +107,8 @@ const icons = [
     'view-list',
     'checklist',
     'arrow-up',
-    'arrow-down'
+    'arrow-down',
+    'account-group'
 ]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
