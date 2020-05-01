@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Button from '../button';
 import PropTypes from 'prop-types';
+import { strinfigyClassObject } from '../utils';
 
 const Slider = (props) => {
     const childItem = useRef();
@@ -8,19 +9,11 @@ const Slider = (props) => {
     const slider = useRef();
     const [move, setMove] = useState(0);
     const [remainder, setRemainder] = useState('')
-
-    const className = () => {
-        let result = '';
-        let className = {
-            name: 'rui-slider',
-            slidable: props.slidable ? 'slidable' : '',
-            vertical: props.vertical ? 'vertical' : '',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-slider',
+        slidable: props.slidable ? 'slidable' : '',
+        vertical: props.vertical ? 'vertical' : '',
+        className: props.className ? props.className : ''
     }
 
     const handlePrev = () => {
@@ -54,7 +47,7 @@ const Slider = (props) => {
     }, [])
 
     return (
-        <div className={className()} 
+        <div className={strinfigyClassObject(className)} 
             style={getSliderLength()}
             ref={slider}>
             {!props.slidable ? <Button

@@ -1,44 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const Switch = (props) => {
-    const switchContainerClass = () => {
-        let result = '';
-        let className = {
-            btn: 'rui-switch-container',
-            size: props.size && props.size !== 'default' ? props.size : '',
-            vertical: props.vertical ? 'vertical' : '',
-            className: props.className ? props.className : ''
-        }
-        
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        btn: 'rui-switch-container',
+        size: props.size && props.size !== 'default' ? props.size : '',
+        vertical: props.vertical ? 'vertical' : '',
+        className: props.className ? props.className : ''
     }
 
-    const switchClass = () => {
-        let result = '';
-        let className = {
-            btn: 'rui-switch',
-            active: props.check ? 'active' : 'disactive',
-            double: props.leftLabel || props.leftIcon ? 'double' : '',
-            disabled: props.disabled ? 'disabled' : '',
-            color: props.color ? props.color : ''
-        }
-        
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let classNameSwitch = {
+        btn: 'rui-switch',
+        active: props.check ? 'active' : 'disactive',
+        double: props.leftLabel || props.leftIcon ? 'double' : '',
+        disabled: props.disabled ? 'disabled' : '',
+        color: props.color ? props.color : ''
     }
 
     return (
-        <div className={switchContainerClass()}>
+        <div className={strinfigyClassObject(className)}>
             {props.leftLabel && !props.leftIcon ? <div className="rui-switch-left-label">{props.leftLabel}</div> : ''}
             {props.leftIcon && !props.leftLabel ? <Icon name={props.leftIcon} color={props.leftIconColor}/> : ''}
-            <div className={switchClass()} 
+            <div className={strinfigyClassObject(classNameSwitch)} 
                 onClick={() => !props.disabled ? props.onChange() : {}}>
                 <span></span>
             </div>

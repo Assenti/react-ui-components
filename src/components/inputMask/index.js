@@ -149,7 +149,7 @@ InputMask.propTypes = {
     hint: PropTypes.string,
     prefix: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
     suffix: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
-    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    style: PropTypes.any,
     lifted: PropTypes.bool,
     dark: PropTypes.bool,
     whiteBackground: PropTypes.bool,

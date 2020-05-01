@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown, InputField, List, ListItem, Icon } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const AutoComplete = (props) => {
     const [visible, setVisible] = useState(false);
     const [search, setSearch] = useState('');
-
-    const componentClass = () => {
-        let result = '';
-        let className = {
-            btn: 'rui-autocomplete',
-            maxHeight: props.maxHeight ? 'max-height' : '',
-            color: props.color && props.color !== 'default' ? props.color : 'primary',
-            className: props.className ? props.className : ''
-        }
-        
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        btn: 'rui-autocomplete',
+        maxHeight: props.contentMaxHeight ? 'max-height' : '',
+        color: props.color && props.color !== 'default' ? props.color : 'primary',
+        className: props.className ? props.className : ''
     }
 
     const getItem = (item, lower) => props.itemKey ? 
@@ -58,13 +50,14 @@ const AutoComplete = (props) => {
     }
 
     return (
-        <div className={componentClass()} style={{ width: props.width ? props.width : ''}}>
+        <div className={strinfigyClassObject(className)} 
+            style={props.style}>
             <Dropdown
                 visible={visible}
                 width={props.width ? props.width : ''}
                 closeManaged
                 dark={props.dark}
-                contentMaxHeight={props.maxHeight}
+                contentMaxHeight={props.contentMaxHeight}
                 content={
                     <>
                         <List dark={props.dark}
@@ -91,7 +84,6 @@ const AutoComplete = (props) => {
                 trigger={<InputField
                             color={props.color}
                             dark={props.dark}
-                            width={props.width ? props.width : ''}
                             disabled={props.disabled || props.loading}
                             required={props.required}
                             readOnly={props.readOnly}
@@ -123,7 +115,7 @@ AutoComplete.propTypes = {
     avatarSize: PropTypes.number,
     avatarBorderType: PropTypes.oneOf([undefined, 'rounded']),
     onItemClick: PropTypes.func,
-    maxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    contentMaxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     hover: PropTypes.bool,
     listHeader: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
     footer: PropTypes.func,
@@ -143,7 +135,7 @@ AutoComplete.propTypes = {
     required: PropTypes.bool,
     readOnly: PropTypes.bool,
     loading: PropTypes.bool,
-    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    style: PropTypes.any,
     className: PropTypes.string
 };
 export default AutoComplete;

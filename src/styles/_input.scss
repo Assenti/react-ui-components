@@ -1,5 +1,4 @@
 .rui-input-field {
-    width: 100%;
     display: inline-block;
 
     &.dark {
@@ -153,7 +152,7 @@
             input {
                 height: $defaultSize;
                 max-height: $defaultSize - 2px;
-                padding: 0 8px;
+                padding: 0 10px;
                 font-size: $defaultFont;
             }
 
@@ -177,7 +176,7 @@
             textarea {
                 height: $mediumSize;
                 max-height: $mediumSize - 2px;
-                padding: 8px;
+                padding: 10px 12px;
                 font-size: $mediumFont;
             }
 
@@ -196,7 +195,7 @@
             textarea {
                 height: $largeSize;
                 max-height: $largeSize - 2px;
-                padding: 10px;
+                padding: 10px 15px;
                 font-size: $largeFont;
             }
 
@@ -376,6 +375,7 @@
 
         .rui-input-prefix {
             margin-left: 5px;
+            margin-right: 5px;
         }
         
         .rui-input-suffix {
@@ -388,7 +388,8 @@
             width: 20px;
             height: 20px;
             min-width: 20px;
-            margin: 0 5px;
+            margin-left: 5px;
+            margin-right: 10px;
                 
             svg {
                 width: 20px;
@@ -422,6 +423,12 @@
             border: none;
             background-color: transparent;
             width: 100%;
+        }
+
+        & > input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
     
         & > i {

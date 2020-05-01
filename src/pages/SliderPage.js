@@ -57,21 +57,8 @@ const items = [
 
 const usage =
 `// Usage examples
-import React, { useState } from 'react';
-import { Slider, Divider, Switch } from '@assenti/react-ui-components';
-
-// Imported images 
-const cards = [
-    manImage,
-    manImage2,
-    girlImage,
-    girlImage2,
-    manImage3,
-    manImage4,
-    girlImage3,
-    girlImage4,
-    manImage
-]
+import React from 'react';
+import { Slider } from '@assenti/react-ui-components';
 
 const avatars = [
     { icon: "facebook", iconColor: "#3b5998", iconSize: 30, size: 60 },
@@ -90,36 +77,15 @@ const avatars = [
 ]
 
 function Example() {
-    const [vertical, setVertical] = useState(true);
-
     return (
         <>
             <Slider 
-                items={cards}
-                render={(item, index) => 
-                    <Card
-                        hover
-                        width={120} 
-                        img={item}
-                        footer={<h4 className="text-center">Person</h4>}/>
-                }/>
-            <Divider/>
-            <Switch 
-                color="primary" 
-                check={vertical}
-                rightLabel="Vertical"
-                className="my-10"
-                onChange={() => setVertical(!vertical)}/>
-            <br/>
-            <Slider 
                 items={avatars}
-                vertical={vertical}
                 length={300}
                 render={(item, index) => 
                 <Avatar
                     key={index}
                     icon={item.icon} 
-                    dark={theme}
                     iconColor={item.iconColor}
                     iconSize={item.iconSize}
                     width={item.size}
@@ -173,11 +139,14 @@ const SliderPage = () => {
                         slidable={slidable}
                         render={(item, index) => 
                             <Card
+                                key={index}
                                 hover
                                 width={120} 
                                 dark={theme}
-                                img={item}
-                                footer={<h4 className="text-center">Person</h4>}/>
+                                className="my-5"
+                                footer={<h4 className="text-center">Person</h4>}>
+                                <img src={item} alt="avatar" style={{ width: '100%' }}/>
+                            </Card>
                         }/>
                     <Divider/>
                     <Switch 

@@ -2,45 +2,31 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { Button, Tooltip } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const xsBreakpoint = 529;
 
 const Drawer = (props) => {
     const [width, setWidth] = useState('');
     const [overlay, setOverlay] = useState(false);
-
-    const drawerClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-drawer',
-            collapsable: props.collapsable ? 'collapsable' : '',
-            hideOverlay: props.hideOverlay ? 'hide-overlay' : '',
-            position: props.position ? props.position : 'left',
-            smooth: props.smooth ? 'smooth' : '',
-            lifted: props.lifted ? 'lifted' : '',
-            min: props.min ? 'min' : '',
-            absolute: props.absolute || width < xsBreakpoint ? 'absolute' : '',
-            fullHeight: props.fullHeight ? 'full-height' : '',
-            dark: props.dark && !props.light ? 'dark' : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-drawer',
+        collapsable: props.collapsable ? 'collapsable' : '',
+        hideOverlay: props.hideOverlay ? 'hide-overlay' : '',
+        position: props.position ? props.position : 'left',
+        smooth: props.smooth ? 'smooth' : '',
+        lifted: props.lifted ? 'lifted' : '',
+        min: props.min ? 'min' : '',
+        absolute: props.absolute || width < xsBreakpoint ? 'absolute' : '',
+        fullHeight: props.fullHeight ? 'full-height' : '',
+        dark: props.dark && !props.light ? 'dark' : ''
     }
 
-    const drawerOverlayClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-drawer__overlay',
-            none: props.drawer ? '' : 'none',
-            hideOverlay: props.hideOverlay ? 'hide-overlay' : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
-    }   
+    let classNameOverlay = {
+        name: 'rui-drawer__overlay',
+        none: props.drawer ? '' : 'none',
+        hideOverlay: props.hideOverlay ? 'hide-overlay' : ''
+    }  
 
     const handleClose = (e) => {
         e.preventDefault();
@@ -78,7 +64,7 @@ const Drawer = (props) => {
                 in={props.drawer}
                 classNames="rui-drawer__overlay"
                 timeout={{ enter: 600, exit: 400 }}>
-                <div className={drawerOverlayClass()} 
+                <div className={strinfigyClassObject(classNameOverlay)} 
                     onClick={handleClose}>
                     <CSSTransition
                         in={props.drawer}
@@ -89,7 +75,7 @@ const Drawer = (props) => {
                             in={props.min}
                             timeout={300}
                             classNames="expand">
-                                <div className={drawerClass()}
+                                <div className={strinfigyClassObject(className)}
                                     >
                                     <div className="rui-drawer-content" onClick={handleCloseXs}>
                                         {props.children}
@@ -118,7 +104,7 @@ const Drawer = (props) => {
                     in={props.min}
                     timeout={300}
                     classNames="expand">
-                        <div className={drawerClass()}
+                        <div className={strinfigyClassObject(className)}
                             style={{
                                 height: props.height ? props.height : '',
                                 maxHeight: props.height ? props.height : ''

@@ -24,7 +24,7 @@ const DatePicker = (props) => {
                     <InputField
                         readOnly
                         size={props.size}
-                        width={props.width}
+                        style={{ width: props.width ? props.width : '' }}
                         label={props.label}
                         hint={props.hint}
                         dark={props.dark}

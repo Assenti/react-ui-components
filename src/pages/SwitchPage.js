@@ -5,76 +5,18 @@ import Page from '../layouts/Page';
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Switch, Select, Icon, RadioGroup } from '@assenti/rui-components';
-const colors = ['primary', 'info', 'success', 'error'];
-const types = ['icon', 'label', 'none']
-const sizes = ['default', 'medium', 'large'];
+import { Switch } from '@assenti/rui-components';
 
 function Example() {
     const [check, setCheck] = useState(false);
-    const [disabled, setDisabled] = useState(false);
-    const [vertical, setVertical] = useState(false);
-    const [type, setType] = useState('');
-    const [color, setColor] = useState(colors[0]);
-    const [size, setSize] = useState(sizes[0]);
 
     return (
-        <div>
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                label="Switch color"
-                color="primary"
-                className="my-10"
-                value={color}
-                onChange={v => setColor(v)}/>
-            <br/>
-            <Select
-                items={sizes}
-                prefix={<Icon name="format-size"/>}
-                width={200}
-                label="Switch size"
-                color="primary"
-                className="my-10"
-                value={size}
-                onChange={v => setSize(v)}/>
-            <br/>
+        <>
             <Switch 
-                check={disabled} 
+                check={check} 
                 color="primary"
-                rightLabel="Disabled" 
-                className="my-10"
-                onChange={() => setDisabled(!disabled)}/>
-            <br/>
-            <Switch 
-                check={vertical} 
-                color="primary"
-                rightLabel="Vertical" 
-                className="my-10"
-                onChange={() => setVertical(!vertical)}/>
-            <br/>
-            <RadioGroup
-                options={types} 
-                value={type}
-                name="type"
-                className="my-10" 
-                onChange={(value) => setType(value)}/>
-            <br/>
-            <div className="py-10">
-                <Switch 
-                    check={check} 
-                    color={color}
-                    size={size}
-                    leftLabel={type === 'label' ? 'Left label' : ''}
-                    rightLabel={type === 'label' ? 'Right label' : ''} 
-                    leftIcon={type === 'icon' ? 'moon' : ''}
-                    rightIcon={type === 'icon' ? 'sun' : ''} 
-                    disabled={disabled}
-                    vertical={vertical} 
-                    onChange={() => setCheck(!check)}/>
-            </div>
-        </div>
+                onChange={() => setCheck(!check)}/>
+        </>
     )
 }`
 

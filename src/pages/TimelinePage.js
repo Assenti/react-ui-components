@@ -104,8 +104,8 @@ const items = [
 
 const usage =
 `// Usage examples
-import React, { useState } from 'react';
-import { Timeline, Switch, Select, Icon } from '@assenti/react-ui-components';
+import React from 'react';
+import { Timeline } from '@assenti/react-ui-components';
 const colors = ['primary', 'info', 'success', 'error', 'dark', 'yellow'];
 const items = [
     { date: '2020-02-29', title: 'Some event on Feb 29th', subtitle: 'Some subtitle' },
@@ -121,58 +121,16 @@ const items = [
 ]
 
 function Example() {
-    const [icon, setIcon] = useState(false);
-    const [tagOutlined, setTagOutlined] = useState(false);
-    const [color, setColor] = useState(colors[0]);
-    const [tagColor, setTagColor] = useState(colors[1]);
-
     return (
-        <div>
-            <div className="row column py-10">
-                <Switch 
-                    color="primary" 
-                    check={icon}
-                    rightLabel="Icon"
-                    className="my-10" 
-                    onChange={() => setIcon(!icon)}/>
-                <Switch 
-                    color="primary" 
-                    check={tagOutlined}
-                    className="my-10"
-                    rightLabel="Tag outlined" 
-                    onChange={() => setTagOutlined(!tagOutlined)}/>
-            </div>
-            <div className="pb-20">
-                <Select
-                    items={colors}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    label="Timeline color"
-                    color="primary"
-                    className="mr-10"
-                    value={color}
-                    onChange={v => setColor(v)}/>
-                <Select
-                    items={colors}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    color="primary"
-                    label="Tag color"
-                    value={tagColor}
-                    onChange={v => setTagColor(v)}/>
-            </div>
+        <>
             <Timeline 
                 items={items} 
                 date="date"
                 centered
-                color={color}
-                tagOutlined={tagOutlined}
-                tagColor={tagColor}
-                flatCard
-                icon={icon ? 'star' : ''}
+                color="primary"
                 title="title"
                 subtitle="subtitle"/>
-        </div>
+        </>
     )
 }`
 
@@ -234,7 +192,6 @@ const TimelinePage = () => {
                         color={color}
                         tagOutlined={tagOutlined}
                         tagColor={tagColor}
-                        flatCard
                         icon={icon ? 'star' : ''}
                         title="title"
                         subtitle="subtitle"/>

@@ -5,73 +5,20 @@ import Page from '../layouts/Page';
 const usage = 
 `// Usage examples
 import React, { useState } from 'react';
-import { ButtonGroup, Select, Switch, Icon } from '@assenti/react-ui-components';
-const langs = ['KZ', 'RU', 'EN'];
+import { ButtonGroup } from '@assenti/react-ui-components';
 const icons = ['format-align-left', 'format-align-center', 'format-align-right'];
-const colors = ['primary', 'info', 'success', 'error', 'secondary', 'black'];
-const sizes = ['default', 'medium', 'large'];
 
 function Example() {
-    const [color, setColor] = useState(colors[0]);
-    const [size, setSize] = useState(sizes[0]);
-    const [outlined, setOutlined] = useState(false);
-    const [icon, setIcon] = useState(false);
-    const [lifted, setLifted] = useState(false);
+    const [option, setOption] = useState('');
 
     return (
-        <div>
-            <Select
-                items={sizes}
-                prefix={<Icon name="format-size"/>}
-                width={200}
-                label="Button size"
-                color="primary"
-                className="ml-10"
-                value={size}
-                onChange={v => setSize(v)}/>
-            <br/>
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                label="Button color"
-                color="primary"
-                className="ml-10"
-                value={color}
-                onChange={v => setColor(v)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={outlined}
-                rightLabel="Outlined"
-                className="pl-10 my-10"
-                onChange={() => setOutlined(!outlined)}/>
-            <Switch 
-                color="primary" 
-                check={icon}
-                rightLabel="Icon"
-                className="pl-10 my-10"
-                onChange={() => setIcon(!icon)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={lifted}
-                rightLabel="Lifted"
-                className="pl-10 my-10"
-                onChange={() => setLifted(!lifted)}/>
-            <br/>
-            <div className="pa-10">
-                <ButtonGroup 
-                    default={0} 
-                    options={icon ? icons : langs} 
-                    color={color}
-                    size={size}
-                    icon={icon}
-                    lifted={lifted}
-                    outlined={outlined}
-                    className="mr-10"/>
-            </div>
-        </div>
+        <>
+            <ButtonGroup 
+                default={0} 
+                onChange={(item, index) => setOption(item)}
+                options={icons} 
+                color="primary"/>
+        </>
     )
 }`
 
@@ -166,9 +113,9 @@ const ButtonGroupPage = () => {
                         width={200}
                         label="Button size"
                         color="primary"
-                        className="ml-10"
                         value={size}
                         onChange={v => setSize(v)}/>
+                    <br/>
                     <br/>
                     <Select
                         items={colors}
@@ -177,28 +124,26 @@ const ButtonGroupPage = () => {
                         width={200}
                         label="Button color"
                         color="primary"
-                        className="ml-10"
                         value={color}
                         onChange={v => setColor(v)}/>
+                    <br/>
                     <br/>
                     <Switch 
                         color="primary" 
                         check={outlined}
                         rightLabel="Outlined"
-                        className="pl-10 my-10"
                         onChange={() => setOutlined(!outlined)}/>
                     <Switch 
                         color="primary" 
                         check={icon}
                         rightLabel="Icon"
-                        className="pl-10 my-10"
                         onChange={() => setIcon(!icon)}/>
+                    <br/>
                     <br/>
                     <Switch 
                         color="primary" 
                         check={lifted}
                         rightLabel="Lifted"
-                        className="pl-10 my-10"
                         onChange={() => setLifted(!lifted)}/>
                     <Divider/>
                     <br/>

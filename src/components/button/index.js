@@ -1,33 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
 import { Icon } from '../index';
+import { strinfigyClassObject } from '../utils';
 
-const Button = (props) => {
-    const btnClass = () => {
-        let result = '';
-        let className = {
-            btn: 'rui-btn',
-            lifted: props.lifted ? 'lifted' : '',
-            loading: props.loading ? 'loading' : '',
-            uppercase: props.uppercase ? 'uppercase' : '',
-            borderType: props.borderType ? props.borderType : '',
-            color: props.color && !props.disabled && !props.loading && !props.light && !props.dark ? props.color : 'secondary',
-            light: props.light && !props.dark ? 'light' : '',
-            dark: props.dark && !props.light ? 'dark' : '',
-            icon: props.icon && !props.name ? 'icon' : '',
-            disabled: props.disabled || props.loading ? 'disabled' : '',
-            size: props.size ? props.size : '',
-            block: props.block ? 'block' : '',
-            outlined: props.outlined ? 'outlined' : '',
-            allotted: props.iconAllotted ? 'allotted' : '',
-            iconLeft: props.iconLeft ? 'icon-left' : '',
-            className: props.className ? props.className : ''
-        }
-        
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+const Button = React.forwardRef((props, ref) => {
+    let className = {
+        btn: 'rui-btn',
+        lifted: props.lifted ? 'lifted' : '',
+        loading: props.loading ? 'loading' : '',
+        uppercase: props.uppercase ? 'uppercase' : '',
+        borderType: props.borderType ? props.borderType : '',
+        color: props.color && !props.disabled && !props.loading && !props.light && !props.dark ? props.color : 'secondary',
+        light: props.light && !props.dark ? 'light' : '',
+        dark: props.dark && !props.light ? 'dark' : '',
+        icon: props.icon && !props.name ? 'icon' : '',
+        disabled: props.disabled || props.loading ? 'disabled' : '',
+        size: props.size ? props.size : '',
+        block: props.block ? 'block' : '',
+        outlined: props.outlined ? 'outlined' : '',
+        allotted: props.iconAllotted ? 'allotted' : '',
+        iconLeft: props.iconLeft ? 'icon-left' : '',
+        className: props.className ? props.className : ''
     }
 
     const setMargin = () => {
@@ -39,9 +32,9 @@ const Button = (props) => {
     return (
         <button
             type={props.type ? props.type : 'button'}
-            ref={props.setRef ? props.setRef : null} 
+            ref={ref} 
             disabled={props.disabled || props.loading}
-            className={btnClass()} 
+            className={strinfigyClassObject(className)} 
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>
             {props.loading ?
                 <Icon name="loading" color="gray" size={20}/> :
@@ -65,8 +58,7 @@ const Button = (props) => {
             
         </button>
     )
-}
-
+})
 Button.propTypes = {
     name: PropTypes.string,
     onClick: PropTypes.func,
@@ -85,7 +77,6 @@ Button.propTypes = {
     iconAllotted: PropTypes.bool,
     iconLeft: PropTypes.bool,
     type: PropTypes.oneOf([undefined,'submit','reset']),
-    setRef: PropTypes.any,
     className: PropTypes.string
 }
 export default Button;

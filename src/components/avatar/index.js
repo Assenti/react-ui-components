@@ -1,31 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '../index';
+import { strinfigyClassObject } from '../utils';
 
-const Avatar = (props) => {
-    const componentClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-avatar',
-            dark: props.dark ? 'dark' : '',
-            lifted: props.lifted ? 'lifted' : '',
-            transparent: props.transparent ? 'transparent' : '',
-            borderType: props.borderType ? props.borderType : '', 
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+const Avatar = React.forwardRef((props, ref) => {
+    let className = {
+        name: 'rui-avatar',
+        dark: props.dark ? 'dark' : '',
+        lifted: props.lifted ? 'lifted' : '',
+        transparent: props.transparent ? 'transparent' : '',
+        borderType: props.borderType ? props.borderType : '', 
+        className: props.className ? props.className : ''
     }
 
     return (
-        <div className={componentClass()} 
+        <div 
+            ref={ref}
+            className={strinfigyClassObject(className)} 
             style={{
                 width: props.width ? props.width : 100,
                 minWidth: props.width ? props.width : 100,
                 height: props.height ? props.height : 120
-            }}>
+            }}
+            onClick={(e) => props.onClick ? props.onClick(e) : {}}>
             {props.img && !props.icon && !props.initials ? <img src={props.img} alt=""/> : null}
             {props.initials && !props.icon && !props.img ? <span style={{ fontSize: props.fontSize }}>{props.initials}</span> : null}
             {props.icon && !props.img && !props.initials ? 
@@ -35,7 +32,7 @@ const Avatar = (props) => {
                     color={props.iconColor ? props.iconColor : (props.dark ? '#fff' : '')}/> : null}
         </div>
     )
-}
+})
 Avatar.propTypes = {
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -49,6 +46,8 @@ Avatar.propTypes = {
     iconColor: PropTypes.string,
     transparent: PropTypes.bool,
     dark: PropTypes.bool,
+    ref: PropTypes.any,
+    onClick: PropTypes.func,
     className: PropTypes.string
 }
 export default Avatar;

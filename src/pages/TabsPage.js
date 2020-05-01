@@ -95,20 +95,9 @@ const positions = ['default', 'left', 'bottom', 'right'];
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Tabs, Switch, Select, Icon } from '@assenti/react-ui-components';
-const colors = ['primary', 'info', 'success', 'error', 'dark'];
-const sizes = ['default', 'medium', 'large'];
-const positions = ['default', 'left', 'bottom', 'right'];
+import { Tabs } from '@assenti/react-ui-components';
 
 function Example() {
-    const [position, setPosition] = useState(positions[0]);
-    const [color, setColor] = useState(colors[0]);
-    const [size, setSize] = useState(sizes[0]);
-    const [icon, setIcon] = useState(false);
-    const [fill, setFill] = useState(false);
-    const [centered, setCentered] = useState(false);
-    const [stretch, setStretch] = useState(false);
-
     const TabItemOne = () => {
         return <div>Tab Content 1</div>
     }
@@ -122,70 +111,10 @@ function Example() {
     }
 
     return (
-        <div>
-            <div className="row column">
-                <Select
-                    items={colors}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    label="Tabs color"
-                    color="primary"
-                    className="my-5"
-                    value={color}
-                    onChange={v => setColor(v)}/>
-                <Select
-                    items={sizes}
-                    prefix={<Icon name="format-size"/>}
-                    width={200}
-                    label="Tabs size"
-                    color="primary"
-                    className="my-5"
-                    value={size}
-                    onChange={v => setSize(v)}/>
-                <Select
-                    items={positions}
-                    prefix={<Icon name="book-open"/>}
-                    width={200}
-                    label="Tabs position"
-                    color="primary"
-                    className="my-5"
-                    value={position}
-                    onChange={v => setPosition(v)}/>
-            </div>
-            <div className="row column">
-                <Switch 
-                    color="primary" 
-                    check={icon}
-                    rightLabel="Icon"
-                    className="my-5" 
-                    onChange={() => setIcon(!icon)}/>
-                <Switch 
-                    color="primary" 
-                    check={fill}
-                    rightLabel="Active highlight fill"
-                    className="my-5" 
-                    onChange={() => setFill(!fill)}/>
-                <Switch 
-                    color="primary" 
-                    check={centered}
-                    className="my-5" 
-                    rightLabel="Tabs items centered"
-                    onChange={() => setCentered(!centered)}/>
-                <Switch 
-                    color="primary" 
-                    check={stretch}
-                    rightLabel="Stretch Tabs items"
-                    className="my-5" 
-                    onChange={() => setStretch(!stretch)}/>
-            </div>
-            <br/>
+        <>
             <Tabs 
                 defaultTab={1}
-                position={position}
-                color={color}
-                size={size}
-                centered={centered}
-                stretch={stretch}
+                color="primary"
                 tabs={[
                     { name: 'Home', icon: 'home' }, 
                     { name: 'Account', icon: 'account' }, 
@@ -193,10 +122,9 @@ function Example() {
                 ]}
                 tabTitleKey="name"
                 tabIconKey={icon ? 'icon' : ''}
-                activeHighlightFill={fill}
                 onChange={(activeKey) => console.log('activeKey: ' + activeKey)} 
                 tabItems={[TabItemOne, TabItemTwo, TabItemThree]}/>
-        </div>
+        </>
     )
 }`
 

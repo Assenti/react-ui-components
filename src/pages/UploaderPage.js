@@ -5,94 +5,22 @@ import Page from '../layouts/Page';
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Uploader, Select, Icon, Switch } from '@assenti/react-ui-components';
-const sizes = ['default', 'medium', 'large'];
-const colors = ['primary', 'info', 'success', 'error'];
-const borders = ['default', 'rounded', 'smooth', 'tile'];
+import { Uploader } from '@assenti/react-ui-components';
 
 function Example() {
     const [files, setFiles] = useState('');
-    const [color, setColor] = useState(colors[0]);
-    const [border, setBorder] = useState(borders[0]);
-    const [size, setSize] = useState(sizes[0]);
-    const [disabled, setDisabled] = useState(false);
-    const [lifted, setLifted] = useState(false);
-    const [multiple, setMultiple] = useState(false);
-    const [label, setLabel] = useState(false);
 
     return (
-        <div>
-            <Select
-                items={sizes}
-                prefix={<Icon name="format-size"/>}
-                width={200}
-                label="InputField size"
-                color="primary"
-                className="ml-5"
-                value={size}
-                onChange={v => setSize(v)}/>
-            <br/>
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                label="InputField color"
-                color="primary"
-                className="ml-5"
-                value={color}
-                onChange={v => setColor(v)}/>
-            <br/>
-            <Select
-                items={borders}
-                prefix={<Icon name="shape"/>}
-                width={200}
-                label="InputField border type"
-                color="primary"
-                className="ml-5"
-                value={border}
-                onChange={v => setBorder(v)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={disabled}
-                rightLabel="Disabled"
-                className="my-10 ml-5"
-                onChange={() => setDisabled(!disabled)}/>
-            <Switch 
-                color="primary" 
-                check={lifted}
-                rightLabel="Lifted"
-                className="my-10 ml-5"
-                onChange={() => setLifted(!lifted)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={multiple}
-                rightLabel="Multiple"
-                className="my-10 ml-5"
-                onChange={() => setMultiple(!multiple)}/>
-            <Switch 
-                color="primary" 
-                check={label}
-                rightLabel="Label"
-                className="my-10 ml-5"
-                onChange={() => setLabel(!label)}/>
-            <br/>
+        <>
             <Uploader
                 placeholder="File upload"
-                label={label ? 'Upload your file(-s)' : null}
                 value={files}
                 title="Сhoose a file(-s) please"
-                color={color}
-                disabled={disabled}
-                borderType={border}
-                multiple={multiple}
-                lifted={lifted}
-                size={size}
+                color="primary"
                 onDelete={handleFileDelete}
                 width={300}
                 onChange={files => setFiles(files)}/>
-        </div>
+        </>
     )
 }`
 
@@ -168,6 +96,13 @@ const rows = [
         value: ''
     },
     { 
+        property: 'heigth',
+        description: 'Set Uploader hrigth', 
+        default: '', 
+        type: 'string | number',
+        value: ''
+    },
+    { 
         property: 'required',
         description: 'Set Uploader required', 
         default: 'false', 
@@ -194,6 +129,13 @@ const rows = [
         default: '', 
         type: 'string',
         value: ''
+    },
+    { 
+        property: 'dropBox',
+        description: 'Set drag and drop area view', 
+        default: '', 
+        type: 'boolean',
+        value: 'true | false'
     },
     { 
         property: 'dark',
@@ -234,6 +176,7 @@ const UploaderPage = () => {
                 <Page
                     usage={usage}
                     componentName="<Uploader/>"
+                    apiSearchable
                     apiDescItems={rows}
                     backTopBtn>
                     <Select
@@ -268,6 +211,7 @@ const UploaderPage = () => {
                         className="ml-5"
                         value={border}
                         onChange={v => setBorder(v)}/>
+                    <br/>
                     <br/>
                     <Switch 
                         color="primary" 
@@ -309,6 +253,22 @@ const UploaderPage = () => {
                         lifted={lifted}
                         size={size}
                         onDelete={handleFileDelete}
+                        width={300}
+                        onChange={files => setFiles(files)}/>
+                    <br/>
+                    <Uploader
+                        placeholder="Drag & Drop file(-s)"
+                        value={files}
+                        dark={theme}
+                        title="Сhoose a file(-s) please"
+                        color={color}
+                        disabled={disabled}
+                        borderType={border}
+                        multiple={multiple}
+                        lifted={lifted}
+                        onDelete={handleFileDelete}
+                        dropBox
+                        height={200}
                         width={300}
                         onChange={files => setFiles(files)}/>
                 </Page>

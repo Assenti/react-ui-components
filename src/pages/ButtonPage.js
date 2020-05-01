@@ -129,7 +129,7 @@ const items = [
         value: 'true | false'
     },
     { 
-        property: 'setRef', 
+        property: 'ref', 
         description: 'Set ref', 
         default: '', 
         type: 'React.RefObject',
@@ -146,153 +146,16 @@ const items = [
 
 const usage = 
 `// Usage examples
-import React, { useState } from 'react';
-import { Button, Switch, Select, Icon, RadioGroup } from '@assenti/react-ui-components';
-const sizes = ['default', 'medium', 'large'];
-const colors = ['primary', 'info', 'success', 'error', 'secondary', 'black'];
-const borders = ['default', 'rounded', 'smooth', 'tile'];
-const types = ['dark', 'light', 'none'];
+import React from 'react';
+import { Button } from '@assenti/react-ui-components';
 
 function Example() {
-    const [loading, setLoading] = useState(false);
-    const [outlined, setOutlined] = useState(false);
-    const [uppercase, setUppercase] = useState(false);
-    const [block, setBlock] = useState(false);
-    const [disabled, setDisabled] = useState(false);
-    const [icon, setIcon] = useState(false);
-    const [iconLeft, setIconLeft] = useState(false);
-    const [lifted, setLifted] = useState(false);
-    const [iconAllotted, setIconAllotted] = useState(false);
-    const [iconOnly, setIconOnly] = useState(false);
-    const [size, setSize] = useState(sizes[0]);
-    const [border, setBorder] = useState(borders[0]);
-    const [color, setColor] = useState(colors[0]);
-    const [type, setType] = useState('');
-
     return (
         <>
-            <Select
-                items={sizes}
-                prefix={<Icon name="format-size"/>}
-                width={200}
-                label="Button size"
+            <Button
                 color="primary"
-                className="pl-10"
-                value={size}
-                onChange={v => setSize(v)}/>
-            <br/>
-            <Select
-                items={borders}
-                prefix={<Icon name="shape"/>}
-                width={200}
-                label="Button border type"
-                color="primary"
-                className="pl-10"
-                value={border}
-                onChange={v => setBorder(v)}/>
-            <br/>
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                label="Button color"
-                color="primary"
-                className="pl-10"
-                value={color}
-                onChange={v => setColor(v)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={outlined}
-                rightLabel="Outlined"
-                className="pl-10 my-10"
-                onChange={() => setOutlined(!outlined)}/>
-            
-            <Switch 
-                check={uppercase} 
-                color="primary"
-                rightLabel="Uppercase" 
-                className="pl-10 my-10"
-                onChange={() => setUppercase(!uppercase)}/>
-            <br/>
-            <Switch 
-                check={loading} 
-                color="primary"
-                rightLabel="Loading" 
-                className="pl-10 my-10"
-                onChange={() => setLoading(!loading)}/>
-            <Switch 
-                check={disabled} 
-                color="primary"
-                rightLabel="Disabled" 
-                className="pl-10 my-10"
-                onChange={() => setDisabled(!disabled)}/>
-            <br/>
-            <Switch 
-                check={block} 
-                color="primary"
-                rightLabel="Block" 
-                className="pl-10 my-10"
-                onChange={() => setBlock(!block)}/>
-            <Switch 
-                check={lifted} 
-                color="primary"
-                rightLabel="Lifted" 
-                className="pl-10 my-10"
-                onChange={() => setLifted(!lifted)}/>
-            <br/>
-            <Switch 
-                check={icon} 
-                color="primary"
-                rightLabel="With icon" 
-                className="pl-10 my-10"
-                onChange={() => setIcon(!icon)}/>
-            <Switch 
-                check={iconLeft} 
-                color="primary"
-                rightLabel="Left icon" 
-                className="pl-10 my-10"
-                onChange={() => setIconLeft(!iconLeft)}/>
-            <Switch 
-                check={iconAllotted} 
-                color="primary"
-                rightLabel="Allotted icon" 
-                className="pl-10 my-10"
-                onChange={() => setIconAllotted(!iconAllotted)}/>
-            <br/>
-            <Switch 
-                check={iconOnly} 
-                color="primary"
-                rightLabel="Icon button" 
-                className="pl-10 my-10"
-                onChange={() => setIconOnly(!iconOnly)}/>
-            <br/>
-            <RadioGroup
-                options={types} 
-                value={type}
-                name="type"
-                className="pl-10 mt-10" 
-                onChange={(value) => setType(value)}/>
-            <br/>
-            <div className="pa-10">
-                <Button
-                    color={color}
-                    size={size}
-                    icon={icon || iconOnly ? 'search' : ''}
-                    iconAllotted={iconAllotted}
-                    iconLeft={iconLeft}
-                    outlined={outlined}
-                    borderType={border}
-                    loading={loading}
-                    disabled={disabled}
-                    block={block}
-                    lifted={lifted}
-                    dark={type === 'dark' ? true : false}
-                    light={type === 'light' ? true : false}
-                    uppercase={uppercase}
-                    name={iconOnly ? null : 'Button'}
-                    />
-            </div>
+                icon="rocket"
+                name="Rocket"/>
         </>
     )
 }`
@@ -324,6 +187,7 @@ const ButtonPage = () => {
                 <Page
                     apiDescItems={items}
                     usage={usage}
+                    apiSearchable
                     componentName="<Button/>">
                     <Select
                         items={sizes}

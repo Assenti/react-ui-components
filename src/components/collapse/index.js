@@ -1,29 +1,21 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Tooltip } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const Collapse = (props) => {
     const [visible, setVisible] = useState(props.defaultState ? props.defaultState : false);
-
-    const collapseClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-collapse',
-            border: props.border ? 'bordered' : '',
-            title: props.title ? 'titled' : '',
-            dark: props.dark ? 'dark' : '',
-            position: !props.title ? (props.position ? props.position : 'right') : '',
-            className: props.className ? props.className : ''
-        }
-        
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-collapse',
+        border: props.border ? 'bordered' : '',
+        title: props.title ? 'titled' : '',
+        dark: props.dark ? 'dark' : '',
+        position: !props.title ? (props.position ? props.position : 'right') : '',
+        className: props.className ? props.className : ''
     }
 
     return (
-        <div className={collapseClass()}>
+        <div className={strinfigyClassObject(className)}>
             <div className="rui-collapse-trigger">
                 {props.title ? <span>{props.title}</span> : ''}
                 <div className="row align-center">

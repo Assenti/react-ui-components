@@ -65,4 +65,8 @@
         transition: all .3s linear;
         overflow: hidden;
     }
+
+    .rui-list-item:last-child {
+        border-bottom: none;
+    }
 }

@@ -1,27 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
+import { strinfigyClassObject } from '../utils';
 
 const Dropdown = (props) => {
     const [visible, setVisible] = useState(false);
-
-    const dropdownClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-dropdown-container',
-            dark: props.dark ? 'dark' : '',
-            position: props.position ? props.position : '',
-            className: props.className ? props.className : ''
-        }
-        
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-dropdown-container',
+        dark: props.dark ? 'dark' : '',
+        position: props.position ? props.position : '',
+        className: props.className ? props.className : ''
     }
 
     return (
-        <div className={dropdownClass()} 
+        <div className={strinfigyClassObject(className)} 
             tabIndex={-1}
             onBlur={() => props.closeManaged ? {} : setVisible(false)}>
             <div onClick={() => setVisible(true)}>{props.trigger}</div>
@@ -60,9 +52,5 @@ Dropdown.propTypes = {
     visible: PropTypes.bool,
     contentMaxHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     className: PropTypes.string
-}
-Dropdown.defaultProps = {
-    leftOffset: 0,
-    rightOffset: 0
 }
 export default Dropdown;

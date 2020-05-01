@@ -15,9 +15,18 @@ export const DrawerContent = (props) => {
         let filtered = props.items
                             .sort((a, b) => compare(a, b, 'name', 'asc'))
                             .filter(item => item.path !== '/' && 
+                                            item.path !== '/layouts' &&
+                                            item.path !== '/icons' &&
                                             item.path !== '/helper')
         return filtered;
     }
+
+    const simpleItems = [
+        { name: 'Getting started', path: '/', icon: 'rocket' },
+        { name: 'Helper CSS classes', path: '/helper', icon: 'language-css-3' },
+        { name: 'Icons', path: '/icons', icon: 'check' },
+        // { name: 'Layouts', path: '/layouts', icon: 'dashboard-outline' },
+    ]
 
     useEffect(() => {
         for (const item of sortedRoutes()) {
@@ -42,10 +51,10 @@ export const DrawerContent = (props) => {
                             color="#61dafb"/>
                     </div>
                     <AutoComplete
-                        width="100%"
+                        style={{ width: '100%' }}
                         size="medium"
                         className="px-5 py-5 sticky"
-                        maxHeight="calc(100vh - 200px)"
+                        contentMaxHeight="calc(100vh - 200px)"
                         items={sortedRoutes()}
                         onItemClick={item => handleItemClick(item)}
                         itemKey="name"
@@ -63,24 +72,18 @@ export const DrawerContent = (props) => {
                                 {filteredLength} results
                             </div>}/>
                     <List size="medium" dark={theme}>
-                        <ListItem
-                            right
-                            icon="rocket"
-                            isActiveItem={'/' === window.location.pathname}
-                            onClick={() => handleItemClick({ path: '/'})}
-                            itemTitle="name"
-                            hover
-                            noDivider
-                            item="Getting started"/>
-                        <ListItem
-                            right
-                            noDivider
-                            icon="language-css-3"
-                            isActiveItem={'/helper' === window.location.pathname}
-                            onClick={() => handleItemClick({ path: '/helper'})}
-                            itemTitle="name"
-                            hover
-                            item="Helper CSS classes"/>
+                        {simpleItems.map((item, index) => 
+                            <ListItem
+                                key={index}
+                                right
+                                icon={item.icon}
+                                isActiveItem={item.path === window.location.pathname}
+                                onClick={() => handleItemClick({ path: item.path })}
+                                itemTitle="name"
+                                hover
+                                noDivider
+                                item={item.name}/>
+                        )}
                         <ListItem
                             noDivider
                             icon="toy-brick"

@@ -1,24 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { toFinancial } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const Statistics = (props) => {
     const [value, setValue] = useState(0);
     const interval = props.interval ? props.interval : 30;
     const step = props.step ? props.step : 10;
-
-    const className = () => {
-        let result = '';
-        let className = {
-            name: 'rui-statistics',
-            dark: props.dark ? 'dark' : '',
-            align: props.align ? props.align : '',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-statistics',
+        dark: props.dark ? 'dark' : '',
+        align: props.align ? props.align : '',
+        className: props.className ? props.className : ''
     }
 
     const getValue = (v) => {
@@ -52,7 +45,8 @@ const Statistics = (props) => {
     },[value])
 
     return (
-        <div className={className()}>
+        <div className={strinfigyClassObject(className)}
+            style={props.style}>
             <div className="rui-statistics-title">{props.title}</div>
             <div className="rui-statistics-value-group">
                 {props.prefix}
@@ -82,6 +76,7 @@ Statistics.propTypes = {
     align: PropTypes.oneOf(['center', 'bottom','top']),
     suffix: PropTypes.node,
     fractions: PropTypes.number,
+    style: PropTypes.any,
     className: PropTypes.string
 }
 export default Statistics;

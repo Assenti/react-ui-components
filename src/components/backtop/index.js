@@ -27,21 +27,9 @@ const BackTopBtn = (props) => {
         }
     }
 
-    const btnBackTopClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-btn-back-top',
-            dark: props.dark ? 'dark' : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
-    }
-
     return (
         <div 
-            className={btnBackTopClass()}
+            className={(`rui-btn-back-top ${props.dark ? 'dark' : ''}`).trim()}
             ref={blockRef}
             style={{ 
                 right: props.offsetX ? props.offsetX : 25, 

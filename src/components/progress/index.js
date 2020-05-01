@@ -1,24 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const Progress = (props) => {
-    const componentClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-progress__container',
-            circle: props.circle ? 'circle' : '',
-            active: props.active ? 'active' : '',
-            dark: props.dark ? 'dark' : '',
-            color: props.color ? props.color : 'primary',
-            size: props.size && props.size !== 'default' ? props.size : '',
-            disabled: props.disabled ? 'disabled' : '',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-progress__container',
+        circle: props.circle ? 'circle' : '',
+        active: props.active ? 'active' : '',
+        dark: props.dark ? 'dark' : '',
+        color: props.color ? props.color : 'primary',
+        size: props.size && props.size !== 'default' ? props.size : '',
+        disabled: props.disabled ? 'disabled' : '',
+        className: props.className ? props.className : ''
     }
 
     const sizeParams = () => {
@@ -107,7 +101,7 @@ const Progress = (props) => {
     }
 
     return (
-        <div className={componentClass()}>
+        <div className={strinfigyClassObject(className)}>
             {!props.circle ?
                 <>
                     <div className="rui-progress" style={{ width: props.width ? props.width : 250 }}>

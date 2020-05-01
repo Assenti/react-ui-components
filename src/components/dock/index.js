@@ -4,22 +4,15 @@ import { CSSTransition } from 'react-transition-group';
 import Avatar from '../avatar';
 import Slider from '../slider';
 import Divider from '../divider';
+import { strinfigyClassObject } from '../utils';
 
 const Dock = (props) => {
     const dockItem = useRef();
-
-    const componentClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-dock',
-            position: props.position ? props.position : 'bottom',
-            tile: props.tile ? 'tile' : '',
-            dark: props.dark ? 'dark' : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-dock',
+        position: props.position ? props.position : 'bottom',
+        tile: props.tile ? 'tile' : '',
+        dark: props.dark ? 'dark' : ''
     }
 
     const handleClick = (item) => {
@@ -52,7 +45,7 @@ const Dock = (props) => {
                 classNames={`dock-${props.position}`}
                 mountOnEnter
                 unmountOnExit>
-                <div className={componentClass()} 
+                <div className={strinfigyClassObject(className)} 
                     style={getDockLength()}>
                     <Slider
                         items={props.items}

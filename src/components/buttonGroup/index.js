@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const ButtonGroup = (props) => {
     const [active, setActive] = useState(props.default);
-
-    const componentClass = () => {
-        let result = '';
-        let className = {
-            btn: 'rui-btn-group',
-            lifted: props.lifted ? 'lifted' : '',
-            icons: props.icon ? 'icons' : '',
-            size: props.size ? props.size : '',
-            className: props.className ? props.className : ''
-        }
-        
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        btn: 'rui-btn-group',
+        lifted: props.lifted ? 'lifted' : '',
+        icons: props.icon ? 'icons' : '',
+        size: props.size ? props.size : '',
+        className: props.className ? props.className : ''
     }
 
     const isActive = (index) => {
@@ -31,7 +23,7 @@ const ButtonGroup = (props) => {
     }
 
     return (
-        <div className={componentClass()}>
+        <div className={strinfigyClassObject(className)}>
             {props.options.map((item, index) => 
                 <Button 
                     key={index}

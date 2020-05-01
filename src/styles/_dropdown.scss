@@ -38,6 +38,10 @@
             box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
         }
     }
+
+    .rui-list-item:last-child {
+        border-bottom: none;
+    }
 }
 
 .rui-dropdown {

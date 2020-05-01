@@ -2,6 +2,54 @@
     width: 100%;
     margin: 5px 0;
 
+    &:not(.drop-box) {
+        .rui-icon {
+            width: 24px !important;
+            height: 24px !important;
+        }
+    }
+
+    &.drop-box {
+        .prefix {
+            display: none;
+        }
+
+        .inbox {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            top: 25%;
+            left: 25%;
+
+            svg {
+                width: 100%;
+                height: 100%;
+
+                path {
+                    fill: #E0E0E0 !important;
+                }
+            }
+            
+        }
+
+        label {
+            display: flex !important;
+            align-items: flex-end;
+            justify-content: center;
+            height: calc(100% - 20px);
+            border: 2px dashed #ccc;
+            margin: 10px;
+            padding: 10px;
+            font-weight: bold;
+            color: gray;
+            text-transform: uppercase;
+            width: 100% !important;
+            text-align: center;
+            overflow: visible !important;
+            white-space: normal !important;
+        }
+    }
+
     .rui-input-uploader__label {
         font-size: .85rem;
         color: $dark;
@@ -251,6 +299,7 @@
         & > span {
             width: calc(100% - 30px);
             font-size: .9rem;
+            line-height: 18px;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;

@@ -2,25 +2,17 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { Icon } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const PopOver = (props) => {
     const [visible, setVisible] = useState(false);
     const popup = useRef();
     const content = useRef();
-
-    const popoverClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-popover',
-            dark: props.dark ? 'dark' : '',
-            position: props.position ? props.position : 'top',
-            className: props.className ? props.className : ''
-        }
-        
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-popover',
+        dark: props.dark ? 'dark' : '',
+        position: props.position ? props.position : 'top',
+        className: props.className ? props.className : ''
     }
 
     const getPosition = () => {
@@ -37,7 +29,7 @@ const PopOver = (props) => {
     }
 
     return (
-        <div className={popoverClass()}
+        <div className={strinfigyClassObject(className)}
             tabIndex={-1}  
             ref={popup}
             onBlur={() => props.control && !props.noBlur ? props.onClose() : setVisible(false)}

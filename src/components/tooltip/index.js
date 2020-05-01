@@ -1,23 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { strinfigyClassObject } from '../utils';
 
 const Tooltip = (props) => {
-    const tooltipClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-tooltip',
-            color: props.color && props.color !== 'default' ? props.color : '',
-            position: props.position ? props.position : '',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-tooltip',
+        color: props.color && props.color !== 'default' ? props.color : '',
+        position: props.position ? props.position : '',
+        className: props.className ? props.className : ''
     }
    
     return (
-        <div className={tooltipClass()}>
+        <div className={strinfigyClassObject(className)}>
             <span className="rui-tooltip__text">{props.tooltip}</span>
             {props.children}
         </div>

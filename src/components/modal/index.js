@@ -2,25 +2,17 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { Icon } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const Modal = (props) => {
     const [full, setFull] = useState(false);
-
-    const modalContainerClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-modal-container',
-            hidden: props.visible ? '' : 'hidden',
-            headerReverse: props.headerReverse ? 'reverse' : '',
-            centered: props.centered ? 'centered' : '',
-            fullPage: full ? 'full-page' : '',
-            className: props.className ? props.className : ''
-        }
-        
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-modal-container',
+        hidden: props.visible ? '' : 'hidden',
+        headerReverse: props.headerReverse ? 'reverse' : '',
+        centered: props.centered ? 'centered' : '',
+        fullPage: full ? 'full-page' : '',
+        className: props.className ? props.className : ''
     }
 
     const modalClass = () => {
@@ -36,13 +28,12 @@ const Modal = (props) => {
         return result.trim();
     }
 
-
     const close = (e) => {
         if (e.target === e.currentTarget) props.onClose()
     }
 
     return (
-        <div className={modalContainerClass()}
+        <div className={strinfigyClassObject(className)}
             onClick={(e) => props.closable ? close(e) : {}}>
             <CSSTransition
                 in={props.visible}

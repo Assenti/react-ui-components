@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Icon, List, ListItem } from '../index';
-import InputField from '../input';
+import { Dropdown, Icon, List, ListItem, InputField } from '../index';
 
 const hours = () => {
     let hours = [];
@@ -94,7 +93,7 @@ const TimePicker = (props) => {
                     <InputField
                         readOnly
                         size={props.size}
-                        width={props.width}
+                        style={{ width: props.width }}
                         label={props.label}
                         hint={props.hint}
                         dark={props.dark}

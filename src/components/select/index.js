@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, InputField, Dropdown, List, ListItem, Tag } from '../index';
 import { CSSTransition } from 'react-transition-group';
+import { strinfigyClassObject } from '../utils';
 
 const Select = (props) => {
     const [menu, setMenu] = useState(false);
@@ -14,17 +15,18 @@ const Select = (props) => {
     const [searchFocus, setSearchFocus] = useState(props.searchable ? true : false);
     const inputRef = useRef(null);
 
-    const selectMenuClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-select',
-            maxHeight: props.maxHeight ? 'max-height' : '',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-select',
+        maxHeight: props.maxHeight ? 'max-height' : '',
+        className: props.className ? props.className : ''
+    }
+
+    let classNameMultiple = {
+        name: 'rui-select__multiple-items',
+        size: props.size && props.size !== 'default' ? props.size : '',
+        disabled: props.disabled ? 'disabled' : '',
+        color: props.color ? props.color : 'primary',
+        border: props.borderType && props.borderType !== 'default' ? props.borderType : ''
     }
 
     const resolveItemChildren = () => {
@@ -116,21 +118,6 @@ const Select = (props) => {
         }
     }
 
-    const selectMultipleItemClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-select__multiple-items',
-            size: props.size && props.size !== 'default' ? props.size : '',
-            disabled: props.disabled ? 'disabled' : '',
-            color: props.color ? props.color : 'primary',
-            border: props.borderType && props.borderType !== 'default' ? props.borderType : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
-    }
-
     const handleFocus = (e) => {
         if (e.currentTarget === e.target && !props.disabled) setMenu(true)
     }
@@ -172,7 +159,7 @@ const Select = (props) => {
 
     return (
         <Dropdown
-            className={selectMenuClass()}
+            className={strinfigyClassObject(className)}
             closeManaged
             contentMaxHeight={props.maxHeight}
             visible={menu}
@@ -183,6 +170,7 @@ const Select = (props) => {
                     onBlur={handleCloseOnBlur}>
                     {props.searchable && !props.childrenKey ? 
                     <InputField
+                        style={{ width: props.width }}
                         dark={props.dark}
                         color={props.color ? props.color : 'primary'}
                         prefix={<Icon name="search"/>}
@@ -256,7 +244,7 @@ const Select = (props) => {
                     onFocus={() => !props.disabled ? setMenu(true) : {}}
                     onBlur={() => (!props.childrenKey && !props.searchable) ? setMenu(false) : {}}
                     readOnly
-                    width={props.width}
+                    style={{ width: props.width }}
                     placeholder={props.placeholder}/> : 
                     <div style={{ width: props.width ? props.width : 100 }} 
                         className={props.disabled ? 'rui-select__multiple disabled' : 'rui-select__multiple'}>
@@ -269,7 +257,7 @@ const Select = (props) => {
                             onFocus={handleFocus}
                             onBlur={handleBlur}
                             style={{ backgroundColor: props.whiteBackground ? '#fff' : '' }} 
-                            className={selectMultipleItemClass()}>
+                            className={strinfigyClassObject(classNameMultiple)}>
                             {props.prefix ? <span className="rui-input-prefix">{props.prefix}</span> : ''}
                             {selected.length > 0 ? 
                                 <div className="rui-select__multiple-item">

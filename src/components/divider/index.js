@@ -1,24 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { strinfigyClassObject } from '../utils';
 
 const Divider = (props) => {
-    const className = () => {
-        let result = '';
-        let className = {
-            name: 'rui-divider',
-            vertical: props.vertical ? 'vertical' : '',
-            color: props.color ? props.color : 'secondary',
-            dark: props.dark ? 'dark' : '',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-divider',
+        vertical: props.vertical ? 'vertical' : '',
+        color: props.color ? props.color : 'secondary',
+        dark: props.dark ? 'dark' : '',
+        className: props.className ? props.className : ''
     }
 
     return (
-        <div className={className()}></div>
+        <div className={strinfigyClassObject(className)}></div>
     )
 }
 Divider.propTypes = {

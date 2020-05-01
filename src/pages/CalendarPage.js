@@ -176,11 +176,7 @@ const holidays = [
 const usage =
 `// Usage example
 import React, { useState } from 'react';
-import { Calendar, Select, Icon, Switch, InputField } from '../components';
-
-const colors = ['primary', 'info', 'success', 'error', 'black'];
-const sizes = ['default', 'medium', 'large'];
-const locales = ['en', 'kz', 'ru', 'fr'];
+import { Calendar } from '@assenti/rui-components';
 
 const events = [
     { 
@@ -207,101 +203,16 @@ const holidays = [
 ]
 
 function Example() {
-    const [color, setColor] = useState(colors[0]);
-    const [size, setSize] = useState(sizes[0]);
-    const [locale, setLocale] = useState(locales[0]);
-    const [limit, setLimit] = useState(15);
-    const [onlyPast, setOnlyPast] = useState(true);
-    const [weekStartsSunday, setWeekStartsSunday] = useState(false);
-    const [dark, setDark] = useState(false);
-    const [full, setFull] = useState(false);
-    const [hideWeekend, setHideWeekend] = useState(false);
-    const [hideCurrentDay, setHideCurrentDay] = useState(false);
     const [date, setDate] = useState('');
 
     return (
-        <div>
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                dark={theme}
-                label="Calendar color"
-                color="primary"
-                value={color}
-                onChange={v => setColor(v)}/>
-            <Select
-                items={sizes}
-                prefix={<Icon name="format-size"/>}
-                width={200}
-                dark={theme}
-                label="Calendar size"
-                color="primary"
-                className="ml-10"
-                value={size}
-                onChange={v => setSize(v)}/>
-            <br/>
-            <Select
-                items={locales}
-                prefix={<Icon name="translate"/>}
-                width={200}
-                dark={theme}
-                label="Locale"
-                color="primary"
-                value={locale}
-                onChange={v => setLocale(v)}/>
-            <InputField
-                width={200}
-                className="ml-10 my-0"
-                value={limit}
-                dark={theme}
-                label="Years limit"
-                onChange={e => setLimit(e.target.value)}
-                prefix={<Icon name="calendar-month"/>}
-                />
-            <br/>
-            <Switch 
-                color="primary" 
-                check={onlyPast}
-                rightLabel="Show only past years"
-                className="my-10"
-                onChange={() => setOnlyPast(!onlyPast)}/>
-            <Switch 
-                color="primary" 
-                check={weekStartsSunday}
-                rightLabel="Week starts from Sunday"
-                className="my-10"
-                onChange={() => setWeekStartsSunday(!weekStartsSunday)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={full}
-                rightLabel="Full width"
-                className="my-10"
-                onChange={() => setFull(!full)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={hideCurrentDay}
-                rightLabel="Hide current day highlight"
-                className="my-10"
-                onChange={() => setHideCurrentDay(!hideCurrentDay)}/>
-            <Switch 
-                color="primary" 
-                check={hideWeekend}
-                rightLabel="Hide weekend highlight"
-                className="my-10"
-                onChange={() => setHideWeekend(!hideWeekend)}/>
-            <Divider/>
-            <br/>
+        <>
             <Calendar
-                width={full ? null : 400}
+                width={400}
                 shortWeekName
                 active={date}
                 disabledDates={[new Date(2020,3,19), new Date(2020,3,20)]}
                 maxDate={new Date()}
-                hideWeekend={hideWeekend}
-                hideCurrentDay={hideCurrentDay}
                 onDate={(date) => {
                     console.log(date)
                     setDate(date)
@@ -309,13 +220,9 @@ function Example() {
                 events={events}
                 holidays={holidays}
                 weekStartsSunday={weekStartsSunday}
-                size={size}
-                dark={theme}
-                limit={limit} 
-                onlyPast={onlyPast}
-                locale={locale}
-                color={color}/>
-        </div>
+                onlyPast
+                color="primary"/>
+        </>
     )
 }`
 
@@ -346,6 +253,7 @@ const CalendarPage = () => {
                         dark={theme}
                         label="Calendar color"
                         color="primary"
+                        className="mr-10"
                         value={color}
                         onChange={v => setColor(v)}/>
                     <Select
@@ -355,7 +263,6 @@ const CalendarPage = () => {
                         dark={theme}
                         label="Calendar size"
                         color="primary"
-                        className="ml-10"
                         value={size}
                         onChange={v => setSize(v)}/>
                     <br/>
@@ -366,11 +273,11 @@ const CalendarPage = () => {
                         dark={theme}
                         label="Locale"
                         color="primary"
+                        className="mr-10"
                         value={locale}
                         onChange={v => setLocale(v)}/>
                     <InputField
-                        width={200}
-                        className="ml-10 my-0"
+                        style={{ width: 200 }}
                         value={limit}
                         dark={theme}
                         label="Years limit"
@@ -378,37 +285,35 @@ const CalendarPage = () => {
                         prefix={<Icon name="calendar-month"/>}
                         />
                     <br/>
+                    <br/>
                     <Switch 
                         color="primary" 
                         check={onlyPast}
                         rightLabel="Show only past years"
-                        className="my-10"
                         onChange={() => setOnlyPast(!onlyPast)}/>
                     <Switch 
                         color="primary" 
                         check={weekStartsSunday}
                         rightLabel="Week starts from Sunday"
-                        className="my-10"
                         onChange={() => setWeekStartsSunday(!weekStartsSunday)}/>
+                    <br/>
                     <br/>
                     <Switch 
                         color="primary" 
                         check={full}
                         rightLabel="Full width"
-                        className="my-10"
                         onChange={() => setFull(!full)}/>
+                    <br/>
                     <br/>
                     <Switch 
                         color="primary" 
                         check={hideCurrentDay}
                         rightLabel="Hide current day highlight"
-                        className="my-10"
                         onChange={() => setHideCurrentDay(!hideCurrentDay)}/>
                     <Switch 
                         color="primary" 
                         check={hideWeekend}
                         rightLabel="Hide weekend highlight"
-                        className="my-10"
                         onChange={() => setHideWeekend(!hideWeekend)}/>
                     <Divider/>
                     <br/>

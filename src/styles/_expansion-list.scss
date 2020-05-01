@@ -65,6 +65,10 @@
 .rui-expansion-list-item {
     position: relative;
     height: auto;
+
+    .rui-list-item:last-child {
+        border-bottom: none;
+    }
 }
 
 .rui-expansion-list-item-title {

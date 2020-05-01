@@ -1,20 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Tag, Card, Icon } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const Timeline = (props) => {
-    const timelineClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-timeline',
-            centered: props.centered ? 'centered' : '',
-            color: props.color ? props.color : 'primary',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-timeline',
+        centered: props.centered ? 'centered' : '',
+        color: props.color ? props.color : 'primary',
+        className: props.className ? props.className : ''
     }
 
     const getItemClass = (index) => {
@@ -30,7 +24,7 @@ const Timeline = (props) => {
     }
 
     return (
-        <div className={timelineClass()}>
+        <div className={strinfigyClassObject(className)}>
             {props.items.map((item, index) =>
                 <div key={index} className={getItemClass(index)}>
                     <div className="rui-timeline__item__event">

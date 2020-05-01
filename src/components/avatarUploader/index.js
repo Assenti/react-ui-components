@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../button';
 import { Account } from '../icon/icons';
+import { strinfigyClassObject } from '../utils';
 
 const getBase64 = (file) => {
     if (file) {
@@ -19,19 +20,12 @@ const AvatarUploader = (props) => {
     const [avatar, setAvatar] = useState(props.avatar);
     const [inputKey, setInputKey] = useState(Date.now());
 
-    const componentClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-avatar-uploader',
-            lifted: props.lifted ? 'lifted' : '',
-            dark: props.dark ? 'dark' : '',
-            borderType: props.borderType ? props.borderType : '', 
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-avatar-uploader',
+        lifted: props.lifted ? 'lifted' : '',
+        dark: props.dark ? 'dark' : '',
+        borderType: props.borderType ? props.borderType : '', 
+        className: props.className ? props.className : ''
     }
 
     const handlePreview = async (e) => {
@@ -49,7 +43,7 @@ const AvatarUploader = (props) => {
     }
 
     return (
-        <div className={componentClass()} 
+        <div className={strinfigyClassObject(className)} 
             style={{
                 width: props.width ? props.width : 100,
                 minWidth: props.width ? props.width : 100,

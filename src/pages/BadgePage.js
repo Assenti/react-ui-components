@@ -50,54 +50,21 @@ const items = [
 
 const usage =
 `// Usage examples
-import React, { useState } from 'react';
-import { Badge, Icon, Select, Switch, Avatar } from '@assenti/rui-components';
+import React from 'react';
+import { Badge, Icon, Avatar } from '@assenti/rui-components';
 
 function Example() {
-    const [badge, setBadge] = useState(true);
-    const [rounded, setRounded] = useState(false);
-    const [color, setColor] = useState(colors[1]);
-
     return (
         <div className="row align-center">
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                label="Button color"
-                color="primary"
-                value={color}
-                onChange={v => setColor(v)}/>
-            <br/>
-            <Switch 
+            <Badge 
                 color="primary" 
-                check={badge}
-                rightLabel="Hide"
-                className="my-10"
-                onChange={() => setBadge(!badge)}/>
-            <Switch 
+                value={100}
+                className="mr-20"
+                parent={<Icon size={30} name="email" color="#ffa600"/>}/>
+            <Badge 
                 color="primary" 
-                check={rounded}
-                rightLabel="Rounded"
-                className="my-10"
-                onChange={() => setRounded(!rounded)}/>
-            <br/>
-            <div className="row align-center py-10">
-                <Badge 
-                    color={color} 
-                    value={100}
-                    rounded={rounded} 
-                    className="mr-20"
-                    visible={badge}
-                    parent={<Icon size={30} name="email" color="#ffa600"/>}/>
-                <Badge 
-                    color={color} 
-                    icon="plus"
-                    rounded={rounded} 
-                    className="mr-20"
-                    visible={badge}
-                    parent={<Avatar img={manImage}/>}/>
-            </div>
+                icon="plus"
+                parent={<Avatar img={manImage}/>}/>
         </div>
     )
 }`

@@ -6,18 +6,6 @@ import { Button, Icon } from '../index';
 const Dialog = (props) => {
     const [loading, setLoading] = useState(false);
 
-    const componentClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-dialog',
-            dark: props.dark ? 'dark' : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
-    }
-
     const handleConfirm = () => {
         if (props.onConfirm) {
             return new Promise(async (resolve, reject) => {
@@ -43,7 +31,7 @@ const Dialog = (props) => {
             mountOnEnter
             unmountOnExit>
             <div 
-                className={componentClass()}>
+                className={(`rui-dialog ${props.dark ? 'dark' : ''}`).trim()}>
                 <div className="rui-dialog__title">
                     {props.icon ? 
                         <Icon 

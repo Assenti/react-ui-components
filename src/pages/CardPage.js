@@ -5,13 +5,8 @@ import manImage2 from '../img/hipster.png';
 import girlImage from '../img/girl.png';
 import girlImage2 from '../img/girl_.png';
 import Page from '../layouts/Page';
-
-const itemsComplexInitial = [
-    { name: 'Steve Rogers', hero: 'Captain America', icon: 'account', check: false }, 
-    { name: 'Peter Parker', hero: 'Spider man', icon: 'account', check: false }, 
-    { name: 'Tony Stark', hero: 'Iron man', icon: 'account', check: false }, 
-    { name: 'Bruce Benner', hero: 'Hulk', icon: 'account', check: false }
-];
+import { heroes } from '../data/heroes';
+import { colors } from '../data/colors';
 
 const items = [
     { 
@@ -26,20 +21,6 @@ const items = [
         description: 'Set card footer', 
         default: '', 
         type: 'any',
-        value: ''
-    },
-    { 
-        property: 'width',
-        description: 'Set card width', 
-        default: '', 
-        type: 'string | number',
-        value: '100, "100%", "100px"'
-    },
-    { 
-        property: 'img',
-        description: 'Set card image', 
-        default: '', 
-        type: 'string | base64',
         value: ''
     },
     { 
@@ -75,13 +56,27 @@ const items = [
         description: 'Set card borders color from colors list', 
         default: '', 
         type: 'string',
-        value: 'primary | info | success | error | gray'
+        value: 'primary | info | success | error'
     },
     { 
-        property: 'title',
-        description: 'Set outlined card title (has effect only with outlined prop)', 
+        property: 'ref',
+        description: 'Set ref to Card component', 
         default: '', 
-        type: 'string',
+        type: 'React ref object',
+        value: ''
+    },
+    { 
+        property: 'onClick',
+        description: 'Invokes on Card component click (return an event object)', 
+        default: '', 
+        type: 'function',
+        value: ''
+    },
+    { 
+        property: 'style',
+        description: 'Set a custom inline styles', 
+        default: '', 
+        type: 'object',
         value: ''
     },
     { 
@@ -92,12 +87,11 @@ const items = [
         value: ''
     }
 ]
-const colors = ['primary', 'info', 'success', 'error', 'gray'];
 
 const usage =
 `// Usage examples
-import React, { useState } from 'react';
-import { Card, List, ListItem, Switch, Select, Icon, Divider } from '@assenti/rui-components';
+import React from 'react';
+import { Card, List, ListItem } from '@assenti/rui-components';
 
 const heroes = [
     { name: 'Steve Rogers', hero: 'Captain America', icon: 'account' }, 
@@ -107,50 +101,9 @@ const heroes = [
 ];
 
 function Example() {
-    const [flat, setFlat] = useState(false);
-    const [hover, setHover] = useState(false);
-    const [outlined, setOutlined] = useState(false);
-    const [color, setColor] = useState(colors[0]);
-
     return (
         <>
-            <Switch 
-                color="primary" 
-                check={flat}
-                rightLabel="Flat"
-                className="my-10"
-                onChange={() => setFlat(!flat)}/>
-            <Switch 
-                color="primary" 
-                check={hover}
-                rightLabel="Hover"
-                className="my-10"
-                onChange={() => setHover(!hover)}/>
-            <Switch 
-                color="primary" 
-                check={outlined}
-                rightLabel="Outlined"
-                className="my-10"
-                onChange={() => setOutlined(!outlined)}/>
-            <br/>
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                dark={theme}
-                label="Outline color"
-                color="primary"
-                value={color}
-                onChange={v => setColor(v)}/>
-            <Divider className="my-20"/>
-            <Card
-                dark={theme}
-                flat={flat} 
-                hover={hover}
-                outlined={outlined}
-                title={outlined ? 'Card props' : ''}
-                color={color}
-                header="Marvel heroes">
+            <Card header="Marvel heroes">
                 <List dark={theme}>
                     {heroes.map((item, index) => 
                         <ListItem 
@@ -187,9 +140,9 @@ const CardPage = () => {
                         hover
                         dark={dark}
                         className="ma-5"
-                        width={200} 
-                        img={item.img}
+                        style={{ width: 200 }} 
                         footer={<h4 className="text-center">{item.name}</h4>}>
+                        <img src={item.img} style={{ width: '100%' }} alt="example"/>
                         <p className="text-center">Hey there!</p>
                     </Card>
                 )}
@@ -242,7 +195,7 @@ const CardPage = () => {
                         color={color}
                         header="Marvel heroes">
                         <List dark={theme}>
-                            {itemsComplexInitial.map((item, index) => 
+                            {heroes.map((item, index) => 
                                 <ListItem 
                                     key={index}
                                     icon={item.icon}

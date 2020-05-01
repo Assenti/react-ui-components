@@ -99,83 +99,22 @@ const items = [
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Pagination, Select, Icon, Switch, Divider, InputField } from '@assenti/rui-components';
-const colors = ['primary', 'info', 'success', 'error'];
-const sizes = ['default', 'medium', 'large'];
-const borders = ['default','tile','rounded'];
+import { Pagination } from '@assenti/rui-components';
 
 function Example() {
     const [perPage, setPerPage] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
-    const [color, setColor] = useState(colors[0]);
-    const [size, setSize] = useState(sizes[1]);
-    const [dense, setDense] = useState(true);
     const [itemsCount, setItemsCount] = useState(500);
-    const [border, setBorder] = useState(borders[1]);
 
     return (
         <>
-            <div className="row">
-                <InputField
-                    label="Items count"
-                    width={200}
-                    type="number"
-                    className="mr-10"
-                    value={itemsCount}
-                    onChange={e => setItemsCount(parseInt(e.target.value))}
-                    />
-                <Select
-                    items={colors}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    dark={theme}
-                    label="Color"
-                    color="primary"
-                    value={color}
-                    onChange={v => setColor(v)}/>
-            </div>
-            <br/>
-            <div className="row">
-                <Select
-                    items={sizes}
-                    prefix={<Icon name="format-size"/>}
-                    width={200}
-                    dark={theme}
-                    label="Size"
-                    color="primary"
-                    className="mr-10"
-                    value={size}
-                    onChange={v => setSize(v)}/>
-                <Select
-                    items={borders}
-                    prefix={<Icon name="shape"/>}
-                    width={200}
-                    dark={theme}
-                    label="Border type"
-                    color="primary"
-                    value={border}
-                    onChange={v => setBorder(v)}/>
-            </div>
-            <br/>
-            <Switch 
-                check={dense} 
-                color="primary"
-                rightLabel="Dense" 
-                className="my-10"
-                onChange={() => setDense(!dense)}/>
-            <Divider/>
             <Pagination
                 itemsCount={itemsCount}
-                color={color}
-                size={size}
+                color="primary"
                 perPage={perPage}
-                dark={theme}
                 current={currentPage}
                 onChange={page => setCurrentPage(page)}
-                onPerPageSelect={value => setPerPage(value)}
-                className="pa-5"
-                dense={dense}
-                borderType={border}/>
+                onPerPageSelect={value => setPerPage(value)}/>
         </>
     )
 }`
@@ -203,7 +142,7 @@ const PaginationPage = () => {
                     <div className="row">
                         <InputField
                             label="Items count"
-                            width={200}
+                            style={{ width: 200 }}
                             type="number"
                             className="mr-10"
                             value={itemsCount}

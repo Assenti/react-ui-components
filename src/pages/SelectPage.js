@@ -156,10 +156,7 @@ const rows = [
 const usage = 
 `// Usage examples
 import React, { useState } from 'react';
-import { Select, Icon, Switch } from '@assenti/react-ui-components';
-const colors = ['primary', 'info', 'success', 'error'];
-const sizes = ['default', 'medium', 'large'];
-const borders = ['default', 'tile', 'rounded', 'smooth'];
+import { Select, Icon } from '@assenti/react-ui-components';
 
 const countries = [
     { country: 'Kazakhstan', cities: [ 'Nur-Sultan', 'Almaty', 'Shymkent' ] }, 
@@ -175,118 +172,18 @@ const countries = [
 ]
 function Example() {
     const [city, setCity] = useState('');
-    const [country, setCountry] = useState('');
-    const [color, setColor] = useState(colors[0]);
-    const [size, setSize] = useState(sizes[0]);
-    const [border, setBorder] = useState(borders[0]);
-    const [disabled, setDisabled] = useState(false);
-    const [maxHeight, setMaxHeight] = useState(false);
 
     return (
         <>
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                label="Color"
-                color="primary"
-                className="my-5"
-                value={color}
-                onChange={v => setColor(v)}/>
-            <br/>
-            <Select
-                items={sizes}
-                prefix={<Icon name="format-size"/>}
-                width={200}
-                label="Size"
-                color="primary"
-                className="my-5"
-                value={size}
-                onChange={v => setSize(v)}/>
-            <br/>
-            <Select
-                items={borders}
-                prefix={<Icon name="shape"/>}
-                width={200}
-                label="Border type"
-                color="primary"
-                className="my-5"
-                value={border}
-                onChange={v => setBorder(v)}/>
-            <br/>
-            <Switch 
-                check={maxHeight} 
-                color="primary"
-                rightLabel="Set max height" 
-                className="my-10"
-                onChange={() => setMaxHeight(!maxHeight)}/>
-            <Switch 
-                check={disabled} 
-                color="primary"
-                rightLabel="Disabled" 
-                className="my-10"
-                onChange={() => setDisabled(!disabled)}/>
-            <br/>
-            <Select
-                items={countries}
-                prefix={<Icon name="earth"/>}
-                itemKey="country"
-                label="One level items select"
-                width={250}
-                maxHeight={maxHeight ? 200 : null}
-                disabled={disabled}
-                size={size}
-                borderType={border}
-                clearable
-                onClear={() => setCountry('')}
-                color={color}
-                placeholder="Countries"
-                value={country}
-                onChange={value => setCountry(value)}/>
-            <br/>
-            <Select
-                prefix={<Icon name="earth"/>}
-                label="Two level items select"
-                items={countries}
-                itemKey="country"
-                childrenKey="cities"
-                color={color}
-                borderType={border}
-                width={250}
-                size={size}
-                placeholder="Cities"
-                value={city}
-                onChange={value => {
-                    setCity(value)
-                    console.log(value)
-                }}/>
-            <br/>
-            <Select
-                prefix={<Icon name="earth"/>}
-                label="One level items searchable select"
-                items={countries}
-                itemKey="country"
-                color={color}
-                maxHeight={maxHeight ? 200 : null}
-                width={250}
-                borderType={border}
-                searchable
-                size={size}
-                placeholder="Countries"
-                value={country}
-                onChange={value => setCountry(value)}/>
-            <br/>
             <Select
                 prefix={<Icon name="earth"/>}
                 label="One level items with multiple select"
                 items={countries}
                 itemKey="country"
-                color={color}
-                maxHeight={maxHeight ? 200 : null}
+                color="primary"
+                maxHeight={200}
                 width={250}
                 multiple
-                size={size}
-                borderType={border}
                 placeholder="Countries"
                 value={city}
                 tagOutlined
@@ -383,6 +280,7 @@ const SelectPage = () => {
                         value={country}
                         onChange={value => setCountry(value)}/>
                     <br/>
+                    <br/>
                     <Select
                         prefix={<Icon name="earth"/>}
                         label="Two level items select"
@@ -402,6 +300,7 @@ const SelectPage = () => {
                             console.log(value)
                         }}/>
                     <br/>
+                    <br/>
                     <Select
                         prefix={<Icon name="earth"/>}
                         label="One level items searchable select"
@@ -418,6 +317,7 @@ const SelectPage = () => {
                         placeholder="Countries"
                         value={country}
                         onChange={value => setCountry(value)}/>
+                    <br/>
                     <br/>
                     <Select
                         prefix={<Icon name="earth"/>}

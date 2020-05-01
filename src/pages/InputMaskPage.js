@@ -6,78 +6,27 @@ import Page from '../layouts/Page';
 const usage = 
 `// Usage examples
 import React, { useState } from 'react';
-import { InputMask, Icon } from '@assenti/react-ui-components';
-import { phoneMask, creditMask, creditIssueMask, iinMask } from '@assenti/react-ui-components';
+import { InputMask, Icon, phoneMask } from '@assenti/react-ui-components';
 
 function Example() {
     const [phone, setPhone] = useState('');
-    const [card, setCard] = useState('');
-    const [cardIssue, setCardIssue] = useState('');
-    const [iin, setIin] = useState('');
-    const kztPhone = '7777777777';
-    const cardForm = '1234567890191112';
-    const cardIssueForm = '0220';
-    const iinForm = '123456789012';
 
     return (
-        <div>
-            <div className="pa-5 fz-9">Kazakhstan phone mask: {phoneMask(kztPhone)}</div>
-                <InputMask 
-                    width={250}
-                    size="medium"
-                    value={phone}
-                    mask="phone"
-                    code="+7"
-                    placeholder="+7 (___) ___-__-__"
-                    onChange={(value, rowValue) => {
-                        console.log(value)
-                        console.log(rowValue)
-                        setPhone(rowValue)
-                    }}
-                    prefix={<Icon name="smartphone"/>}/>
-                <br/>
-                <div className="pa-5 fz-9">Credit card mask: {creditMask(cardForm)}, Credit card issue date: {creditIssueMask(cardIssueForm)}</div>
-                <div className="row">
-                    <InputMask 
-                        width={250}
-                        size="medium"
-                        value={card}
-                        mask="card"
-                        placeholder="____-____-____-____"
-                        onChange={(value, rowValue) => {
-                            console.log(value)
-                            console.log(rowValue)
-                            setCard(rowValue)
-                        }}
-                        prefix={<Icon name="credit-card"/>}/>
-                    <InputMask 
-                        width={90}
-                        size="medium"
-                        value={cardIssue}
-                        mask="card-issue"
-                        placeholder="__ / __"
-                        onChange={(value, rowValue) => {
-                            console.log(value)
-                            console.log(rowValue)
-                            setCardIssue(rowValue)
-                        }}
-                        prefix={<Icon name="calendar-month"/>}/>
-                </div>
-                <br/>
-                <div className="pa-5 fz-9">Kazakhstan IIN/BIN: {iinMask(iinForm)}</div>
-                <InputMask 
-                    width={250}
-                    size="medium"
-                    value={iin}
-                    mask="iin"
-                    placeholder="___ ___ ___ ___"
-                    onChange={(value, rowValue) => {
-                        console.log(value)
-                        console.log(rowValue)
-                        setIin(rowValue)
-                    }}
-                    prefix={<Icon name="card-account-details"/>}/>
-        </div>
+        <>
+            <InputMask 
+                width={250}
+                size="medium"
+                value={phone}
+                mask="phone"
+                code="+7"
+                placeholder="+7 (___) ___-__-__"
+                onChange={(value, rowValue) => {
+                    console.log(value)
+                    console.log(rowValue)
+                    setPhone(rowValue)
+                }}
+                prefix={<Icon name="smartphone"/>}/>
+        </>
     )
 }`
 const items = [
@@ -162,12 +111,13 @@ const InputMaskPage = () => {
                     <div className="pa-5 fz-9">Credit card mask: {creditMask(cardForm)}, Credit card issue date: {creditIssueMask(cardIssueForm)}</div>
                     <div className="row">
                         <InputMask 
-                            width={250}
+                            style={{ width: 250 }}
                             size="medium"
                             value={card}
                             dark={theme}
                             mask="card"
-                            placeholder="____-____-____-____"
+                            className="mr-10"
+                            placeholder="**** **** **** ****"
                             onChange={(value, rowValue) => {
                                 console.log(value)
                                 console.log(rowValue)
@@ -175,7 +125,7 @@ const InputMaskPage = () => {
                             }}
                             prefix={<Icon name="credit-card"/>}/>
                         <InputMask 
-                            width={90}
+                            style={{ width: 90 }}
                             size="medium"
                             value={cardIssue}
                             dark={theme}
@@ -191,7 +141,7 @@ const InputMaskPage = () => {
                     <br/>
                     <div className="pa-5 fz-9">Kazakhstan IIN/BIN: {iinMask(iinForm)}</div>
                     <InputMask 
-                        width={250}
+                        style={{ width: 250 }}
                         size="medium"
                         value={iin}
                         dark={theme}
@@ -206,7 +156,7 @@ const InputMaskPage = () => {
                     <br/>
                     <div className="pa-5 fz-9">Date (DD.MM.YYYY or MM/DD/YYYY)</div>
                     <InputMask 
-                        width={250}
+                        style={{ width: 250 }}
                         size="medium"
                         value={date}
                         mask="date"

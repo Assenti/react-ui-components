@@ -6,18 +6,6 @@ const Carousel = (props) => {
     const [active, setActive] = useState(0);
     const [hover, setHover] = useState(false);
 
-    const className = () => {
-        let result = '';
-        let className = {
-            name: 'rui-carousel',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
-    }
-
     const handlePrev = () => {
         if (active === 0) setActive(props.items.length - 1)
         else if (active > 0) setActive(active - 1)
@@ -58,7 +46,7 @@ const Carousel = (props) => {
     }, [active, hover])
     
     return (
-        <div className={className()}
+        <div className={(`rui-carousel ${props.className ? props.className : ''}`).trim()}
             style={{ 
                 width: props.width ? props.width : '',
                 maxWidth: props.width ? props.width : '', 

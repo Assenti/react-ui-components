@@ -1,7 +1,8 @@
 import React from 'react';
-import { Dropdown, Button, List, ListItem, Header, Avatar, Icon, ThemeContext } from '../components';
+import { Dropdown, Button, List, ListItem, Header, Avatar, Icon, ThemeContext, Divider } from '../components';
 import manImage from '../img/man_.png';
 import Page from '../layouts/Page';
+import { modules } from '../data/modules';
 
 const items = [
     { 
@@ -90,17 +91,10 @@ const items = [
     }
 ]
 
-const modules = [
-    { name: 'Home', icon: 'home' }, 
-    { name: 'Profile', icon: 'account' }, 
-    { name: 'Settings', icon: 'cog-outline' }, 
-    { name: 'Exit', icon: 'exit-to-app' }
-];
-
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Header, Dropdown, Button, List, ListItem, Icon, Avatar } from '@assenti/rui-components';
+import { Dropdown, Button, List, ListItem, Icon, Avatar, Divider } from '@assenti/rui-components';
 const modules = [
     { name: 'Home', icon: 'home' }, 
     { name: 'Profile', icon: 'account' }, 
@@ -111,39 +105,29 @@ const modules = [
 function Example() {
     return (
         <>
-            <Header 
-                smooth 
-                title={
-                    <div className="row align-center">
-                        <Icon name="react" color="#61dafb" className="mr-5"/>Header</div>
-                    } 
-                rightSide={
-                    <Dropdown
-                        width={200}
-                        position="right"
-                        content={
-                            <div className="pa-10">
-                                <div className="text-center">
-                                    <Avatar img={manImage} size={80}/>
-                                    <div 
-                                        className="text-center fw-bold fz-9 py-10" 
-                                        style={{ color: dark ? '#fff' : '#000', 
-                                        borderBottom: '1px solid lightgray'}}>John Doe</div>
-                                </div>
-                                <List>
-                                    {modules.map((item, index) =>
-                                        <ListItem 
-                                            keys={index}
-                                            hover
-                                            noDivider 
-                                            item={item.name} 
-                                            icon={item.icon}/>
-                                    )}
-                                </List>
-                            </div>
-                        }
-                        trigger={<Button light icon="account"/>}/>
-                }/>
+            <Dropdown
+                width={200}
+                position="right"
+                content={
+                    <div className="pa-10">
+                        <div className="text-center">
+                            <Avatar img={manImage} borderType="rounded" height={100}/>
+                            <h4>John Doe</h4>
+                        </div>
+                        <Divider/>
+                        <List>
+                            {modules.map((item, index) =>
+                                <ListItem 
+                                    keys={index}
+                                    hover
+                                    noDivider 
+                                    item={item.name} 
+                                    icon={item.icon}/>
+                            )}
+                        </List>
+                    </div>
+                }
+                trigger={<Button color="primary" icon="account"/>}/>
         </>
     )
 }`
@@ -171,12 +155,10 @@ const DropdownPage = () => {
                                 content={
                                     <div className="pa-10">
                                         <div className="text-center">
-                                            <Avatar img={manImage} size={80} dark={theme}/>
-                                            <div 
-                                                className="text-center fw-bold fz-9 py-10" 
-                                                style={{ color: theme ? '#fff' : '#000', 
-                                                borderBottom: '1px solid lightgray'}}>John Doe</div>
+                                            <Avatar img={manImage} borderType="rounded" height={100} dark={theme}/>
+                                            <h4>John Doe</h4>
                                         </div>
+                                        <Divider/>
                                         <List dark={theme}>
                                             {modules.map((item, index) =>
                                                 <ListItem 

@@ -170,3 +170,11 @@ export const toFinancial = (number) => {
         return number < 0 ? `- ${result}` : result;
     } else return '';
 }
+
+export const strinfigyClassObject = (classObject) => {
+    let result = '';
+    for (const key in classObject) {
+        if (classObject[key]) result += classObject[key] + ' '
+    }
+    return result.trim();
+}

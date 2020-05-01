@@ -93,43 +93,13 @@ const items = [
 const usage =
 `// Usage example
 import React, { useState } from 'react';
-import { FloatingBtn, Card, Dialog, Select, Icon, Switch } from '../components';
-const colors = ['primary', 'info', 'success', 'error', 'black', 'secondary'];
-const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+import { FloatingBtn, Card, Dialog } from '@assenti/rui-components';
 
 function Example() {
     const [dialog, setDialog] = useState(false);
-    const [tooltip, setTooltip] = useState(false);
-    const [color, setColor] = useState(colors[0]);
-    const [position, setPosition] = useState(positions[3]);
 
     return (
-        <div>
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                label="Color theme"
-                color="primary"
-                value={color}
-                onChange={v => setColor(v)}/>
-            <br/>
-            <Select
-                items={positions}
-                prefix={<Icon name="book-open"/>}
-                width={200}
-                label="Position"
-                color="primary"
-                value={position}
-                onChange={v => setPosition(v)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={tooltip}
-                rightLabel="Tooltip"
-                className="my-10"
-                onChange={() => setTooltip(!tooltip)}/>
-            <br/>
+        <>
             <Card 
                 className="relative"
                 width={200} 
@@ -138,9 +108,8 @@ function Example() {
                 <FloatingBtn 
                     icon="plus"
                     size="large"
-                    tooltip={tooltip ? 'Add Friend' : null}
-                    color={color}
-                    position={position} 
+                    tooltip="Add friend"
+                    color="primary"
                     onClick={() => setDialog(true)}/>
             </Card>
             <Dialog 
@@ -154,7 +123,7 @@ function Example() {
                 confirmText="Yeap"
                 title="New friend"
                 description="Add John to your friends list?"/>
-        </div>
+        </>
     )
 }`
 const colors = ['primary', 'info', 'success', 'error', 'black', 'secondary'];
@@ -183,6 +152,7 @@ const FloatingBtnPage = () => {
                         value={color}
                         onChange={v => setColor(v)}/>
                     <br/>
+                    <br/>
                     <Select
                         items={positions}
                         dark={theme}
@@ -192,6 +162,7 @@ const FloatingBtnPage = () => {
                         color="primary"
                         value={position}
                         onChange={v => setPosition(v)}/>
+                    <br/>
                     <br/>
                     <Switch 
                         color="primary" 
@@ -203,10 +174,10 @@ const FloatingBtnPage = () => {
                     <br/>
                     <Card 
                         className="relative"
-                        width={200}
+                        style={{ width: 200 }}
                         dark={theme} 
-                        img={manImage}
                         footer={<h4 className="text-center">John Doe</h4>}>
+                        <img style={{ width: '100%' }} src={manImage} alt="avatar"/>
                         <FloatingBtn 
                             icon="plus"
                             size="large"

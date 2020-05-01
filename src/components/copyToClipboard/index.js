@@ -46,6 +46,7 @@ const CopyToClipboard = (props) => {
     )
 }
 CopyToClipboard.propTypes = {
+    icon: PropTypes.string,
     size: PropTypes.number,
     color: PropTypes.string,
     dark: PropTypes.bool,

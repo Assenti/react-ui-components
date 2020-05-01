@@ -28,7 +28,7 @@ import './styles/index.scss';
 import { BrowserRouter as Router, Switch as RouterSwitch, Route, Redirect } from 'react-router-dom';
 import { routes } from './routes';
 import { DrawerContent } from './layouts/DrawerContent';
-import { Preloader, Header, ThemeContext, Tooltip, Button, Switch, Icon } from './components';
+import { Preloader, Header, ThemeContext, Tooltip, Button, Switch } from './components';
 import { version, description } from '../package.json';
 
 const defineDarkDefinition = () => {

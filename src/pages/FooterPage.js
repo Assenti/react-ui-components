@@ -5,13 +5,6 @@ import Page from '../layouts/Page';
 
 const items = [
     { 
-        property: 'height',
-        description: 'Set Footer height', 
-        default: '50px', 
-        type: 'string | number',
-        value: ''
-    },
-    { 
         property: 'color',
         description: 'Set Footer background color', 
         default: '', 
@@ -31,6 +24,13 @@ const items = [
         default: 'false', 
         type: 'boolean',
         value: 'true | false'
+    },
+    { 
+        property: 'style',
+        description: 'Set a custom inline styles', 
+        default: '', 
+        type: 'object',
+        value: ''
     },
     { 
         property: 'className',

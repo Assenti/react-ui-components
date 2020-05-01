@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Empty, Loading } from '../icon/icons/index';
 import { Checkbox, Pagination, Icon, InputField } from '../index';
-import { compare } from '../utils';
+import { compare, strinfigyClassObject } from '../utils';
 
 const makeSortableHeaders = (headers) => {
     let sortableHeaders = []
@@ -19,39 +19,24 @@ const Table = (props) => {
     const [sortType, setSortType] = useState(props.sortable ? 'asc' : '');
     const [colIndex, setColIndex] = useState(0);
     const [search, setSearch] = useState('');
-
-    const tableContainerClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-table__container',
-            bordered: props.bordered ? 'bordered' : '',
-            grid: props.grid ? 'grid' : '',
-            dark: props.dark ? 'dark' : '',
-            color: props.color && props.color !== 'default' ? props.color : '',
-            paginationPosition: props.paginationPosition ? props.paginationPosition : '',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let classNameContainer = {
+        name: 'rui-table__container',
+        bordered: props.bordered ? 'bordered' : '',
+        grid: props.grid ? 'grid' : '',
+        dark: props.dark ? 'dark' : '',
+        color: props.color && props.color !== 'default' ? props.color : '',
+        paginationPosition: props.paginationPosition ? props.paginationPosition : '',
+        className: props.className ? props.className : ''
     }
 
-    const tableClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-table',
-            alignment: props.alignment && props.alignment !== 'left' ? props.alignment : '',
-            headerColor: props.color ? props.color : '',
-            dark: props.dark ? 'dark' : '',
-            empty: props.items.length === 0 ? 'empty' : '',
-            noHover: props.noHover ? 'no-hover' : '',
-            stripped: props.stripped ? 'stripped' : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-table',
+        alignment: props.alignment && props.alignment !== 'left' ? props.alignment : '',
+        headerColor: props.color ? props.color : '',
+        dark: props.dark ? 'dark' : '',
+        empty: props.items.length === 0 ? 'empty' : '',
+        noHover: props.noHover ? 'no-hover' : '',
+        stripped: props.stripped ? 'stripped' : ''
     }
 
     const handleColumnSort = (colIndex, sortType) => {
@@ -202,21 +187,22 @@ const Table = (props) => {
     }
 
     return (
-        <div className={tableContainerClass()}>
+        <div className={strinfigyClassObject(classNameContainer)}>
             <div className="rui-table__header">
-                {props.tableTitle ? <div className="rui-table__title">{props.tableTitle}</div> : ''}
+                {props.tableTitle ? 
+                    <div className="rui-table__title">{props.tableTitle}</div> : null}
                 {props.searchable ? 
                     <InputField
                         color={props.color ? props.color : 'primary'}
                         prefix={<Icon name="search"/>}
                         value={search}
-                        className="ma-5"
+                        className="my-5"
                         dark={props.dark}
                         onKeyUp={handleKeyUp}
                         placeholder={props.searchPlaceholder ? props.searchPlaceholder : 'Search'}
                         onChange={e => setSearch(e.target.value)}/> : ''}
             </div>
-            <table className={tableClass()}>
+            <table className={strinfigyClassObject(className)}>
                 <thead>{prepareHeaders()}</thead>
                 <tbody>
                     {getItems().map((item, index) => 
@@ -238,28 +224,14 @@ const Table = (props) => {
                     )}
                 </tbody>
             </table>
-            {props.footer || props.checkbox ? 
-                (
-                    props.checkbox ? 
-                    <div className="rui-table__footer row space-between">
-                        <span>{props.selectedText ? props.selectedText : 'Selected: '} <strong>{selected.length}</strong></span>
-                        {props.footer}
-                    </div> : 
-                    <div className="rui-table__footer">{props.footer}</div>
-                ) : 
-            ''}
             {props.items.length === 0 && !props.loading ?
                 <div className="rui-table__placeholder"><Empty/></div> : ''}
-            {props.loading ? 
-                <div className={props.loading ? 'rui-table__placeholder loading' : 'rui-table__placeholder'}>
-                    <Loading color="#1678c2"/>
-                </div> 
-            : ''}
             {props.pagination ? 
                 <Pagination
                     onChange={page => setCurrentPage(page)}
                     perPageVariants={props.perPageVariants}
                     perPage={perPage}
+                    dense={props.paginationDense}
                     dark={props.dark}
                     perPageText={props.perPageText}
                     onPerPageSelect={value => setPerPage(value)}
@@ -280,7 +252,7 @@ Table.propTypes = {
     perPageVariants: PropTypes.arrayOf(PropTypes.number),
     perPageText: PropTypes.string,
     alignment: PropTypes.oneOf([undefined,'','left','center','right']),
-    tableTitle: PropTypes.string,
+    tableTitle: PropTypes.node,
     searchable: PropTypes.bool,
     searchKey: PropTypes.string,
     pagination: PropTypes.bool,
@@ -288,6 +260,8 @@ Table.propTypes = {
     paginationPosition: PropTypes.oneOf([undefined,'','left','right']),
     paginationColor: PropTypes.oneOf([undefined,'','primary', 'info', 'success', 'error']),
     checkbox: PropTypes.bool,
+    controls: PropTypes.any,
+    paginationDense: PropTypes.bool,
     selectKey: PropTypes.string,
     onSelect: PropTypes.func,
     sortable: PropTypes.bool,
@@ -296,7 +270,6 @@ Table.propTypes = {
     stripped: PropTypes.bool,
     bordered: PropTypes.bool,
     grid: PropTypes.bool,
-    loading: PropTypes.bool,
     dark: PropTypes.bool,
     noHover: PropTypes.bool,
     footer: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),

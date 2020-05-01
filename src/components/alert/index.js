@@ -2,19 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { Icon } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const Alert = (props) => {
-    const componentClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-alert',
-            color: props.status ? props.status : 'info',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-alert',
+        color: props.status ? props.status : 'info',
+        className: props.className ? props.className : ''
     }
 
     const getStatusIcon = () => {
@@ -36,7 +30,7 @@ const Alert = (props) => {
             timeout={300}
             classNames="rui-alert"
             unmountOnExit>
-            <div className={componentClass()}>
+            <div className={strinfigyClassObject(className)}>
                 <div>
                     <div className="rui-alert__status">
                         <Icon name={getStatusIcon()} size={20}/>
@@ -59,8 +53,5 @@ Alert.propTypes = {
     visible: PropTypes.bool.isRequired,
     onClose: PropTypes.func,
     className: PropTypes.string
-}
-Alert.defaultProps = {
-    status: 'info'
 }
 export default Alert;

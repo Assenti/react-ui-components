@@ -2,27 +2,20 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '../index';
 import { CSSTransition } from 'react-transition-group';
+import { strinfigyClassObject } from '../utils';
 
-const Tag = (props) => {
+const Tag = React.forwardRef((props, ref) => {
     const [visible, setVisible] = useState(props.visible ? props.visible : true);
-
-    const tagClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-tag',
-            lifted: props.lifted ? 'lifted' : '',
-            uppercase: props.uppercase ? 'uppercase' : '',
-            borderType: props.borderType ? (props.borderType === 'default' ? '' : props.borderType) : '',
-            color: props.color ? props.color : 'primary',
-            small: props.small && !props.tiny ? 'small' : '',
-            tiny: props.tiny ? 'tiny' : '',
-            outlined: props.outlined ? 'outlined' : '',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-tag',
+        lifted: props.lifted ? 'lifted' : '',
+        uppercase: props.uppercase ? 'uppercase' : '',
+        borderType: props.borderType ? (props.borderType === 'default' ? '' : props.borderType) : '',
+        color: props.color ? props.color : 'primary',
+        small: props.small && !props.tiny ? 'small' : '',
+        tiny: props.tiny ? 'tiny' : '',
+        outlined: props.outlined ? 'outlined' : '',
+        className: props.className ? props.className : ''
     }
 
     const handleClose = () => {
@@ -43,8 +36,9 @@ const Tag = (props) => {
             classNames="rui-tag"
             mountOnEnter
             unmountOnExit>
-            <div className={tagClass()}
-                ref={props.setRef}
+            <div className={strinfigyClassObject(className)}
+                style={props.style}
+                ref={ref}
                 onClick={props.onClick && !props.disabled ? props.onClick : null} 
                 style={{ width: props.width ? props.width : ''}}>
                 {props.iconLeft ? <Icon name={props.iconLeft}/> : ''}
@@ -59,7 +53,7 @@ const Tag = (props) => {
             </div>
         </CSSTransition>
     )
-}
+})
 Tag.propTypes = {
     visible: PropTypes.bool,
     uppercase: PropTypes.bool,
@@ -67,12 +61,11 @@ Tag.propTypes = {
     lifted: PropTypes.bool,
     color: PropTypes.oneOf([undefined,'secondary','primary', 'info', 'success', 'error', 'dark', 'yellow']),
     borderType: PropTypes.oneOf([undefined,'','default','tile','smooth','rounded']),
-    setRef: PropTypes.any,
     small: PropTypes.bool,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     iconLeft: PropTypes.string,
     iconRight: PropTypes.string,
-    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    style: PropTypes.any,
     onClose: PropTypes.func,
     onClick: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
     closable: PropTypes.bool,

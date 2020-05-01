@@ -68,62 +68,21 @@ const items = [
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { RadioGroup, Switch, Select, Icon } from '@assenti/rui-components';
+import { RadioGroup } from '@assenti/rui-components';
 const citiesUS = ['Washington, D.C.', 'New York City', 'Chicago', 'Boston', 'San Francisco', 'Los Angeles'];
-const colors = ['primary', 'info', 'success', 'error'];
-const sizes = ['default', 'medium', 'large'];
 
 function Example() {
     const [cityUS, setCityUS] = useState('');
-    const [isDisabled, setIsDisabled] = useState(false);
-    const [vertical, setVertical] = useState(true);
-    const [color, setColor] = useState(colors[0]);
-    const [size, setSize] = useState(sizes[0]);
 
     return (
-        <div>
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                label="Radio button color"
-                color="primary"
-                value={color}
-                onChange={v => setColor(v)}/>
-            <br/>
-            <Select
-                items={sizes}
-                prefix={<Icon name="format-size"/>}
-                width={200}
-                label="Radio button size"
-                color="primary"
-                value={size}
-                onChange={v => setSize(v)}/>
-            <br/>
-            <Switch
-                check={vertical}
-                rightLabel="Vertical"
-                color="primary"
-                className="my-10"
-                onChange={() => setVertical(!vertical)}/>
-            <br/>
-            <Switch
-                check={isDisabled}
-                rightLabel="Disabled"
-                color="primary"
-                className="my-10"
-                onChange={() => setIsDisabled(!isDisabled)}/>
-            <br/>
+        <>
             <RadioGroup 
                 value={cityUS} 
-                vertical={vertical}
                 name="city"
-                size={size}
-                color={color}
-                disabled={isDisabled}
+                color="primary"
                 onChange={(value) => setCityUS(value)}
                 options={citiesUS}/>
-        </div>
+        </>
     )
 }`
 
@@ -150,6 +109,7 @@ const RadioPage = () => {
                         color="primary"
                         value={color}
                         onChange={v => setColor(v)}/>
+                    <br/>
                     <br/>
                     <Select
                         items={sizes}

@@ -1,115 +1,7 @@
-import React, { useRef, useState } from 'react';
-import { Table, Icon, Card, Collapse, Tooltip, InputField, BackTopBtn, ThemeContext } from '../components';
-import { description } from '../../package.json';
+import React, { useRef } from 'react';
+import { Table, Icon, Card, Tooltip, BackTopBtn, ThemeContext } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
-const icons = [
-    'delete', 
-    'search', 
-    'home', 
-    'edit', 
-    'github', 
-    'gitlab', 
-    'close', 
-    'chevron-double-right', 
-    'chevron-double-left',
-    'code',
-    'chip',
-    'account',
-    'users',
-    'person',
-    'shield-account',
-    'chevron-down',
-    'chevron-up',
-    'chevron-next', 
-    'chevron-back', 
-    'sun',
-    'moon',
-    'star',
-    'star-outline',
-    'smartphone',
-    'hammer',
-    'city',
-    'empty',
-    'download',
-    'menu',
-    'file-outline' ,
-    'email',
-    'rocket',
-    'key',
-    'exit-to-app',
-    'arrow-up-bold',
-    'arrow-down-bold',
-    'format-align-left',
-    'format-align-center',
-    'format-align-right',
-    'brush',
-    'lock',
-    'filter',
-    'sort-ascending',
-    'sort-descending',
-    'content-copy',
-    'toy-brick',
-    'help-circle-outline',
-    'dots-vertical',
-    'dots-horizontal',
-    'react',
-    'language-css-3',
-    'earth',
-    'check',
-    'check-circle',
-    'eye',
-    'eye-off',
-    'tenge',
-    'currency-usd',
-    'credit-card',
-    'qrcode',
-    'calendar-month',
-    'calendar-star',
-    'card-account-details',
-    'translate',
-    'alert',
-    'format-size',
-    'cog-outline',
-    'target',
-    'map',
-    'map-marker',
-    'language-js',
-    'language-ts',
-    'language-go',
-    'linkedin',
-    'facebook',
-    'facebook-workplace',
-    'instagram',
-    'whatsapp',
-    'telegram',
-    'flag',
-    'plus',
-    'minus',
-    'account-plus',
-    'book-open',
-    'shape',
-    'share',
-    'phone',
-    'bell',
-    'wrench',
-    'alert-circle',
-    'info',
-    'package-down',
-    'clock-outline',
-    'wifi',
-    'cart',
-    'chart-ppf',
-    'airplane',
-    'cancel',
-    'grid',
-    'view-list',
-    'checklist',
-    'arrow-up',
-    'arrow-down',
-    'account-group'
-]
 
 const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
@@ -204,18 +96,9 @@ funcation Example() {
 const IconPage = () => {
     const api = useRef();
     const parent = useRef();
-    const [search, setSearch] = useState('');
 
     const goToApi = () => {
         if (api.current) api.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-
-    const filteredIcons = () => {
-        if (search) {
-            return icons.filter(item => item.toLowerCase().includes(search.toLowerCase()))
-        } else {
-            return icons
-        }
     }
 
     const CustomIconSvg = () => {
@@ -226,14 +109,6 @@ const IconPage = () => {
         )
     }
 
-    const getIconClass = (dark) => {
-        if (dark) {
-            return 'row-inline text-center column justify-center align-center pa-5 ma-10 hoverable dark';
-        } else {
-            return 'row-inline text-center column justify-center align-center pa-5 ma-10 hoverable';
-        }
-    }
-
     return (
         <ThemeContext.Consumer>
             {theme => (
@@ -242,42 +117,12 @@ const IconPage = () => {
                         <div className="rui-page-title">{'<Icon/>'} Component</div>
                         <div onClick={goToApi} className="rui-link fz-13 fw-bold">API</div>
                     </div>
-                    <p><strong>{description}</strong> use primarily
-                        <a href="https://materialdesignicons.com/"
-                            target="blank_"
-                            className="ml-5">Material Design Icons</a>
-                    </p>
-                    <br/>
-                    <Card dark={theme} color="gray" header={<h4>Icons collection</h4>}>
-                        <div className="pa-10">
-                            <InputField 
-                                value={search}
-                                dark={theme}
-                                prefix={<Icon name="search"/>}
-                                placeholder="Search icons"
-                                color="primary"
-                                onChange={e => setSearch(e.target.value)}/>
-                        </div>
-                        {filteredIcons().map((item, index) => 
-                            <div key={index} 
-                                style={{ width: 35, height: 35 }}
-                                className={getIconClass(theme)}>
-                                <Tooltip tooltip={item}>
-                                    <Icon name={item} color={theme ? 'lightgray' : ''}/>
-                                </Tooltip>
-                            </div>
-                        )}
-                        <Collapse 
-                            icon="code"
-                            dark={theme} 
-                            iconSize={18} 
-                            tooltip="Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
+                    <Card dark={theme} color="gray" header={<h4>Usage</h4>}>
+                        <SyntaxHighlighter 
+                            language="jsx" 
+                            style={theme ? tomorrow : coy}>
+                            {usage}
+                        </SyntaxHighlighter>
                     </Card>
                     <br/>
                     <Card dark={theme} header={<h4>Custom icon</h4>}>
@@ -291,10 +136,11 @@ const IconPage = () => {
                             {customIconUsage}
                         </SyntaxHighlighter>
                     </Card>
-                    <h2 ref={api}>API</h2>
                     <BackTopBtn setRef={parent} dark size="medium"/>
-                    <Card className="pa-0">
+                    <Card className="mt-10">
                         <Table
+                            bordered
+                            tableTitle={<h2 ref={api}>API</h2>}
                             dark={theme}
                             headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                             items={items}

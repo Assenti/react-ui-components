@@ -30,14 +30,15 @@ const Page = (props) => {
                             </SyntaxHighlighter>
                         </Collapse>
                     </Card>
-                    <h2>API</h2>
                     {props.backTopBtn ? <BackTopBtn dark setRef={parent} size="medium" tooltip="Up"/> : null}
-                    <Card className="pa-0">
+                    <Card className="mt-10">
                         <Table
+                            tableTitle={<h2>API</h2>}
                             dark={theme}
                             headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                             items={props.apiDescItems}
                             index
+                            bordered
                             searchable={props.apiSearchable}
                             searchKey="property"
                             itemTitles={keys}/>

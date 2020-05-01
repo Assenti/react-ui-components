@@ -35,7 +35,14 @@ const rows = [
         property: 'tableTitle', 
         description: 'Set table title',
         default: '', 
-        type: 'string',
+        type: 'ReactNode',
+        value: ''
+    },
+    { 
+        property: 'controls', 
+        description: 'Set table row controls',
+        default: '', 
+        type: 'ReactNode',
         value: ''
     },
     { 
@@ -55,6 +62,13 @@ const rows = [
     { 
         property: 'pagination', 
         description: 'Add pagination to table',
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'paginationDense', 
+        description: 'Set pagination density',
         default: 'false', 
         type: 'boolean',
         value: 'true | false'
@@ -169,7 +183,7 @@ const rows = [
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Table, Switch, Icon, Select, ButtonGroup } from '@assenti/rui-components';
+import { Table, Button, Tooltip } from '@assenti/rui-components';
 
 let goods = []
 for (let i = 0; i < 100; i++) {
@@ -180,154 +194,22 @@ for (let i = 0; i < 100; i++) {
     })
 }
 
-const colors = ['default', 'primary', 'info', 'success', 'error', 'dark'];
-const textAligns = ['left', 'center', 'right'];
-const icons = ['format-align-left', 'format-align-center', 'format-align-right'];
-
 function Example() {
-    const [color, setColor] = useState(colors[0]);
-    const [grid, setGrid] = useState(false);
-    const [checkbox, setCheckbox] = useState(false);
-    const [footer, setFooter] = useState(true);
-    const [bordered, setBordered] = useState(false);
-    const [indexed, setIndexed] = useState(true);
-    const [searchable, setSearchable] = useState(false);
-    const [sortable, setSortable] = useState(true);
-    const [loading, setLoading] = useState(false);
-    const [controls, setControls] = useState(false);
-    const [title, setTitle] = useState(false);
-    const [stripped, setStripped] = useState(true);
-    const [hover, setHover] = useState(true);
-    const [pagination, setPagination] = useState(true);
-    const [textAlign, setTextAlign] = useState(textAligns[0]);
-
     return (
-        <div>
-            <div className="row align-bottom pt-10">
-                <Select
-                    items={colors}
-                    prefix={<Icon name="brush"/>}
-                    width={200}
-                    label="Table color theme"
-                    color="primary"
-                    className="my-0"
-                    value={color}
-                    onChange={v => setColor(v)}/>
-                <ButtonGroup 
-                    default={0} 
-                    icon
-                    onChange={(item, index) => setTextAlign(textAligns[index])}
-                    className="ml-10"
-                    options={icons} 
-                    color="secondary" 
-                    outlined/>
-            </div>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={grid}
-                className="my-10"
-                rightLabel="Grid"
-                onChange={() => setGrid(!grid)}/>
-            <Switch 
-                color="primary" 
-                check={checkbox}
-                className="my-10"
-                rightLabel="Checkbox"
-                onChange={() => setCheckbox(!checkbox)}/>
-            <Switch 
-                color="primary" 
-                check={stripped}
-                className="my-10"
-                rightLabel="Stripped"
-                onChange={() => setStripped(!stripped)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={title}
-                className="my-10"
-                rightLabel="Table title"
-                onChange={() => setTitle(!title)}/>
-            <Switch 
-                color="primary" 
-                check={footer}
-                className="my-10"
-                rightLabel="Footer"
-                onChange={() => setFooter(!footer)}/>
-            <Switch 
-                color="primary" 
-                check={bordered}
-                className="my-10"
-                rightLabel="Bordered"
-                onChange={() => setBordered(!bordered)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={indexed}
-                className="my-10"
-                rightLabel="Set index"
-                onChange={() => setIndexed(!indexed)}/>
-            <Switch 
-                color="primary" 
-                check={searchable}
-                className="my-10"
-                rightLabel="Searchable"
-                onChange={() => setSearchable(!searchable)}/>
-            <Switch 
-                color="primary" 
-                check={controls}
-                className="my-10"
-                rightLabel="Controls"
-                onChange={() => setControls(!controls)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={hover}
-                className="my-10"
-                rightLabel="No Hover"
-                onChange={() => setHover(!hover)}/>
-            <Switch 
-                color="primary" 
-                check={sortable}
-                className="my-10"
-                rightLabel="Sortable"
-                onChange={() => setSortable(!sortable)}/>
-            <Switch 
-                color="primary" 
-                check={pagination}
-                className="my-10"
-                rightLabel="Pagination"
-                onChange={() => setPagination(!pagination)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={loading}
-                className="my-10"
-                rightLabel="Loading"
-                onChange={() => setLoading(!loading)}/>
-            <br/>
+        <>
             <Table
-                noHover={hover}
-                pagination={pagination}
+                pagination
                 paginationPosition="right"
                 itemsTotal={goods.length}
-                stripped={stripped}
-                grid={grid}
-                index={indexed}
-                sortable={sortable}
-                tableTitle={title ? 'Table title' : ''}
-                alignment={textAlign}
-                searchable={searchable}
-                searchKey="name"
+                stripped
+                index
+                sortable
                 selectKey="name"
-                checkbox={checkbox}
+                checkbox
                 onSelect={(selected) => console.log(selected)}
-                color={color}
-                loading={loading}
-                bordered={bordered}
+                color="primary"
                 headers={['Name', 'Price', 'Count']}
                 items={goods}
-                footer={footer ? <div>Total count: <strong>{goods.length}</strong></div> : null}
                 itemTitles={['name', 'price', 'count']}
                 controls={(item) =>
                     controls ? 
@@ -352,7 +234,7 @@ function Example() {
                     </div> : null
                 }
                 />
-        </div>
+        </>
     )
 }`
 
@@ -373,15 +255,12 @@ const TablePage = () => {
     const [color, setColor] = useState(colors[0]);
     const [grid, setGrid] = useState(false);
     const [checkbox, setCheckbox] = useState(false);
-    const [footer, setFooter] = useState(true);
-    const [bordered, setBordered] = useState(false);
+    const [bordered, setBordered] = useState(true);
     const [indexed, setIndexed] = useState(true);
     const [searchable, setSearchable] = useState(false);
     const [sortable, setSortable] = useState(true);
-    const [loading, setLoading] = useState(false);
-    const [controls, setControls] = useState(false);
     const [title, setTitle] = useState(false);
-    const [stripped, setStripped] = useState(true);
+    const [stripped, setStripped] = useState(false);
     const [hover, setHover] = useState(true);
     const [pagination, setPagination] = useState(true);
     const [textAlign, setTextAlign] = useState(textAligns[0]);
@@ -436,12 +315,6 @@ const TablePage = () => {
                         onChange={() => setTitle(!title)}/>
                     <Switch 
                         color="primary" 
-                        check={footer}
-                        className="my-10"
-                        rightLabel="Footer"
-                        onChange={() => setFooter(!footer)}/>
-                    <Switch 
-                        color="primary" 
                         check={bordered}
                         className="my-10"
                         rightLabel="Bordered"
@@ -459,12 +332,6 @@ const TablePage = () => {
                         className="my-10"
                         rightLabel="Searchable"
                         onChange={() => setSearchable(!searchable)}/>
-                    <Switch 
-                        color="primary" 
-                        check={controls}
-                        className="my-10"
-                        rightLabel="Controls"
-                        onChange={() => setControls(!controls)}/>
                     <br/>
                     <Switch 
                         color="primary" 
@@ -484,13 +351,6 @@ const TablePage = () => {
                         className="my-10"
                         rightLabel="Pagination"
                         onChange={() => setPagination(!pagination)}/>
-                    <br/>
-                    <Switch 
-                        color="primary" 
-                        check={loading}
-                        className="my-10"
-                        rightLabel="Loading"
-                        onChange={() => setLoading(!loading)}/>
                     <div className="row justify-end">
                         <ButtonGroup 
                             default={0} 
@@ -511,7 +371,7 @@ const TablePage = () => {
                         dark={theme}
                         index={indexed}
                         sortable={sortable}
-                        tableTitle={title ? 'Table title' : ''}
+                        tableTitle={title ? <h2>Table title</h2> : ''}
                         alignment={textAlign}
                         searchable={searchable}
                         searchKey="name"
@@ -519,35 +379,10 @@ const TablePage = () => {
                         checkbox={checkbox}
                         onSelect={(selected) => console.log(selected)}
                         color={color}
-                        loading={loading}
                         bordered={bordered}
                         headers={['Name', 'Price', 'Count']}
                         items={goods}
-                        footer={footer ? <div>Total count: <strong>{goods.length}</strong></div> : null}
-                        itemTitles={['name', 'price', 'count']}
-                        controls={(item) =>
-                            controls ? 
-                            <div className="row justify-center align-center">
-                                <Tooltip tooltip="Edit">
-                                    <Button
-                                        small
-                                        color="light"
-                                        className="mr-10"
-                                        icon="edit"
-                                        onClick={() => console.log(item, 'edited')}>
-                                    </Button>
-                                </Tooltip>
-                                <Tooltip tooltip="Delete">
-                                    <Button
-                                        small
-                                        color="light"
-                                        icon="delete"
-                                        onClick={() => console.log(item, 'deleted')}>
-                                    </Button> 
-                                </Tooltip>
-                            </div> : null
-                        }
-                        />
+                        itemTitles={['name', 'price', 'count']}/>
                 </Page>
             )}
         </ThemeContext.Consumer>

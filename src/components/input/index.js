@@ -116,7 +116,7 @@ const InputField = (props) => {
 
     return (
         <div className={inputFieldClass()} 
-            style={{ width: props.width ? props.width : ''}}>
+            style={props.style}>
             {props.label ? 
             <label className={focus ? 'active' : ''} 
                 onClick={() => input.current.focus()}>{props.required ? <span className="text-error">*</span> : ''} {props.label}</label> 
@@ -159,7 +159,7 @@ const InputField = (props) => {
                     <Icon 
                         className="rui-input-clear"
                         color={props.dark ? 'lightgray' : ''}
-                        name={isPassword ? 'eye' : 'eye-off'} 
+                        name={isPassword ? 'eye-off' : 'eye'} 
                         onClick={handlePassTypeChange}/> : '')
                 }
             </div>
@@ -191,7 +191,7 @@ InputField.propTypes = {
     size: PropTypes.oneOf([undefined,'','default','medium','large']),
     prefix: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
     suffix: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
-    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    style: PropTypes.any,
     min: PropTypes.number,
     max: PropTypes.number,
     maxLength: PropTypes.number,

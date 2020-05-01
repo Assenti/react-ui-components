@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Select } from '../index';
 import { ChevronBack, ChevronNext } from '../icon/icons/index';
+import { strinfigyClassObject } from '../utils';
 
 const generateMockArr = (pages, perPage) => {
     let length = Math.ceil(pages/perPage);
@@ -15,22 +16,14 @@ const generateMockArr = (pages, perPage) => {
 }
 
 const Pagination = (props) => {
-    const className = () => {
-        let result = '';
-        let className = {
-            btn: 'rui-pagination',
-            size: props.size ? props.size : '',
-            borderType: props.borderType ? props.borderType : '',
-            dark: props.dark ? 'dark' : '',
-            dense: props.dense ? 'dense' : '',
-            color: props.color ? props.color : 'primary',
-            className: props.className ? props.className : ''
-        }
-        
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        btn: 'rui-pagination',
+        size: props.size ? props.size : '',
+        borderType: props.borderType ? props.borderType : '',
+        dark: props.dark ? 'dark' : '',
+        dense: props.dense ? 'dense' : '',
+        color: props.color ? props.color : 'primary',
+        className: props.className ? props.className : ''
     }
     const { itemsCount, perPage, onChange, onPerPageSelect } = props;
     const getLimit = () => Math.ceil(itemsCount/perPage) >= 5 ? 5 : Math.ceil(itemsCount/perPage);
@@ -95,7 +88,7 @@ const Pagination = (props) => {
     }, [perPage, itemsCount])
 
     return (
-        <div className={className()}>
+        <div className={strinfigyClassObject(className)}>
             <div className={isPrevAvailable() ? 'rui-pagination-item' : 'rui-pagination-item disabled'} 
                 onClick={handleOnPrev}>
                 <ChevronBack/>

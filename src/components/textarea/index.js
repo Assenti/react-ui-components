@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const TextareaField = (props) => {
     const input = useRef(null);
@@ -22,23 +23,15 @@ const TextareaField = (props) => {
         }
     }
 
-    const componentClass = () => {
-        let result = '';
-        let className = {
-            input: 'rui-input-field',
-            whiteBackground: props.whiteBackground ? 'white-background' : '',
-            borderType: props.borderType && props.borderType !== 'rounded' ? props.borderType : '',
-            lifted: props.lifted ? 'lifted' : '',
-            dark: props.dark ? 'dark' : '',
-            color: getInputColor(),
-            disabled: props.disabled ? 'disabled' : '',
-            className: props.className ? props.className : ''
-        }
-        
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        input: 'rui-input-field',
+        whiteBackground: props.whiteBackground ? 'white-background' : '',
+        borderType: props.borderType && props.borderType !== 'rounded' ? props.borderType : '',
+        lifted: props.lifted ? 'lifted' : '',
+        dark: props.dark ? 'dark' : '',
+        color: getInputColor(),
+        disabled: props.disabled ? 'disabled' : '',
+        className: props.className ? props.className : ''
     }
 
     const handleFocus = (e) => {
@@ -104,7 +97,7 @@ const TextareaField = (props) => {
     }, [props.value])
 
     return (
-        <div className={componentClass()} style={{ width: props.width ? props.width : ''}}>
+        <div className={strinfigyClassObject(className)} style={{ width: props.width ? props.width : ''}}>
             {props.label ? 
             <label className={focus ? 'active' : ''} 
                 onClick={() => input.current.focus()}>{props.required ? <span className="text-error">*</span> : ''} {props.label}</label> 

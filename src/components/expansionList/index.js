@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const ExpansionList = (props) => {
     const prepareItems = (initial) => {
@@ -17,23 +18,16 @@ const ExpansionList = (props) => {
         return items;
     }
 
+    let className = {
+        name: 'rui-expansion-list',
+        size: props.size ? props.size : '',
+        dark: props.dark ? 'dark' : '',
+        reverse: props.reverse ? 'reverse' : '',
+        className: props.className ? props.className : ''
+    }
+
     const [localItems, setLocalItems] = useState(prepareItems(props.items));
     const [active, setActive] = useState('');
-
-    const className = () => {
-        let result = '';
-        let className = {
-            name: 'rui-expansion-list',
-            size: props.size ? props.size : '',
-            dark: props.dark ? 'dark' : '',
-            reverse: props.reverse ? 'reverse' : '',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
-    }
 
     const handleClick = (item, index) => {
         if (props.accordion) {
@@ -92,7 +86,7 @@ const ExpansionList = (props) => {
     }
 
     return (
-        <div className={className()} 
+        <div className={strinfigyClassObject(className)} 
             style={{ 
                 width: props.width ? props.width : '' 
             }}>

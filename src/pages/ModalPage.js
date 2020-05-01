@@ -5,80 +5,23 @@ import Page from '../layouts/Page';
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Button, Modal, Checkbox, InputField, Switch } from '@assenti/rui-components';
+import { Button, Modal } from '@assenti/rui-components';
 
 function Example() {
     const [modal, setModal] = useState(false);
-    const [reversed, setReversed] = useState(false);
-    const [closable, setClosable] = useState(false);
-    const [centered, setCentered] = useState(false);
-    const [fullScreen, setFullScreen] = useState(false);
 
     return (
         <>
-            <Switch 
-                color="primary" 
-                check={reversed}
-                rightLabel="Reversed header"
-                className="pl-10 my-10"
-                onChange={() => setReversed(!reversed)}/>
-            <Switch 
-                color="primary" 
-                check={closable}
-                rightLabel="Close on background"
-                className="pl-10 my-10"
-                onChange={() => setClosable(!closable)}/>
-            <br/>
-            <Switch 
-                color="primary" 
-                check={centered}
-                rightLabel="Centered"
-                className="pl-10 my-10"
-                onChange={() => setCentered(!centered)}/>
-            <Switch 
-                color="primary" 
-                check={fullScreen}
-                rightLabel="With full screen option"
-                className="pl-10 my-10"
-                onChange={() => setFullScreen(!fullScreen)}/>
-            <Divider/>
-            <br/>
             <Button
                 color="primary"
                 name="Open Modal"
                 onClick={() => setModal(true)}/>
             <Modal
-                closable={closable}
-                dark={theme}
-                centered={centered}
-                toggleFullscreen={fullScreen}
+                centered
                 onClose={() => setModal(false)} 
                 visible={modal} 
                 header={<div>Sign in</div>}>
-                <div className="pa-10">
-                    <InputField
-                        className="my-15 mx-0"
-                        dark={theme}
-                        prefix={<Icon name="account" />} 
-                        placeholder="Login"/>
-                    <InputField
-                        className="my-15 mx-0"
-                        dark={theme}
-                        prefix={<Icon name="key" />} 
-                        placeholder="Password"
-                        type="password"/>
-                    <Checkbox
-                        className="my-15 mx-0" 
-                        color="primary" 
-                        label="Remember me?"/>
-                    <Button 
-                        className="my-15 mx-0"
-                        color="primary" 
-                        name="Sign in" block/>
-                    <div className="fz-9 rui-link text-center py-10">
-                        Dont't have an account?
-                    </div>
-                </div>
+                content...
             </Modal>
         </>
     )

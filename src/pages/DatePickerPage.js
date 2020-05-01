@@ -149,64 +149,22 @@ const rows = [
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { DatePicker, Select, Icon, Divider } from '@assenti/react-ui-components';
-const colors = ['primary', 'info', 'success', 'error'];
-const sizes = ['default', 'medium', 'large'];
-const locales = ['en', 'kz', 'ru'];
+import { DatePicker } from '@assenti/react-ui-components';
 
 function Example() {
     const [date, setDate] = useState('');
     const [dateOriginal, setDateOriginal] = useState('');
-    const [color, setColor] = useState('primary');
-    const [size, setSize] = useState('default');
-    const [locale, setLocale] = useState('en');
 
     return (
         <>
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                dark={theme}
-                label="Color"
-                color="primary"
-                className="my-5"
-                value={color}
-                onChange={v => setColor(v)}/>
-            <br/>
-            <Select
-                items={sizes}
-                prefix={<Icon name="format-size"/>}
-                width={200}
-                label="Size"
-                dark={theme}
-                color="primary"
-                className="my-5"
-                value={size}
-                onChange={v => setSize(v)}/>
-            <br/>
-            <Select
-                items={locales}
-                prefix={<Icon name="translate"/>}
-                width={200}
-                label="Locale"
-                dark={theme}
-                color="primary"
-                value={locale}
-                onChange={v => setLocale(v)}/>
-            <br/>
-            <Divider/>
             <DatePicker
-                color={color}
-                size={size}
-                locale={locale}
+                color="primary"
                 placeholder="DD.MM.YYYY"
                 value={date}
                 clearable
                 dark={theme}
                 maxDate={new Date()}
                 onDate={(date) => {
-                    console.log(date)
                     setDate(dateMask(date))
                     setDateOriginal(date)
                 }}

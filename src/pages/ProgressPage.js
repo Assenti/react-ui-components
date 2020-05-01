@@ -94,104 +94,26 @@ const sizes = ['default', 'medium', 'large'];
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Progress, Switch, Select, Icon, Button, Tooltip } from '@assenti/rui-components';
-const colors = ['primary', 'info', 'success', 'error', 'dark'];
-const sizes = ['default', 'medium', 'large'];
+import { Progress } from '@assenti/rui-components';
 
 function Example() {
-    const [color, setColor] = useState(colors[0]);
-    const [size, setSize] = useState(sizes[0]);
     const [complete, setComplete] = useState(20);
-    const [hideState, setHideState] = useState(false);
-    const [disabled, setDisabled] = useState(false);
-    const [active, setActive] = useState(false);
 
     return (
-        <div>
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                label="Radio button color"
+        <>
+            <Progress
                 color="primary"
-                value={color}
-                onChange={v => setColor(v)}/>
-            <br/>
-            <Select
-                items={sizes}
-                prefix={<Icon name="format-size"/>}
-                width={200}
-                label="Radio button size"
-                color="primary"
-                value={size}
-                onChange={v => setSize(v)}/>
-            <br/>
-            <Switch
-                check={hideState}
-                rightLabel="Hide state"
-                color="primary"
-                className="my-10"
-                onChange={() => setHideState(!hideState)}/>
-            <Switch
-                check={disabled}
-                rightLabel="Disabled"
-                color="primary"
-                className="my-10"
-                onChange={() => setDisabled(!disabled)}/>
-            <Switch
-                check={active}
-                rightLabel="Active"
-                color="primary"
-                className="my-10"
-                onChange={() => setActive(!active)}/>
-            <br/>
-            <div className="row align-center my-10">
-                <Tooltip 
-                    tooltip="Reduce progress" 
-                    color="error"
-                    className="mr-20">
-                    <Button 
-                        icon="minus" 
-                        color="error"
-                        disabled={complete === 0}
-                        onClick={() => {
-                            if (complete > 0) setComplete(complete - 10)
-                        }}/>
-                </Tooltip>
-                <Progress
-                    color={color}
-                    size={size}
-                    active={active}
-                    icon={complete === 100 ? 'check-circle' : null}
-                    iconColor="#1aaa55" 
-                    hideState={hideState}
-                    disabled={disabled}
-                    complete={complete}/>
-                <Tooltip 
-                    tooltip="Add progress" 
-                    color="primary"
-                    className="ml-20">
-                    <Button 
-                        icon="plus" 
-                        color="primary"
-                        disabled={complete === 100}
-                        onClick={() => {
-                            if (complete < 100) setComplete(complete + 10)
-                        }}/>
-                </Tooltip>
-            </div>
+                icon={complete === 100 ? 'check-circle' : null}
+                iconColor="#1aaa55" 
+                complete={complete}/>
             <Progress
                 circle
                 className="my-10"
-                color={color}
-                size={size}
-                active={active}
+                color="primary"
                 icon={complete === 100 ? 'check-circle' : null}
                 iconColor="#1aaa55"
-                hideState={hideState}
-                disabled={disabled}
                 complete={complete}/>
-        </div>
+        </>
     )
 }`
 

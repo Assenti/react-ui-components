@@ -2,37 +2,23 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { Icon } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const Tabs = (props) => {
     const [active, setActive] = useState(props.defaultTab ? props.defaultTab : 0);
     const [activeClass, setActiveClass] = useState('rui-tabs-next');
-
-    const tabsClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-tabs',
-            pos: props.position && props.position !== 'default' ? props.position : '',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-tabs',
+        pos: props.position && props.position !== 'default' ? props.position : '',
+        className: props.className ? props.className : ''
     }
 
-    const tabsHeaderClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-tabs__header',
-            color: props.color ? props.color : 'primary',
-            size: props.size && props.size !== 'default' ? props.size : '',
-            centered: props.centered ? 'center' : '',
-            stretch: props.stretch ? 'stretch' : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let classNameHeader = {
+        name: 'rui-tabs__header',
+        color: props.color ? props.color : 'primary',
+        size: props.size && props.size !== 'default' ? props.size : '',
+        centered: props.centered ? 'center' : '',
+        stretch: props.stretch ? 'stretch' : ''
     }
 
     const getIconColor = (isActive) => {
@@ -51,8 +37,8 @@ const Tabs = (props) => {
     }
 
     return (
-        <div className={tabsClass()}>
-            <div className={tabsHeaderClass()}>
+        <div className={strinfigyClassObject(className)}>
+            <div className={strinfigyClassObject(classNameHeader)}>
                 {props.tabs.map((item, index) => 
                     <div 
                         key={index}

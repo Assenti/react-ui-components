@@ -1,24 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const Badge = (props) => {
-    const badgeClass = () => {
-        let result = '';
-        let className = {
-            btn: 'rui-badge-container',
-            rounded: props.rounded ? 'rounded' : '',
-            color: props.color ? props.color : 'secondary',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        btn: 'rui-badge-container',
+        rounded: props.rounded ? 'rounded' : '',
+        color: props.color ? props.color : 'secondary',
+        className: props.className ? props.className : ''
     }
 
     return (
-        <div className={badgeClass()}>
+        <div className={strinfigyClassObject(className)}
+            onClick={(e) => props.onClick ? props.onClick(e) : {}}>
             {props.parent}
             <div className={!props.visible ? 'rui-badge' : 'rui-badge hide'}>
                 {!props.visible && !props.icon ? props.value : ''}
@@ -33,14 +28,12 @@ const Badge = (props) => {
 }
 Badge.propTypes = {
     rounded: PropTypes.bool,
+    onClick: PropTypes.func,
     icon: PropTypes.string,
     color: PropTypes.oneOf([undefined,'','primary','info','success','error','dark','secondary']),
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     visible: PropTypes.bool,
     parent: PropTypes.node,
     className: PropTypes.string
-}
-Badge.defaultProps = {
-    color: 'secondary'
 }
 export default Badge;

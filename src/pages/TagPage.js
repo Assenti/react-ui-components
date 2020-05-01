@@ -67,14 +67,7 @@ const items = [
         value: 'home | search | etc. (see icon names list in docs)'
     },
     { 
-        property: 'width',
-        description: 'Set a tag width', 
-        default: '', 
-        type: 'string | number',
-        value: ''
-    },
-    { 
-        property: 'setRef',
+        property: 'ref',
         description: 'Set ref', 
         default: '', 
         type: 'React.RefObject',
@@ -102,6 +95,13 @@ const items = [
         value: ''
     },
     { 
+        property: 'style',
+        description: 'Set a custom inline styles', 
+        default: '', 
+        type: 'object',
+        value: ''
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 
@@ -112,92 +112,16 @@ const items = [
 
 const usage =
 `// Usage examples
-import React, { useState } from 'react';
-import { Tag, Switch, Select, Icon } from '@assenti/react-ui-components';
-
-const colors = ['primary', 'info', 'success', 'error', 'dark', 'yellow'];
-const borders = ['default', 'smooth', 'rounded', 'tile'];
+import React from 'react';
+import { Tag } from '@assenti/react-ui-components';
 
 function Example() {
-    const [visible, setVisible] = useState(true);
-    const [outlined, setOutlined] = useState(false);
-    const [small, setSmall] = useState(false);
-    const [closable, setClosable] = useState(false);
-    const [lifted, setLifted] = useState(false);
-    const [icon, setIcon] = useState(false);
-    const [color, setColor] = useState(colors[0]);
-    const [borderType, setBorderType] = useState(borders[0]);
-
     return (
-        <div className="row column py-10">
-            <Switch 
-                color="primary" 
-                check={outlined}
-                rightLabel="Outlined" 
-                className="my-10"
-                onChange={() => setOutlined(!outlined)}/>
-            <Switch 
-                color="primary" 
-                check={small}
-                rightLabel="Small" 
-                className="my-10"
-                onChange={() => setSmall(!small)}/>
-            <Switch 
-                color="primary" 
-                check={closable}
-                rightLabel="Closable" 
-                className="my-10"
-                onChange={() => setClosable(!closable)}/>
-            <Switch 
-                color="primary" 
-                check={icon}
-                rightLabel="Icon" 
-                className="my-10"
-                onChange={() => setIcon(!icon)}/>
-            <Switch 
-                color="primary" 
-                check={lifted}
-                rightLabel="Lifted" 
-                className="my-10"
-                onChange={() => setLifted(!lifted)}/>
-        </div>
-        <div className="row align-center pb-10">
-            <Select
-                items={colors}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                label="Color"
-                color="primary"
-                value={color}
-                className="mr-10"
-                onChange={v => setColor(v)}/>
-            <Select
-                items={borders}
-                prefix={<Icon name="shape"/>}
-                width={200}
-                label="Border type"
-                color="primary"
-                value={borderType}
-                onChange={v => setBorderType(v)}/>
-        </div>
-        <div className="row align-center">
+        <>
             <Tag 
                 value="Price: 1000"
-                outlined={outlined} 
-                color={color}
-                small={small}
-                borderType={borderType}
-                iconLeft={icon ? 'tenge' : ''}
-                closable={closable}
-                visible={visible}
-                lifted={lifted}
-                onClose={() => setVisible(false)}/>
-            {closable ? <Button 
-                name="Return Tag" 
-                color="info" 
-                className="ml-20" 
-                onClick={() => setVisible(true)}/> : ''}
-        </div>
+                color="primary"/>
+        </>
     )
 }`
 
@@ -274,6 +198,7 @@ const TagPage = () => {
                         value={color}
                         className="mr-10"
                         onChange={v => setColor(v)}/>
+                    <br/>
                     <br/>
                     <Select
                         items={borders}

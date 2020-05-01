@@ -78,72 +78,21 @@ const items = [
 const usage = 
 `// Usage examples
 import React, { useState } from 'react';
-import { PopOver, Button, Select, Icon, Switch } from '@assenti/react-ui-components';
-const positions = ['left', 'top', 'bottom', 'right'];
+import { PopOver, Button } from '@assenti/react-ui-components';
 
 function Example() {
-    const [visible, setVisible] = useState(false);
-    const [trigger, setTrigger] = useState(false);
-    const [control, setControl] = useState(false);
-    const [position, setPosition] = useState(positions[0]);
-
     return (
-        <div>
-            <Select
-                items={positions}
-                prefix={<Icon name="chart-ppf"/>}
-                width={200}
-                label="PopOver position"
-                color="primary"
-                className="my-10"
-                value={position}
-                onChange={v => setPosition(v)}/>
-            <br/>
-            <Switch 
-                check={trigger} 
-                color="primary"
-                leftLabel="Hover" 
-                rightLabel="Click" 
-                className="my-10"
-                onChange={() => setTrigger(!trigger)}/>
-            <br/>
-            <Switch 
-                check={control} 
-                color="primary"
-                rightLabel="Control state" 
-                className="my-10"
-                onChange={() => setControl(!control)}/>
-            <div className="row justify-center py-30">
-                <PopOver 
-                    title="Quit"
-                    trigger={trigger ? 'click' : 'hover'}
-                    position={position}
-                    control={control}
-                    visible={visible}
-                    onClose={() => setVisible(false)}
-                    content={
-                        <div>
-                            <p>Are are sure?</p>
-                            <div className="row align-center justify-center">
-                                <Button 
-                                    name="Nope" 
-                                    color="secondary" 
-                                    className="mr-5"
-                                    onClick={() => console.log('Nope!')}/>
-                                <Button 
-                                    name="Yeap" 
-                                    color="primary" 
-                                    onClick={() => console.log('Yeap!')}/>
-                            </div>
-                        </div>
-                    }>
-                    <Button
-                        onClick={() => control ? setVisible(true) : {}} 
-                        name="Get started" 
-                        color="primary"/>
-                </PopOver>
-            </div>
-        </div>
+        <>
+            <PopOver 
+                title="Quit"
+                content={
+                    content...
+                }>
+                <Button
+                    name="Get started" 
+                    color="primary"/>
+            </PopOver>
+        </>
     )
 }`
 const positions = ['left', 'top', 'bottom', 'right'];

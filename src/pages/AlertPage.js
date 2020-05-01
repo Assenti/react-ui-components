@@ -51,42 +51,18 @@ const items = [
 const usage =
 `// Usage example
 import React, { useState } from 'react';
-import { Alert, Select, Icon, Switch } from '../components';
-const statuses = ['info', 'success', 'error', 'warning'];
+import { Alert } from '@assenti/rui-components';
 
 function Example() {
-    const [status, setStatus] = useState('info');
     const [visible, setVisible] = useState(true);
-    const message = 'Alert title';
-    const text = 'Alert description text';
 
     return (
         <>
-            <Select
-                items={statuses}
-                prefix={<Icon name="brush"/>}
-                width={200}
-                label="Alert status"
-                color="primary"
-                className="my-10"
-                value={status}
-                onChange={v => setStatus(v)}/>
-            <br/>
-            <Switch
-                color="primary"
-                check={visible}
-                leftLabel="Close"
-                className="mt-10 mb-20"
-                rightLabel="Open"
-                onChange={() => setVisible(!visible)}
-                />
-            <br/>
             <Alert
                 visible={visible} 
-                message={message} 
-                text={text}
-                onClose={() => setVisible(false)}
-                status={status}/>
+                message="Alert title" 
+                text="Alert description text"
+                onClose={() => setVisible(false)}/>
         </>
     )
 }`

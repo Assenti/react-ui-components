@@ -32,15 +32,11 @@
         }
     }
 
-    .rui-table__title {
-        padding: 10px;
-        font-size: 1.1rem;
-        font-weight: 600;
-    }
-
     &.bordered {
-        border: 1px solid lightgray;
-        overflow: auto;
+        .rui-table {
+            border: 1px solid lightgray;
+            overflow: auto;
+        }
     }
 
     .rui-pagination {
@@ -138,24 +134,10 @@
             }
         }
 
-        .rui-table__placeholder.loading {
-            path {
-                fill: $primary;
-            }
-        }
-
         th.indexed,
         td.indexed {
             background-color: $primary;
             color: #fff;
-        }
-
-        .rui-table__placeholder {        
-            &.loading {
-                path {
-                    fill: $primary;
-                }
-            }
         }
     }
 
@@ -171,24 +153,10 @@
             }
         }
 
-        .rui-table__placeholder.loading {
-            path {
-                fill: $info;
-            }
-        }
-
         th.indexed,
         td.indexed {
             background-color: $info;
             color: #fff;
-        }
-
-        .rui-table__placeholder {        
-            &.loading {
-                path {
-                    fill: $info;
-                }
-            }
         }
     }
 
@@ -204,24 +172,10 @@
             }
         }
 
-        .rui-table__placeholder.loading {
-            path {
-                fill: $success;
-            }
-        }
-
         th.indexed,
         td.indexed {
             background-color: $success;
             color: #fff;
-        }
-
-        .rui-table__placeholder {        
-            &.loading {
-                path {
-                    fill: $success;
-                }
-            }
         }
     }
 
@@ -237,24 +191,10 @@
             }
         }
 
-        .rui-table__placeholder.loading {
-            path {
-                fill: $error;
-            }
-        }
-
         th.indexed,
         td.indexed {
             background-color: $error;
             color: #fff;
-        }
-
-        .rui-table__placeholder {        
-            &.loading {
-                path {
-                    fill: $error;
-                }
-            }
         }
     }
 
@@ -303,23 +243,9 @@
             }
         }
 
-        .rui-table__placeholder.loading {
-            path {
-                fill: #ccc;
-            }
-        }
-
         td.indexed:not(:first-child),
         td:not(:first-child) {
             color: #fff;
-        }
-
-        .rui-table__placeholder {        
-            &.loading {
-                path {
-                    fill: #fff;
-                }
-            }
         }
     }
 }
@@ -541,13 +467,6 @@
     }
 }
 
-.rui-table__footer {
-    background-color: $lightgray;
-    padding: 10px;
-    border-bottom-left-radius: $radius;
-    border-bottom-right-radius: $radius;
-}
-
 .rui-table__placeholder {
     position: absolute;
     top: 70px;
@@ -560,11 +479,5 @@
 
     path {
         fill: $lightgray;
-    }
-
-    &.loading {
-        path {
-            fill: lightgray;
-        }
     }
 }

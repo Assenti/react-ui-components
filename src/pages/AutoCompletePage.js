@@ -55,15 +55,8 @@ const rows = [
         value: 'medium | large'
     },
     { 
-        property: 'maxHeight', 
-        description: 'Set dropdown list max height', 
-        default: '', 
-        type: 'string | number',
-        value: ''
-    },
-    { 
-        property: 'width', 
-        description: 'Set width', 
+        property: 'contentMaxHeight', 
+        description: 'Set dropdown content max height (if set overflow-y: auto enabled)', 
         default: '', 
         type: 'string | number',
         value: ''
@@ -160,6 +153,13 @@ const rows = [
         value: 'true | false'
     },
     { 
+        property: 'style',
+        description: 'Set a custom inline styles', 
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 
@@ -193,7 +193,10 @@ function Example() {
         <>
             <AutoComplete
                 items={countries}
+                style={{ width: 300 }}
+                contentMaxHeight={300}
                 itemKey="country"
+                color="primary"
                 label="Countries"
                 placeholder="Choose your favourive country"
                 onItemClick={item => setCountry(item.country)}
@@ -207,7 +210,8 @@ function Example() {
                     <div className="text-right fz-8 text-info px-10 py-15">
                         {filteredLength} results
                     </div>}
-                prefix={<Icon name="earth"/>}/>
+                prefix={<Icon name="earth"/>}
+                suffix={<Icon name="chevron-down"/>}/>
         </>
     )
 }`
@@ -329,7 +333,7 @@ const AutoCompletePage = () => {
                     <Switch 
                         check={maxHeight} 
                         color="primary"
-                        rightLabel="Set max height" 
+                        rightLabel="Set content max height (in this exmaple: 200px)" 
                         className="my-10"
                         onChange={() => setMaxHeight(!maxHeight)}/>
                     <br/>
@@ -342,9 +346,9 @@ const AutoCompletePage = () => {
                     <Divider/>
                     <AutoComplete
                         items={countries}
-                        width={250}
+                        style={{ width: 300 }}
                         dark={theme}
-                        maxHeight={maxHeight ? 200 : null}
+                        contentMaxHeight={maxHeight ? 200 : null}
                         itemKey="country"
                         iconKey={type === 'icon' ? 'icon' : null}
                         avatarKey={type === 'image' ? wordlImage : null}

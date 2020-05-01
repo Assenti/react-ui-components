@@ -1,25 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Checkbox, Tooltip } from '../index';
+import { strinfigyClassObject } from '../utils';
 
 const ListItem = (props) => {
-    const className = () => {
-        let result = '';
-        let className = {
-            item: 'rui-list-item',
-            roundedActive: props.roundedActive ? 'rounded' : '',
-            right: props.leftBorder ? 'left' : 'right',
-            active: props.isActiveItem ? 'active' : '',
-            color: props.color ? props.color : 'primary',
-            hover: props.hover ? 'hover' : '',
-            noDivider: props.noDivider ? '' : 'divider',
-            className: props.className ? props.className : ''
-        }
-
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        item: 'rui-list-item',
+        roundedActive: props.roundedActive ? 'rounded' : '',
+        right: props.leftBorder ? 'left' : 'right',
+        active: props.isActiveItem ? 'active' : '',
+        color: props.color ? props.color : 'primary',
+        hover: props.hover ? 'hover' : '',
+        noDivider: props.noDivider ? '' : 'divider',
+        className: props.className ? props.className : ''
     }
 
     const handleClick = (e) => {
@@ -33,7 +26,7 @@ const ListItem = (props) => {
     return (
         <div onClick={handleClick}
             tabIndex={props.tabIndex} 
-            className={className()}
+            className={strinfigyClassObject(className)}
             style={{ width: props.width ? props.width : ''}}>
             {!props.render ?
                 <>

@@ -108,7 +108,11 @@ import {
     CheckList,
     AccountGroup,
     ArrowUp,
-    ArrowDown
+    ArrowDown,
+    DashboardOutline,
+    ChartBar,
+    ChartPie,
+    CharDonut
 } from './icons/index';
 
 const Icon = (props) => {
@@ -331,6 +335,14 @@ const Icon = (props) => {
                 return <ArrowUp {...props}/>;
             case 'arrow-down':
                 return <ArrowDown {...props}/>;
+            case 'dashboard-outline':
+                return <DashboardOutline {...props}/>;
+            case 'chart-bar':
+                return <ChartBar {...props}/>;
+            case 'chart-pie':
+                return <ChartPie {...props}/>;
+            case 'chart-donut':
+                return <CharDonut {...props}/>;
             default:
                 return '';
         }

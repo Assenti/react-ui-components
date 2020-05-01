@@ -72,72 +72,25 @@ const colors = ['yellow', 'primary', 'info', 'success', 'error'];
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Card, Rating, Switch, InputField, Select, Icon } from '@assenti/rui-components';
-const colors = ['yellow', 'primary', 'info', 'success', 'error'];
+import { Rating } from '@assenti/rui-components';
 
 function Example() {
-    const [disabled, setDisabled] = useState(false);
     const [count, setCount] = useState(5);
     const [rate, setRate] = useState(3.5);
-    const [color, setColor] = useState(colors[0]);
-    const [hide, setHide] = useState(false);
 
     return (
-        <div>
-            <div className="row column">
-                <InputField
-                    width={100} 
-                    value={count}
-                    type="number"
-                    min={0}
-                    label="Rating scale"
-                    placeholder="Define stars count" 
-                    onChange={e => setCount(e.target.value)}/>
-                <InputField
-                    width={100} 
-                    value={rate}
-                    type="number"
-                    min={0}
-                    label="Current rate"
-                    placeholder="Define rate" 
-                    onChange={e => setRate(e.target.value)}/>
-                <div style={{ width: 100 }}>
-                    <Select
-                        items={colors}
-                        prefix={<Icon name="brush"/>}
-                        width={100}
-                        className="mx-5"
-                        label="Color theme"
-                        color="primary"
-                        value={color}
-                        onChange={v => setColor(v)}/>
-                </div>
-                <Switch 
-                    color="primary" 
-                    check={disabled}
-                    className="my-10"
-                    rightLabel="Disabled"
-                    onChange={() => setDisabled(!disabled)}/>
-                <Switch 
-                    color="primary" 
-                    check={hide}
-                    className="my-10"
-                    rightLabel="Hide rate"
-                    onChange={() => setHide(!hide)}/>
-            </div>
+        <>
             <Rating
                 className="pa-10"
                 text="Your Rate"
-                hideRate={hide}
                 rate={rate}
-                color={color}
+                color="primary"
                 onChange={(rated) => {
                     console.log(rated)
                     setRate(rated)
                 }}
-                disabled={disabled} 
                 count={count}/>
-        </div>
+        </>
     )
 }`
 
@@ -155,50 +108,51 @@ const RatingPage = () => {
                     usage={usage}
                     apiDescItems={rows}
                     componentName="<Rating/>">
-                    <div className="row column">
-                        <InputField
-                            width={100} 
-                            value={count}
-                            type="number"
-                            min={0}
-                            dark={theme}
-                            label="Rating scale"
-                            placeholder="Define stars count" 
-                            onChange={e => setCount(e.target.value)}/>
-                        <InputField
-                            width={100} 
-                            value={rate}
-                            type="number"
-                            min={0}
-                            dark={theme}
-                            label="Current rate"
-                            placeholder="Define rate" 
-                            onChange={e => setRate(e.target.value)}/>
-                        <div style={{ width: 100 }}>
-                            <Select
-                                items={colors}
-                                prefix={<Icon name="brush"/>}
-                                width={100}
-                                dark={theme}
-                                className="mx-5"
-                                label="Color theme"
-                                color="primary"
-                                value={color}
-                                onChange={v => setColor(v)}/>
-                        </div>
-                        <Switch 
-                            color="primary" 
-                            check={disabled}
-                            className="my-10"
-                            rightLabel="Disabled"
-                            onChange={() => setDisabled(!disabled)}/>
-                        <Switch 
-                            color="primary" 
-                            check={hide}
-                            className="my-10"
-                            rightLabel="Hide rate"
-                            onChange={() => setHide(!hide)}/>
-                    </div>
+                    <InputField
+                        style={{ width: 100 }} 
+                        value={count}
+                        type="number"
+                        min={0}
+                        dark={theme}
+                        label="Rating scale"
+                        placeholder="Define stars count" 
+                        onChange={e => setCount(e.target.value)}/>
+                    <br/>
+                    <br/>
+                    <InputField
+                        style={{ width: 100 }} 
+                        value={rate}
+                        type="number"
+                        min={0}
+                        dark={theme}
+                        label="Current rate"
+                        placeholder="Define rate" 
+                        onChange={e => setRate(e.target.value)}/>
+                    <br/>
+                    <br/>
+                    <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        dark={theme}
+                        label="Color theme"
+                        color="primary"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={disabled}
+                        className="my-10"
+                        rightLabel="Disabled"
+                        onChange={() => setDisabled(!disabled)}/>
+                    <Switch 
+                        color="primary" 
+                        check={hide}
+                        className="my-10"
+                        rightLabel="Hide rate"
+                        onChange={() => setHide(!hide)}/>
                     <Divider/>
                     <Rating
                         className="pa-10"

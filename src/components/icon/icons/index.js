@@ -933,3 +933,39 @@ export const ArrowUp = (props) => {
         </svg>
     )
 }
+
+export const DashboardOutline = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M19,5V7H15V5H19M9,5V11H5V5H9M19,13V19H15V13H19M9,17V19H5V17H9M21,3H13V9H21V3M11,3H3V13H11V3M21,11H13V21H21V11M11,15H3V21H11V15Z" />
+        </svg>
+    )
+}
+
+export const ChartBar = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z" />
+        </svg>
+    )
+}
+
+export const ChartPie = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M11,2V22C5.9,21.5 2,17.2 2,12C2,6.8 5.9,2.5 11,2M13,2V11H22C21.5,6.2 17.8,2.5 13,2M13,13V22C17.7,21.5 21.5,17.8 22,13H13Z" />
+        </svg>
+    )
+}
+
+export const CharDonut = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} 
+            height={props.size ? props.size : defaultSize}  viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M13,2.05V5.08C16.39,5.57 19,8.47 19,12C19,12.9 18.82,13.75 18.5,14.54L21.12,16.07C21.68,14.83 22,13.45 22,12C22,6.82 18.05,2.55 13,2.05M12,19A7,7 0 0,1 5,12C5,8.47 7.61,5.57 11,5.08V2.05C5.94,2.55 2,6.81 2,12A10,10 0 0,0 12,22C15.3,22 18.23,20.39 20.05,17.91L17.45,16.38C16.17,18 14.21,19 12,19Z" />
+        </svg>
+    )
+}

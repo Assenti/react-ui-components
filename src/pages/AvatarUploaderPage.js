@@ -92,37 +92,14 @@ const borders = ['default', 'smooth', 'rounded', 'tile'];
 const usage =
 `// Usage example
 import React, { useState } from 'react';
-import { AvatarUploader, Switch, Select, Icon, Divider } from '../components';
-import manImage from '/path/to/man.png';
+import { AvatarUploader } from '../components';
 
 function Example() {
-    const [border, setBorder] = useState(borders[1]);
     const [avatar, setAvatar] = useState('');
-    const [lifted, setLifted] = useState(false);
 
     return (
         <>
-            <Select
-                dark={theme}
-                items={borders}
-                prefix={<Icon name="shape"/>}
-                width={200}
-                label="Border type"
-                color="primary"
-                value={border}
-                onChange={v => setBorder(v)}/>
-            <br/>
-            <Switch
-                color="primary"
-                check={lifted}
-                className="mt-10 mb-20"
-                rightLabel="Lifted"
-                onChange={() => setLifted(!lifted)}/>
-            <Divider/>
-            <br/>
             <AvatarUploader
-                lifted={lifted}
-                borderType={border}
                 width={140}
                 height={170}
                 avatar={avatar}

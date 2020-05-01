@@ -1,26 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../icon';
+import { strinfigyClassObject } from '../utils';
 
 const Breadcrumbs = (props) => {
-    const componentClass = () => {
-        let result = '';
-        let className = {
-            name: 'rui-breadcrumbs',
-            size: props.size ? props.size : '',
-            dark: props.dark ? 'dark' : '',
-            color: props.color ? props.color : 'info',
-            position: props.position ? props.position : '',
-            className: props.className ? props.className : ''
-        }
-        for (const key in className) {
-            if (className[key]) result += className[key] + ' '
-        }
-        return result.trim();
+    let className = {
+        name: 'rui-breadcrumbs',
+        size: props.size ? props.size : '',
+        dark: props.dark ? 'dark' : '',
+        color: props.color ? props.color : 'info',
+        position: props.position ? props.position : '',
+        className: props.className ? props.className : ''
     }
 
     return (
-        <div className={componentClass()}>
+        <div className={strinfigyClassObject(className)}>
             {props.crumbs.map((item, index) =>
                 <div key={index} 
                     className={props.isActive ? 

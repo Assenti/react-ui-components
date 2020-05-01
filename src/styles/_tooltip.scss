@@ -165,13 +165,13 @@
 
     &:not(.primary):not(.info):not(.success):not(.error) {
         .rui-tooltip__text {
-            background-color: rgba(black, .6);
+            background-color: rgba(black, .9);
         }
 
         &:not(.left):not(.right):not(.bottom) {
             .rui-tooltip__text {
                 &::after {
-                    border-color: rgba(black, .6) transparent transparent transparent;
+                    border-color: rgba(black, .9) transparent transparent transparent;
                 }
             }
         }
@@ -179,7 +179,7 @@
         &.right {
             .rui-tooltip__text {
                 &::after {
-                    border-color: transparent rgba(black, .6) transparent transparent;
+                    border-color: transparent rgba(black, .9) transparent transparent;
                 }
             }
         }
@@ -187,7 +187,7 @@
         &.bottom {
             .rui-tooltip__text {
                 &::after {
-                    border-color: transparent transparent rgba(black, .6) transparent;
+                    border-color: transparent transparent rgba(black, .9) transparent;
                 }
             }
         }
@@ -195,7 +195,7 @@
         &.left {
             .rui-tooltip__text {
                 &::after {
-                    border-color: transparent transparent transparent rgba(black, .6);
+                    border-color: transparent transparent transparent rgba(black, .9);
                 }
             }
         }
@@ -206,7 +206,7 @@
         white-space: nowrap;
         color: #fff;
         text-align: center;
-        border-radius: $radius;
+        border-radius: 2px;
         padding: 5px;
         position: absolute;
         z-index: 50;
