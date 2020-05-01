@@ -7,9 +7,14 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
-#### 0.6.1 `2020-04-26`
+#### 0.7.0 `2020-05-01`
+
+- Components styles and props update;
+
+#### 0.6.1, 0.6.2 `2020-04-26`
 
 - Pagination component updated;
+- Bugs fixing;
 
 #### 0.6.0 `2020-04-25`
 
