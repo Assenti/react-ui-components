@@ -77,4 +77,5 @@ export {
     creditIssueMask,
     iinMask,
     isTwoDatesEqual,
-    toFinancial } from './utils';
+    toFinancial,
+    strinfigyClassObject } from './utils';
