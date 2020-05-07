@@ -128,7 +128,8 @@ const InputMask = (props) => {
             {...props}
             type="text"
             dark={props.dark}
-            onKeyDown={handleKeyDown}
+            // onKeyDown={handleKeyDown}
+            onKeyUp={handleKeyDown}
             onChange={handleChange}
             value={getValue()}/>
     )

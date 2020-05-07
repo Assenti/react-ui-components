@@ -73,7 +73,8 @@ const InputField = (props) => {
             if (e.key === 'Enter') {
                 props.onEnter()
             }
-        } else if (props.onKeyUp) {
+        }
+        if (props.onKeyUp) {
             props.onKeyUp(e)
         }
     }
