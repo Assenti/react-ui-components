@@ -376,6 +376,8 @@
         .rui-input-prefix {
             margin-left: 5px;
             margin-right: 5px;
+            display: flex;
+            align-items: center;
         }
         
         .rui-input-suffix {

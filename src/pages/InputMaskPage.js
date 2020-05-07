@@ -75,7 +75,7 @@ const items = [
 ]
 
 const InputMaskPage = () => {
-    const [phone, setPhone] = useState('');
+    const [phone, setPhone] = useState('7777777777');
     const [card, setCard] = useState('');
     const [cardIssue, setCardIssue] = useState('');
     const [iin, setIin] = useState('');
@@ -94,21 +94,22 @@ const InputMaskPage = () => {
                     componentName="<InputMask/>">
                     <div className="pa-5 fz-9">Kazakhstan phone mask: {phoneMask(kztPhone)}</div>
                     <InputMask 
-                        width={250}
+                        style={{ width: 250 }}
                         size="medium"
                         value={phone}
                         mask="phone"
+                        // clearable
+                        // onClear={() => setPhone('')}
                         dark={theme}
-                        code="+7"
-                        placeholder="+7 (___) ___-__-__"
+                        placeholder="(___) ___-__-__"
                         onChange={(value, rowValue) => {
                             console.log(value)
                             console.log(rowValue)
                             setPhone(rowValue)
                         }}
-                        prefix={<Icon name="smartphone"/>}/>
+                        prefix={<><Icon name="smartphone"/><span>+7</span></>}/>
                     <br/>
-                    <div className="pa-5 fz-9">Credit card mask: {creditMask(cardForm)}, Credit card issue date: {creditIssueMask(cardIssueForm)}</div>
+                    {/* <div className="pa-5 fz-9">Credit card mask: {creditMask(cardForm)}, Credit card issue date: {creditIssueMask(cardIssueForm)}</div>
                     <div className="row">
                         <InputMask 
                             style={{ width: 250 }}
@@ -167,7 +168,7 @@ const InputMaskPage = () => {
                             console.log(rowValue)
                             setDate(rowValue)
                         }}
-                        prefix={<Icon name="calendar-month"/>}/>
+                        prefix={<Icon name="calendar-month"/>}/> */}
                 </Page>
             )}
         </ThemeContext.Consumer>

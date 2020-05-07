@@ -63,18 +63,34 @@ export const creditIssueMask = (value) => {
     }
 }
 
-export const phoneMaskFormatter = (value, code = '+7') => {
-    if (value) {
-        if (value.length <= 3) {
-            return `${code} (${value})`;
-        } else if (value.length > 3 && value.length <= 6) {
-            return `${code} (${value.slice(0,3)}) ${value.slice(3,value.length)}`;
-        } else if (value.length > 6 && value.length <= 8) {
-            return `${code} (${value.slice(0,3)}) ${value.slice(3,6)}-${value.slice(6, value.length)}`;
-        } else {
-            return `${code} (${value.slice(0,3)}) ${value.slice(3,6)}-${value.slice(6, 8)}-${value.slice(8,10)}`;
-        }
-    } else return '';
+export const phoneMaskFormatter = (value) => {
+    console.log('FORMATTER: ' + value)
+    switch (value.length) {
+        case 0: 
+            return ''
+        case 1:
+            return `(${value.slice(0,1)}`
+        case 2:
+            return `(${value.slice(0,2)}`
+        case 3:
+            return `(${value.slice(0,3)})`
+        case 4:
+            return `(${value.slice(0,3)}) ${value.slice(3,4)}`
+        case 5:
+            return `(${value.slice(0,3)}) ${value.slice(3,5)}`
+        case 6:
+            return `(${value.slice(0,3)}) ${value.slice(3,6)}`
+        case 7:
+            return `(${value.slice(0,3)}) ${value.slice(3,6)} ${value.slice(6,7)}`
+        case 8:
+            return `(${value.slice(0,3)}) ${value.slice(3,6)} ${value.slice(6,8)}`
+        case 9:
+            return `(${value.slice(0,3)}) ${value.slice(3,6)} ${value.slice(6,8)} ${value.slice(8,9)}`
+        case 10:
+            return `(${value.slice(0,3)}) ${value.slice(3,6)} ${value.slice(6,8)} ${value.slice(8,10)}`
+        default:
+            return `(${value.slice(0,3)}) ${value.slice(3,6)} ${value.slice(6,8)} ${value.slice(8,10)}`
+    }
 }
 
 export const iinMaskFormatter = (value) => {
