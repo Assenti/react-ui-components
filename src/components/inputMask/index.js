@@ -91,14 +91,18 @@ const InputMask = (props) => {
     }
 
     const handleChange = (e) => {
-        // console.log(rawValueLocal)
-        setValueLocal(phoneMaskFormatter(rawValueLocal, props.code))
         
-        setRawValueLocal(resetMask(e.target.value))
+        if (/[0-9]/.test(e.target.value)) {
+            console.log(/[0-9]/.test(e.target.value))
+            setRawValueLocal(e.target.value)
+        }
+        // setValueLocal(phoneMaskFormatter(rawValueLocal, props.code))
+        // if (value.match(/^[0-9]+$/)) setRawValueLocal(resetMask(value))
         
     }
 
     const getValue = () => {
+        // return rawValueLocal
         return phoneMaskFormatter(rawValueLocal)
         // return value;
         // switch (props.mask) {
@@ -129,11 +133,8 @@ const InputMask = (props) => {
         <InputField 
             {...props}
             type="text"
-            // clearable={props.clearable}
             onClear={handleClear}
             dark={props.dark}
-            // onKeyDown={handleKeyDown}
-            // onKeyUp={handleKeyDown}
             onChange={handleChange}
             value={getValue()}
             />

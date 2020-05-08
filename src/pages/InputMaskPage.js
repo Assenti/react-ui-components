@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { InputMask, Icon, ThemeContext } from '../components';
+import { Icon, ThemeContext } from '../components';
 import { phoneMask, creditMask, creditIssueMask, iinMask } from '../components/utils';
 import Page from '../layouts/Page';
+import InputMask from 'react-input-mask';
 
 const usage = 
 `// Usage examples
@@ -45,13 +46,6 @@ const items = [
         value: ''
     },
     { 
-        property: 'code',
-        description: 'Set phone prefix code (example: "+7", "+1", has effect with mask="phone")', 
-        default: '', 
-        type: 'string',
-        value: ''
-    },
-    { 
         property: 'dateDelimiter',
         description: 'Set date delimiter (has effect with mask="date")', 
         default: '.', 
@@ -92,14 +86,24 @@ const InputMaskPage = () => {
                     usage={usage}
                     apiDescItems={items}
                     componentName="<InputMask/>">
-                    <div className="pa-5 fz-9">Kazakhstan phone mask: {phoneMask(kztPhone)}</div>
                     <InputMask 
+                        mask="(999) 999 99 99" 
+                        maskChar={null} 
+                        value={phone} 
+                        onChange={e => {
+                            setPhone(e.target.value)
+                            console.log(phone)
+                        }} 
+                        />
+                    {/* <div className="py-10 fz-9">Kazakhstan phone mask: {phoneMask(kztPhone)}</div> */}
+                    {/* <InputMask 
                         style={{ width: 250 }}
                         size="medium"
                         value={phone}
+                        label="Input your phone number"
                         mask="phone"
-                        // clearable
-                        // onClear={() => setPhone('')}
+                        clearable
+                        onClear={() => setPhone('')}
                         dark={theme}
                         placeholder="(___) ___-__-__"
                         onChange={(value, rowValue) => {
@@ -107,7 +111,7 @@ const InputMaskPage = () => {
                             console.log(rowValue)
                             setPhone(rowValue)
                         }}
-                        prefix={<><Icon name="smartphone"/><span>+7</span></>}/>
+                        prefix={<><Icon name="smartphone"/><span>+7</span></>}/> */}
                     <br/>
                     {/* <div className="pa-5 fz-9">Credit card mask: {creditMask(cardForm)}, Credit card issue date: {creditIssueMask(cardIssueForm)}</div>
                     <div className="row">
