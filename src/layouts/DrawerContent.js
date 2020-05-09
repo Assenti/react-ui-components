@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { List, ListItem, Icon, Drawer, ThemeContext, AutoComplete, Tag } from '../components';
+import { List, Icon, Drawer, ThemeContext, AutoComplete, Tag, Badge } from '../components';
 import { compare } from '../components';
 
 export const DrawerContent = (props) => {
@@ -51,7 +51,7 @@ export const DrawerContent = (props) => {
                             color="#61dafb"/>
                     </div>
                     <AutoComplete
-                        style={{ width: '100%' }}
+                        style={{ width: '100%', zIndex: 1 }}
                         size="medium"
                         className="px-5 py-5 sticky"
                         contentMaxHeight="calc(100vh - 200px)"
@@ -73,7 +73,7 @@ export const DrawerContent = (props) => {
                             </div>}/>
                     <List size="medium" dark={theme}>
                         {simpleItems.map((item, index) => 
-                            <ListItem
+                            <List.Item
                                 key={index}
                                 right
                                 icon={item.icon}
@@ -84,14 +84,16 @@ export const DrawerContent = (props) => {
                                 noDivider
                                 item={item.name}/>
                         )}
-                        <ListItem
+                        <List.Item
                             noDivider
                             icon="toy-brick"
                             onClick={() => setList(!list)}
                             hover
-                            item={<span>Components 
-                                <small className="fw-bold ml-10 text-info">{sortedRoutes().length}</small>
-                            </span>}
+                            item={<Badge 
+                                    parent={<div style={{ display: 'block', paddingRight: 10 }}>Components</div>}
+                                    color="primary" 
+                                    value={sortedRoutes().length}/>
+                            }
                             controls={<Icon 
                                         onClick={() => setList(!list)}
                                         size={20} 
@@ -99,7 +101,7 @@ export const DrawerContent = (props) => {
                         {list ? 
                             <List size="medium" className="pl-35" dark={theme}>
                                 {sortedRoutes().map((item, index) => 
-                                    <ListItem
+                                    <List.Item
                                         key={index}
                                         right
                                         noDivider
@@ -115,7 +117,7 @@ export const DrawerContent = (props) => {
                                                 : (item.new ? <Tag value="new" color="success" borderType="rounded" tiny/> : null)}/>
                                 )}
                             </List> : ''}
-                        <ListItem
+                        <List.Item
                             right
                             noDivider
                             icon="checklist"

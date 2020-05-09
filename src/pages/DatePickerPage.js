@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DatePicker, Select, Icon, ThemeContext, Divider } from '../components';
+import { DatePicker, Select, Icon, ThemeContext, Divider, Switch } from '../components';
 import { dateMask } from '../components/utils';
 import Page from '../layouts/Page';
 
@@ -52,6 +52,13 @@ const rows = [
         default: '', 
         type: 'string',
         value: 'primary | info | success | error'
+    },
+    { 
+        property: 'selectBorderType', 
+        description: 'Set years select borders type', 
+        default: '', 
+        type: 'string',
+        value: 'tile | smooth | rounded'
     },
     { 
         property: 'size', 
@@ -117,6 +124,20 @@ const rows = [
         value: 'true | false'
     },
     { 
+        property: 'inModal', 
+        description: 'Open date picker module in modal', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'modalTitle', 
+        description: 'Set modal title (has effect with inModal prop)', 
+        default: '', 
+        type: 'ReactNode',
+        value: ''
+    },
+    { 
         property: 'dark', 
         description: 'Set dark mode', 
         default: 'false', 
@@ -131,7 +152,7 @@ const rows = [
         value: ''
     },
     { 
-        property: 'dark', 
+        property: 'btnColor', 
         description: 'Set cancel button color', 
         default: 'DatePicker color', 
         type: 'string',
@@ -179,6 +200,7 @@ function Example() {
 const colors = ['primary', 'info', 'success', 'error'];
 const sizes = ['default', 'medium', 'large'];
 const locales = ['en', 'kz', 'ru'];
+const borders = ['default', 'tile', 'rounded', 'smooth'];
 
 const DatePickerPage = () => {
     const [date, setDate] = useState('');
@@ -186,6 +208,8 @@ const DatePickerPage = () => {
     const [color, setColor] = useState('primary');
     const [size, setSize] = useState('default');
     const [locale, setLocale] = useState('en');
+    const [modal, setModal] = useState(false);
+    const [border, setBorder] = useState(borders[0]);
 
     return (
         <ThemeContext.Consumer>
@@ -202,7 +226,6 @@ const DatePickerPage = () => {
                         dark={theme}
                         label="Color"
                         color="primary"
-                        className="my-5"
                         value={color}
                         onChange={v => setColor(v)}/>
                     <br/>
@@ -218,6 +241,17 @@ const DatePickerPage = () => {
                         onChange={v => setSize(v)}/>
                     <br/>
                     <Select
+                        items={borders}
+                        dark={theme}
+                        prefix={<Icon name="shape"/>}
+                        width={200}
+                        label="Select border type"
+                        color="primary"
+                        className="my-5"
+                        value={border}
+                        onChange={v => setBorder(v)}/>
+                    <br/>
+                    <Select
                         items={locales}
                         prefix={<Icon name="translate"/>}
                         width={200}
@@ -227,14 +261,22 @@ const DatePickerPage = () => {
                         value={locale}
                         onChange={v => setLocale(v)}/>
                     <br/>
+                    <br/>
+                    <Switch
+                        check={modal}
+                        onChange={() => setModal(!modal)}
+                        rightLabel="In modal"
+                        color="primary"/>
                     <Divider/>
                     <DatePicker
                         color={color}
                         size={size}
+                        inModal={modal}
                         locale={locale}
                         placeholder="DD.MM.YYYY"
                         value={date}
                         clearable
+                        selectBorderType={border}
                         hideWeekend
                         dark={theme}
                         maxDate={new Date()}

@@ -36,23 +36,6 @@
             }
         }
 
-        .rui-calendar__title {
-            display: flex;
-            flex-direction: row-reverse;
-
-            .rui-input-field,
-            .rui-select:not(.rui-year) {
-                width: 100% !important;
-                margin-right: 0 !important;
-            }
-
-            .rui-select.rui-year {
-                width: 70px !important;
-                min-width: 70px;
-                margin-right: 0 !important;
-            }
-        }
-
         .rui-calendar__body {
             max-width: 100%;
             border: none; 

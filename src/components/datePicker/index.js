@@ -4,6 +4,7 @@ import { Dropdown, Icon } from '../index';
 import InputField from '../input';
 import Calendar from '../calendar';
 import Button from '../button';
+import Modal from '../modal';
 
 const DatePicker = (props) => {
     const [visible, setVisible] = useState(false);
@@ -16,6 +17,7 @@ const DatePicker = (props) => {
 
     return (
         <div className={(`rui-date-picker ${props.className}`).trim()}>
+            {!props.inModal ? 
             <Dropdown
                 closeManaged
                 dark={props.dark}
@@ -51,6 +53,7 @@ const DatePicker = (props) => {
                                 setVisible(false)
                             }}
                             events={props.events}
+                            selectBorderType={props.selectBorderType}
                             maxDate={props.maxDate}
                             minDate={props.minDate}
                             disabledDates={props.disabledDates}
@@ -66,18 +69,71 @@ const DatePicker = (props) => {
                             onClick={() => setVisible(false)}
                             block name={props.cancelBtnName ? props.cancelBtnName : 'Cancel'}/>
                     </div>}
-                />
+                /> : 
+            <>
+                <InputField
+                    readOnly
+                    size={props.size}
+                    style={{ width: props.width ? props.width : '' }}
+                    label={props.label}
+                    hint={props.hint}
+                    dark={props.dark}
+                    hintColor={props.hintColor}
+                    clearable={props.clearable}
+                    onClear={handleClear}
+                    required={props.required}
+                    placeholder={props.placeholder}
+                    onFocus={() => setVisible(true)}
+                    prefix={<Icon name="calendar-month"/>} 
+                    value={props.value}/>
+                <Modal
+                    width={300}
+                    centered
+                    closable
+                    header={props.modalTitle}
+                    visible={visible}
+                    onClose={() => setVisible(false)}>
+                    <div style={{ height: 240 }}>
+                        <Calendar
+                            width={300}
+                            shortWeekName
+                            active={props.active}
+                            hideWeekend={props.hideWeekend}
+                            hideCurrentDay={props.hideCurrentDay}
+                            onDate={(date) => {
+                                props.onDate(date)
+                                setVisible(false)
+                            }}
+                            events={props.events}
+                            selectBorderType={props.selectBorderType}
+                            maxDate={props.maxDate}
+                            minDate={props.minDate}
+                            disabledDates={props.disabledDates}
+                            holidays={props.holidays}
+                            weekStartsSunday={props.weekStartsSunday}
+                            dark={props.dark}
+                            limit={props.limit} 
+                            onlyPast={props.onlyPast}
+                            locale={props.locale}
+                            color={props.color}/>
+                    </div>
+                </Modal>
+            </>
+            }
         </div>
     )
 }
 DatePicker.propTypes = {
     locale: PropTypes.oneOf(['en','ru','kz','fr']),
+    modalTitle: PropTypes.node,
+    inModal: PropTypes.bool,
     clearable: PropTypes.bool,
     onClear: PropTypes.func,
     value: PropTypes.string.isRequired,
     disabledDates: PropTypes.array,
     minDate: PropTypes.any,
     maxDate: PropTypes.any, 
+    selectBorderType: PropTypes.oneOfType([undefined,'','default','tile','rounded','smooth']),
     placeholder: PropTypes.string,
     hideWeekend: PropTypes.bool,
     hideCurrentDay: PropTypes.bool,

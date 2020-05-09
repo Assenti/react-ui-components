@@ -7,7 +7,6 @@ import {
     Dropdown, 
     Button, 
     List, 
-    ListItem, 
     Avatar, 
     Divider,
     Card,
@@ -47,7 +46,7 @@ const LayoutsPage = () => {
                                         <Divider/>
                                         <List dark={theme}>
                                             {modules.map((item, index) =>
-                                                <ListItem 
+                                                <List.Item 
                                                     key={index}
                                                     hover
                                                     noDivider 
@@ -72,7 +71,7 @@ const LayoutsPage = () => {
                             onClose={() => setDrawer(false)}>
                             <List size="medium" dark={theme}>
                                 {modules.map((item, index) => 
-                                    <ListItem 
+                                    <List.Item 
                                         key={index}
                                         hover
                                         isActiveItem={index === 0}

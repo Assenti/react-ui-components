@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, InputField, Dropdown, List, ListItem, Tag } from '../index';
+import { Icon, InputField, Dropdown, List, Tag } from '../index';
 import { CSSTransition } from 'react-transition-group';
 import { strinfigyClassObject } from '../utils';
 
@@ -184,7 +184,7 @@ const Select = (props) => {
                         dark={props.dark} 
                         size={props.size}>
                         {filteredItems().map((item, index) => 
-                            <ListItem
+                            <List.Item
                                 key={index}
                                 color={props.color}
                                 tabIndex={index}
@@ -210,7 +210,7 @@ const Select = (props) => {
                                             size={props.size}
                                             className="rui-select__submenu-list">
                                             {resolveItemChildren().map((subItem, iterator) => 
-                                                <ListItem
+                                                <List.Item
                                                     onClick={e => handleSubItemClick(e, subItem)}
                                                     isActiveItem={subItem === props.value}
                                                     key={iterator}
@@ -220,7 +220,7 @@ const Select = (props) => {
                                         </List>
                                     </div>
                                 </CSSTransition> : ''}
-                            </ListItem>
+                            </List.Item>
                         )}
                     </List>
                 </div>}

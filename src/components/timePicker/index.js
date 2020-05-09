@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Icon, List, ListItem, InputField } from '../index';
+import { Dropdown, Icon, List, InputField } from '../index';
 
 const hours = () => {
     let hours = [];
@@ -111,7 +111,7 @@ const TimePicker = (props) => {
                     <div className="rui-timepicker__content">
                         <List className="col" header={headers(props.locale)[0]}>
                             {hours().map((item, index) => 
-                                <ListItem 
+                                <List.Item 
                                     hover
                                     onClick={() => handleClick(item, 'hh')}
                                     key={index}
@@ -120,7 +120,7 @@ const TimePicker = (props) => {
                         </List>
                         <List className="col" header={headers(props.locale)[1]}>
                             {minutes().map((item, index) => 
-                                <ListItem 
+                                <List.Item 
                                     hover
                                     onClick={() => handleClick(item, 'mm')}
                                     key={index}
@@ -129,7 +129,7 @@ const TimePicker = (props) => {
                         </List>
                         {!props.noSeconds ? <List className="col" header={headers(props.locale)[2]}>
                             {minutes().map((item, index) => 
-                                <ListItem 
+                                <List.Item 
                                     hover
                                     onClick={() => handleClick(item, 'ss')}
                                     key={index}

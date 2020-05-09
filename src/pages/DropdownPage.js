@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown, Button, List, ListItem, Header, Avatar, Icon, ThemeContext, Divider } from '../components';
+import { Dropdown, Button, List, Header, Avatar, Icon, ThemeContext, Divider } from '../components';
 import manImage from '../img/man_.png';
 import Page from '../layouts/Page';
 import { modules } from '../data/modules';
@@ -94,7 +94,7 @@ const items = [
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Dropdown, Button, List, ListItem, Icon, Avatar, Divider } from '@assenti/rui-components';
+import { Dropdown, Button, List, Icon, Avatar, Divider } from '@assenti/rui-components';
 const modules = [
     { name: 'Home', icon: 'home' }, 
     { name: 'Profile', icon: 'account' }, 
@@ -117,7 +117,7 @@ function Example() {
                         <Divider/>
                         <List>
                             {modules.map((item, index) =>
-                                <ListItem 
+                                <List.Item 
                                     keys={index}
                                     hover
                                     noDivider 
@@ -161,7 +161,7 @@ const DropdownPage = () => {
                                         <Divider/>
                                         <List dark={theme}>
                                             {modules.map((item, index) =>
-                                                <ListItem 
+                                                <List.Item 
                                                     key={index}
                                                     hover
                                                     noDivider 

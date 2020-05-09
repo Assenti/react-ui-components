@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, ListItem, ThemeContext } from '../components';
+import { List, ThemeContext } from '../components';
 import { countries } from '../data/countries';
 import Page from '../layouts/Page';
 
@@ -65,41 +65,13 @@ const items = [
 const usage =
 `// Usage examples
 import React, { useRef } from 'react';
-import { BackTopBtn, List, ListItem, Icon } from '@assenti/rui-components';
-
-const countries = [
-    { country: 'Kazakhstan', cities: [ 'Nur-Sultan', 'Almaty', 'Shymkent' ] }, 
-    { country: 'Russia', cities: ['Moscow', 'St. Petersburg', 'Krasnodar'] }, 
-    { country: 'USA', cities: ['Washington, D.C.', 'New York City', 'San Francisco'] }, 
-    { country: 'United Kingdom', cities: ['London', 'York', 'Manchester'] }, 
-    { country: 'Canada', cities: ['Ottawa', 'Toronto', 'Vancouver'] }, 
-    { country: 'Germany', cities: ['Berlin', 'Munich', 'Hamburg'] }, 
-    { country: 'France', cities: ['Paris', 'Nice', 'Marselle'] }, 
-    { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'] },
-    { country: 'Japan', cities: ['Tokyo', 'Osaka', 'Kyoto'] },
-    { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'] }
-]
+import { BackTopBtn } from '@assenti/rui-components';
 
 function Example() {
     const parentRef = useRef();
 
     return (
         <div ref={parentRef}>
-            <List size="large" header="Countries">
-                {countries.map((item, index) => 
-                    <ListItem
-                        key={index}
-                        hover
-                        icon="flag" 
-                        item={item.country}
-                        subTitle={
-                            <div className="row align-center">
-                                <Icon name="star-outline" className="mr-10"/>
-                                {item.cities[0]}
-                            </div>
-                        }/>
-                )}
-            </List>
             <BackTopBtn setRef={parentRef} dark/>
         </div>
     )
@@ -121,7 +93,7 @@ const BackTopBtnPage = () => {
                     apiDescItems={items}>
                     <List header="Countries" dark={theme}>
                         {countries.map((item, index) => 
-                            <ListItem
+                            <List.Item
                                 key={index}
                                 hover
                                 noDivider

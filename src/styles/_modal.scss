@@ -35,7 +35,7 @@
         align-items: center;
         margin: 0 !important;
         .rui-modal {
-            width: 100%;
+            width: 100% !important;
             height: 100vh;
         }
     }
@@ -52,10 +52,10 @@
     padding: 15px;
     border-radius: $radius;
     border: 1px solid $lightgray;
-    min-width: 400px;
+    min-width: 200px;
     min-height: 200px;
     box-shadow: 0 1px 40px rgba(black, .7);
-    background-color: $light;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

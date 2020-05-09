@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { List, ListItem, Button, Table, Card, Collapse, BackTopBtn, Select, Icon, Switch, RadioGroup, phoneMask, CopyToClipboard, ThemeContext, Divider, ButtonGroup, Avatar } from '../components';
+import { List, Button, Table, Card, Collapse, BackTopBtn, Select, Icon, Switch, RadioGroup, phoneMask, CopyToClipboard, ThemeContext, Divider, ButtonGroup, Avatar } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { heroes } from '../data/heroes';
@@ -7,7 +7,7 @@ import { heroes } from '../data/heroes';
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { List, ListItem, Button } from '@assenti/rui-components';
+import { List, Button } from '@assenti/rui-components';
 const names = [
     { name: 'Steve Rogers', hero: 'Captain America', phone: '1234567890', icon: 'shield-account', img: manImage, check: false, active: false }, 
     { name: 'Peter Parker', hero: 'Spider man', phone: '1234567890', icon: 'shield-account', img: manImage2, check: false, active: true }, 
@@ -44,7 +44,7 @@ function Example() {
                     </div>
                 }>
                 {names.map((item, index) => 
-                    <ListItem
+                    <List.Item
                         isActiveItem={isSelected(item.hero)}
                         onClick={() => checkbox ? selectOne(item.hero) : {}}
                         key={index} 
@@ -128,10 +128,17 @@ const items2 = [
     },
     { 
         property: 'href', 
-        description: 'Set list item title as a tag with href', 
+        description: 'Set list item title as <a/> tag with href', 
         default: '', 
         type: 'string',
         value: ''
+    },
+    { 
+        property: 'blank', 
+        description: 'Open a link in a new browser tab (has effect with href prop)', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
     },
     { 
         property: 'tooltip', 
@@ -278,10 +285,10 @@ const ListPage = () => {
             {theme => (
                 <div className="rui-page" ref={parent}>
                     <div className="row align-center space-between">
-                        <div className="rui-page-title">{'<List/>, <ListItem/>'} Components</div>
+                        <div className="rui-page-title">{'<List/>'} Component</div>
                         <div className="row">
                             <div className="rui-link fz-13 fw-bold mr-10" onClick={() => goListApi()}>List API</div>
-                            <div className="rui-link fz-13 fw-bold" onClick={() => goListItemApi()}>ListItem API</div>
+                            <div className="rui-link fz-13 fw-bold" onClick={() => goListItemApi()}>List.Item API</div>
                         </div>
                     </div>
                     <Card 
@@ -403,7 +410,7 @@ const ListPage = () => {
                                     </div> : null
                                 }>
                                 {heroes.map((item, index) => 
-                                    <ListItem
+                                    <List.Item
                                         isActiveItem={isSelected(item.hero)}
                                         onClick={() => checkbox ? selectOne(item.hero) : {}}
                                         key={index} 
@@ -466,21 +473,23 @@ const ListPage = () => {
                             </SyntaxHighlighter>
                         </Collapse>
                     </Card>
-                    <h2 ref={listApi}>List API</h2>
-                    <Card className="pa-0">
+                    <Card className="mt-10">
                         <Table
+                            tableTitle={<h2 ref={listApi}>List API</h2>}
                             dark={theme}
                             headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                             items={items}
                             index
+                            bordered
                             itemTitles={keys}/>
                     </Card>
-                    <h2 ref={listItemApi}>ListItem API</h2>
-                    <Card className="pa-0">
+                    <Card className="mt-10">
                         <Table
                             dark={theme}
+                            tableTitle={<h2 ref={listItemApi}>List.Item API</h2>}
                             searchKey="property"
                             searchable
+                            bordered
                             headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                             items={items2}
                             index

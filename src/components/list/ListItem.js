@@ -40,7 +40,7 @@ const ListItem = (props) => {
                                 </Tooltip> :
                                 <Icon name={props.icon}/>) : 
                             ''}
-                            <div>
+                            <div onClick={handleClick}>
                                 <div className="rui-list-item__title-row">
                                     {props.checkbox ? 
                                     <Checkbox
@@ -49,7 +49,7 @@ const ListItem = (props) => {
                                         checked={props.isActiveItem}
                                         onChange={handleClick}/> : ''}
                                     {props.href ?
-                                        <a href={props.href} rel="noopener noreferrer" target="_blank">{props.item}</a> :
+                                        <a href={props.href} rel="noopener noreferrer" target={props.blank ? '_blank' : undefined}>{props.item}</a> :
                                         <span onClick={handleClick}>{props.item}</span>
                                     }
                                 </div>
@@ -79,6 +79,7 @@ ListItem.propTypes = {
     item: PropTypes.oneOfType([PropTypes.string,PropTypes.number, PropTypes.object]),
     onClick: PropTypes.func,
     href: PropTypes.string,
+    blank: PropTypes.bool,
     subTitle: PropTypes.string,
     icon: PropTypes.string,
     tooltip: PropTypes.string,

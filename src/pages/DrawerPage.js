@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Drawer, List, ListItem, Button, Icon, Select, ThemeContext, Divider, Switch } from '../components';
+import { Drawer, List, Button, Icon, Select, ThemeContext, Divider, Switch } from '../components';
 import Page from '../layouts/Page';
 
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { Drawer, List, ListItem } from '@assenti/react-ui-components';
+import { Drawer, List } from '@assenti/react-ui-components';
 
 const stack = [
     { name: 'JavaScript', icon: 'language-js' }, 
@@ -27,7 +27,7 @@ function Example() {
                 lifted>
                 <List size="medium" dark={theme}>
                     {stack.map(({name, icon}, index) => 
-                        <ListItem
+                        <List.Item
                             key={index}
                             isActiveItem={name === page}
                             noDivider
@@ -230,7 +230,7 @@ const DrawerPage = () => {
                             onResize={() => setDrawerMin(!drawerMin)}>
                             <List size="medium" dark={theme}>
                                 {stack.map(({name, icon}, index) => 
-                                    <ListItem
+                                    <List.Item
                                         key={index}
                                         isActiveItem={name === page}
                                         noDivider

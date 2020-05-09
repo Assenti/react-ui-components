@@ -30,7 +30,6 @@ export { default as TextareaField } from './textarea';
 export { default as InputMask } from './inputMask';
 export { default as Uploader } from './uploader';
 export { default as List } from './list';
-export { default as ListItem } from './listItem';
 export { default as Modal } from './modal';
 export { default as Pagination } from './pagination';
 export { default as Preloader } from './preloader';

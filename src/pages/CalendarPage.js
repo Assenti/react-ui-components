@@ -81,6 +81,13 @@ const items = [
         value: 'primary | info | success | error | dark'
     },
     { 
+        property: 'selectBorderType', 
+        description: 'Set years select borders type', 
+        default: '', 
+        type: 'string',
+        value: 'tile | smooth | rounded'
+    },
+    { 
         property: 'size', 
         description: 'Set Calendar size',
         default: '', 
@@ -148,6 +155,7 @@ const items = [
 const colors = ['primary', 'info', 'success', 'error', 'black'];
 const sizes = ['default', 'medium', 'large'];
 const locales = ['en', 'kz', 'ru', 'fr'];
+const borders = ['default', 'tile', 'rounded', 'smooth'];
 
 const events = [
     { 
@@ -236,6 +244,7 @@ const CalendarPage = () => {
     const [full, setFull] = useState(false);
     const [hideWeekend, setHideWeekend] = useState(false);
     const [hideCurrentDay, setHideCurrentDay] = useState(false);
+    const [border, setBorder] = useState(borders[0]);
     const [date, setDate] = useState('');
 
     return (
@@ -256,6 +265,17 @@ const CalendarPage = () => {
                         className="mr-10"
                         value={color}
                         onChange={v => setColor(v)}/>
+                    <Select
+                        items={borders}
+                        dark={theme}
+                        prefix={<Icon name="shape"/>}
+                        width={200}
+                        label="Select border type"
+                        color="primary"
+                        className="mr-10"
+                        value={border}
+                        onChange={v => setBorder(v)}/>
+                    <br/>
                     <Select
                         items={sizes}
                         prefix={<Icon name="format-size"/>}
@@ -321,6 +341,7 @@ const CalendarPage = () => {
                         width={full ? null : 400}
                         shortWeekName
                         active={date}
+                        selectBorderType={border}
                         disabledDates={[new Date(2020,3,19), new Date(2020,3,20)]}
                         maxDate={new Date()}
                         hideWeekend={hideWeekend}

@@ -16,6 +16,13 @@
         }
     }
 
+    .rui-calendar__title {
+        & > span {
+            font-weight: bold;
+            font-size: 1em;
+        }
+    }
+
     .rui-calendar__body {
         width: 100%;
         border: 1px solid lightgray; 

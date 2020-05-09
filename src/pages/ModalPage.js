@@ -71,6 +71,13 @@ const items = [
         value: ''
     },
     { 
+        property: 'width', 
+        description: 'Set modal width', 
+        default: '', 
+        type: 'number | string',
+        value: ''
+    },
+    { 
         property: 'toggleFullscreen', 
         description: 'Enable modal fullscreen mode', 
         default: 'false', 
@@ -176,6 +183,7 @@ const ModalPage = () => {
                     <Modal
                         closable={closable}
                         dark={theme}
+                        width={350}
                         centered={centered}
                         headerReverse={reversed}
                         toggleFullscreen={fullScreen}
@@ -184,23 +192,31 @@ const ModalPage = () => {
                         header={<div>Sign in</div>}>
                         <div className="pa-10">
                             <InputField
-                                className="my-15 mx-0"
+                                style={{ width: '100%' }}
+                                size="medium"
+                                borderType="rounded"
+                                className="my-10"
                                 dark={theme}
                                 prefix={<Icon name="account" />} 
                                 placeholder="Login"/>
                             <InputField
-                                className="my-15 mx-0"
+                                style={{ width: '100%' }}
+                                size="medium"
+                                borderType="rounded"
+                                className="my-10"
                                 dark={theme}
                                 prefix={<Icon name="key" />} 
                                 placeholder="Password"
                                 type="password"/>
                             <Checkbox
-                                className="my-15 mx-0" 
+                                className="my-10" 
                                 color="primary" 
                                 checked={reversed}
                                 label="Remember me?"/>
-                            <Button 
-                                className="my-15 mx-0"
+                            <Button
+                                borderType="rounded" 
+                                size="medium"
+                                className="my-10"
                                 color="primary" 
                                 name="Sign in" block/>
                             <div className="fz-9 rui-link text-center py-10">

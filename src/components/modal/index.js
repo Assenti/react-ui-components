@@ -33,7 +33,8 @@ const Modal = (props) => {
     }
 
     return (
-        <div className={strinfigyClassObject(className)}
+        <div 
+            className={strinfigyClassObject(className)}
             onClick={(e) => props.closable ? close(e) : {}}>
             <CSSTransition
                 in={props.visible}
@@ -43,7 +44,8 @@ const Modal = (props) => {
                 <div className={modalClass()}
                     style={{ 
                         marginTop: (props.marginTop && !full) ? props.marginTop : (!full ? 20 : ''),
-                        padding: props.padding ? props.padding : '' 
+                        padding: props.padding ? props.padding : '',
+                        width: props.width ? props.width : '' 
                     }}>
                     <div className="rui-modal-header">
                         <div>{props.header}</div>
@@ -69,6 +71,7 @@ const Modal = (props) => {
 Modal.propTypes = {
     visible: PropTypes.bool,
     marginTop: PropTypes.number,
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     padding: PropTypes.string,
     closable: PropTypes.bool,
     closeIconColor: PropTypes.string,

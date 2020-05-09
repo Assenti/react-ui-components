@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Footer, Select, Icon, Switch, ThemeContext, Divider, List, ListItem } from '../components';
+import { Footer, Select, Icon, Switch, ThemeContext, Divider, List } from '../components';
 import { countries } from '../data/countries';
 import Page from '../layouts/Page';
 
@@ -44,35 +44,35 @@ const items = [
 const usage = 
 `// Usage examples
 import React from 'react';
-import { Footer, List, ListItem } from '@assenti/react-ui-components';
+import { Footer, List } from '@assenti/react-ui-components';
 
 function Example() {
         <>
-            <Footer>
+            <Footer
+                fixed={fixed}
+                color={!theme ? color : null}
+                smooth={smooth}
+                dark={theme}>
                 <div className="full-width">
                     <div className="row space-around">
                         <List>
                             {countries.slice(0,5).map((item, index) => 
-                                <a href={item.url} 
-                                    target="_blank" 
+                                <List.Item
                                     key={index}
-                                    rel="noopener noreferrer">
-                                    <ListItem
-                                        noDivider
-                                        item={item.country}/>
-                                </a>
+                                    noDivider
+                                    href={item.url}
+                                    blank
+                                    item={item.country}/>
                             )}
                         </List>
                         <List>
                             {countries.slice(5,10).map((item, index) => 
-                                <a href={item.url} 
-                                    key={index}    
-                                    target="_blank" 
-                                    rel="noopener noreferrer">
-                                    <ListItem
-                                        noDivider
-                                        item={item.country}/>
-                                </a>
+                                <List.Item
+                                    key={index}
+                                    noDivider
+                                    href={item.url}
+                                    blank
+                                    item={item.country}/>
                             )}
                         </List>
                     </div>
@@ -137,26 +137,22 @@ const FooterPage = () => {
                             <div className="row space-around">
                                 <List>
                                     {countries.slice(0,5).map((item, index) => 
-                                        <a href={item.url} 
-                                            target="_blank" 
+                                        <List.Item
                                             key={index}
-                                            rel="noopener noreferrer">
-                                            <ListItem
-                                                noDivider
-                                                item={item.country}/>
-                                        </a>
+                                            noDivider
+                                            href={item.url}
+                                            blank
+                                            item={item.country}/>
                                     )}
                                 </List>
                                 <List>
                                     {countries.slice(5,10).map((item, index) => 
-                                        <a href={item.url} 
-                                            key={index}    
-                                            target="_blank" 
-                                            rel="noopener noreferrer">
-                                            <ListItem
-                                                noDivider
-                                                item={item.country}/>
-                                        </a>
+                                        <List.Item
+                                            key={index}
+                                            noDivider
+                                            href={item.url}
+                                            blank
+                                            item={item.country}/>
                                     )}
                                 </List>
                             </div>

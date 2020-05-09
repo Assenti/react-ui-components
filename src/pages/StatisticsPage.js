@@ -175,6 +175,7 @@ const StatisticsPage = () => {
                                         tiny/>}
                                 align="bottom"
                                 value={1000}
+                                style={{ width: 170 }}
                                 valueColor="#1aaa55"
                                 valueSize={30}
                                 fractions={2}

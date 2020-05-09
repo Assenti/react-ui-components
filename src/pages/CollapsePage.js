@@ -1,11 +1,11 @@
 import React from 'react';
-import { Collapse, List, ListItem, ThemeContext } from '../components'
+import { Collapse, List, ThemeContext } from '../components'
 import Page from '../layouts/Page';
 
 const usage = 
 `// Usage examples
 import React from 'react';
-import { Collapse, List, ListItem } from '@assenti/react-ui-components';
+import { Collapse, List } from '@assenti/react-ui-components';
 
 const names = [
     { name: 'Steve Rogers', hero: 'Captain America', icon: 'shield-account', check: false }, 
@@ -38,7 +38,7 @@ function Example() {
                     size="medium"
                     hover>
                     {names.map((item, index) => 
-                        <ListItem 
+                        <List.Item 
                             key={index} 
                             item={item.hero}
                             icon={item.icon}
@@ -159,7 +159,7 @@ const CollapsePage = () => {
                             size="medium"
                             hover>
                             {names.map((item, index) => 
-                                <ListItem 
+                                <List.Item 
                                     key={index} 
                                     item={item.hero}
                                     icon={item.icon}

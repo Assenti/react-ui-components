@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { Icon, ThemeContext } from '../components';
-import { phoneMask, creditMask, creditIssueMask, iinMask } from '../components/utils';
+import { Icon, ThemeContext, InputMask } from '../components';
+import { creditMask, creditIssueMask, iinMask } from '../components/utils';
 import Page from '../layouts/Page';
-import InputMask from 'react-input-mask';
 
 const usage = 
 `// Usage examples
 import React, { useState } from 'react';
-import { InputMask, Icon, phoneMask } from '@assenti/react-ui-components';
+import { InputMask, Icon } from '@assenti/react-ui-components';
 
 function Example() {
     const [phone, setPhone] = useState('');
@@ -19,14 +18,13 @@ function Example() {
                 size="medium"
                 value={phone}
                 mask="phone"
-                code="+7"
-                placeholder="+7 (___) ___-__-__"
+                placeholder="(___) ___-__-__"
                 onChange={(value, rowValue) => {
                     console.log(value)
                     console.log(rowValue)
                     setPhone(rowValue)
                 }}
-                prefix={<Icon name="smartphone"/>}/>
+                prefix={<><Icon name="smartphone"/><span>+7</span></>}/>
         </>
     )
 }`
@@ -74,7 +72,6 @@ const InputMaskPage = () => {
     const [cardIssue, setCardIssue] = useState('');
     const [iin, setIin] = useState('');
     const [date, setDate] = useState('');
-    const kztPhone = '7777777777';
     const cardForm = '1234567890191112';
     const cardIssueForm = '0220';
     const iinForm = '123456789012';
@@ -87,33 +84,24 @@ const InputMaskPage = () => {
                     apiDescItems={items}
                     componentName="<InputMask/>">
                     <InputMask 
-                        mask="(999) 999 99 99" 
-                        maskChar={null} 
-                        value={phone} 
-                        onChange={e => {
-                            setPhone(e.target.value)
-                            console.log(phone)
-                        }} 
-                        />
-                    {/* <div className="py-10 fz-9">Kazakhstan phone mask: {phoneMask(kztPhone)}</div> */}
-                    {/* <InputMask 
                         style={{ width: 250 }}
                         size="medium"
                         value={phone}
                         label="Input your phone number"
                         mask="phone"
+                        dark={theme}
                         clearable
                         onClear={() => setPhone('')}
-                        dark={theme}
                         placeholder="(___) ___-__-__"
                         onChange={(value, rowValue) => {
                             console.log(value)
                             console.log(rowValue)
                             setPhone(rowValue)
                         }}
-                        prefix={<><Icon name="smartphone"/><span>+7</span></>}/> */}
+                        prefix={<><Icon name="smartphone"/><span>+7</span></>}/>
                     <br/>
-                    {/* <div className="pa-5 fz-9">Credit card mask: {creditMask(cardForm)}, Credit card issue date: {creditIssueMask(cardIssueForm)}</div>
+                    <br/>
+                    <div className="pa-5 fz-9">Credit card mask: {creditMask(cardForm)}, Credit card issue date: {creditIssueMask(cardIssueForm)}</div>
                     <div className="row">
                         <InputMask 
                             style={{ width: 250 }}
@@ -166,13 +154,15 @@ const InputMaskPage = () => {
                         value={date}
                         mask="date"
                         dark={theme}
+                        clearable
+                        onClear={() => setDate('')}
                         placeholder="DD.MM.YYYY"
                         onChange={(value, rowValue) => {
                             console.log(value)
                             console.log(rowValue)
                             setDate(rowValue)
                         }}
-                        prefix={<Icon name="calendar-month"/>}/> */}
+                        prefix={<Icon name="calendar-month"/>}/>
                 </Page>
             )}
         </ThemeContext.Consumer>

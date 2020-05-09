@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, List, ListItem, Switch, Select, Icon, ThemeContext, Divider } from '../components';
+import { Card, List, Switch, Select, Icon, ThemeContext, Divider } from '../components';
 import manImage from '../img/man.png';
 import manImage2 from '../img/hipster.png';
 import girlImage from '../img/girl.png';
@@ -91,7 +91,7 @@ const items = [
 const usage =
 `// Usage examples
 import React from 'react';
-import { Card, List, ListItem } from '@assenti/rui-components';
+import { Card, List } from '@assenti/rui-components';
 
 const heroes = [
     { name: 'Steve Rogers', hero: 'Captain America', icon: 'account' }, 
@@ -106,7 +106,7 @@ function Example() {
             <Card header="Marvel heroes">
                 <List dark={theme}>
                     {heroes.map((item, index) => 
-                        <ListItem 
+                        <List.Item 
                             key={index}
                             icon={item.icon}
                             item={item.name}
@@ -196,7 +196,7 @@ const CardPage = () => {
                         header="Marvel heroes">
                         <List dark={theme}>
                             {heroes.map((item, index) => 
-                                <ListItem 
+                                <List.Item 
                                     key={index}
                                     icon={item.icon}
                                     item={item.name}

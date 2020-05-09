@@ -1,5 +1,5 @@
 import React, { createRef } from 'react';
-import { Card, Table, BackTopBtn, List, ListItem, CopyToClipboard, ThemeContext } from '../components';
+import { Card, Table, BackTopBtn, List, CopyToClipboard, ThemeContext } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -257,7 +257,7 @@ const HelperPage = () => {
                     <Card dark={theme} title="Set color">
                         <List size="medium" dark={theme}>
                             {presetColors.map((item, index) =>
-                                <ListItem  
+                                <List.Item  
                                     key={index}
                                     noDivider
                                     render={

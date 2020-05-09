@@ -178,25 +178,18 @@ const Calendar = (props) => {
                     size={props.size} 
                     onClick={handlePrev}/>
                 <div className="rui-calendar__title">
+                    <span>{month}</span>
                     <Select
                         items={years(props.limit ? props.limit : 15, props.onlyPast)}
-                        width={110}
+                        width={80}
+                        borderType={props.selectBorderType}
                         color={props.color ? props.color : 'primary'}
                         value={year}
                         maxHeight={300}
                         dark={props.dark}
                         size={props.size}
-                        className="rui-year mr-5"
+                        className="rui-year ml-10"
                         onChange={v => setYear(v)}/>
-                    <Select
-                        items={monthes(props.locale)}
-                        width={110}
-                        maxHeight={300}
-                        size={props.size}
-                        dark={props.dark}
-                        color={props.color ? props.color : 'primary'}
-                        value={month}
-                        onChange={v => setMonth(v)}/>
                 </div>
                 <Button 
                     icon="chevron-next" 
@@ -225,9 +218,10 @@ Calendar.propTypes = {
     locale: PropTypes.oneOf([undefined,'','en','kz','ru','fr']),
     events: PropTypes.array,
     holidays: PropTypes.array,
-    disabledDates: PropTypes.array, // new
-    minDate: PropTypes.any, // new
-    maxDate: PropTypes.any, // new
+    disabledDates: PropTypes.array,
+    minDate: PropTypes.any,
+    maxDate: PropTypes.any,
+    selectBorderType: PropTypes.oneOfType([undefined,'','default','tile','rounded','smooth']),
     onDate: PropTypes.func,
     hideWeekend: PropTypes.bool,
     hideCurrentDay: PropTypes.bool,
@@ -238,7 +232,7 @@ Calendar.propTypes = {
     weekStartsSunday: PropTypes.bool,
     shortWeekName: PropTypes.bool,
     dark: PropTypes.bool,
-    active: PropTypes.any, // new
+    active: PropTypes.any,
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     popOverTrigger: PropTypes.oneOf([undefined,'','hover','click']),
     className: PropTypes.string

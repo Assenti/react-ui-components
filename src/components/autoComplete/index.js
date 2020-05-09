@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, InputField, List, ListItem, Icon } from '../index';
+import { Dropdown, InputField, List, Icon } from '../index';
 import { strinfigyClassObject } from '../utils';
 
 const AutoComplete = (props) => {
@@ -64,7 +64,7 @@ const AutoComplete = (props) => {
                             size={props.size}
                             header={props.listHeader}>
                             {filtered().map((item, index) => 
-                                <ListItem
+                                <List.Item
                                     key={index}
                                     avatar={props.avatarKey}
                                     avatarSize={props.avatarSize}

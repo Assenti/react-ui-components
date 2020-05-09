@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Switch, ExpansionList, Icon, Select, List, ListItem, ThemeContext, Divider } from '../components';
+import { Switch, ExpansionList, Icon, Select, List, ThemeContext, Divider } from '../components';
 import { countries } from '../data/countries';
 import Page from '../layouts/Page';
 
 const usage =
 `// Usage examples
 import React from 'react';
-import { ExpansionList, List, ListItem } from '@assenti/react-ui-components';
+import { ExpansionList, List } from '@assenti/react-ui-components';
 
 function Example() {
     return (
@@ -19,7 +19,7 @@ function Example() {
                         key={index}
                         size={size}>
                         {item.cities.map((subItem, iter) => 
-                            <ListItem
+                            <List.Item
                                 key={iter} 
                                 hover
                                 item={subItem}/>
@@ -151,7 +151,7 @@ const ExpansionListPage = () => {
                             <List
                                 key={index}>
                                 {item.cities.map((subItem, iter) => 
-                                    <ListItem
+                                    <List.Item
                                         key={iter} 
                                         hover
                                         item={subItem}/>
