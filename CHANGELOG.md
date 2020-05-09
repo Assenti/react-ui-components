@@ -7,7 +7,7 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
-#### 0.7.2 `2020-05-09`
+#### 0.7.2, 0.7.3 `2020-05-09`
 
 - DatePicker component updated;
 - Calendar component updated;
