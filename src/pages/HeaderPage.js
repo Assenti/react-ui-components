@@ -60,6 +60,13 @@ const items = [
         value: ''
     },
     { 
+        property: 'leftControlSize', 
+        description: 'Set left control button size', 
+        default: 'medium', 
+        type: 'string',
+        value: 'default | medium | large'
+    },
+    { 
         property: 'onLeftControl', 
         description: 'Invokes on left control click', 
         default: '', 

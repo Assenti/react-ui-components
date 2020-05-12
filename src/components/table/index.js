@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { Empty, Loading } from '../icon/icons/index';
+import { Empty } from '../icon/icons/index';
 import { Checkbox, Pagination, Icon, InputField } from '../index';
 import { compare, strinfigyClassObject } from '../utils';
 
@@ -12,7 +12,7 @@ const makeSortableHeaders = (headers) => {
     return sortableHeaders;
 }
 
-const Table = (props) => {
+const Table = forwardRef((props, ref) => {
     const [selected, setSelected] = useState([]);
     const [currentPage, setCurrentPage] = useState(props.currentPage ? props.currentPage : 1);
     const [perPage, setPerPage] = useState(props.perPage ? props.perPage : 10);
@@ -187,7 +187,7 @@ const Table = (props) => {
     }
 
     return (
-        <div className={strinfigyClassObject(classNameContainer)}>
+        <div className={strinfigyClassObject(classNameContainer)} id={props.id ? props.id : ''}>
             <div className="rui-table__header">
                 {props.tableTitle ? 
                     <div className="rui-table__title">{props.tableTitle}</div> : null}
@@ -243,10 +243,12 @@ const Table = (props) => {
             }
         </div>
     )
-}
+})
 Table.propTypes = {
+    id: PropTypes.string,
     items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.number), PropTypes.arrayOf(PropTypes.object)]).isRequired,
     itemsTotal: PropTypes.number,
+    itemTitles: PropTypes.arrayOf(PropTypes.string),
     headers: PropTypes.arrayOf(PropTypes.string),
     color: PropTypes.oneOf([undefined,'','default','primary','info','success','error']),
     perPageVariants: PropTypes.arrayOf(PropTypes.number),

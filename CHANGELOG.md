@@ -7,6 +7,13 @@ timeline: true
 
 ###### For now there is not schedule, make releases as soon as possible and when i have a time
 
+#### 0.7.4 `2020-05-12`
+
+- Drawer component updated, new props added;
+- Table component types bugs fixed, new props added;
+- DatePicker, Calendar types bugs fixed;
+- Header component updated, new props added;
+
 #### 0.7.2, 0.7.3 `2020-05-09`
 
 - DatePicker component updated;

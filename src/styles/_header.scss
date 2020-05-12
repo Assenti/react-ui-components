@@ -96,6 +96,8 @@
 
 @media (max-width: #{$xs}) {
     .rui-header {
+        padding: 0 10px;
+
         .rui-header__title {
             font-size: $mediumFont;
         }

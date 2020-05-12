@@ -74,15 +74,27 @@ export const isTwoDatesEqual = (date1, date2) => {
 }
 
 export const toFinancial = (number) => {
-    if (number) {
-        let stringified = Math.abs(number).toString();
+    if (number !== null || number !== undefined) {
+        const [integer, remain] = Math.abs(number).toString().split('.');
         let result = '';
-        if (stringified.length < 4) return number;
-        else if (stringified.length > 3 && stringified.length < 7) result = `${stringified.slice(0,3)} ${stringified.slice(3,6)}`;
-        else if (stringified.length > 6 && stringified.length < 10) result = `${stringified.slice(0,3)} ${stringified.slice(3,6)} ${stringified.slice(6,9)}`;
-        else if (stringified.length > 9 && stringified.length < 12) result = `${stringified.slice(0,3)} ${stringified.slice(3,6)} ${stringified.slice(6,9)} ${stringified.slice(9,12)}`;
-        else if (stringified.length > 12 && stringified.length < 15) result = `${stringified.slice(0,3)} ${stringified.slice(3,6)} ${stringified.slice(6,9)} ${stringified.slice(9,12)} ${stringified.slice(12,15)}`;
-        return number < 0 ? `- ${result}` : result;
+        let integerToInt = parseInt(integer);
+
+        if (integerToInt > 0 && integerToInt < 1000) {
+            result = integer
+        } else if (integerToInt >= 1000 && integerToInt < 10000) {
+            result = `${integerToInt.toString().slice(0,1)} ${integerToInt.toString().slice(1, 4)}`
+        } else if (integerToInt >= 10000 && integerToInt < 100000) {
+            result = `${integerToInt.toString().slice(0,2)} ${integerToInt.toString().slice(2, 5)}`
+        } else if (integerToInt >= 100000 && integerToInt < 1000000) {
+            result = `${integerToInt.toString().slice(0,3)} ${integerToInt.toString().slice(3, 6)}`
+        } else if (integerToInt >= 1000000 && integerToInt < 10000000) {
+            result = `${integerToInt.toString().slice(0,1)} ${integerToInt.toString().slice(1, 4)} ${integerToInt.toString().slice(4, 7)}`
+        } else if (integerToInt >= 10000000 && integerToInt < 100000000) {
+            result = `${integerToInt.toString().slice(0,2)} ${integerToInt.toString().slice(2, 5)} ${integerToInt.toString().slice(5, 8)}`
+        } else if (integerToInt >= 100000000 && integerToInt < 1000000000) {
+            result = `${integerToInt.toString().slice(0,3)} ${integerToInt.toString().slice(3, 6)} ${integerToInt.toString().slice(6, 9)}`
+        }
+        return number < 0 ? `- ${result}${remain ? '.' + remain.slice(0,2) : ''}` : result + `${remain ? '.' + remain.slice(0,2) : ''}`;
     } else return '';
 }
 

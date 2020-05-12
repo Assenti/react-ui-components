@@ -33,6 +33,7 @@ const Header = (props) => {
                         dark={props.dark ? props.dark : false}
                         light={props.light || (!props.color && !props.dark) ? true : false}
                         color={props.color}
+                        size={props.leftControlSize ? props.leftControlSize : 'medium'}
                         icon={props.leftControlIcon ? props.leftControlIcon : 'menu'} 
                         onClick={() => props.onLeftControl ? props.onLeftControl() : {}}/>
                 </div> : ''}
@@ -49,6 +50,7 @@ Header.propTypes = {
     dark: PropTypes.bool,
     light: PropTypes.bool,
     leftControl: PropTypes.bool,
+    leftControlSize: PropTypes.oneOf([undefined,'','medium','large']),
     onLeftControl: PropTypes.func,
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     color: PropTypes.oneOf([undefined,'','default','primary','info','success','error','secondary','black']),

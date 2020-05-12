@@ -75,13 +75,16 @@ const Drawer = (props) => {
                             in={props.min}
                             timeout={300}
                             classNames="expand">
-                                <div className={strinfigyClassObject(className)}
-                                    >
+                                <div className={strinfigyClassObject(className)}>
                                     <div className="rui-drawer-content" onClick={handleCloseXs}>
                                         {props.children}
                                     </div>
                                     {props.collapsable ? <div className="rui-drawer-footer">
-                                        <Tooltip tooltip={props.min ? 'Expand' : 'Collapse'}>
+                                        <Tooltip 
+                                            tooltip={props.min ? 
+                                                (props.expandText ? props.expandText : 'Expand') : 
+                                                (props.collapseText ? props.collapseText : 'Collapse')
+                                            }>
                                             <Button
                                                 dark={props.dark}
                                                 light={props.dark ? false : true}
@@ -134,6 +137,8 @@ const Drawer = (props) => {
     )
 }
 Drawer.propTypes = {
+    expandText: PropTypes.string,
+    collapseText: PropTypes.string,
     drawer: PropTypes.bool,
     collapsable: PropTypes.bool,
     min: PropTypes.bool,

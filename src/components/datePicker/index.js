@@ -133,7 +133,7 @@ DatePicker.propTypes = {
     disabledDates: PropTypes.array,
     minDate: PropTypes.any,
     maxDate: PropTypes.any, 
-    selectBorderType: PropTypes.oneOfType([undefined,'','default','tile','rounded','smooth']),
+    selectBorderType: PropTypes.oneOf([undefined,'','default','tile','rounded','smooth']),
     placeholder: PropTypes.string,
     hideWeekend: PropTypes.bool,
     hideCurrentDay: PropTypes.bool,

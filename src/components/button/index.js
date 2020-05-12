@@ -29,6 +29,11 @@ const Button = React.forwardRef((props, ref) => {
         else return 'rui-btn__text';
     }
 
+    const getIconSize = () => {
+        if (props.size === 'medium' || props.size === 'large') return 24;
+        return 20;
+    }
+
     return (
         <button
             type={props.type ? props.type : 'button'}
@@ -37,22 +42,19 @@ const Button = React.forwardRef((props, ref) => {
             className={strinfigyClassObject(className)} 
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>
             {props.loading ?
-                <Icon name="loading" color="gray" size={20}/> :
+                <Icon name="loading" color="gray" size={getIconSize()}/> :
                 <>
-                    {props.icon && props.iconLeft ? 
+                    {props.icon && props.iconLeft && 
                         (props.iconAllotted ? 
-                            <div className="rui-btn__allotted-icon"><Icon size={20} name={props.icon}/></div> :
-                            <Icon size={20} name={props.icon}/>
-                        )
-                        : ''
-                    }
+                            <div className="rui-btn__allotted-icon"><Icon name={props.icon} size={getIconSize()}/></div> :
+                            <Icon name={props.icon} size={getIconSize()}/>
+                        )}
                     {props.name ? <div className={setMargin()}>{props.name}</div> : ''}
-                    {props.icon && !props.iconLeft ? 
+                    {props.icon && !props.iconLeft && 
                         (props.iconAllotted ? 
-                            <div className="rui-btn__allotted-icon"><Icon size={20} name={props.icon}/></div> :
-                            <Icon size={20} name={props.icon}/>    
-                        ) : ''
-                    }
+                            <div className="rui-btn__allotted-icon"><Icon name={props.icon} size={getIconSize()}/></div> :
+                            <Icon name={props.icon} size={getIconSize()}/>    
+                    )}
                 </>
             }
             

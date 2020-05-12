@@ -172,6 +172,20 @@ const rows = [
         value: ''
     },
     { 
+        property: 'ref',
+        description: 'Set ref', 
+        default: '', 
+        type: 'ReactRefObject',
+        value: ''
+    },
+    { 
+        property: 'id',
+        description: 'Set an html id to component', 
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 

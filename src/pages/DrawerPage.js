@@ -124,6 +124,20 @@ const items = [
         value: 'true | false'
     },
     { 
+        property: 'expandText', 
+        description: 'Set custom expand tooltip text', 
+        default: 'Expand', 
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'collapseText', 
+        description: 'Set custom collapse tooltip text', 
+        default: 'Collapse', 
+        type: 'string',
+        value: ''
+    },
+    { 
         property: 'absolute', 
         description: 'Set drawer position to absolute', 
         default: 'false', 
