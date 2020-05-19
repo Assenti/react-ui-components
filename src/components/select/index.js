@@ -1,19 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, InputField, Dropdown, List, Tag } from '../index';
-import { CSSTransition } from 'react-transition-group';
 import { strinfigyClassObject } from '../utils';
 
 const Select = (props) => {
+    const checkboxesContainer = useRef();
     const [menu, setMenu] = useState(false);
-    const [subMenu, setSubMenu] = useState(false);
-    const [activeIndex, setActiveIndex] = useState(0);
     const [selected, setSelected] = useState([]);
     const [index, setIndex] = useState(-1);
     const [focus, setFocus] = useState(false);
     const [search, setSearch] = useState('');
-    const [searchFocus, setSearchFocus] = useState(props.searchable ? true : false);
-    const inputRef = useRef(null);
 
     let className = {
         name: 'rui-select',
@@ -29,10 +25,18 @@ const Select = (props) => {
         border: props.borderType && props.borderType !== 'default' ? props.borderType : ''
     }
 
-    const resolveItemChildren = () => {
-        if (props.childrenKey) return props.items[activeIndex][props.childrenKey]
-        else return []
+    const handleClick = (e) => {
+        if (checkboxesContainer.current && checkboxesContainer.current.contains(e.target)) return;
+        setMenu(false)
     }
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClick, true);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClick, true);
+        }
+    },[])
 
     const isSelected = (item) => {
         for (const i of selected) {
@@ -49,11 +53,8 @@ const Select = (props) => {
 
     const getItem = (item) => props.itemKey ? item[props.itemKey] : item;
 
-    const handleItemClick = (e, item, index) => {
-        if (props.childrenKey && !props.multiple) {
-            setSubMenu(true)
-            setActiveIndex(index)               
-        } else if (isMultiple()) {
+    const handleItemClick = (item) => {
+        if (isMultiple()) {
             if (isSelected(getItem(item))) {
                 setSelected(() => selected.filter(i => i !== getItem(item)))
                 props.onSelect(getItem(item), selected.filter(i => i !== getItem(item)))
@@ -89,23 +90,6 @@ const Select = (props) => {
         }
     }
 
-    const handleCloseOnBlur = (e) => {
-        if (props.value && !props.childrenKey) {
-            if (e.currentTarget === e.target && !searchFocus) {
-                setMenu(false)
-                setSubMenu(false)
-    
-                if (props.searchable) {
-                    setSearchFocus(false)
-                    setSearch('')
-                }
-            }
-        } else if (props.childrenKey && props.value) {
-            setMenu(false)
-            setSubMenu(false)
-        } 
-    }
-
     const filteredItems = () => {
         if (search) {
             return props.items.filter(item => {
@@ -113,18 +97,9 @@ const Select = (props) => {
                     item[props.itemKey].toLowerCase().includes(search.toLowerCase()) :
                     item.toLowerCase().includes(search.toLowerCase())
             })
-        } else {    
+        } else {   
+            console.log(props.items) 
             return props.items
-        }
-    }
-
-    const handleFocus = (e) => {
-        if (e.currentTarget === e.target && !props.disabled) setMenu(true)
-    }
-
-    const handleBlur = (e) => {
-        if (e.currentTarget === e.target) {
-            setMenu(false)
         }
     }
 
@@ -133,14 +108,6 @@ const Select = (props) => {
         else if (e.key === 'ArrowUp') setIndex(index - 1)
         else if (e.key === 'Escape') {
             setMenu(false)
-            setSubMenu(false)
-        }
-    }
-
-    const handleLabelClick = () => {
-        if (inputRef) {
-            inputRef.current.focus()
-            setFocus(true)
         }
     }
 
@@ -148,7 +115,6 @@ const Select = (props) => {
         if (props.onChange) props.onChange(subItem)
         setTimeout(() => {
             setMenu(false)
-            setSubMenu(false)
         })
     }
 
@@ -165,12 +131,10 @@ const Select = (props) => {
             visible={menu}
             dark={props.dark}
             content={
-                <div tabIndex={-1} 
-                    className="rui-select__menu" 
-                    onBlur={handleCloseOnBlur}>
+                <div className="rui-select__menu">
                     {props.searchable && !props.childrenKey ? 
                     <InputField
-                        style={{ width: props.width }}
+                        style={{ width: props.width ? props.width : '' }}
                         dark={props.dark}
                         color={props.color ? props.color : 'primary'}
                         prefix={<Icon name="search"/>}
@@ -189,27 +153,23 @@ const Select = (props) => {
                                 color={props.color}
                                 tabIndex={index}
                                 isActiveItem={getActiveItem(item)}
-                                onClick={e => handleItemClick(e, item, index)}
+                                onClick={() => handleItemClick(item)}
                                 checkbox={props.multiple}
-                                controls={!props.multiple && props.childrenKey ? 
+                                controls={!props.multiple && props.childrenKey && 
                                     <Icon
-                                        onClick={e => handleItemClick(e, item, index)} 
-                                        name="chevron-next" 
-                                        className="rui-select__next-icon"/> : ''}
+                                        onClick={() => handleItemClick(item)} 
+                                        name="chevron-next"
+                                        className="rui-select__next-icon"/>}
                                 item={props.itemKey ? item[props.itemKey] : item}
                                 hover>
-                                {!props.multiple ? 
-                                <CSSTransition
-                                    in={subMenu}
-                                    timeout={300}
-                                    classNames="rui-select__submenu"
-                                    unmountOnExit>
+                                {!props.multiple && 
+                                    props.childrenKey &&
                                     <div className="rui-select__submenu">
                                         <List 
                                             dark={props.dark} 
                                             size={props.size}
                                             className="rui-select__submenu-list">
-                                            {resolveItemChildren().map((subItem, iterator) => 
+                                            {item[props.childrenKey].map((subItem, iterator) => 
                                                 <List.Item
                                                     onClick={e => handleSubItemClick(e, subItem)}
                                                     isActiveItem={subItem === props.value}
@@ -218,8 +178,7 @@ const Select = (props) => {
                                                     hover/>
                                             )}
                                         </List>
-                                    </div>
-                                </CSSTransition> : ''}
+                                    </div>}
                             </List.Item>
                         )}
                     </List>
@@ -246,17 +205,18 @@ const Select = (props) => {
                     readOnly
                     style={{ width: props.width }}
                     placeholder={props.placeholder}/> : 
-                    <div style={{ width: props.width ? props.width : 100 }} 
-                        className={props.disabled ? 'rui-select__multiple disabled' : 'rui-select__multiple'}>
-                        {props.label ? 
+                    <div 
+                        ref={checkboxesContainer}
+                        onClick={() => !props.disabled ? setMenu(true) : {}}
+                        style={{ width: props.width ? props.width : 100 }} 
+                        className={props.disabled ? 
+                            'rui-select__multiple disabled' : 
+                            'rui-select__multiple'}>
+                        {!!props.label && 
                             <label
-                                className={focus ? `text-${props.color ? props.color : 'primary'}` : ''} 
-                                onClick={handleLabelClick}>{props.label}</label> : ''}
-                        <div tabIndex={-1}
-                            ref={inputRef}
-                            onFocus={handleFocus}
-                            onBlur={handleBlur}
-                            style={{ backgroundColor: props.whiteBackground ? '#fff' : '' }} 
+                                className={focus ? `text-${props.color ? props.color : 'primary'}` : ''}>
+                                    {props.label}</label>}
+                        <div style={{ backgroundColor: props.whiteBackground ? '#fff' : '' }} 
                             className={strinfigyClassObject(classNameMultiple)}>
                             {props.prefix ? <span className="rui-input-prefix">{props.prefix}</span> : ''}
                             {selected.length > 0 ? 
@@ -270,20 +230,21 @@ const Select = (props) => {
                                             outlined={props.tagOutlined} 
                                             color={props.tagColor}
                                             onClick={(e) => 
-                                                handleItemClick(e, props.itemKey ? {[props.itemKey]: item } : item)}
+                                                handleItemClick(props.itemKey ? {[props.itemKey]: item } : item)}
                                             visible={isSelected(item)}
                                             className="ma-1"/>
                                     )}
                                 </div> :
-                                (props.placeholder ? <div className="rui-select__multiple-placeholder">{props.placeholder}</div> : '')
+                                (!!props.placeholder && <div className="rui-select__multiple-placeholder">{props.placeholder}</div>)
                             }
                             <span className="rui-input-suffix"><Icon name={menu ? 'chevron-up' : 'chevron-down'}/></span>
                         </div>
-                    </div>}/>
+                    </div>
+                    }/>
     )
 }
 Select.propTypes = {
-    items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string),PropTypes.arrayOf(PropTypes.number),PropTypes.arrayOf(PropTypes.object)]).isRequired,
+    items: PropTypes.array.isRequired,
     itemKey: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.number]).isRequired,
     onChange: PropTypes.func,

@@ -8,7 +8,7 @@ const xsBreakpoint = 529;
 
 const Drawer = (props) => {
     const [width, setWidth] = useState('');
-    const [overlay, setOverlay] = useState(false);
+    // const [overlay, setOverlay] = useState(false);
     let className = {
         name: 'rui-drawer',
         collapsable: props.collapsable ? 'collapsable' : '',
@@ -32,9 +32,9 @@ const Drawer = (props) => {
         e.preventDefault();
         if (e.currentTarget === e.target) {
             if (props.onClose) props.onClose()
-            setTimeout(() => {
-                setOverlay(false)
-            }, 300)
+            // setTimeout(() => {
+            //     setOverlay(false)
+            // }, 300)
         } 
     }
 
@@ -79,7 +79,10 @@ const Drawer = (props) => {
                                     <div className="rui-drawer-content" onClick={handleCloseXs}>
                                         {props.children}
                                     </div>
-                                    {props.collapsable ? <div className="rui-drawer-footer">
+                                    {props.collapsable &&
+                                    (props.position !== 'top' && 
+                                    props.position !== 'bottom') && 
+                                    <div className="rui-drawer-footer">
                                         <Tooltip 
                                             tooltip={props.min ? 
                                                 (props.expandText ? props.expandText : 'Expand') : 
@@ -91,7 +94,7 @@ const Drawer = (props) => {
                                                 icon={props.min ? 'chevron-double-right' : 'chevron-double-left'}
                                                 onClick={() => props.onResize()}/>
                                         </Tooltip>
-                                    </div> : ''}
+                                    </div>}
                                 </div>
                         </CSSTransition>
                     </CSSTransition>
@@ -119,16 +122,20 @@ const Drawer = (props) => {
                                 {props.children}
                             </div>
                             {props.collapsable && 
-                            (props.position !== 'top' && props.position !== 'bottom') ? 
+                            (props.position !== 'top' && 
+                            props.position !== 'bottom') && 
                             <div className="rui-drawer-footer">
-                                <Tooltip tooltip={props.min ? 'Expand' : 'Collapse'}>
+                                <Tooltip tooltip={props.min ? 
+                                        (props.expandText ? props.expandText : 'Expand') : 
+                                        (props.collapseText ? props.collapseText : 'Collapse')
+                                    }>
                                     <Button
                                         dark={props.dark}
                                         light={props.dark ? false : true}
                                         icon={props.min ? 'chevron-double-right' : 'chevron-double-left'}
                                         onClick={() => props.onResize()}/>
                                 </Tooltip>
-                            </div> : null}
+                            </div>}
                         </div>
                 </CSSTransition>
             </CSSTransition>

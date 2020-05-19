@@ -122,6 +122,14 @@
         }
     }
 
+    &:not(.drop-box) {
+        .rui-input-uploader__container {
+            &.rounded {
+                border-radius: 60px;
+            }
+        }
+    }
+
     .rui-input-uploader__container {
         width: 100%;
         position: relative;
@@ -152,10 +160,6 @@
 
         &:not(.rounded):not(.smooth) {
             border-radius: $radius;
-        }
-
-        &.rounded {
-            border-radius: 60px;
         }
 
         &.tile {

@@ -4,8 +4,11 @@ timeline: true
 ---
 
 ### Release Schedule
+###### At least 1 release in 2 weeks
 
-###### For now there is not schedule, make releases as soon as possible and when i have a time
+#### 0.7.5 `2020-05-19`
+
+- Components functionality imporevements;
 
 #### 0.7.4 `2020-05-12`
 

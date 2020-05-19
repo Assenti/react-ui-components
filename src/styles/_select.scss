@@ -96,6 +96,8 @@
     padding: 10px 0;
 
     .rui-list-item {
+        position: relative;
+
         .rui-select__next-icon {
             margin-right: 0 !important;
             svg {
@@ -104,6 +106,12 @@
                 path {
                     fill: gray;
                 }
+            }
+        }
+
+        &:hover {
+            .rui-select__submenu {
+                display: block;
             }
         }
     }
@@ -124,11 +132,12 @@
     }
 
     .rui-select__submenu {
+        display: none;
         position: absolute;
         top: -10px;
-        left: calc(100% + .4px);
+        left: calc(100% + 1px);
         width: 100%;
-        box-shadow: 2px 1px 2px rgba(lightgray, .1);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
         border-radius: $radius;
 
         .rui-select__submenu-list:not(.dark) {

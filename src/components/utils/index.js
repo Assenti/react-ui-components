@@ -49,7 +49,7 @@ export const iinMask = (value) => {
 
 export const creditMask = (value) => {
     if (value) {
-        return `${value.slice(0,4)}-${value.slice(4,8)}-${value.slice(8,12)}`;
+        return `${value.slice(0,4)} ${value.slice(4,8)} ${value.slice(8,12)} ${value.slice(12,16)}`;
     } else {
         return '';
     }

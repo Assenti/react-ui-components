@@ -112,7 +112,8 @@ import {
     DashboardOutline,
     ChartBar,
     ChartPie,
-    CharDonut
+    CharDonut,
+    Rotate
 } from './icons/index';
 
 const Icon = (props) => {
@@ -343,6 +344,8 @@ const Icon = (props) => {
                 return <ChartPie {...props}/>;
             case 'chart-donut':
                 return <CharDonut {...props}/>;
+            case 'rotate':
+                return <Rotate {...props}/>;
             default:
                 return '';
         }

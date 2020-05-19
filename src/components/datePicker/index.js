@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown, Icon } from '../index';
 import InputField from '../input';
@@ -7,6 +7,7 @@ import Button from '../button';
 import Modal from '../modal';
 
 const DatePicker = (props) => {
+    const container = useRef();
     const [visible, setVisible] = useState(false);
 
     const handleClear = () => {
@@ -15,8 +16,22 @@ const DatePicker = (props) => {
         }
     }
 
+    const handleClick = (e) => {
+        if (container.current.contains(e.target)) return;
+        setVisible(false)
+    }
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClick, true);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClick, true);
+        }
+    },[])
+
     return (
-        <div className={(`rui-date-picker ${props.className}`).trim()}>
+        <div className={(`rui-date-picker ${props.className}`).trim()} 
+            ref={container}>
             {!props.inModal ? 
             <Dropdown
                 closeManaged
@@ -32,17 +47,15 @@ const DatePicker = (props) => {
                         dark={props.dark}
                         hintColor={props.hintColor}
                         clearable={props.clearable}
+                        onFocus={() => setVisible(true)}
                         onClear={handleClear}
                         required={props.required}
                         placeholder={props.placeholder}
-                        onFocus={() => setVisible(true)}
                         prefix={<Icon name="calendar-month"/>} 
                         value={props.value}/>
                 }
                 content={
-                    <div 
-                        tabIndex={-1} 
-                        className="rui-date-picker__content">
+                    <div className="rui-date-picker__content">
                         <Calendar
                             shortWeekName
                             active={props.active}
@@ -64,10 +77,6 @@ const DatePicker = (props) => {
                             onlyPast={props.onlyPast}
                             locale={props.locale}
                             color={props.color}/>
-                        <Button 
-                            color={props.color && !props.btnColor ? props.color : props.btnColor}
-                            onClick={() => setVisible(false)}
-                            block name={props.cancelBtnName ? props.cancelBtnName : 'Cancel'}/>
                     </div>}
                 /> : 
             <>

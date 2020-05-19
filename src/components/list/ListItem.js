@@ -26,6 +26,8 @@ const ListItem = (props) => {
     return (
         <div onClick={handleClick}
             tabIndex={props.tabIndex} 
+            onMouseLeave={e => props.onMouseLeave ? props.onMouseLeave(e) : {}}
+            onMouseOver={e => props.onMouseOver ? props.onMouseOver(e) : {}}
             className={strinfigyClassObject(className)}
             style={{ width: props.width ? props.width : ''}}>
             {!props.render ?
@@ -44,6 +46,7 @@ const ListItem = (props) => {
                                 <div className="rui-list-item__title-row">
                                     {props.checkbox ? 
                                     <Checkbox
+                                        fill
                                         color={props.color ? props.color : 'primary'}
                                         className="mr-10" 
                                         checked={props.isActiveItem}
@@ -78,6 +81,8 @@ ListItem.propTypes = {
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     item: PropTypes.oneOfType([PropTypes.string,PropTypes.number, PropTypes.object]),
     onClick: PropTypes.func,
+    onMouseOver: PropTypes.func,
+    onMouseLeave: PropTypes.func,
     href: PropTypes.string,
     blank: PropTypes.bool,
     subTitle: PropTypes.string,

@@ -5,14 +5,14 @@ import { strinfigyClassObject } from '../utils';
 
 const Switch = (props) => {
     let className = {
-        btn: 'rui-switch-container',
+        name: 'rui-switch-container',
         size: props.size && props.size !== 'default' ? props.size : '',
         vertical: props.vertical ? 'vertical' : '',
         className: props.className ? props.className : ''
     }
 
     let classNameSwitch = {
-        btn: 'rui-switch',
+        name: 'rui-switch',
         active: props.check ? 'active' : 'disactive',
         double: props.leftLabel || props.leftIcon ? 'double' : '',
         disabled: props.disabled ? 'disabled' : '',

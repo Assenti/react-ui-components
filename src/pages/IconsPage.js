@@ -110,7 +110,8 @@ const icons = [
     'dashboard-outline',
     'chart-bar',
     'chart-pie',
-    'chart-donut'
+    'chart-donut',
+    'rotate'
 ]
 
 const IconsPage = () => {

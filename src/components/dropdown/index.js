@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { strinfigyClassObject } from '../utils';
 
 const Dropdown = (props) => {
+    const container = useRef();
     const [visible, setVisible] = useState(false);
     let className = {
         name: 'rui-dropdown-container',
@@ -12,10 +13,22 @@ const Dropdown = (props) => {
         className: props.className ? props.className : ''
     }
 
+    const handleClick = (e) => {
+        if (container.current.contains(e.target)) return;
+        setVisible(false)
+    }
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClick, true);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClick, true);
+        }
+    },[])
+
     return (
-        <div className={strinfigyClassObject(className)} 
-            tabIndex={-1}
-            onBlur={() => props.closeManaged ? {} : setVisible(false)}>
+        <div className={strinfigyClassObject(className)}
+            ref={container}>
             <div onClick={() => setVisible(true)}>{props.trigger}</div>
             <CSSTransition
                 in={props.closeManaged ? props.visible : visible}

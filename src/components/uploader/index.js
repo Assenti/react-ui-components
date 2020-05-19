@@ -39,7 +39,7 @@ const Uploader = (props) => {
             style={{ 
                 width: props.width ? props.width : ''
             }}>
-            {props.label ? <div className="rui-input-uploader__label">{props.label}</div> : ''}
+            {!!props.label && <div className="rui-input-uploader__label">{props.label}</div>}
             <div className={strinfigyClassObject(classNameContainer)}
                 style={{ height: props.height ? props.height : '' }}>
                 <Icon name="download" className="prefix"/>

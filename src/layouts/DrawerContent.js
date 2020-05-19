@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { List, Icon, Drawer, ThemeContext, AutoComplete, Tag, Badge } from '../components';
+import { List, Icon, Drawer, ThemeContext, AutoComplete, Tag, Badge, Divider } from '../components';
 import { compare } from '../components';
 
 export const DrawerContent = (props) => {
@@ -98,25 +98,30 @@ export const DrawerContent = (props) => {
                                         onClick={() => setList(!list)}
                                         size={20} 
                                         name={list ? 'chevron-up' : 'chevron-down'}/>}/>
-                        {list ? 
-                            <List size="medium" className="pl-35" dark={theme}>
-                                {sortedRoutes().map((item, index) => 
-                                    <List.Item
-                                        key={index}
-                                        right
-                                        noDivider
-                                        icon={item.icon ? item.icon : ''}
-                                        roundedActive
-                                        isActiveItem={item.path === window.location.pathname}
-                                        onClick={() => handleItemClick(item)}
-                                        className="no-select"
-                                        hover
-                                        item={item.name}
-                                        controls={item.updated ? 
-                                            <Tag value="updated" borderType="rounded" tiny/> 
-                                                : (item.new ? <Tag value="new" color="success" borderType="rounded" tiny/> : null)}/>
-                                )}
-                            </List> : ''}
+                        
+                        {list && 
+                            <>
+                                <Divider/>
+                                <List size="medium" className="px-20" dark={theme}>
+                                    {sortedRoutes().map((item, index) => 
+                                        <List.Item
+                                            key={index}
+                                            right
+                                            noDivider
+                                            icon={item.icon ? item.icon : ''}
+                                            leftBorder
+                                            isActiveItem={item.path === window.location.pathname}
+                                            onClick={() => handleItemClick(item)}
+                                            className="no-select"
+                                            hover
+                                            item={item.name}
+                                            controls={item.updated ? 
+                                                <Tag value="updated" borderType="rounded" tiny/> 
+                                                    : (item.new ? <Tag value="new" color="success" borderType="rounded" tiny/> : null)}/>
+                                    )}
+                                </List>
+                                <Divider/>
+                            </>}
                         <List.Item
                             right
                             noDivider
