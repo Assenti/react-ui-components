@@ -1,12 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Collapse, Table, CopyToClipboard, Card, ThemeContext, BackTopBtn } from '../components';
+import { Collapse, Table, CopyToClipboard, Card, ThemeContext, BackTopBtn, Button } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { keys } from '../data/apiTableHeaders';
 
 const Page = (props) => {
     const parent = useRef();
+    const [open, setOpen] = useState(false);
 
     return (
         <ThemeContext.Consumer>
@@ -16,16 +17,17 @@ const Page = (props) => {
                     <Card dark={theme} header={<h4>Usage</h4>}>
                         {props.children}
                         <Collapse
+                            className="mt-10"
                             extra={<CopyToClipboard 
                                 defaultText="Copy code" 
                                 text={props.usage} 
-                                dark={theme}
-                                className="mr-10"/>}  
-                            icon="code" 
-                            dark={theme}
-                            iconSize={18} 
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter language="jsx" style={theme ? tomorrow : coy}>
+                                dark={theme}/>} 
+                            onChange={state => setOpen(state)} 
+                            customToggler={<Button className="ml-20" name={open ? 'Close' : 'Open'} icon="code" color="info"/>}
+                            dark={theme}>
+                            <SyntaxHighlighter 
+                                language="jsx" 
+                                style={theme ? tomorrow : coy}>
                                 {props.usage}
                             </SyntaxHighlighter>
                         </Collapse>

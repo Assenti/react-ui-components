@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch, ExpansionList, Icon, Select, List, ThemeContext, Divider } from '../components';
+import { Switch, ExpansionList, List, ThemeContext, Divider } from '../components';
 import { countries } from '../data/countries';
 import Page from '../layouts/Page';
 
@@ -13,11 +13,15 @@ function Example() {
         <>
             <ExpansionList
                 width={250} 
-                defaultOpens={[0]}
-                itemContent={(item, index) =>
-                    <List
-                        key={index}
-                        size={size}>
+                hover
+                items={countries}
+                titleContent={(item) => 
+                    <List.Item
+                        icon="map-marker" 
+                        item={item.country}/>    
+                }
+                itemContent={(item) =>
+                    <List>
                         {item.cities.map((subItem, iter) => 
                             <List.Item
                                 key={iter} 
@@ -25,9 +29,7 @@ function Example() {
                                 item={subItem}/>
                         )}
                     </List>
-                }
-                titleKey="country"
-                items={countries}/>
+                }/>
         </>
     )
 )`
@@ -41,17 +43,17 @@ const items = [
         value: ''
     },
     { 
-        property: 'titleKey', 
-        description: 'Set if items passed as array of objects', 
+        property: 'titleContent', 
+        description: 'Set title content (invokes as a function that return item and index)', 
         default: '', 
-        type: 'string',
+        type: 'function',
         value: ''
     },
     { 
         property: 'itemContent', 
         description: 'Set item content (invokes as a function that return item and index)', 
         default: '', 
-        type: 'ReactNode',
+        type: 'function',
         value: ''
     },
     { 
@@ -69,13 +71,6 @@ const items = [
         value: 'true | false'
     },
     { 
-        property: 'size', 
-        description: 'Set expanionList size', 
-        default: '', 
-        type: 'string',
-        value: 'medium | large'
-    },
-    { 
         property: 'width', 
         description: 'Set expanionList width', 
         default: '', 
@@ -83,17 +78,31 @@ const items = [
         value: ''
     },
     { 
-        property: 'reverse', 
-        description: 'Reverse title and icon positions', 
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
-    },
-    { 
         property: 'defaultOpens', 
         description: 'Pass default opened items (has no effect in accordion mode)', 
         default: '', 
         type: 'number[]',
+        value: ''
+    },
+    { 
+        property: 'triggerIcon', 
+        description: 'Set custom icon from icons list', 
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
+        property: 'triggerIconColor', 
+        description: 'Set trigger icon color', 
+        default: '', 
+        type: 'string',
+        value: 'hex | rgb(a)'
+    },
+    { 
+        property: 'triggerIconSize', 
+        description: 'Set trigger icon size', 
+        default: '', 
+        type: 'number | string',
         value: ''
     },
     { 
@@ -104,12 +113,9 @@ const items = [
         value: ''
     }
 ]
-const sizes = ['default', 'medium', 'large'];
 
 const ExpansionListPage = () => {
     const [accordion, setAccordioin] = useState(false);
-    const [reverse, setReverse] = useState(false);
-    const [size, setSize] = useState(sizes[0]);
 
     return (
         <ThemeContext.Consumer>
@@ -118,38 +124,26 @@ const ExpansionListPage = () => {
                     usage={usage}
                     apiDescItems={items}
                     componentName="<ExpansionList/>">
-                    <Select
-                        items={sizes}
-                        prefix={<Icon name="format-size"/>}
-                        width={200}
-                        label="Size"
-                        dark={theme}
-                        color="primary"
-                        value={size}
-                        onChange={v => setSize(v)}/>
-                    <br/>
                     <Switch 
                         check={accordion} 
                         color="primary"
+                        leftLabel="Default"
                         rightLabel="Accordion" 
                         className="my-10"
                         onChange={() => setAccordioin(!accordion)}/>
-                    <Switch 
-                        check={reverse} 
-                        color="primary"
-                        rightLabel="Reverse" 
-                        className="my-10"
-                        onChange={() => setReverse(!reverse)}/>
                     <Divider/>
                     <ExpansionList
                         width={250} 
-                        size={size}
-                        reverse={reverse}
+                        hover
                         dark={theme}
                         defaultOpens={[0]}
-                        itemContent={(item, index) =>
-                            <List
-                                key={index}>
+                        titleContent={(item) => 
+                            <List.Item
+                                icon="map-marker" 
+                                item={item.country}/>    
+                        }
+                        itemContent={(item) =>
+                            <List>
                                 {item.cities.map((subItem, iter) => 
                                     <List.Item
                                         key={iter} 
@@ -159,7 +153,6 @@ const ExpansionListPage = () => {
                             </List>
                         }
                         accordion={accordion}
-                        titleKey="country"
                         items={countries}/>
                 </Page>
             )}

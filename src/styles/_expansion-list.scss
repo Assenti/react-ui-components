@@ -1,123 +1,21 @@
 .rui-expansion-list {
+    .rui-collapse {
+        border-bottom: 1px solid #ccc;
+
+        &.active {
+            background-color: rgba(lightgray, .4);
+        }
+    }
+
+    &.hover {
+        .rui-collapse:hover {
+            background-color: rgba(lightgray, .4);
+        }
+    }
+
     &:not(.dark) {
         .rui-expansion-list-item-content {
             background-color: #fafafa;
         }
-    }
-
-    &.dark {
-        .rui-expansion-list-item-content {
-            background-color: gray;
-        }
-    }
-
-    &:not(.medium):not(.large) {
-        .rui-expansion-list-item-title {
-            height: $defaultSize;
-
-            div {
-                font-size: $defaultFont;
-            }
-
-            svg {
-                height: 20px;
-                width: 20px;
-            }
-        }
-    }
-    
-    &.medium {
-        .rui-expansion-list-item-title {
-            height: $mediumSize;
-
-            div {
-                font-size: $mediumFont;
-            }
-
-            svg {
-                height: 22px;
-                width: 22px;
-            }
-        }
-    }
-
-    &.large {
-        .rui-expansion-list-item-title {
-            height: $largeSize;
-
-            div {
-                font-size: $largeFont;
-            }
-        }
-    }
-
-    &.reverse {
-        .rui-expansion-list-item-title {
-            flex-direction: row-reverse;
-
-            div {
-                justify-content: flex-end;
-            }
-        }
-    }
-}
-
-.rui-expansion-list-item {
-    position: relative;
-    height: auto;
-
-    .rui-list-item:last-child {
-        border-bottom: none;
-    }
-}
-
-.rui-expansion-list-item-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 10px;
-    border-bottom: 1px solid #ccc;
-
-    div {
-        display: flex;
-        align-items: center;
-        flex-grow: 1;
-        width: calc(100% - 16px);
-        height: 100%;
-        font-size: $defaultFont;
-        padding-left: 10px;
-    }
-
-    i {
-        cursor: pointer;
-    }
-
-    svg {
-        &:hover {
-            opacity: .7;
-            transition: all .2s ease-in-out;
-        }
-    }
-}
-
-.rui-expansion-list-item-content {
-    width: 100%;
-    overflow: hidden;
-    padding: 0 10px;
-    transition: all .5s ease-in-out;
-    background-color: #fafafa;
-    
-    &.active {
-        border-bottom: 1px solid #ccc;
-    }
-}
-
-.rui-expansion-list-item-text {
-    font-size: 14px;
-    line-height: 18px;
-    color: #888;
-
-    .desc {
-        margin: 10px 0;
     }
 }

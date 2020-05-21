@@ -1,6 +1,4 @@
 .rui-collapse {
-    margin: 5px 0;
-
     &.bordered:not(.dark) {
         border: 1px solid lightgray;
         border-radius: $radius;
@@ -37,7 +35,7 @@
 
         & > span {
             font-size: .9rem;
-            margin: 0 5px;
+            width: 100%;
         }
 
         .tooltip {
@@ -46,7 +44,7 @@
 
         i {
             cursor: pointer;
-            margin: 0 5px;
+            margin-right: 5px;
 
             &:active {
                 transform: scale(.95);
@@ -60,10 +58,11 @@
 
     .rui-collapse__content {
         box-sizing: border-box !important;
-        padding: 5px;
         background-color: transparent;
-        transition: all .3s linear;
         overflow: hidden;
+        transition: all .3s ease-in-out;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
     }
 
     .rui-list-item:last-child {

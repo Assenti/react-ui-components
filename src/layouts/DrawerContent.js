@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { List, Icon, Drawer, ThemeContext, AutoComplete, Tag, Badge, Divider } from '../components';
+import { List, Icon, Drawer, ThemeContext, AutoComplete, Tag, Badge, Divider, Collapse, ExpansionList } from '../components';
 import { compare } from '../components';
 
 export const DrawerContent = (props) => {
@@ -84,24 +84,21 @@ export const DrawerContent = (props) => {
                                 noDivider
                                 item={item.name}/>
                         )}
-                        <List.Item
-                            noDivider
-                            icon="toy-brick"
-                            onClick={() => setList(!list)}
+                        <ExpansionList
                             hover
-                            item={<Badge 
-                                    parent={<div style={{ display: 'block', paddingRight: 10 }}>Components</div>}
-                                    color="primary" 
-                                    value={sortedRoutes().length}/>
-                            }
-                            controls={<Icon 
+                            items={[1]}
+                            titleContent={() => 
+                                <List.Item
+                                        noDivider
+                                        icon="toy-brick"
                                         onClick={() => setList(!list)}
-                                        size={20} 
-                                        name={list ? 'chevron-up' : 'chevron-down'}/>}/>
-                        
-                        {list && 
-                            <>
-                                <Divider/>
+                                        item={<Badge 
+                                                parent={<div style={{ display: 'block', paddingRight: 10 }}>Components</div>}
+                                                color="primary" 
+                                                value={sortedRoutes().length}/>
+                                        }/>
+                            }
+                            itemContent={() => 
                                 <List size="medium" className="px-20" dark={theme}>
                                     {sortedRoutes().map((item, index) => 
                                         <List.Item
@@ -120,8 +117,22 @@ export const DrawerContent = (props) => {
                                                     : (item.new ? <Tag value="new" color="success" borderType="rounded" tiny/> : null)}/>
                                     )}
                                 </List>
-                                <Divider/>
-                            </>}
+                            }
+                            />
+                            {/* <Collapse
+                                title={
+                                    <List.Item
+                                        noDivider
+                                        icon="toy-brick"
+                                        onClick={() => setList(!list)}
+                                        item={<Badge 
+                                                parent={<div style={{ display: 'block', paddingRight: 10 }}>Components</div>}
+                                                color="primary" 
+                                                value={sortedRoutes().length}/>
+                                        }/>
+                                }>
+                                
+                            </Collapse> */}
                         <List.Item
                             right
                             noDivider

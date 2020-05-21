@@ -98,7 +98,6 @@ const Select = (props) => {
                     item.toLowerCase().includes(search.toLowerCase())
             })
         } else {   
-            console.log(props.items) 
             return props.items
         }
     }
