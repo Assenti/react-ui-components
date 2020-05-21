@@ -6,7 +6,7 @@ timeline: true
 ### Release Schedule
 ###### At least 1 release in 2 weeks
 
-#### 0.7.6 `2020-05-22`
+#### 0.7.6, 0.7.7 `2020-05-22`
 
 - Collapse component updated;
 - ExpansionList component updated;

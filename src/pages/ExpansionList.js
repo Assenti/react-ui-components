@@ -22,9 +22,8 @@ function Example() {
                 }
                 itemContent={(item) =>
                     <List>
-                        {item.cities.map((subItem, iter) => 
+                        {item.cities.map((subItem) => 
                             <List.Item
-                                key={iter} 
                                 hover
                                 item={subItem}/>
                         )}
@@ -146,7 +145,6 @@ const ExpansionListPage = () => {
                             <List>
                                 {item.cities.map((subItem, iter) => 
                                     <List.Item
-                                        key={iter} 
                                         hover
                                         item={subItem}/>
                                 )}
