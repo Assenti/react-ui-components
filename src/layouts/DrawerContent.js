@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { List, Icon, Drawer, ThemeContext, AutoComplete, Tag, Badge, Collapse } from '../components';
 import { compare } from '../components';
 
 export const DrawerContent = (props) => {
     const [list, setList] = useState(false);
+    const history = useHistory();
 
     const handleItemClick = (item) => {
         if (item.path.includes('http')) return;
-        else window.location.href = item.path
+        else history.push(item.path); 
     }
 
     const sortedRoutes = () => {

@@ -25,7 +25,7 @@ SOFTWARE.
 import React, { useEffect, useState, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
-import { BrowserRouter as Router, Switch as RouterSwitch, Route, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Switch as RouterSwitch, Route, Redirect } from 'react-router-dom';
 import { routes } from './routes';
 import { DrawerContent } from './layouts/DrawerContent';
 import { Preloader, Header, ThemeContext, Tooltip, Button, Switch } from './components';
@@ -91,13 +91,13 @@ const App = () => {
                 </div>
             }/>
             <div className={dark ? 'rui-app dark' : 'rui-app'}>
-                <DrawerContent
-                    dark={dark}
-                    drawer={drawer}
-                    onSwitch={handleSwitchDark}
-                    onClose={() => setDrawer(false)} 
-                    items={routes}/>
                 <Router>
+                    <DrawerContent
+                        dark={dark}
+                        drawer={drawer}
+                        onSwitch={handleSwitchDark}
+                        onClose={() => setDrawer(false)} 
+                        items={routes}/>
                     <RouterSwitch>
                         {routes.map(({path, Component}, index) => 
                             <Route key={index} exact path={path}>
