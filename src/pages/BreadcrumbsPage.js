@@ -94,9 +94,9 @@ const usage =
 import React, { useState } from 'react';
 import { Breadcrumbs } from '@assenti/react-ui-components';
 const crumbs = [
-    { item: 'Home', url: '#', icon: 'home' },
-    { item: 'Section', url: '#', icon: 'credit-card' },
-    { item: 'Module', url: '#', icon: 'help-circle-outline'}
+    { item: 'Home', url: '', icon: 'home' },
+    { item: 'Section', url: '', icon: 'credit-card' },
+    { item: 'Module', url: '', icon: 'help-circle-outline'}
 ]
 
 function Example() {
@@ -119,9 +119,9 @@ const sizes = ['default', 'medium', 'large'];
 const colors = ['primary', 'info', 'success', 'error', 'dark', 'secondary'];
 const positions = ['default', 'center', 'right'];
 const crumbs = [
-    { item: 'Home', url: '#', icon: 'home' },
-    { item: 'Section', url: '#', icon: 'credit-card' },
-    { item: 'Module', url: '#', icon: 'help-circle-outline'}
+    { item: 'Home', url: '#/breadcrumbs', icon: 'home' },
+    { item: 'Section', url: '#/breadcrumbs', icon: 'credit-card' },
+    { item: 'Module', url: '#/breadcrumbs', icon: 'help-circle-outline'}
 ]
 
 const BreadcrumbsPage = () => {

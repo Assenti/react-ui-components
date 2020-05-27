@@ -34,6 +34,7 @@ const Page = (props) => {
                     </Card>
                     {props.backTopBtn ? <BackTopBtn dark setRef={parent} size="medium" tooltip="Up"/> : null}
                     <Card className="mt-10">
+                        {props.apiDescItems.length > 0 &&
                         <Table
                             tableTitle={<h2>API</h2>}
                             dark={theme}
@@ -43,7 +44,8 @@ const Page = (props) => {
                             bordered
                             searchable={props.apiSearchable}
                             searchKey="property"
-                            itemTitles={keys}/>
+                            itemTitles={keys}/>}
+                        {props.content}
                     </Card>
                 </div>
             )}
@@ -55,6 +57,7 @@ Page.propTypes = {
     backTopBtn: PropTypes.bool,
     usage: PropTypes.string,
     apiDescItems: PropTypes.array,
-    apiSearchable: PropTypes.bool
+    apiSearchable: PropTypes.bool,
+    content: PropTypes.node
 }
 export default Page;

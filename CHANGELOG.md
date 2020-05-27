@@ -6,6 +6,13 @@ timeline: true
 ### Release Schedule
 ###### At least 1 release in 2 weeks
 
+#### 0.7.8, 0.7.9 `2020-05-27`
+
+- `NEW!` Snackbar component added;
+- `WARNING!` Package usage examples updated (styles importing path changed)
+- Card component updated;
+- `NEW!` Project homepage relocated to Github Pages
+
 #### 0.7.6, 0.7.7 `2020-05-22`
 
 - Collapse component updated;

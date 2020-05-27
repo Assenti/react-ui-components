@@ -17,8 +17,8 @@
 ## Main Goal
 Create a lot of usefull and maximum reusable UI components
 
-## Homepage
-[React UI Components](https://r-ui-components.netlify.app)
+## Homepage / Components Demo
+####[React UI Components](https://assenti.github.io/react-ui-components/)
 
 ## Install
 ```bash
@@ -46,7 +46,7 @@ React UI Components use react-transition-group package under the hood, so you sh
 index.js / index.ts
 ```jsx
 // Import styles in index.js / index.ts
-import '@assenti/rui-components/build/css/main.css';
+import '@assenti/rui-components/css/index.css';
 ```
 App.js / App.tsx
 ```jsx

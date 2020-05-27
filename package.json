@@ -1,6 +1,6 @@
 {
   "name": "@assenti/rui-components",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "description": "React UI Components",
   "private": false,
   "license": "MIT",
@@ -25,7 +25,6 @@
   "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
     "react-transition-group": "^4.3.0"
   },
   "devDependencies": {
@@ -37,6 +36,7 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
     "react-syntax-highlighter": "^12.2.1",
     "react-transition-group": "^4.3.0"
@@ -56,7 +56,7 @@
     "ui"
   ],
   "files": [
-    "css/index.css",
+    "css",
     "lib"
   ],
   "main": "lib/index.js",

@@ -31,7 +31,7 @@ export const DrawerContent = (props) => {
 
     useEffect(() => {
         for (const item of sortedRoutes()) {
-            if (item.path === window.location.pathname) {
+            if (item.path === history.location.pathname) {
                 setList(true)
             }
         }
@@ -80,7 +80,7 @@ export const DrawerContent = (props) => {
                                 key={index}
                                 right
                                 icon={item.icon}
-                                isActiveItem={item.path === window.location.pathname}
+                                isActiveItem={item.path === history.location.pathname}
                                 onClick={() => handleItemClick({ path: item.path })}
                                 itemTitle="name"
                                 hover
@@ -111,7 +111,7 @@ export const DrawerContent = (props) => {
                                         noDivider
                                         icon={item.icon ? item.icon : ''}
                                         leftBorder
-                                        isActiveItem={item.path === window.location.pathname}
+                                        isActiveItem={item.path === history.location.pathname}
                                         onClick={() => handleItemClick(item)}
                                         className="no-select"
                                         hover
