@@ -9,12 +9,14 @@
     "email": "asset.sultan@gmail.com",
     "url": "https://github.com/assenti"
   },
+  "homepage": "https://assenti.github.io/react-ui-components/",
   "scripts": {
     "start": "PORT=3010 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "compile": "NODE_ENV=production babel --presets @babel/preset-react src/components --out-dir lib",
-    "styles": "node-sass src/styles -o css --output-style compressed"
+    "styles": "node-sass src/styles -o css --output-style compressed",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "prop-types": "^15.7.2",
@@ -30,6 +32,7 @@
     "@babel/core": "^7.10.0",
     "@babel/preset-env": "^7.10.0",
     "@babel/preset-react": "^7.10.0",
+    "gh-pages": "^2.2.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
