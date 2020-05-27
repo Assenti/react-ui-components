@@ -1,7 +1,6 @@
 /node_modules
 /css
 /lib
-/build
 .DS_Store
 .env.local
 .env.development.local
