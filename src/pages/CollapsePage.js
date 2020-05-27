@@ -63,6 +63,13 @@ const items = [
         value: 'true | false'
     },
     { 
+        property: 'hover',
+        description: 'Set hover effect', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'title',
         description: 'Set collapse title', 
         default: '', 

@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { List, Icon, Drawer, ThemeContext, AutoComplete, Tag, Badge, Divider, Collapse, ExpansionList } from '../components';
+import { List, Icon, Drawer, ThemeContext, AutoComplete, Tag, Badge, Collapse } from '../components';
 import { compare } from '../components';
 
 export const DrawerContent = (props) => {
     const [list, setList] = useState(false);
 
     const handleItemClick = (item) => {
-        if (item.path.includes('http')) {
-
-        } else window.location.href = item.path
+        if (item.path.includes('http')) return;
+        else window.location.href = item.path
     }
 
     const sortedRoutes = () => {
@@ -30,7 +29,9 @@ export const DrawerContent = (props) => {
 
     useEffect(() => {
         for (const item of sortedRoutes()) {
-            if (item.path === window.location.pathname) setList(true)
+            if (item.path === window.location.pathname) {
+                setList(true)
+            }
         }
     }, [])
     
@@ -84,61 +85,46 @@ export const DrawerContent = (props) => {
                                 noDivider
                                 item={item.name}/>
                         )}
-                        <ExpansionList
+                        <Collapse
+                            controled
                             hover
-                            items={[1]}
-                            titleContent={() => 
+                            visible={list}
+                            onChange={() => setList(!list)}
+                            title={
                                 <List.Item
-                                        noDivider
-                                        icon="toy-brick"
-                                        onClick={() => setList(!list)}
-                                        item={<Badge 
-                                                parent={<div style={{ display: 'block', paddingRight: 10 }}>Components</div>}
-                                                color="primary" 
-                                                value={sortedRoutes().length}/>
-                                        }/>
-                            }
-                            itemContent={() => 
-                                <List size="medium" className="px-20" dark={theme}>
-                                    {sortedRoutes().map((item, index) => 
-                                        <List.Item
-                                            key={index}
-                                            right
-                                            noDivider
-                                            icon={item.icon ? item.icon : ''}
-                                            leftBorder
-                                            isActiveItem={item.path === window.location.pathname}
-                                            onClick={() => handleItemClick(item)}
-                                            className="no-select"
-                                            hover
-                                            item={item.name}
-                                            controls={item.updated ? 
-                                                <Tag value="updated" borderType="rounded" tiny/> 
-                                                    : (item.new ? <Tag value="new" color="success" borderType="rounded" tiny/> : null)}/>
-                                    )}
-                                </List>
-                            }
-                            />
-                            {/* <Collapse
-                                title={
+                                    noDivider
+                                    icon="toy-brick"
+                                    onClick={() => setList(!list)}
+                                    item={<Badge 
+                                            parent={<div style={{ display: 'block', paddingRight: 10 }}>Components</div>}
+                                            color="primary" 
+                                            value={sortedRoutes().length}/>
+                                    }/>
+                            }>
+                            <List size="medium" className="px-20 py-10" dark={theme}>
+                                {sortedRoutes().map((item, index) => 
                                     <List.Item
+                                        key={index}
+                                        right
                                         noDivider
-                                        icon="toy-brick"
-                                        onClick={() => setList(!list)}
-                                        item={<Badge 
-                                                parent={<div style={{ display: 'block', paddingRight: 10 }}>Components</div>}
-                                                color="primary" 
-                                                value={sortedRoutes().length}/>
-                                        }/>
-                                }>
-                                
-                            </Collapse> */}
+                                        icon={item.icon ? item.icon : ''}
+                                        leftBorder
+                                        isActiveItem={item.path === window.location.pathname}
+                                        onClick={() => handleItemClick(item)}
+                                        className="no-select"
+                                        hover
+                                        item={item.name}
+                                        controls={item.updated ? 
+                                            <Tag value="updated" borderType="rounded" tiny/> 
+                                                : (item.new ? <Tag value="new" color="success" borderType="rounded" tiny/> : null)}/>
+                                )}
+                            </List>
+                        </Collapse>
                         <List.Item
                             right
                             noDivider
                             icon="checklist"
                             href="https://github.com/Assenti/react-ui-components/blob/master/README.md#todo"
-                            onClick={() => handleItemClick({ path: '/todos'})}
                             itemTitle="name"
                             hover
                             item="TODOs"/>

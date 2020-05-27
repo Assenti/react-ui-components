@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Card, List, Switch, Select, Icon, ThemeContext, Divider } from '../components';
+import { Card, List, Switch, ThemeContext, Divider } from '../components';
 import manImage from '../img/man.png';
 import manImage2 from '../img/hipster.png';
 import girlImage from '../img/girl.png';
 import girlImage2 from '../img/girl_.png';
 import Page from '../layouts/Page';
 import { heroes } from '../data/heroes';
-import { colors } from '../data/colors';
 
 const items = [
     { 
@@ -45,20 +44,6 @@ const items = [
         value: 'true | false'
     },
     { 
-        property: 'outlined',
-        description: 'Set card borders outlined', 
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
-    },
-    { 
-        property: 'color',
-        description: 'Set card borders color from colors list', 
-        default: '', 
-        type: 'string',
-        value: 'primary | info | success | error'
-    },
-    { 
         property: 'ref',
         description: 'Set ref to Card component', 
         default: '', 
@@ -77,6 +62,13 @@ const items = [
         description: 'Set a custom inline styles', 
         default: '', 
         type: 'object',
+        value: ''
+    },
+    { 
+        property: 'id',
+        description: 'Set a custom html id to component', 
+        default: '', 
+        type: 'string',
         value: ''
     },
     { 
@@ -122,8 +114,6 @@ function Example() {
 const CardPage = () => {
     const [flat, setFlat] = useState(false);
     const [hover, setHover] = useState(false);
-    const [outlined, setOutlined] = useState(false);
-    const [color, setColor] = useState(colors[0]);
 
     const imageCards = (dark) => {
         let cards = [
@@ -169,30 +159,11 @@ const CardPage = () => {
                         rightLabel="Hover"
                         className="my-10"
                         onChange={() => setHover(!hover)}/>
-                    <Switch 
-                        color="primary" 
-                        check={outlined}
-                        rightLabel="Outlined"
-                        className="my-10"
-                        onChange={() => setOutlined(!outlined)}/>
-                    <br/>
-                    <Select
-                        items={colors}
-                        prefix={<Icon name="brush"/>}
-                        width={200}
-                        dark={theme}
-                        label="Outline color"
-                        color="primary"
-                        value={color}
-                        onChange={v => setColor(v)}/>
                     <Divider className="my-20"/>
                     <Card
                         dark={theme}
                         flat={flat} 
                         hover={hover}
-                        outlined={outlined}
-                        title={outlined ? 'Card props' : ''}
-                        color={color}
                         header="Marvel heroes">
                         <List dark={theme}>
                             {heroes.map((item, index) => 

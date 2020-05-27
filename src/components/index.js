@@ -66,6 +66,8 @@ export { default as DatePicker } from './datePicker';
 export { default as AvatarUploader } from './avatarUploader';
 export { default as Carousel } from './carousel';
 export { default as Statistics } from './statistics';
+export { default as Snackbar } from './snackbar/Snackbar';
+export { snackbar } from './snackbar';
 export { ThemeContext, themes } from './theme-provider';
 export { 
     convertToNum, 

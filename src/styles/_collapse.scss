@@ -28,6 +28,14 @@
         }
     }
 
+    &.hover:hover {
+        cursor: pointer;
+        .rui-collapse-trigger {
+            background-color: rgba(lightgray, .4);
+            transition: background-color .2s ease-in-out;
+        }
+    }
+
     .rui-collapse-trigger {
         min-height: $defaultSize;
         display: flex;

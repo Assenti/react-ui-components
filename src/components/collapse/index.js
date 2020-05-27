@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Transition } from 'react-transition-group';
 import { Icon, Tooltip } from '../index';
 import { strinfigyClassObject } from '../utils';
 import { measureSubmenu } from './utils';
@@ -16,18 +15,12 @@ const Collapse = (props) => {
 
     let className = {
         name: 'rui-collapse',
+        hover: props.hover ? 'hover' : '',
         border: props.border ? 'bordered' : '',
         title: props.title ? 'titled' : '',
         dark: props.dark ? 'dark' : '',
         position: !props.title ? (props.position ? props.position : 'right') : '',
         className: props.className ? props.className : ''
-    }
-
-    const transitionStyles = {
-        entering: { height: getState() ? height : 0 },
-        entered: { height: getState() ? height : 0 },
-        exiting: { height: getState() ? height : 0 },
-        exited: { height: getState() ? height : 0 }
     }
 
     const handleToggle = () => {
@@ -41,7 +34,8 @@ const Collapse = (props) => {
 
     return (
         <div className={strinfigyClassObject(className)}>
-            <div className="rui-collapse-trigger">
+            <div className="rui-collapse-trigger" 
+                onClick={() => props.hover ? handleToggle() : {}}>
                 {props.title ? <span>{props.title}</span> : ''}
                 <div className="row align-center">
                     {props.extra}
@@ -64,21 +58,14 @@ const Collapse = (props) => {
                     }
                 </div>
             </div>
-                <Transition
-                    in={getState()}
-                    addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
-                    timeout={300}>
-                    {state => (
-                        <div
-                            ref={contentHeight}
-                            style={{ ...transitionStyles[state] }} 
-                            className={getState() ? 
-                                'rui-collapse__content active' 
-                                : 'rui-collapse__content'}>
-                            {props.children}
-                        </div>
-                    )}
-                </Transition>
+            <div
+                ref={contentHeight}
+                style={{ height: getState() ? height : 0 }}
+                className={getState() ? 
+                    'rui-collapse__content active' 
+                    : 'rui-collapse__content'}>
+                {props.children}
+            </div>
         </div>
     )
 }
@@ -91,6 +78,7 @@ Collapse.propTypes = {
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     position: PropTypes.oneOf([undefined,'','right']),
     extra: PropTypes.any,
+    hover: PropTypes.bool,
     tooltip: PropTypes.string,
     icon: PropTypes.string,
     iconSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

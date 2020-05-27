@@ -42,26 +42,6 @@
             transition: all .3s ease-in-out;
         }
     }
-
-    &.outlined {
-        margin-top: 15px;
-
-        &.info {
-            border-color: $info;
-        }
-    
-        &.primary {
-            border-color: $primary;
-        }
-    
-        &.success {
-            border-color: $success;
-        }
-    
-        &.error {
-            border-color: $error;
-        }
-    }
 }
 
 .rui-card-header {

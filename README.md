@@ -66,7 +66,6 @@ export default App;
 
 ### TODO
 - [ ] Stepper
-- [ ] Notification
 - [ ] Range
 - [ ] Skeleton
 - [ ] TransferLists

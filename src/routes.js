@@ -41,7 +41,7 @@ const AvatarPage = lazy(() => import('./pages/AvatarPage'));
 const BreadcrumbsPage = lazy(() => import('./pages/BreadcrumbsPage'));
 const ProgressPage = lazy(() => import('./pages/ProgressPage'));
 const CalendarPage = lazy(() => import('./pages/CalendarPage'));
-const NotificationPage = lazy(() => import('./pages/NotificationPage'));
+const SnackbarPage = lazy(() => import('./pages/SnackbarPage'));
 const AlertPage = lazy(() => import('./pages/AlertPage'));
 const TextareaPage = lazy(() => import('./pages/TextareaPage'));
 const TimePickerPage = lazy(() => import('./pages/TimePickerPage'));
@@ -70,12 +70,12 @@ export const routes = [
     { path: '/checkbox', name: 'Checkbox', Component: CheckboxPage },
     { path: '/radio', name: 'RadioGroup', Component: RadioPage },
     { path: '/switch', name: 'Switch', Component: SwitchPage },
-    { path: '/card', name: 'Card', Component: CardPage, updated: false },
+    { path: '/card', name: 'Card', Component: CardPage, updated: true },
     { path: '/tag', name: 'Tag', Component: TagPage, updated: false },
     { path: '/badge', name: 'Badge', Component: BadgePage },
     { path: '/preloader', name: 'Preloader', Component: PreloaderPage },
     { path: '/backtopbtn', name: 'BackTopBtn', Component: BackTopBtnPage },
-    { path: '/collapse', name: 'Collapse', Component: CollapsePage, updated: true },
+    { path: '/collapse', name: 'Collapse', Component: CollapsePage, updated: false },
     { path: '/buttonGroup', name: 'ButtonGroup', Component: ButtonGroupPage },
     { path: '/popover', name: 'PopOver', Component: PopOverPage },
     { path: '/header', name: 'Header', Component: HeaderPage, updated: false },
@@ -95,7 +95,7 @@ export const routes = [
     { path: '/calendar', name: 'Calendar', Component: CalendarPage },
     { path: '/timepicker', name: 'TimePicker', Component: TimePickerPage },
     { path: '/autocomplete', name: 'AutoComplete', Component: AutoCompletePage },
-    { path: '/expansionlist', name: 'ExpansionList', Component: ExpansionListPage, updated: true },
+    { path: '/expansionlist', name: 'ExpansionList', Component: ExpansionListPage, updated: false },
     { path: '/dock', name: 'Dock', Component: DockPage },
     { path: '/divider', name: 'Divider', Component: DividerPage },
     { path: '/slider', name: 'Slider', Component: SliderPage },
@@ -105,6 +105,6 @@ export const routes = [
     { path: '/carousel', name: 'Carousel', Component: CarouselPage },
     { path: '/statistics', name: 'Statistics', Component: StatisticsPage },
     { path: '/layouts', name: 'Layouts', Component: LayoutsPage },
-    { path: '/icons', name: 'Icons', Component: IconsPage }
-    // { path: '/notification', name: 'Notification', Component: NotificationPage },
+    { path: '/icons', name: 'Icons', Component: IconsPage },
+    { path: '/snackbar', name: 'Snackbar', Component: SnackbarPage, new: true }
 ]

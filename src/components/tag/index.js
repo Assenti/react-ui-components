@@ -39,8 +39,7 @@ const Tag = React.forwardRef((props, ref) => {
             <div className={strinfigyClassObject(className)}
                 style={props.style}
                 ref={ref}
-                onClick={props.onClick && !props.disabled ? props.onClick : null} 
-                style={{ width: props.width ? props.width : ''}}>
+                onClick={props.onClick && !props.disabled ? props.onClick : null}>
                 {props.iconLeft ? <Icon name={props.iconLeft}/> : ''}
                 {props.value}
                 {props.iconRight ? <Icon name={props.iconRight}/> : ''}
