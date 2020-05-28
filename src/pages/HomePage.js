@@ -20,8 +20,9 @@ const codeInstallationRTGTypes =
 % npm install @types/react-transition-group -D`;
 
 const stylesInstallation = 
-`// Import styles in index.js | index.ts
-import '@assenti/rui-components/build/css/main.css';`;
+`// IMPORTANT!: Changed since version 0.7.9
+// Import styles in index.js | index.ts
+import '@assenti/rui-components/css/index.css';`;
 
 const codeUsage = 
 `// Usage example

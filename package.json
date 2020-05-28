@@ -16,7 +16,8 @@
     "test": "react-scripts test",
     "compile": "NODE_ENV=production babel --presets @babel/preset-react src/components --out-dir lib",
     "styles": "node-sass src/styles -o css --output-style compressed",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "clear": "rm -rf build"
   },
   "dependencies": {
     "prop-types": "^15.7.2",
