@@ -1,6 +1,6 @@
 {
   "name": "@assenti/rui-components",
-  "version": "0.7.10",
+  "version": "0.7.11",
   "description": "React UI Components",
   "private": false,
   "license": "MIT",
@@ -14,7 +14,7 @@
     "start": "PORT=3010 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "compile": "NODE_ENV=production babel --presets @babel/preset-react src/components --out-dir lib",
+    "compile": "NODE_ENV=production babel src/components --out-dir lib",
     "styles": "node-sass src/styles -o css --output-style compressed",
     "deploy": "gh-pages -d build",
     "clear": "rm -rf build"
@@ -29,10 +29,9 @@
     "react-transition-group": "^4.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.0",
-    "@babel/core": "^7.10.0",
-    "@babel/preset-env": "^7.10.0",
-    "@babel/preset-react": "^7.10.0",
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.1",
+    "babel-preset-react-app": "^9.1.2",
     "gh-pages": "^2.2.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
@@ -123,11 +122,6 @@
     "watchPlugins": [
       "jest-watch-typeahead/filename",
       "jest-watch-typeahead/testname"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "react-app"
     ]
   },
   "eslintConfig": {

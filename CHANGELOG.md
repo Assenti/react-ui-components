@@ -6,7 +6,7 @@ timeline: true
 ### Release Schedule
 ###### At least 1 release in 2 weeks
 
-#### 0.7.10 `2020-05-30`
+#### 0.7.10, 0.7.11 `2020-05-30`
 
 - `NEW!` Skeleton component added;
 - TimePicker component updated;
