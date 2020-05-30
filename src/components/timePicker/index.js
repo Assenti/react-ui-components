@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Icon, List, InputField } from '../index';
+import { Dropdown, Icon, List, InputField, Modal } from '../index';
 
 const hours = () => {
     let hours = [];
@@ -85,6 +85,7 @@ const TimePicker = (props) => {
 
     return (
         <div className={`rui-timepicker ${props.className}`}>
+            {!props.inModal ?
             <Dropdown
                 closeManaged
                 dark={props.dark}
@@ -113,6 +114,7 @@ const TimePicker = (props) => {
                             {hours().map((item, index) => 
                                 <List.Item 
                                     hover
+                                    isActiveItem={item === hh}
                                     onClick={() => handleClick(item, 'hh')}
                                     key={index}
                                     item={item}/>
@@ -122,6 +124,7 @@ const TimePicker = (props) => {
                             {minutes().map((item, index) => 
                                 <List.Item 
                                     hover
+                                    isActiveItem={item === mm}
                                     onClick={() => handleClick(item, 'mm')}
                                     key={index}
                                     item={item}/>
@@ -131,6 +134,7 @@ const TimePicker = (props) => {
                             {minutes().map((item, index) => 
                                 <List.Item 
                                     hover
+                                    isActiveItem={item === ss}
                                     onClick={() => handleClick(item, 'ss')}
                                     key={index}
                                     item={item}/>
@@ -138,7 +142,67 @@ const TimePicker = (props) => {
                         </List> : null}
                     </div>
                 }
-                />
+                /> : 
+            <>
+                <InputField
+                    readOnly
+                    size={props.size}
+                    style={{ width: props.width }}
+                    label={props.label}
+                    hint={props.hint}
+                    dark={props.dark}
+                    hintColor={props.hintColor}
+                    clearable={props.clearable}
+                    onClear={handleClear}
+                    required={props.required}
+                    placeholder={placeholder()}
+                    onFocus={() => setVisible(true)}
+                    prefix={<Icon name="clock-outline"/>} 
+                    value={props.value}/>
+                    <Modal
+                        width={300}
+                        centered
+                        closable
+                        header={props.modalTitle}
+                        visible={visible}
+                        onClose={() => setVisible(false)}>
+                        <div style={{ height: 240 }}>
+                        <div className="rui-timepicker__content">
+                            <List className="col" header={headers(props.locale)[0]}>
+                                {hours().map((item, index) => 
+                                    <List.Item 
+                                        hover
+                                        isActiveItem={item === hh}
+                                        onClick={() => handleClick(item, 'hh')}
+                                        key={index}
+                                        item={item}/>
+                                )}
+                            </List>
+                            <List className="col" header={headers(props.locale)[1]}>
+                                {minutes().map((item, index) => 
+                                    <List.Item 
+                                        hover
+                                        isActiveItem={item === mm}
+                                        onClick={() => handleClick(item, 'mm')}
+                                        key={index}
+                                        item={item}/>
+                                )}
+                            </List>
+                            {!props.noSeconds && 
+                                <List className="col" header={headers(props.locale)[2]}>
+                                    {minutes().map((item, index) => 
+                                        <List.Item 
+                                            hover
+                                            isActiveItem={item === ss}
+                                            onClick={() => handleClick(item, 'ss')}
+                                            key={index}
+                                            item={item}/>
+                                    )}
+                                </List>}
+                            </div>
+                        </div>
+                    </Modal>
+            </>}
         </div>
     )
 }
@@ -151,6 +215,7 @@ TimePicker.propTypes = {
     placeholder: PropTypes.string,
     label: PropTypes.string,
     dark: PropTypes.bool,
+    inModal: PropTypes.bool,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     hint: PropTypes.string,
     hintColor: PropTypes.oneOf(['success','error']),

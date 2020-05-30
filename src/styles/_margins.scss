@@ -25,8 +25,20 @@
 }
 
 @each $size in $sizes {
+    .mr-n-#{$size} {
+        margin-right: -#{$size}px !important;
+    }
+}
+
+@each $size in $sizes {
     .ml-#{$size} {
         margin-left: #{$size}px !important;
+    }
+}
+
+@each $size in $sizes {
+    .ml-n-#{$size} {
+        margin-left: -#{$size}px !important;
     }
 }
 
@@ -37,8 +49,20 @@
 }
 
 @each $size in $sizes {
+    .mb-n-#{$size} {
+        margin-bottom: -#{$size}px;
+    }
+}
+
+@each $size in $sizes {
     .mt-#{$size} {
         margin-top: #{$size}px !important;
+    }
+}
+
+@each $size in $sizes {
+    .mt-n-#{$size} {
+        margin-top: -#{$size}px !important;
     }
 }
 

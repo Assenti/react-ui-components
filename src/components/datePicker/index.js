@@ -1,10 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Icon } from '../index';
-import InputField from '../input';
-import Calendar from '../calendar';
-import Button from '../button';
-import Modal from '../modal';
+import { Dropdown, Icon, InputField, Calendar, Modal } from '../index';
 
 const DatePicker = (props) => {
     const container = useRef();

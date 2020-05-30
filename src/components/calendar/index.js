@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Select, PopOver, isTwoDatesEqual } from '../index';
-import { getCurrentMonth, getMonthIndex, daysInMonth, years, monthes, getCurrentWeek, shortWeekName } from './utils';
+import { getCurrentMonth, getMonthIndex, daysInMonth, years, getCurrentWeek, shortWeekName } from './utils';
 
 const Calendar = (props) => {
     const getInitialMonth = () => getCurrentMonth(props.locale, new Date().getMonth());

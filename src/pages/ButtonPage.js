@@ -129,7 +129,7 @@ const items = [
         value: 'true | false'
     },
     { 
-        property: 'ref', 
+        property: 'btnRef', 
         description: 'Set ref', 
         default: '', 
         type: 'React.RefObject',

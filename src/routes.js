@@ -52,6 +52,7 @@ const DividerPage = lazy(() => import('./pages/DividerPage'));
 const SliderPage = lazy(() => import('./pages/SliderPage'));
 const FooterPage = lazy(() => import('./pages/FooterPage'));
 const DatePickerPage = lazy(() => import('./pages/DatePickerPage'));
+const SkeletonPage = lazy(() => import('./pages/SkeletonPage'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
@@ -70,7 +71,7 @@ export const routes = [
     { path: '/checkbox', name: 'Checkbox', Component: CheckboxPage },
     { path: '/radio', name: 'RadioGroup', Component: RadioPage },
     { path: '/switch', name: 'Switch', Component: SwitchPage },
-    { path: '/card', name: 'Card', Component: CardPage, updated: true },
+    { path: '/card', name: 'Card', Component: CardPage, updated: false },
     { path: '/tag', name: 'Tag', Component: TagPage, updated: false },
     { path: '/badge', name: 'Badge', Component: BadgePage },
     { path: '/preloader', name: 'Preloader', Component: PreloaderPage },
@@ -93,7 +94,7 @@ export const routes = [
     { path: '/breadcrumbs', name: 'Breadcrumbs', Component: BreadcrumbsPage },
     { path: '/progress', name: 'Progress', Component: ProgressPage },
     { path: '/calendar', name: 'Calendar', Component: CalendarPage },
-    { path: '/timepicker', name: 'TimePicker', Component: TimePickerPage },
+    { path: '/timepicker', name: 'TimePicker', Component: TimePickerPage, updated: true },
     { path: '/autocomplete', name: 'AutoComplete', Component: AutoCompletePage },
     { path: '/expansionlist', name: 'ExpansionList', Component: ExpansionListPage, updated: false },
     { path: '/dock', name: 'Dock', Component: DockPage },
@@ -106,5 +107,6 @@ export const routes = [
     { path: '/statistics', name: 'Statistics', Component: StatisticsPage },
     { path: '/layouts', name: 'Layouts', Component: LayoutsPage },
     { path: '/icons', name: 'Icons', Component: IconsPage },
-    { path: '/snackbar', name: 'Snackbar', Component: SnackbarPage, new: true }
+    { path: '/snackbar', name: 'Snackbar', Component: SnackbarPage, new: true },
+    { path: '/skeleton', name: 'Skeleton', Component: SkeletonPage, new: true },
 ]

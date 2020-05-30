@@ -88,6 +88,13 @@ const rows = [
         value: ''
     },
     { 
+        property: 'inModal', 
+        description: 'Open time picker module in modal', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'dark', 
         description: 'Set dark mode', 
         default: 'false', 
@@ -134,6 +141,7 @@ const TimePickerPage = () => {
     const [color, setColor] = useState('primary');
     const [size, setSize] = useState('default');
     const [noSec, setNoSec] = useState(false);
+    const [modal, setModal] = useState(false);
     const [locale, setLocale] = useState('en');
 
     return (
@@ -182,6 +190,13 @@ const TimePickerPage = () => {
                         className="my-10"
                         rightLabel="No seconds"
                         />
+                    <Switch
+                        check={modal}
+                        onChange={() => setModal(!modal)}
+                        color="primary"
+                        className="my-10"
+                        rightLabel="In modal"
+                        />
                     <Divider/>
                     <TimePicker
                         color={color}
@@ -189,6 +204,7 @@ const TimePickerPage = () => {
                         locale={locale}
                         noSeconds={noSec}
                         value={time}
+                        inModal={modal}
                         clearable
                         dark={theme}
                         onClear={() => setTime('')}

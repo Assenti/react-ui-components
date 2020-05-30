@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Icon } from '../index';
 import { strinfigyClassObject } from '../utils';
 
-const Avatar = React.forwardRef((props, ref) => {
+const Avatar = (props) => {
     let className = {
         name: 'rui-avatar',
         dark: props.dark ? 'dark' : '',
@@ -15,7 +15,7 @@ const Avatar = React.forwardRef((props, ref) => {
 
     return (
         <div 
-            ref={ref}
+            ref={props.avatarRef}
             className={strinfigyClassObject(className)} 
             style={{
                 width: props.width ? props.width : 100,
@@ -32,7 +32,7 @@ const Avatar = React.forwardRef((props, ref) => {
                     color={props.iconColor ? props.iconColor : (props.dark ? '#fff' : '')}/> : null}
         </div>
     )
-})
+}
 Avatar.propTypes = {
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -48,6 +48,10 @@ Avatar.propTypes = {
     dark: PropTypes.bool,
     ref: PropTypes.any,
     onClick: PropTypes.func,
+    avatarRef: PropTypes.oneOfType([
+        PropTypes.func, 
+        PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+    ]),
     className: PropTypes.string
 }
 export default Avatar;

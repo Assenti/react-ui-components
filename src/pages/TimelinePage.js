@@ -60,6 +60,13 @@ const rows = [
         value: 'primary | info | success | error | yellow | dark'
     },
     { 
+        property: 'tagBorderType', 
+        description: 'Set date Tag borders type', 
+        default: '', 
+        type: 'string',
+        value: 'tile | rounded | smooth'
+    },
+    { 
         property: 'tagColor', 
         description: 'Set date Tag color', 
         default: '', 
@@ -135,12 +142,14 @@ function Example() {
 }`
 
 const colors = ['primary', 'info', 'success', 'error', 'dark', 'yellow'];
+const borders = ['default', 'smooth', 'rounded', 'tile'];
 
 const TimelinePage = () => {
     const [icon, setIcon] = useState(false);
     const [tagOutlined, setTagOutlined] = useState(false);
     const [color, setColor] = useState(colors[0]);
     const [tagColor, setTagColor] = useState(colors[1]);
+    const [borderType, setBorderType] = useState(borders[0]);
 
     return (
         <ThemeContext.Consumer>
@@ -163,33 +172,45 @@ const TimelinePage = () => {
                         className="my-10"
                         rightLabel="Tag outlined" 
                         onChange={() => setTagOutlined(!tagOutlined)}/>
-                    <div>
-                        <Select
-                            items={colors}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            label="Timeline color"
-                            color="primary"
-                            className="mr-10"
-                            dark={theme}
-                            value={color}
-                            onChange={v => setColor(v)}/>
-                        <Select
-                            items={colors}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            color="primary"
-                            label="Tag color"
-                            value={tagColor}
-                            dark={theme}
-                            onChange={v => setTagColor(v)}/>
-                    </div>
+                    <br/>
+                    <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        label="Timeline color"
+                        color="primary"
+                        className="mb-10"
+                        dark={theme}
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        color="primary"
+                        className="mb-10"
+                        label="Tag color"
+                        value={tagColor}
+                        dark={theme}
+                        onChange={v => setTagColor(v)}/>
+                    <br/>
+                    <Select
+                        items={borders}
+                        dark={theme}
+                        prefix={<Icon name="shape"/>}
+                        width={200}
+                        label="Border type"
+                        color="primary"
+                        value={borderType}
+                        onChange={v => setBorderType(v)}/>
                     <Divider/>
                     <Timeline 
                         items={items} 
                         date="date"
                         centered
                         color={color}
+                        tagBorderType={borderType}
                         tagOutlined={tagOutlined}
                         tagColor={tagColor}
                         icon={icon ? 'star' : ''}

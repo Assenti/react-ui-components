@@ -39,7 +39,28 @@ const margins = [
         description: 'Set bottom margin', 
         example: 'mb-5'
     },
+    { 
+        class: 'ml-n-{number}', 
+        description: 'Set negative left margin (margin-left: -5px)', 
+        example: 'ml-n-5'
+    },
+    { 
+        class: 'mr-n-{number}', 
+        description: 'Set negative right margin (margin-right: -5px)', 
+        example: 'mr-n-5'
+    },
+    { 
+        class: 'mt-n-{number}', 
+        description: 'Set negative top margin (margin-top: -5px)', 
+        example: 'mt-n-5'
+    },
+    { 
+        class: 'mb-n-{number}', 
+        description: 'Set negative bottom margin (margin-bottom: -5px)', 
+        example: 'mb-n-5'
+    },
 ]
+
 const paddings = [
     { 
         class: 'pa-{number}', 
@@ -205,7 +226,7 @@ const HelperPage = () => {
                         <div className="rui-page-title">Helper CSS classes</div>
                     </div>
                     <Card dark={theme} header={<h4>Margins & Paddings</h4>}>
-                        <h4>Margins</h4>
+                        <h4>Margins <small>(in px)</small></h4>
                         <Table
                             bordered
                             dark={theme}
@@ -214,7 +235,7 @@ const HelperPage = () => {
                             index={true}
                             itemTitles={['class', 'description', 'example']}/>
                         <br/>
-                        <h4>Paddings</h4>
+                        <h4>Paddings <small>(in px)</small></h4>
                         <Table
                             bordered
                             dark={theme}

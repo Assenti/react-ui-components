@@ -1,7 +1,6 @@
-<p align="center">
-  <h1 align="center">React UI Components</h1>
-  <p align="center">UI Components for web apps built on <a href="https://reactjs.org/" target="_blank">React</a></p>
-</p>
+# React UI Components
+## UI Components for web apps built on [React](https://reactjs.org/)
+
 <p align="center">
   <a aria-label="NPM version" href="https://www.npmjs.com/package/@assenti/rui-components">
     <img alt="" src="https://badgen.net/npm/v/@assenti/rui-components"/>
@@ -15,10 +14,9 @@
 </p>
 
 ## Main Goal
-Create a lot of usefull and maximum reusable UI components
+#### Create a lot of usefull, light weight and maximum reusable UI components
 
-## Homepage / Components Demo
-### [React UI Components](https://assenti.github.io/react-ui-components/)
+## [Homepage / Components Demo](https://assenti.github.io/react-ui-components/)
 
 ## Install
 ```bash
@@ -64,10 +62,11 @@ function App() {
 export default App;
 ```
 
-### TODO
+Find more usage examples in [Homepage](https://assenti.github.io/react-ui-components/)
+
+## TODO
 - [ ] Stepper
 - [ ] Range
-- [ ] Skeleton
 - [ ] TransferLists
 - [ ] Dashboard Layout
 - [ ] Make components adaptive for mobile devices

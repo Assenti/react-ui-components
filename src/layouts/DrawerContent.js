@@ -5,11 +5,15 @@ import { compare } from '../components';
 
 export const DrawerContent = (props) => {
     const [list, setList] = useState(false);
+    const [active, setActive] = useState('');
     const history = useHistory();
 
     const handleItemClick = (item) => {
         if (item.path.includes('http')) return;
-        else history.push(item.path); 
+        else {
+            history.push(item.path)
+            setActive(item.path)
+        } 
     }
 
     const sortedRoutes = () => {
@@ -80,7 +84,7 @@ export const DrawerContent = (props) => {
                                 key={index}
                                 right
                                 icon={item.icon}
-                                isActiveItem={item.path === history.location.pathname}
+                                isActiveItem={item.path === (history.location.pathname || active)}
                                 onClick={() => handleItemClick({ path: item.path })}
                                 itemTitle="name"
                                 hover
@@ -111,7 +115,7 @@ export const DrawerContent = (props) => {
                                         noDivider
                                         icon={item.icon ? item.icon : ''}
                                         leftBorder
-                                        isActiveItem={item.path === history.location.pathname}
+                                        isActiveItem={item.path === (history.location.pathname || active)}
                                         onClick={() => handleItemClick(item)}
                                         className="no-select"
                                         hover

@@ -67,6 +67,7 @@ export { default as AvatarUploader } from './avatarUploader';
 export { default as Carousel } from './carousel';
 export { default as Statistics } from './statistics';
 export { default as Snackbar } from './snackbar/Snackbar';
+export { default as Skeleton } from './skeleton';
 export { snackbar } from './snackbar';
 export { ThemeContext, themes } from './theme-provider';
 export { 

@@ -43,7 +43,8 @@ const AvatarUploader = (props) => {
     }
 
     return (
-        <div className={strinfigyClassObject(className)} 
+        <div className={strinfigyClassObject(className)}
+            ref={props.avatarRef} 
             style={{
                 width: props.width ? props.width : 100,
                 minWidth: props.width ? props.width : 100,
@@ -84,6 +85,10 @@ AvatarUploader.propTypes = {
     title: PropTypes.string,
     label: PropTypes.string,
     placeholderImage: PropTypes.node,
+    avatarRef: PropTypes.oneOfType([
+        PropTypes.func, 
+        PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+    ]),
     className: PropTypes.string
 }
 export default AvatarUploader;

@@ -44,7 +44,7 @@ const items = [
         value: 'true | false'
     },
     { 
-        property: 'ref',
+        property: 'cardRef',
         description: 'Set ref to Card component', 
         default: '', 
         type: 'React ref object',

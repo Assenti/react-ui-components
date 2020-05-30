@@ -6,6 +6,12 @@ timeline: true
 ### Release Schedule
 ###### At least 1 release in 2 weeks
 
+#### 0.7.10 `2020-05-30`
+
+- `NEW!` Skeleton component added;
+- TimePicker component updated;
+- Components prop types definitions revision;
+
 #### 0.7.8, 0.7.9 `2020-05-27`
 
 - `NEW!` Snackbar component added;

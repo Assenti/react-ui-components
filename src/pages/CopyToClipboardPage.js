@@ -46,6 +46,13 @@ const items = [
         value: ''
     },
     { 
+        property: 'noTooltip', 
+        description: 'Hide tooltip', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 

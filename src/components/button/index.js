@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Icon } from '../index';
 import { strinfigyClassObject } from '../utils';
 
-const Button = React.forwardRef((props, ref) => {
+const Button = (props) => {
     let className = {
         btn: 'rui-btn',
         lifted: props.lifted ? 'lifted' : '',
@@ -37,7 +37,7 @@ const Button = React.forwardRef((props, ref) => {
     return (
         <button
             type={props.type ? props.type : 'button'}
-            ref={ref} 
+            ref={props.btnRef} 
             disabled={props.disabled || props.loading}
             className={strinfigyClassObject(className)} 
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>
@@ -60,7 +60,7 @@ const Button = React.forwardRef((props, ref) => {
             
         </button>
     )
-})
+}
 Button.propTypes = {
     name: PropTypes.string,
     onClick: PropTypes.func,
@@ -79,6 +79,10 @@ Button.propTypes = {
     iconAllotted: PropTypes.bool,
     iconLeft: PropTypes.bool,
     type: PropTypes.oneOf([undefined,'submit','reset']),
+    btnRef: PropTypes.oneOfType([
+        PropTypes.func, 
+        PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+    ]),
     className: PropTypes.string
 }
 export default Button;

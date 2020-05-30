@@ -113,7 +113,8 @@ import {
     ChartBar,
     ChartPie,
     CharDonut,
-    Rotate
+    Rotate,
+    Bulb
 } from './icons/index';
 
 const Icon = (props) => {
@@ -346,6 +347,8 @@ const Icon = (props) => {
                 return <CharDonut {...props}/>;
             case 'rotate':
                 return <Rotate {...props}/>;
+            case 'bulb':
+                return <Bulb {...props}/>;
             default:
                 return '';
         }

@@ -67,7 +67,7 @@ const items = [
         value: 'home | search | etc. (see icon names list in docs)'
     },
     { 
-        property: 'ref',
+        property: 'tagRef',
         description: 'Set ref', 
         default: '', 
         type: 'React.RefObject',

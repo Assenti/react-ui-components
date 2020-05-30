@@ -31,6 +31,11 @@ export const dateMask = (date) => {
     }
 }
 
+/**
+ * phoneMask function
+ * @param {string} phone expects 10 digits length string
+ * @param {string} code default: '+7'
+ */
 export const phoneMask = (phone, code = '+7') => {
     if (phone) {
         return `${code} (${phone.slice(0,3)}) ${phone.slice(3,6)}-${phone.slice(6,8)}-${phone.slice(8,10)}`;
@@ -73,6 +78,10 @@ export const isTwoDatesEqual = (date1, date2) => {
     return day1 === day2 && month1 === month2 && year1 === year2;
 }
 
+/**
+ * Brings the number to financial format
+ * @param {number} number
+ */
 export const toFinancial = (number) => {
     if (number !== null || number !== undefined) {
         const [integer, remain] = Math.abs(number).toString().split('.');
@@ -98,6 +107,10 @@ export const toFinancial = (number) => {
     } else return '';
 }
 
+/**
+ * Strinfigy Classes Object
+ * @param {Object} classObject 
+ */
 export const strinfigyClassObject = (classObject) => {
     let result = '';
     for (const key in classObject) {

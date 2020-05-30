@@ -32,8 +32,9 @@ const Timeline = (props) => {
                             <Tag 
                                 small
                                 outlined={props.tagOutlined} 
+                                borderType={props.tagBorderType}
                                 color={props.tagColor ? props.tagColor : props.color} 
-                                value={item[props.date]}/> : ''}
+                                value={item[props.date]}/> : null}
                     </div>
                     <div className="rui-timeline__item__center">
                         <div className="rui-timeline__item-line"></div>
@@ -42,13 +43,13 @@ const Timeline = (props) => {
                                 <Icon 
                                     name={props.icon} 
                                     color={props.color === 'yellow' ? '' : '#fff'} 
-                                    size={16}/> : ''}
+                                    size={16}/> : null}
                         </div>
                     </div>
                     {!props.data ? 
                     <Card flat={props.flatCard}>
-                        {props.title ? <div className="rui-timeline__title">{item[props.title]}</div> : ''}
-                        {props.subtitle ? <div className="rui-timeline__subtitle">{item[props.subtitle]}</div> : ''}
+                        {!!props.title && <div className="rui-timeline__title">{item[props.title]}</div>}
+                        {!!props.subtitle && <div className="rui-timeline__subtitle">{item[props.subtitle]}</div>}
                     </Card> : props.data}
                 </div>
             )}
@@ -66,6 +67,7 @@ Timeline.propTypes = {
     data: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
     tagColor: PropTypes.oneOf([undefined,'','primary', 'info', 'success', 'error','yellow','dark']),
     tagOutlined: PropTypes.bool,
+    tagBorderType: PropTypes.oneOf([undefined,'default','tile','smooth','rounded']),
     date: PropTypes.string,
     className: PropTypes.string
 }

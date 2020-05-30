@@ -89,6 +89,13 @@ const items = [
         value: 'true | false'
     },
     { 
+        property: 'avatarRef',
+        description: 'Set a ref to component', 
+        default: '', 
+        type: 'React.RefObject',
+        value: ''
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 

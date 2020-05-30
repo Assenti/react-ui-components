@@ -93,6 +93,20 @@ export const snackbar = {
     },
     currentToast: false,
     timeout: null,
+    /**
+     * Snackbar options description
+     * @typedef {Object} SnackbarOptions
+     * @property {string} type success | error | info
+     * @property {string} borderType tile | rounded
+     * @property {boolean} dark
+     * @property {any} controls
+     * @property {number} duration
+     */
+    /**
+     * message function description
+     * @param {string} message
+     * @param {SnackbarOptions | null} options
+     */
     message: (message, options = null) => {
         let duration = 5
         if (options) {

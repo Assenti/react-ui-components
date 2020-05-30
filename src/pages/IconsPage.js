@@ -111,7 +111,8 @@ const icons = [
     'chart-bar',
     'chart-pie',
     'chart-donut',
-    'rotate'
+    'rotate',
+    'bulb'
 ]
 
 const IconsPage = () => {

@@ -4,7 +4,7 @@ import { Icon } from '../index';
 import { CSSTransition } from 'react-transition-group';
 import { strinfigyClassObject } from '../utils';
 
-const Tag = React.forwardRef((props, ref) => {
+const Tag = (props) => {
     const [visible, setVisible] = useState(props.visible ? props.visible : true);
     let className = {
         name: 'rui-tag',
@@ -38,7 +38,7 @@ const Tag = React.forwardRef((props, ref) => {
             unmountOnExit>
             <div className={strinfigyClassObject(className)}
                 style={props.style}
-                ref={ref}
+                ref={props.tagRef}
                 onClick={props.onClick && !props.disabled ? props.onClick : null}>
                 {props.iconLeft ? <Icon name={props.iconLeft}/> : ''}
                 {props.value}
@@ -52,7 +52,7 @@ const Tag = React.forwardRef((props, ref) => {
             </div>
         </CSSTransition>
     )
-})
+}
 Tag.propTypes = {
     visible: PropTypes.bool,
     uppercase: PropTypes.bool,
@@ -69,6 +69,10 @@ Tag.propTypes = {
     onClick: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
     closable: PropTypes.bool,
     disabled: PropTypes.bool,
+    tagRef: PropTypes.oneOfType([
+        PropTypes.func, 
+        PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+    ]),
     className: PropTypes.string
 }
 export default Tag;
