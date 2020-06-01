@@ -69,6 +69,8 @@ Find more usage examples in [Homepage](https://assenti.github.io/react-ui-compon
 - [ ] Range
 - [ ] TransferLists
 - [ ] Dashboard Layout
+- [ ] Separate Table component into 2 components: SimpleTable (maximum customizable) and DataTable (just paste and use)
+- [ ] ThemeProvder
 - [ ] Make components adaptive for mobile devices
 
 ## Changelog

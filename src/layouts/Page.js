@@ -45,10 +45,11 @@ const Page = (props) => {
                         </Collapse>
                     </Card>
                     {props.backTopBtn ? <BackTopBtn dark setRef={parent} size="medium" tooltip="Up"/> : null}
-                    <Card className="mt-10">
+                    <Card className="mt-10 overflow-y"
+                        style={{ maxWidth: '100%' }}>
                         {props.apiDescItems.length > 0 &&
                         <Table
-                            tableTitle={<h2>API</h2>}
+                            tableTitle={<h2 className="ml-10">{props.apiHeader ? props.apiHeader : 'API'}</h2>}
                             dark={theme}
                             headers={['Property', 'Description', 'Default', 'Type', 'Value']}
                             items={props.apiDescItems}
@@ -59,6 +60,21 @@ const Page = (props) => {
                             itemTitles={keys}/>}
                         {props.content}
                     </Card>
+                    {props.apiDescItems2 &&
+                    <Card className="mt-10">
+                        {props.apiDescItems2.length > 0 &&
+                        <Table
+                            tableTitle={<h2 className="ml-10">{props.apiHeader2}</h2>}
+                            dark={theme}
+                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
+                            items={props.apiDescItems2}
+                            index
+                            bordered
+                            searchable={props.apiSearchable2}
+                            searchKey="property"
+                            itemTitles={keys}/>}
+                        {props.content}
+                    </Card>}
                 </div>
             )}
         </ThemeContext.Consumer>
@@ -69,7 +85,10 @@ Page.propTypes = {
     backTopBtn: PropTypes.bool,
     usage: PropTypes.string,
     apiDescItems: PropTypes.array,
+    apiDescItems2: PropTypes.array,
     apiSearchable: PropTypes.bool,
+    apiHeader: PropTypes.string,
+    apiHeader2: PropTypes.string,
     content: PropTypes.node
 }
 export default Page;

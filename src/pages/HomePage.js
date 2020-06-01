@@ -45,33 +45,42 @@ const HomePage = () => {
         <ThemeContext.Consumer>
             {theme => (
                 <div className="rui-page" ref={parent}>
-                    <Tag iconLeft="hammer" color="secondary" value="Work in progress..." small/>
-                    <div className="py-30">
-                        <h1 className="text-center">Welcome to React UI Components</h1>
-                        <p className="text-center">UI Components for web apps built on React</p>
+
+                    <div style={{ 
+                        backgroundImage: 'linear-gradient(to right bottom, #303846, #445c73, #5283a1, #5badcf, #61dafb)',
+                        padding: '10px 5px',
+                        borderRadius: 8,
+                        marginTop: 5
+                    }}>
+                        <Tag iconLeft="hammer" color="secondary" value="Work in progress..." small/>
+                        <div className="py-30 text-center">
+                            <h1 className="text-white"><small>Welcome to</small> React UI Components</h1>
+                            <p className="text-white">UI Components for web apps built on React</p>
+                            <div className="text-center">
+                                <a aria-label="NPM version"
+                                    style={{ marginRight: 5 }}
+                                    href="https://www.npmjs.com/package/@assenti/rui-components">
+                                    <img alt="" src="https://badgen.net/npm/v/@assenti/rui-components"/>
+                                </a>
+                                <a aria-label="Downloads" 
+                                    style={{ marginRight: 5 }}
+                                    href="https://npm-stat.com/charts.html?package=%40assenti%2Frui-components">
+                                    <img alt="" src="https://badgen.net/npm/dw/@assenti/rui-components"/>
+                                </a>
+                                <a aria-label="License" href="https://github.com/Assenti/react-ui-components/edit/master/LICENSE">
+                                    <img alt="" src="https://badgen.net/npm/license/@assenti/rui-components"/>
+                                </a>
+                            </div>
+                        </div>
                         <div className="text-center">
-                            <a aria-label="NPM version"
-                                style={{ marginRight: 5 }}
-                                href="https://www.npmjs.com/package/@assenti/rui-components">
-                                <img alt="" src="https://badgen.net/npm/v/@assenti/rui-components"/>
-                            </a>
-                            <a aria-label="Downloads" 
-                                style={{ marginRight: 5 }}
-                                href="https://npm-stat.com/charts.html?package=%40assenti%2Frui-components">
-                                <img alt="" src="https://badgen.net/npm/dw/@assenti/rui-components"/>
-                            </a>
-                            <a aria-label="License" href="https://github.com/Assenti/react-ui-components/edit/master/LICENSE">
-                                <img alt="" src="https://badgen.net/npm/license/@assenti/rui-components"/>
-                            </a>
+                            <h2 className="text-white">Main Goal</h2>
+                            <h4 className="text-white py-10">
+                                Create a lot of usefull, light weight and maximum reusable UI components
+                            </h4>
+                            <p className="text-white">Inspired by Material Design, Semantic UI, Mac Design</p>
                         </div>
                     </div>
-                    <div className="row column align-center justify-center">
-                        <Tag value="Main Goal" outlined iconLeft="target"/>
-                        <h4 className="py-10">
-                            Create a lot of usefull and maximum reusable UI components for React apps
-                        </h4>
-                        <p>Inspired by Material Design, Semantic UI, Mac Design</p>
-                    </div>
+                    
                     <Card dark={theme} header={<h4 className="row align-center">
                         <Icon name="package-down" color={theme ? '#fff' : ''} className="mr-5"/>Install</h4>} 
                         className="mt-20">

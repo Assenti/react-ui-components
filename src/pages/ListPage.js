@@ -1,8 +1,7 @@
-import React, { useState, useRef } from 'react';
-import { List, Button, Table, Card, Collapse, BackTopBtn, Select, Icon, Switch, RadioGroup, phoneMask, CopyToClipboard, ThemeContext, Divider, ButtonGroup, Avatar } from '../components';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import React, { useState } from 'react';
+import { List, Button, Card, Select, Icon, Switch, RadioGroup, phoneMask, ThemeContext, Divider, ButtonGroup, Avatar } from '../components';
 import { heroes } from '../data/heroes';
+import Page from '../layouts/Page';
 
 const usage =
 `// Usage examples
@@ -59,7 +58,6 @@ function Example() {
     )
 }`
 
-const keys = ['property', 'description', 'default', 'type', 'value'];
 const items = [
     { 
         property: 'header', 
@@ -90,6 +88,13 @@ const items = [
         value: 'true | false'
     },
     { 
+        property: 'id',
+        description: 'Set a custom html id to component', 
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 
@@ -98,13 +103,6 @@ const items = [
     }
 ]
 const items2 = [
-    { 
-        property: 'render', 
-        description: 'You can pass your own custom element', 
-        default: '', 
-        type: 'any',
-        value: ''
-    },
     { 
         property: 'onClick', 
         description: 'Invokes on item click', 
@@ -252,19 +250,8 @@ const ListPage = () => {
     const [left, setLeft] = useState(false);
     const [checkbox, setCheckbox] = useState(false);
     const [controls, setControls] = useState(true);
-    const listApi = useRef();
-    const listItemApi = useRef();
-    const parent = useRef();
     const [type, setType] = useState(types[0]);
     const [view, setView] = useState('view-list');
-
-    const goListApi = () => {
-        if (listApi.current) listApi.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-
-    const goListItemApi = () => {
-        if (listItemApi.current) listItemApi.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
 
     const selectOne = (item) => {
         if (isSelected(item)) {
@@ -283,220 +270,175 @@ const ListPage = () => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <div className="rui-page" ref={parent}>
-                    <div className="row align-center space-between">
-                        <div className="rui-page-title">{'<List/>'} Component</div>
-                        <div className="row">
-                            <div className="rui-link fz-13 fw-bold mr-10" onClick={() => goListApi()}>List API</div>
-                            <div className="rui-link fz-13 fw-bold" onClick={() => goListItemApi()}>List.Item API</div>
-                        </div>
+                <Page
+                    componentName="<List/>"
+                    apiDescItems={items}
+                    apiHeader="List API"
+                    apiHeader2="List.Item API"
+                    apiDescItems2={items2}
+                    usage={usage}>
+                    <Select
+                        items={sizes}
+                        prefix={<Icon name="format-size"/>}
+                        width={200}
+                        dark={theme}
+                        label="List size"
+                        color="primary"
+                        value={size}
+                        onChange={v => setSize(v)}/>
+                    <br/>
+                    <br/>
+                    <Select
+                        items={borders}
+                        prefix={<Icon name="shape"/>}
+                        width={200}
+                        dark={theme}
+                        label="Avatar border type"
+                        color="primary"
+                        value={border}
+                        onChange={v => setBorder(v)}/>
+                    <br/>
+                    <br/>
+                    <Select
+                        items={colors}
+                        prefix={<Icon name="brush"/>}
+                        width={200}
+                        dark={theme}
+                        label="Active item color"
+                        color="primary"
+                        value={color}
+                        onChange={v => setColor(v)}/>
+                    <br/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={hover}
+                        rightLabel="Hover"
+                        className="my-10"
+                        onChange={() => setHover(!hover)}/>
+                    <Switch 
+                        color="primary" 
+                        check={divider}
+                        rightLabel="Hide dividers"
+                        className="my-10"
+                        onChange={() => setDivider(!divider)}/>
+                    <br/>
+                    <RadioGroup
+                        options={types} 
+                        value={type}
+                        name="type"
+                        className="mt-10" 
+                        onChange={(value) => setType(value)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={subtitle}
+                        rightLabel="Subtitle"
+                        className="my-10"
+                        onChange={() => setSubtitle(!subtitle)}/>
+                    <Switch 
+                        color="primary" 
+                        check={header}
+                        rightLabel="Header"
+                        className="my-10"
+                        onChange={() => setHeader(!header)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={rounded}
+                        rightLabel="Rounded active item"
+                        className="my-10"
+                        onChange={() => setRounded(!rounded)}/>
+                    <Switch 
+                        color="primary" 
+                        check={left}
+                        rightLabel="Active item left border"
+                        className="my-10"
+                        onChange={() => setLeft(!left)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
+                        check={checkbox}
+                        rightLabel="Checkbox"
+                        className="my-10"
+                        onChange={() => setCheckbox(!checkbox)}/>
+                    <Switch 
+                        color="primary" 
+                        check={controls}
+                        rightLabel="Controls"
+                        className="my-10"
+                        onChange={() => setControls(!controls)}/>
+                    <br/>
+                    <div className="row justify-end">
+                        <ButtonGroup 
+                            default={0} 
+                            options={icons} 
+                            icon
+                            onChange={v => setView(v)}
+                            dark={theme}/>
                     </div>
-                    <Card 
-                        dark={theme} 
-                        header={<h4>Usage</h4>}>
-                        <Select
-                            items={sizes}
-                            prefix={<Icon name="format-size"/>}
-                            width={200}
-                            dark={theme}
-                            label="List size"
-                            color="primary"
-                            value={size}
-                            onChange={v => setSize(v)}/>
-                        <br/>
-                        <br/>
-                        <Select
-                            items={borders}
-                            prefix={<Icon name="shape"/>}
-                            width={200}
-                            dark={theme}
-                            label="Avatar border type"
-                            color="primary"
-                            value={border}
-                            onChange={v => setBorder(v)}/>
-                        <br/>
-                        <br/>
-                        <Select
-                            items={colors}
-                            prefix={<Icon name="brush"/>}
-                            width={200}
-                            dark={theme}
-                            label="Active item color"
-                            color="primary"
-                            value={color}
-                            onChange={v => setColor(v)}/>
-                        <br/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={hover}
-                            rightLabel="Hover"
-                            className="my-10"
-                            onChange={() => setHover(!hover)}/>
-                        <Switch 
-                            color="primary" 
-                            check={divider}
-                            rightLabel="Hide dividers"
-                            className="my-10"
-                            onChange={() => setDivider(!divider)}/>
-                        <br/>
-                        <RadioGroup
-                            options={types} 
-                            value={type}
-                            name="type"
-                            className="mt-10" 
-                            onChange={(value) => setType(value)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={subtitle}
-                            rightLabel="Subtitle"
-                            className="my-10"
-                            onChange={() => setSubtitle(!subtitle)}/>
-                        <Switch 
-                            color="primary" 
-                            check={header}
-                            rightLabel="Header"
-                            className="my-10"
-                            onChange={() => setHeader(!header)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={rounded}
-                            rightLabel="Rounded active item"
-                            className="my-10"
-                            onChange={() => setRounded(!rounded)}/>
-                        <Switch 
-                            color="primary" 
-                            check={left}
-                            rightLabel="Active item left border"
-                            className="my-10"
-                            onChange={() => setLeft(!left)}/>
-                        <br/>
-                        <Switch 
-                            color="primary" 
-                            check={checkbox}
-                            rightLabel="Checkbox"
-                            className="my-10"
-                            onChange={() => setCheckbox(!checkbox)}/>
-                        <Switch 
-                            color="primary" 
-                            check={controls}
-                            rightLabel="Controls"
-                            className="my-10"
-                            onChange={() => setControls(!controls)}/>
-                        <br/>
-                        <div className="row justify-end">
-                            <ButtonGroup 
-                                default={0} 
-                                options={icons} 
-                                icon
-                                onChange={v => setView(v)}
-                                dark={theme}/>
-                        </div>
-                        <Divider/>
-                        <br/>
-                        <Card
-                            className="pa-0" 
-                            dark={theme}>
-                            <List
-                                grid={view === 'grid' ? true : false}
-                                size={size}
-                                dark={theme} 
-                                header={header ?
-                                    <div className="row align-center space-between">
-                                        Selected persons: {selected.length}
-                                        {selected.length > 0 ? <Button className="ma-0" light icon="share" size={18}/> : ''}
-                                    </div> : null
-                                }>
-                                {heroes.map((item, index) => 
-                                    <List.Item
-                                        isActiveItem={isSelected(item.hero)}
-                                        onClick={() => checkbox ? selectOne(item.hero) : {}}
-                                        key={index} 
-                                        hover={hover}
-                                        width={view === 'grid' ? '25%' : ''}
-                                        item={item.name}
-                                        color={color}
-                                        noDivider={divider}
-                                        roundedActive={rounded}
-                                        leftBorder={left}
-                                        subTitle={subtitle ? item.hero : null}
-                                        icon={type === 'icon' ? item.icon : null}
-                                        avatar={type === 'image' ? 
-                                            <Avatar
-                                                className="mr-10" 
-                                                img={item.img}
-                                                width={40} 
-                                                height={40}
-                                                borderType="rounded"/> 
-                                        : null}
-                                        checkbox={checkbox}
-                                        controls={controls ?
-                                            <div className="row align-center justify-end fz-9">
-                                                <div className="row align-center justify-end">
-                                                    <Icon 
-                                                        name="smartphone" 
-                                                        size={16} 
-                                                        className="mr-5" 
-                                                        color={theme ? 'lightgray' : ''}/>
-                                                    {phoneMask(item.phone)}
-                                                </div>
-                                                {view === 'grid' ? 
-                                                    null :
-                                                    <Button 
-                                                        className="ml-10" 
-                                                        dark={theme}
-                                                        light={!theme}
-                                                        icon="edit"
-                                                        iconSize={16}/>
-                                                }
-                                            </div> : null}/>
-                                )}
-                            </List>
-                        </Card>
-                        <Collapse 
-                            className="px-15" 
-                            icon="code" 
-                            dark={theme}
-                            extra={<CopyToClipboard 
-                                defaultText="Copy code" 
-                                text={usage} 
-                                dark={theme}
-                                className="mr-10"/>}
-                            iconSize={18} 
-                            tooltip="Show/Hide Code">
-                            <SyntaxHighlighter 
-                                language="jsx" 
-                                style={theme ? tomorrow : coy}>
-                                {usage}
-                            </SyntaxHighlighter>
-                        </Collapse>
+                    <Divider/>
+                    <br/>
+                    <Card
+                        className="pa-0" 
+                        dark={theme}>
+                        <List
+                            grid={view === 'grid' ? true : false}
+                            size={size}
+                            dark={theme} 
+                            header={header ?
+                                <div className="row align-center space-between">
+                                    Selected persons: {selected.length}
+                                    {selected.length > 0 ? <Button className="ma-0" light icon="share" size={18}/> : ''}
+                                </div> : null
+                            }>
+                            {heroes.map((item, index) => 
+                                <List.Item
+                                    isActiveItem={isSelected(item.hero)}
+                                    onClick={() => checkbox ? selectOne(item.hero) : {}}
+                                    key={index} 
+                                    hover={hover}
+                                    width={view === 'grid' ? '25%' : ''}
+                                    item={item.name}
+                                    color={color}
+                                    noDivider={divider}
+                                    roundedActive={rounded}
+                                    leftBorder={left}
+                                    subTitle={subtitle ? item.hero : null}
+                                    icon={type === 'icon' ? item.icon : null}
+                                    avatar={type === 'image' ? 
+                                        <Avatar
+                                            className="mr-10" 
+                                            img={item.img}
+                                            width={40} 
+                                            height={40}
+                                            borderType="rounded"/> 
+                                    : null}
+                                    checkbox={checkbox}
+                                    controls={controls ?
+                                        <div className="row align-center justify-end fz-9">
+                                            <div className="row align-center justify-end">
+                                                <Icon 
+                                                    name="smartphone" 
+                                                    size={16} 
+                                                    className="mr-5" 
+                                                    color={theme ? 'lightgray' : ''}/>
+                                                {phoneMask(item.phone)}
+                                            </div>
+                                            {view === 'grid' ? 
+                                                null :
+                                                <Button 
+                                                    className="ml-10" 
+                                                    dark={theme}
+                                                    light={!theme}
+                                                    icon="edit"
+                                                    iconSize={16}/>
+                                            }
+                                        </div> : null}/>
+                            )}
+                        </List>
                     </Card>
-                    <Card className="mt-10">
-                        <Table
-                            tableTitle={<h2 ref={listApi}>List API</h2>}
-                            dark={theme}
-                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                            items={items}
-                            index
-                            bordered
-                            itemTitles={keys}/>
-                    </Card>
-                    <Card className="mt-10">
-                        <Table
-                            dark={theme}
-                            tableTitle={<h2 ref={listItemApi}>List.Item API</h2>}
-                            searchKey="property"
-                            searchable
-                            bordered
-                            headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                            items={items2}
-                            index
-                            itemTitles={keys}/>
-                    </Card>
-                    <BackTopBtn setRef={parent} dark size="medium"/>
-                </div>
+                </Page>
             )}
         </ThemeContext.Consumer>
     )

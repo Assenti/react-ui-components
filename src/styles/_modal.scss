@@ -31,6 +31,10 @@
         display: none;
     }
 
+    &.no-overlay {
+        background-color: transparent;
+    }
+
     &.full-page {
         align-items: center;
         margin: 0 !important;
@@ -54,7 +58,7 @@
     border: 1px solid $lightgray;
     min-width: 200px;
     min-height: 200px;
-    box-shadow: 0 1px 40px rgba(black, .7);
+    box-shadow: 0 1px 20px rgba(black, .4);
     background-color: #fff;
     display: flex;
     flex-direction: column;

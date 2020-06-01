@@ -142,37 +142,34 @@ const DropdownPage = () => {
                     apiDescItems={items}>
                     <Header 
                         dark={theme}
-                        smooth 
-                        title={
-                            <div className="row align-center">
-                                <Icon name="react" color="#61dafb" className="mr-5"/>Header</div>
-                            } 
-                        rightSide={
-                            <Dropdown
-                                dark={theme}
-                                width={200}
-                                position="right"
-                                content={
-                                    <div className="pa-10">
-                                        <div className="text-center">
-                                            <Avatar img={manImage} borderType="rounded" height={100} dark={theme}/>
-                                            <h4>John Doe</h4>
-                                        </div>
-                                        <Divider/>
-                                        <List dark={theme}>
-                                            {modules.map((item, index) =>
-                                                <List.Item 
-                                                    key={index}
-                                                    hover
-                                                    noDivider 
-                                                    item={item.name} 
-                                                    icon={item.icon}/>
-                                            )}
-                                        </List>
+                        smooth>
+                        <div className="row align-center">
+                            <Icon name="react" color="#61dafb" className="mr-5"/>Header</div>
+                        <Dropdown
+                            dark={theme}
+                            width={200}
+                            position="right"
+                            content={
+                                <div className="pa-10">
+                                    <div className="text-center">
+                                        <Avatar img={manImage} borderType="rounded" height={100} dark={theme}/>
+                                        <h4>John Doe</h4>
                                     </div>
-                                }
-                                trigger={<Button dark={theme} light={!theme} icon="account"/>}/>
-                        }/>
+                                    <Divider/>
+                                    <List dark={theme}>
+                                        {modules.map((item, index) =>
+                                            <List.Item 
+                                                key={index}
+                                                hover
+                                                noDivider 
+                                                item={item.name} 
+                                                icon={item.icon}/>
+                                        )}
+                                    </List>
+                                </div>
+                            }
+                            trigger={<Button dark={theme} light={!theme} icon="account"/>}/>
+                    </Header>
                 </Page>
             )}
         </ThemeContext.Consumer>

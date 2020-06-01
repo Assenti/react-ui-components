@@ -116,6 +116,7 @@ import {
     Rotate,
     Bulb
 } from './icons/index';
+import { strinfigyClassObject } from '../utils';
 
 const Icon = (props) => {
     const { custom, name, className, title, size, color } = props;
@@ -354,18 +355,19 @@ const Icon = (props) => {
         }
     }
 
-    const iconClass = () => {
-        if (className) return `rui-icon ${className}`
-        else return 'rui-icon'
+    const iconClassName = {
+        name: 'rui-icon',
+        disabled: props.disabled ? 'disabled' : '',
+        className: className ? className : ''
     }
 
     return (
         <i title={title}
             style={{ width: size ? size : 24, height: size ? size : 24 }}
-            className={iconClass()}
+            className={strinfigyClassObject(iconClassName)}
             onMouseOver={e => props.onMouseOver ? props.onMouseOver(e) : {}}
             onMouseLeave={e => props.onMouseOver ? props.onMouseLeave(e) : {}} 
-            onClick={(e) => props.onClick ? props.onClick(e) : {}}>
+            onClick={(e) => props.onClick && !props.disabled ? props.onClick(e) : {}}>
             {custom ? custom : <Icon size={size} color={color}/>}
         </i>
     )
@@ -378,6 +380,7 @@ Icon.propTypes = {
     onMouseLeave: PropTypes.func,
     onMouseOver: PropTypes.func,
     onClick: PropTypes.func,
+    disabled: PropTypes.bool,
     color: PropTypes.string,
     className: PropTypes.string
 }

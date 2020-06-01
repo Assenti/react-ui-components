@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, List, Button, Icon, Select, ThemeContext, Divider, Switch } from '../components';
+import { Drawer, List, Button, Icon, Select, ThemeContext, Divider } from '../components';
 import Page from '../layouts/Page';
 
 const usage =
@@ -22,7 +22,6 @@ function Example() {
         <>
             <Drawer
                 drawer={drawer}
-                height={400}
                 onClose={() => setDrawer(false)}
                 lifted>
                 <List size="medium" dark={theme}>
@@ -54,39 +53,11 @@ const items = [
         value: 'true | false'
     },
     { 
-        property: 'collapsable', 
-        description: 'Make drawer collapsable', 
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
-    },
-    { 
-        property: 'min', 
-        description: 'Set drawer width to minimum size', 
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
-    },
-    { 
-        property: 'onResize', 
-        description: 'Handle drawer min prop toggling', 
-        default: '', 
-        type: 'function',
-        value: ''
-    },
-    { 
         property: 'onClose', 
         description: 'Handle drawer state', 
         default: '', 
         type: 'function',
         value: ''
-    },
-    { 
-        property: 'fullHeight', 
-        description: 'Set drawer height to full screen height', 
-        default: '', 
-        type: 'boolean',
-        value: 'true | false'
     },
     { 
         property: 'position', 
@@ -96,54 +67,12 @@ const items = [
         value: 'right | top | bottom'
     },
     { 
-        property: 'header', 
-        description: 'Set drawer header', 
-        default: '', 
-        type: 'any',
-        value: ''
-    },
-    { 
-        property: 'headerCentered', 
-        description: 'Set drawer header content position to center', 
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
-    },
-    { 
         property: 'dark', 
         description: 'Set dark mode', 
         default: 'false', 
         type: 'boolean',
         value: 'true | false'
-    },
-    { 
-        property: 'lifted', 
-        description: 'Elevate Drawer', 
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
-    },
-    { 
-        property: 'expandText', 
-        description: 'Set custom expand tooltip text', 
-        default: 'Expand', 
-        type: 'string',
-        value: ''
-    },
-    { 
-        property: 'collapseText', 
-        description: 'Set custom collapse tooltip text', 
-        default: 'Collapse', 
-        type: 'string',
-        value: ''
-    },
-    { 
-        property: 'absolute', 
-        description: 'Set drawer position to absolute', 
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
-    },
+    }
 ]
 
 const stack = [
@@ -156,23 +85,9 @@ const stack = [
 ]
 
 const DrawerPage = () => {
-    const [drawer, setDrawer] = useState(true);
-    const [drawerMin, setDrawerMin] = useState(false);
-    const [absolute, setAbsolute] = useState(false);
-    const [hideOverlay, setHideOverlay] = useState(false);
-    const [collapsable, setCollapsable] = useState(false);
-    const [elevated, setElevated] = useState(false);
+    const [drawer, setDrawer] = useState(false);
     const [page, setPage] = useState(stack[0].name);
     const [position, setPosition] = useState(positions[0]);
-
-    const handleChange = (value) => {
-        if (value !== 'left') {
-            setAbsolute(true)
-        } else {
-            setAbsolute(false)
-        }
-        setPosition(value)
-    }
 
     return (
         <ThemeContext.Consumer>
@@ -181,50 +96,22 @@ const DrawerPage = () => {
                     usage={usage}
                     componentName="<Drawer/>"
                     apiDescItems={items}>
-                    <Switch 
-                        color="primary" 
-                        check={absolute}
-                        rightLabel="Drawer absolute"
-                        className="my-10"
-                        onChange={() => setAbsolute(!absolute)}/>
-                    <br/>
                     <Select
                         items={positions}
-                        disabled={!absolute}
-                        label="Drawer position in absolute mode"
+                        label="Drawer position"
                         width={200}
                         prefix={<Icon name="chart-ppf"/>}
                         color="primary"
                         className="my-0"
                         dark={theme}
                         value={position}
-                        onChange={handleChange}/>
-                    <br/>
-                    <Switch 
-                        color="primary" 
-                        check={hideOverlay}
-                        rightLabel="Hide overlay in absolute mode"
-                        className="my-10"
-                        onChange={() => setHideOverlay(!hideOverlay)}/>
-                    <br/>
-                    <Switch 
-                        color="primary" 
-                        check={collapsable}
-                        rightLabel="Collapsable"
-                        className="my-10"
-                        onChange={() => setCollapsable(!collapsable)}/>
-                    <br/>
-                    <Switch 
-                        color="primary" 
-                        check={elevated}
-                        rightLabel="Lifted"
-                        className="my-10"
-                        onChange={() => setElevated(!elevated)}/>
+                        onChange={v => setPosition(v)}/>
                     <br/>
                     <Button 
-                        name="Toggle drawer"
+                        name="Open drawer"
                         color="primary"
-                        onClick={() => setDrawer(!drawer)}/>
+                        className="mx-0 mt-20"
+                        onClick={() => setDrawer(true)}/>
                     <br/>
                     <Divider/>
                     <br/>
@@ -233,15 +120,8 @@ const DrawerPage = () => {
                         <Drawer
                             drawer={drawer}
                             position={position}
-                            absolute={absolute}
                             dark={theme}
-                            height={400}
-                            hideOverlay={hideOverlay}
-                            onClose={() => setDrawer(false)}
-                            min={absolute ? false : drawerMin}
-                            collapsable={collapsable}
-                            lifted={elevated}
-                            onResize={() => setDrawerMin(!drawerMin)}>
+                            onClose={() => setDrawer(false)}>
                             <List size="medium" dark={theme}>
                                 {stack.map(({name, icon}, index) => 
                                     <List.Item
@@ -250,10 +130,8 @@ const DrawerPage = () => {
                                         noDivider
                                         hover
                                         onClick={() => setPage(name)}
-                                        item={drawerMin ? '' : name}
-                                        icon={icon}
-                                        tooltip={drawerMin ? name : null}
-                                        tooltipPosition="right"/>
+                                        item={name}
+                                        icon={icon}/>
                                 )}
                             </List>
                         </Drawer>

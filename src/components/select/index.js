@@ -189,9 +189,10 @@ const Select = (props) => {
                     label={props.label ? props.label : ''}
                     color={props.color ? props.color : 'primary'}
                     suffix={<Icon
-                        className="cursor-pointer" 
-                        name={menu ? 'chevron-up' : 'chevron-down'} 
-                        onClick={() => setMenu(true)}/>}
+                                className="cursor-pointer" 
+                                disabled={props.disabled}
+                                name={menu ? 'chevron-up' : 'chevron-down'} 
+                                onClick={() => setMenu(true)}/>}
                     value={getValue()}
                     onKeyUp={handleKeyUp}
                     whiteBackground={props.whiteBackground}

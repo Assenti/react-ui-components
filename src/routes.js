@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+const SidebarPage = lazy(() => import('./pages/SidebarPage'));
 const IconsPage = lazy(() => import('./pages/IconsPage'));
 const LayoutsPage = lazy(() => import('./pages/LayoutsPage'));
 const StatisticsPage = lazy(() => import('./pages/StatisticsPage'));
@@ -59,15 +60,15 @@ export const routes = [
     { path: '/btns', name: 'Button', Component: ButtonPage },
     { path: '/icon', name: 'Icon', Component: IconPage },
     { path: '/dropdown', name: 'Dropdown', Component: DropdownPage },
-    { path: '/list', name: 'List', Component: ListPage, updated: false },
+    { path: '/list', name: 'List', Component: ListPage, updated: true },
     { path: '/inputfield', name: 'InputField', Component: InputsPage },
     { path: '/textareafield', name: 'TextareaField', Component: TextareaPage },
-    { path: '/drawer', name: 'Drawer', Component: DrawerPage, updated: false },
+    { path: '/drawer', name: 'Drawer', Component: DrawerPage, updated: true },
     { path: '/tooltip', name: 'Tooltip', Component: TooltipPage },
     { path: '/pagination', name: 'Pagination', Component: PaginationPage, updated: false },
     { path: '/select', name: 'Select', Component: SelectPage, updated: false },
     { path: '/table', name: 'Table', Component: TablePage, updated: false },
-    { path: '/modal', name: 'Modal', Component: ModalPage },
+    { path: '/modal', name: 'Modal', Component: ModalPage, updated: true },
     { path: '/checkbox', name: 'Checkbox', Component: CheckboxPage },
     { path: '/radio', name: 'RadioGroup', Component: RadioPage },
     { path: '/switch', name: 'Switch', Component: SwitchPage },
@@ -79,7 +80,7 @@ export const routes = [
     { path: '/collapse', name: 'Collapse', Component: CollapsePage, updated: false },
     { path: '/buttonGroup', name: 'ButtonGroup', Component: ButtonGroupPage },
     { path: '/popover', name: 'PopOver', Component: PopOverPage },
-    { path: '/header', name: 'Header', Component: HeaderPage, updated: false },
+    { path: '/header', name: 'Header', Component: HeaderPage, updated: true },
     { path: '/helper', name: 'Helper CSS classes', Component: HelperPage },
     { path: '/copytoclipboard', name: 'CopyToClipboard', Component: CopyToClipboardPage },
     { path: '/uploader', name: 'Uploader', Component: UploaderPage },
@@ -109,4 +110,5 @@ export const routes = [
     { path: '/icons', name: 'Icons', Component: IconsPage },
     { path: '/snackbar', name: 'Snackbar', Component: SnackbarPage, new: true },
     { path: '/skeleton', name: 'Skeleton', Component: SkeletonPage, new: true },
+    { path: '/sidebar', name: 'Sidebar', Component: SidebarPage, new: true },
 ]

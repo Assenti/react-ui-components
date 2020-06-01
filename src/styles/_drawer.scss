@@ -1,29 +1,31 @@
-.rui-drawer__overlay {
+.rui-drawer-overlay {
     background-color: rgba(black, .4);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 9999;
+}
 
-    &.hide-overlay {
+@media (min-width: #{$xs + 1}px) {
+    .rui-drawer-overlay {
         background-color: transparent;
-    }
-
-    &.none {
-        display: none;
     }
 }
 
 .rui-drawer {
-    // height: auto;
-    width: 280px;
-    min-width: 280px;
     background-color: $lightgray;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    position: absolute;
+    z-index: 9999;
+    box-shadow: 0 2px 5px rgba(black, .4);
+
+    &.left,
+    &.right {
+        height: 100vh;
+        max-height: 100vh;
+        overflow-y: auto;
+    }
 
     &.left {
         top: 0;
@@ -47,48 +49,6 @@
         left: 0;
         width: 100%;
         min-width: 100%;
-    }
-
-    .rui-drawer-header {
-        display: flex;
-        align-items: center;
-        height: 50px;
-        font-weight: 600;
-        position: sticky;
-        top: 0;
-        z-index: 1;
-        padding: 0 10px;
-    
-        &.centered {
-          justify-content: center;
-          padding: 0;
-        }
-    
-        & > img {
-            width: 50px;
-            height: 50px;
-        }
-    }
-
-    &.smooth {
-        border-top-right-radius: $radius * 2;
-        border-bottom-right-radius: $radius * 2;
-
-        .rui-drawer-header {
-            border-top-right-radius: $radius * 2;
-        }
-    }
-
-    &.absolute {
-        max-height: 100vh;
-        overflow-y: auto;
-        position: absolute;
-        z-index: 999;
-
-        &.left,
-        &:not(.bottom):not(.top) {
-            height: 100%;
-        }
     }
 
     &.dark {
@@ -115,97 +75,6 @@
             border: 1px solid rgba(0,40,100,.12);
         }
     }
-
-    &.full-height {
-        height: 100vh;
-        overflow-y: auto;
-    }
-
-    &.min {
-        width: 50px !important;
-        min-width: 50px !important; 
-        
-        .rui-drawer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .rui-list-item {
-            display: flex;
-            justify-content: center;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            width: 50px !important;
-            max-width: 50px !important;
-        }
-    }
-
-    .rui-drawer-content {
-        height: 100%;
-        padding-bottom: 20px;
-
-        &::-webkit-scrollbar {
-            width: 3.5px;
-            height: 3.5px;
-            background-color: $lightgray;
-            border-radius: $radius;
-        }
-         
-        &::-webkit-scrollbar-thumb {
-          background-color: lightgray;
-          outline: 1px solid #fff;
-        }
-
-        .rui-list-item:first-child {
-            margin-top: 0;
-        }
-    }
-
-    &:not(.collapsable) {
-        .rui-drawer-content {
-            max-height: 100%;
-            overflow-y: auto;
-            
-            &::-webkit-scrollbar {
-                width: 3.5px;
-                height: 3.5px;
-                background-color: $lightgray;
-                border-radius: $radius;
-            }
-            
-            &::-webkit-scrollbar-thumb {
-              background-color: lightgray;
-              outline: 1px solid #fff;
-            }
-        }
-    }
-
-    &.collapsable {
-        .rui-drawer-content {
-            max-height: calc(100% - 40px);
-            // overflow-y: auto;
-
-            &::-webkit-scrollbar {
-                width: 3.5px;
-                height: 3.5px;
-                background-color: $lightgray;
-                border-radius: $radius;
-            }
-            
-            &::-webkit-scrollbar-thumb {
-              background-color: lightgray;
-              outline: 1px solid #fff;
-            }
-        }
-    }
-}
-
-.rui-drawer-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
 }
 
 .rui-drawer__overlay-enter {
@@ -319,45 +188,6 @@
     transform: translateY(100%);
     transition: transform .3s;
 }
-
-.expand-enter {
-    width: 0;
-}
-
-.expand-enter-active {
-    animation: collapsing 300ms ease-in;
-    -moz-animation: collapsing 300ms ease-in;
-}
-
-.expand-exit {
-    width: 0;
-}
-
-.expand-exit-active {
-    animation: expanding 300ms ease-out;
-    -moz-animation: expanding 300ms ease-out;
-}
-  
-@keyframes expanding {
-    0% { width: 50px; min-width: 50px;}
-    100% { width: 280px; min-width: 280px;}
-}
-
-@-moz-keyframes expanding {
-    0% { width: 50px; min-width: 50px;}
-    100% { width: 280px; min-width: 280px;}
-}
-  
-@keyframes collapsing {
-    0% { width: 280px; min-width: 280px; }
-    100% { width: 50px; min-width: 50px; }
-}
-
-@-moz-keyframes collapsing {
-    0% { width: 280px; min-width: 280px; }
-    100% { width: 50px; min-width: 50px; }
-}
-
 
 // Horizontal
 @keyframes drawerOpening {

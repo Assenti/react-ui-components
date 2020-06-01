@@ -8,6 +8,7 @@ const Modal = (props) => {
     const [full, setFull] = useState(false);
     let className = {
         name: 'rui-modal-container',
+        hideOverplay: props.hideOverplay ? 'no-overlay' : '',
         hidden: props.visible ? '' : 'hidden',
         headerReverse: props.headerReverse ? 'reverse' : '',
         centered: props.centered ? 'centered' : '',
@@ -84,6 +85,7 @@ Modal.propTypes = {
     full: PropTypes.bool,
     dark: PropTypes.bool,
     onClose: PropTypes.func,
+    hideOverplay: PropTypes.bool,
     className: PropTypes.string
 }
 export default Modal;

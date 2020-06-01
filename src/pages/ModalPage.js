@@ -57,6 +57,13 @@ const items = [
         value: 'true | false'
     },
     { 
+        property: 'hideOverlay', 
+        description: 'Hide modal overlay', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'marginTop', 
         description: 'Set margin top (has no effect with centered prop)', 
         default: '20px', 
@@ -103,7 +110,7 @@ const items = [
         description: 'Set fullscreen icon color', 
         default: 'gray', 
         type: 'string',
-        value: 'hex | rgb() | css preset colors'
+        value: 'hex | rgb(-a) | css preset colors'
     },
     { 
         property: 'dark', 
@@ -141,6 +148,7 @@ const ModalPage = () => {
     const [closable, setClosable] = useState(false);
     const [centered, setCentered] = useState(false);
     const [fullScreen, setFullScreen] = useState(false);
+    const [overlay, setOverlay] = useState(false);
 
     return (
         <ThemeContext.Consumer>
@@ -164,6 +172,13 @@ const ModalPage = () => {
                     <br/>
                     <Switch 
                         color="primary" 
+                        check={overlay}
+                        rightLabel="Hide overlay"
+                        className="pl-10 my-10"
+                        onChange={() => setOverlay(!overlay)}/>
+                    <br/>
+                    <Switch 
+                        color="primary" 
                         check={centered}
                         rightLabel="Centered"
                         className="pl-10 my-10"
@@ -184,12 +199,14 @@ const ModalPage = () => {
                         closable={closable}
                         dark={theme}
                         width={350}
+                        hideOverplay={overlay}
                         centered={centered}
                         headerReverse={reversed}
                         toggleFullscreen={fullScreen}
                         onClose={() => setModal(false)} 
                         visible={modal} 
-                        header={<div>Sign in</div>}>
+                        header={<div>Sign in</div>}
+                        >
                         <div className="pa-10">
                             <InputField
                                 style={{ width: '100%' }}

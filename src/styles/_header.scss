@@ -39,67 +39,11 @@
             color: white;
         }
     }
-
-    &.primary {
-        background-color: $primary;
-        .rui-header__title {
-            color: white;
-        }
-    }
-
-    &.info {
-        background-color: $info;
-        .rui-header__title {
-            color: white;
-        }
-    }
-
-    &.success {
-        background-color: $success;
-        .rui-header__title {
-            color: white;
-        }
-    }
-
-    &.error {
-        background-color: $error;
-        .rui-header__title {
-            color: white;
-        }
-    }
-
-    &.black {
-        background-color: $dark;
-        .rui-header__title {
-            color: white;
-        }
-    }
-
-    .rui-header__left-side {
-        display: flex;
-        align-items: center;
-    }
-    
-    .rui-header__logo {
-        width: 35px;
-        height: 35px;
-        margin: 0 5px;
-    }
-    
-    .rui-header__title {
-        font-size: $largeFont;
-        font-weight: 600;
-        color: $dark;
-    }
 }
 
 
 @media (max-width: #{$xs}) {
     .rui-header {
         padding: 0 10px;
-
-        .rui-header__title {
-            font-size: $mediumFont;
-        }
     }
 }

@@ -48,6 +48,13 @@ const items = [
         value: ''
     },
     { 
+        property: 'disabled',
+        description: 'Set Icon component disabled', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
         property: 'className',
         description: 'Set a custom css class to component', 
         default: '', 

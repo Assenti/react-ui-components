@@ -6,6 +6,14 @@ timeline: true
 ### Release Schedule
 ###### At least 1 release in 2 weeks
 
+#### 0.7.12 `2020-05-30`
+
+- `NEW!` Sidebar component added;
+- Drawer component updated (it was separated in to 2 independent components: Sidebar and Drawer);
+- Header component updated;
+- Modal component updated;
+- List.Item component updated;
+
 #### 0.7.10, 0.7.11 `2020-05-30`
 
 - `NEW!` Skeleton component added;

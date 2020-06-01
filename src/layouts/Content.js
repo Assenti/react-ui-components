@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { List, Icon, Drawer, ThemeContext, AutoComplete, Tag, Badge, Collapse } from '../components';
-import { compare } from '../components';
+import { List, Icon, ThemeContext, AutoComplete, Tag, Badge, Collapse, compare } from '../components';
 
-export const DrawerContent = (props) => {
+export const Content = (props) => {
     const [list, setList] = useState(false);
     const [active, setActive] = useState('');
     const history = useHistory();
@@ -44,12 +43,7 @@ export const DrawerContent = (props) => {
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <Drawer
-                    drawer={props.drawer}
-                    height="calc(100vh - 50px)"
-                    dark={theme}
-                    lifted
-                    onClose={() => props.onClose()}>
+                <>
                     <div className="row justify-center py-5">
                         <Icon 
                             name="react" 
@@ -57,6 +51,7 @@ export const DrawerContent = (props) => {
                             className="rotating" 
                             color="#61dafb"/>
                     </div>
+                    {props.search &&
                     <AutoComplete
                         style={{ width: '100%', zIndex: 1 }}
                         size="medium"
@@ -77,7 +72,7 @@ export const DrawerContent = (props) => {
                         footer={(filteredLength) => 
                             <div className="text-right fz-8 px-10 py-15">
                                 {filteredLength} results
-                            </div>}/>
+                            </div>}/>}
                     <List size="medium" dark={theme}>
                         {simpleItems.map((item, index) => 
                             <List.Item
@@ -135,7 +130,7 @@ export const DrawerContent = (props) => {
                             hover
                             item="TODOs"/>
                     </List>
-                </Drawer>
+                </>
             )}
         </ThemeContext.Consumer>
     )

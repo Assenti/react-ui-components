@@ -1,0 +1,64 @@
+.rui-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: width .3s ease-in-out, min-width .3s ease-in-out;
+    -webkit-transition: width .3s ease-in-out, min-width .3s ease-in-out;
+    -moz-transition: width .3s ease-in-out, min-width .3s ease-in-out;
+    -o-transition: width .3s ease-in-out, min-width .3s ease-in-out;
+    height: 100%;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 3.5px;
+        height: 3.5px;
+        background-color: $lightgray;
+        border-radius: $radius;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: lightgray;
+        outline: 1px solid #fff;
+    }
+
+    &.dark {
+        background-color: $night;
+
+        &.lifted {
+            box-shadow: 0 1px 3px rgba(lightgray, .2);
+        }
+
+        .rui-sidebar-footer {
+            background-color: darken($night, 5%);
+        }
+    }
+
+    &:not(.dark) {
+        background-color: $lightgray;
+
+        &.lifted {
+            box-shadow: 0 1px 3px rgba(black, .2);
+        }
+    }
+
+    &.min {
+        .rui-list-item {
+            .rui-icon {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.rui-sidebar-content {
+    height: calc(100% - 40px);
+}
+
+.rui-sidebar-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darken($lightgray, 5%);
+    height: 40px;
+    z-index: 1;
+}

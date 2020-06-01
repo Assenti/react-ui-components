@@ -149,14 +149,6 @@
                 cursor: pointer;
             }
 
-            &.left {
-                border-left: 2.5px solid $info;
-            }
-
-            &.right {
-                border-right: 2.5px solid $info;
-            }
-
             .rui-list-item__title-row {
                 .rui-icon {
                     path {
@@ -377,7 +369,7 @@
     }
 
     &.divider {
-        border-bottom: 1px solid lightgray;
+        border-bottom: 1px solid #ddd;
     }
 
     &:not(.divider) {
@@ -387,10 +379,6 @@
     &.dense {
         padding: 10px;
         font-size: .9rem;
-    }
-
-    &:last-child {
-        // border-bottom: none;
     }
 
     &.hover:hover {
