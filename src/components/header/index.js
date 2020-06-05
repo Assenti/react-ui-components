@@ -23,7 +23,8 @@ const Header = (props) => {
         <div className={headerClass()} 
             style={{ 
                 height: props.height ? props.height : '',
-                backgroundColor: props.bgColor ? props.bgColor : ''
+                backgroundColor: props.bgColor ? props.bgColor : '',
+                padding: props.padding ? props.padding : ''
             }}>
             {props.children}
         </div>
@@ -38,6 +39,7 @@ Header.propTypes = {
     smooth: PropTypes.bool,
     lifted: PropTypes.bool,
     id: PropTypes.string,
+    padding: PropTypes.string,
     className: PropTypes.string
 }
 export default Header;

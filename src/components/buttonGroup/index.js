@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '../index';
+import { Button, Icon } from '../index';
 import { strinfigyClassObject } from '../utils';
 
 const ButtonGroup = (props) => {
@@ -30,7 +30,7 @@ const ButtonGroup = (props) => {
                     size={props.size ? props.size : ''}
                     className={isActive(index)}
                     name={!props.icon ? item : ''}
-                    icon={props.icon ? item : ''} 
+                    icon={props.icon ? <Icon name={item}/> : ''} 
                     color={props.color ? props.color : ''}
                     onClick={() => handleChange(item, index)}
                     outlined={props.outlined ? true : false}/>

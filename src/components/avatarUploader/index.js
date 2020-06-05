@@ -1,19 +1,7 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../button';
+import { Button, strinfigyClassObject, getBase64 } from '../index';
 import { Account } from '../icon/icons';
-import { strinfigyClassObject } from '../utils';
-
-const getBase64 = (file) => {
-    if (file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = error => reject(error);
-        });
-    }
-}
 
 const AvatarUploader = (props) => {
     const inputFile = useRef();

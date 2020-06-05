@@ -43,7 +43,7 @@ const CopyToClipboard = (props) => {
                     color={getColor()}
                     name={props.icon ? props.icon : 'content-copy'} 
                     onClick={handleClick}/> :
-            <Tooltip tooltip={tooltip}>
+            <Tooltip tooltip={tooltip} position={props.tooltipPosition}>
                 <Icon
                     className={props.className ? `cursor-pointer ${props.className}` : 'cursor-pointer'}
                     size={props.size ? props.size : 16}
@@ -63,6 +63,7 @@ CopyToClipboard.propTypes = {
     copiedText: PropTypes.string,
     defaultText: PropTypes.string,
     noTooltip: PropTypes.bool,
+    tooltipPosition: PropTypes.oneOf(['bottom','left','right','top']),
     className: PropTypes.string
 }
 export default CopyToClipboard;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Table, Button, Tooltip, Select, Icon, Switch, ButtonGroup, ThemeContext, Divider } from '../components';
+import { Table, Select, Icon, Switch, ButtonGroup, ThemeContext, Divider } from '../components';
 import Page from '../layouts/Page';
 
 const rows = [
@@ -28,7 +28,7 @@ const rows = [
         property: 'alignment', 
         description: 'Set table data alignment',
         default: 'left', 
-        type: 'string',
+        type: 'string (Enum)',
         value: 'left | center | right'
     },
     { 
@@ -67,6 +67,13 @@ const rows = [
         value: 'true | false'
     },
     { 
+        property: 'paginationBorderType', 
+        description: 'Set pagination border type',
+        default: '', 
+        type: 'string (Enum)',
+        value: 'tile | rounded'
+    },
+    { 
         property: 'paginationDense', 
         description: 'Set pagination density',
         default: 'false', 
@@ -98,7 +105,7 @@ const rows = [
         property: 'paginationColor', 
         description: 'Set pagination color',
         default: 'primary', 
-        type: 'string',
+        type: 'string (Enum)',
         value: 'primary | info | success | error'
     },
     { 
@@ -140,7 +147,7 @@ const rows = [
         property: 'size', 
         description: 'Set table rows size',
         default: '', 
-        type: 'string',
+        type: 'string (Enum)',
         value: 'medium | large'
     },
     { 
@@ -161,7 +168,7 @@ const rows = [
         property: 'color',
         description: 'Set table color set', 
         default: '', 
-        type: 'string',
+        type: 'string (Enum)',
         value: 'primary | info | success | error'
     },
     { 
@@ -196,8 +203,8 @@ const rows = [
 
 const usage =
 `// Usage examples
-import React, { useState } from 'react';
-import { Table, Button, Tooltip } from '@assenti/rui-components';
+import React from 'react';
+import { Table, Button, Icon, Tooltip } from '@assenti/rui-components';
 
 let goods = []
 for (let i = 0; i < 100; i++) {
@@ -233,7 +240,7 @@ function Example() {
                                 small
                                 color="light"
                                 className="mr-10"
-                                icon="edit"
+                                icon={<Icon name="edit" />}
                                 onClick={() => console.log(item, 'edited')}>
                             </Button>
                         </Tooltip>
@@ -241,7 +248,7 @@ function Example() {
                             <Button
                                 small
                                 color="light"
-                                icon="delete"
+                                icon={<Icon name="delete"/>}
                                 onClick={() => console.log(item, 'deleted')}>
                             </Button> 
                         </Tooltip>

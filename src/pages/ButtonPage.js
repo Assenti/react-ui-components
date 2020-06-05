@@ -88,16 +88,9 @@ const items = [
         value: 'medium | large'},
     { 
         property: 'icon',
-        description: 'Set icon in a button and give circle shape to it (can be set with name)', 
+        description: 'Set icon in a button', 
         default: '', 
-        type: 'string',
-        value: 'home | search | etc.'
-    },
-    { 
-        property: 'iconSize',
-        description: 'Set icon size', 
-        default: '24px', 
-        type: 'number',
+        type: 'ReactNode',
         value: ''
     },
     { 
@@ -147,14 +140,14 @@ const items = [
 const usage = 
 `// Usage examples
 import React from 'react';
-import { Button } from '@assenti/react-ui-components';
+import { Button, Icon } from '@assenti/react-ui-components';
 
 function Example() {
     return (
         <>
             <Button
                 color="primary"
-                icon="rocket"
+                icon={<Icon name="rocket"/>}
                 name="Rocket"/>
         </>
     )
@@ -181,6 +174,13 @@ const ButtonPage = () => {
     const [color, setColor] = useState(colors[0]);
     const [type, setType] = useState(types[2]);
 
+    const handleClick = () => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 2000)
+    }
+
     return (
         <ThemeContext.Consumer>
             {theme => (
@@ -196,7 +196,7 @@ const ButtonPage = () => {
                         width={200}
                         label="Button size"
                         color="primary"
-                        className="pl-10"
+                        className="mb-5"
                         value={size}
                         onChange={v => setSize(v)}/>
                     <br/>
@@ -207,7 +207,7 @@ const ButtonPage = () => {
                         dark={theme}
                         label="Button border type"
                         color="primary"
-                        className="pl-10"
+                        className="mb-5"
                         value={border}
                         onChange={v => setBorder(v)}/>
                     <br/>
@@ -218,7 +218,7 @@ const ButtonPage = () => {
                         dark={theme}
                         label="Button color"
                         color="primary"
-                        className="pl-10"
+                        className="mb-5"
                         value={color}
                         onChange={v => setColor(v)}/>
                     <br/>
@@ -226,72 +226,72 @@ const ButtonPage = () => {
                         color="primary" 
                         check={outlined}
                         rightLabel="Outlined"
-                        className="pl-10 my-10"
+                        className="my-10"
                         onChange={() => setOutlined(!outlined)}/>
                     <Switch 
                         check={uppercase} 
                         color="primary"
                         rightLabel="Uppercase" 
-                        className="pl-10 my-10"
+                        className="my-10"
                         onChange={() => setUppercase(!uppercase)}/>
                     <br/>
                     <Switch 
                         check={loading} 
                         color="primary"
                         rightLabel="Loading" 
-                        className="pl-10 my-10"
+                        className="my-10"
                         onChange={() => setLoading(!loading)}/>
                     <Switch 
                         check={disabled} 
                         color="primary"
                         rightLabel="Disabled" 
-                        className="pl-10 my-10"
+                        className="my-10"
                         onChange={() => setDisabled(!disabled)}/>
                     <br/>
                     <Switch 
                         check={block} 
                         color="primary"
                         rightLabel="Block" 
-                        className="pl-10 my-10"
+                        className="my-10"
                         onChange={() => setBlock(!block)}/>
                     <Switch 
                         check={lifted} 
                         color="primary"
                         rightLabel="Lifted" 
-                        className="pl-10 my-10"
+                        className="my-10"
                         onChange={() => setLifted(!lifted)}/>
                     <br/>
                     <Switch 
                         check={icon} 
                         color="primary"
                         rightLabel="With icon" 
-                        className="pl-10 my-10"
+                        className="my-10"
                         onChange={() => setIcon(!icon)}/>
                     <Switch 
                         check={iconLeft} 
                         color="primary"
                         rightLabel="Left icon" 
-                        className="pl-10 my-10"
+                        className="my-10"
                         onChange={() => setIconLeft(!iconLeft)}/>
                     <Switch 
                         check={iconAllotted} 
                         color="primary"
                         rightLabel="Allotted icon" 
-                        className="pl-10 my-10"
+                        className="my-10"
                         onChange={() => setIconAllotted(!iconAllotted)}/>
                     <br/>
                     <Switch 
                         check={iconOnly} 
                         color="primary"
                         rightLabel="Icon button" 
-                        className="pl-10 my-10"
+                        className="my-10"
                         onChange={() => setIconOnly(!iconOnly)}/>
                     <br/>
                     <RadioGroup
                         options={types} 
                         value={type}
                         name="type"
-                        className="pl-10 mt-10" 
+                        className="mt-10" 
                         onChange={(value) => setType(value)}/>
                     <br/>
                     <Divider/>
@@ -299,7 +299,7 @@ const ButtonPage = () => {
                         <Button
                             color={color}
                             size={size}
-                            icon={icon || iconOnly ? 'search' : ''}
+                            icon={icon || iconOnly ? <Icon name="refresh"/> : null}
                             iconAllotted={iconAllotted}
                             iconLeft={iconLeft}
                             outlined={outlined}
@@ -307,6 +307,7 @@ const ButtonPage = () => {
                             loading={loading}
                             disabled={disabled}
                             block={block}
+                            onClick={() => handleClick()}
                             lifted={lifted}
                             dark={type === 'dark' ? true : false}
                             light={type === 'light' ? true : false}

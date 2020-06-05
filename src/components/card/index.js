@@ -36,6 +36,7 @@ Card.propTypes = {
         PropTypes.func, 
         PropTypes.shape({ current: PropTypes.instanceOf(Element) })
     ]),
-    className: PropTypes.string
+    className: PropTypes.string,
+    children: PropTypes.node
 }
 export default Card;

@@ -985,3 +985,75 @@ export const Bulb = (props) => {
         </svg>
     )
 }
+
+export const Refresh = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" />
+        </svg>
+    )
+}
+
+export const Heart = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+        </svg>
+    )
+}
+
+export const HeartOutline = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
+        </svg>
+    )
+}
+
+export const Send = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
+        </svg>
+    )
+}
+
+export const Reply = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M10,9V5L3,12L10,19V14.9C15,14.9 18.5,16.5 21,20C20,15 17,10 10,9Z" />
+        </svg>
+    )
+}
+
+export const ReplyAll = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M13,9V5L6,12L13,19V14.9C18,14.9 21.5,16.5 24,20C23,15 20,10 13,9M7,8V5L0,12L7,19V16L3,12L7,8Z" />
+        </svg>
+    )
+}
+
+export const Forward = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M21,12L14,5V9C7,10 4,15 3,20C5.5,16.5 9,14.9 14,14.9V19L21,12Z" />
+        </svg>
+    )
+}
+
+export const Like = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M5,9V21H1V9H5M9,21A2,2 0 0,1 7,19V9C7,8.45 7.22,7.95 7.59,7.59L14.17,1L15.23,2.06C15.5,2.33 15.67,2.7 15.67,3.11L15.64,3.43L14.69,8H21C22.11,8 23,8.9 23,10V12C23,12.26 22.95,12.5 22.86,12.73L19.84,19.78C19.54,20.5 18.83,21 18,21H9M9,19H18.03L21,12V10H12.21L13.34,4.68L9,9.03V19Z" />
+        </svg>
+    )
+}
+
+export const Dislike = (props) => {
+    return (
+        <svg width={props.size ? props.size : defaultSize} height={props.size ? props.size : defaultSize} viewBox="0 0 24 24">
+            <path fill={props.color ? props.color : defaultColor} d="M19,15V3H23V15H19M15,3A2,2 0 0,1 17,5V15C17,15.55 16.78,16.05 16.41,16.41L9.83,23L8.77,21.94C8.5,21.67 8.33,21.3 8.33,20.88L8.36,20.57L9.31,16H3C1.89,16 1,15.1 1,14V12C1,11.74 1.05,11.5 1.14,11.27L4.16,4.22C4.46,3.5 5.17,3 6,3H15M15,5H5.97L3,12V14H11.78L10.65,19.32L15,14.97V5Z" />
+        </svg>
+    )
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Tooltip } from '../index';
+import { Button, Tooltip, Icon } from '../index';
 
 const FloatingBtn = (props) => {
     const getStyles = () => {
@@ -35,7 +35,7 @@ const FloatingBtn = (props) => {
             {props.tooltip ?
                 <Tooltip tooltip={props.tooltip} position={props.tooltipPosition}>
                     <Button 
-                        icon={props.icon}
+                        icon={<Icon name={props.icon}/>}
                         lifted={props.lifted}
                         color={props.color ? props.color : 'primary'}
                         size={props.size ? props.size : 'medium'}
@@ -44,7 +44,7 @@ const FloatingBtn = (props) => {
                         dark={props.dark}/>
                 </Tooltip> : 
                 <Button 
-                    icon={props.icon}
+                    icon={<Icon name={props.icon}/>}
                     lifted={props.lifted}
                     color={props.color ? props.color : 'primary'}
                     size={props.size ? props.size : 'medium'}
@@ -68,9 +68,5 @@ FloatingBtn.propTypes = {
     light: PropTypes.bool,
     tooltip: PropTypes.string,
     tooltipPosition: PropTypes.oneOf([undefined,'','bottom','left','right'])
-}
-FloatingBtn.defaultProps = {
-    color: 'primary',
-    size: 'medium'
 }
 export default FloatingBtn;

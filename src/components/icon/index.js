@@ -114,7 +114,16 @@ import {
     ChartPie,
     CharDonut,
     Rotate,
-    Bulb
+    Bulb,
+    Refresh,
+    Heart,
+    HeartOutline,
+    Send,
+    Reply,
+    ReplyAll,
+    Like,
+    Dislike,
+    Forward
 } from './icons/index';
 import { strinfigyClassObject } from '../utils';
 
@@ -350,6 +359,24 @@ const Icon = (props) => {
                 return <Rotate {...props}/>;
             case 'bulb':
                 return <Bulb {...props}/>;
+            case 'refresh':
+                return <Refresh {...props}/>;
+            case 'heart':
+                return <Heart {...props}/>;
+            case 'heart-outline':
+                return <HeartOutline {...props}/>;
+            case 'send':
+                return <Send {...props}/>;
+            case 'reply':
+                return <Reply {...props}/>;
+            case 'reply-all':
+                return <ReplyAll {...props}/>;
+            case 'forward':
+                return <Forward {...props}/>;
+            case 'like':
+                return <Like {...props}/>;
+            case 'dislike':
+                return <Dislike {...props}/>;
             default:
                 return '';
         }

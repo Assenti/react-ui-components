@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Button from '../button';
 import PropTypes from 'prop-types';
-import { strinfigyClassObject } from '../utils';
+import { strinfigyClassObject, Button, Icon } from '../index';
 
 const Slider = (props) => {
     const childItem = useRef();
@@ -50,12 +49,13 @@ const Slider = (props) => {
         <div className={strinfigyClassObject(className)} 
             style={getSliderLength()}
             ref={slider}>
-            {!props.slidable ? <Button
+            {!props.slidable && 
+            <Button
                 onClick={handlePrev}
                 disabled={move === 0}
                 dark={props.dark}
                 className="rui-slider-prev-btn"
-                icon={props.vertical ? 'chevron-up' : 'chevron-back'}/> : null}
+                icon={<Icon name={props.vertical ? 'chevron-up' : 'chevron-back'}/>}/>}
             <div className="rui-slider-items" 
                 style={{ transform: props.vertical ? `translateY(${move}px)` : `translateX(${move}px)` }}
                 ref={childItems}>
@@ -74,7 +74,7 @@ const Slider = (props) => {
                 disabled={remainder <= 0}
                 dark={props.dark}
                 className="rui-slider-next-btn"
-                icon={props.vertical ? 'chevron-down' : 'chevron-next'}/> : null}
+                icon={<Icon name={props.vertical ? 'chevron-down' : 'chevron-next'}/>}/> : null}
         </div>
     )
 }

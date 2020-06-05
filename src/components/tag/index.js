@@ -40,9 +40,7 @@ const Tag = (props) => {
                 style={props.style}
                 ref={props.tagRef}
                 onClick={props.onClick && !props.disabled ? props.onClick : null}>
-                {props.iconLeft ? <Icon name={props.iconLeft}/> : ''}
-                {props.value}
-                {props.iconRight ? <Icon name={props.iconRight}/> : ''}
+                {props.children}
                 {props.closable ? 
                     <Icon 
                         className="rui-tag__close" 
@@ -57,13 +55,12 @@ Tag.propTypes = {
     visible: PropTypes.bool,
     uppercase: PropTypes.bool,
     outlined: PropTypes.bool,
+    tiny: PropTypes.bool,
     lifted: PropTypes.bool,
     color: PropTypes.oneOf([undefined,'secondary','primary', 'info', 'success', 'error', 'dark', 'yellow']),
     borderType: PropTypes.oneOf([undefined,'','default','tile','smooth','rounded']),
     small: PropTypes.bool,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    iconLeft: PropTypes.string,
-    iconRight: PropTypes.string,
+    children: PropTypes.node,
     style: PropTypes.any,
     onClose: PropTypes.func,
     onClick: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),

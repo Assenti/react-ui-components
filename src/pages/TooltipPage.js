@@ -77,7 +77,7 @@ const TooltipPage = () => {
                             tooltip="Top position"
                             color={color} 
                             className="mr-20">
-                            <Button icon="search" color="info"/>
+                            <Button icon={<Icon name="search"/>} color="info"/>
                         </Tooltip>
                         <Tooltip 
                             tooltip="Bottom position" 
@@ -91,13 +91,13 @@ const TooltipPage = () => {
                             color={color}  
                             position="left" 
                             className="mr-20">
-                            <Button icon="menu" dark={theme} light={!theme}/>
+                            <Button icon={<Icon name="menu"/>} dark={theme} light={!theme}/>
                         </Tooltip>
                         <Tooltip 
                             tooltip="Right position"
                             color={color}  
                             position="right">
-                            <Button icon="rocket" color="error"/>
+                            <Button icon={<Icon name="rocket"/>} color="error"/>
                         </Tooltip>
                     </div>
                 </Page>

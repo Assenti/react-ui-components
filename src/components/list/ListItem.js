@@ -92,6 +92,7 @@ ListItem.propTypes = {
     tooltipPosition: PropTypes.oneOf([undefined,'','bottom','left','right']),
     avatar: PropTypes.node,
     controls: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]),
-    className: PropTypes.string
+    className: PropTypes.string,
+    children: PropTypes.node
 }
 export default ListItem;

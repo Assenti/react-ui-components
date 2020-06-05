@@ -49,32 +49,31 @@ const DatePicker = (props) => {
                         placeholder={props.placeholder}
                         prefix={<Icon name="calendar-month"/>} 
                         value={props.value}/>
-                }
-                content={
-                    <div className="rui-date-picker__content">
-                        <Calendar
-                            shortWeekName
-                            active={props.active}
-                            hideWeekend={props.hideWeekend}
-                            hideCurrentDay={props.hideCurrentDay}
-                            onDate={(date) => {
-                                props.onDate(date)
-                                setVisible(false)
-                            }}
-                            events={props.events}
-                            selectBorderType={props.selectBorderType}
-                            maxDate={props.maxDate}
-                            minDate={props.minDate}
-                            disabledDates={props.disabledDates}
-                            holidays={props.holidays}
-                            weekStartsSunday={props.weekStartsSunday}
-                            dark={props.dark}
-                            limit={props.limit} 
-                            onlyPast={props.onlyPast}
-                            locale={props.locale}
-                            color={props.color}/>
-                    </div>}
-                /> : 
+                }>
+                <div className="rui-date-picker__content">
+                    <Calendar
+                        shortWeekName
+                        active={props.active}
+                        hideWeekend={props.hideWeekend}
+                        hideCurrentDay={props.hideCurrentDay}
+                        onDate={(date) => {
+                            props.onDate(date)
+                            setVisible(false)
+                        }}
+                        events={props.events}
+                        selectBorderType={props.selectBorderType}
+                        maxDate={props.maxDate}
+                        minDate={props.minDate}
+                        disabledDates={props.disabledDates}
+                        holidays={props.holidays}
+                        weekStartsSunday={props.weekStartsSunday}
+                        dark={props.dark}
+                        limit={props.limit} 
+                        onlyPast={props.onlyPast}
+                        locale={props.locale}
+                        color={props.color}/>
+                </div>
+            </Dropdown> : 
             <>
                 <InputField
                     readOnly

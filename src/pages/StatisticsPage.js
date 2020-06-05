@@ -145,14 +145,14 @@ const StatisticsPage = () => {
                     apiDescItems={items}
                     componentName="<Statistics/>">
                     <div className="row align-top wrap">
-                        <Card dark={theme} width={185} className="my-5 mr-10">
+                        <Card dark={theme} style={{ width: 185, height: 100 }} className="my-5 mr-10">
                             <Statistics
                                 title="Speed of light, m/s"
                                 value={299792458}
                                 financial
                                 valueSize={24}/>
                         </Card>
-                        <Card dark={theme} width={160} className="my-5 mr-10">
+                        <Card dark={theme} style={{ width: 160, height: 100 }} className="my-5 mr-10">
                             <Statistics
                                 title="Almaty, pop. (M)"
                                 align="bottom"
@@ -165,25 +165,25 @@ const StatisticsPage = () => {
                                         color="#42a5f5"
                                         size={35}/>}/>
                         </Card>
-                        <Card dark={theme} width={180} className="my-5 mr-10">
+                        <Card dark={theme} style={{ width: 180, height: 100 }} className="my-5 mr-10">
                             <Statistics
                                 title={
                                     <Tag
-                                        value="Downloads, p/w" 
                                         color="success"
                                         className="ma-0"
-                                        tiny/>}
+                                        tiny>Downloads, p/w</Tag>}
                                 align="bottom"
                                 value={1000}
                                 style={{ width: 170 }}
                                 valueColor="#1aaa55"
                                 valueSize={30}
                                 fractions={2}
+                                step={20}
                                 autoFill
                                 onDone={() => console.log('DONE')}
                                 prefix={<Icon name="download"/>}/>
                         </Card>
-                        <Card dark={theme} width={160} className="my-5">
+                        <Card dark={theme} style={{ width: 160, height: 100 }} className="my-5">
                             <Statistics
                                 title="Downloads trend"
                                 align="bottom"

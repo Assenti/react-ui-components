@@ -47,7 +47,7 @@ const Statistics = (props) => {
     return (
         <div className={strinfigyClassObject(className)}
             style={props.style}>
-            <div className="rui-statistics-title">{props.title}</div>
+            {!!props.title && <div className="rui-statistics-title">{props.title}</div>}
             <div className="rui-statistics-value-group">
                 {props.prefix}
                 <div 

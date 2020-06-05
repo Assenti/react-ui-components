@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Collapse, Table, CopyToClipboard, Card, ThemeContext, BackTopBtn, Button, Icon } from '../components';
+import { Collapse, Table, CopyToClipboard, Card, ThemeContext, BackTopBtn, Button, Icon, sortListByAsc, Tag, Tooltip } from '../components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { keys } from '../data/apiTableHeaders';
@@ -16,16 +16,16 @@ const Page = (props) => {
                     <div className="rui-page-title">
                         {props.componentName} Component 
                         <CopyToClipboard 
-                            noTooltip
                             className="ml-10"
+                            tooltipPosition="right"
+                            defaultText="Copy Component Tag"
                             text={props.componentName} 
                             dark={theme}/>
                     </div>
                     <Card dark={theme} header={
-                            <div className="row align-center pb-10">
-                                <Icon name="bulb" size={18} color="#42a5f5" className="mr-8"/>
-                                <h4 className="my-0 text-info">Usage</h4>
-                            </div>
+                            <Tooltip tooltip="I am a <Tag/> component" position="right">
+                                <Tag className="mx-0 mb-10 mt-0" color="secondary"><Icon name="cog-outline"/> Usage</Tag>
+                            </Tooltip>
                         }>
                         {props.children}
                         <Collapse
@@ -35,7 +35,7 @@ const Page = (props) => {
                                 text={props.usage} 
                                 dark={theme}/>} 
                             onChange={state => setOpen(state)} 
-                            customToggler={<Button className="ml-20" name="Code" icon="code" color="info"/>}
+                            customToggler={<Button className="ml-20" name="Code" icon={<Icon name="code" size={20}/>} color="info"/>}
                             dark={theme}>
                             <SyntaxHighlighter 
                                 language="jsx" 
@@ -52,7 +52,7 @@ const Page = (props) => {
                             tableTitle={<h2 className="ml-10">{props.apiHeader ? props.apiHeader : 'API'}</h2>}
                             dark={theme}
                             headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                            items={props.apiDescItems}
+                            items={sortListByAsc(props.apiDescItems, 'property')}
                             index
                             bordered
                             searchable={props.apiSearchable}
@@ -67,7 +67,7 @@ const Page = (props) => {
                             tableTitle={<h2 className="ml-10">{props.apiHeader2}</h2>}
                             dark={theme}
                             headers={['Property', 'Description', 'Default', 'Type', 'Value']}
-                            items={props.apiDescItems2}
+                            items={sortListByAsc(props.apiDescItems2, 'property')}
                             index
                             bordered
                             searchable={props.apiSearchable2}
@@ -89,6 +89,7 @@ Page.propTypes = {
     apiSearchable: PropTypes.bool,
     apiHeader: PropTypes.string,
     apiHeader2: PropTypes.string,
-    content: PropTypes.node
+    content: PropTypes.node,
+    children: PropTypes.node
 }
 export default Page;

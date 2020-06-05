@@ -27,12 +27,12 @@ import '@assenti/rui-components/css/index.css';`;
 const codeUsage = 
 `// Usage example
 import React from 'react';
-import { Card, Button } from '@assenti/rui-components';
+import { Card, Button, Icon } from '@assenti/rui-components';
 
 function App() {
     return (
         <Card header={<h4>React UI Components</h4>}>
-            <Button color="primary" name="Rocket" icon="rocket"/>
+            <Button color="primary" name="Rocket" icon={<Icon name="rocket"/>}/>
         </Card>
     );
 } 
@@ -47,7 +47,7 @@ const HomePage = () => {
                 <div className="rui-page" ref={parent}>
 
                     <div style={{ 
-                        backgroundImage: 'linear-gradient(to right bottom, #303846, #445c73, #5283a1, #5badcf, #61dafb)',
+                        backgroundColor: '#6497b1',
                         padding: '10px 5px',
                         borderRadius: 8,
                         marginTop: 5
@@ -77,7 +77,6 @@ const HomePage = () => {
                             <h4 className="text-white py-10">
                                 Create a lot of usefull, light weight and maximum reusable UI components
                             </h4>
-                            <p className="text-white">Inspired by Material Design, Semantic UI, Mac Design</p>
                         </div>
                     </div>
                     

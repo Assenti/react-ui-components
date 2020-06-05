@@ -21,6 +21,7 @@ Tooltip.propTypes = {
     color: PropTypes.oneOf([undefined,'','default','primary','info','success','error']),
     position: PropTypes.oneOf([undefined,'','top','bottom','left','right']),
     tooltip: PropTypes.string.isRequired,
-    className: PropTypes.string
+    className: PropTypes.string,
+    children: PropTypes.node
 }
 export default Tooltip;

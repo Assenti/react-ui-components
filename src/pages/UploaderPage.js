@@ -158,6 +158,7 @@ const borders = ['default', 'rounded', 'smooth', 'tile'];
 
 const UploaderPage = () => {
     const [files, setFiles] = useState('');
+    const [files2, setFiles2] = useState('');
     const [color, setColor] = useState(colors[0]);
     const [border, setBorder] = useState(borders[0]);
     const [size, setSize] = useState(sizes[0]);
@@ -167,7 +168,11 @@ const UploaderPage = () => {
     const [label, setLabel] = useState(false);
 
     const handleFileDelete = (name) => {
-        setFiles(files => files.filter(item => item.name !== name))
+        setFiles(() => files.filter(item => item.name !== name))
+    }
+
+    const handleFileDelete2 = (name) => {
+        setFiles2(() => files2.filter(item => item.name !== name))
     }
 
     return (
@@ -254,11 +259,11 @@ const UploaderPage = () => {
                         size={size}
                         onDelete={handleFileDelete}
                         width={300}
-                        onChange={files => setFiles(files)}/>
+                        onChange={_files => setFiles(_files)}/>
                     <br/>
                     <Uploader
                         placeholder="Drag & Drop file(-s)"
-                        value={files}
+                        value={files2}
                         dark={theme}
                         title="Сhoose a file(-s) please"
                         color={color}
@@ -266,11 +271,11 @@ const UploaderPage = () => {
                         borderType={border}
                         multiple={multiple}
                         lifted={lifted}
-                        onDelete={handleFileDelete}
+                        onDelete={handleFileDelete2}
                         dropBox
                         height={200}
                         width={300}
-                        onChange={files => setFiles(files)}/>
+                        onChange={_files => setFiles2(_files)}/>
                 </Page>
             )}
         </ThemeContext.Consumer>

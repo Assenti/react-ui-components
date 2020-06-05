@@ -129,59 +129,6 @@ const Select = (props) => {
             contentMaxHeight={props.maxHeight}
             visible={menu}
             dark={props.dark}
-            content={
-                <div className="rui-select__menu">
-                    {props.searchable && !props.childrenKey ? 
-                    <InputField
-                        style={{ width: props.width ? props.width : '' }}
-                        dark={props.dark}
-                        color={props.color ? props.color : 'primary'}
-                        prefix={<Icon name="search"/>}
-                        value={search}
-                        autoFocus
-                        placeholder={props.searchPlaceholder ? props.searchPlaceholder : 'Search'}
-                        onChange={e => setSearch(e.target.value)}
-                        className="full-width pa-5"/> : ''}
-                    <List 
-                        className="rui-select__list"
-                        dark={props.dark} 
-                        size={props.size}>
-                        {filteredItems().map((item, index) => 
-                            <List.Item
-                                key={index}
-                                color={props.color}
-                                tabIndex={index}
-                                isActiveItem={getActiveItem(item)}
-                                onClick={() => handleItemClick(item)}
-                                checkbox={props.multiple}
-                                controls={!props.multiple && props.childrenKey && 
-                                    <Icon
-                                        onClick={() => handleItemClick(item)} 
-                                        name="chevron-next"
-                                        className="rui-select__next-icon"/>}
-                                item={props.itemKey ? item[props.itemKey] : item}
-                                hover>
-                                {!props.multiple && 
-                                    props.childrenKey &&
-                                    <div className="rui-select__submenu">
-                                        <List 
-                                            dark={props.dark} 
-                                            size={props.size}
-                                            className="rui-select__submenu-list">
-                                            {item[props.childrenKey].map((subItem, iterator) => 
-                                                <List.Item
-                                                    onClick={e => handleSubItemClick(e, subItem)}
-                                                    isActiveItem={subItem === props.value}
-                                                    key={iterator}
-                                                    item={subItem}
-                                                    hover/>
-                                            )}
-                                        </List>
-                                    </div>}
-                            </List.Item>
-                        )}
-                    </List>
-                </div>}
             trigger={
                 !props.multiple ? 
                 <InputField
@@ -224,15 +171,16 @@ const Select = (props) => {
                                     {selected.map((item, index) => 
                                         <Tag 
                                             key={index} 
-                                            small
+                                            tiny
                                             disabled={props.disabled}
-                                            value={item}
                                             outlined={props.tagOutlined} 
                                             color={props.tagColor}
                                             onClick={(e) => 
                                                 handleItemClick(props.itemKey ? {[props.itemKey]: item } : item)}
                                             visible={isSelected(item)}
-                                            className="ma-1"/>
+                                            className="ma-1">
+                                            {item}
+                                        </Tag>
                                     )}
                                 </div> :
                                 (!!props.placeholder && <div className="rui-select__multiple-placeholder">{props.placeholder}</div>)
@@ -240,7 +188,60 @@ const Select = (props) => {
                             <span className="rui-input-suffix"><Icon name={menu ? 'chevron-up' : 'chevron-down'}/></span>
                         </div>
                     </div>
-                    }/>
+                    }>
+            <div className="rui-select__menu">
+                {props.searchable && !props.childrenKey ? 
+                <InputField
+                    style={{ width: props.width ? props.width : '' }}
+                    dark={props.dark}
+                    color={props.color ? props.color : 'primary'}
+                    prefix={<Icon name="search"/>}
+                    value={search}
+                    autoFocus
+                    placeholder={props.searchPlaceholder ? props.searchPlaceholder : 'Search'}
+                    onChange={e => setSearch(e.target.value)}
+                    className="full-width pa-5"/> : ''}
+                <List 
+                    className="rui-select__list"
+                    dark={props.dark} 
+                    size={props.size}>
+                    {filteredItems().map((item, index) => 
+                        <List.Item
+                            key={index}
+                            color={props.color}
+                            tabIndex={index}
+                            isActiveItem={getActiveItem(item)}
+                            onClick={() => handleItemClick(item)}
+                            checkbox={props.multiple}
+                            controls={!props.multiple && props.childrenKey && 
+                                <Icon
+                                    onClick={() => handleItemClick(item)} 
+                                    name="chevron-next"
+                                    className="rui-select__next-icon"/>}
+                            item={props.itemKey ? item[props.itemKey] : item}
+                            hover>
+                            {!props.multiple && 
+                                props.childrenKey &&
+                                <div className="rui-select__submenu">
+                                    <List 
+                                        dark={props.dark} 
+                                        size={props.size}
+                                        className="rui-select__submenu-list">
+                                        {item[props.childrenKey].map((subItem, iterator) => 
+                                            <List.Item
+                                                onClick={e => handleSubItemClick(e, subItem)}
+                                                isActiveItem={subItem === props.value}
+                                                key={iterator}
+                                                item={subItem}
+                                                hover/>
+                                        )}
+                                    </List>
+                                </div>}
+                        </List.Item>
+                    )}
+                </List>
+            </div>
+        </Dropdown>
     )
 }
 Select.propTypes = {

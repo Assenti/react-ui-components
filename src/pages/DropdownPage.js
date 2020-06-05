@@ -6,13 +6,6 @@ import { modules } from '../data/modules';
 
 const items = [
     { 
-        property: 'content', 
-        description: 'Dropdown content', 
-        default: '', 
-        type: 'any',
-        value: ''
-    },
-    { 
         property: 'trigger', 
         description: 'Trigger element (Button, InputField & etc.)',
         default: '', 
@@ -51,14 +44,14 @@ const items = [
         property: 'leftOffset', 
         description: 'Set Dropdown content offset from left side',
         default: '0', 
-        type: 'number',
+        type: 'string',
         value: ''
     },
     { 
         property: 'rightOffset', 
         description: 'Set Dropdown content offset from right side',
         default: '0', 
-        type: 'number',
+        type: 'string',
         value: ''
     },
     { 
@@ -108,26 +101,25 @@ function Example() {
             <Dropdown
                 width={200}
                 position="right"
-                content={
-                    <div className="pa-10">
-                        <div className="text-center">
-                            <Avatar img={manImage} borderType="rounded" height={100}/>
-                            <h4>John Doe</h4>
-                        </div>
-                        <Divider/>
-                        <List>
-                            {modules.map((item, index) =>
-                                <List.Item 
-                                    keys={index}
-                                    hover
-                                    noDivider 
-                                    item={item.name} 
-                                    icon={item.icon}/>
-                            )}
-                        </List>
+                trigger={<Button color="primary" icon="account"/>}>
+                <div className="pa-10">
+                    <div className="text-center">
+                        <Avatar img={manImage} borderType="rounded" height={100}/>
+                        <h4>John Doe</h4>
                     </div>
-                }
-                trigger={<Button color="primary" icon="account"/>}/>
+                    <Divider/>
+                    <List>
+                        {modules.map((item, index) =>
+                            <List.Item 
+                                keys={index}
+                                hover
+                                noDivider 
+                                item={item.name} 
+                                icon={item.icon}/>
+                        )}
+                    </List>
+                </div>
+            </Dropdown>
         </>
     )
 }`
@@ -149,26 +141,25 @@ const DropdownPage = () => {
                             dark={theme}
                             width={200}
                             position="right"
-                            content={
-                                <div className="pa-10">
-                                    <div className="text-center">
-                                        <Avatar img={manImage} borderType="rounded" height={100} dark={theme}/>
-                                        <h4>John Doe</h4>
-                                    </div>
-                                    <Divider/>
-                                    <List dark={theme}>
-                                        {modules.map((item, index) =>
-                                            <List.Item 
-                                                key={index}
-                                                hover
-                                                noDivider 
-                                                item={item.name} 
-                                                icon={item.icon}/>
-                                        )}
-                                    </List>
+                            trigger={<Button dark={theme} light={!theme} icon={<Icon name="account"/>}/>}>
+                            <div className="pa-10">
+                                <div className="text-center">
+                                    <Avatar img={manImage} borderType="rounded" height={100} dark={theme}/>
+                                    <h4>John Doe</h4>
                                 </div>
-                            }
-                            trigger={<Button dark={theme} light={!theme} icon="account"/>}/>
+                                <Divider/>
+                                <List dark={theme}>
+                                    {modules.map((item, index) =>
+                                        <List.Item 
+                                            key={index}
+                                            hover
+                                            noDivider 
+                                            item={item.name} 
+                                            icon={item.icon}/>
+                                    )}
+                                </List>
+                            </div>
+                        </Dropdown>
                     </Header>
                 </Page>
             )}

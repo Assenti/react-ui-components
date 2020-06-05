@@ -80,7 +80,7 @@ export const isTwoDatesEqual = (date1, date2) => {
 
 /**
  * Brings the number to financial format
- * @param {number} number
+ * @param {number} number Required param
  */
 export const toFinancial = (number) => {
     if (number !== null || number !== undefined) {
@@ -109,7 +109,7 @@ export const toFinancial = (number) => {
 
 /**
  * Strinfigy Classes Object
- * @param {Object} classObject 
+ * @param {any} classObject Required param
  */
 export const strinfigyClassObject = (classObject) => {
     let result = '';
@@ -117,4 +117,36 @@ export const strinfigyClassObject = (classObject) => {
         if (classObject[key]) result += classObject[key] + ' '
     }
     return result.trim();
+}
+
+/**
+ * Sort array by ascending by property or not
+ * @param {any[]} items Required param
+ * @param {string | undefined} prop Optional param
+ */
+export const sortListByAsc = (items, prop = undefined) => {
+    if (prop) {
+        return items.sort((a, b) => {
+            if (a[prop] < b[prop]) return -1;
+            if (b[prop] < a[prop]) return 1;
+            return 0;
+        })
+    } else {
+        return items.sort((a, b) => {
+            if (a < b) return -1;
+            if (b < a) return 1;
+            return 0;
+        })
+    }
+}
+
+export const getBase64 = (file) => {
+    if (file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+    }
 }

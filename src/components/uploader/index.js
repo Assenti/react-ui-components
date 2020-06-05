@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from '../index';
-import { strinfigyClassObject } from '../utils';
+import { Icon, strinfigyClassObject, getBase64 } from '../index';
 import { Empty } from '../icon/icons';
 
 const Uploader = (props) => {
     const inputFile = useRef();
     const [focus, setFocus] = useState(false);
+    const [files, setFiles] = useState([]);
 
     let className = {
         input: 'rui-input-uploader',
@@ -22,6 +22,21 @@ const Uploader = (props) => {
         lifted: props.lifted ? 'lifted' : '',
         borderType: props.borderType ? props.borderType : '',
         disabled: props.disabled ? 'disabled' : ''
+    }
+
+    const handleChange = async (e) => {
+        props.onChange([...e.target.files])
+         const _files = [...e.target.files].map(async item => {
+            const base64 = await getBase64(item)
+            return { name: item.name, url: base64 }
+        })
+        const promised = await Promise.all(_files)
+        setFiles(promised)
+    }
+
+    const handleDelete = (item, index) => {
+        setFiles(() => files.filter(_item => _item.name !== item.name));
+        props.onDelete(item.name)
     }
 
     const handleFocus = (e) => {
@@ -54,20 +69,22 @@ const Uploader = (props) => {
                     title={props.title}
                     disabled={props.disabled}
                     required={props.required}
-                    onChange={ e => props.onChange([...e.target.files])}
+                    onChange={handleChange}
                     type="file"/>
                 {!props.dropBox && props.value && props.value.length > 0 ? <span>{props.value.length}</span> : null}
             </div>
-            {props.value && props.value.length > 0 ? 
+            {props.value && props.value.length > 0 && 
                 <div className={props.borderType === 'rounded' ? 'rui-input-uploader__items rounded' : 'rui-input-uploader__items'}>
-                    {props.value.map((item, index) => 
+                    {files.map((item, index) => 
                         <div key={index} className="rui-input-uploader__item">
-                            <span>{item.name}</span>
-                            <Icon name="close" size={20} onClick={() => props.onDelete(item.name)}/>
+                            <div className="rui-input-uploader__item-image">
+                                <div style={{ backgroundImage: `url(${item.url})` }}/>
+                                <span>{item.name}</span>
+                            </div>
+                            <Icon name="close" size={18} onClick={() => handleDelete(item, index)}/>
                         </div>
                     )}
-                </div>
-            : ''}
+                </div>}
         </div>
     )
 }

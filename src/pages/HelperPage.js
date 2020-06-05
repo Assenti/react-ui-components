@@ -278,25 +278,20 @@ const HelperPage = () => {
                     <Card dark={theme} title="Set color">
                         <List size="medium" dark={theme}>
                             {presetColors.map((item, index) =>
-                                <List.Item  
-                                    key={index}
-                                    noDivider
-                                    render={
-                                        <div className="row align-center space-between">
-                                            <div 
-                                                style={{ width: 100, height: 30, border: '1px solid lightgray' }}
-                                                className={`bg-${item.name} border row align-center justify-center fz-9`}>
-                                            </div>
-                                            <div className="ml-10 row align-center">
-                                                <span>{item.name} (HEX: {item.value})</span>
-                                                <CopyToClipboard 
-                                                    text={item.value}
-                                                    className="ml-5" 
-                                                    defaultText="Copy HEX"/>
-                                            </div>
-                                        </div>
-                                    }
-                                    />
+                                <div key={index}
+                                    className="row align-center mb-5">
+                                    <div 
+                                        style={{ width: 100, height: 30, border: '1px solid lightgray' }}
+                                        className={`bg-${item.name} border row align-center justify-center fz-9`}>
+                                    </div>
+                                    <div className="ml-10 row align-center">
+                                        <span>{item.name} (HEX: {item.value})</span>
+                                        <CopyToClipboard 
+                                            text={item.value}
+                                            className="ml-5" 
+                                            defaultText="Copy HEX"/>
+                                    </div>
+                                </div>
                             )}
                         </List>
                         <div className="py-10">

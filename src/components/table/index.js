@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Empty } from '../icon/icons/index';
 import { Checkbox, Pagination, Icon, InputField } from '../index';
@@ -12,7 +12,7 @@ const makeSortableHeaders = (headers) => {
     return sortableHeaders;
 }
 
-const Table = forwardRef((props, ref) => {
+const Table = (props) => {
     const [selected, setSelected] = useState([]);
     const [currentPage, setCurrentPage] = useState(props.currentPage ? props.currentPage : 1);
     const [perPage, setPerPage] = useState(props.perPage ? props.perPage : 10);
@@ -187,7 +187,9 @@ const Table = forwardRef((props, ref) => {
     }
 
     return (
-        <div className={strinfigyClassObject(classNameContainer)} id={props.id ? props.id : ''}>
+        <div className={strinfigyClassObject(classNameContainer)} 
+            ref={props.tableRef}
+            id={props.id ? props.id : ''}>
             <div className="rui-table__header">
                 {props.tableTitle ? 
                     <div className="rui-table__title">{props.tableTitle}</div> : null}
@@ -239,14 +241,18 @@ const Table = forwardRef((props, ref) => {
                     color={props.color && props.color !== 'default' ? props.color : ''}
                     size={props.paginationSize ? props.paginationSize : ''}
                     current={props.currentPage ? props.currentPage : 1}
-                    rounded={props.paginationRounded ? props.paginationRounded : false}/> : ''
+                    borderType={props.paginationBorderType}/> : null
             }
         </div>
     )
-})
+}
 Table.propTypes = {
     id: PropTypes.string,
-    items: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.number), PropTypes.arrayOf(PropTypes.object)]).isRequired,
+    tableRef: PropTypes.oneOfType([
+        PropTypes.func, 
+        PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+    ]),
+    items: PropTypes.array.isRequired,
     itemsTotal: PropTypes.number,
     itemTitles: PropTypes.arrayOf(PropTypes.string),
     headers: PropTypes.arrayOf(PropTypes.string),
@@ -274,6 +280,7 @@ Table.propTypes = {
     grid: PropTypes.bool,
     dark: PropTypes.bool,
     noHover: PropTypes.bool,
+    paginationBorderType: PropTypes.oneOf(['default','tile','rounded']),
     footer: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
     className: PropTypes.string
 }

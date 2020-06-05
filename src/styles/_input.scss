@@ -427,6 +427,12 @@
             width: 100%;
         }
 
+        & > textarea {
+            font-family: inherit;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
         & > input[type=number]::-webkit-inner-spin-button {
             -webkit-appearance: none;
             -moz-appearance: none;

@@ -45,6 +45,7 @@ const App = () => {
                         routes={routes}
                         title={description}
                         version={version}
+                        onDrawerToggle={() => setDrawer(!drawer)}
                         isXs={width < xsBreakPoint}
                         onSwitchDark={handleSwitchDark}/>
                 </Header>

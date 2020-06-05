@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { List, Button, Card, Select, Icon, Switch, RadioGroup, phoneMask, ThemeContext, Divider, ButtonGroup, Avatar } from '../components';
+import { List, Button, Card, Select, Icon, Switch, RadioGroup, phoneMask, Divider, ButtonGroup, Avatar, Dropdown, ThemeContext } from '../components';
 import { heroes } from '../data/heroes';
 import Page from '../layouts/Page';
 
@@ -236,6 +236,11 @@ const colors = ['primary', 'info', 'success', 'error'];
 const borders = ['default', 'rounded', 'tile'];
 const types = ['image', 'icon', 'none'];
 const icons = ['view-list', 'grid'];
+const contacts = [
+    { name: 'Telegram', icon: 'telegram' },
+    { name: 'WhatsApp', icon: 'whatsapp' },
+    { name: 'Email', icon: 'email' },
+]
 
 const ListPage = () => {
     const [selected, setSelected] = useState([]);
@@ -269,7 +274,7 @@ const ListPage = () => {
     
     return (
         <ThemeContext.Consumer>
-            {theme => (
+            {dark => (
                 <Page
                     componentName="<List/>"
                     apiDescItems={items}
@@ -281,7 +286,7 @@ const ListPage = () => {
                         items={sizes}
                         prefix={<Icon name="format-size"/>}
                         width={200}
-                        dark={theme}
+                        dark={dark}
                         label="List size"
                         color="primary"
                         value={size}
@@ -292,7 +297,7 @@ const ListPage = () => {
                         items={borders}
                         prefix={<Icon name="shape"/>}
                         width={200}
-                        dark={theme}
+                        dark={dark}
                         label="Avatar border type"
                         color="primary"
                         value={border}
@@ -303,7 +308,7 @@ const ListPage = () => {
                         items={colors}
                         prefix={<Icon name="brush"/>}
                         width={200}
-                        dark={theme}
+                        dark={dark}
                         label="Active item color"
                         color="primary"
                         value={color}
@@ -375,21 +380,39 @@ const ListPage = () => {
                             options={icons} 
                             icon
                             onChange={v => setView(v)}
-                            dark={theme}/>
+                            dark={dark}/>
                     </div>
                     <Divider/>
                     <br/>
                     <Card
                         className="pa-0" 
-                        dark={theme}>
+                        dark={dark}>
                         <List
                             grid={view === 'grid' ? true : false}
                             size={size}
-                            dark={theme} 
+                            dark={dark} 
                             header={header ?
                                 <div className="row align-center space-between">
                                     Selected persons: {selected.length}
-                                    {selected.length > 0 ? <Button className="ma-0" light icon="share" size={18}/> : ''}
+                                    {selected.length > 0 && 
+                                        <Dropdown
+                                            rightOffset="0"
+                                            width={200}
+                                            trigger={
+                                                <Button 
+                                                    className="ma-0" 
+                                                    light 
+                                                    icon={<Icon size={18} name="share"/>}/>}>
+                                            <List size="medium">
+                                                {contacts.map((item, index) => 
+                                                    <List.Item
+                                                        key={index}
+                                                        hover
+                                                        item={item.name}
+                                                        icon={item.icon}/>
+                                                )}
+                                            </List>
+                                        </Dropdown>}
                                 </div> : null
                             }>
                             {heroes.map((item, index) => 
@@ -412,29 +435,28 @@ const ListPage = () => {
                                             img={item.img}
                                             width={40} 
                                             height={40}
-                                            borderType="rounded"/> 
+                                            borderType={border}/> 
                                     : null}
                                     checkbox={checkbox}
-                                    controls={controls ?
+                                    controls={controls &&
                                         <div className="row align-center justify-end fz-9">
                                             <div className="row align-center justify-end">
                                                 <Icon 
                                                     name="smartphone" 
                                                     size={16} 
                                                     className="mr-5" 
-                                                    color={theme ? 'lightgray' : ''}/>
+                                                    color={dark ? 'lightgray' : ''}/>
                                                 {phoneMask(item.phone)}
                                             </div>
                                             {view === 'grid' ? 
                                                 null :
                                                 <Button 
                                                     className="ml-10" 
-                                                    dark={theme}
-                                                    light={!theme}
-                                                    icon="edit"
-                                                    iconSize={16}/>
+                                                    dark={dark}
+                                                    light={!dark}
+                                                    icon={<Icon className="mx-0" name="edit" size={16}/>}/>
                                             }
-                                        </div> : null}/>
+                                        </div>}/>
                             )}
                         </List>
                     </Card>

@@ -13,6 +13,7 @@
     margin: 5px;
     padding: 0 8px;
     overflow: hidden;
+    position: relative;
 
     .rui-btn__text {
         display: flex;
@@ -451,18 +452,6 @@
     }
 }
 
-.loading {
-    svg {
-        animation: loading .8s infinite ease-in;
-        -moz-animation: loading .8s infinite ease-in;
-    }
-}
-
-@keyframes loading {
-    0% { transform: rotate(0); }
-    100% { transform: rotate(360deg); }
-}
-
 .rui-btn-back-top {
     transition: all .5s ease-in-out;
     position: absolute;
@@ -546,4 +535,36 @@
             border-bottom-right-radius: $radius;
         }
     }
+}
+
+.rui-btn-loading {
+    overflow: hidden;
+    width: 30px;
+    min-width: 30px;
+
+    span {
+        display: block;
+        animation: btnLoading 1.5s ease-in-out infinite;
+        -webkit-animation: btnLoading 1.5s ease-in-out infinite;
+        -moz-animation: btnLoading 1.5s ease-in-out infinite;
+        -o-animation: btnLoading 1.5s ease-in-out infinite;
+        font-size: 24px;
+    }
+}
+
+
+@keyframes btnLoading {
+    0% { transform: translateX(-30px); }
+    50% { transform: translateX(0px); }
+    100% { transform: translateX(30px); }
+}
+@-webkit-keyframes btnLoading {
+    0% { transform: translateX(-30px); }
+    50% { transform: translateX(0px); }
+    100% { transform: translateX(30px); }
+}
+@-moz-keyframes btnLoading {
+    0% { transform: translateX(-30px); }
+    50% { transform: translateX(0px); }
+    100% { transform: translateX(30px); }
 }

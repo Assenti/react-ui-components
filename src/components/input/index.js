@@ -175,6 +175,7 @@ InputField.propTypes = {
     onEnter: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
+    placeholder: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     type: PropTypes.oneOf([undefined,'text','password','number','email']),
     required: PropTypes.bool,

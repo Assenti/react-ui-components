@@ -107,42 +107,41 @@ const TimePicker = (props) => {
                         onBlur={() => setVisible(false)}
                         prefix={<Icon name="clock-outline"/>} 
                         value={props.value}/>
-                }
-                content={
-                    <div className="rui-timepicker__content">
-                        <List className="col" header={headers(props.locale)[0]}>
-                            {hours().map((item, index) => 
-                                <List.Item 
-                                    hover
-                                    isActiveItem={item === hh}
-                                    onClick={() => handleClick(item, 'hh')}
-                                    key={index}
-                                    item={item}/>
-                            )}
-                        </List>
-                        <List className="col" header={headers(props.locale)[1]}>
-                            {minutes().map((item, index) => 
-                                <List.Item 
-                                    hover
-                                    isActiveItem={item === mm}
-                                    onClick={() => handleClick(item, 'mm')}
-                                    key={index}
-                                    item={item}/>
-                            )}
-                        </List>
-                        {!props.noSeconds ? <List className="col" header={headers(props.locale)[2]}>
-                            {minutes().map((item, index) => 
-                                <List.Item 
-                                    hover
-                                    isActiveItem={item === ss}
-                                    onClick={() => handleClick(item, 'ss')}
-                                    key={index}
-                                    item={item}/>
-                            )}
-                        </List> : null}
-                    </div>
-                }
-                /> : 
+                }>
+                <div className="rui-timepicker__content">
+                    <List className="col" header={headers(props.locale)[0]}>
+                        {hours().map((item, index) => 
+                            <List.Item 
+                                hover
+                                isActiveItem={item === hh}
+                                onClick={() => handleClick(item, 'hh')}
+                                key={index}
+                                item={item}/>
+                        )}
+                    </List>
+                    <List className="col" header={headers(props.locale)[1]}>
+                        {minutes().map((item, index) => 
+                            <List.Item 
+                                hover
+                                isActiveItem={item === mm}
+                                onClick={() => handleClick(item, 'mm')}
+                                key={index}
+                                item={item}/>
+                        )}
+                    </List>
+                    {!props.noSeconds && 
+                    <List className="col" header={headers(props.locale)[2]}>
+                        {minutes().map((item, index) => 
+                            <List.Item 
+                                hover
+                                isActiveItem={item === ss}
+                                onClick={() => handleClick(item, 'ss')}
+                                key={index}
+                                item={item}/>
+                        )}
+                    </List>}
+                </div>
+            </Dropdown> : 
             <>
                 <InputField
                     readOnly

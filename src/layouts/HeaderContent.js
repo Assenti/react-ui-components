@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Tooltip, Button, Switch, AutoComplete, compare, Icon, ThemeContext } from '../components';
+import { Tooltip, Button, Switch, AutoComplete, compare, Icon, ThemeContext, Tag } from '../components';
 
 const HeaderContent = (props) => {
     const history = useHistory();
@@ -31,9 +31,8 @@ const HeaderContent = (props) => {
                             dark={props.dark ? props.dark : false}
                             light={props.light || (!props.color && !props.dark) ? true : false}
                             color={props.color}
-                            size={props.leftControlSize ? props.leftControlSize : 'medium'}
-                            icon={props.leftControlIcon ? props.leftControlIcon : 'menu'} 
-                            onClick={() => props.onLeftControl ? props.onLeftControl() : {}}/>}
+                            icon={<Icon name="menu"/>} 
+                            onClick={() => props.onDrawerToggle()}/>}
                         <h4 className={theme ? 'ma-0 text-white' : 'ma-0 text-dark'}>{props.title}</h4>
                     </div>
                     {!props.isXs &&
@@ -67,19 +66,18 @@ const HeaderContent = (props) => {
                             className="mr-10"
                             rightIcon="moon" 
                             onChange={() => props.onSwitchDark()}/>
-                        <div className="mr-15">
+                        <div className="mr-10">
                             <Tooltip tooltip="Current version" position="left">
                                 <a href="https://github.com/Assenti/react-ui-components/blob/master/CHANGELOG.md" 
                                     rel="noopener noreferrer"
-                                    target="_blank"
-                                    className="fw-bold">
-                                    <small>v{props.version}</small>
+                                    target="_blank">
+                                    <Tag tiny color="info">v{props.version}</Tag>
                                 </a>
                             </Tooltip>
                         </div>
                         <Tooltip tooltip="Visit Github repo" position="left">
                             <Button 
-                                icon="github"
+                                icon={<Icon name="github"/>}
                                 light={!theme}
                                 dark={theme} 
                                 onClick={e => { 

@@ -66,9 +66,7 @@ const TextareaField = (props) => {
         }
 
         if (props.onChange) {
-            if (props.uppercase) {
-                e.target.value = e.target.value.toUpperCase()
-            } else props.onChange(e) 
+            props.onChange(e) 
             setIsChanged(true)
         }
         
@@ -127,8 +125,7 @@ const TextareaField = (props) => {
                         className="rui-input-clear"/> : ''}
                 {props.suffix ? <span className="rui-input-suffix">{props.suffix}</span> : ''}
             </div>
-            {props.hint ? 
-                <div className={getHintColor()}>{props.hint}</div> : ''}
+            {!!props.hint && <div className={getHintColor()}>{props.hint}</div>}
         </div>
     )
 }

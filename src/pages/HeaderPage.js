@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Header, Button, Switch, ThemeContext, Divider } from '../components';
+import { Header, Button, Switch, ThemeContext, Divider, Icon } from '../components';
 import Page from '../layouts/Page';
 
 const items = [
@@ -46,6 +46,13 @@ const items = [
         value: 'true | false'
     },
     { 
+        property: 'padding',
+        description: 'Set Header padding', 
+        default: '', 
+        type: 'string',
+        value: ''
+    },
+    { 
         property: 'id',
         description: 'Set a custom html id to component', 
         default: '', 
@@ -64,7 +71,7 @@ const items = [
 const usage = 
 `// Usage examples
 import React from 'react';
-import { Header, Button } from '@assenti/react-ui-components';
+import { Header, Button, Icon } from '@assenti/react-ui-components';
 
 function Example() {
     return (
@@ -74,7 +81,7 @@ function Example() {
                 <Button 
                     dark={theme}
                     light={!theme}
-                    icon="account"/>
+                    icon={<Icon name="account"/>}/>
             </Header>
         </>
     )
@@ -99,7 +106,7 @@ const HeaderPage = () => {
                         <Button 
                             dark={theme}
                             light={!theme}
-                            icon="account"/>
+                            icon={<Icon name="account"/>}/>
                     </Header>
                     <br/>
                     <Divider/>

@@ -52,6 +52,13 @@ const items = [
         type: 'boolean',
         value: 'true | false'
     },
+    {
+        property: 'tooltipPosition',
+        description: 'Set tooltip position', 
+        default: '', 
+        type: 'string (Enum)',
+        value: 'top | bottom | left | right'
+    },
     { 
         property: 'className',
         description: 'Set a custom css class to component', 
@@ -70,8 +77,8 @@ const text = 'Some text';
 function Example() {
     return (
         <div className="row align-center">
-            <InputField color="info" readOnly value={text} width={200}/>
-            <CopyToClipboard text={text} className="ml-10"/>
+            <InputField className="mr-10" color="info" readOnly value={text} width={200}/>
+            <CopyToClipboard text={text}/>
         </div>
     )
 }`
@@ -91,13 +98,13 @@ const CopyToClipboardPage = () => {
                         <InputField
                             dark={theme} 
                             color="info" 
+                            className="mr-10"
                             onChange={e => setText(e.target.value)} 
                             value={text} 
                             width={200}/>
                         <CopyToClipboard 
                             text={text}
-                            dark={theme} 
-                            className="ml-10"/>
+                            dark={theme}/>
                     </div>
                 </Page>
             )}

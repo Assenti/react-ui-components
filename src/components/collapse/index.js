@@ -85,6 +85,7 @@ Collapse.propTypes = {
     iconColor: PropTypes.string,
     dark: PropTypes.bool,
     customToggler: PropTypes.node,
-    className: PropTypes.string
+    className: PropTypes.string,
+    children: PropTypes.node
 }
 export default Collapse;

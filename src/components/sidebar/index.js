@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { strinfigyClassObject } from '../utils';
 import PropTypes from 'prop-types';
-import { Tooltip, Button } from '../index';
+import { Tooltip, Button, Icon } from '../index';
 
 const Sidebar = (props) => {
     let className = {
@@ -38,10 +38,10 @@ const Sidebar = (props) => {
                     <Button
                         dark={props.dark}
                         light={props.dark ? false : true}
-                        icon={min ? 
+                        icon={<Icon name={min ? 
                             (props.rightSide ? 'chevron-double-left' : 'chevron-double-right') : 
                             (props.rightSide ? 'chevron-double-right' : 'chevron-double-left')
-                        }
+                        }/>}
                         onClick={() => {
                             if (props.onToggle) props.onToggle(!min)
                             setMin(!min)
@@ -62,6 +62,7 @@ Sidebar.propTypes = {
     collapseText: PropTypes.string,
     dark: PropTypes.bool,
     lifted: PropTypes.bool,
+    children: PropTypes.node,
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }
 export default Sidebar;

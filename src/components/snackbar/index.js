@@ -84,7 +84,8 @@ const SnackbarItem = (props) => {
 
 export const snackbar = {
     remove: () => {
-        unmountComponentAtNode(document.getElementById('rui-snackbar-container'))
+        const snackbarContainer = document.getElementById('rui-snackbar-container');
+        if (snackbarContainer) unmountComponentAtNode(snackbarContainer)
         snackbar.currentToast = false
         if (snackbar.timeout){
             clearTimeout(snackbar.timeout)

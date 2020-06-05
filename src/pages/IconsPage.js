@@ -112,7 +112,16 @@ const icons = [
     'chart-pie',
     'chart-donut',
     'rotate',
-    'bulb'
+    'bulb',
+    'refresh',
+    'heart',
+    'heart-outline',
+    'send',
+    'reply',
+    'reply-all',
+    'forward',
+    'like',
+    'dislike'
 ]
 
 const IconsPage = () => {

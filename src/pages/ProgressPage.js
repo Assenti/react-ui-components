@@ -137,6 +137,7 @@ const ProgressPage = () => {
                         dark={theme}
                         prefix={<Icon name="brush"/>}
                         width={200}
+                        className="mb-5"
                         label="Radio button color"
                         color="primary"
                         value={color}
@@ -208,7 +209,7 @@ const ProgressPage = () => {
                             color="error"
                             className="mr-20">
                             <Button 
-                                icon="minus" 
+                                icon={<Icon name="minus"/>} 
                                 color="error"
                                 disabled={complete === 0}
                                 onClick={() => {
@@ -219,7 +220,7 @@ const ProgressPage = () => {
                             tooltip="Add progress" 
                             color="primary">
                             <Button 
-                                icon="plus" 
+                                icon={<Icon name="plus"/>} 
                                 color="primary"
                                 disabled={complete === 100}
                                 onClick={() => {

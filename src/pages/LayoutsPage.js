@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { 
     ThemeContext, 
     Header, 
-    Drawer, 
     Icon, 
     Dropdown, 
     Button, 
@@ -12,82 +11,97 @@ import {
     Card,
     Statistics,
     Tag, 
-    Tooltip} from '../components';
+    Sidebar,
+    Tooltip,
+    Dialog} from '../components';
 import { modulesDash as modules } from '../data/modules';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { coy, tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import manImage from '../img/man.png';
+
+const usage =
+``
 
 const LayoutsPage = () => {
     const headerHeight = 50;
-    const [drawer, setDrawer] = useState(true);
+    const [dialog, setDialog] = useState(false);
     const [min, setMin] = useState(false);
+    const [downloads, setDownloads] = useState(1000);
+    const [current, setCurrent] = useState(modules[0].name);
 
     return (
         <ThemeContext.Consumer>
             {theme => (
-                <Card height={500}>
+                <>
+                <p>Here is an example how you can combine and use components</p><br/>
+                <Card style={{ height: 600 }} className="pa-0">
                     <Header
-                        leftControl 
-                        onLeftControl={() => setDrawer(!drawer)}
                         lifted
                         dark={theme}
-                        height={headerHeight} 
-                        title="Dashboard Layout"
-                        rightSide={
-                            <Dropdown
-                                dark={theme}
-                                width={200}
-                                position="right"
-                                content={
-                                    <div className="pa-10">
-                                        <div className="text-center">
-                                            <Avatar img={manImage} borderType="rounded" height={100} dark={theme}/>
-                                            <h4>John Doe</h4>
-                                        </div>
-                                        <Divider/>
-                                        <List dark={theme}>
-                                            {modules.map((item, index) =>
-                                                <List.Item 
-                                                    key={index}
-                                                    hover
-                                                    noDivider 
-                                                    item={item.name} 
-                                                    icon={item.icon}/>
-                                            )}
-                                        </List>
+                        padding="0 10px"
+                        height={headerHeight}>
+                        <h4 className="row align-center my-0 text-dark"><Icon className="mr-10" name="dashboard-outline"/> Dashboard Layout</h4>
+                        <Dropdown
+                            dark={theme}
+                            width={200}
+                            position="right"
+                            content={
+                                <div className="pa-10">
+                                    <div className="text-center">
+                                        <Avatar img={manImage} borderType="rounded" height={100} dark={theme}/>
+                                        <h4>John Doe</h4>
                                     </div>
-                                }
-                                trigger={<Button dark={theme} light={!theme} icon="account"/>}/>
-                        }
-                        />
-                    <div style={{ height: `calc(100% - ${headerHeight}px`}} className={theme ? 'rui-app dark' : 'rui-app'}>
-                        <Drawer
-                            drawer={drawer}
+                                    <Divider/>
+                                    <List dark={theme}>
+                                        {modules.map((item, index) =>
+                                            <List.Item 
+                                                key={index}
+                                                hover
+                                                noDivider 
+                                                isActiveItem={current === item.name}
+                                                item={item.name} 
+                                                icon={item.icon}
+                                                onClick={() => {
+                                                    if (item.name === 'Exit') setDialog(true)
+                                                    else setCurrent(item.name)
+                                                }}/>
+                                        )}
+                                    </List>
+                                </div>
+                            }
+                            trigger={<Button dark={theme} light={!theme} icon="account"/>}/>
+                    </Header>
+                    <div className="row" style={{ height: `calc(100% - ${headerHeight}px`}}>
+                        <Sidebar
                             height="100%"
                             dark={theme}
                             lifted
                             min={min}
                             collapsable
-                            onResize={() => setMin(!min)}
-                            onClose={() => setDrawer(false)}>
+                            onToggle={() => setMin(!min)}>
                             <List size="medium" dark={theme}>
                                 {modules.map((item, index) => 
                                     <List.Item 
                                         key={index}
                                         hover
-                                        isActiveItem={index === 0}
+                                        isActiveItem={current === item.name}
                                         noDivider
                                         tooltip={min ? item.name : ''}
                                         tooltipPosition="right" 
                                         item={min ? '' : item.name} 
-                                        icon={item.icon}/>
+                                        icon={item.icon}
+                                        onClick={() => {
+                                            if (item.name === 'Exit') setDialog(true)
+                                            else setCurrent(item.name)
+                                        }}/>
                                 )}
                             </List>
-                        </Drawer>
+                        </Sidebar>
                         <div style={{ height: '100%' }} className="rui-content pa-10">
                             <div className="row wrap" style={{ height: '50%' }}>
                                 <div className="col pa-5">
                                     <Card 
-                                        height="100%"
+                                        style={{ height: '100%' }}
                                         dark={theme}>
                                         <Statistics
                                             title="Speed of light, m/s"
@@ -104,7 +118,7 @@ const LayoutsPage = () => {
                                 </div>
                                 <div className="col pa-5">
                                     <Card
-                                        height="100%" 
+                                        style={{ height: '100%' }}
                                         dark={theme}>
                                         <Statistics
                                             title="Almaty, pop. (M)"
@@ -124,28 +138,38 @@ const LayoutsPage = () => {
                                 <div className="col pa-5">
                                     <Card 
                                         dark={theme}
-                                        height="100%">
+                                        style={{ height: '100%' }}>
                                         <Statistics
                                             title={
-                                                <Tag
-                                                    value="Downloads, p/w" 
-                                                    color="success"
-                                                    className="ma-0"
-                                                    tiny/>}
+                                                <div className="row space-between align-center">
+                                                    <Tag
+                                                        value="Downloads, p/w" 
+                                                        color="success"
+                                                        className="ma-0"
+                                                        tiny/>
+                                                    <Tooltip tooltip="Refresh">
+                                                        <Button
+                                                            icon="refresh"
+                                                            light
+                                                            onClick={() => setDownloads(1000)}/>
+                                                    </Tooltip>
+                                                </div>
+                                            }
                                             align="bottom"
-                                            value={1000}
+                                            value={downloads}
                                             valueColor="#1aaa55"
                                             valueSize={30}
                                             fractions={2}
                                             autoFill
+                                            step={20}
                                             onDone={() => console.log('DONE')}
-                                            prefix={<Icon name="download"/>}/>
+                                            prefix={<Icon name="download" color="#1aaa55"/>}/>
                                     </Card>
                                 </div>
                                 <div className="col pa-5">
                                     <Card 
                                         dark={theme}
-                                        height="100%">
+                                        style={{ height: '100%' }}>
                                         <Statistics
                                             title="Downloads trend"
                                             align="bottom"
@@ -160,9 +184,22 @@ const LayoutsPage = () => {
                                     </Card>
                                 </div>
                             </div>
+                        
                         </div>
+                        <Dialog
+                            dark={theme}
+                            title="Do you want to exit ?"
+                            visible={dialog}
+                            onCancel={() => setDialog(false)}
+                            onConfirm={() => setDialog(false)}/>
                     </div>
+                    <SyntaxHighlighter 
+                        language="jsx" 
+                        style={theme ? tomorrow : coy}>
+                        {usage}
+                    </SyntaxHighlighter>
                 </Card>
+                </>
             )}
         </ThemeContext.Consumer>
     )

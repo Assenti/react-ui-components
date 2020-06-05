@@ -1,7 +1,7 @@
 import React, { useEffect, useState, createRef } from 'react'
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import { Tooltip, Button } from '../index';
+import { Tooltip, Button, Icon } from '../index';
 
 const BackTopBtn = (props) => {
     const [visible, setVisible] = useState(false);
@@ -43,7 +43,7 @@ const BackTopBtn = (props) => {
                 {props.tooltip ?
                     <Tooltip tooltip={props.tooltip}>
                         <Button 
-                            icon="arrow-up-bold"
+                            icon={<Icon name="arrow-up-bold"/>}
                             lifted
                             size={props.size ? props.size : ''}
                             onClick={() => goTop()} 
@@ -51,7 +51,7 @@ const BackTopBtn = (props) => {
                             dark={props.dark ? true : false}/>
                     </Tooltip> : 
                     <Button 
-                        icon="arrow-up-bold"
+                        icon={<Icon name="arrow-up-bold"/>}
                         lifted
                         size={props.size ? props.size : ''}
                         onClick={() => goTop()} 

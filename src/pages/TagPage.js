@@ -4,13 +4,6 @@ import Page from '../layouts/Page';
 
 const items = [
     { 
-        property: 'value', 
-        description: 'Tag value', 
-        default: '', 
-        type: 'string',
-        value: ''
-    },
-    { 
         property: 'lifted', 
         description: 'Lift up the Tag', 
         default: 'false', 
@@ -51,20 +44,6 @@ const items = [
         default: '', 
         type: 'boolean',
         value: 'true | false'
-    },
-    { 
-        property: 'iconLeft', 
-        description: 'Set icon before the value',
-        default: '', 
-        type: 'string',
-        value: 'home | search | etc. (see icon names list in docs)'
-    },
-    { 
-        property: 'iconRight', 
-        description: 'Set icon after the value',
-        default: '', 
-        type: 'string',
-        value: 'home | search | etc. (see icon names list in docs)'
     },
     { 
         property: 'tagRef',
@@ -118,9 +97,9 @@ import { Tag } from '@assenti/react-ui-components';
 function Example() {
     return (
         <>
-            <Tag 
-                value="Price: 1000"
-                color="primary"/>
+            <Tag color="primary">
+                Price: 1000
+            </Tag>
         </>
     )
 }`
@@ -212,17 +191,17 @@ const TagPage = () => {
                     <Divider/>
                     <div className="row align-center">
                         <Tag 
-                            value="Price: 1000"
                             outlined={outlined} 
                             color={color}
                             small={!tiny && small}
                             tiny={!small && tiny}
                             borderType={borderType}
-                            iconLeft={icon ? 'tenge' : ''}
                             closable={closable}
                             lifted={lifted}
                             visible={visible}
-                            onClose={() => setVisible(false)}/>
+                            onClose={() => setVisible(false)}>
+                            Price: 1000
+                        </Tag>
                         {closable ? <Button 
                             name="Return Tag" 
                             color="info" 

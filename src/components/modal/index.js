@@ -86,6 +86,7 @@ Modal.propTypes = {
     dark: PropTypes.bool,
     onClose: PropTypes.func,
     hideOverplay: PropTypes.bool,
+    children: PropTypes.node,
     className: PropTypes.string
 }
 export default Modal;

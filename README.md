@@ -48,13 +48,13 @@ import '@assenti/rui-components/css/index.css';
 ```
 App.js / App.tsx
 ```jsx
-import { Card, Button } from '@assenti/rui-components';
+import { Card, Button, Icon } from '@assenti/rui-components';
 import React from 'react';
 
 function App() {
   return (
     <Card header={<h4>React UI Components</h4>}>
-      <Button color="primary" name="Rocket" icon="rocket"/>
+      <Button color="primary" name="Rocket" icon={<Icon name="rocket"/>}"/>
     </Card>
   );
 }
@@ -70,7 +70,7 @@ Find more usage examples in [Homepage](https://assenti.github.io/react-ui-compon
 - [ ] TransferLists
 - [ ] Dashboard Layout
 - [ ] Separate Table component into 2 components: SimpleTable (maximum customizable) and DataTable (just paste and use)
-- [ ] ThemeProvder
+- [ ] ThemeProvider
 - [ ] Make components adaptive for mobile devices
 
 ## Changelog

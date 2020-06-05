@@ -39,13 +39,15 @@ const Dropdown = (props) => {
                     style={{ 
                         width: props.width ? props.width : '', 
                         minWidth: props.minWidth ? props.minWidth : '',
-                        right: props.rightOffset && !props.legtOffset ? props.rightOffset : '',
-                        left: props.legtOffset && !props.rightOffset ? props.legtOffset : ''
+                        right: props.rightOffset ? props.rightOffset : '',
+                        left: props.legtOffset ? props.legtOffset : ''
                     }}>
                     <div className="rui-dropdown__content"
-                        style={{ maxHeight: props.contentMaxHeight }} 
+                        style={{ 
+                            maxHeight: props.contentMaxHeight
+                        }} 
                         onClick={() => props.closeManaged ? {} : setVisible(false)}>
-                        {props.content}
+                        {props.children}
                     </div>
                 </div>
             </CSSTransition>
@@ -53,14 +55,14 @@ const Dropdown = (props) => {
     )
 }
 Dropdown.propTypes = {
-    content: PropTypes.any,
+    children: PropTypes.node,
     trigger: PropTypes.any,
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     minWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     dark: PropTypes.bool,
     position: PropTypes.oneOf([undefined,'','centered','right']),
-    leftOffset: PropTypes.number,
-    rightOffset: PropTypes.number,
+    leftOffset: PropTypes.string,
+    rightOffset: PropTypes.string,
     closeManaged: PropTypes.bool,
     visible: PropTypes.bool,
     contentMaxHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

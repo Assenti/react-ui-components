@@ -76,10 +76,6 @@
         }
 
         .rui-input-uploader__item {
-            & > span {
-                color: #fff;
-            }
-    
             &:last-child {
                 border-bottom: none;
             }
@@ -87,6 +83,32 @@
             &:hover {
                 background-color: gray;
             }
+        }
+
+        .rui-input-uploader__item-image {
+            & > span {
+                color: #fff;
+            }
+        }
+    }
+
+    .rui-input-uploader__item-image {
+        display: flex;
+        align-items: center;
+
+        & > div {
+            margin-right: 10px;
+            width: 30px;
+            min-width: 30px;
+            height: 30px;
+            border-radius: $radius;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        & > span {
+            font-size: .9rem;
         }
     }
 
@@ -112,12 +134,14 @@
         }
 
         .rui-input-uploader__item {
-            & > span {
-                color: $dark;
-            }
-    
             &:hover {
                 background-color: $lightgray;
+            }
+        }
+
+        .rui-input-uploader__item-image {
+            & > span {
+                color: $dark;
             }
         }
     }

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
-import { Icon } from '../index';
 import { strinfigyClassObject } from '../utils';
 
 const Button = (props) => {
@@ -29,35 +28,28 @@ const Button = (props) => {
         else return 'rui-btn__text';
     }
 
-    const getIconSize = () => {
-        if (props.size === 'medium' || props.size === 'large') return 24;
-        return 20;
-    }
-
     return (
         <button
             type={props.type ? props.type : 'button'}
             ref={props.btnRef} 
+            id={props.id}
             disabled={props.disabled || props.loading}
             className={strinfigyClassObject(className)} 
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>
             {props.loading ?
-                <Icon name="loading" color="gray" size={getIconSize()}/> :
+                <div className="rui-btn-loading"><span>•••</span></div> :
                 <>
-                    {props.icon && props.iconLeft && 
+                    {props.icon && 
+                        props.iconLeft && 
                         (props.iconAllotted ? 
-                            <div className="rui-btn__allotted-icon"><Icon name={props.icon} size={getIconSize()}/></div> :
-                            <Icon name={props.icon} size={getIconSize()}/>
-                        )}
+                            <div className="rui-btn__allotted-icon">{props.icon}</div> : props.icon)}
                     {props.name ? <div className={setMargin()}>{props.name}</div> : ''}
-                    {props.icon && !props.iconLeft && 
+                    {props.icon && 
+                    !props.iconLeft && 
                         (props.iconAllotted ? 
-                            <div className="rui-btn__allotted-icon"><Icon name={props.icon} size={getIconSize()}/></div> :
-                            <Icon name={props.icon} size={getIconSize()}/>    
-                    )}
+                            <div className="rui-btn__allotted-icon">{props.icon}</div> : props.icon)}
                 </>
             }
-            
         </button>
     )
 }
@@ -72,10 +64,10 @@ Button.propTypes = {
     loading: PropTypes.bool,
     disabled: PropTypes.bool,
     borderType: PropTypes.oneOf([undefined,'','default','tile','rounded','smooth']),
-    icon: PropTypes.string,
     size: PropTypes.oneOf([undefined,'','default','medium','large']),
     block: PropTypes.bool,
     outlined: PropTypes.bool,
+    icon: PropTypes.node,
     iconAllotted: PropTypes.bool,
     iconLeft: PropTypes.bool,
     type: PropTypes.oneOf([undefined,'submit','reset']),
@@ -83,6 +75,7 @@ Button.propTypes = {
         PropTypes.func, 
         PropTypes.shape({ current: PropTypes.instanceOf(Element) })
     ]),
+    id: PropTypes.string,
     className: PropTypes.string
 }
 export default Button;

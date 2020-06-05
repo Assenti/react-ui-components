@@ -103,6 +103,7 @@ const CheckboxPage = () => {
                         prefix={<Icon name="brush"/>}
                         width={200}
                         label="Checkbox color"
+                        className="mb-5"
                         color="primary"
                         value={color}
                         onChange={v => setColor(v)}/>

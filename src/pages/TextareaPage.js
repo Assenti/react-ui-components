@@ -123,13 +123,6 @@ const itemsTextarea = [
         value: 'tile | smooth'
     },
     { 
-        property: 'uppercase',
-        description: 'Transform text to upper case', 
-        default: 'false', 
-        type: 'boolean',
-        value: 'true | false'
-    },
-    { 
         property: 'prefix',
         description: 'Set prefix', 
         default: '', 
@@ -217,7 +210,7 @@ const TextareaPage = () => {
                         dark={theme}
                         label="Color"
                         color="primary"
-                        className="ml-5"
+                        className="mb-5"
                         value={color}
                         onChange={v => setColor(v)}/>
                     <br/>
@@ -228,7 +221,6 @@ const TextareaPage = () => {
                         dark={theme}
                         label="Border type"
                         color="primary"
-                        className="ml-5"
                         value={border}
                         onChange={v => setBorder(v)}/>
                     <br/>
@@ -236,60 +228,53 @@ const TextareaPage = () => {
                         color="primary" 
                         check={required}
                         rightLabel="Required"
-                        className="my-10 ml-5"
+                        className="my-10"
                         onChange={() => setRequired(!required)}/>
                     <Switch 
                         color="primary" 
                         check={label}
                         rightLabel="Label"
-                        className="my-10 ml-5"
+                        className="my-10"
                         onChange={() => setLabel(!label)}/>
                     <br/>
                     <Switch 
                         color="primary" 
                         check={hint}
                         rightLabel="Hint"
-                        className="my-10 ml-5"
+                        className="my-10"
                         onChange={() => setHint(!hint)}/>
                     <Switch 
                         color="primary" 
                         check={white}
                         rightLabel="White background"
-                        className="my-10 ml-5"
+                        className="my-10"
                         onChange={() => setWhite(!white)}/>
                     <br/>
-                    <Switch 
-                        check={uppercase} 
-                        color="primary"
-                        rightLabel="Uppercase" 
-                        className="my-10 ml-5"
-                        onChange={() => setUppercase(!uppercase)}/>
                     <Switch 
                         check={lifted} 
                         color="primary"
                         rightLabel="Lifted" 
-                        className="my-10 ml-5"
+                        className="my-10"
                         onChange={() => setLifted(!lifted)}/>
                     <br/>
                     <Switch 
                         check={prefix} 
                         color="primary"
                         rightLabel="Prefix" 
-                        className="my-10 ml-5"
+                        className="my-10"
                         onChange={() => setPrefix(!prefix)}/>
                     <Switch 
                         check={placeholder} 
                         color="primary"
                         rightLabel="Placeholder" 
-                        className="my-10 ml-5"
+                        className="my-10"
                         onChange={() => setPlaceholder(!placeholder)}/>
                     <Divider/>
-                    <br/>
                     <TextareaField
                         prefix={prefix ? <Icon name="edit"/> : null}
                         label={label ? 'Textarea field' : null}
                         placeholder={placeholder ? 'Textarea field' : null} 
-                        hint={hint ? 'I am a hint' : null}
+                        hint={hint ? `${text.length} symbols` : null}
                         value={text}
                         dark={theme}
                         lifted={lifted}

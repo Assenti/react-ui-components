@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Select, PopOver, isTwoDatesEqual } from '../index';
+import { Button, Select, PopOver, isTwoDatesEqual, Icon } from '../index';
 import { getCurrentMonth, getMonthIndex, daysInMonth, years, getCurrentWeek, shortWeekName } from './utils';
 
 const Calendar = (props) => {
@@ -172,7 +172,7 @@ const Calendar = (props) => {
         <div className={componentClass()} style={{ width: props.width }}>
             <div className="rui-calendar__header">
                 <Button 
-                    icon="chevron-back" 
+                    icon={<Icon name="chevron-back"/>} 
                     light={!props.dark} 
                     dark={props.dark}
                     size={props.size} 
@@ -192,7 +192,7 @@ const Calendar = (props) => {
                         onChange={v => setYear(v)}/>
                 </div>
                 <Button 
-                    icon="chevron-next" 
+                    icon={<Icon name="chevron-next"/>} 
                     light={!props.dark} 
                     dark={props.dark} 
                     size={props.size} 

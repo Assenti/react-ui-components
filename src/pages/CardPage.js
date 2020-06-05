@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, List, Switch, ThemeContext, Divider } from '../components';
+import { Card, List, Switch, ThemeContext, Divider, FloatingBtn, Snackbar, snackbar } from '../components';
 import manImage from '../img/man.png';
 import manImage2 from '../img/hipster.png';
 import girlImage from '../img/girl.png';
@@ -129,11 +129,15 @@ const CardPage = () => {
                         key={index}
                         hover
                         dark={dark}
-                        className="ma-5"
+                        className="ma-5 relative"
                         style={{ width: 200 }} 
                         footer={<h4 className="text-center">{item.name}</h4>}>
                         <img src={item.img} style={{ width: '100%' }} alt="example"/>
                         <p className="text-center">Hey there!</p>
+                        <FloatingBtn 
+                            icon="like"
+                            color="info"
+                            onClick={() => snackbar.message('Thank you, dude 🙂')}/>
                     </Card>
                 )}
             </div>
@@ -147,6 +151,7 @@ const CardPage = () => {
                     usage={usage}
                     apiDescItems={items}
                     componentName="<Card/>">
+                    <Snackbar/>
                     <Switch 
                         color="primary" 
                         check={flat}

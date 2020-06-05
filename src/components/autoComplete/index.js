@@ -58,51 +58,49 @@ const AutoComplete = (props) => {
                 closeManaged
                 dark={props.dark}
                 contentMaxHeight={props.contentMaxHeight}
-                content={
-                    <>
-                        <List dark={props.dark}
-                            size={props.size}
-                            header={props.listHeader}>
-                            {filtered().map((item, index) => 
-                                <List.Item
-                                    key={index}
-                                    avatar={props.avatarKey}
-                                    avatarSize={props.avatarSize}
-                                    avatarBorderType={props.avatarBorderType}
-                                    icon={props.iconKey ? item[props.iconKey] : null}
-                                    hover={props.hover === false ? false : true}
-                                    onClick={() => {
-                                        handleItemClick(getItem(item))
-                                        if (props.onItemClick) props.onItemClick(item)
-                                    }}
-                                    item={getItem(item)}/>
-                            )}
-                        </List>
-                        {props.footer(filtered().length)}
-                    </>
-                }
-                trigger={<InputField
-                            color={props.color}
-                            dark={props.dark}
-                            disabled={props.disabled || props.loading}
-                            required={props.required}
-                            readOnly={props.readOnly}
-                            lifted={props.lifted}
-                            borderType={props.borderType}
-                            uppercase={props.uppercase}
-                            whiteBackground={props.whiteBackground}
-                            prefix={props.prefix}
-                            suffix={handleSuffix()}
-                            value={search}
-                            size={props.size}
-                            clearable={props.clearable}
-                            onClear={handleClear}
-                            onFocus={() => !props.disabled ? setVisible(true) : {}}
-                            onBlur={() => setVisible(false)}
-                            onChange={e => setSearch(e.target.value)}
-                            placeholder={props.placeholder}
-                            label={props.label}
-                            hintColor={props.hintColor}/>}/>
+                trigger={
+                    <InputField
+                        color={props.color}
+                        dark={props.dark}
+                        disabled={props.disabled || props.loading}
+                        required={props.required}
+                        readOnly={props.readOnly}
+                        lifted={props.lifted}
+                        borderType={props.borderType}
+                        uppercase={props.uppercase}
+                        whiteBackground={props.whiteBackground}
+                        prefix={props.prefix}
+                        suffix={handleSuffix()}
+                        value={search}
+                        size={props.size}
+                        clearable={props.clearable}
+                        onClear={handleClear}
+                        onFocus={() => !props.disabled ? setVisible(true) : {}}
+                        onBlur={() => setVisible(false)}
+                        onChange={e => setSearch(e.target.value)}
+                        placeholder={props.placeholder}
+                        label={props.label}
+                        hintColor={props.hintColor}/>}>
+                <List dark={props.dark}
+                    size={props.size}
+                    header={props.listHeader}>
+                    {filtered().map((item, index) => 
+                        <List.Item
+                            key={index}
+                            avatar={props.avatarKey}
+                            avatarSize={props.avatarSize}
+                            avatarBorderType={props.avatarBorderType}
+                            icon={props.iconKey ? item[props.iconKey] : null}
+                            hover={props.hover === false ? false : true}
+                            onClick={() => {
+                                handleItemClick(getItem(item))
+                                if (props.onItemClick) props.onItemClick(item)
+                            }}
+                            item={getItem(item)}/>
+                    )}
+                </List>
+                {props.footer(filtered().length)}
+            </Dropdown>
         </div>
     )
 }
@@ -117,6 +115,7 @@ AutoComplete.propTypes = {
     onItemClick: PropTypes.func,
     contentMaxHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     hover: PropTypes.bool,
+    dark: PropTypes.bool,
     listHeader: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
     footer: PropTypes.func,
     color: PropTypes.oneOf(['primary', 'info', 'success', 'error']),

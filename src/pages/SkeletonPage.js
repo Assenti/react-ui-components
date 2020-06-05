@@ -100,13 +100,9 @@ const SkeletonPage = () => {
     const card = useRef();
 
     useEffect(() => {
-
-        if (card.current) console.log(card.current.clientHeight)
-        
         setTimeout(() => {
             setActive(false)
         }, 3000)
-        
     }, [])
 
     return (

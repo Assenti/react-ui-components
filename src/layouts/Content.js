@@ -28,7 +28,7 @@ export const Content = (props) => {
     const simpleItems = [
         { name: 'Getting started', path: '/', icon: 'rocket' },
         { name: 'Helper CSS classes', path: '/helper', icon: 'language-css-3' },
-        { name: 'Icons', path: '/icons', icon: 'check' },
+        { name: 'Icons', path: '/icons', icon: 'like' },
         // { name: 'Layouts', path: '/layouts', icon: 'dashboard-outline' },
     ]
 
@@ -77,7 +77,6 @@ export const Content = (props) => {
                         {simpleItems.map((item, index) => 
                             <List.Item
                                 key={index}
-                                right
                                 icon={item.icon}
                                 isActiveItem={item.path === (history.location.pathname || active)}
                                 onClick={() => handleItemClick({ path: item.path })}
@@ -106,7 +105,6 @@ export const Content = (props) => {
                                 {sortedRoutes().map((item, index) => 
                                     <List.Item
                                         key={index}
-                                        right
                                         noDivider
                                         icon={item.icon ? item.icon : ''}
                                         leftBorder
@@ -116,17 +114,15 @@ export const Content = (props) => {
                                         hover
                                         item={item.name}
                                         controls={item.updated ? 
-                                            <Tag value="updated" borderType="rounded" tiny/> 
-                                                : (item.new ? <Tag value="new" color="success" borderType="rounded" tiny/> : null)}/>
+                                            <Tag borderType="rounded" tiny>updated</Tag> 
+                                                : (item.new ? <Tag color="success" borderType="rounded" tiny>new</Tag> : null)}/>
                                 )}
                             </List>
                         </Collapse>
                         <List.Item
-                            right
                             noDivider
                             icon="checklist"
-                            href="https://github.com/Assenti/react-ui-components/blob/master/README.md#todo"
-                            itemTitle="name"
+                            onClick={() => window.open('https://github.com/Assenti/react-ui-components/blob/master/README.md#todo')}
                             hover
                             item="TODOs"/>
                     </List>

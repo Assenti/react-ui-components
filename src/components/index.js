@@ -70,7 +70,7 @@ export { default as Snackbar } from './snackbar/Snackbar';
 export { default as Skeleton } from './skeleton';
 export { snackbar } from './snackbar';
 export { default as Sidebar } from './sidebar';
-export { ThemeContext, themes } from './theme-provider';
+export { ThemeContext } from './theme-provider';
 export { 
     convertToNum, 
     compare, 
@@ -81,4 +81,6 @@ export {
     iinMask,
     isTwoDatesEqual,
     toFinancial,
-    strinfigyClassObject } from './utils';
+    strinfigyClassObject,
+    sortListByAsc,
+    getBase64 } from './utils';

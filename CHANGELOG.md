@@ -6,6 +6,15 @@ timeline: true
 ### Release Schedule
 ###### At least 1 release in 2 weeks
 
+#### 0.8.0 `2020-06-06`
+- `NEW!` New icons added;
+- `NEW!` Open Sans font family applied;
+- Button component updated;
+- Dropdown component updated;
+- Table component updated;
+- CopyToClipboard component updated;
+- Uploader component updated;
+
 #### 0.7.12 `2020-05-30`
 
 - `NEW!` Sidebar component added;

@@ -28,13 +28,13 @@ const Timeline = (props) => {
             {props.items.map((item, index) =>
                 <div key={index} className={getItemClass(index)}>
                     <div className="rui-timeline__item__event">
-                        {props.date ? 
+                        {props.date && 
                             <Tag 
                                 small
                                 outlined={props.tagOutlined} 
                                 borderType={props.tagBorderType}
                                 color={props.tagColor ? props.tagColor : props.color} 
-                                value={item[props.date]}/> : null}
+                                >{item[props.date]}</Tag>}
                     </div>
                     <div className="rui-timeline__item__center">
                         <div className="rui-timeline__item-line"></div>

@@ -45,5 +45,6 @@ Drawer.propTypes = {
     onClose: PropTypes.func,
     position: PropTypes.oneOf([undefined,'','left','right','top','bottom']),
     dark: PropTypes.bool,
+    children: PropTypes.node
 }
 export default Drawer;
