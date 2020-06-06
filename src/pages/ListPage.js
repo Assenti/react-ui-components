@@ -6,7 +6,7 @@ import Page from '../layouts/Page';
 const usage =
 `// Usage examples
 import React, { useState } from 'react';
-import { List, Button } from '@assenti/rui-components';
+import { List, Button, Icon } from '@assenti/rui-components';
 const names = [
     { name: 'Steve Rogers', hero: 'Captain America', phone: '1234567890', icon: 'shield-account', img: manImage, check: false, active: false }, 
     { name: 'Peter Parker', hero: 'Spider man', phone: '1234567890', icon: 'shield-account', img: manImage2, check: false, active: true }, 
@@ -39,7 +39,7 @@ function Example() {
                 header={
                     <div className="row align-center space-between">
                         Selected persons: {selected.length}
-                        {selected.length > 0 ? <Button className="ma-0" light icon="share" size={18}/> : ''}
+                        {selected.length > 0 ? <Button className="ma-0" light icon={<Icon name="share" size={18}/>}/> : ''}
                     </div>
                 }>
                 {names.map((item, index) => 

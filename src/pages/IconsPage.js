@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Icon, ThemeContext, Tooltip, Card, InputField, CopyToClipboard } from '../components';
 import { description } from '../../package.json';
+import { useHistory } from 'react-router-dom';
 
 const icons = [
     'delete', 
@@ -126,6 +127,7 @@ const icons = [
 
 const IconsPage = () => {
     const [search, setSearch] = useState('');
+    const history = useHistory();
 
     const filteredIcons = () => {
         if (search) {
@@ -182,7 +184,7 @@ const IconsPage = () => {
                         </div>
                     )}
                 </Card>
-                <p>Didn't found your icon, use your <a href="/icon">custom</a></p> 
+                <p>Didn't found your icon, use your <a className="link" onClick={() => history.push('/icon')}>custom</a></p> 
             </div>
         )}      
         </ThemeContext.Consumer>

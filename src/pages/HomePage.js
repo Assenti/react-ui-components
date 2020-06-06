@@ -52,7 +52,9 @@ const HomePage = () => {
                         borderRadius: 8,
                         marginTop: 5
                     }}>
-                        <Tag iconLeft="hammer" color="secondary" value="Work in progress..." small/>
+                        <Tag color="secondary" small>
+                            <Icon name="hammer"/> Work in progress...
+                        </Tag>
                         <div className="py-30 text-center">
                             <h1 className="text-white"><small>Welcome to</small> React UI Components</h1>
                             <p className="text-white">UI Components for web apps built on React</p>
