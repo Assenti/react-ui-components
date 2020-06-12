@@ -138,13 +138,19 @@ const TagPage = () => {
                         check={small}
                         rightLabel="Small" 
                         className="my-10"
-                        onChange={() => setSmall(!small)}/>
+                        onChange={() => {
+                            setSmall(!small)
+                            if (!small) setTiny(false)
+                        }}/>
                     <Switch 
                         color="primary" 
                         check={tiny}
                         rightLabel="Tiny" 
                         className="my-10 ml-10"
-                        onChange={() => setTiny(!tiny)}/>
+                        onChange={() => {
+                            setTiny(!tiny)
+                            if (!tiny) setSmall(false)
+                        }}/>
                     <br/>
                     <Switch 
                         color="primary" 
@@ -152,13 +158,6 @@ const TagPage = () => {
                         rightLabel="Closable" 
                         className="my-10"
                         onChange={() => setClosable(!closable)}/>
-                    <br/>
-                    <Switch 
-                        color="primary" 
-                        check={icon}
-                        rightLabel="Icon" 
-                        className="my-10"
-                        onChange={() => setIcon(!icon)}/>
                     <br/>
                     <Switch 
                         color="primary" 
@@ -202,11 +201,11 @@ const TagPage = () => {
                             onClose={() => setVisible(false)}>
                             Price: 1000
                         </Tag>
-                        {closable ? <Button 
+                        {closable && <Button 
                             name="Return Tag" 
                             color="info" 
                             className="ml-20" 
-                            onClick={() => setVisible(true)}/> : ''}
+                            onClick={() => setVisible(true)}/>}
                     </div>
                 </Page>
             )}

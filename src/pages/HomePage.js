@@ -53,7 +53,7 @@ const HomePage = () => {
                         marginTop: 5
                     }}>
                         <Tag color="secondary" small>
-                            <Icon name="hammer"/> Work in progress...
+                            <Icon size={18} name="hammer" className="mr-4"/> Work in progress...
                         </Tag>
                         <div className="py-30 text-center">
                             <h1 className="text-white"><small>Welcome to</small> React UI Components</h1>

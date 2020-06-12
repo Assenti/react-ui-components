@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from '../index';
-import { CSSTransition } from 'react-transition-group';
 import { strinfigyClassObject } from '../utils';
 
 const Tag = (props) => {
@@ -10,6 +8,7 @@ const Tag = (props) => {
         name: 'rui-tag',
         lifted: props.lifted ? 'lifted' : '',
         uppercase: props.uppercase ? 'uppercase' : '',
+        closable: props.closable ? 'closable' : '',
         borderType: props.borderType ? (props.borderType === 'default' ? '' : props.borderType) : '',
         color: props.color ? props.color : 'primary',
         small: props.small && !props.tiny ? 'small' : '',
@@ -30,25 +29,16 @@ const Tag = (props) => {
     }, [props.visible])
 
     return (
-        <CSSTransition
-            in={visible}
-            timeout={300}
-            classNames="rui-tag"
-            mountOnEnter
-            unmountOnExit>
+        <>
+            {visible &&
             <div className={strinfigyClassObject(className)}
                 style={props.style}
                 ref={props.tagRef}
                 onClick={props.onClick && !props.disabled ? props.onClick : null}>
                 {props.children}
-                {props.closable ? 
-                    <Icon 
-                        className="rui-tag__close" 
-                        name="close"
-                        color="gray" 
-                        onClick={handleClose}/> : ''}
-            </div>
-        </CSSTransition>
+                {props.closable && <i className="rui-tag-close" onClick={handleClose}>&times;</i>}
+            </div>}
+        </>
     )
 }
 Tag.propTypes = {

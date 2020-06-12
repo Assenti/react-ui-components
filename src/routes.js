@@ -54,21 +54,22 @@ const SliderPage = lazy(() => import('./pages/SliderPage'));
 const FooterPage = lazy(() => import('./pages/FooterPage'));
 const DatePickerPage = lazy(() => import('./pages/DatePickerPage'));
 const SkeletonPage = lazy(() => import('./pages/SkeletonPage'));
+const TableSimplePage = lazy(() => import('./pages/TableSimplePage'));
 
 export const routes = [
     { path: '/', name: 'Getting started', Component: HomePage, icon: 'rocket' },
-    { path: '/btns', name: 'Button', Component: ButtonPage, updated: true },
+    { path: '/btns', name: 'Button', Component: ButtonPage, updated: false },
     { path: '/icon', name: 'Icon', Component: IconPage },
-    { path: '/dropdown', name: 'Dropdown', Component: DropdownPage, updated: true },
-    { path: '/list', name: 'List', Component: ListPage, updated: true },
+    { path: '/dropdown', name: 'Dropdown', Component: DropdownPage, updated: false },
+    { path: '/list', name: 'List', Component: ListPage, updated: false },
     { path: '/inputfield', name: 'InputField', Component: InputsPage },
     { path: '/textareafield', name: 'TextareaField', Component: TextareaPage },
-    { path: '/drawer', name: 'Drawer', Component: DrawerPage, updated: true },
+    { path: '/drawer', name: 'Drawer', Component: DrawerPage, updated: false },
     { path: '/tooltip', name: 'Tooltip', Component: TooltipPage },
     { path: '/pagination', name: 'Pagination', Component: PaginationPage, updated: false },
     { path: '/select', name: 'Select', Component: SelectPage, updated: false },
-    { path: '/table', name: 'Table', Component: TablePage, updated: false },
-    { path: '/modal', name: 'Modal', Component: ModalPage, updated: true },
+    { path: '/table', name: 'Table', Component: TablePage, updated: true },
+    { path: '/modal', name: 'Modal', Component: ModalPage, updated: false },
     { path: '/checkbox', name: 'Checkbox', Component: CheckboxPage },
     { path: '/radio', name: 'RadioGroup', Component: RadioPage },
     { path: '/switch', name: 'Switch', Component: SwitchPage },
@@ -80,10 +81,10 @@ export const routes = [
     { path: '/collapse', name: 'Collapse', Component: CollapsePage, updated: false },
     { path: '/buttonGroup', name: 'ButtonGroup', Component: ButtonGroupPage },
     { path: '/popover', name: 'PopOver', Component: PopOverPage },
-    { path: '/header', name: 'Header', Component: HeaderPage, updated: true },
+    { path: '/header', name: 'Header', Component: HeaderPage, updated: false },
     { path: '/helper', name: 'Helper CSS classes', Component: HelperPage },
     { path: '/copytoclipboard', name: 'CopyToClipboard', Component: CopyToClipboardPage },
-    { path: '/uploader', name: 'Uploader', Component: UploaderPage, updated: true },
+    { path: '/uploader', name: 'Uploader', Component: UploaderPage, updated: false },
     { path: '/inputmask', name: 'InputMask', Component: InputMaskPage, updated: false },
     { path: '/dialog', name: 'Dialog', Component: DialogPage },
     { path: '/timeline', name: 'Timeline', Component: TimelinePage },
@@ -95,7 +96,7 @@ export const routes = [
     { path: '/breadcrumbs', name: 'Breadcrumbs', Component: BreadcrumbsPage },
     { path: '/progress', name: 'Progress', Component: ProgressPage },
     { path: '/calendar', name: 'Calendar', Component: CalendarPage },
-    { path: '/timepicker', name: 'TimePicker', Component: TimePickerPage, updated: true },
+    { path: '/timepicker', name: 'TimePicker', Component: TimePickerPage, updated: false },
     { path: '/autocomplete', name: 'AutoComplete', Component: AutoCompletePage },
     { path: '/expansionlist', name: 'ExpansionList', Component: ExpansionListPage, updated: false },
     { path: '/dock', name: 'Dock', Component: DockPage },
@@ -111,4 +112,5 @@ export const routes = [
     { path: '/snackbar', name: 'Snackbar', Component: SnackbarPage, new: false },
     { path: '/skeleton', name: 'Skeleton', Component: SkeletonPage, new: false },
     { path: '/sidebar', name: 'Sidebar', Component: SidebarPage, new: false },
+    { path: '/table-simple', name: 'TableSimple', Component: TableSimplePage, new: true },
 ]

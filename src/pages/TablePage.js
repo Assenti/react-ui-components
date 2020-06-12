@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Table, Select, Icon, Switch, ButtonGroup, ThemeContext, Divider } from '../components';
+import { Table, Select, Icon, Switch, ButtonGroup, ThemeContext, Divider, TableSimple } from '../components';
 import Page from '../layouts/Page';
 
 const rows = [
@@ -144,11 +144,11 @@ const rows = [
         value: 'true | false'
     },
     { 
-        property: 'size', 
-        description: 'Set table rows size',
-        default: '', 
-        type: 'string (Enum)',
-        value: 'medium | large'
+        property: 'index', 
+        description: 'Set order index',
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
     },
     { 
         property: 'indexSign', 
@@ -160,6 +160,27 @@ const rows = [
     { 
         property: 'stripped',
         description: 'Highlight every even row in table', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'bordered',
+        description: 'Set table borders', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'grid',
+        description: 'Set table cells borders', 
+        default: 'false', 
+        type: 'boolean',
+        value: 'true | false'
+    },
+    { 
+        property: 'noHover',
+        description: 'Disable table rows hovering', 
         default: 'false', 
         type: 'boolean',
         value: 'true | false'
@@ -179,10 +200,10 @@ const rows = [
         value: ''
     },
     { 
-        property: 'ref',
+        property: 'tableRef',
         description: 'Set ref', 
         default: '', 
-        type: 'ReactRefObject',
+        type: 'React.RefObject',
         value: ''
     },
     { 
@@ -198,7 +219,14 @@ const rows = [
         default: '', 
         type: 'string',
         value: ''
-    }
+    },
+    { 
+        property: 'style',
+        description: 'Set inline styles', 
+        default: '', 
+        type: 'Styles object',
+        value: ''
+    },
 ]
 
 const usage =

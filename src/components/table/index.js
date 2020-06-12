@@ -20,9 +20,7 @@ const Table = (props) => {
     const [colIndex, setColIndex] = useState(0);
     const [search, setSearch] = useState('');
     let classNameContainer = {
-        name: 'rui-table__container',
-        bordered: props.bordered ? 'bordered' : '',
-        grid: props.grid ? 'grid' : '',
+        name: 'rui-table-container',
         dark: props.dark ? 'dark' : '',
         color: props.color && props.color !== 'default' ? props.color : '',
         paginationPosition: props.paginationPosition ? props.paginationPosition : '',
@@ -31,9 +29,12 @@ const Table = (props) => {
 
     let className = {
         name: 'rui-table',
+        stickyHead: props.stickyHead ? 'sticky' : '',
         alignment: props.alignment && props.alignment !== 'left' ? props.alignment : '',
         headerColor: props.color ? props.color : '',
         dark: props.dark ? 'dark' : '',
+        bordered: props.bordered ? 'bordered' : '',
+        grid: props.grid ? 'grid' : '',
         empty: props.items.length === 0 ? 'empty' : '',
         noHover: props.noHover ? 'no-hover' : '',
         stripped: props.stripped ? 'stripped' : ''
@@ -189,10 +190,11 @@ const Table = (props) => {
     return (
         <div className={strinfigyClassObject(classNameContainer)} 
             ref={props.tableRef}
+            style={props.style}
             id={props.id ? props.id : ''}>
-            <div className="rui-table__header">
+            <div className="rui-table-header">
                 {props.tableTitle ? 
-                    <div className="rui-table__title">{props.tableTitle}</div> : null}
+                    <div className="rui-table-title">{props.tableTitle}</div> : null}
                 {props.searchable ? 
                     <InputField
                         color={props.color ? props.color : 'primary'}
@@ -226,8 +228,8 @@ const Table = (props) => {
                     )}
                 </tbody>
             </table>
-            {props.items.length === 0 && !props.loading ?
-                <div className="rui-table__placeholder"><Empty/></div> : ''}
+            {props.items.length === 0 && !props.loading &&
+                <div className="rui-table-placeholder"><Empty/></div>}
             {props.pagination ? 
                 <Pagination
                     onChange={page => setCurrentPage(page)}
@@ -241,8 +243,7 @@ const Table = (props) => {
                     color={props.color && props.color !== 'default' ? props.color : ''}
                     size={props.paginationSize ? props.paginationSize : ''}
                     current={props.currentPage ? props.currentPage : 1}
-                    borderType={props.paginationBorderType}/> : null
-            }
+                    borderType={props.paginationBorderType}/> : null}
         </div>
     )
 }
@@ -273,15 +274,17 @@ Table.propTypes = {
     selectKey: PropTypes.string,
     onSelect: PropTypes.func,
     sortable: PropTypes.bool,
-    size: PropTypes.oneOf([undefined,'','default','medium','large']),
+    index: PropTypes.bool,
     indexSign: PropTypes.string,
     stripped: PropTypes.bool,
     bordered: PropTypes.bool,
     grid: PropTypes.bool,
     dark: PropTypes.bool,
     noHover: PropTypes.bool,
+    stickyHead: PropTypes.bool,
     paginationBorderType: PropTypes.oneOf(['default','tile','rounded']),
-    footer: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
-    className: PropTypes.string
+    footer: PropTypes.node,
+    className: PropTypes.string,
+    style: PropTypes.any
 }
 export default Table;

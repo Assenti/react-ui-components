@@ -37,7 +37,7 @@ const HeaderContent = (props) => {
                     </div>
                     {!props.isXs &&
                     <AutoComplete
-                        style={{ width: 300, zIndex: 1 }}
+                        style={{ width: 350, zIndex: 1 }}
                         size="medium"
                         className="px-5 py-5 sticky"
                         contentMaxHeight="calc(100vh - 200px)"

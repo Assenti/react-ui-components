@@ -6,6 +6,11 @@ timeline: true
 ### Release Schedule
 ###### At least 1 release in 2 weeks
 
+#### 0.8.2 `2020-06-12`
+- `NEW!` TableSimple component added;
+- Table component updated;
+- Tag component updated;
+
 #### 0.8.0, 0.8.1 `2020-06-06`
 - `NEW!` New icons added;
 - `NEW!` Open Sans font family applied;

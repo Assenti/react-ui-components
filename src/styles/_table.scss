@@ -1,24 +1,12 @@
-.rui-table__container {
+.rui-table-container {
     position: relative;
     width: 100%;
     border-radius: $radius;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
-    &::-webkit-scrollbar {
-        width: 3.5px;
-        height: 3.5px;
-        background-color: $lightgray;
-        border-radius: $radius;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-      background-color: lightgray;
-      outline: 1px solid #fff;
-    }
 
-    .rui-table__header {
+    .rui-table-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -26,16 +14,9 @@
         border-top-right-radius: $radius;
 
         .rui-input-field,
-        .rui-table__title {
+        .rui-table-title {
             flex-grow: 1;
             width: 50%;
-        }
-    }
-
-    &.bordered {
-        .rui-table {
-            border: 1px solid lightgray;
-            overflow: auto;
         }
     }
 
@@ -50,84 +31,7 @@
         padding-right: 5px;
     }
 
-    &.grid {
-        .rui-table {
-            th, td {
-                border: 1px solid lightgray;
-                border-top: none;
-            }
-
-            th:first-child,
-            td:first-child {
-                border-left: none;
-            }
-
-            th:last-child,
-            td:last-child {
-                border-right: none;
-            }
-        }
-    }
-
-    &:not(.medium):not(.large) {
-        .rui-table {
-            tr, td {
-                height: $defaultSize;
-                font-size: $defaultFont;
-                padding-top: 5px;
-                padding-bottom: 5px;
-            }
-        }
-
-        .rui-table__footer,
-        .rui-table tr div {
-            font-size: $defaultFont;
-            div, span, strong {
-                font-size: $defaultFont;
-            }
-        }
-    }
-
-    &.medium {
-        .rui-table {
-            tr, td {
-                height: $mediumSize;
-                font-size: $mediumFont;
-            }
-        }
-
-        .rui-table__footer {
-            font-size: $mediumFont;
-
-            div, span, strong {
-                font-size: $mediumFont;
-            }
-        }
-    }
-
-    &.large {
-        .rui-table {
-            tr, td {
-                height: $largeSize;
-                font-size: $largeFont;
-            }
-        }
-
-        .rui-table__footer {
-            font-size: $largeFont;
-
-            div, span, strong {
-                font-size: $largeFont;
-            }
-        }
-    }
-
     &.primary {
-        .rui-table__footer {
-            background-color: $primary;
-            color: #fff;
-        }
-
         .rui-table.stripped {
             tbody > tr:nth-child(even) {
                 background-color: rgba($primary, .1);
@@ -142,11 +46,6 @@
     }
 
     &.info {
-        .rui-table__footer {
-            background-color: $info;
-            color: #fff;
-        }
-
         .rui-table.stripped {
             tbody > tr:nth-child(even) {
                 background-color: rgba($info, .1);
@@ -161,11 +60,6 @@
     }
 
     &.success {
-        .rui-table__footer {
-            background-color: $success;
-            color: #fff;
-        }
-
         .rui-table.stripped {
             tbody > tr:nth-child(even) {
                 background-color: rgba($success, .1);
@@ -180,11 +74,6 @@
     }
 
     &.error {
-        .rui-table__footer {
-            background-color: $error;
-            color: #fff;
-        }
-
         .rui-table.stripped {
             tbody > tr:nth-child(even) {
                 background-color: rgba($error, .1);
@@ -204,221 +93,16 @@
                 background-color: lightgray;
             }
         }
-
-        .rui-table__footer {
-            color: #000;
-        }
     }
 
     &.dark {
-        th.indexed,
-        td.indexed,
-        th {
-            background-color: $night;
-            color: #fff;
-        }
-
-        .rui-table {
-            tr {
-                color: #fff;
-            }
-
-            thead {
-                background-color: gray;
-            }
-        }
-
-        .rui-table__footer,
         .rui-table__header {
             background-color: $night;
         }
-
-        .rui-table.stripped {
-            tr {
-                color: #fff;
-            }
-            
-            tr:nth-child(even) {
-                background-color: rgba(lightgray, .1);
-            }
-        }
-
-        td.indexed:not(:first-child),
-        td:not(:first-child) {
-            color: #fff;
-        }
     }
 }
 
-.rui-table {
-    margin: 0 auto;
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: $radius;
-
-    &.stripped {
-        tbody > tr:nth-child(even) {
-            background-color: $lightgray;
-        }
-    }
-
-    thead, tr {
-        border-top-left-radius: $radius;
-        border-top-right-radius: $radius;
-        
-        .icon {
-            cursor: pointer;
-        }
-
-        .icon:active {
-            transform: scale(.97);
-        }
-    }
-
-    th {
-        position: sticky;
-        top: 0;
-        color: gray;
-        text-transform: uppercase;
-        font-weight: normal;
-    }
-
-    th:first-child {
-        border-top-left-radius: $radius;
-    }
-
-    th:last-child {
-        border-top-right-radius: $radius;
-    }
-
-    th.bordered {
-        border-top: 1px solid lightgray;
-    }
-
-    tr, th, td {
-        border-bottom: 1px solid lightgray;
-        border-left: none;
-        border-right: none;
-        border-collapse: collapse;
-        padding: 0 10px;
-    }
-
-    td {
-        color: #000;
-        font-weight: normal;
-    }
-
-    th.indexed,
-    td.indexed {
-        border-right: 1px solid lightgray;
-        background-color: $lightgray;
-        width: 45px;
-        text-align: center !important;
-    }
-
-    &:not(.center):not(.right) {
-        th {
-            text-align: left;
-        }
-    }
-
-    &.center {
-        td, th {
-            text-align: center;
-            div {
-                justify-content: center;
-            }
-        }
-    }
-
-    &.right {
-        td, th {
-            text-align: right;
-            div {
-                justify-content: flex-end;
-            }
-        }
-    }
-
-    &.primary {
-        thead {
-            border-color: $primary; 
-        }
-
-        th {
-            background-color: $primary;
-            color: #fff;
-        }
-    }
-
-    &.info {
-        th {
-            background-color: $info;
-            color: #fff;
-        }
-    }
-
-    &.success {
-        th {
-            background-color: $success;
-            color: #fff;
-        }
-    }
-
-    &.error {
-        th {
-            background-color: $error;
-            color: #fff;
-        }
-    }
-
-    th {
-        padding: 0 10px;
-        font-size: .85rem;
-        background-color: $lightgray;
-        position: sticky;
-        top: 0;
-        // z-index: 2;
-        user-select: none;
-        -moz-user-select: none;
-    }
-
-    &:not(.no-hover):not(.dark) tr:hover {
-        background-color: $lightgray;
-        transition: all .2s ease-in-out;
-    }
-
-    &.primary:not(.no-hover) tr:hover {
-        background-color: rgba($primary, .1);
-        transition: all .2s ease-in-out;
-    }
-
-    &.info:not(.no-hover) tr:hover {
-        background-color: rgba($info, .1);
-        transition: all .2s ease-in-out;
-    }
-
-    &.success:not(.no-hover) tr:hover {
-        background-color: rgba($success, .1);
-        transition: all .2s ease-in-out;
-    }
-
-    &.error:not(.no-hover) tr:hover {
-        background-color: rgba($error, .1);
-        transition: all .2s ease-in-out;
-    }
-
-    &.dark:not(.no-hover) tr:hover {
-        background-color: rgba(lightgray, .2);
-        transition: all .2s ease-in-out;
-    }
-
-    td.bordered {
-        border-right: 1px solid lightgray;
-    }
-}
-
-.rui-table-header__filter {
+.rui-table-header-filter {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -454,7 +138,7 @@
     }
 }
 
-.rui-table__menu-container {
+.rui-table-menu-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -467,7 +151,7 @@
     }
 }
 
-.rui-table__placeholder {
+.rui-table-placeholder {
     position: absolute;
     top: 70px;
     left: calc(50% - 22.5px);
@@ -479,5 +163,268 @@
 
     path {
         fill: $lightgray;
+    }
+}
+
+
+// Table styles
+.rui-table {
+    margin: 0 auto;
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: $radius;
+
+    &.stripped {
+        tbody > tr:nth-child(even) {
+            background-color: $lightgray;
+        }
+    }
+
+    &.bordered {
+        border: 1px solid #ddd;
+        overflow: auto;
+    }
+
+    &.grid {
+        th, td {
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+
+        th:first-child,
+        td:first-child {
+            border-left: none;
+        }
+
+        th:last-child,
+        td:last-child {
+            border-right: none;
+        }
+    }
+
+    &.dark {
+        th.indexed,
+        td.indexed,
+        th {
+            background-color: $night;
+            color: #fff;
+        }
+
+        tr {
+            color: #fff;
+        }
+
+        &.stripped {
+            tr {
+                color: #fff;
+            }
+            
+            tr:nth-child(even) {
+                background-color: rgba(lightgray, .1);
+            }
+        }
+
+        td {
+            color: #fff;
+        }
+    }
+
+    thead, tr {
+        .icon {
+            cursor: pointer;
+        }
+
+        .icon:active {
+            transform: scale(.97);
+        }
+    }
+
+    &.sticky {
+        th {
+            position: sticky;
+            top: 0;
+        }
+    }
+
+    th {
+        padding: 0 10px;
+        font-size: .85rem;
+        background-color: $lightgray;
+        color: $dark;
+        font-weight: bold;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+
+        &.bordered {
+            border-top: 1px solid #ddd;
+        }
+    }
+
+    tr, th, td {
+        border-bottom: 1px solid #ddd;
+        border-left: none;
+        border-right: none;
+        border-collapse: collapse;
+        padding: 0 10px;
+    }
+
+    tr, td {
+        height: $defaultSize;
+        font-size: $defaultFont;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    tr div {
+        font-size: $defaultFont;
+        div, span, strong {
+            font-size: $defaultFont;
+        }
+    }
+
+    td {
+        color: #000;
+        font-weight: normal;
+
+        &.bordered {
+            border-right: 1px solid lightgray;
+        }
+    }
+
+    th.indexed,
+    td.indexed {
+        border-right: 1px solid #ddd;
+        width: 45px;
+        text-align: center !important;
+    }
+
+    &:not(.primary):not(.info):not(.success):not(.error):not(.dark) {
+        th.indexed,
+        td.indexed {
+            background-color: $lightgray;
+        }
+    }
+
+    th, td {
+        &.center {
+            text-align: center !important;
+        }
+
+        &.left {
+            text-align: left !important;
+        }
+
+        &.right {
+            text-align: right !important;
+        }
+    }
+
+    &:not(.center):not(.right) {
+        th, td {
+            text-align: left;
+        }
+    }
+
+    &.center {
+        td, th {
+            text-align: center;
+            div {
+                justify-content: center;
+            }
+        }
+    }
+
+    &.right {
+        td, th {
+            text-align: right;
+            div {
+                justify-content: flex-end;
+            }
+        }
+    }
+
+    &.primary {
+        th {
+            background-color: $primary;
+            color: #fff;
+            &.indexed {
+                background-color: $primary;
+            }
+        }
+
+        td.indexed {
+            background-color: $primary;
+        }
+    }
+
+    &.info {
+        th {
+            background-color: $info;
+            color: #fff;
+            &.indexed {
+                background-color: $info;
+            }
+        }
+        td.indexed {
+            background-color: $info;
+        }
+    }
+
+    &.success {
+        th {
+            background-color: $success;
+            color: #fff;
+            &.indexed {
+                background-color: $success;
+            }
+        }
+        td.indexed {
+            background-color: $success;
+        }
+    }
+
+    &.error {
+        th {
+            background-color: $error;
+            color: #fff;
+            &.indexed {
+                background-color: $error;
+            }
+        }
+        td.indexed {
+            background-color: $error;
+        }
+    }
+
+    &:not(.no-hover):not(.dark) tr:hover {
+        background-color: $lightgray;
+        transition: all .2s ease-in-out;
+    }
+
+    &.primary:not(.no-hover) tr:hover {
+        background-color: rgba($primary, .1);
+        transition: all .2s ease-in-out;
+    }
+
+    &.info:not(.no-hover) tr:hover {
+        background-color: rgba($info, .1);
+        transition: all .2s ease-in-out;
+    }
+
+    &.success:not(.no-hover) tr:hover {
+        background-color: rgba($success, .1);
+        transition: all .2s ease-in-out;
+    }
+
+    &.error:not(.no-hover) tr:hover {
+        background-color: rgba($error, .1);
+        transition: all .2s ease-in-out;
+    }
+
+    &.dark:not(.no-hover) tr:hover {
+        background-color: rgba(lightgray, .2);
+        transition: all .2s ease-in-out;
     }
 }

@@ -37,6 +37,7 @@ export { default as RadioGroup } from './radio';
 export { default as Select } from './select';
 export { default as Switch } from './switch';
 export { default as Table } from './table';
+export { default as TableSimple } from './tableSimple';
 export { default as Tag } from './tag';
 export { default as Tooltip } from './tooltip';
 export { default as CopyToClipboard } from './copyToClipboard';

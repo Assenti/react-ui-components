@@ -24,7 +24,7 @@ const Page = (props) => {
                     </div>
                     <Card dark={theme} header={
                             <Tooltip tooltip="I am a <Tag/> component" position="right">
-                                <Tag className="mx-0 mb-10 mt-0" color="secondary"><Icon name="cog-outline"/> Usage</Tag>
+                                <Tag className="mx-0 mb-10 mt-0" color="secondary"><Icon size={18} className="mr-4" name="cog-outline"/> Usage</Tag>
                             </Tooltip>
                         }>
                         {props.children}

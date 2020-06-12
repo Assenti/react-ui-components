@@ -9,9 +9,18 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    
+    &.closable {
+        animation: ruiAppear .2s ease-in;
+        -webkit-animation: ruiAppear .2s ease-in;
+        -moz-animation: ruiAppear .2s ease-in;
+        -o-animation: ruiAppear .2s ease-in;
+    }
 
-    .rui-tag__close {
+    &-close {
         cursor: pointer;
+        font-size: 20px;
+        margin-left: 4px;
     }
 
     &.upprecase {
@@ -22,19 +31,11 @@
         box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
     }
 
-    &:not(.small) {
+    &:not(.small):not(.tiny) {
         padding: 0 6px;
         height: 30px;
         margin: 5px;
         font-size: .9rem;
-
-        svg {
-            min-width: 18px;
-            min-height: 18px;
-            width: 18px;
-            height: 18px;
-            margin: 0 1px;
-        }
     }
 
     &.small {
@@ -42,30 +43,17 @@
         height: 25px;
         margin: 3px;
         font-size: .8rem;
-
-        svg {
-            min-width: 14px;
-            min-height: 14px;
-            width: 14px;
-            height: 14px;
-            margin: 0 1px;
-        }
-
-        .rui-tag__close {
-            svg {
-                min-width: 14px !important;
-                min-height: 14px !important;
-                width: 14px !important;
-                height: 14px !important;
-            }
-        }
     }
 
     &.tiny {
-        padding: 0 5px;
+        padding: 0 3px;
         height: 20px;
         margin: 3px;
         font-size: .75rem;
+
+        .rui-tag-close {
+            font-size: 18px;
+        }
     }
 
     &.rounded {
@@ -209,24 +197,17 @@
     }
 }
 
-.rui-tag-enter {
-    opacity: 0;
-    transform: scale(.8);
+@keyframes ruiAppear {
+    0% { transform: scale(.8); opacity: .5;}
+    100% { transform: scale(1); opacity: .5;}
 }
 
-.rui-tag-enter-active {
-    opacity: 1;
-    transform: scale(1);
-    transition: opacity 300ms, transform 300ms;
+@-webkit-keyframes ruiAppear {
+    0% { transform: scale(.8); opacity: .5;}
+    100% { transform: scale(1); opacity: .5;}
 }
 
-.rui-tag-exit {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.rui-tag-exit-active {
-    opacity: 0;
-    transform: scale(.8);
-    transition: opacity 300ms, transform 300ms;
+@-moz-keyframes ruiAppear {
+    0% { transform: scale(.8); opacity: .5;}
+    100% { transform: scale(1); opacity: .5;}
 }
