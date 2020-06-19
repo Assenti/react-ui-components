@@ -104,6 +104,7 @@ const icons = [
     'cancel',
     'grid',
     'view-list',
+    'list-bulleted',
     'checklist',
     'arrow-up',
     'arrow-down',
@@ -139,9 +140,9 @@ const IconsPage = () => {
 
     const getIconClass = (dark) => {
         if (dark) {
-            return 'row-inline cursor-pointer text-center column justify-center align-center pa-5 ma-10 hoverable dark';
+            return 'row-inline cursor-pointer text-center column justify-center align-center ma-2 pa-16 hoverable dark';
         } else {
-            return 'row-inline cursor-pointer text-center column justify-center align-center pa-5 ma-10 hoverable';
+            return 'row-inline cursor-pointer text-center column justify-center align-center ma-2 pa-16 hoverable';
         }
     }
     
@@ -164,13 +165,14 @@ const IconsPage = () => {
                             size="medium"
                             style={{width: '100%'}}
                             prefix={<Icon name="search"/>}
+                            suffix={search && <Icon className="cursor-pointer" name="close" onClick={() => setSearch('')}/>}
                             placeholder="Search icons"
                             color="primary"
                             onChange={e => setSearch(e.target.value)}/>
                     </div>
                     {filteredIcons().map((item, index) => 
                         <div key={index} 
-                            style={{ width: 35, height: 35 }}
+                            style={{ border: '1px solid #ddd' }}
                             className={getIconClass(theme)}>
                             <Tooltip tooltip={item}>
                                 <CopyToClipboard
@@ -184,7 +186,7 @@ const IconsPage = () => {
                         </div>
                     )}
                 </Card>
-                <p>Didn't found your icon, use your <a className="link" onClick={() => history.push('/icon')}>custom</a></p> 
+                <p className="pb-24">Didn't found your icon, use your <a className="link" onClick={() => history.push('/icon')}>custom</a></p>
             </div>
         )}      
         </ThemeContext.Consumer>

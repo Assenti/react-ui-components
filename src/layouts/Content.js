@@ -108,6 +108,7 @@ export const Content = (props) => {
                                         noDivider
                                         icon={item.icon ? item.icon : ''}
                                         leftBorder
+                                        roundedActive
                                         isActiveItem={item.path === (history.location.pathname || active)}
                                         onClick={() => handleItemClick(item)}
                                         className="no-select"

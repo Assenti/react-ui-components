@@ -29,7 +29,7 @@ or
 % yarn add @assenti/rui-components
 ```
 
-## Peer dependencies
+<!-- ## Peer dependencies
 React UI Components use react-transition-group package under the hood, so you should install it too
 ```bash
 # Install package from NPM
@@ -38,7 +38,7 @@ React UI Components use react-transition-group package under the hood, so you sh
 ```bash
 # Install @types/react-transition-group for TS
 % npm install @types/react-transition-group -D
-```
+``` -->
 
 ## Usage
 index.js / index.ts

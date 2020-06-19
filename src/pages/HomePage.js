@@ -52,7 +52,7 @@ const HomePage = () => {
                         borderRadius: 8,
                         marginTop: 5
                     }}>
-                        <Tag color="secondary" small>
+                        <Tag color="secondary" borderType="rounded" small>
                             <Icon size={18} name="hammer" className="mr-4"/> Work in progress...
                         </Tag>
                         <div className="py-30 text-center">
@@ -110,7 +110,7 @@ const HomePage = () => {
                                 className="my-5 mx-10" 
                                 text="yarn add @assenti/rui-components"/>
                         </div>
-                        <Divider/>
+                        {/* <Divider/>
                         <h4>Peer dependencies</h4>
                         <div className="py-5">React UI Components use react-transition-group under the hood, so you should install it too</div>
                         <div className="row full-width">
@@ -136,7 +136,7 @@ const HomePage = () => {
                             <CopyToClipboard
                                 className="my-5 mx-10" 
                                 text="npm install @types/react-transition-group -D"/>
-                        </div>
+                        </div> */}
                     </Card>
                     <Card dark={theme} header={<h4 className="row align-center">
                         <Icon name="cog-outline" color={theme ? '#fff' : ''} className="mr-5"/>Usage

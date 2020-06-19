@@ -123,7 +123,8 @@ import {
     ReplyAll,
     Like,
     Dislike,
-    Forward
+    Forward,
+    ListIcon
 } from './icons/index';
 import { strinfigyClassObject } from '../utils';
 
@@ -377,6 +378,8 @@ const Icon = (props) => {
                 return <Like {...props}/>;
             case 'dislike':
                 return <Dislike {...props}/>;
+            case 'list-bulleted':
+                return <ListIcon {...props}/>;
             default:
                 return '';
         }

@@ -128,16 +128,7 @@
                 background-color: rgba($light, .4);
                 transition: all .2s ease-in-out;
                 cursor: pointer;
-
-                &.left {
-                    border-top-right-radius: 30px;
-                    border-bottom-right-radius: 30px;
-                }
-
-                &.right {
-                    border-top-left-radius: 30px;
-                    border-bottom-left-radius: 30px;
-                }
+                border-radius: 30px;
             }
         }
 
@@ -160,16 +151,7 @@
 
         .rui-list-item.active.rounded {
             background-color: rgba($info, .4);
-
-            &.left {
-                border-top-right-radius: 30px;
-                border-bottom-right-radius: 30px;
-            }
-
-            &.right {
-                border-top-left-radius: 30px;
-                border-bottom-left-radius: 30px;
-            }
+            border-radius: 30px;
         }
 
         .rui-list-subtitle {
@@ -180,7 +162,7 @@
     &:not(.dark) {
         .rui-list-item {
             &.hover:hover:not(.active)  {
-                background-color: rgba(lightgray, .4); //rgba(, .3);
+                background-color: rgba(lightgray, .4);
                 transition: all .2s ease-in-out;
                 cursor: pointer;
             }
@@ -189,16 +171,7 @@
                 background-color: rgba(lightgray, .4);
                 transition: all .2s ease-in-out;
                 cursor: pointer;
-
-                &.left {
-                    border-top-right-radius: 30px;
-                    border-bottom-right-radius: 30px;
-                }
-
-                &.right {
-                    border-top-left-radius: 30px;
-                    border-bottom-left-radius: 30px;
-                }
+                border-radius: 30px;
             }
         }
 
@@ -206,14 +179,6 @@
             &.info {
                 background-color: rgba($info, .2);
                 color: $info;
-
-                // &.left {
-                //     border-left: 2.5px solid $info;
-                // }
-
-                // &.right {
-                //     border-right: 2.5px solid $info;
-                // }
 
                 .rui-list-item__left-side {
                     .rui-icon {
@@ -230,14 +195,6 @@
                 background-color: rgba($primary, .2);
                 color: $primary;
 
-                // &.left {
-                //     border-left: 2.5px solid $primary;
-                // }
-
-                // &.right {
-                //     border-right: 2.5px solid $primary;
-                // }
-
                 .rui-list-item__left-side {
                     .rui-icon {
                         svg {
@@ -253,14 +210,6 @@
                 background-color: rgba($success, .2);
                 color: $success;
 
-                // &.left {
-                //     border-left: 2.5px solid $success;
-                // }
-
-                // &.right {
-                //     border-right: 2.5px solid $success;
-                // }
-
                 .rui-list-item__left-side {
                     .rui-icon {
                         svg {
@@ -275,14 +224,6 @@
             &.error {
                 background-color: rgba($error, .2);
                 color: $error;
-
-                // &.left {
-                //     border-left: 2.5px solid $error;
-                // }
-
-                // &.right {
-                //     border-right: 2.5px solid $error;
-                // }
 
                 .rui-list-item__left-side {
                     .rui-icon {
@@ -309,15 +250,7 @@
         }
 
         .rui-list-item.active.rounded {
-            &.left {
-                border-top-right-radius: 30px;
-                border-bottom-right-radius: 30px;
-            }
-
-            &.right {
-                border-top-left-radius: 30px;
-                border-bottom-left-radius: 30px;
-            }
+            border-radius: 30px;
         }
     }
 
