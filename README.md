@@ -8,9 +8,7 @@
   <a aria-label="Downloads" href="https://npm-stat.com/charts.html?package=%40assenti%2Frui-components">
     <img alt="" src="https://badgen.net/npm/dw/@assenti/rui-components"/>
   </a>
-  <a aria-label="License" href="https://github.com/Assenti/react-ui-components/edit/master/LICENSE">
-    <img alt="" src="https://badgen.net/npm/license/@assenti/rui-components"/>
-  </a>
+  <a href="https://github.com/Assenti/react-ui-components/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="License"></a>
 </p>
 
 ## Main Goal
