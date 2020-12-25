@@ -81,6 +81,8 @@ const HomePage = () => {
                             </h4>
                         </div>
                     </div>
+                    <br/>
+                    <h4>New Docs in <a href="/?path=/story/introduction--page">Storybook</a></h4>
                     
                     <Card dark={theme} header={<h4 className="row align-center">
                         <Icon name="package-down" color={theme ? '#fff' : ''} className="mr-5"/>Install</h4>} 

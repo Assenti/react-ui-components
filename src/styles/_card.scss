@@ -30,8 +30,7 @@
     }
 
     &:not(.flat):not(.outlined):not(.dark) {
-        box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
-        border-color: $linegray;
+        box-shadow: 0 0 3px 0 rgba(0,0,0,.25);
     }
 
     &.hover {
