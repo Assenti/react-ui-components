@@ -19,7 +19,7 @@
     "deploy": "gh-pages -d build",
     "clear": "rm -rf build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o build"
+    "build-storybook": "CI=false build-storybook -o build"
   },
   "dependencies": {
     "prop-types": "^15.7.2",
