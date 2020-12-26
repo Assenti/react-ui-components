@@ -9,12 +9,10 @@ export default {
   component: Badge
 };
 
-const Template = () => (
+const Template = (args) => (
   <div className="row align-center">
-    <Badge 
-        color="primary" 
-        value={100}
-        className="mr-20"
+    <Badge
+        {...args} 
         parent={<Icon size={30} name="email" color="#ffa600"/>}/>
     <Badge 
         color="primary" 
@@ -24,7 +22,9 @@ const Template = () => (
 )
 
 export const Badge_ = Template.bind({});
-// Primary.args = {
-//   primary: true,
-//   label: 'Button',
-// };
+
+Badge_.args = {
+    color: 'primary',
+    value: 100,
+    className: 'mr-20'
+};
