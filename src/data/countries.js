@@ -8,5 +8,6 @@ export const countries = [
     { country: 'France', cities: ['Paris', 'Nice', 'Marselle'], icon: 'flag', url: 'https://en.wikipedia.org/wiki/France' }, 
     { country: 'China', cities: ['Beijing', 'Shanghai', 'Shenzhen'], icon: 'flag', url: 'https://en.wikipedia.org/wiki/China' },
     { country: 'Japan', cities: ['Tokyo', 'Osaka', 'Kyoto'], icon: 'flag', url: 'https://en.wikipedia.org/wiki/Japan' },
-    { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'], icon: 'flag', url: 'https://en.wikipedia.org/wiki/South_Korea' }
+    { country: 'South Korea', cities: ['Seoul', 'Busan', 'Daegu'], icon: 'flag', url: 'https://en.wikipedia.org/wiki/South_Korea' },
+    { country: 'India', cities: ['Delhi', 'Mumbai', 'Bangalore'], icon: 'flag', url: 'https://en.wikipedia.org/wiki/India' }
 ]

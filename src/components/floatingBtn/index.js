@@ -57,16 +57,16 @@ const FloatingBtn = (props) => {
 }
 FloatingBtn.propTypes = {
     icon: PropTypes.string,
-    position: PropTypes.oneOf([undefined,'bottom-right','top-left','top-right','bottom-left']),
+    position: PropTypes.oneOf(['bottom-right','top-left','top-right','bottom-left']),
     offsetX: PropTypes.number,
     offsetY: PropTypes.number,
     lifted: PropTypes.bool,
-    color: PropTypes.oneOf([undefined,'','primary','info','success','error','secondary','black']),
-    size: PropTypes.oneOf([undefined,'','medium','large']),
+    color: PropTypes.oneOf(['primary','info','success','error','secondary','black']),
+    size: PropTypes.oneOf(['default','medium','large']),
     onClick: PropTypes.func,
     dark: PropTypes.bool,
     light: PropTypes.bool,
     tooltip: PropTypes.string,
-    tooltipPosition: PropTypes.oneOf([undefined,'','bottom','left','right'])
+    tooltipPosition: PropTypes.oneOf(['top','bottom','left','right'])
 }
 export default FloatingBtn;

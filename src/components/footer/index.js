@@ -22,7 +22,7 @@ const Footer = (props) => {
 Footer.propTypes = {
     style: PropTypes.any,
     dark: PropTypes.bool,
-    color: PropTypes.oneOf([undefined,'default','','primary','info','success','error','secondary']),
+    color: PropTypes.oneOf(['primary','info','success','error','secondary']),
     smooth: PropTypes.bool,
     fixed: PropTypes.bool,
     className: PropTypes.string

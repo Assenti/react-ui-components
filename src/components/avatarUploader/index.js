@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, strinfigyClassObject, getBase64 } from '../index';
+import { Button, strinfigyClassObject, getBase64, Icon } from '../index';
 import { Account } from '../icon/icons';
 
 const AvatarUploader = (props) => {
@@ -47,7 +47,7 @@ const AvatarUploader = (props) => {
                 </>
                 : <Button 
                     light
-                    icon="close" 
+                    icon={<Icon name="close"/>} 
                     className="ma-0"
                     onClick={handleDelete}/>
             }

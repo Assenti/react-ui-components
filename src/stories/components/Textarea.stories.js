@@ -19,5 +19,8 @@ Textareafield_.args = {
     color: 'primary',
     rows: 4,
     width: 300,
-    label: 'Textarea field'
+    label: 'Textarea field',
+    value: '',
+    hintColor: 'default',
+    borderType: 'default'
 };

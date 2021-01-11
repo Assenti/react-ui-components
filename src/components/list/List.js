@@ -22,7 +22,7 @@ const List = (props) => {
     )
 }
 List.propTypes = {
-    size: PropTypes.oneOf([undefined,'','default','medium','large']),
+    size: PropTypes.oneOf(['default','medium','large']),
     dark: PropTypes.bool,
     grid: PropTypes.bool,
     header: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),

@@ -41,7 +41,7 @@ const Collapse = (props) => {
                     {props.extra}
                     {!props.customToggler ?
                     (props.tooltip ?
-                        <Tooltip tooltip={props.tooltip}>
+                        <Tooltip tooltip={props.tooltip} position={props.tooltipPosition}>
                             <Icon 
                                 name={props.icon ? props.icon : 'chevron-down'}
                                 size={props.iconSize ? props.iconSize : ''}
@@ -80,6 +80,7 @@ Collapse.propTypes = {
     extra: PropTypes.any,
     hover: PropTypes.bool,
     tooltip: PropTypes.string,
+    tooltipPosition: PropTypes.oneOf(['top','bottom','left','right']),
     icon: PropTypes.string,
     iconSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     iconColor: PropTypes.string,

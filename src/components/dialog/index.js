@@ -74,8 +74,8 @@ Dialog.propTypes = {
     description: PropTypes.any,
     confirmOnly: PropTypes.bool,
     cancelText: PropTypes.string,
-    cancelBtnColor: PropTypes.string,
+    cancelBtnColor: PropTypes.oneOf(['primary','info','secondary','error','success','black']),
     confirmText: PropTypes.string,
-    confirmBtnColor: PropTypes.string
+    confirmBtnColor: PropTypes.oneOf(['primary','info','secondary','error','success','black'])
 }
 export default Dialog;

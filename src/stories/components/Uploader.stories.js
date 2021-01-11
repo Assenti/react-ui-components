@@ -24,6 +24,7 @@ const Template = (args) => (
 export const Uploader_ = Template.bind({});
 
 Uploader_.args = {
+    value: '',
     placeholder: 'File upload',
     width: 300,
     color: 'primary',

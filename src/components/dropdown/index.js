@@ -60,7 +60,7 @@ Dropdown.propTypes = {
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     minWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     dark: PropTypes.bool,
-    position: PropTypes.oneOf([undefined,'','centered','right']),
+    position: PropTypes.oneOf(['left','centered','right']),
     leftOffset: PropTypes.string,
     rightOffset: PropTypes.string,
     closeManaged: PropTypes.bool,

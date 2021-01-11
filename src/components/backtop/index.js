@@ -16,7 +16,7 @@ const BackTopBtn = (props) => {
     useEffect(() => {
         document.addEventListener('scroll', handleScroll, true);
         return () => document.removeEventListener('scroll', handleScroll, true);
-    }, [document])
+    }, [])
 
     const goTop = () => {
         if (props.setRef.current) {
@@ -43,7 +43,8 @@ const BackTopBtn = (props) => {
                 {props.tooltip ?
                     <Tooltip tooltip={props.tooltip}>
                         <Button 
-                            icon={<Icon name="arrow-up-bold"/>}
+                            icon={!props.text ?? <Icon name="arrow-up-bold"/>}
+                            name={props.text}
                             lifted
                             size={props.size ? props.size : ''}
                             onClick={() => goTop()} 
@@ -51,7 +52,8 @@ const BackTopBtn = (props) => {
                             dark={props.dark ? true : false}/>
                     </Tooltip> : 
                     <Button 
-                        icon={<Icon name="arrow-up-bold"/>}
+                        icon={!props.text ?? <Icon name="arrow-up-bold"/>}
+                        name={props.text}
                         lifted
                         size={props.size ? props.size : ''}
                         onClick={() => goTop()} 
@@ -64,8 +66,10 @@ const BackTopBtn = (props) => {
 }
 BackTopBtn.propTypes = {
     setRef: PropTypes.any,
-    size: PropTypes.oneOf([undefined,'','medium','large']),
+    size: PropTypes.oneOf([undefined,'medium','large']),
     dark: PropTypes.bool,
-    tooltip: PropTypes.string
+    tooltip: PropTypes.string,
+    breakpoint: PropTypes.number,
+    text: PropTypes.string
 }
 export default BackTopBtn;
