@@ -1,5 +1,5 @@
 # React UI Components
-## UI Components for web apps built on [React](https://reactjs.org/)
+### UI Components for web apps built on [React](https://reactjs.org/)
 
 <p align="center">
   <a aria-label="NPM version" href="https://www.npmjs.com/package/@assenti/rui-components">
@@ -12,12 +12,14 @@
 </p>
 
 ## Main Goal
-#### Create a lot of usefull, light weight and maximum reusable UI components
+Create a lot of usefull, light weight and maximum reusable UI components
 
-<!-- ## [Homepage / Components Demo](https://assenti.github.io/react-ui-components/) -->
+## Requirements for using rui-components
+You've created your app using [CRA (Create react app)](https://create-react-app.dev/docs/getting-started/)
+
 
 ## Storybook
-- Explore storybook [here](https://rui-components.netlify.app/?path=/story/get-started--page)
+Explore storybook [here](https://rui-components.netlify.app/?path=/story/get-started--page)
 
 ## Install
 ```bash
@@ -63,22 +65,28 @@ function App() {
 export default App;
 ```
 
-Find more usage examples in [Homepage](https://assenti.github.io/react-ui-components/)
-
-## TODO
-- [ ] Stepper
-- [ ] Range
-- [ ] TransferLists
-- [ ] Dashboard Layout
-- [ ] ThemeProvider
-- [ ] Make components adaptive for mobile devices
-
 ## Changelog
-You can track changelog [here](/CHANGELOG.md)
+You can track changelog [here](https://github.com/Assenti/react-ui-components/blob/storybook/CHANGELOG.md)
 
-Project start date: Jan 6th 2020
+## How to set my own preset colors ?
+Just override it in css styles
+
+## Can i use custom fonts ?
+Just import your fonts and override it in css styles
+
+## I found a bug
+Open an issue, please, i will try to fix it ASAP
+
+## I want to contribute
+You are welcome
 
 ### License
 
 [MIT Licensed](/LICENSE)
 Copyright (c) 2020 Asset Sultanov
+
+---
+
+I'll be appreciated for your donations ;)
+
+<a href="https://www.buymeacoffee.com/assenti" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;"></a>

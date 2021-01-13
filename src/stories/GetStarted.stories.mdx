@@ -6,6 +6,9 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 <br/>
 
+## Requirements for using rui-components
+You've created your app using [CRA (Create react app)](https://create-react-app.dev/docs/getting-started/)
+
 ## Install
 Install package from NPM
 ```bash
@@ -20,3 +23,40 @@ Import styles globally in index.js / index.ts
 ```jsx
 import '@assenti/rui-components/css/index.css';
 ```
+
+## Usage
+```jsx
+import { Card, Button, Icon } from '@assenti/rui-components';
+import React from 'react';
+
+function App() {
+  return (
+    <Card style={{ 
+            width: 300,
+            height: 300
+        }}>
+      <Button 
+        color="primary" 
+        name="Rocket" 
+        icon={<Icon name="rocket"/>}"/>
+    </Card>
+  );
+}
+
+export default App;
+```
+
+## Changelog
+You can track changelog [here](https://github.com/Assenti/react-ui-components/blob/storybook/CHANGELOG.md)
+
+## How to set my own preset colors ?
+Just override it in css styles
+
+## Can i use custom fonts ?
+Just import your fonts and override it in css styles
+
+## I found a bug
+Open an issue, please, i will try to fix it ASAP
+
+## I want to contribute
+You are welcome

@@ -1,5 +1,4 @@
 # Changelog 
----
 
 #### `0.8.3` `2020-06-19`
 - Types wrong declarations fixed;
