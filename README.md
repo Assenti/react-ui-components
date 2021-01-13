@@ -17,7 +17,7 @@
 <!-- ## [Homepage / Components Demo](https://assenti.github.io/react-ui-components/) -->
 
 ## Storybook
-- Explore storybook [here](https://rui-components.netlify.app/?path=/story/introduction--page)
+- Explore storybook [here](https://rui-components.netlify.app/?path=/story/get-started--page)
 
 ## Install
 ```bash
