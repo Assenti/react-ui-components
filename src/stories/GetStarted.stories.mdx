@@ -4,7 +4,17 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Welcome to React UI Components
 
-<br/>
+<div style={{ textAlign: 'center', margin: '16px 0' }}>
+  <a style={{ margin: 4}} aria-label="NPM version" href="https://www.npmjs.com/package/@assenti/rui-components">
+    <img alt="npm version" src="https://badgen.net/npm/v/@assenti/rui-components"/>
+  </a>
+  <a style={{ margin: 4}} aria-label="Downloads" href="https://npm-stat.com/charts.html?package=%40assenti%2Frui-components">
+    <img alt="npm stats" src="https://badgen.net/npm/dw/@assenti/rui-components"/>
+  </a>
+  <a style={{ margin: 4}} href="https://github.com/Assenti/react-ui-components/blob/master/LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/License-MIT-brightgreen.svg"/>
+  </a>
+</div>
 
 ## Requirements for using rui-components
 You've created your app using [CRA (Create react app)](https://create-react-app.dev/docs/getting-started/)
@@ -38,7 +48,7 @@ function App() {
       <Button 
         color="primary" 
         name="Rocket" 
-        icon={<Icon name="rocket"/>}"/>
+        icon={<Icon name="rocket"/>}/>
     </Card>
   );
 }
@@ -48,6 +58,9 @@ export default App;
 
 ## Changelog
 You can track changelog [here](https://github.com/Assenti/react-ui-components/blob/storybook/CHANGELOG.md)
+
+## Where can i find @types/@assenti/rui-components ?
+Types declarations for TypeScript are built-in
 
 ## How to set my own preset colors ?
 Just override it in css styles

@@ -1,7 +1,7 @@
 # React UI Components
 ### UI Components for web apps built on [React](https://reactjs.org/)
 
-<p align="center">
+<p style="text-align:center;">
   <a aria-label="NPM version" href="https://www.npmjs.com/package/@assenti/rui-components">
     <img alt="" src="https://badgen.net/npm/v/@assenti/rui-components"/>
   </a>
@@ -32,17 +32,6 @@ or
 % yarn add @assenti/rui-components
 ```
 
-<!-- ## Peer dependencies
-React UI Components use react-transition-group package under the hood, so you should install it too
-```bash
-# Install package from NPM
-% npm install react-transition-group -S
-```
-```bash
-# Install @types/react-transition-group for TS
-% npm install @types/react-transition-group -D
-``` -->
-
 ## Usage
 index.js / index.ts
 ```jsx
@@ -57,7 +46,7 @@ import React from 'react';
 function App() {
   return (
     <Card header={<h4>React UI Components</h4>}>
-      <Button color="primary" name="Rocket" icon={<Icon name="rocket"/>}"/>
+      <Button color="primary" name="Rocket" icon={<Icon name="rocket"/>}/>
     </Card>
   );
 }
@@ -67,6 +56,9 @@ export default App;
 
 ## Changelog
 You can track changelog [here](https://github.com/Assenti/react-ui-components/blob/storybook/CHANGELOG.md)
+
+## Where can i find @types/@assenti/rui-components ?
+Types declarations for TypeScript are built-in
 
 ## How to set my own preset colors ?
 Just override it in css styles
