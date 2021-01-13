@@ -41,9 +41,9 @@ Breadcrumbs.propTypes = {
     onChange: PropTypes.func,
     delimiter: PropTypes.string,
     dark: PropTypes.bool,
-    size: PropTypes.oneOf([undefined,'','default','medium','large']),
-    color: PropTypes.oneOf([undefined,'','default','primary','info','success','error','dark','secondary']),
-    position: PropTypes.oneOf([undefined,'','default','center','right']),
+    size: PropTypes.oneOf(['default','medium','large']),
+    color: PropTypes.oneOf(['primary','info','success','error','dark','secondary']),
+    position: PropTypes.oneOf(['default','center','right']),
     className: PropTypes.string
 }
 export default Breadcrumbs;

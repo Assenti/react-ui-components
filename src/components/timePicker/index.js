@@ -218,8 +218,8 @@ TimePicker.propTypes = {
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     hint: PropTypes.string,
     hintColor: PropTypes.oneOf(['success','error']),
-    color: PropTypes.oneOf([undefined, 'primary','info','success','error']),
-    size: PropTypes.oneOf([undefined,'default','medium','large']),
+    color: PropTypes.oneOf(['primary','info','success','error']),
+    size: PropTypes.oneOf(['default','medium','large']),
     className: PropTypes.string
 }
 export default TimePicker;

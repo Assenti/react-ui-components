@@ -18,7 +18,9 @@ export default {
 
 const Template = (args) => (
     <Collapse
-        {...args}>
+        {...args}
+        title={<span className="mx-10 fz-10 fw-bold">Marvel Avengers</span>}
+        >
         <List 
             size="medium"
             className="py-10"
@@ -37,10 +39,11 @@ const Template = (args) => (
 export const Collapse_ = Template.bind({});
 
 Collapse_.args = {
-    title: <span className="mx-10 fz-10 fw-bold">Marvel Avengers</span>,
+    title: '',
     defaultState: true, 
     border: true, 
     onChange: () => console.log('Do smth...'),
     dark: false,
-    tooltip: ''
+    tooltip: '',
+    position: 'left'
 }

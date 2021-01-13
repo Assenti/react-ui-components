@@ -50,6 +50,15 @@
             flex-direction: row-reverse;
         }
     }
+
+    &.strict-close {
+        &:active {
+            .rui-modal {
+                transform: scale(1.02);
+                transition: scale .3s ease-in-out;
+            }
+        }
+    }
 }
 
 .rui-modal {

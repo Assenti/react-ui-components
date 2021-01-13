@@ -1,52 +1,36 @@
 import React from 'react';
 import ButtonGroup from '../../components/buttonGroup';
+import Icon from '../../components/icon';
 const langs = ['KZ', 'RU', 'EN'];
-
 
 export default {
   title: 'Example/Buttongroup',
-  component: ButtonGroup,
-  // argTypes: {
-  //   backgroundColor: { control: 'color' },
-  // },
+  component: ButtonGroup
 };
 
-const Template = () => (
-  <>
+const Template = (args) => (
+  <div className="row align-center">
     <ButtonGroup 
-        default={0} 
-        // onChange={(item, index) => setOption(item)}
-        options={langs} 
-        color="secondary"/>
-    <br/>
-    <br/>
+        {...args}/>
     <ButtonGroup 
-        default={0} 
-        // onChange={(item, index) => setOption(item)}
-        options={langs} 
-        color="primary"/>
-  </>
+        {...args}
+        icon
+        outlined
+        color="secondary"
+        options={[
+            <Icon size={20} name="format-align-left"/>,
+            <Icon size={20} name="format-align-center"/>,
+            <Icon size={20} name="format-align-right"/>
+        ]}/>
+  </div>
 )
-// export Template;
+
 export const Buttongroup_ = Template.bind({});
-// Primary.args = {
-//   primary: true,
-//   label: 'Button',
-// };
 
-// export const Secondary = Template.bind({});
-// Secondary.args = {
-//   label: 'Button',
-// };
-
-// export const Large = Template.bind({});
-// Large.args = {
-//   size: 'large',
-//   label: 'Button',
-// };
-
-// export const Small = Template.bind({});
-// Small.args = {
-//   size: 'small',
-//   label: 'Button',
-// };
+Buttongroup_.args = {
+    size: 'default',
+    default: 0,
+    color: 'primary',
+    options: langs,
+    className: 'ma-4'
+}

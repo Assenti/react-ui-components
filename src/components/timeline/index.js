@@ -63,11 +63,11 @@ Timeline.propTypes = {
     subtitle: PropTypes.string,
     flatCard: PropTypes.bool,
     icon: PropTypes.string,
-    color: PropTypes.oneOf([undefined,'','primary', 'info', 'success', 'error', 'yellow', 'dark']),
+    color: PropTypes.oneOf(['primary', 'info', 'success', 'error', 'yellow', 'dark']),
     data: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.number]),
-    tagColor: PropTypes.oneOf([undefined,'','primary', 'info', 'success', 'error','yellow','dark']),
+    tagColor: PropTypes.oneOf(['primary', 'info', 'success', 'error','yellow','dark']),
     tagOutlined: PropTypes.bool,
-    tagBorderType: PropTypes.oneOf([undefined,'default','tile','smooth','rounded']),
+    tagBorderType: PropTypes.oneOf(['default','tile','smooth','rounded']),
     date: PropTypes.string,
     className: PropTypes.string
 }

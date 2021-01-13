@@ -15,9 +15,9 @@ const Badge = (props) => {
         <div className={strinfigyClassObject(className)}
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>
             {props.parent}
-            <div className={!props.visible ? 'rui-badge' : 'rui-badge hide'}>
-                {!props.visible && !props.icon ? props.value : ''}
-                {!props.visible && !props.value && props.icon ? 
+            <div className={props.visible ? 'rui-badge' : 'rui-badge hide'}>
+                {props.visible && !props.icon ? props.value : ''}
+                {props.visible && !props.value && props.icon ? 
                     <Icon 
                         name={props.icon} 
                         size={14} 
@@ -30,7 +30,7 @@ Badge.propTypes = {
     rounded: PropTypes.bool,
     onClick: PropTypes.func,
     icon: PropTypes.string,
-    color: PropTypes.oneOf([undefined,'','primary','info','success','error','dark','secondary']),
+    color: PropTypes.oneOf(['primary','info','success','error','dark','secondary']),
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     visible: PropTypes.bool,
     parent: PropTypes.node,

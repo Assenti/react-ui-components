@@ -137,7 +137,7 @@ DatePicker.propTypes = {
     disabledDates: PropTypes.array,
     minDate: PropTypes.any,
     maxDate: PropTypes.any, 
-    selectBorderType: PropTypes.oneOf([undefined,'','default','tile','rounded','smooth']),
+    selectBorderType: PropTypes.oneOf(['default','tile','rounded','smooth']),
     placeholder: PropTypes.string,
     hideWeekend: PropTypes.bool,
     hideCurrentDay: PropTypes.bool,
@@ -145,13 +145,13 @@ DatePicker.propTypes = {
     onDate: PropTypes.func.isRequired,
     active: PropTypes.any,
     dark: PropTypes.bool,
-    btnColor: PropTypes.oneOf([undefined,'','default','primary','info','success','error','black','secondary']),
+    btnColor: PropTypes.oneOf(['default','primary','info','success','error','black','secondary']),
     cancelBtnName: PropTypes.string,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     hint: PropTypes.string,
     hintColor: PropTypes.oneOf(['success','error']),
-    color: PropTypes.oneOf([undefined, 'primary','info','success','error']),
-    size: PropTypes.oneOf([undefined,'default','medium','large']),
+    color: PropTypes.oneOf(['primary','info','success','error']),
+    size: PropTypes.oneOf(['default','medium','large']),
     className: PropTypes.string
 }
 export default DatePicker;

@@ -90,8 +90,8 @@ const Uploader = (props) => {
 }
 Uploader.propTypes = {
     value: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-    borderType: PropTypes.oneOf([undefined,'','default','rounded','smooth','tile']),
-    color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
+    borderType: PropTypes.oneOf(['default','rounded','smooth','tile']),
+    color: PropTypes.oneOf(['primary','info','success','error']),
     light: PropTypes.bool,
     dark: PropTypes.bool,
     label: PropTypes.string,

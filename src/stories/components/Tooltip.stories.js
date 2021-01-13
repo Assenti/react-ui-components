@@ -5,21 +5,32 @@ import Icon from '../../components/icon';
 
 export default {
     title: 'Example/Tooltip',
-    component: Tooltip,
-    // argTypes: {
-    //   backgroundColor: { control: 'color' },
-    // },
-};
+    component: Tooltip
+}
 
-const Template = () => (
+const Template = (args) => (
     <div style={{ margin: 15 }}>
-        <Tooltip 
-            tooltip="I am a Tooltip">
+        <Tooltip {...args}>
             <Button 
-                icon={<Icon name="search"/>} 
+                icon={<Icon name="moon"/>} 
                 color="info"/>
+        </Tooltip>
+        <br/>
+        <Tooltip 
+            {...args} 
+            tooltip="I am a tooltip"
+            position="top">
+            <Button 
+                name="Button with tooltip"
+                color="primary"/>
         </Tooltip>
     </div>
 )
 
 export const Tooltip_ = Template.bind({});
+
+Tooltip_.args = {
+    tooltip: 'Fly me to the moon',
+    color: 'default',
+    position: 'right'
+}

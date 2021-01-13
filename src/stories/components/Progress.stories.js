@@ -33,5 +33,6 @@ Progress_.args = {
     active: false,
     hideState: false,
     iconColor: '#1aaa55',
-    complete: 35
+    complete: 35,
+    size: 'default'
 };

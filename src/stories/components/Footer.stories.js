@@ -53,7 +53,7 @@ export const Footer_ = Template.bind({});
 
 Footer_.args = {
     fixed: true,
-    color: '',
     smooth: false,
-    dark: false
+    dark: false,
+    color: 'secondary'
 };

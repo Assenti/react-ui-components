@@ -9,12 +9,14 @@ export default {
 const Template = (args) => (
     <Tag 
         {...args}>
-        Price: 1000
+        {args.children}
     </Tag>
 )
 
 export const Tag_ = Template.bind({});
 
 Tag_.args = {
-    color: 'yellow'
+    color: 'yellow',
+    children: 'Price: 1000',
+    borderType: 'default'
 }

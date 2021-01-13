@@ -22,6 +22,10 @@ Select_.args = {
     maxHeight: 200,
     width: 250,
     placeholder: 'Countries',
+    borderType: 'default',
+    size: 'default',
+    multiple: true,
+    value: '',
     items: [
         { country: 'Kazakhstan', cities: [ 'Nur-Sultan', 'Almaty', 'Shymkent' ] }, 
         { country: 'Russia', cities: ['Moscow', 'St. Petersburg', 'Krasnodar'] }, 

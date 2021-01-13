@@ -215,18 +215,18 @@ const Calendar = (props) => {
     )
 }
 Calendar.propTypes = {
-    locale: PropTypes.oneOf([undefined,'','en','kz','ru','fr']),
+    locale: PropTypes.oneOf(['en','kz','ru','fr']),
     events: PropTypes.array,
     holidays: PropTypes.array,
     disabledDates: PropTypes.array,
     minDate: PropTypes.any,
     maxDate: PropTypes.any,
-    selectBorderType: PropTypes.oneOf([undefined,'','default','tile','rounded','smooth']),
+    selectBorderType: PropTypes.oneOf(['default','tile','rounded','smooth']),
     onDate: PropTypes.func,
     hideWeekend: PropTypes.bool,
     hideCurrentDay: PropTypes.bool,
-    color: PropTypes.oneOf([undefined,'','default','primary','info','success','error','dark']),
-    size: PropTypes.oneOf([undefined,'','default','medium','large']),
+    color: PropTypes.oneOf(['default','primary','info','success','error','dark']),
+    size: PropTypes.oneOf(['default','medium','large']),
     limit: PropTypes.number,
     onlyPast: PropTypes.bool,
     weekStartsSunday: PropTypes.bool,
@@ -234,7 +234,7 @@ Calendar.propTypes = {
     dark: PropTypes.bool,
     active: PropTypes.any,
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    popOverTrigger: PropTypes.oneOf([undefined,'','hover','click']),
+    popOverTrigger: PropTypes.oneOf(['hover','click']),
     className: PropTypes.string
 }
 export default Calendar;

@@ -6,6 +6,8 @@ import { strinfigyClassObject } from '../utils';
 
 const Modal = (props) => {
     const [full, setFull] = useState(false);
+    const [strictClose, setStrictClose] = useState(false);
+
     let className = {
         name: 'rui-modal-container',
         hideOverlay: props.hideOverlay ? 'no-overlay' : '',
@@ -13,6 +15,7 @@ const Modal = (props) => {
         headerReverse: props.headerReverse ? 'reverse' : '',
         centered: props.centered ? 'centered' : '',
         fullPage: full ? 'full-page' : '',
+        sctrictClose: strictClose ? 'strict-close' : '',
         className: props.className ? props.className : ''
     }
 
@@ -29,6 +32,13 @@ const Modal = (props) => {
         return result.trim();
     }
 
+    const handleStrictCloseMode = (e, flag) => {
+        if (e.target === e.currentTarget && !props.closable) {
+            setStrictClose(flag)
+        }
+    }
+
+
     const close = (e) => {
         if (e.target === e.currentTarget) props.onClose()
     }
@@ -36,7 +46,9 @@ const Modal = (props) => {
     return (
         <div 
             className={strinfigyClassObject(className)}
-            onClick={(e) => props.closable ? close(e) : {}}>
+            onClick={(e) => props.closable ? close(e) : {}}
+            onMouseDown={e => handleStrictCloseMode(e, true)}
+            onMouseUp={e => handleStrictCloseMode(e, false)}>
             <CSSTransition
                 in={props.visible}
                 timeout={300}

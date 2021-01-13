@@ -1,7 +1,7 @@
 import React, { useEffect, useState, createRef } from 'react'
 import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import { Tooltip, Button, Icon } from '../index';
+import { Tooltip, Button } from '../index';
 
 const BackTopBtn = (props) => {
     const [visible, setVisible] = useState(false);
@@ -43,18 +43,18 @@ const BackTopBtn = (props) => {
                 {props.tooltip ?
                     <Tooltip tooltip={props.tooltip}>
                         <Button 
-                            icon={!props.text ?? <Icon name="arrow-up-bold"/>}
-                            name={props.text}
-                            lifted
+                            icon={!props.name ? props.icon : null}
+                            name={!props.icon ? props.name : null}
+                            lifted={props.lifted}
                             size={props.size ? props.size : ''}
                             onClick={() => goTop()} 
                             light={!props.dark ? true : false}
                             dark={props.dark ? true : false}/>
                     </Tooltip> : 
                     <Button 
-                        icon={!props.text ?? <Icon name="arrow-up-bold"/>}
-                        name={props.text}
-                        lifted
+                        icon={!props.name ? props.icon : null}
+                        name={!props.icon ? props.name : null}
+                        lifted={props.lifted}
                         size={props.size ? props.size : ''}
                         onClick={() => goTop()} 
                         light={!props.dark ? true : false}
@@ -66,10 +66,15 @@ const BackTopBtn = (props) => {
 }
 BackTopBtn.propTypes = {
     setRef: PropTypes.any,
-    size: PropTypes.oneOf([undefined,'medium','large']),
+    size: PropTypes.oneOf(['default','medium','large']),
     dark: PropTypes.bool,
     tooltip: PropTypes.string,
     breakpoint: PropTypes.number,
-    text: PropTypes.string
+    name: PropTypes.string,
+    icon: PropTypes.node,
+    lifted: PropTypes.bool
 }
+BackTopBtn.defaultProps = {
+    lifted: true
+} 
 export default BackTopBtn;

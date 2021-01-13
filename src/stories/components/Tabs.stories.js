@@ -24,5 +24,7 @@ Tabs_.args = {
     tabTitleKey: 'name',
     tabIconKey: 'icon',
     defaultTab: 0,
-    color: 'primary'
+    color: 'primary',
+    position: 'top',
+    size: 'default'
 };

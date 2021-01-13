@@ -13,9 +13,7 @@ const ButtonGroup = (props) => {
         className: props.className ? props.className : ''
     }
 
-    const isActive = (index) => {
-        return index === active ? 'active' : ''
-    }
+    const isActive = (index) => index === active ? 'active' : '';
 
     const handleChange = (item, index) => {
         if (props.onChange) props.onChange(item, index)
@@ -27,10 +25,11 @@ const ButtonGroup = (props) => {
             {props.options.map((item, index) => 
                 <Button 
                     key={index}
+                    style={props.btnStyle}
                     size={props.size ? props.size : ''}
                     className={isActive(index)}
-                    name={!props.icon ? item : ''}
-                    icon={props.icon ? <Icon name={item}/> : ''} 
+                    name={!props.icon ? item : null}
+                    icon={props.icon ? item : null} 
                     color={props.color ? props.color : ''}
                     onClick={() => handleChange(item, index)}
                     outlined={props.outlined ? true : false}/>
@@ -44,10 +43,11 @@ ButtonGroup.propTypes = {
     options: PropTypes.array.isRequired,
     lifted: PropTypes.bool,
     outlined: PropTypes.bool,
-    size: PropTypes.oneOf([undefined,'','default','medium','large']),
+    size: PropTypes.oneOf(['default','medium','large']),
     name: PropTypes.string,
     icon: PropTypes.bool,
-    color: PropTypes.oneOf([undefined,'','primary','info','success','error','secondary','black']),
+    color: PropTypes.oneOf(['primary','info','success','error','secondary','black']),
+    btnStyle: PropTypes.object,
     className: PropTypes.string
 }
 export default ButtonGroup;

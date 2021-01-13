@@ -358,10 +358,26 @@
             }
         }
     }
+
+    &.textarea {
+        .rui-input-container {
+            align-items: flex-start;
+
+            .rui-input-prefix,
+            .rui-input-clear {
+                margin-top: 8px;
+            }
+        }
+    }
+
+    &:not(.textarea) {
+        .rui-input-container {
+            align-items: center;
+        }
+    }
     
     .rui-input-container {
         display: inline-flex;
-        align-items: center;
         width: 100%;
         border: 1px solid lightgray;
         background-color: $lightgray;

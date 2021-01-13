@@ -50,7 +50,7 @@ const Dialog = (props) => {
                         className="mx-5"
                         disabled={loading} 
                         color={props.cancelBtnColor ? props.cancelBtnColor : 'secondary'} 
-                        name={props.cancelText ? props.cancelText : 'Cancel'}/> : ''}
+                        name={props.cancelText ? props.cancelText : 'Cancel'}/> : null}
                     <Button
                         onClick={handleConfirm}
                         className="mx-5"

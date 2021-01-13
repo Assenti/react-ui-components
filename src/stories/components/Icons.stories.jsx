@@ -5,6 +5,8 @@ import CopyToClipboard from '../../components/copyToClipboard';
 import InputField from '../../components/input';
 import Icon from '../../components/icon';
 import { description } from '../../../package.json';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export default {
     title: 'Icons',
@@ -134,6 +136,27 @@ const icons = [
   'dislike'
 ]
 
+const usage = `// Usage examples
+import React from 'react';
+import { Icon } from '@assenti/rui-components';
+
+funcation Example() {
+
+    const CustomIconSvg = () => {
+        return (
+            <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
+                <path fill="gray" d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3M18.82 9L12 12.72L5.18 9L12 5.28L18.82 9M17 16L12 18.72L7 16V12.27L12 15L17 12.27V16Z" />
+            </svg>
+        )
+    }
+
+    return (
+        <>
+            <Icon custom={<CustomIconSvg/>}/>
+        </>
+    )
+}`
+
 const IconsPage = () => {
     const [search, setSearch] = useState('');
 
@@ -181,7 +204,12 @@ const IconsPage = () => {
                     </div>
                 )}
             </Card>
-            <p className="pb-24">Didn't found your icon, use your <a className="link" href="/?path=/story/example-icon--icon">custom</a></p>
+            <p className="my-16">Didn't found your icon ?</p>
+            <SyntaxHighlighter 
+                language="jsx" 
+                style={coy}>
+                {usage}
+            </SyntaxHighlighter>
         </div>
     )
 }

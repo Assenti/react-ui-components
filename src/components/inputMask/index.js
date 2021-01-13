@@ -148,7 +148,7 @@ InputMask.propTypes = {
     timeDelimiter: PropTypes.string,
     mask: PropTypes.oneOf(['phone', 'card', 'card-issue', 'iin', 'date', 'time']).isRequired,
     color: PropTypes.oneOf(['primary', 'info', 'success', 'error']),
-    size: PropTypes.oneOf(['medium', 'large']),
+    size: PropTypes.oneOf(['default', 'medium', 'large']),
     borderType: PropTypes.oneOf(['default', 'tile', 'rounded', 'smooth']),
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,

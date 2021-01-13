@@ -1,7 +1,8 @@
 import React from 'react';
 import List from '../../components/list/List';
 import ListItem from '../../components/list/ListItem';
-import { modules } from '../../data/modules';
+import Avatar from '../../components/avatar';
+import { heroes } from '../../data/heroes';
 List.Item = ListItem;
 
 export default {
@@ -12,13 +13,19 @@ export default {
 
 const Template = (args) => (
     <List {...args}>
-        {modules.map((item, index) =>
+        {heroes.map((item, index) =>
             <List.Item 
                 key={index}
-                hover
-                noDivider 
-                item={item.name} 
-                icon={item.icon}/>
+                hover={args.hover}
+                noDivider={args.noDivider} 
+                item={item.name}
+                subTitle={item.hero} 
+                avatar={<Avatar
+                            className="mr-10" 
+                            img={item.img}
+                            width={40} 
+                            height={40}
+                            borderType="rounded"/> }/>
         )}
     </List>
 )
@@ -28,7 +35,7 @@ export const List_ = Template.bind({});
 List_.args = {
     dark: false,
     size: 'default',
-    header: 'Modules'
+    header: 'Marvel heroes'
 }
 
 export const Listitem_ = Template.bind({});

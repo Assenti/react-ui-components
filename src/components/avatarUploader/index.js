@@ -64,7 +64,7 @@ const AvatarUploader = (props) => {
 AvatarUploader.propTypes = {
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    borderType: PropTypes.oneOf([undefined,'','default','smooth','tile','rounded']),
+    borderType: PropTypes.oneOf(['default','smooth','tile','rounded']),
     avatar: PropTypes.string,
     onChange: PropTypes.func,
     onClear: PropTypes.func,

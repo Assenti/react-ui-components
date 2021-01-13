@@ -26,6 +26,7 @@ const Template = (args) => (
                 <FloatingBtn 
                     icon="like"
                     color="info"
+                    onClick={() => console.log('Clicked')}
                     />
             </Card>
         )}

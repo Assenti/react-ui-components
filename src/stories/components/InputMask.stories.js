@@ -18,8 +18,9 @@ export const Inputmask_ = Template.bind({});
 Inputmask_.args = {
     value: '',
     width: 250,
-    size: '',
     mask: 'phone',
     color: 'primary',
-    placeholder: '(___) ___-__-__'
+    placeholder: '(___) ___-__-__',
+    size: 'default',
+    borderType: 'default'
 }

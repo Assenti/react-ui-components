@@ -7,13 +7,14 @@ export default {
 };
 
 const Template = (args) => (
-    <Checkbox
-        {...args}/>
+    <Checkbox {...args}/>
 )
 
 export const Checkbox_ = Template.bind({});
 Checkbox_.args = {
     color: 'primary',
     checked: true,
-    label: 'Checkbox'
+    label: 'Checkbox',
+    size: 'default',
+    fill: true
 };

@@ -16,5 +16,8 @@ Timepicker_.args = {
     color: 'primary',
     value: '',
     clearable: false,
-    width: 200
+    width: 200,
+    onChange: (value) => console.log(value),
+    locale: 'en',
+    size: 'default'
 }

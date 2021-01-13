@@ -24,7 +24,7 @@ const TextareaField = (props) => {
     }
 
     let className = {
-        input: 'rui-input-field',
+        input: 'rui-input-field textarea',
         whiteBackground: props.whiteBackground ? 'white-background' : '',
         borderType: props.borderType && props.borderType !== 'rounded' ? props.borderType : '',
         lifted: props.lifted ? 'lifted' : '',
@@ -95,7 +95,8 @@ const TextareaField = (props) => {
     }, [props.value])
 
     return (
-        <div className={strinfigyClassObject(className)} style={{ width: props.width ? props.width : ''}}>
+        <div className={strinfigyClassObject(className)} 
+            style={{ width: props.width ? props.width : ''}}>
             {props.label ? 
             <label className={focus ? 'active' : ''} 
                 onClick={() => input.current.focus()}>{props.required ? <span className="text-error">*</span> : ''} {props.label}</label> 
@@ -140,7 +141,7 @@ TextareaField.propTypes = {
     hint: PropTypes.string,
     hintColor: PropTypes.oneOf(['default','error','success']),
     readOnly: PropTypes.bool,
-    color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
+    color: PropTypes.oneOf(['primary','info','success','error']),
     borderType: PropTypes.oneOf(['default','tile','smooth']),
     rows: PropTypes.number,
     maxRows: PropTypes.number,

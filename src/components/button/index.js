@@ -34,10 +34,11 @@ const Button = (props) => {
             ref={props.btnRef} 
             id={props.id}
             disabled={props.disabled || props.loading}
-            className={strinfigyClassObject(className)} 
+            className={strinfigyClassObject(className)}
+            style={props.style} 
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>
             {props.loading ?
-                <div className="rui-btn-loading"><span>•••</span></div> :
+                <div className="rui-btn-loading">{props.loadingContent ?? 'Loading...'}</div> :
                 <>
                     {props.icon && 
                         props.iconLeft && 
@@ -56,21 +57,23 @@ const Button = (props) => {
 Button.propTypes = {
     name: PropTypes.string,
     onClick: PropTypes.func,
-    color: PropTypes.oneOf([undefined,'','default','primary','info','success','error','black','secondary']),
+    color: PropTypes.oneOf(['default','primary','info','success','error','black','secondary']),
     dark: PropTypes.bool,
     light: PropTypes.bool,
     lifted: PropTypes.bool,
     uppercase: PropTypes.bool,
     loading: PropTypes.bool,
     disabled: PropTypes.bool,
-    borderType: PropTypes.oneOf([undefined,'','default','tile','rounded','smooth']),
-    size: PropTypes.oneOf([undefined,'','default','medium','large']),
+    borderType: PropTypes.oneOf(['default','tile','rounded','smooth']),
+    size: PropTypes.oneOf(['default','medium','large']),
     block: PropTypes.bool,
     outlined: PropTypes.bool,
     icon: PropTypes.node,
     iconAllotted: PropTypes.bool,
     iconLeft: PropTypes.bool,
-    type: PropTypes.oneOf([undefined,'submit','reset']),
+    type: PropTypes.oneOf(['button','submit','reset']),
+    style: PropTypes.object,
+    loadingContent: PropTypes.node,
     btnRef: PropTypes.oneOfType([
         PropTypes.func, 
         PropTypes.shape({ current: PropTypes.instanceOf(Element) })

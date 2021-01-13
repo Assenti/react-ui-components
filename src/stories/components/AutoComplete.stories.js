@@ -23,10 +23,10 @@ export default {
 const Template = (args) => (
   <>
     <AutoComplete
-        items={countries}
-        style={{ width: 300 }}
-        contentMaxHeight={300}
+        
         itemKey="country"
+        prefix={<Icon name="earth"/>}
+        suffix={<Icon name="chevron-down"/>}
         listHeader={
             <div className="fz-9 text-info py-10">
                 Start typing your favourite country
@@ -36,8 +36,6 @@ const Template = (args) => (
                 {filteredLength} results
             </div>}
         {...args}
-        // prefix={<Icon name="earth"/>}
-        // suffix={<Icon name="chevron-down"/>}
         />
   </>
 )
@@ -48,6 +46,9 @@ Autocomplete_.args = {
     color: 'primary',
     label: 'Countries',
     placeholder: 'Choose your favourive country',
-    prefix: <Icon name="earth"/>,
-    suffix: <Icon name="chevron-down"/>
+    items: countries,
+    style: { width: 300 },
+    contentMaxHeight: 300,
+    size: 'default',
+    borderType: 'default'
 };

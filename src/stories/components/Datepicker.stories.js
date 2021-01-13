@@ -19,5 +19,8 @@ Datepicker_.args = {
     placeholder: 'DD.MM.YYYY',
     clearable: false,
     width: 250,
-    maxDate: new Date()
+    maxDate: new Date(),
+    selectBorderType: 'default',
+    locale: 'en',
+    size: 'default'
 }

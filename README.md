@@ -14,7 +14,7 @@
 ## Main Goal
 #### Create a lot of usefull, light weight and maximum reusable UI components
 
-## [Homepage / Components Demo](https://assenti.github.io/react-ui-components/)
+<!-- ## [Homepage / Components Demo](https://assenti.github.io/react-ui-components/) -->
 
 ## Storybook
 - Explore storybook [here](https://rui-components.netlify.app/?path=/story/introduction--page)

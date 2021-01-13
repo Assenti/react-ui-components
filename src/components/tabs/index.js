@@ -81,11 +81,11 @@ Tabs.propTypes = {
     tabIconKey: PropTypes.string,
     centered: PropTypes.bool,
     contentPadding: PropTypes.string,
-    position: PropTypes.oneOf([undefined,'default','left','bottom','right']),
-    size: PropTypes.oneOf([undefined,'default','medium','large']),
+    position: PropTypes.oneOf(['top','left','bottom','right']),
+    size: PropTypes.oneOf(['default','medium','large']),
     activeHighlightFill: PropTypes.bool,
     onChange: PropTypes.func,
-    color: PropTypes.oneOf([undefined,'primary','info','error','success','']),
+    color: PropTypes.oneOf(['primary','info','error','success']),
     className: PropTypes.string
 }
 export default Tabs;

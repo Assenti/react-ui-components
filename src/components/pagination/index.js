@@ -159,7 +159,7 @@ Pagination.propTypes = {
     borderType: PropTypes.oneOf(['default','tile','rounded']),
     dark: PropTypes.bool,
     dense: PropTypes.bool,
-    size: PropTypes.oneOf([undefined,'','default','medium','large']),
+    size: PropTypes.oneOf(['default','medium','large']),
     className: PropTypes.string
 }
 export default Pagination;

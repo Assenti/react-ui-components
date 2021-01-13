@@ -28,5 +28,6 @@ Uploader_.args = {
     placeholder: 'File upload',
     width: 300,
     color: 'primary',
-    title: 'Сhoose a file(-s) please'
+    title: 'Сhoose a file(-s) please',
+    borderType: 'default'
 };

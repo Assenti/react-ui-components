@@ -8,14 +8,16 @@ export default {
 
 const Template = (args) => (
     <RadioGroup
-        {...args} 
-        options={['Washington, D.C.', 'New York City', 'Chicago', 'Boston', 'San Francisco', 'Los Angeles']}/>
+        {...args}/>
 )
 
 export const Radiogroup_ = Template.bind({});
 
 Radiogroup_.args = {
+    value: '',
     color: 'primary',
     name: 'city',
-    vertical: true
+    vertical: true,
+    size: 'default',
+    options: ['Washington, D.C.', 'New York City', 'Chicago', 'Boston', 'San Francisco', 'Los Angeles']
 };

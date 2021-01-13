@@ -76,7 +76,7 @@ Collapse.propTypes = {
     onChange: PropTypes.func,
     border: PropTypes.bool,
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    position: PropTypes.oneOf([undefined,'','right']),
+    position: PropTypes.oneOf(['left','right']),
     extra: PropTypes.any,
     hover: PropTypes.bool,
     tooltip: PropTypes.string,

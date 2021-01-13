@@ -17,5 +17,7 @@ Pagination_.args = {
     perPage: 10,
     currentPage: 1,
     color: 'primary',
-    itemsCount: 1000
+    itemsCount: 1000,
+    borderType: 'default',
+    size: 'default'
 };

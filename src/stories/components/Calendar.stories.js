@@ -46,5 +46,9 @@ Calendar_.args = {
     holidays: holidays,
     weekStartsSunday: false,
     onlyPast: true,
-    color: 'primary'
+    color: 'primary',
+    size: 'default',
+    locale: 'en',
+    selectBorderType: 'default',
+    popOverTrigger: 'hover'
 }

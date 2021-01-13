@@ -29,6 +29,7 @@
     &.icon-left {
         padding: 0;
         padding-right: 8px;
+        padding-left: 8px;
         margin-right: 5px;
     }
 
@@ -535,36 +536,4 @@
             border-bottom-right-radius: $radius;
         }
     }
-}
-
-.rui-btn-loading {
-    overflow: hidden;
-    width: 30px;
-    min-width: 30px;
-
-    span {
-        display: block;
-        animation: btnLoading 1.5s ease-in-out infinite;
-        -webkit-animation: btnLoading 1.5s ease-in-out infinite;
-        -moz-animation: btnLoading 1.5s ease-in-out infinite;
-        -o-animation: btnLoading 1.5s ease-in-out infinite;
-        font-size: 24px;
-    }
-}
-
-
-@keyframes btnLoading {
-    0% { transform: translateX(-30px); }
-    50% { transform: translateX(0px); }
-    100% { transform: translateX(30px); }
-}
-@-webkit-keyframes btnLoading {
-    0% { transform: translateX(-30px); }
-    50% { transform: translateX(0px); }
-    100% { transform: translateX(30px); }
-}
-@-moz-keyframes btnLoading {
-    0% { transform: translateX(-30px); }
-    50% { transform: translateX(0px); }
-    100% { transform: translateX(30px); }
 }

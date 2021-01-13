@@ -17,5 +17,8 @@ Inputfield_.args = {
     label: 'Input field',
     placeholder: 'Input text',
     color: 'primary',
-    width: 300
+    width: 300,
+    borderType: 'default',
+    type: 'text',
+    size: 'default'
 }

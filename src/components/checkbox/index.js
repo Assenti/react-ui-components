@@ -47,8 +47,8 @@ Checkbox.propTypes = {
     onChange: PropTypes.func,
     disabled: PropTypes.bool,
     fill: PropTypes.bool,
-    color: PropTypes.oneOf([undefined,'','default','primary','info','success','error','secondary']),
-    size: PropTypes.oneOf([undefined,'','default','medium','large']),
+    color: PropTypes.oneOf(['default','primary','info','success','error','secondary']),
+    size: PropTypes.oneOf(['default','medium','large']),
     label: PropTypes.string,
     className: PropTypes.string
 }

@@ -28,5 +28,8 @@ Floatingbtn_.args = {
     size: 'large',
     tooltip: 'Add friend',
     color: 'primary',
-    tooltipPosition: 'top'
+    tooltipPosition: 'top',
+    position: 'bottom-right',
+    offsetX: 5,
+    offsetY: 5
 }

@@ -12,17 +12,18 @@ const slides = [
 
 export default {
   title: 'Example/Carousel',
-  component: Carousel,
-  // argTypes: {
-  //   backgroundColor: { control: 'color' },
-  // },
-};
+  component: Carousel
+}
 
-const Template = () => (
-    <Carousel 
-        height={400}
-        autoMotion
-        items={slides}/>
+const Template = (args) => (
+    <Carousel {...args}/>
 )
 
 export const Carousel_ = Template.bind({});
+
+Carousel_.args = {
+    height: 400,
+    autoMotion: true,
+    items: slides,
+    interval: 3000
+}

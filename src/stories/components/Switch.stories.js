@@ -11,11 +11,21 @@ const Template = (args) => (
         <Switch {...args}/>
         <br/>
         <br/>
-        <Switch 
-            check 
+        <Switch
+            vertical={args.vertical} 
+            check={args.check} 
             color="info"
             leftIcon="moon"
             rightIcon="sun"
+            onChange={() => {}}/>
+        <br/>
+        <br/>
+        <Switch 
+            vertical={args.vertical}
+            check={args.check} 
+            color="info"
+            leftLabel="On"
+            rightLabel="Off"
             onChange={() => {}}/>
     </>
 )
