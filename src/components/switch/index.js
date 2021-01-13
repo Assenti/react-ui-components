@@ -43,7 +43,7 @@ Switch.propTypes = {
     check: PropTypes.bool.isRequired,
     onChange: PropTypes.func,
     vertical: PropTypes.bool,
-    color: PropTypes.oneOf([undefined,'','primary','info','success','error']),
+    color: PropTypes.oneOf(['primary','info','success','error']),
     className: PropTypes.string
 }
 export default Switch;

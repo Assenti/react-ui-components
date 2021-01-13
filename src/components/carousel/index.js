@@ -88,8 +88,7 @@ const Carousel = (props) => {
 }
 Carousel.propTypes = {
     items: PropTypes.array,
-    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    style: PropTypes.object,
     autoMotion: PropTypes.bool,
     hideArrows: PropTypes.bool,
     hideDots: PropTypes.bool,
@@ -98,4 +97,3 @@ Carousel.propTypes = {
     className: PropTypes.string
 }
 export default Carousel;
-

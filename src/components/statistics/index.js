@@ -73,10 +73,10 @@ Statistics.propTypes = {
     dark: PropTypes.bool,
     prefix: PropTypes.node,
     financial: PropTypes.bool,
-    align: PropTypes.oneOf(['center', 'bottom','top']),
+    align: PropTypes.oneOf(['center','bottom','top']),
     suffix: PropTypes.node,
     fractions: PropTypes.number,
-    style: PropTypes.any,
+    style: PropTypes.object,
     className: PropTypes.string
 }
 export default Statistics;

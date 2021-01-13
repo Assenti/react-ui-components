@@ -30,7 +30,9 @@ const Alert = (props) => {
             timeout={300}
             classNames="rui-alert"
             unmountOnExit>
-            <div className={strinfigyClassObject(className)}>
+            <div 
+                className={strinfigyClassObject(className)}
+                style={props.style}>
                 <div>
                     <div className="rui-alert__status">
                         <Icon name={getStatusIcon()} size={20}/>
@@ -48,6 +50,7 @@ const Alert = (props) => {
 }
 Alert.propTypes = {
     status: PropTypes.oneOf(['info','success','error','warning']),
+    style: PropTypes.object,
     message: PropTypes.string.isRequired,
     text: PropTypes.string,
     visible: PropTypes.bool.isRequired,

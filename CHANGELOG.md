@@ -1,5 +1,11 @@
 # Changelog 
 
+#### `0.9.0` `2021-01-13`
+- Components demo migrated to Storybook
+- Types wrong declarations fixed (TS, prop-types);
+- Components props reviewed;
+- Some css styles improved;
+
 #### `0.8.3` `2020-06-19`
 - Types wrong declarations fixed;
 - List styles component updated;

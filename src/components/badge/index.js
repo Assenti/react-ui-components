@@ -13,6 +13,7 @@ const Badge = (props) => {
 
     return (
         <div className={strinfigyClassObject(className)}
+            style={props.style}
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>
             {props.parent}
             <div className={props.visible ? 'rui-badge' : 'rui-badge hide'}>
@@ -34,6 +35,7 @@ Badge.propTypes = {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     visible: PropTypes.bool,
     parent: PropTypes.node,
-    className: PropTypes.string
+    className: PropTypes.string,
+    style: PropTypes.object
 }
 export default Badge;

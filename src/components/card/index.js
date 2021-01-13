@@ -30,7 +30,7 @@ Card.propTypes = {
     hover: PropTypes.bool,
     header: PropTypes.any,
     footer: PropTypes.any,
-    style: PropTypes.any,
+    style: PropTypes.object,
     id: PropTypes.string,
     cardRef: PropTypes.oneOfType([
         PropTypes.func, 

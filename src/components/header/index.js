@@ -21,25 +21,19 @@ const Header = (props) => {
 
     return (
         <div className={headerClass()} 
-            style={{ 
-                height: props.height ? props.height : '',
-                backgroundColor: props.bgColor ? props.bgColor : '',
-                padding: props.padding ? props.padding : ''
-            }}>
+            style={props.style}>
             {props.children}
         </div>
     )
 }
 Header.propTypes = {
-    height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     dark: PropTypes.bool,
     light: PropTypes.bool,
-    bgColor: PropTypes.string,
     sticky: PropTypes.bool,
     smooth: PropTypes.bool,
     lifted: PropTypes.bool,
     id: PropTypes.string,
-    padding: PropTypes.string,
+    style: PropTypes.object,
     className: PropTypes.string
 }
 export default Header;

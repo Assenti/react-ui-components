@@ -34,9 +34,7 @@ const AvatarUploader = (props) => {
         <div className={strinfigyClassObject(className)}
             ref={props.avatarRef} 
             style={{
-                width: props.width ? props.width : 100,
-                minWidth: props.width ? props.width : 100,
-                height: props.height ? props.height : 120,
+                ...props.style,
                 backgroundImage: `url(${avatar})`
             }}>
             {!avatar ?
@@ -62,8 +60,7 @@ const AvatarUploader = (props) => {
     )
 }
 AvatarUploader.propTypes = {
-    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    style: PropTypes.object,
     borderType: PropTypes.oneOf(['default','smooth','tile','rounded']),
     avatar: PropTypes.string,
     onChange: PropTypes.func,

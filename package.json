@@ -1,6 +1,6 @@
 {
   "name": "@assenti/rui-components",
-  "version": "0.8.3",
+  "version": "0.9.0",
   "description": "React UI Components",
   "private": false,
   "license": "MIT",
@@ -9,7 +9,7 @@
     "email": "asset.sultan@gmail.com",
     "url": "https://github.com/assenti"
   },
-  "homepage": "https://assenti.github.io/react-ui-components/",
+  "homepage": "https://rui-components.netlify.app/?path=/story/get-started--page",
   "scripts": {
     "start": "PORT=3010 react-scripts start",
     "build": "react-scripts build",

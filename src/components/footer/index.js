@@ -14,7 +14,8 @@ const Footer = (props) => {
     }
 
     return (
-        <div className={strinfigyClassObject(className)} style={props.style}>
+        <div className={strinfigyClassObject(className)} 
+            style={props.style}>
             {props.children}
         </div>
     )

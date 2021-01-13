@@ -17,11 +17,7 @@ const Avatar = (props) => {
         <div 
             ref={props.avatarRef}
             className={strinfigyClassObject(className)} 
-            style={{
-                width: props.width ? props.width : 100,
-                minWidth: props.width ? props.width : 100,
-                height: props.height ? props.height : 120
-            }}
+            style={props.style}
             onClick={(e) => props.onClick ? props.onClick(e) : {}}>
             {props.img && !props.icon && !props.initials ? <img src={props.img} alt=""/> : null}
             {props.initials && !props.icon && !props.img ? <span style={{ fontSize: props.fontSize }}>{props.initials}</span> : null}
@@ -34,9 +30,8 @@ const Avatar = (props) => {
     )
 }
 Avatar.propTypes = {
-    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    borderType: PropTypes.oneOf([undefined,'','default','smooth','tile','rounded']),
+    style: PropTypes.object,
+    borderType: PropTypes.oneOf(['default','smooth','tile','rounded']),
     img: PropTypes.string,
     icon: PropTypes.string,
     lifted: PropTypes.bool,

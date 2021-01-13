@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Icon } from '../index';
+import { Button } from '../index';
 import { strinfigyClassObject } from '../utils';
 
 const ButtonGroup = (props) => {
@@ -40,7 +40,7 @@ const ButtonGroup = (props) => {
 ButtonGroup.propTypes = {
     default: PropTypes.number,
     onChange: PropTypes.func,
-    options: PropTypes.array.isRequired,
+    options: PropTypes.arrayOf([PropTypes.string, PropTypes.node]).isRequired,
     lifted: PropTypes.bool,
     outlined: PropTypes.bool,
     size: PropTypes.oneOf(['default','medium','large']),

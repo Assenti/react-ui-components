@@ -11,17 +11,17 @@ const Skeleton = (props) => {
     }
     return (
         <div className={strinfigyClassObject(className)}
-            style={{ 
-                width: props.width ? props.width : '100%',
-                height: props.height ? props.height : '100%'
+            style={{
+                ...props.style,
+                width: props?.style?.width ? props?.style?.width : '100%',
+                height: props?.style?.height ? props?.style?.height : '100%'
             }}/>
     )
 }
 Skeleton.propTypes = {
     active: PropTypes.bool,
     rounded: PropTypes.bool,
-    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    style: PropTypes.object,
     className: PropTypes.string
 }
 export default Skeleton;

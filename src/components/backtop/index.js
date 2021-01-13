@@ -42,7 +42,8 @@ const BackTopBtn = (props) => {
                 unmountOnExit>
                 {props.tooltip ?
                     <Tooltip tooltip={props.tooltip}>
-                        <Button 
+                        <Button
+                            style={props.btnStyle} 
                             icon={!props.name ? props.icon : null}
                             name={!props.icon ? props.name : null}
                             lifted={props.lifted}
@@ -52,6 +53,7 @@ const BackTopBtn = (props) => {
                             dark={props.dark ? true : false}/>
                     </Tooltip> : 
                     <Button 
+                        style={props.btnStyle}
                         icon={!props.name ? props.icon : null}
                         name={!props.icon ? props.name : null}
                         lifted={props.lifted}
@@ -66,6 +68,7 @@ const BackTopBtn = (props) => {
 }
 BackTopBtn.propTypes = {
     setRef: PropTypes.any,
+    btnStyle: PropTypes.object,
     size: PropTypes.oneOf(['default','medium','large']),
     dark: PropTypes.bool,
     tooltip: PropTypes.string,

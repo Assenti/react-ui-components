@@ -43,7 +43,7 @@ const Drawer = (props) => {
 Drawer.propTypes = {
     drawer: PropTypes.bool,
     onClose: PropTypes.func,
-    position: PropTypes.oneOf([undefined,'','left','right','top','bottom']),
+    position: PropTypes.oneOf(['left','right','top','bottom']),
     dark: PropTypes.bool,
     children: PropTypes.node
 }

@@ -177,7 +177,7 @@ InputField.propTypes = {
     onBlur: PropTypes.func,
     placeholder: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    type: PropTypes.oneOf(['text','password','number','email']),
+    type: PropTypes.oneOf(['text','password','number','email', 'tel']),
     required: PropTypes.bool,
     readOnly: PropTypes.bool,
     autoComplete: PropTypes.bool,
