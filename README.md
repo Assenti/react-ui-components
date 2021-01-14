@@ -55,7 +55,7 @@ export default App;
 ```
 
 ## Changelog
-You can track changelog [here](https://github.com/Assenti/react-ui-components/blob/storybook/CHANGELOG.md)
+You can track changelog [here](/CHANGELOG.md)
 
 ## Where can i find @types/@assenti/rui-components ?
 Types declarations for TypeScript are built-in
