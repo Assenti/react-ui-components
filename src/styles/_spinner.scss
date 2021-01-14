@@ -1,0 +1,74 @@
+.rui-spinner {
+    position: relative;
+
+    &.primary {
+        span {
+        
+            &:not(:required):before {
+                border-top-color: $primary;
+                border-right-color: $primary;
+                border-bottom-color: $primary;
+            }
+        }
+    }
+
+    &.info {
+        span {
+        
+            &:not(:required):before {
+                border-top-color: $info;
+                border-right-color: $info;
+                border-bottom-color: $info;
+            }
+        }
+    }
+
+    &.success {
+        span {
+        
+            &:not(:required):before {
+                border-top-color: $success;
+                border-right-color: $success;
+                border-bottom-color: $success;
+            }
+        }
+    }
+
+    &.error {
+        span {
+        
+            &:not(:required):before {
+                border-top-color: $error;
+                border-right-color: $error;
+                border-bottom-color: $error;
+            }
+        }
+    }
+
+    span {
+        &:before {
+            content: '';
+            border-radius: 50%;
+            border-style: solid;
+            border-top-color: $primary;
+            border-right-color: $primary;
+            border-bottom-color: $primary;
+            border-left-color: #ddd;
+            border-width: 2.5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: calc(100% - 4px);
+            height: calc(100% - 4px);
+            -webkit-animation: rui-spinner .6s linear infinite;
+            -moz-animation: rui-spinner .6s linear infinite;
+            -o-animation: rui-spinner .6s linear infinite;
+            animation: rui-spinner .6s linear infinite;
+        }
+    }
+}
+
+@keyframes rui-spinner {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

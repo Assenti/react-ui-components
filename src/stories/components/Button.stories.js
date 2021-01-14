@@ -11,7 +11,7 @@ const Template = (args) => (
     <div className="row align-center">
         <Button {...args}/>
         <Button {...args}
-            icon={<Icon name="facebook"/>}/>
+            icon={<Icon name="facebook" color="#1678c2"/>}/>
     </div>
 )
 
