@@ -1,5 +1,8 @@
 # Changelog 
 
+#### `0.9.2` `2021-02-25`
+- Collapse component styles updated;
+
 #### `0.9.1` `2021-01-14`
 - `NEW!` Spinner component added;
 - Button styles updated: set icon custom color on light mode;
