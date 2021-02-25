@@ -61,8 +61,10 @@ const Dock = (props) => {
                                     img={item.img} 
                                     icon={item.icon} 
                                     iconColor={item.iconColor}
-                                    width={props.itemSize ? props.itemSize : 60}
-                                    height={props.itemSize ? props.itemSize : 60}
+                                    style={{
+                                        width: props.itemSize ? props.itemSize : 60,
+                                        height: props.itemSize ? props.itemSize : 60
+                                    }}
                                     transparent
                                     iconSize={props.iconSize ? props.iconSize : 40}/>
                                 {item.title ? <div className="rui-dock-item-title">{item.title}</div> : null}

@@ -47,7 +47,7 @@ const DatePicker = (props) => {
                         onClear={handleClear}
                         required={props.required}
                         placeholder={props.placeholder}
-                        prefix={<Icon name="calendar-month"/>} 
+                        prefix={<Icon name="calendar-month" onClick={() => setVisible(true)}/>} 
                         value={props.value}/>
                 }>
                 <div className="rui-date-picker__content">

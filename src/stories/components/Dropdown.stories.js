@@ -26,7 +26,7 @@ const Template = (args) => (
         }>
         <div className="pa-10">
             <div className="text-center">
-                <Avatar img={manImage} borderType="rounded" height={100} dark={args.dark}/>
+                <Avatar img={manImage} borderType="rounded" style={{ width: 100, height: 100 }} dark={args.dark}/>
                 <h4>John Doe</h4>
             </div>
             <Divider/>

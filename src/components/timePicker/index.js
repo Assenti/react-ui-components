@@ -105,7 +105,7 @@ const TimePicker = (props) => {
                         placeholder={placeholder()}
                         onFocus={() => setVisible(true)}
                         onBlur={() => setVisible(false)}
-                        prefix={<Icon name="clock-outline"/>} 
+                        prefix={<Icon name="clock-outline" onClick={() => setVisible(true)}/>} 
                         value={props.value}/>
                 }>
                 <div className="rui-timepicker__content">

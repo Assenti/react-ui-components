@@ -22,7 +22,6 @@ const Template = (args) => (
         style={{ height: 400, overflow: 'hidden' }}>
         <Sidebar
             {...args}
-            // onToggle={(flag) => setMin(flag)}
             >
             <List 
                 size="medium">
@@ -33,7 +32,7 @@ const Template = (args) => (
                         noDivider
                         hover
                         onClick={() => {}}
-                        item={name}
+                        item={args.min ? '' : name}
                         icon={icon}
                         tooltip={args.min ? name : null}
                         tooltipPosition="right"/>
@@ -51,6 +50,5 @@ const Template = (args) => (
 export const Sidebar_ = Template.bind({});
 
 Sidebar_.args = {
-    collapsable: true,
-    
+    collapsable: true
 };

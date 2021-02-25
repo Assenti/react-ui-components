@@ -11,7 +11,7 @@ export default {
 const Template = (args) => (
     <>
         <div className="row">
-            <Avatar img={manImage} height={100}/>
+            <Avatar img={manImage} style={{ height: 100, width: 100 }}/>
             <Divider vertical color={args.color}/>
             <div>
                 <h2 className="text-primary">John Doe</h2>

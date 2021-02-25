@@ -71,6 +71,10 @@
         transition: all .3s ease-in-out;
         -webkit-transition: all .3s ease-in-out;
         -moz-transition: all .3s ease-in-out;
+
+        &.active {
+            background-color: #f7f7f7;
+        }
     }
 
     .rui-list-item:last-child {

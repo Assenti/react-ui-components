@@ -19,7 +19,7 @@ const Template = (args) => (
         rounded={args.rounded}
         color={args.color} 
         icon="plus"
-        parent={<Avatar img={manImage}/>}/>
+        parent={<Avatar img={manImage} style={{ width: 100, heigth: 100 }}/>}/>
   </div>
 )
 

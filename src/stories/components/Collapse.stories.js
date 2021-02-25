@@ -42,6 +42,7 @@ Collapse_.args = {
     title: '',
     defaultState: true, 
     border: true, 
+    hover: true,
     onChange: () => console.log('Do smth...'),
     dark: false,
     tooltip: '',

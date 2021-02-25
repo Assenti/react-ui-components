@@ -31,8 +31,10 @@ const Template = (args) => (
                 icon={item.icon} 
                 iconColor={item.iconColor}
                 iconSize={item.iconSize}
-                width={item.size}
-                height={item.size}/>}/>
+                style={{
+                    width: item.size,
+                    height: item.size
+                }}/>}/>
 )
 
 export const Slider_ = Template.bind({});

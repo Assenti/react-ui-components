@@ -10,22 +10,27 @@ export default {
 const Template = (args) => (
   <>
     <Avatar
-        width={args.width}
-        height={args.height}
+        style={args.style}
         borderType={args.borderType}
         {...args}
         img={manImage}/>
     <br/>
     <br/>
     <Avatar
-        initials="AS"/>
+        initials="AS"
+        style={{
+          width: 100,
+          height: 120
+        }}/>
   </>
 )
 
 export const Avatar_ = Template.bind({});
 
 Avatar_.args = {
-    width: 100,
-    height: 100,
+    style: {
+      width: 100,
+      height: 100
+    },
     borderType: 'rounded'
-};
+}

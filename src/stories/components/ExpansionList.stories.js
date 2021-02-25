@@ -13,7 +13,6 @@ export default {
 const Template = (args) => (
     <ExpansionList
         {...args}
-        
         titleContent={(item) => 
             <List.Item
                 icon="map-marker" 

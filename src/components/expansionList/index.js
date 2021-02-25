@@ -55,6 +55,7 @@ const ExpansionList = (props) => {
                     iconSize={props.iconSize ? props.iconSize : ''}
                     controled={props.accordion}
                     visible={item.active}
+                    hover={props.hover}
                     className={getClass(item, index)}
                     onChange={state => {
                         if (props.onItemClick) props.onItemClick(item, index)

@@ -14,7 +14,9 @@ export const Avataruploader_ = Template.bind({});
 
 Avataruploader_.args = {
     value: '',
-    width: 140,
-    height: 170,
+    style: {
+        width: 140,
+        height: 170
+    },
     borderType: 'default'
 };

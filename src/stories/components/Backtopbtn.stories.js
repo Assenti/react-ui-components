@@ -11,17 +11,9 @@ export default {
   component: BackTopBtn
 };
 
-const countriesMock = () => {
-    const list = [];
-    for (let i = 0; i < 4; i++) {
-        list.push(...countries);
-    }
-    return list;
-}
-
 const Template = (args) => (
     <div>
-        <p>Checkout Docs</p>
+        <p>Checkout Docs tab</p>
         <BackTopBtn
             {...args}
             icon={<Icon name="arrow-up-bold"/>}/>

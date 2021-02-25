@@ -15,9 +15,9 @@ const Template = (args) => (
                 {...args}/>
         </div>
         <Divider/>
-        <Skeleton height={35} className="my-5" active={args.active}/>
-        <Skeleton height={35} className="my-5" active={args.active}/>
-        <Skeleton height={35} className="my-5" active={args.active}/>
+        <Skeleton style={{ height: 35 }} className="my-5" active={args.active}/>
+        <Skeleton style={{ height: 35 }} className="my-5" active={args.active}/>
+        <Skeleton style={{ height: 35 }} className="my-5" active={args.active}/>
     </Card>
 )
 
@@ -26,6 +26,8 @@ export const Skeleton_ = Template.bind({});
 Skeleton_.args = {
     active: true,
     rounded: true,
-    width: 100,
-    height: 100
+    style: {
+        width: 100,
+        height: 100
+    }
 };
